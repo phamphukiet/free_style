@@ -1,0 +1,46 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+  background: #252526;
+  -webkit-app-region: drag; /* cho phép kéo cửa sổ qua vùng titlebar */
+  padding: 0 8px;
+}
+
+.titlebar-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.titlebar-controls {
+  display: flex;
+  -webkit-app-region: no-drag; /* vùng nút bấm không được kéo, để click hoạt động */
+}
+
+.titlebar-btn {
+  background: none;
+  border: none;
+  color: #cccccc;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.titlebar-btn:hover {
+  background: #3a3d41;
+}
+
+.titlebar-btn-close:hover {
+  background: #e81123;
+}
+
+.titlebar-btn svg,
+.titlebar-icon svg {
+  width: 16px;
+  height: 16px;
+}

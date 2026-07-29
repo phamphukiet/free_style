@@ -1,0 +1,14 @@
+:host {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  background: #007acc;
+  color: #ffffff;
+  font-size: 12px;
+  padding: 0 8px;
+  gap: 12px;
+}
+
+.statusbar-right {
+  margin-left: auto;
+}

@@ -5,6 +5,7 @@
 const { app, BrowserWindow } = require("electron");
 const { createWindow } = require("./window");
 const { buildAppMenu } = require("./menu");
+const { registerWindowIpc } = require("./ipc");
 
 // Giữ tham chiếu window chính để tránh bị garbage collector dọn khi
 // không còn biến nào giữ nó (bắt buộc trong Electron).
@@ -22,6 +23,7 @@ function initApp() {
 // App đã sẵn sàng (Electron load xong) → khởi tạo.
 app.whenReady().then(() => {
   buildAppMenu();
+  registerWindowIpc();
   initApp();
 
   // macOS: bấm icon dock khi không có cửa sổ nào → mở lại cửa sổ.

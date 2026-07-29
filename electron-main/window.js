@@ -7,7 +7,13 @@ const path = require("path");
 
 // Đường dẫn tới preload và file HTML gốc của renderer.
 const PRELOAD_PATH = path.join(__dirname, "preload.js");
-const INDEX_HTML_PATH = path.join(__dirname,"..","workbench","workbench.html",);
+const INDEX_HTML_PATH = path.join(
+  __dirname,
+  "..",
+  "dist",
+  "workbench",
+  "workbench.html",
+);
 
 /**
  * Trả về cấu hình BrowserWindow.

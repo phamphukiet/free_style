@@ -18,3 +18,7 @@
 
 **Kết quả Giai đoạn 0**
 - `window.js`, `preload.js`, `menu.js`, `index.js`, `workbench.html`, `package.json` — đủ bộ chạy `npm start` ra cửa sổ desktop cơ bản (không titlebar OS, có native menu).
+
+**Quyết định bổ sung — Giai đoạn 1**
+- Ưu tiên dùng icon từ thư viện ngoài (Lucide) thay vì tự vẽ SVG hay dùng ảnh custom — nhất quán, đủ bộ, dễ thay khi cần.
+- Cài qua npm (`lucide` — bản thuần JS/SVG, không phụ thuộc React), import trực tiếp trong từng part cần icon.
