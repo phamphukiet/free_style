@@ -6,7 +6,7 @@ const { BrowserWindow } = require("electron");
 const path = require("path");
 
 // Đường dẫn tới preload và file HTML gốc của renderer.
-const PRELOAD_PATH = path.join(__dirname, "preload.js");
+const PRELOAD_PATH = path.join(__dirname, "../preload/index.js");
 const INDEX_HTML_PATH = path.join(
   __dirname,
   "..",
@@ -44,7 +44,14 @@ function getWindowOptions() {
  */
 function createWindow() {
   const win = new BrowserWindow(getWindowOptions());
-  win.loadFile(INDEX_HTML_PATH);
+
+  // electron-vite cấp sẵn biến này khi chạy `npm run dev` — trỏ tới Vite dev server
+  if (process.env["ELECTRON_RENDERER_URL"]) {
+    win.loadURL(`${process.env["ELECTRON_RENDERER_URL"]}/workbench.html`);
+  } else {
+    win.loadFile(path.join(__dirname, "../renderer/workbench.html"));
+  }
+  win.webContents.openDevTools({ mode: "detach" });
   return win;
 }
 

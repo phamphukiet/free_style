@@ -19,6 +19,44 @@
 **Kết quả Giai đoạn 0**
 - `window.js`, `preload.js`, `menu.js`, `index.js`, `workbench.html`, `package.json` — đủ bộ chạy `npm start` ra cửa sổ desktop cơ bản (không titlebar OS, có native menu).
 
-**Quyết định bổ sung — Giai đoạn 1**
-- Ưu tiên dùng icon từ thư viện ngoài (Lucide) thay vì tự vẽ SVG hay dùng ảnh custom — nhất quán, đủ bộ, dễ thay khi cần.
-- Cài qua npm (`lucide` — bản thuần JS/SVG, không phụ thuộc React), import trực tiếp trong từng part cần icon.
+## Tổng kết Giai đoạn 1 — quy tắc & quyết định
+
+**Sửa lỗi phát hiện được**
+- File `electron-main/preloead.js` bị gõ sai tên → đổi thành `preload.js` cho khớp với `window.js`.
+
+**Kiến trúc renderer**
+- Dùng bundler **Vite** cho renderer (`workbench/`), build output vào `dist/workbench/`. `electron-main/` không qua Vite, chạy Node thuần.
+- Renderer dùng ESM (`import`/`export`), cần bundler nên không dùng `<script>` thường.
+- `electron-main/window.js` load file đã build tại `dist/workbench/workbench.html`, không load trực tiếp từ `workbench/`.
+
+**Thư viện UI — Lit**
+- Mỗi part trong `workbench/parts/<tên>/` là 1 **Web Component (Custom Element)** viết bằng **Lit**, đăng ký qua `customElements.define("workbench-<tên>", ...)`.
+- Cấu trúc chuẩn mỗi part gồm 3 file:
+  - `<tên>.css` — style riêng, scoped tự nhiên nhờ Shadow DOM, import vào JS qua `?inline`.
+  - `<tên>.template.js` — chỉ chứa hàm trả về Lit template (`html\`...\``), nhận `host` (instance element) để bind sự kiện/đọc property.
+  - `<tên>.js` — class kế thừa `LitElement`, chứa `static properties`, logic xử lý (event handler), gọi `render()` trả về template từ file `.template.js`.
+- HTML không còn tách file `.html` riêng (đã thử fetch async nhưng bị lỗi timing + Vite không tự bundle asset ngoài entry) → chấp nhận HTML nằm trong `.template.js` dạng template literal của Lit, đổi lại giải quyết luôn vấn đề timing vì không cần fetch bất đồng bộ.
+- `workbench/workbench.html` chỉ còn thẻ custom element rỗng (`<workbench-titlebar>`, `<workbench-sidebar>`...), không còn markup lặp lại.
+- `workbench/workbench.js` chỉ còn import side-effect để đăng ký toàn bộ custom element, không còn hàm `init()`/`render()` gọi tay — Lit tự lo lifecycle qua `connectedCallback`.
+
+**Icon**
+- Ưu tiên dùng icon từ thư viện ngoài thay vì tự vẽ hay dùng ảnh custom.
+- Ban đầu định dùng `lucide` (bản DOM API, gọi `createIcons()` quét `[data-lucide]`) nhưng **không hoạt động trong Shadow DOM** của Lit (không xuyên Shadow DOM để quét).
+- Chuyển sang **`lucide-static`**: import trực tiếp file SVG dạng string qua `?raw` (cú pháp Vite hỗ trợ sẵn), nhúng vào template bằng directive `unsafeSVG` của Lit. Áp dụng thống nhất cho mọi part cần icon.
+
+**Cập nhật dữ liệu từ module (chuẩn bị cho Giai đoạn 3+)**
+- Mỗi part expose state qua Lit `properties` (ví dụ `sidebar.items`, `statusbar.branch`...); module khác muốn đổi nội dung part chỉ cần set lại property qua `registry.get('<part>')` — không tự viết DOM logic, không import trực tiếp file của part khác.
+
+**Layout tổng thể**
+- Bố trí kiểu VSCode: `titlebar` (trên cùng, cố định) → `#workbench-body` (flex ngang: `activitybar` cố định rộng → `sidebar` cố định rộng → `#editor-panel-column` chiếm phần còn lại) → `statusbar` (dưới cùng, cố định).
+- `#editor-panel-column` là flex dọc: `editor-group` (chiếm hết chiều cao còn lại) trên, `panel` (chiều cao cố định) dưới.
+- CSS layout tổng đặt trực tiếp trong `<style>` của `workbench.html` (ngoài Shadow DOM của từng part), vì đây là quan hệ bố trí giữa các part với nhau, không thuộc về style riêng của 1 part.
+
+**Kết quả Giai đoạn 1**
+- Đủ 6 part: titlebar (tương tác thật — minimize/maximize/close qua IPC), activitybar, sidebar, editor-group, panel, statusbar (5 part còn lại tĩnh, chừa chỗ đúng layout).
+- `shared/ipc-channels.js` và `electron-main/ipc.js` được thêm để xử lý lệnh window control từ titlebar.
+
+**Chuyển đổi hạ tầng — electron-vite**
+- Chuyển từ Vite thuần + `concurrently`/`wait-on` sang **electron-vite** để có HMR/auto-restart cho cả main, preload, renderer (không chỉ renderer).
+- Cấu trúc đổi: `electron-main/` → `src/main/`, `electron-main/preload.js` → `src/preload/index.js`, `workbench/` → `src/renderer/`. `modules/` và `shared/` giữ nguyên ở gốc project.
+- Dùng alias `@modules` và `@shared` (khai báo trong `electron.vite.config.js`) thay cho đường dẫn tương đối `../../../` khi import giữa renderer/main và modules/shared — tránh lỗi đếm sai cấp thư mục.

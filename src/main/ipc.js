@@ -3,7 +3,7 @@
 // thao tác lên BrowserWindow tương ứng. Không tạo window, không tạo menu.
 
 const { ipcMain, BrowserWindow } = require("electron");
-const channels = require("../shared/ipc-channels");
+const channels = require("../../shared/ipc-channels");
 
 function registerWindowIpc() {
   ipcMain.on(channels.WINDOW_MINIMIZE, (event) => {

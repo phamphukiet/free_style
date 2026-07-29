@@ -3,8 +3,8 @@
 // Renderer không có quyền dùng Node.js/OS trực tiếp (contextIsolation: true),
 // nên mọi API cần expose ra cho renderer phải đi qua file này.
 
-const { contextBridge } = require("electron");
-const channels = require("../shared/ipc-channels");
+const { contextBridge, ipcRenderer } = require("electron");
+const channels = require("@shared/ipc-channels");
 /**
  * Trả về object API sẽ được expose ra renderer dưới tên window.api.
  * Tách thành hàm riêng để sau này dễ thêm nhóm API mới (fs.*, terminal.*...)

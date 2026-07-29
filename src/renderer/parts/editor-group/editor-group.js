@@ -5,6 +5,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { editorGroupTemplate } from "./editor-group.template.js";
 import styles from "./editor-group.css?inline";
+import "@modules/editor/frontend/editor-group/editor.js";
 
 class EditorGroupElement extends LitElement {
   static styles = unsafeCSS(styles);
