@@ -48,6 +48,8 @@ function getExposedApi() {
       rename: (oldPath, newPath) =>
         ipcRenderer.invoke(channels.FS_RENAME, oldPath, newPath),
       delete: (path) => ipcRenderer.invoke(channels.FS_DELETE, path),
+      readFile: (filePath) => ipcRenderer.invoke("fs:read-file", filePath),
+      writeFile: (filePath, content) => ipcRenderer.invoke("fs:write-file", filePath, content),
     },
   };
 }

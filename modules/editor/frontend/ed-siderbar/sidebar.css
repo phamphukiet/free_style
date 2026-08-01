@@ -3,36 +3,137 @@
   width: 240px;
   background: #252526;
   color: #cccccc;
-  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
-.sidebar-title {
-  padding: 10px 12px;
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 0 8px 0 12px;
+  height: 35px;
+  min-height: 35px;
+  text-transform: uppercase;
   font-size: 11px;
   font-weight: 600;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.08em;
   color: #bbbbbb;
 }
 
-.sidebar-tree {
+.sidebar-header-title {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.sidebar-header-actions {
+  display: flex;
+  gap: 2px;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.sidebar-header:hover .sidebar-header-actions {
+  opacity: 1;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: #cccccc;
+  cursor: pointer;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-btn svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sidebar-content {
+  flex: 1;
   overflow-y: auto;
+  min-height: 0;
+}
+
+.sidebar-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
 }
 
 .sidebar-empty {
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding-top: 24px;
+  padding: 40px 20px;
+  gap: 12px;
+  color: #888;
+  font-size: 13px;
+  text-align: center;
 }
 
 .sidebar-open-folder-btn {
   background: #0e639c;
   color: #ffffff;
   border: none;
-  padding: 6px 14px;
+  padding: 6px 16px;
   font-size: 13px;
   cursor: pointer;
+  border-radius: 2px;
 }
 
 .sidebar-open-folder-btn:hover {
   background: #1177bb;
+}
+
+/* Style cho inline creation input ở root */
+.tree-row {
+  display: flex;
+  align-items: center;
+  height: 22px;
+  padding-right: 12px;
+  font-size: 13px;
+  color: #cccccc;
+}
+
+.tree-icon {
+  width: 16px;
+  min-width: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+}
+
+.tree-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.rename-input {
+  flex: 1;
+  background: #3c3c3c;
+  border: 1px solid #007fd4;
+  color: #cccccc;
+  font-size: 13px;
+  font-family: inherit;
+  padding: 0 4px;
+  height: 18px;
+  outline: none;
+  min-width: 0;
 }

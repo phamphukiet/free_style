@@ -65,6 +65,11 @@ function registerWindowIpc() {
   ipcMain.handle(channels.FS_DELETE, (event, targetPath) => {
     fs.rmSync(targetPath, { recursive: true, force: true });
   });
+
+  // Đăng ký IPC đọc/ghi file từ editor module backend
+  const { readTextFile, writeTextFile } = require("../../modules/editor/backend/editor");
+  ipcMain.handle("fs:read-file", (event, filePath) => readTextFile(filePath));
+  ipcMain.handle("fs:write-file", (event, filePath, content) => writeTextFile(filePath, content));
 }
 
 module.exports = { registerWindowIpc };

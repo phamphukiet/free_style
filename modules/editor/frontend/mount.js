@@ -1,22 +1,21 @@
 import * as monaco from "monaco-editor";
 
-// Giai đoạn 2: chỉ cần Monaco hiện ra, gõ có syntax highlight.
-// Chưa đọc/ghi file thật — nội dung mẫu cứng.
 function mountEditor(container) {
-  return monaco.editor.create(container, {
-    value: "// Editor sẵn sàng\n",
-    language: "javascript",
+  const instance = monaco.editor.create(container, {
+    value: "",
     theme: "vs-dark",
-    // automaticLayout: true, // tự resize theo container cha
-    // lineNumbers: "off", // tắt số dòng
-    // glyphMargin: false, // tắt vùng icon debug/breakpoint
-    // folding: false, // tắt vùng gấp code (thường đi kèm margin)
-    // lineDecorationsWidth: 0, // triệt tiêu khoảng trắng còn lại của margin
-    // lineNumbersMinChars: 0,
+    fontFamily: "Consolas, 'Courier New', monospace",
+    fontSize: 14,
+    tabSize: 2,
+    insertSpaces: true,
+    automaticLayout: true,
+    minimap: { enabled: true },
+    scrollBeyondLastLine: false,
+    cursorBlinking: "blink",
+    cursorSmoothCaretAnimation: "on",
+    renderWhitespace: "selection",
+    wordWrap: "on"
   });
-  // Ép tính lại layout ngay sau khi tạo, tránh trường hợp container
-  // chưa ổn định kích thước tại thời điểm create() (flex layout của cha
-  // có thể chưa resolve xong width/height lúc firstUpdated() chạy).
   requestAnimationFrame(() => instance.layout());
   return instance;
 }

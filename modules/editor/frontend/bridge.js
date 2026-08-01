@@ -1,13 +1,12 @@
 // bridge.js
-// Giai đoạn 2: chưa cần đọc/ghi file thật, để trống hàm giữ chỗ.
-// Giai đoạn sau sẽ gọi window.api.editor.readFile()/writeFile() tại đây.
+// Cầu nối thực tế cho editor frontend gọi API đọc/ghi file từ backend.
 
 async function readFile(path) {
-  // TODO: nối window.api.editor.readFile(path) khi backend sẵn sàng
+  return window.api.fs.readFile(path);
 }
 
 async function writeFile(path, content) {
-  // TODO: nối window.api.editor.writeFile(path, content) khi backend sẵn sàng
+  return window.api.fs.writeFile(path, content);
 }
 
 export { readFile, writeFile };

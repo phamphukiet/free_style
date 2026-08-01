@@ -36,6 +36,8 @@ class ContextMenuElement extends LitElement {
   };
 
   handleItemClick(item) {
+    // Đóng menu trước, rồi thực hiện action.
+    this.dispatchEvent(new CustomEvent("close"));
     item.onClick();
   }
 

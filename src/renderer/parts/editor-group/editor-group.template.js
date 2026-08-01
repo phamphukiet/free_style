@@ -1,12 +1,24 @@
 import { html } from "lit";
+import styles from "./editor-group.css?inline";
 
-// Giai đoạn 1: chừa rỗng. Giai đoạn 2 sẽ mount Monaco vào #editor-mount.
 export function editorGroupTemplate(host) {
-  let content;
-  if (host.hasFile) {
-    content = html`<div id="editor-mount"></div>`;
-  } else {
-    content = html`<div class="editor-empty">Chưa có file nào được mở</div>`;
+  if (!host.hasFile) {
+    return html`
+      <style>${styles}</style>
+      <div class="editor-empty">Chưa có file nào được mở</div>
+    `;
   }
-  return content;
+
+  return html`
+    <style>${styles}</style>
+    <div class="editor-tab-bar">
+      <div class="editor-tab active">
+        <span class="tab-label">${host.activeFileName}</span>
+        <button class="tab-close-btn" @click=${() => host.handleCloseFile()}>&times;</button>
+      </div>
+    </div>
+    <div class="editor-container">
+      <module-editor .path=${host.activeFilePath}></module-editor>
+    </div>
+  `;
 }

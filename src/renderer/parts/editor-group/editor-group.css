@@ -1,9 +1,8 @@
-:host {
-  display: block;
+
+.editor-container {
   flex: 1;
-  background: #1e1e1e;
-  min-width: 0;
   min-height: 0;
+  display: flex;
 }
 
 module-editor {
@@ -20,4 +19,47 @@ module-editor {
   height: 100%;
   color: #6b6b6b;
   font-size: 13px;
+}
+
+/* Tab Bar */
+.editor-tab-bar {
+  display: flex;
+  height: 35px;
+  background: #252526;
+  border-bottom: 1px solid #1e1e1e;
+  overflow-x: auto;
+}
+
+.editor-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: #2d2d2d;
+  color: #969696;
+  font-size: 13px;
+  border-right: 1px solid #252526;
+  cursor: pointer;
+  user-select: none;
+}
+
+.editor-tab.active {
+  background: #1e1e1e;
+  color: #ffffff;
+}
+
+.tab-close-btn {
+  background: none;
+  border: none;
+  color: #969696;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0 4px;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.tab-close-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
