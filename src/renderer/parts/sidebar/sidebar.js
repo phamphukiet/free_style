@@ -1,6 +1,6 @@
 import { LitElement, unsafeCSS } from "lit";
 import { sidebarTemplate } from "./sidebar.template.js";
-import { openFolder } from "../../../../shared/folder-actions.js";
+import { openFolder } from "../../shared/folder-actions.js";
 import styles from "./sidebar.css?inline";
 
 class SidebarElement extends LitElement {
