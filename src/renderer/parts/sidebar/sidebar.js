@@ -1,8 +1,8 @@
 import { LitElement, unsafeCSS } from "lit";
 import { sidebarTemplate } from "./sidebar.template.js";
-import { openFolder } from "../../shared/folder-actions.js";
+import { openFolder } from "@shared/folder-actions.js";
 import styles from "./sidebar.css?inline";
-import "@module/editor/frontend/ed-siderbar/sidebar.js";
+import "@modules/editor/frontend/ed-siderbar/sidebar.js";
 
 class SidebarElement extends LitElement {
   static styles = unsafeCSS(styles);

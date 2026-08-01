@@ -7,7 +7,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { titlebarTemplate } from "./titlebar.template.js";
 import styles from "./titlebar.css?inline";
-import { openFolder } from "../../shared/folder-actions.js";
+import { openFolder } from "@shared/folder-actions.js";
 
 class TitlebarElement extends LitElement {
   static styles = unsafeCSS(styles);

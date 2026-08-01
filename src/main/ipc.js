@@ -40,10 +40,30 @@ function registerWindowIpc() {
     return { folderPath, entries: readFolderEntries(folderPath) };
   });
 
+  ipcMain.handle(channels.FS_READ_DIRECTORY, (event, folderPath) => {
+    return readFolderEntries(folderPath);
+  });
+
   ipcMain.handle(channels.STATE_LOAD_LAST_FOLDER, () => {
     const { lastFolder } = readState();
     if (!lastFolder || !fs.existsSync(lastFolder)) return null;
     return { folderPath: lastFolder, entries: readFolderEntries(lastFolder) };
+  });
+
+  ipcMain.handle(channels.FS_CREATE_FILE, (event, filePath) => {
+    fs.writeFileSync(filePath, "");
+  });
+
+  ipcMain.handle(channels.FS_CREATE_FOLDER, (event, folderPath) => {
+    fs.mkdirSync(folderPath);
+  });
+
+  ipcMain.handle(channels.FS_RENAME, (event, oldPath, newPath) => {
+    fs.renameSync(oldPath, newPath);
+  });
+
+  ipcMain.handle(channels.FS_DELETE, (event, targetPath) => {
+    fs.rmSync(targetPath, { recursive: true, force: true });
   });
 }
 

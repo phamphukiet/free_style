@@ -5,7 +5,8 @@ const channels = {
   WINDOW_MAXIMIZE: "window:maximize",
   WINDOW_CLOSE: "window:close",
   DIALOG_OPEN_FOLDER: "dialog:open-folder",
-  STATE_LOAD_LAST_FOLDER: "state:load-last-folder"
+  STATE_LOAD_LAST_FOLDER: "state:load-last-folder",
+  FS_READ_DIRECTORY: "fs:read-directory"
 };
 function getExposedApi() {
   return {
@@ -19,6 +20,9 @@ function getExposedApi() {
     },
     state: {
       loadLastFolder: () => ipcRenderer.invoke(channels.STATE_LOAD_LAST_FOLDER)
+    },
+    fs: {
+      readDirectory: (folderPath) => ipcRenderer.invoke(channels.FS_READ_DIRECTORY, folderPath)
     }
   };
 }

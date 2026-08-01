@@ -1,0 +1,28 @@
+:host {
+  display: block;
+}
+
+.tree-row {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.tree-row:hover {
+  background: #2a2d2e;
+}
+
+.tree-icon {
+  width: 12px;
+  display: inline-block;
+  color: #858585;
+}
+
+.tree-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
