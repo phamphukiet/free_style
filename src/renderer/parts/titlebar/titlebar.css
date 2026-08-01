@@ -44,3 +44,47 @@
   width: 16px;
   height: 16px;
 }
+
+.titlebar-menu {
+  position: relative;
+  -webkit-app-region: no-drag;
+}
+
+.titlebar-menu-btn {
+  background: none;
+  border: none;
+  color: #cccccc;
+  font-size: 13px;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.titlebar-menu-btn:hover {
+  background: #3a3d41;
+}
+
+.titlebar-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #252526;
+  border: 1px solid #3a3d41;
+  min-width: 160px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.titlebar-menu-dropdown button {
+  background: none;
+  border: none;
+  color: #cccccc;
+  text-align: left;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.titlebar-menu-dropdown button:hover {
+  background: #094771;
+}

@@ -20,6 +20,9 @@ function getExposedApi() {
       maximize: () => ipcRenderer.send(channels.WINDOW_MAXIMIZE),
       close: () => ipcRenderer.send(channels.WINDOW_CLOSE),
     },
+    dialog: {
+      openFolder: () => ipcRenderer.invoke(channels.DIALOG_OPEN_FOLDER),
+    },
   };
 }
 

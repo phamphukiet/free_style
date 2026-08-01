@@ -7,6 +7,8 @@
 import { LitElement, unsafeCSS } from "lit";
 import { titlebarTemplate } from "./titlebar.template.js";
 import styles from "./titlebar.css?inline"; // Vite: import CSS dạng string
+import { openFolder } from "../../../../shared/folder-actions.js";
+// ../../../shared/folder-actions.js
 
 class TitlebarElement extends LitElement {
   static styles = unsafeCSS(styles);
@@ -35,6 +37,26 @@ class TitlebarElement extends LitElement {
   render() {
     return titlebarTemplate(this);
   }
+
+  static properties = {
+  title: { type: String },
+  menuOpen: { state: true },
+};
+
+constructor() {
+  super();
+  this.title = "IDE Workbench";
+  this.menuOpen = false;
+}
+
+handleToggleFileMenu() {
+  this.menuOpen = !this.menuOpen;
+}
+
+handleOpenFolder() {
+  this.menuOpen = false;
+  openFolder();
+}
 }
 
 customElements.define("workbench-titlebar", TitlebarElement);

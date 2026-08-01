@@ -29,3 +29,22 @@
 .sidebar-list li:hover {
   color: #ffffff;
 }
+
+.sidebar-empty {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.sidebar-open-folder-btn {
+  background: #0e639c;
+  color: #ffffff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.sidebar-open-folder-btn:hover {
+  background: #1177bb;
+}

@@ -4,4 +4,5 @@ module.exports = {
   WINDOW_MINIMIZE: "window:minimize",
   WINDOW_MAXIMIZE: "window:maximize",
   WINDOW_CLOSE: "window:close",
+  DIALOG_OPEN_FOLDER: "dialog:open-folder",
 };
