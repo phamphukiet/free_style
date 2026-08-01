@@ -62,7 +62,6 @@ export function treeItemTemplate(host) {
       @click=${() => host.handleToggle()}
       @contextmenu=${(e) => host.handleContextMenu(e)}
     >
-    >
       <span class="tree-icon">${icon}</span>
       <span class="tree-name">${host.name}</span>
     </div>
