@@ -32,7 +32,18 @@ export function titlebarTemplate(host) {
       <span class="titlebar-title">${host.title}</span>
     </div>
     <div class="titlebar-controls">
-      ...giữ nguyên 3 nút minimize/maximize/close...
+      <button class="titlebar-btn" @click=${() => host.handleMinimize()}>
+        ${unsafeSVG(minusIcon)}
+      </button>
+      <button class="titlebar-btn" @click=${() => host.handleMaximize()}>
+        ${unsafeSVG(squareIcon)}
+      </button>
+      <button
+        class="titlebar-btn titlebar-btn-close"
+        @click=${() => host.handleClose()}
+      >
+        ${unsafeSVG(xIcon)}
+      </button>
     </div>
   `;
 }

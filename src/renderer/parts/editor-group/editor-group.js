@@ -5,9 +5,9 @@
 import { LitElement, unsafeCSS } from "lit";
 import { editorGroupTemplate } from "./editor-group.template.js";
 import styles from "./editor-group.css?inline";
-import "@modules/editor/frontend/editor-group/editor.js";
+import "@modules/editor/frontend/ed-editor-group/editor.js";
 
-class EditorElement extends LitElement {
+class EditorGroupElement extends LitElement {
   static styles = unsafeCSS(styles);
 
   static properties = {
@@ -33,7 +33,7 @@ class EditorElement extends LitElement {
   }
 
   render() {
-    return editorTemplate(this);
+    return editorGroupTemplate(this);
   }
 }
 

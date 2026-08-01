@@ -4,7 +4,15 @@
 // nên mọi API cần expose ra cho renderer phải đi qua file này.
 
 const { contextBridge, ipcRenderer } = require("electron");
-const channels = require("@shared/ipc-channels");
+// const channels = require("../../shared/ipc-channels");
+const channels = {
+  WINDOW_MINIMIZE: "window:minimize",
+  WINDOW_MAXIMIZE: "window:maximize",
+  WINDOW_CLOSE: "window:close",
+  DIALOG_OPEN_FOLDER: "dialog:open-folder",
+  STATE_LOAD_LAST_FOLDER: "state:load-last-folder",
+};
+
 /**
  * Trả về object API sẽ được expose ra renderer dưới tên window.api.
  * Tách thành hàm riêng để sau này dễ thêm nhóm API mới (fs.*, terminal.*...)
@@ -22,6 +30,9 @@ function getExposedApi() {
     },
     dialog: {
       openFolder: () => ipcRenderer.invoke(channels.DIALOG_OPEN_FOLDER),
+    },
+    state: {
+      loadLastFolder: () => ipcRenderer.invoke(channels.STATE_LOAD_LAST_FOLDER),
     },
   };
 }

@@ -5,4 +5,5 @@ module.exports = {
   WINDOW_MAXIMIZE: "window:maximize",
   WINDOW_CLOSE: "window:close",
   DIALOG_OPEN_FOLDER: "dialog:open-folder",
+  STATE_LOAD_LAST_FOLDER: "state:load-last-folder",
 };

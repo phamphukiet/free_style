@@ -8,3 +8,7 @@ export async function openFolder() {
     new CustomEvent("workbench:folder-opened", { detail: result }),
   );
 }
+
+export async function loadLastFolder() {
+  return window.api.state.loadLastFolder();
+}

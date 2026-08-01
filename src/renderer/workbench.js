@@ -9,12 +9,7 @@ import "./parts/panel/panel.js";
 import "./parts/statusbar/statusbar.js";
 
 function initWorkbench() {
-    initTitlebar();
-    renderActivitybar();
-    renderSidebar();
-    renderEditorGroup();
-    renderPanel();
-    renderStatusbar();
+    // Giai đoạn 1: chỉ mount các part, chưa có logic gì.
 }
 
 document.addEventListener("DOMContentLoaded", initWorkbench);

@@ -5,6 +5,13 @@
 const { ipcMain, BrowserWindow, dialog } = require("electron");
 const channels = require("../../shared/ipc-channels");
 const fs = require("fs");
+const { readState, writeState } = require("./state");
+
+function readFolderEntries(folderPath) {
+  return fs
+    .readdirSync(folderPath, { withFileTypes: true })
+    .map((entry) => ({ name: entry.name, isDirectory: entry.isDirectory() }));
+}
 
 function registerWindowIpc() {
   ipcMain.on(channels.WINDOW_MINIMIZE, (event) => {
@@ -29,11 +36,14 @@ function registerWindowIpc() {
     if (result.canceled || result.filePaths.length === 0) return null;
 
     const folderPath = result.filePaths[0];
-    const entries = fs
-      .readdirSync(folderPath, { withFileTypes: true })
-      .map((entry) => ({ name: entry.name, isDirectory: entry.isDirectory() }));
+    writeState({ lastFolder: folderPath });
+    return { folderPath, entries: readFolderEntries(folderPath) };
+  });
 
-    return { folderPath, entries };
+  ipcMain.handle(channels.STATE_LOAD_LAST_FOLDER, () => {
+    const { lastFolder } = readState();
+    if (!lastFolder || !fs.existsSync(lastFolder)) return null;
+    return { folderPath: lastFolder, entries: readFolderEntries(lastFolder) };
   });
 }
 
