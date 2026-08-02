@@ -71,3 +71,12 @@
   outline: none;
   min-width: 0;
 }
+
+.tree-row.drag-over {
+  outline: 1px solid #007acc;
+  background: rgba(0, 122, 204, 0.15);
+}
+
+.tree-row.cut {
+  opacity: 0.5;
+}

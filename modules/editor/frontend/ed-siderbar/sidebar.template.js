@@ -56,27 +56,54 @@ export function sidebarTemplate(host) {
     <div class="sidebar-header">
       <span class="sidebar-header-title">${host.folderName}</span>
       <div class="sidebar-header-actions">
-        <button class="icon-btn" title="New File"
-          @click=${() => host.handleNewFile()}>${unsafeSVG(newFileIcon)}</button>
-        <button class="icon-btn" title="New Folder"
-          @click=${() => host.handleNewFolder()}>${unsafeSVG(newFolderIcon)}</button>
-        <button class="icon-btn" title="Refresh Explorer"
-          @click=${() => host.handleReload()}>${unsafeSVG(refreshIcon)}</button>
-        <button class="icon-btn" title="Collapse All"
-          @click=${() => host.handleCollapseAll()}>${unsafeSVG(collapseIcon)}</button>
+        <button
+          class="icon-btn"
+          title="New File"
+          @click=${() => host.handleNewFile()}
+        >
+          ${unsafeSVG(newFileIcon)}
+        </button>
+        <button
+          class="icon-btn"
+          title="New Folder"
+          @click=${() => host.handleNewFolder()}
+        >
+          ${unsafeSVG(newFolderIcon)}
+        </button>
+        <button
+          class="icon-btn"
+          title="Refresh Explorer"
+          @click=${() => host.handleReload()}
+        >
+          ${unsafeSVG(refreshIcon)}
+        </button>
+        <button
+          class="icon-btn"
+          title="Collapse All"
+          @click=${() => host.handleCollapseAll()}
+        >
+          ${unsafeSVG(collapseIcon)}
+        </button>
       </div>
     </div>
-    <div class="sidebar-content" @contextmenu=${(e) => host.handleContextMenu(e)}>
+    <div
+      class="sidebar-content"
+      @contextmenu=${(e) => host.handleContextMenu(e)}
+      @dragover=${(e) => host.handleRootDragOver(e)}
+      @drop=${(e) => host.handleRootDrop(e)}
+    >
       ${createInput}
-      ${host.items.map((item) => html`
-        <ed-tree-item
-          name=${item.name}
-          path=${`${host.folderPath}/${item.name}`}
-          ?isDirectory=${item.isDirectory}
-          depth=${0}
-          .selectedPath=${host.selectedPath}
-        ></ed-tree-item>
-      `)}
+      ${host.items.map(
+        (item) => html`
+          <ed-tree-item
+            name=${item.name}
+            path=${`${host.folderPath}/${item.name}`}
+            ?isDirectory=${item.isDirectory}
+            depth=${0}
+            .selectedPath=${host.selectedPath}
+          ></ed-tree-item>
+        `,
+      )}
     </div>
     ${menu}
   `;

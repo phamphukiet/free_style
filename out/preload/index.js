@@ -10,7 +10,8 @@ const channels = {
   FS_CREATE_FILE: "fs:create-file",
   FS_CREATE_FOLDER: "fs:create-folder",
   FS_RENAME: "fs:rename",
-  FS_DELETE: "fs:delete"
+  FS_DELETE: "fs:delete",
+  FS_COPY: "fs:copy"
 };
 function getExposedApi() {
   return {
@@ -30,6 +31,7 @@ function getExposedApi() {
       createFile: (path) => ipcRenderer.invoke(channels.FS_CREATE_FILE, path),
       createFolder: (path) => ipcRenderer.invoke(channels.FS_CREATE_FOLDER, path),
       rename: (oldPath, newPath) => ipcRenderer.invoke(channels.FS_RENAME, oldPath, newPath),
+      copy: (src, dest) => ipcRenderer.invoke(channels.FS_COPY, src, dest),
       delete: (path) => ipcRenderer.invoke(channels.FS_DELETE, path),
       readFile: (filePath) => ipcRenderer.invoke("fs:read-file", filePath),
       writeFile: (filePath, content) => ipcRenderer.invoke("fs:write-file", filePath, content)

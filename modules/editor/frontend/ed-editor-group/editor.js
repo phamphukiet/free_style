@@ -4,11 +4,24 @@ import { mountEditor } from "../mount.js";
 import { readFile, writeFile } from "../bridge.js";
 import * as monaco from "monaco-editor";
 
+const LANGS = {
+  js: "javascript", ts: "typescript", json: "json",
+  html: "html", css: "css", py: "python", md: "markdown",
+};
+
+function detectLang(path) {
+  const ext = path.split(".").pop().toLowerCase();
+  return LANGS[ext] || "plaintext";
+}
+
 class EditorElement extends LitElement {
   static properties = { path: { type: String } };
 
   constructor() {
-    super(); this.path = ""; this.instance = null; this.saveTimeout = null;
+    super();
+    this.path = "";
+    this.instance = null;
+    this.models = new Map(); // path -> { model, saveTimeout }
   }
 
   createRenderRoot() { return this; }
@@ -16,33 +29,41 @@ class EditorElement extends LitElement {
   firstUpdated() {
     const mountPoint = this.querySelector("#editor-mount");
     this.instance = mountEditor(mountPoint);
-    this.instance.onDidChangeModelContent(() => {
-      if (!this.path) return;
-      clearTimeout(this.saveTimeout);
-      this.saveTimeout = setTimeout(() => {
-        writeFile(this.path, this.instance.getValue());
-      }, 800);
-    });
-  }
-
-  async willUpdate(changedProperties) {
-    if (changedProperties.has("path") && this.path && this.instance) {
-      const content = await readFile(this.path);
-      this.instance.setValue(content);
-      
-      const ext = this.path.split(".").pop().toLowerCase();
-      const langs = {
-        js: "javascript", ts: "typescript", json: "json",
-        html: "html", css: "css", py: "python", md: "markdown"
-      };
-      const model = this.instance.getModel();
-      if (model) monaco.editor.setModelLanguage(model, langs[ext] || "plaintext");
-    }
+    window.addEventListener("workbench:close-file", this.handleFileClosed);
   }
 
   disconnectedCallback() {
-    clearTimeout(this.saveTimeout);
+    window.removeEventListener("workbench:close-file", this.handleFileClosed);
     super.disconnectedCallback();
+  }
+
+  handleFileClosed = (e) => {
+    const entry = this.models.get(e.detail.filePath);
+    if (!entry) return;
+    clearTimeout(entry.saveTimeout);
+    entry.model.dispose();
+    this.models.delete(e.detail.filePath);
+  };
+
+  async getOrCreateModel(path) {
+    if (this.models.has(path)) return this.models.get(path).model;
+    const content = await readFile(path);
+    const model = monaco.editor.createModel(content, detectLang(path));
+    const entry = { model, saveTimeout: null };
+    model.onDidChangeContent(() => {
+      clearTimeout(entry.saveTimeout);
+      entry.saveTimeout = setTimeout(() => writeFile(path, model.getValue()), 800);
+    });
+    this.models.set(path, entry);
+    return model;
+  }
+
+  async willUpdate(changedProperties) {
+    if (!changedProperties.has("path") || !this.path || !this.instance) return;
+    const targetPath = this.path;
+    const model = await this.getOrCreateModel(targetPath);
+    if (this.path !== targetPath) return;
+    this.instance.setModel(model);
   }
 
   render() { return editorTemplate(); }

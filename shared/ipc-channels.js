@@ -11,4 +11,5 @@ module.exports = {
   FS_CREATE_FOLDER: "fs:create-folder",
   FS_RENAME: "fs:rename",
   FS_DELETE: "fs:delete",
+  FS_COPY: "fs:copy",
 };

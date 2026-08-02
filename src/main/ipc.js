@@ -66,6 +66,10 @@ function registerWindowIpc() {
     fs.rmSync(targetPath, { recursive: true, force: true });
   });
 
+  ipcMain.handle(channels.FS_COPY, (event, sourcePath, destPath) => {
+    fs.cpSync(sourcePath, destPath, { recursive: true });
+  });
+
   // Đăng ký IPC đọc/ghi file từ editor module backend
   const { readTextFile, writeTextFile } = require("../../modules/editor/backend/editor");
   ipcMain.handle("fs:read-file", (event, filePath) => readTextFile(filePath));

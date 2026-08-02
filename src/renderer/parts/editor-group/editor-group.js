@@ -4,19 +4,19 @@ import "@modules/editor/frontend/ed-editor-group/editor.js";
 
 class EditorGroupElement extends LitElement {
   static properties = {
-    hasFile: { type: Boolean },
-    activeFilePath: { state: true },
-    activeFileName: { state: true },
+    openFiles: { state: true }, // [{ path, name }]
+    activePath: { state: true },
   };
 
   constructor() {
     super();
-    this.hasFile = false;
-    this.activeFilePath = "";
-    this.activeFileName = "";
+    this.openFiles = [];
+    this.activePath = "";
   }
 
-  createRenderRoot() { return this; }
+  createRenderRoot() {
+    return this;
+  }
 
   connectedCallback() {
     super.connectedCallback();
@@ -29,15 +29,31 @@ class EditorGroupElement extends LitElement {
   }
 
   handleOpenFile = (e) => {
-    this.activeFilePath = e.detail.filePath;
-    this.activeFileName = e.detail.fileName;
-    this.hasFile = true;
+    const { filePath, fileName } = e.detail;
+    const exists = this.openFiles.some((f) => f.path === filePath);
+    if (!exists) {
+      this.openFiles = [...this.openFiles, { path: filePath, name: fileName }];
+    }
+    this.activePath = filePath;
   };
 
-  handleCloseFile() {
-    this.hasFile = false;
-    this.activeFilePath = "";
-    this.activeFileName = "";
+  handleSelectTab(path) {
+    this.activePath = path;
+  }
+
+  handleCloseFile(path) {
+    const closingIndex = this.openFiles.findIndex((f) => f.path === path);
+    this.openFiles = this.openFiles.filter((f) => f.path !== path);
+    window.dispatchEvent(
+      new CustomEvent("workbench:close-file", { detail: { filePath: path } }),
+    );
+
+    if (this.activePath !== path) return;
+    this.activePath =
+      this.openFiles.length === 0
+        ? ""
+        : this.openFiles[Math.min(closingIndex, this.openFiles.length - 1)]
+            .path;
   }
 
   render() {

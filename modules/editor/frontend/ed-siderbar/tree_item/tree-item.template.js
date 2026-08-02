@@ -82,8 +82,15 @@ export function treeItemTemplate(host) {
 
   return html`
     <div
-      class="tree-row ${host.path === host.selectedPath ? "selected" : ""}"
+      class="tree-row ${
+        host.path === host.selectedPath ? "selected" : ""
+      } ${host.dragOver ? "drag-over" : ""}" ${host.isCut ? "cut" : ""}"
       style="padding-left:${indent}px"
+      draggable="true"
+      @dragstart=${(e) => host.handleDragStart(e)}
+      @dragover=${(e) => host.handleDragOver(e)}
+      @dragleave=${() => host.handleDragLeave()}
+      @drop=${(e) => host.handleDrop(e)}
       @click=${() => host.handleToggle()}
       @contextmenu=${(e) => host.handleContextMenu(e)}
     >

@@ -8,10 +8,10 @@ export function getParentPath(targetPath) {
 
 export function getUniqueName(existingNames, targetName, isDirectory) {
   if (!existingNames.includes(targetName)) return targetName;
-  
+
   let baseName = targetName;
   let ext = "";
-  
+
   if (!isDirectory) {
     const lastDotIndex = targetName.lastIndexOf(".");
     if (lastDotIndex > 0) {
@@ -19,7 +19,7 @@ export function getUniqueName(existingNames, targetName, isDirectory) {
       ext = targetName.substring(lastDotIndex);
     }
   }
-  
+
   let counter = 1;
   while (true) {
     const newName = `${baseName}(${counter})${ext}`;
@@ -52,4 +52,34 @@ export async function renamePath(oldPath, newName, isDirectory) {
 
 export async function deletePath(targetPath) {
   return window.api.fs.delete(targetPath);
+}
+
+const normalize = (p) => (p ? p.replace(/\\/g, "/").toLowerCase() : "");
+
+export async function movePath(sourcePath, targetFolderPath, isDirectory) {
+  const srcNorm = normalize(sourcePath);
+  const targetNorm = normalize(targetFolderPath);
+  const parentNorm = normalize(getParentPath(sourcePath));
+
+  if (targetNorm === parentNorm) return null; // thả lại đúng chỗ cũ, bỏ qua
+  if (targetNorm === srcNorm || targetNorm.startsWith(srcNorm + "/"))
+    return null; // thả vào chính nó / con của nó
+
+  const name = sourcePath.split(/[\\/]/).pop();
+  const uniqueName = await resolveUniqueName(
+    targetFolderPath,
+    name,
+    isDirectory,
+  );
+  return window.api.fs.rename(sourcePath, `${targetFolderPath}/${uniqueName}`);
+}
+
+export async function copyPath(sourcePath, targetFolderPath, isDirectory) {
+  const name = sourcePath.split(/[\\/]/).pop();
+  const uniqueName = await resolveUniqueName(
+    targetFolderPath,
+    name,
+    isDirectory,
+  );
+  return window.api.fs.copy(sourcePath, `${targetFolderPath}/${uniqueName}`);
 }
