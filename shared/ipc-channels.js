@@ -12,4 +12,10 @@ module.exports = {
   FS_RENAME: "fs:rename",
   FS_DELETE: "fs:delete",
   FS_COPY: "fs:copy",
+  // Terminal
+  TERMINAL_CREATE: "terminal:create",
+  TERMINAL_WRITE: "terminal:write",
+  TERMINAL_RESIZE: "terminal:resize",
+  TERMINAL_KILL: "terminal:kill",
+  TERMINAL_DATA: "terminal:data",
 };

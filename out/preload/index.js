@@ -11,7 +11,12 @@ const channels = {
   FS_CREATE_FOLDER: "fs:create-folder",
   FS_RENAME: "fs:rename",
   FS_DELETE: "fs:delete",
-  FS_COPY: "fs:copy"
+  FS_COPY: "fs:copy",
+  TERMINAL_CREATE: "terminal:create",
+  TERMINAL_WRITE: "terminal:write",
+  TERMINAL_RESIZE: "terminal:resize",
+  TERMINAL_KILL: "terminal:kill",
+  TERMINAL_DATA: "terminal:data"
 };
 function getExposedApi() {
   return {
@@ -35,6 +40,19 @@ function getExposedApi() {
       delete: (path) => ipcRenderer.invoke(channels.FS_DELETE, path),
       readFile: (filePath) => ipcRenderer.invoke("fs:read-file", filePath),
       writeFile: (filePath, content) => ipcRenderer.invoke("fs:write-file", filePath, content)
+    },
+    terminal: {
+      // shellType: 'powershell' | 'cmd'. Backend sẽ tự map ra path thật.
+      create: (shellType, cwd) => ipcRenderer.invoke(channels.TERMINAL_CREATE, shellType, cwd),
+      write: (data) => ipcRenderer.send(channels.TERMINAL_WRITE, data),
+      resize: (cols, rows) => ipcRenderer.send(channels.TERMINAL_RESIZE, cols, rows),
+      kill: () => ipcRenderer.send(channels.TERMINAL_KILL),
+      // onData: đăng ký callback nhận output từ pty, trả về hàm huỷ đăng ký
+      onData: (callback) => {
+        const listener = (event, chunk) => callback(chunk);
+        ipcRenderer.on(channels.TERMINAL_DATA, listener);
+        return () => ipcRenderer.removeListener(channels.TERMINAL_DATA, listener);
+      }
     }
   };
 }

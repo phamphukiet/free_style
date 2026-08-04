@@ -1,6 +1,132 @@
+/* panel.css — layout của workbench-panel: tab bar + xterm area */
 :host {
-  display: block;
-  height: 200px;
+  display: flex;
+  flex-direction: column;
+  height: 240px;
   background: #1e1e1e;
-  border-top: 1px solid #333333;
+  border-top: 1px solid #252526;
+  overflow: hidden;
+  font-family: -apple-system, 'Segoe UI', sans-serif;
+}
+
+/* ── Tab bar (giống VSCode panel tab bar) ── */
+.panel-tab-bar {
+  display: flex;
+  align-items: stretch;
+  height: 35px;
+  background: #252526;
+  border-bottom: 1px solid #1e1e1e;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.panel-tabs {
+  display: flex;
+  flex: 1;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.panel-tab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8c8c8c;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: color 0.15s;
+  white-space: nowrap;
+}
+
+.panel-tab:hover {
+  color: #cccccc;
+}
+
+.panel-tab.active {
+  color: #cccccc;
+  border-bottom-color: #0e70c0;
+}
+
+/* ── Toolbar (bên phải tab bar) ── */
+.panel-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 6px;
+  flex-shrink: 0;
+}
+
+.toolbar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: none;
+  background: transparent;
+  color: #8c8c8c;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.toolbar-btn:hover {
+  background: #3a3a3a;
+  color: #cccccc;
+}
+
+.toolbar-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 1.6;
+}
+
+.toolbar-sep {
+  width: 1px;
+  height: 16px;
+  background: #3c3c3c;
+  margin: 0 4px;
+}
+
+/* Shell selector dropdown */
+.shell-select {
+  background: transparent;
+  border: none;
+  color: #8c8c8c;
+  font-size: 11px;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 3px;
+  outline: none;
+  transition: color 0.15s;
+}
+
+.shell-select:hover {
+  color: #cccccc;
+}
+
+.shell-select option {
+  background: #252526;
+  color: #cccccc;
+}
+
+/* ── Terminal mount area ── */
+.terminal-area {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  padding: 4px 0 0 4px;
+  background: #1e1e1e;
+}
+
+/* xterm.js cần override một số style để fit đúng vào container */
+.terminal-area .xterm {
+  height: 100%;
+}
+
+.terminal-area .xterm-viewport {
+  background: #1e1e1e !important;
 }
