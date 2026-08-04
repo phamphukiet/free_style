@@ -1,10 +1,11 @@
+// editor-group.js
 import { LitElement } from "lit";
 import { editorGroupTemplate } from "./editor-group.template.js";
-import "@modules/editor/frontend/ed-editor-group/editor.js";
+import { registry } from "@modules/registry.js";
 
 class EditorGroupElement extends LitElement {
   static properties = {
-    openFiles: { state: true }, // [{ path, name }]
+    openFiles: { state: true },
     activePath: { state: true },
   };
 
@@ -57,7 +58,8 @@ class EditorGroupElement extends LitElement {
   }
 
   render() {
-    return editorGroupTemplate(this);
+    const emptyTagName = registry.getEmptyEditorView();
+    return editorGroupTemplate(this, emptyTagName);
   }
 }
 

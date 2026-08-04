@@ -8,3 +8,7 @@ import "./parts/sidebar/sidebar.js";
 import "./parts/editor-group/editor-group.js";
 import "./parts/panel/panel.js";
 import "./parts/statusbar/statusbar.js";
+
+// Load modules
+import "@modules/editor/frontend/index.js";
+import "@modules/providers/frontend/index.js";

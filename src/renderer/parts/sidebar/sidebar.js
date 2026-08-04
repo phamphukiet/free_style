@@ -1,14 +1,39 @@
+// sidebar.js
 import { LitElement, unsafeCSS } from "lit";
 import { sidebarTemplate } from "./sidebar.template.js";
-import { openFolder } from "@shared/folder-actions.js";
 import styles from "./sidebar.css?inline";
-import "@modules/editor/frontend/ed-siderbar/sidebar.js";
+import { registry } from "@modules/registry.js";
 
 class SidebarElement extends LitElement {
   static styles = unsafeCSS(styles);
 
+  static properties = {
+    activeTab: { type: String },
+  };
+
+  constructor() {
+    super();
+    this.activeTab = "explorer"; // Default
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("workbench:sidebar-tab", this.handleTabChange);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener("workbench:sidebar-tab", this.handleTabChange);
+    super.disconnectedCallback();
+  }
+
+  handleTabChange = (e) => {
+    this.activeTab = e.detail.tabId;
+  };
+
   render() {
-    return sidebarTemplate();
+    // Get view from registry
+    const tagName = registry.getSidebarView(this.activeTab);
+    return sidebarTemplate(this, tagName);
   }
 }
 

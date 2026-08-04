@@ -5,7 +5,7 @@
   display: flex;
 }
 
-module-editor {
+module-editor, module-pv-editor-group {
   display: block;
   width: 100%;
   height: 100%;

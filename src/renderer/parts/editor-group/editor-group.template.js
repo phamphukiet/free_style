@@ -1,8 +1,18 @@
-import { html } from "lit";
+// editor-group.template.js
+import { html, unsafeStatic } from "lit/static-html.js";
 import styles from "./editor-group.css?inline";
 
-export function editorGroupTemplate(host) {
+export function editorGroupTemplate(host, emptyTagName) {
   if (host.openFiles.length === 0) {
+    if (emptyTagName) {
+      const tag = unsafeStatic(emptyTagName);
+      return html`
+        <style>
+          ${styles}
+        </style>
+        <${tag}></${tag}>
+      `;
+    }
     return html`
       <style>
         ${styles}

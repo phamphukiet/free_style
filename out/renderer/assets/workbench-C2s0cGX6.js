@@ -1,13 +1,13 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./javascript-CJSL6TBk.js","./typescript-DQz83zZn.js"])))=>i.map(i=>d[i]);
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./javascript-CiOsdO8F.js","./typescript-BBNhZPOd.js"])))=>i.map(i=>d[i]);
 /**
  * @license
  * Copyright 2019 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const t$3 = globalThis, e$5 = t$3.ShadowRoot && (void 0 === t$3.ShadyCSS || t$3.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, s$2 = Symbol(), o$4 = /* @__PURE__ */ new WeakMap();
-let n$2 = class n {
+const t$3 = globalThis, e$5 = t$3.ShadowRoot && (void 0 === t$3.ShadyCSS || t$3.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, s$3 = Symbol(), o$6 = /* @__PURE__ */ new WeakMap();
+let n$3 = class n {
   constructor(t2, e3, o2) {
-    if (this._$cssResult$ = true, o2 !== s$2) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
+    if (this._$cssResult$ = true, o2 !== s$3) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = t2, this.t = e3;
   }
   get styleSheet() {
@@ -15,7 +15,7 @@ let n$2 = class n {
     const s2 = this.t;
     if (e$5 && void 0 === t2) {
       const e3 = void 0 !== s2 && 1 === s2.length;
-      e3 && (t2 = o$4.get(s2)), void 0 === t2 && ((this.o = t2 = new CSSStyleSheet()).replaceSync(this.cssText), e3 && o$4.set(s2, t2));
+      e3 && (t2 = o$6.get(s2)), void 0 === t2 && ((this.o = t2 = new CSSStyleSheet()).replaceSync(this.cssText), e3 && o$6.set(s2, t2));
     }
     return t2;
   }
@@ -23,7 +23,7 @@ let n$2 = class n {
     return this.cssText;
   }
 };
-const r$2 = (t2) => new n$2("string" == typeof t2 ? t2 : t2 + "", void 0, s$2), S$1 = (s2, o2) => {
+const r$2 = (t2) => new n$3("string" == typeof t2 ? t2 : t2 + "", void 0, s$3), S$1 = (s2, o2) => {
   if (e$5) s2.adoptedStyleSheets = o2.map((t2) => t2 instanceof CSSStyleSheet ? t2 : t2.styleSheet);
   else for (const e3 of o2) {
     const o3 = document.createElement("style"), n3 = t$3.litNonce;
@@ -39,10 +39,10 @@ const r$2 = (t2) => new n$2("string" == typeof t2 ? t2 : t2 + "", void 0, s$2), 
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const { is: i$3, defineProperty: e$4, getOwnPropertyDescriptor: h$2, getOwnPropertyNames: r$1, getOwnPropertySymbols: o$3, getPrototypeOf: n$1 } = Object, a$1 = globalThis, c$1 = a$1.trustedTypes, l$1 = c$1 ? c$1.emptyScript : "", p$1 = a$1.reactiveElementPolyfillSupport, d$1 = (t2, s2) => t2, u$1 = { toAttribute(t2, s2) {
+const { is: i$3, defineProperty: e$4, getOwnPropertyDescriptor: h$3, getOwnPropertyNames: r$1, getOwnPropertySymbols: o$5, getPrototypeOf: n$2 } = Object, a$2 = globalThis, c$1 = a$2.trustedTypes, l$2 = c$1 ? c$1.emptyScript : "", p$1 = a$2.reactiveElementPolyfillSupport, d$1 = (t2, s2) => t2, u$2 = { toAttribute(t2, s2) {
   switch (s2) {
     case Boolean:
-      t2 = t2 ? l$1 : null;
+      t2 = t2 ? l$2 : null;
       break;
     case Object:
     case Array:
@@ -67,8 +67,8 @@ const { is: i$3, defineProperty: e$4, getOwnPropertyDescriptor: h$2, getOwnPrope
       }
   }
   return i3;
-} }, f$1 = (t2, s2) => !i$3(t2, s2), b$1 = { attribute: true, type: String, converter: u$1, reflect: false, useDefault: false, hasChanged: f$1 };
-Symbol.metadata ??= Symbol("metadata"), a$1.litPropertyMetadata ??= /* @__PURE__ */ new WeakMap();
+} }, f$1 = (t2, s2) => !i$3(t2, s2), b$1 = { attribute: true, type: String, converter: u$2, reflect: false, useDefault: false, hasChanged: f$1 };
+Symbol.metadata ??= Symbol("metadata"), a$2.litPropertyMetadata ??= /* @__PURE__ */ new WeakMap();
 let y$1 = class y extends HTMLElement {
   static addInitializer(t2) {
     this._$Ei(), (this.l ??= []).push(t2);
@@ -83,7 +83,7 @@ let y$1 = class y extends HTMLElement {
     }
   }
   static getPropertyDescriptor(t2, s2, i3) {
-    const { get: e3, set: r2 } = h$2(this.prototype, t2) ?? { get() {
+    const { get: e3, set: r2 } = h$3(this.prototype, t2) ?? { get() {
       return this[s2];
     }, set(t3) {
       this[s2] = t3;
@@ -98,13 +98,13 @@ let y$1 = class y extends HTMLElement {
   }
   static _$Ei() {
     if (this.hasOwnProperty(d$1("elementProperties"))) return;
-    const t2 = n$1(this);
+    const t2 = n$2(this);
     t2.finalize(), void 0 !== t2.l && (this.l = [...t2.l]), this.elementProperties = new Map(t2.elementProperties);
   }
   static finalize() {
     if (this.hasOwnProperty(d$1("finalized"))) return;
     if (this.finalized = true, this._$Ei(), this.hasOwnProperty(d$1("properties"))) {
-      const t3 = this.properties, s2 = [...r$1(t3), ...o$3(t3)];
+      const t3 = this.properties, s2 = [...r$1(t3), ...o$5(t3)];
       for (const i3 of s2) this.createProperty(i3, t3[i3]);
     }
     const t2 = this[Symbol.metadata];
@@ -166,14 +166,14 @@ let y$1 = class y extends HTMLElement {
   _$ET(t2, s2) {
     const i3 = this.constructor.elementProperties.get(t2), e3 = this.constructor._$Eu(t2, i3);
     if (void 0 !== e3 && true === i3.reflect) {
-      const h2 = (void 0 !== i3.converter?.toAttribute ? i3.converter : u$1).toAttribute(s2, i3.type);
+      const h2 = (void 0 !== i3.converter?.toAttribute ? i3.converter : u$2).toAttribute(s2, i3.type);
       this._$Em = t2, null == h2 ? this.removeAttribute(e3) : this.setAttribute(e3, h2), this._$Em = null;
     }
   }
   _$AK(t2, s2) {
     const i3 = this.constructor, e3 = i3._$Eh.get(t2);
     if (void 0 !== e3 && this._$Em !== e3) {
-      const t3 = i3.getPropertyOptions(e3), h2 = "function" == typeof t3.converter ? { fromAttribute: t3.converter } : void 0 !== t3.converter?.fromAttribute ? t3.converter : u$1;
+      const t3 = i3.getPropertyOptions(e3), h2 = "function" == typeof t3.converter ? { fromAttribute: t3.converter } : void 0 !== t3.converter?.fromAttribute ? t3.converter : u$2;
       this._$Em = e3;
       const r2 = h2.fromAttribute(s2, t3.type);
       this[e3] = r2 ?? this._$Ej?.get(e3) ?? r2, this._$Em = null;
@@ -250,16 +250,16 @@ let y$1 = class y extends HTMLElement {
   firstUpdated(t2) {
   }
 };
-y$1.elementStyles = [], y$1.shadowRootOptions = { mode: "open" }, y$1[d$1("elementProperties")] = /* @__PURE__ */ new Map(), y$1[d$1("finalized")] = /* @__PURE__ */ new Map(), p$1?.({ ReactiveElement: y$1 }), (a$1.reactiveElementVersions ??= []).push("2.1.2");
+y$1.elementStyles = [], y$1.shadowRootOptions = { mode: "open" }, y$1[d$1("elementProperties")] = /* @__PURE__ */ new Map(), y$1[d$1("finalized")] = /* @__PURE__ */ new Map(), p$1?.({ ReactiveElement: y$1 }), (a$2.reactiveElementVersions ??= []).push("2.1.2");
 /**
  * @license
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const t$2 = globalThis, i$2 = (t2) => t2, s$1 = t$2.trustedTypes, e$3 = s$1 ? s$1.createPolicy("lit-html", { createHTML: (t2) => t2 }) : void 0, h$1 = "$lit$", o$2 = `lit$${Math.random().toFixed(9).slice(2)}$`, n2 = "?" + o$2, r = `<${n2}>`, l = document, c = () => l.createComment(""), a = (t2) => null === t2 || "object" != typeof t2 && "function" != typeof t2, u = Array.isArray, d = (t2) => u(t2) || "function" == typeof t2?.[Symbol.iterator], f = "[ 	\n\f\r]", v = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, _ = /-->/g, m = />/g, p = RegExp(`>|${f}(?:([^\\s"'>=/]+)(${f}*=${f}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), g = /'/g, $$f = /"/g, y2 = /^(?:script|style|textarea|title)$/i, x = (t2) => (i3, ...s2) => ({ _$litType$: t2, strings: i3, values: s2 }), b = x(1), E = Symbol.for("lit-noChange"), A = Symbol.for("lit-nothing"), C = /* @__PURE__ */ new WeakMap(), P = l.createTreeWalker(l, 129);
+const t$2 = globalThis, i$2 = (t2) => t2, s$2 = t$2.trustedTypes, e$3 = s$2 ? s$2.createPolicy("lit-html", { createHTML: (t2) => t2 }) : void 0, h$2 = "$lit$", o$4 = `lit$${Math.random().toFixed(9).slice(2)}$`, n$1 = "?" + o$4, r = `<${n$1}>`, l$1 = document, c = () => l$1.createComment(""), a$1 = (t2) => null === t2 || "object" != typeof t2 && "function" != typeof t2, u$1 = Array.isArray, d = (t2) => u$1(t2) || "function" == typeof t2?.[Symbol.iterator], f = "[ 	\n\f\r]", v = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, _$1 = /-->/g, m = />/g, p = RegExp(`>|${f}(?:([^\\s"'>=/]+)(${f}*=${f}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), g = /'/g, $$f = /"/g, y2 = /^(?:script|style|textarea|title)$/i, x = (t2) => (i3, ...s2) => ({ _$litType$: t2, strings: i3, values: s2 }), b = x(1), w = x(2), E = Symbol.for("lit-noChange"), A = Symbol.for("lit-nothing"), C = /* @__PURE__ */ new WeakMap(), P = l$1.createTreeWalker(l$1, 129);
 function V(t2, i3) {
-  if (!u(t2) || !t2.hasOwnProperty("raw")) throw Error("invalid template strings array");
+  if (!u$1(t2) || !t2.hasOwnProperty("raw")) throw Error("invalid template strings array");
   return void 0 !== e$3 ? e$3.createHTML(i3) : i3;
 }
 const N = (t2, i3) => {
@@ -268,9 +268,9 @@ const N = (t2, i3) => {
   for (let i4 = 0; i4 < s2; i4++) {
     const s3 = t2[i4];
     let a2, u2, d2 = -1, f2 = 0;
-    for (; f2 < s3.length && (c2.lastIndex = f2, u2 = c2.exec(s3), null !== u2); ) f2 = c2.lastIndex, c2 === v ? "!--" === u2[1] ? c2 = _ : void 0 !== u2[1] ? c2 = m : void 0 !== u2[2] ? (y2.test(u2[2]) && (n3 = RegExp("</" + u2[2], "g")), c2 = p) : void 0 !== u2[3] && (c2 = p) : c2 === p ? ">" === u2[0] ? (c2 = n3 ?? v, d2 = -1) : void 0 === u2[1] ? d2 = -2 : (d2 = c2.lastIndex - u2[2].length, a2 = u2[1], c2 = void 0 === u2[3] ? p : '"' === u2[3] ? $$f : g) : c2 === $$f || c2 === g ? c2 = p : c2 === _ || c2 === m ? c2 = v : (c2 = p, n3 = void 0);
+    for (; f2 < s3.length && (c2.lastIndex = f2, u2 = c2.exec(s3), null !== u2); ) f2 = c2.lastIndex, c2 === v ? "!--" === u2[1] ? c2 = _$1 : void 0 !== u2[1] ? c2 = m : void 0 !== u2[2] ? (y2.test(u2[2]) && (n3 = RegExp("</" + u2[2], "g")), c2 = p) : void 0 !== u2[3] && (c2 = p) : c2 === p ? ">" === u2[0] ? (c2 = n3 ?? v, d2 = -1) : void 0 === u2[1] ? d2 = -2 : (d2 = c2.lastIndex - u2[2].length, a2 = u2[1], c2 = void 0 === u2[3] ? p : '"' === u2[3] ? $$f : g) : c2 === $$f || c2 === g ? c2 = p : c2 === _$1 || c2 === m ? c2 = v : (c2 = p, n3 = void 0);
     const x2 = c2 === p && t2[i4 + 1].startsWith("/>") ? " " : "";
-    l2 += c2 === v ? s3 + r : d2 >= 0 ? (e3.push(a2), s3.slice(0, d2) + h$1 + s3.slice(d2) + o$2 + x2) : s3 + o$2 + (-2 === d2 ? i4 : x2);
+    l2 += c2 === v ? s3 + r : d2 >= 0 ? (e3.push(a2), s3.slice(0, d2) + h$2 + s3.slice(d2) + o$4 + x2) : s3 + o$4 + (-2 === d2 ? i4 : x2);
   }
   return [V(t2, l2 + (t2[s2] || "<?>") + (2 === i3 ? "</svg>" : 3 === i3 ? "</math>" : "")), e3];
 };
@@ -286,35 +286,35 @@ class S {
     }
     for (; null !== (r2 = P.nextNode()) && d2.length < u2; ) {
       if (1 === r2.nodeType) {
-        if (r2.hasAttributes()) for (const t3 of r2.getAttributeNames()) if (t3.endsWith(h$1)) {
-          const i4 = v2[a2++], s2 = r2.getAttribute(t3).split(o$2), e4 = /([.?@])?(.*)/.exec(i4);
+        if (r2.hasAttributes()) for (const t3 of r2.getAttributeNames()) if (t3.endsWith(h$2)) {
+          const i4 = v2[a2++], s2 = r2.getAttribute(t3).split(o$4), e4 = /([.?@])?(.*)/.exec(i4);
           d2.push({ type: 1, index: l2, name: e4[2], strings: s2, ctor: "." === e4[1] ? I : "?" === e4[1] ? L : "@" === e4[1] ? z : H }), r2.removeAttribute(t3);
-        } else t3.startsWith(o$2) && (d2.push({ type: 6, index: l2 }), r2.removeAttribute(t3));
+        } else t3.startsWith(o$4) && (d2.push({ type: 6, index: l2 }), r2.removeAttribute(t3));
         if (y2.test(r2.tagName)) {
-          const t3 = r2.textContent.split(o$2), i4 = t3.length - 1;
+          const t3 = r2.textContent.split(o$4), i4 = t3.length - 1;
           if (i4 > 0) {
-            r2.textContent = s$1 ? s$1.emptyScript : "";
+            r2.textContent = s$2 ? s$2.emptyScript : "";
             for (let s2 = 0; s2 < i4; s2++) r2.append(t3[s2], c()), P.nextNode(), d2.push({ type: 2, index: ++l2 });
             r2.append(t3[i4], c());
           }
         }
-      } else if (8 === r2.nodeType) if (r2.data === n2) d2.push({ type: 2, index: l2 });
+      } else if (8 === r2.nodeType) if (r2.data === n$1) d2.push({ type: 2, index: l2 });
       else {
         let t3 = -1;
-        for (; -1 !== (t3 = r2.data.indexOf(o$2, t3 + 1)); ) d2.push({ type: 7, index: l2 }), t3 += o$2.length - 1;
+        for (; -1 !== (t3 = r2.data.indexOf(o$4, t3 + 1)); ) d2.push({ type: 7, index: l2 }), t3 += o$4.length - 1;
       }
       l2++;
     }
   }
   static createElement(t2, i3) {
-    const s2 = l.createElement("template");
+    const s2 = l$1.createElement("template");
     return s2.innerHTML = t2, s2;
   }
 }
 function M(t2, i3, s2 = t2, e3) {
   if (i3 === E) return i3;
   let h2 = void 0 !== e3 ? s2._$Co?.[e3] : s2._$Cl;
-  const o2 = a(i3) ? void 0 : i3._$litDirective$;
+  const o2 = a$1(i3) ? void 0 : i3._$litDirective$;
   return h2?.constructor !== o2 && (h2?._$AO?.(false), void 0 === o2 ? h2 = void 0 : (h2 = new o2(t2), h2._$AT(t2, s2, e3)), void 0 !== e3 ? (s2._$Co ??= [])[e3] = h2 : s2._$Cl = h2), void 0 !== h2 && (i3 = M(t2, h2._$AS(t2, i3.values), h2, e3)), i3;
 }
 class R {
@@ -328,7 +328,7 @@ class R {
     return this._$AM._$AU;
   }
   u(t2) {
-    const { el: { content: i3 }, parts: s2 } = this._$AD, e3 = (t2?.creationScope ?? l).importNode(i3, true);
+    const { el: { content: i3 }, parts: s2 } = this._$AD, e3 = (t2?.creationScope ?? l$1).importNode(i3, true);
     P.currentNode = e3;
     let h2 = P.nextNode(), o2 = 0, n3 = 0, r2 = s2[0];
     for (; void 0 !== r2; ) {
@@ -338,7 +338,7 @@ class R {
       }
       o2 !== r2?.index && (h2 = P.nextNode(), o2++);
     }
-    return P.currentNode = l, e3;
+    return P.currentNode = l$1, e3;
   }
   p(t2) {
     let i3 = 0;
@@ -364,7 +364,7 @@ class k {
     return this._$AB;
   }
   _$AI(t2, i3 = this) {
-    t2 = M(this, t2, i3), a(t2) ? t2 === A || null == t2 || "" === t2 ? (this._$AH !== A && this._$AR(), this._$AH = A) : t2 !== this._$AH && t2 !== E && this._(t2) : void 0 !== t2._$litType$ ? this.$(t2) : void 0 !== t2.nodeType ? this.T(t2) : d(t2) ? this.k(t2) : this._(t2);
+    t2 = M(this, t2, i3), a$1(t2) ? t2 === A || null == t2 || "" === t2 ? (this._$AH !== A && this._$AR(), this._$AH = A) : t2 !== this._$AH && t2 !== E && this._(t2) : void 0 !== t2._$litType$ ? this.$(t2) : void 0 !== t2.nodeType ? this.T(t2) : d(t2) ? this.k(t2) : this._(t2);
   }
   O(t2) {
     return this._$AA.parentNode.insertBefore(t2, this._$AB);
@@ -373,7 +373,7 @@ class k {
     this._$AH !== t2 && (this._$AR(), this._$AH = this.O(t2));
   }
   _(t2) {
-    this._$AH !== A && a(this._$AH) ? this._$AA.nextSibling.data = t2 : this.T(l.createTextNode(t2)), this._$AH = t2;
+    this._$AH !== A && a$1(this._$AH) ? this._$AA.nextSibling.data = t2 : this.T(l$1.createTextNode(t2)), this._$AH = t2;
   }
   $(t2) {
     const { values: i3, _$litType$: s2 } = t2, e3 = "number" == typeof s2 ? this._$AC(t2) : (void 0 === s2.el && (s2.el = S.createElement(V(s2.h, s2.h[0]), this.options)), s2);
@@ -388,7 +388,7 @@ class k {
     return void 0 === i3 && C.set(t2.strings, i3 = new S(t2)), i3;
   }
   k(t2) {
-    u(this._$AH) || (this._$AH = [], this._$AR());
+    u$1(this._$AH) || (this._$AH = [], this._$AR());
     const i3 = this._$AH;
     let s2, e3 = 0;
     for (const h2 of t2) e3 === i3.length ? i3.push(s2 = new k(this.O(c()), this.O(c()), this, this.options)) : s2 = i3[e3], s2._$AI(h2), e3++;
@@ -417,11 +417,11 @@ class H {
   _$AI(t2, i3 = this, s2, e3) {
     const h2 = this.strings;
     let o2 = false;
-    if (void 0 === h2) t2 = M(this, t2, i3, 0), o2 = !a(t2) || t2 !== this._$AH && t2 !== E, o2 && (this._$AH = t2);
+    if (void 0 === h2) t2 = M(this, t2, i3, 0), o2 = !a$1(t2) || t2 !== this._$AH && t2 !== E, o2 && (this._$AH = t2);
     else {
       const e4 = t2;
       let n3, r2;
-      for (t2 = h2[0], n3 = 0; n3 < h2.length - 1; n3++) r2 = M(this, e4[s2 + n3], i3, n3), r2 === E && (r2 = this._$AH[n3]), o2 ||= !a(r2) || r2 !== this._$AH[n3], r2 === A ? t2 = A : t2 !== A && (t2 += (r2 ?? "") + h2[n3 + 1]), this._$AH[n3] = r2;
+      for (t2 = h2[0], n3 = 0; n3 < h2.length - 1; n3++) r2 = M(this, e4[s2 + n3], i3, n3), r2 === E && (r2 = this._$AH[n3]), o2 ||= !a$1(r2) || r2 !== this._$AH[n3], r2 === A ? t2 = A : t2 !== A && (t2 += (r2 ?? "") + h2[n3 + 1]), this._$AH[n3] = r2;
     }
     o2 && !e3 && this.j(t2);
   }
@@ -485,7 +485,7 @@ const D = (t2, i3, s2) => {
  * Copyright 2017 Google LLC
  * SPDX-License-Identifier: BSD-3-Clause
  */
-const s = globalThis;
+const s$1 = globalThis;
 let i$1 = class i extends y$1 {
   constructor() {
     super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
@@ -508,10 +508,10 @@ let i$1 = class i extends y$1 {
     return E;
   }
 };
-i$1._$litElement$ = true, i$1["finalized"] = true, s.litElementHydrateSupport?.({ LitElement: i$1 });
-const o$1 = s.litElementPolyfillSupport;
-o$1?.({ LitElement: i$1 });
-(s.litElementVersions ??= []).push("4.2.2");
+i$1._$litElement$ = true, i$1["finalized"] = true, s$1.litElementHydrateSupport?.({ LitElement: i$1 });
+const o$3 = s$1.litElementPolyfillSupport;
+o$3?.({ LitElement: i$1 });
+(s$1.litElementVersions ??= []).push("4.2.2");
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -562,7 +562,7 @@ e$1.directiveName = "unsafeHTML", e$1.resultType = 1;
 class t extends e$1 {
 }
 t.directiveName = "unsafeSVG", t.resultType = 2;
-const o = e$2(t);
+const o$2 = e$2(t);
 const appWindowIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-app-window"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <rect x="2" y="4" width="20" height="16" rx="2" />\n  <path d="M10 4v4" />\n  <path d="M2 8h20" />\n  <path d="M6 4v4" />\n</svg>\n';
 const minusIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-minus"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <path d="M5 12h14" />\n</svg>\n';
 const squareIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-square"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <rect width="18" height="18" x="3" y="3" rx="2" />\n</svg>\n';
@@ -580,7 +580,7 @@ function titlebarTemplate(host) {
   }
   return b`
     <div class="titlebar-left">
-      <span class="titlebar-icon">${o(appWindowIcon)}</span>
+      <span class="titlebar-icon">${o$2(appWindowIcon)}</span>
       <div class="titlebar-menu">
         <button
           class="titlebar-menu-btn"
@@ -594,21 +594,21 @@ function titlebarTemplate(host) {
     </div>
     <div class="titlebar-controls">
       <button class="titlebar-btn" @click=${() => host.handleMinimize()}>
-        ${o(minusIcon)}
+        ${o$2(minusIcon)}
       </button>
       <button class="titlebar-btn" @click=${() => host.handleMaximize()}>
-        ${o(squareIcon)}
+        ${o$2(squareIcon)}
       </button>
       <button
         class="titlebar-btn titlebar-btn-close"
         @click=${() => host.handleClose()}
       >
-        ${o(xIcon)}
+        ${o$2(xIcon)}
       </button>
     </div>
   `;
 }
-const styles$9 = ":host {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: 32px;\r\n  background: #252526;\r\n  -webkit-app-region: drag; /* cho phép kéo cửa sổ qua vùng titlebar */\r\n  padding: 0 8px;\r\n}\r\n\r\n.titlebar-left {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 6px;\r\n}\r\n\r\n.titlebar-controls {\r\n  display: flex;\r\n  -webkit-app-region: no-drag; /* vùng nút bấm không được kéo, để click hoạt động */\r\n}\r\n\r\n.titlebar-btn {\r\n  background: none;\r\n  border: none;\r\n  color: #cccccc;\r\n  width: 32px;\r\n  height: 32px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  cursor: pointer;\r\n}\r\n\r\n.titlebar-btn:hover {\r\n  background: #3a3d41;\r\n}\r\n\r\n.titlebar-btn-close:hover {\r\n  background: #e81123;\r\n}\r\n\r\n.titlebar-btn svg,\r\n.titlebar-icon svg {\r\n  width: 16px;\r\n  height: 16px;\r\n}\r\n\r\n.titlebar-menu {\r\n  position: relative;\r\n  -webkit-app-region: no-drag;\r\n}\r\n\r\n.titlebar-menu-btn {\r\n  background: none;\r\n  border: none;\r\n  color: #cccccc;\r\n  font-size: 13px;\r\n  padding: 4px 8px;\r\n  cursor: pointer;\r\n}\r\n\r\n.titlebar-menu-btn:hover {\r\n  background: #3a3d41;\r\n}\r\n\r\n.titlebar-menu-dropdown {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  background: #252526;\r\n  border: 1px solid #3a3d41;\r\n  min-width: 160px;\r\n  z-index: 100;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.titlebar-menu-dropdown button {\r\n  background: none;\r\n  border: none;\r\n  color: #cccccc;\r\n  text-align: left;\r\n  padding: 6px 12px;\r\n  font-size: 13px;\r\n  cursor: pointer;\r\n}\r\n\r\n.titlebar-menu-dropdown button:hover {\r\n  background: #094771;\r\n}";
+const styles$a = ":host {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  height: 32px;\r\n  background: #252526;\r\n  -webkit-app-region: drag; /* cho phép kéo cửa sổ qua vùng titlebar */\r\n  padding: 0 8px;\r\n}\r\n\r\n.titlebar-left {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 6px;\r\n}\r\n\r\n.titlebar-controls {\r\n  display: flex;\r\n  -webkit-app-region: no-drag; /* vùng nút bấm không được kéo, để click hoạt động */\r\n}\r\n\r\n.titlebar-btn {\r\n  background: none;\r\n  border: none;\r\n  color: #cccccc;\r\n  width: 32px;\r\n  height: 32px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  cursor: pointer;\r\n}\r\n\r\n.titlebar-btn:hover {\r\n  background: #3a3d41;\r\n}\r\n\r\n.titlebar-btn-close:hover {\r\n  background: #e81123;\r\n}\r\n\r\n.titlebar-btn svg,\r\n.titlebar-icon svg {\r\n  width: 16px;\r\n  height: 16px;\r\n}\r\n\r\n.titlebar-menu {\r\n  position: relative;\r\n  -webkit-app-region: no-drag;\r\n}\r\n\r\n.titlebar-menu-btn {\r\n  background: none;\r\n  border: none;\r\n  color: #cccccc;\r\n  font-size: 13px;\r\n  padding: 4px 8px;\r\n  cursor: pointer;\r\n}\r\n\r\n.titlebar-menu-btn:hover {\r\n  background: #3a3d41;\r\n}\r\n\r\n.titlebar-menu-dropdown {\r\n  position: absolute;\r\n  top: 100%;\r\n  left: 0;\r\n  background: #252526;\r\n  border: 1px solid #3a3d41;\r\n  min-width: 160px;\r\n  z-index: 100;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.titlebar-menu-dropdown button {\r\n  background: none;\r\n  border: none;\r\n  color: #cccccc;\r\n  text-align: left;\r\n  padding: 6px 12px;\r\n  font-size: 13px;\r\n  cursor: pointer;\r\n}\r\n\r\n.titlebar-menu-dropdown button:hover {\r\n  background: #094771;\r\n}";
 async function openFolder() {
   const result = await window.api.dialog.openFolder();
   if (!result) return;
@@ -620,7 +620,7 @@ async function loadLastFolder() {
   return window.api.state.loadLastFolder();
 }
 class TitlebarElement extends i$1 {
-  static styles = r$2(styles$9);
+  static styles = r$2(styles$a);
   static properties = {
     title: { type: String },
     menuOpen: { state: true }
@@ -678,55 +678,6673 @@ const e2 = e$2(class extends i2 {
     return E;
   }
 });
-const filesIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-files"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <path d="M20 7h-3a2 2 0 0 1-2-2V2" />\n  <path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z" />\n  <path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8" />\n</svg>\n';
-const searchIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-search"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <circle cx="11" cy="11" r="8" />\n  <path d="m21 21-4.3-4.3" />\n</svg>\n';
-const gitBranchIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-git-branch"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <line x1="6" x2="6" y1="3" y2="15" />\n  <circle cx="18" cy="6" r="3" />\n  <circle cx="6" cy="18" r="3" />\n  <path d="M18 9a9 9 0 0 1-9 9" />\n</svg>\n';
-const blocksIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-blocks"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <rect width="7" height="7" x="14" y="3" rx="1" />\n  <path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3" />\n</svg>\n';
-const ITEMS = [
-  { id: "explorer", icon: filesIcon },
-  { id: "search", icon: searchIcon },
-  { id: "git", icon: gitBranchIcon },
-  { id: "extensions", icon: blocksIcon }
-];
 function activitybarTemplate(host) {
   return b`
-    ${ITEMS.map(
+    ${host.items.map(
     (item) => b`
         <button
           class=${e2({
       "activitybar-icon": true,
       active: host.activeId === item.id
     })}
+          title=${item.title || item.id}
           @click=${() => host.handleIconClick(item.id)}
         >
-          ${o(item.icon)}
+          ${o$2(item.icon)}
         </button>
       `
   )}
   `;
 }
-const styles$8 = ":host {\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 48px;\r\n  background: #333333;\r\n  align-items: center;\r\n  padding-top: 8px;\r\n}\r\n\r\n.activitybar-icon {\r\n  background: none;\r\n  border: none;\r\n  color: #858585;\r\n  width: 48px;\r\n  height: 48px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  cursor: pointer;\r\n  border-left: 2px solid transparent;\r\n}\r\n\r\n.activitybar-icon:hover {\r\n  color: #ffffff;\r\n}\r\n\r\n.activitybar-icon.active {\r\n  color: #ffffff;\r\n  border-left: 2px solid #007acc;\r\n}\r\n\r\n.activitybar-icon svg {\r\n  width: 22px;\r\n  height: 22px;\r\n}";
+const styles$9 = ":host {\r\n  display: flex;\r\n  flex-direction: column;\r\n  width: 48px;\r\n  background: #333333;\r\n  align-items: center;\r\n  padding-top: 8px;\r\n}\r\n\r\n.activitybar-icon {\r\n  background: none;\r\n  border: none;\r\n  color: #858585;\r\n  width: 48px;\r\n  height: 48px;\r\n  display: flex;\r\n  align-items: center;\r\n  justify-content: center;\r\n  cursor: pointer;\r\n  border-left: 2px solid transparent;\r\n}\r\n\r\n.activitybar-icon:hover {\r\n  color: #ffffff;\r\n}\r\n\r\n.activitybar-icon.active {\r\n  color: #ffffff;\r\n  border-left: 2px solid #007acc;\r\n}\r\n\r\n.activitybar-icon svg {\r\n  width: 22px;\r\n  height: 22px;\r\n}";
+let Registry$1 = class Registry {
+  constructor() {
+    this.activitybarItems = [];
+    this.sidebarViews = {};
+    this.emptyEditorViews = [];
+    this.providers = [];
+    this.listeners = {};
+  }
+  // --- Events ---
+  on(event, callback) {
+    if (!this.listeners[event]) this.listeners[event] = [];
+    this.listeners[event].push(callback);
+  }
+  emit(event, data) {
+    if (this.listeners[event]) {
+      this.listeners[event].forEach((cb) => cb(data));
+    }
+  }
+  // --- Activitybar ---
+  registerActivitybarItem(item) {
+    this.activitybarItems.push(item);
+    this.emit("activitybar:changed", this.activitybarItems);
+  }
+  getActivitybarItems() {
+    return this.activitybarItems;
+  }
+  // --- Sidebar ---
+  registerSidebarView(id, tagName) {
+    this.sidebarViews[id] = tagName;
+  }
+  getSidebarView(id) {
+    return this.sidebarViews[id];
+  }
+  // --- Empty Editor ---
+  registerEmptyEditorView(tagName) {
+    this.emptyEditorViews.push(tagName);
+  }
+  getEmptyEditorView() {
+    return this.emptyEditorViews[0];
+  }
+  // --- Providers ---
+  registerProvider(provider) {
+    this.providers.push(provider);
+    this.emit("providers:changed", this.providers);
+  }
+  getProviders() {
+    return this.providers;
+  }
+};
+const registry = new Registry$1();
 class ActivitybarElement extends i$1 {
-  static styles = r$2(styles$8);
+  static styles = r$2(styles$9);
   static properties = {
-    activeId: { type: String }
+    activeId: { type: String },
+    items: { type: Array }
   };
   constructor() {
     super();
     this.activeId = "explorer";
+    this.items = registry.getActivitybarItems();
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    registry.on("activitybar:changed", (newItems) => {
+      this.items = [...newItems];
+      if (!this.activeId && this.items.length > 0) {
+        this.activeId = this.items[0].id;
+        this.notifySidebar();
+      }
+    });
   }
   handleIconClick(id) {
     this.activeId = id;
+    this.notifySidebar();
+  }
+  notifySidebar() {
+    window.dispatchEvent(
+      new CustomEvent("workbench:sidebar-tab", { detail: { tabId: this.activeId } })
+    );
   }
   render() {
     return activitybarTemplate(this);
   }
 }
 customElements.define("workbench-activitybar", ActivitybarElement);
-function sidebarTemplate$1() {
-  return b`<module-sidebar></module-sidebar>`;
+/**
+ * @license
+ * Copyright 2020 Google LLC
+ * SPDX-License-Identifier: BSD-3-Clause
+ */
+const a = Symbol.for(""), o$1 = (t2) => {
+  if (t2?.r === a) return t2?._$litStatic$;
+}, s = (t2) => ({ _$litStatic$: t2, r: a }), l = /* @__PURE__ */ new Map(), n2 = (t2) => (r2, ...e3) => {
+  const a2 = e3.length;
+  let s2, i3;
+  const n3 = [], u2 = [];
+  let c2, $2 = 0, f2 = false;
+  for (; $2 < a2; ) {
+    for (c2 = r2[$2]; $2 < a2 && void 0 !== (i3 = e3[$2], s2 = o$1(i3)); ) c2 += s2 + r2[++$2], f2 = true;
+    $2 !== a2 && u2.push(i3), n3.push(c2), $2++;
+  }
+  if ($2 === a2 && n3.push(r2[a2]), f2) {
+    const t3 = n3.join("$$lit$$");
+    void 0 === (r2 = l.get(t3)) && (n3.raw = n3, l.set(t3, r2 = n3)), e3 = u2;
+  }
+  return t2(r2, ...e3);
+}, u = n2(b);
+function sidebarTemplate$1(host, tagName) {
+  if (!tagName) {
+    return u`<div class="sidebar-empty">No view registered for ${host.activeTab}</div>`;
+  }
+  const tag = s(tagName);
+  return u`
+    <div class="sidebar-content">
+      <${tag}></${tag}>
+    </div>
+  `;
 }
-const styles$7 = ":host {\r\n  display: block;\r\n  width: 240px;\r\n  background: #252526;\r\n  color: #cccccc;\r\n  overflow-y: auto;\r\n}\r\nmodule-sidebar {\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n}";
+const styles$8 = "/* sidebar.css */\n:host {\n  display: block;\n  width: 240px;\n  background: #252526;\n  color: #cccccc;\n  overflow: hidden;\n}\n\n.sidebar-content {\n  width: 100%;\n  height: 100%;\n  overflow-y: auto;\n  overflow-x: hidden;\n}\n\n.sidebar-empty {\n  padding: 20px;\n  text-align: center;\n  color: #858585;\n}\n\n/* Các module con phải set display: block, height: 100% tự động giãn */\nmodule-sidebar, module-pv-sidebar { \n  display: block; \n  width: 100%; \n  height: 100%; \n}";
+class SidebarElement extends i$1 {
+  static styles = r$2(styles$8);
+  static properties = {
+    activeTab: { type: String }
+  };
+  constructor() {
+    super();
+    this.activeTab = "explorer";
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("workbench:sidebar-tab", this.handleTabChange);
+  }
+  disconnectedCallback() {
+    window.removeEventListener("workbench:sidebar-tab", this.handleTabChange);
+    super.disconnectedCallback();
+  }
+  handleTabChange = (e3) => {
+    this.activeTab = e3.detail.tabId;
+  };
+  render() {
+    const tagName = registry.getSidebarView(this.activeTab);
+    return sidebarTemplate$1(this, tagName);
+  }
+}
+customElements.define("workbench-sidebar", SidebarElement);
+const styles$7 = "\n.editor-container {\n  flex: 1;\n  min-height: 0;\n  display: flex;\n}\n\nmodule-editor, module-pv-editor-group {\n  display: block;\n  width: 100%;\n  height: 100%;\n}\n\n.editor-empty {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  color: #6b6b6b;\n  font-size: 13px;\n}\n\n/* Tab Bar */\n.editor-tab-bar {\n  display: flex;\n  height: 35px;\n  background: #252526;\n  border-bottom: 1px solid #1e1e1e;\n  overflow-x: auto;\n}\n\n.editor-tab {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 0 12px;\n  background: #2d2d2d;\n  color: #969696;\n  font-size: 13px;\n  border-right: 1px solid #252526;\n  cursor: pointer;\n  user-select: none;\n}\n\n.editor-tab.active {\n  background: #1e1e1e;\n  color: #ffffff;\n}\n\n.tab-close-btn {\n  background: none;\n  border: none;\n  color: #969696;\n  font-size: 14px;\n  cursor: pointer;\n  padding: 0 4px;\n  border-radius: 3px;\n  line-height: 1;\n}\n\n.tab-close-btn:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: #ffffff;\n}";
+function editorGroupTemplate(host, emptyTagName) {
+  if (host.openFiles.length === 0) {
+    if (emptyTagName) {
+      const tag = s(emptyTagName);
+      return u`
+        <style>
+          ${styles$7}
+        </style>
+        <${tag}></${tag}>
+      `;
+    }
+    return u`
+      <style>
+        ${styles$7}
+      </style>
+      <div class="editor-empty">Chưa có file nào được mở</div>
+    `;
+  }
+  return u`
+    <style>
+      ${styles$7}
+    </style>
+    <div class="editor-tab-bar">
+      ${host.openFiles.map(
+    (file) => u`
+          <div
+            class="editor-tab ${file.path === host.activePath ? "active" : ""}"
+            @click=${() => host.handleSelectTab(file.path)}
+          >
+            <span class="tab-label">${file.name}</span>
+            <button
+              class="tab-close-btn"
+              @click=${(e3) => {
+      e3.stopPropagation();
+      host.handleCloseFile(file.path);
+    }}
+            >
+              &times;
+            </button>
+          </div>
+        `
+  )}
+    </div>
+    <div class="editor-container">
+      <module-editor .path=${host.activePath}></module-editor>
+    </div>
+  `;
+}
+class EditorGroupElement extends i$1 {
+  static properties = {
+    openFiles: { state: true },
+    activePath: { state: true }
+  };
+  constructor() {
+    super();
+    this.openFiles = [];
+    this.activePath = "";
+  }
+  createRenderRoot() {
+    return this;
+  }
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("workbench:open-file", this.handleOpenFile);
+  }
+  disconnectedCallback() {
+    window.removeEventListener("workbench:open-file", this.handleOpenFile);
+    super.disconnectedCallback();
+  }
+  handleOpenFile = (e3) => {
+    const { filePath, fileName } = e3.detail;
+    const exists = this.openFiles.some((f2) => f2.path === filePath);
+    if (!exists) {
+      this.openFiles = [...this.openFiles, { path: filePath, name: fileName }];
+    }
+    this.activePath = filePath;
+  };
+  handleSelectTab(path) {
+    this.activePath = path;
+  }
+  handleCloseFile(path) {
+    const closingIndex = this.openFiles.findIndex((f2) => f2.path === path);
+    this.openFiles = this.openFiles.filter((f2) => f2.path !== path);
+    window.dispatchEvent(
+      new CustomEvent("workbench:close-file", { detail: { filePath: path } })
+    );
+    if (this.activePath !== path) return;
+    this.activePath = this.openFiles.length === 0 ? "" : this.openFiles[Math.min(closingIndex, this.openFiles.length - 1)].path;
+  }
+  render() {
+    const emptyTagName = registry.getEmptyEditorView();
+    return editorGroupTemplate(this, emptyTagName);
+  }
+}
+customElements.define("workbench-editor-group", EditorGroupElement);
+const iconPlus = w`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+  <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+</svg>`;
+const iconTrash = w`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+  <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/>
+  <path d="M10 11v6"/><path d="M14 11v6"/><path d="M9 6V4h6v2"/>
+</svg>`;
+const iconClear = w`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+  <path d="M18 20H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h4"/>
+  <polyline points="16 2 22 8 12 18 6 18 6 12 16 2"/>
+</svg>`;
+w`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+  <polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/>
+  <line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>
+</svg>`;
+const iconX = w`<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+  <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+</svg>`;
+function panelTemplate(host) {
+  return b`
+    <div class="panel-tab-bar">
+      <div class="panel-tabs">
+        <div class="panel-tab active">TERMINAL</div>
+      </div>
+
+      <div class="panel-toolbar">
+        <!-- Shell selector -->
+        <select
+          class="shell-select"
+          .value=${host.shellType}
+          @change=${(e3) => host.handleShellChange(e3.target.value)}
+        >
+          <option value="powershell">PowerShell</option>
+          <option value="cmd">Command Prompt</option>
+        </select>
+
+        <div class="toolbar-sep"></div>
+
+        <!-- New terminal -->
+        <button
+          class="toolbar-btn"
+          title="New Terminal"
+          @click=${() => host.handleNew()}
+        >${iconPlus}</button>
+
+        <!-- Clear terminal -->
+        <button
+          class="toolbar-btn"
+          title="Clear Terminal"
+          @click=${() => host.handleClear()}
+        >${iconClear}</button>
+
+        <!-- Kill process -->
+        <button
+          class="toolbar-btn"
+          title="Kill Terminal"
+          @click=${() => host.handleKill()}
+        >${iconTrash}</button>
+
+        <div class="toolbar-sep"></div>
+
+        <!-- Close panel -->
+        <button
+          class="toolbar-btn"
+          title="Close Panel"
+          @click=${() => host.handleClose()}
+        >${iconX}</button>
+      </div>
+    </div>
+
+    <!-- xterm.js sẽ được mount vào đây sau khi connectedCallback -->
+    <div class="terminal-area" id="terminal-area"></div>
+  `;
+}
+const panelStyles = "/* panel.css — layout của workbench-panel: tab bar + xterm area */\n:host {\n  display: flex;\n  flex-direction: column;\n  height: 240px;\n  background: #1e1e1e;\n  border-top: 1px solid #252526;\n  overflow: hidden;\n  font-family: -apple-system, 'Segoe UI', sans-serif;\n}\n\n/* ── Tab bar (giống VSCode panel tab bar) ── */\n.panel-tab-bar {\n  display: flex;\n  align-items: stretch;\n  height: 35px;\n  background: #252526;\n  border-bottom: 1px solid #1e1e1e;\n  flex-shrink: 0;\n  user-select: none;\n}\n\n.panel-tabs {\n  display: flex;\n  flex: 1;\n  align-items: stretch;\n  overflow: hidden;\n}\n\n.panel-tab {\n  display: flex;\n  align-items: center;\n  gap: 6px;\n  padding: 0 14px;\n  font-size: 12px;\n  font-weight: 500;\n  color: #8c8c8c;\n  cursor: pointer;\n  border-bottom: 2px solid transparent;\n  transition: color 0.15s;\n  white-space: nowrap;\n}\n\n.panel-tab:hover {\n  color: #cccccc;\n}\n\n.panel-tab.active {\n  color: #cccccc;\n  border-bottom-color: #0e70c0;\n}\n\n/* ── Toolbar (bên phải tab bar) ── */\n.panel-toolbar {\n  display: flex;\n  align-items: center;\n  gap: 2px;\n  padding: 0 6px;\n  flex-shrink: 0;\n}\n\n.toolbar-btn {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 26px;\n  height: 26px;\n  border: none;\n  background: transparent;\n  color: #8c8c8c;\n  border-radius: 4px;\n  cursor: pointer;\n  transition: background 0.15s, color 0.15s;\n}\n\n.toolbar-btn:hover {\n  background: #3a3a3a;\n  color: #cccccc;\n}\n\n.toolbar-btn svg {\n  width: 16px;\n  height: 16px;\n  stroke-width: 1.6;\n}\n\n.toolbar-sep {\n  width: 1px;\n  height: 16px;\n  background: #3c3c3c;\n  margin: 0 4px;\n}\n\n/* Shell selector dropdown */\n.shell-select {\n  background: transparent;\n  border: none;\n  color: #8c8c8c;\n  font-size: 11px;\n  cursor: pointer;\n  padding: 2px 4px;\n  border-radius: 3px;\n  outline: none;\n  transition: color 0.15s;\n}\n\n.shell-select:hover {\n  color: #cccccc;\n}\n\n.shell-select option {\n  background: #252526;\n  color: #cccccc;\n}\n\n/* ── Terminal mount area ── */\n.terminal-area {\n  flex: 1;\n  min-height: 0;\n  position: relative;\n  padding: 4px 0 0 4px;\n  background: #1e1e1e;\n}\n\n/* xterm.js cần override một số style để fit đúng vào container */\n.terminal-area .xterm {\n  height: 100%;\n}\n\n.terminal-area .xterm-viewport {\n  background: #1e1e1e !important;\n}";
+const xtermStyles = `/**
+ * Copyright (c) 2014 The xterm.js authors. All rights reserved.
+ * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
+ * https://github.com/chjj/term.js
+ * @license MIT
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * Originally forked from (with the author's permission):
+ *   Fabrice Bellard's javascript vt100 for jslinux:
+ *   http://bellard.org/jslinux/
+ *   Copyright (c) 2011 Fabrice Bellard
+ *   The original design remains. The terminal itself
+ *   has been extended to include xterm CSI codes, among
+ *   other features.
+ */
+
+/**
+ *  Default styles for xterm.js
+ */
+
+.xterm {
+    cursor: text;
+    position: relative;
+    user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+}
+
+.xterm.focus,
+.xterm:focus {
+    outline: none;
+}
+
+.xterm .xterm-helpers {
+    position: absolute;
+    top: 0;
+    /**
+     * The z-index of the helpers must be higher than the canvases in order for
+     * IMEs to appear on top.
+     */
+    z-index: 5;
+}
+
+.xterm .xterm-helper-textarea {
+    padding: 0;
+    border: 0;
+    margin: 0;
+    /* Move textarea out of the screen to the far left, so that the cursor is not visible */
+    position: absolute;
+    opacity: 0;
+    left: -9999em;
+    top: 0;
+    width: 0;
+    height: 0;
+    z-index: -5;
+    /** Prevent wrapping so the IME appears against the textarea at the correct position */
+    white-space: nowrap;
+    overflow: hidden;
+    resize: none;
+}
+
+.xterm .composition-view {
+    /* TODO: Composition position got messed up somewhere */
+    background: #000;
+    color: #FFF;
+    display: none;
+    position: absolute;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.xterm .composition-view.active {
+    display: block;
+}
+
+.xterm .xterm-viewport {
+    /* On OS X this is required in order for the scroll bar to appear fully opaque */
+    background-color: #000;
+    overflow-y: scroll;
+    cursor: default;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.xterm .xterm-screen {
+    position: relative;
+}
+
+.xterm .xterm-screen canvas {
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.xterm .xterm-scroll-area {
+    visibility: hidden;
+}
+
+.xterm-char-measure-element {
+    display: inline-block;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: -9999em;
+    line-height: normal;
+}
+
+.xterm.enable-mouse-events {
+    /* When mouse events are enabled (eg. tmux), revert to the standard pointer cursor */
+    cursor: default;
+}
+
+.xterm.xterm-cursor-pointer,
+.xterm .xterm-cursor-pointer {
+    cursor: pointer;
+}
+
+.xterm.column-select.focus {
+    /* Column selection mode */
+    cursor: crosshair;
+}
+
+.xterm .xterm-accessibility,
+.xterm .xterm-message {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    color: transparent;
+    pointer-events: none;
+}
+
+.xterm .live-region {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+.xterm-dim {
+    /* Dim should not apply to background, so the opacity of the foreground color is applied
+     * explicitly in the generated class and reset to 1 here */
+    opacity: 1 !important;
+}
+
+.xterm-underline-1 { text-decoration: underline; }
+.xterm-underline-2 { text-decoration: double underline; }
+.xterm-underline-3 { text-decoration: wavy underline; }
+.xterm-underline-4 { text-decoration: dotted underline; }
+.xterm-underline-5 { text-decoration: dashed underline; }
+
+.xterm-overline {
+    text-decoration: overline;
+}
+
+.xterm-overline.xterm-underline-1 { text-decoration: overline underline; }
+.xterm-overline.xterm-underline-2 { text-decoration: overline double underline; }
+.xterm-overline.xterm-underline-3 { text-decoration: overline wavy underline; }
+.xterm-overline.xterm-underline-4 { text-decoration: overline dotted underline; }
+.xterm-overline.xterm-underline-5 { text-decoration: overline dashed underline; }
+
+.xterm-strikethrough {
+    text-decoration: line-through;
+}
+
+.xterm-screen .xterm-decoration-container .xterm-decoration {
+	z-index: 6;
+	position: absolute;
+}
+
+.xterm-screen .xterm-decoration-container .xterm-decoration.xterm-decoration-top-layer {
+	z-index: 7;
+}
+
+.xterm-decoration-overview-ruler {
+    z-index: 8;
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+}
+
+.xterm-decoration-top {
+    z-index: 2;
+    position: relative;
+}
+`;
+var xterm = { exports: {} };
+(function(module2, exports2) {
+  !function(e3, t2) {
+    module2.exports = t2();
+  }(self, () => (() => {
+    var e3 = { 4567: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.AccessibilityManager = void 0;
+      const n3 = i4(9042), o2 = i4(6114), a2 = i4(9924), h2 = i4(844), c2 = i4(5596), l2 = i4(4725), d2 = i4(3656);
+      let _2 = t3.AccessibilityManager = class extends h2.Disposable {
+        constructor(e5, t4) {
+          super(), this._terminal = e5, this._renderService = t4, this._liveRegionLineCount = 0, this._charsToConsume = [], this._charsToAnnounce = "", this._accessibilityContainer = document.createElement("div"), this._accessibilityContainer.classList.add("xterm-accessibility"), this._rowContainer = document.createElement("div"), this._rowContainer.setAttribute("role", "list"), this._rowContainer.classList.add("xterm-accessibility-tree"), this._rowElements = [];
+          for (let e6 = 0; e6 < this._terminal.rows; e6++) this._rowElements[e6] = this._createAccessibilityTreeNode(), this._rowContainer.appendChild(this._rowElements[e6]);
+          if (this._topBoundaryFocusListener = (e6) => this._handleBoundaryFocus(e6, 0), this._bottomBoundaryFocusListener = (e6) => this._handleBoundaryFocus(e6, 1), this._rowElements[0].addEventListener("focus", this._topBoundaryFocusListener), this._rowElements[this._rowElements.length - 1].addEventListener("focus", this._bottomBoundaryFocusListener), this._refreshRowsDimensions(), this._accessibilityContainer.appendChild(this._rowContainer), this._liveRegion = document.createElement("div"), this._liveRegion.classList.add("live-region"), this._liveRegion.setAttribute("aria-live", "assertive"), this._accessibilityContainer.appendChild(this._liveRegion), this._liveRegionDebouncer = this.register(new a2.TimeBasedDebouncer(this._renderRows.bind(this))), !this._terminal.element) throw new Error("Cannot enable accessibility before Terminal.open");
+          this._terminal.element.insertAdjacentElement("afterbegin", this._accessibilityContainer), this.register(this._terminal.onResize((e6) => this._handleResize(e6.rows))), this.register(this._terminal.onRender((e6) => this._refreshRows(e6.start, e6.end))), this.register(this._terminal.onScroll(() => this._refreshRows())), this.register(this._terminal.onA11yChar((e6) => this._handleChar(e6))), this.register(this._terminal.onLineFeed(() => this._handleChar("\n"))), this.register(this._terminal.onA11yTab((e6) => this._handleTab(e6))), this.register(this._terminal.onKey((e6) => this._handleKey(e6.key))), this.register(this._terminal.onBlur(() => this._clearLiveRegion())), this.register(this._renderService.onDimensionsChange(() => this._refreshRowsDimensions())), this._screenDprMonitor = new c2.ScreenDprMonitor(window), this.register(this._screenDprMonitor), this._screenDprMonitor.setListener(() => this._refreshRowsDimensions()), this.register((0, d2.addDisposableDomListener)(window, "resize", () => this._refreshRowsDimensions())), this._refreshRows(), this.register((0, h2.toDisposable)(() => {
+            this._accessibilityContainer.remove(), this._rowElements.length = 0;
+          }));
+        }
+        _handleTab(e5) {
+          for (let t4 = 0; t4 < e5; t4++) this._handleChar(" ");
+        }
+        _handleChar(e5) {
+          this._liveRegionLineCount < 21 && (this._charsToConsume.length > 0 ? this._charsToConsume.shift() !== e5 && (this._charsToAnnounce += e5) : this._charsToAnnounce += e5, "\n" === e5 && (this._liveRegionLineCount++, 21 === this._liveRegionLineCount && (this._liveRegion.textContent += n3.tooMuchOutput)), o2.isMac && this._liveRegion.textContent && this._liveRegion.textContent.length > 0 && !this._liveRegion.parentNode && setTimeout(() => {
+            this._accessibilityContainer.appendChild(this._liveRegion);
+          }, 0));
+        }
+        _clearLiveRegion() {
+          this._liveRegion.textContent = "", this._liveRegionLineCount = 0, o2.isMac && this._liveRegion.remove();
+        }
+        _handleKey(e5) {
+          this._clearLiveRegion(), new RegExp("\\p{Control}", "u").test(e5) || this._charsToConsume.push(e5);
+        }
+        _refreshRows(e5, t4) {
+          this._liveRegionDebouncer.refresh(e5, t4, this._terminal.rows);
+        }
+        _renderRows(e5, t4) {
+          const i5 = this._terminal.buffer, s4 = i5.lines.length.toString();
+          for (let r3 = e5; r3 <= t4; r3++) {
+            const e6 = i5.translateBufferLineToString(i5.ydisp + r3, true), t5 = (i5.ydisp + r3 + 1).toString(), n4 = this._rowElements[r3];
+            n4 && (0 === e6.length ? n4.innerText = " " : n4.textContent = e6, n4.setAttribute("aria-posinset", t5), n4.setAttribute("aria-setsize", s4));
+          }
+          this._announceCharacters();
+        }
+        _announceCharacters() {
+          0 !== this._charsToAnnounce.length && (this._liveRegion.textContent += this._charsToAnnounce, this._charsToAnnounce = "");
+        }
+        _handleBoundaryFocus(e5, t4) {
+          const i5 = e5.target, s4 = this._rowElements[0 === t4 ? 1 : this._rowElements.length - 2];
+          if (i5.getAttribute("aria-posinset") === (0 === t4 ? "1" : `${this._terminal.buffer.lines.length}`)) return;
+          if (e5.relatedTarget !== s4) return;
+          let r3, n4;
+          if (0 === t4 ? (r3 = i5, n4 = this._rowElements.pop(), this._rowContainer.removeChild(n4)) : (r3 = this._rowElements.shift(), n4 = i5, this._rowContainer.removeChild(r3)), r3.removeEventListener("focus", this._topBoundaryFocusListener), n4.removeEventListener("focus", this._bottomBoundaryFocusListener), 0 === t4) {
+            const e6 = this._createAccessibilityTreeNode();
+            this._rowElements.unshift(e6), this._rowContainer.insertAdjacentElement("afterbegin", e6);
+          } else {
+            const e6 = this._createAccessibilityTreeNode();
+            this._rowElements.push(e6), this._rowContainer.appendChild(e6);
+          }
+          this._rowElements[0].addEventListener("focus", this._topBoundaryFocusListener), this._rowElements[this._rowElements.length - 1].addEventListener("focus", this._bottomBoundaryFocusListener), this._terminal.scrollLines(0 === t4 ? -1 : 1), this._rowElements[0 === t4 ? 1 : this._rowElements.length - 2].focus(), e5.preventDefault(), e5.stopImmediatePropagation();
+        }
+        _handleResize(e5) {
+          this._rowElements[this._rowElements.length - 1].removeEventListener("focus", this._bottomBoundaryFocusListener);
+          for (let e6 = this._rowContainer.children.length; e6 < this._terminal.rows; e6++) this._rowElements[e6] = this._createAccessibilityTreeNode(), this._rowContainer.appendChild(this._rowElements[e6]);
+          for (; this._rowElements.length > e5; ) this._rowContainer.removeChild(this._rowElements.pop());
+          this._rowElements[this._rowElements.length - 1].addEventListener("focus", this._bottomBoundaryFocusListener), this._refreshRowsDimensions();
+        }
+        _createAccessibilityTreeNode() {
+          const e5 = document.createElement("div");
+          return e5.setAttribute("role", "listitem"), e5.tabIndex = -1, this._refreshRowDimensions(e5), e5;
+        }
+        _refreshRowsDimensions() {
+          if (this._renderService.dimensions.css.cell.height) {
+            this._accessibilityContainer.style.width = `${this._renderService.dimensions.css.canvas.width}px`, this._rowElements.length !== this._terminal.rows && this._handleResize(this._terminal.rows);
+            for (let e5 = 0; e5 < this._terminal.rows; e5++) this._refreshRowDimensions(this._rowElements[e5]);
+          }
+        }
+        _refreshRowDimensions(e5) {
+          e5.style.height = `${this._renderService.dimensions.css.cell.height}px`;
+        }
+      };
+      t3.AccessibilityManager = _2 = s3([r2(1, l2.IRenderService)], _2);
+    }, 3614: (e4, t3) => {
+      function i4(e5) {
+        return e5.replace(/\r?\n/g, "\r");
+      }
+      function s3(e5, t4) {
+        return t4 ? "\x1B[200~" + e5 + "\x1B[201~" : e5;
+      }
+      function r2(e5, t4, r3, n4) {
+        e5 = s3(e5 = i4(e5), r3.decPrivateModes.bracketedPasteMode && true !== n4.rawOptions.ignoreBracketedPasteMode), r3.triggerDataEvent(e5, true), t4.value = "";
+      }
+      function n3(e5, t4, i5) {
+        const s4 = i5.getBoundingClientRect(), r3 = e5.clientX - s4.left - 10, n4 = e5.clientY - s4.top - 10;
+        t4.style.width = "20px", t4.style.height = "20px", t4.style.left = `${r3}px`, t4.style.top = `${n4}px`, t4.style.zIndex = "1000", t4.focus();
+      }
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.rightClickHandler = t3.moveTextAreaUnderMouseCursor = t3.paste = t3.handlePasteEvent = t3.copyHandler = t3.bracketTextForPaste = t3.prepareTextForTerminal = void 0, t3.prepareTextForTerminal = i4, t3.bracketTextForPaste = s3, t3.copyHandler = function(e5, t4) {
+        e5.clipboardData && e5.clipboardData.setData("text/plain", t4.selectionText), e5.preventDefault();
+      }, t3.handlePasteEvent = function(e5, t4, i5, s4) {
+        e5.stopPropagation(), e5.clipboardData && r2(e5.clipboardData.getData("text/plain"), t4, i5, s4);
+      }, t3.paste = r2, t3.moveTextAreaUnderMouseCursor = n3, t3.rightClickHandler = function(e5, t4, i5, s4, r3) {
+        n3(e5, t4, i5), r3 && s4.rightClickSelect(e5), t4.value = s4.selectionText, t4.select();
+      };
+    }, 7239: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.ColorContrastCache = void 0;
+      const s3 = i4(1505);
+      t3.ColorContrastCache = class {
+        constructor() {
+          this._color = new s3.TwoKeyMap(), this._css = new s3.TwoKeyMap();
+        }
+        setCss(e5, t4, i5) {
+          this._css.set(e5, t4, i5);
+        }
+        getCss(e5, t4) {
+          return this._css.get(e5, t4);
+        }
+        setColor(e5, t4, i5) {
+          this._color.set(e5, t4, i5);
+        }
+        getColor(e5, t4) {
+          return this._color.get(e5, t4);
+        }
+        clear() {
+          this._color.clear(), this._css.clear();
+        }
+      };
+    }, 3656: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.addDisposableDomListener = void 0, t3.addDisposableDomListener = function(e5, t4, i4, s3) {
+        e5.addEventListener(t4, i4, s3);
+        let r2 = false;
+        return { dispose: () => {
+          r2 || (r2 = true, e5.removeEventListener(t4, i4, s3));
+        } };
+      };
+    }, 6465: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.Linkifier2 = void 0;
+      const n3 = i4(3656), o2 = i4(8460), a2 = i4(844), h2 = i4(2585);
+      let c2 = t3.Linkifier2 = class extends a2.Disposable {
+        get currentLink() {
+          return this._currentLink;
+        }
+        constructor(e5) {
+          super(), this._bufferService = e5, this._linkProviders = [], this._linkCacheDisposables = [], this._isMouseOut = true, this._wasResized = false, this._activeLine = -1, this._onShowLinkUnderline = this.register(new o2.EventEmitter()), this.onShowLinkUnderline = this._onShowLinkUnderline.event, this._onHideLinkUnderline = this.register(new o2.EventEmitter()), this.onHideLinkUnderline = this._onHideLinkUnderline.event, this.register((0, a2.getDisposeArrayDisposable)(this._linkCacheDisposables)), this.register((0, a2.toDisposable)(() => {
+            this._lastMouseEvent = void 0;
+          })), this.register(this._bufferService.onResize(() => {
+            this._clearCurrentLink(), this._wasResized = true;
+          }));
+        }
+        registerLinkProvider(e5) {
+          return this._linkProviders.push(e5), { dispose: () => {
+            const t4 = this._linkProviders.indexOf(e5);
+            -1 !== t4 && this._linkProviders.splice(t4, 1);
+          } };
+        }
+        attachToDom(e5, t4, i5) {
+          this._element = e5, this._mouseService = t4, this._renderService = i5, this.register((0, n3.addDisposableDomListener)(this._element, "mouseleave", () => {
+            this._isMouseOut = true, this._clearCurrentLink();
+          })), this.register((0, n3.addDisposableDomListener)(this._element, "mousemove", this._handleMouseMove.bind(this))), this.register((0, n3.addDisposableDomListener)(this._element, "mousedown", this._handleMouseDown.bind(this))), this.register((0, n3.addDisposableDomListener)(this._element, "mouseup", this._handleMouseUp.bind(this)));
+        }
+        _handleMouseMove(e5) {
+          if (this._lastMouseEvent = e5, !this._element || !this._mouseService) return;
+          const t4 = this._positionFromMouseEvent(e5, this._element, this._mouseService);
+          if (!t4) return;
+          this._isMouseOut = false;
+          const i5 = e5.composedPath();
+          for (let e6 = 0; e6 < i5.length; e6++) {
+            const t5 = i5[e6];
+            if (t5.classList.contains("xterm")) break;
+            if (t5.classList.contains("xterm-hover")) return;
+          }
+          this._lastBufferCell && t4.x === this._lastBufferCell.x && t4.y === this._lastBufferCell.y || (this._handleHover(t4), this._lastBufferCell = t4);
+        }
+        _handleHover(e5) {
+          if (this._activeLine !== e5.y || this._wasResized) return this._clearCurrentLink(), this._askForLink(e5, false), void (this._wasResized = false);
+          this._currentLink && this._linkAtPosition(this._currentLink.link, e5) || (this._clearCurrentLink(), this._askForLink(e5, true));
+        }
+        _askForLink(e5, t4) {
+          var i5, s4;
+          this._activeProviderReplies && t4 || (null === (i5 = this._activeProviderReplies) || void 0 === i5 || i5.forEach((e6) => {
+            null == e6 || e6.forEach((e7) => {
+              e7.link.dispose && e7.link.dispose();
+            });
+          }), this._activeProviderReplies = /* @__PURE__ */ new Map(), this._activeLine = e5.y);
+          let r3 = false;
+          for (const [i6, n4] of this._linkProviders.entries()) t4 ? (null === (s4 = this._activeProviderReplies) || void 0 === s4 ? void 0 : s4.get(i6)) && (r3 = this._checkLinkProviderResult(i6, e5, r3)) : n4.provideLinks(e5.y, (t5) => {
+            var s5, n5;
+            if (this._isMouseOut) return;
+            const o3 = null == t5 ? void 0 : t5.map((e6) => ({ link: e6 }));
+            null === (s5 = this._activeProviderReplies) || void 0 === s5 || s5.set(i6, o3), r3 = this._checkLinkProviderResult(i6, e5, r3), (null === (n5 = this._activeProviderReplies) || void 0 === n5 ? void 0 : n5.size) === this._linkProviders.length && this._removeIntersectingLinks(e5.y, this._activeProviderReplies);
+          });
+        }
+        _removeIntersectingLinks(e5, t4) {
+          const i5 = /* @__PURE__ */ new Set();
+          for (let s4 = 0; s4 < t4.size; s4++) {
+            const r3 = t4.get(s4);
+            if (r3) for (let t5 = 0; t5 < r3.length; t5++) {
+              const s5 = r3[t5], n4 = s5.link.range.start.y < e5 ? 0 : s5.link.range.start.x, o3 = s5.link.range.end.y > e5 ? this._bufferService.cols : s5.link.range.end.x;
+              for (let e6 = n4; e6 <= o3; e6++) {
+                if (i5.has(e6)) {
+                  r3.splice(t5--, 1);
+                  break;
+                }
+                i5.add(e6);
+              }
+            }
+          }
+        }
+        _checkLinkProviderResult(e5, t4, i5) {
+          var s4;
+          if (!this._activeProviderReplies) return i5;
+          const r3 = this._activeProviderReplies.get(e5);
+          let n4 = false;
+          for (let t5 = 0; t5 < e5; t5++) this._activeProviderReplies.has(t5) && !this._activeProviderReplies.get(t5) || (n4 = true);
+          if (!n4 && r3) {
+            const e6 = r3.find((e7) => this._linkAtPosition(e7.link, t4));
+            e6 && (i5 = true, this._handleNewLink(e6));
+          }
+          if (this._activeProviderReplies.size === this._linkProviders.length && !i5) for (let e6 = 0; e6 < this._activeProviderReplies.size; e6++) {
+            const r4 = null === (s4 = this._activeProviderReplies.get(e6)) || void 0 === s4 ? void 0 : s4.find((e7) => this._linkAtPosition(e7.link, t4));
+            if (r4) {
+              i5 = true, this._handleNewLink(r4);
+              break;
+            }
+          }
+          return i5;
+        }
+        _handleMouseDown() {
+          this._mouseDownLink = this._currentLink;
+        }
+        _handleMouseUp(e5) {
+          if (!this._element || !this._mouseService || !this._currentLink) return;
+          const t4 = this._positionFromMouseEvent(e5, this._element, this._mouseService);
+          t4 && this._mouseDownLink === this._currentLink && this._linkAtPosition(this._currentLink.link, t4) && this._currentLink.link.activate(e5, this._currentLink.link.text);
+        }
+        _clearCurrentLink(e5, t4) {
+          this._element && this._currentLink && this._lastMouseEvent && (!e5 || !t4 || this._currentLink.link.range.start.y >= e5 && this._currentLink.link.range.end.y <= t4) && (this._linkLeave(this._element, this._currentLink.link, this._lastMouseEvent), this._currentLink = void 0, (0, a2.disposeArray)(this._linkCacheDisposables));
+        }
+        _handleNewLink(e5) {
+          if (!this._element || !this._lastMouseEvent || !this._mouseService) return;
+          const t4 = this._positionFromMouseEvent(this._lastMouseEvent, this._element, this._mouseService);
+          t4 && this._linkAtPosition(e5.link, t4) && (this._currentLink = e5, this._currentLink.state = { decorations: { underline: void 0 === e5.link.decorations || e5.link.decorations.underline, pointerCursor: void 0 === e5.link.decorations || e5.link.decorations.pointerCursor }, isHovered: true }, this._linkHover(this._element, e5.link, this._lastMouseEvent), e5.link.decorations = {}, Object.defineProperties(e5.link.decorations, { pointerCursor: { get: () => {
+            var e6, t5;
+            return null === (t5 = null === (e6 = this._currentLink) || void 0 === e6 ? void 0 : e6.state) || void 0 === t5 ? void 0 : t5.decorations.pointerCursor;
+          }, set: (e6) => {
+            var t5, i5;
+            (null === (t5 = this._currentLink) || void 0 === t5 ? void 0 : t5.state) && this._currentLink.state.decorations.pointerCursor !== e6 && (this._currentLink.state.decorations.pointerCursor = e6, this._currentLink.state.isHovered && (null === (i5 = this._element) || void 0 === i5 || i5.classList.toggle("xterm-cursor-pointer", e6)));
+          } }, underline: { get: () => {
+            var e6, t5;
+            return null === (t5 = null === (e6 = this._currentLink) || void 0 === e6 ? void 0 : e6.state) || void 0 === t5 ? void 0 : t5.decorations.underline;
+          }, set: (t5) => {
+            var i5, s4, r3;
+            (null === (i5 = this._currentLink) || void 0 === i5 ? void 0 : i5.state) && (null === (r3 = null === (s4 = this._currentLink) || void 0 === s4 ? void 0 : s4.state) || void 0 === r3 ? void 0 : r3.decorations.underline) !== t5 && (this._currentLink.state.decorations.underline = t5, this._currentLink.state.isHovered && this._fireUnderlineEvent(e5.link, t5));
+          } } }), this._renderService && this._linkCacheDisposables.push(this._renderService.onRenderedViewportChange((e6) => {
+            if (!this._currentLink) return;
+            const t5 = 0 === e6.start ? 0 : e6.start + 1 + this._bufferService.buffer.ydisp, i5 = this._bufferService.buffer.ydisp + 1 + e6.end;
+            if (this._currentLink.link.range.start.y >= t5 && this._currentLink.link.range.end.y <= i5 && (this._clearCurrentLink(t5, i5), this._lastMouseEvent && this._element)) {
+              const e7 = this._positionFromMouseEvent(this._lastMouseEvent, this._element, this._mouseService);
+              e7 && this._askForLink(e7, false);
+            }
+          })));
+        }
+        _linkHover(e5, t4, i5) {
+          var s4;
+          (null === (s4 = this._currentLink) || void 0 === s4 ? void 0 : s4.state) && (this._currentLink.state.isHovered = true, this._currentLink.state.decorations.underline && this._fireUnderlineEvent(t4, true), this._currentLink.state.decorations.pointerCursor && e5.classList.add("xterm-cursor-pointer")), t4.hover && t4.hover(i5, t4.text);
+        }
+        _fireUnderlineEvent(e5, t4) {
+          const i5 = e5.range, s4 = this._bufferService.buffer.ydisp, r3 = this._createLinkUnderlineEvent(i5.start.x - 1, i5.start.y - s4 - 1, i5.end.x, i5.end.y - s4 - 1, void 0);
+          (t4 ? this._onShowLinkUnderline : this._onHideLinkUnderline).fire(r3);
+        }
+        _linkLeave(e5, t4, i5) {
+          var s4;
+          (null === (s4 = this._currentLink) || void 0 === s4 ? void 0 : s4.state) && (this._currentLink.state.isHovered = false, this._currentLink.state.decorations.underline && this._fireUnderlineEvent(t4, false), this._currentLink.state.decorations.pointerCursor && e5.classList.remove("xterm-cursor-pointer")), t4.leave && t4.leave(i5, t4.text);
+        }
+        _linkAtPosition(e5, t4) {
+          const i5 = e5.range.start.y * this._bufferService.cols + e5.range.start.x, s4 = e5.range.end.y * this._bufferService.cols + e5.range.end.x, r3 = t4.y * this._bufferService.cols + t4.x;
+          return i5 <= r3 && r3 <= s4;
+        }
+        _positionFromMouseEvent(e5, t4, i5) {
+          const s4 = i5.getCoords(e5, t4, this._bufferService.cols, this._bufferService.rows);
+          if (s4) return { x: s4[0], y: s4[1] + this._bufferService.buffer.ydisp };
+        }
+        _createLinkUnderlineEvent(e5, t4, i5, s4, r3) {
+          return { x1: e5, y1: t4, x2: i5, y2: s4, cols: this._bufferService.cols, fg: r3 };
+        }
+      };
+      t3.Linkifier2 = c2 = s3([r2(0, h2.IBufferService)], c2);
+    }, 9042: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.tooMuchOutput = t3.promptLabel = void 0, t3.promptLabel = "Terminal input", t3.tooMuchOutput = "Too much output to announce, navigate to rows manually to read";
+    }, 3730: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.OscLinkProvider = void 0;
+      const n3 = i4(511), o2 = i4(2585);
+      let a2 = t3.OscLinkProvider = class {
+        constructor(e5, t4, i5) {
+          this._bufferService = e5, this._optionsService = t4, this._oscLinkService = i5;
+        }
+        provideLinks(e5, t4) {
+          var i5;
+          const s4 = this._bufferService.buffer.lines.get(e5 - 1);
+          if (!s4) return void t4(void 0);
+          const r3 = [], o3 = this._optionsService.rawOptions.linkHandler, a3 = new n3.CellData(), c2 = s4.getTrimmedLength();
+          let l2 = -1, d2 = -1, _2 = false;
+          for (let t5 = 0; t5 < c2; t5++) if (-1 !== d2 || s4.hasContent(t5)) {
+            if (s4.loadCell(t5, a3), a3.hasExtendedAttrs() && a3.extended.urlId) {
+              if (-1 === d2) {
+                d2 = t5, l2 = a3.extended.urlId;
+                continue;
+              }
+              _2 = a3.extended.urlId !== l2;
+            } else -1 !== d2 && (_2 = true);
+            if (_2 || -1 !== d2 && t5 === c2 - 1) {
+              const s5 = null === (i5 = this._oscLinkService.getLinkData(l2)) || void 0 === i5 ? void 0 : i5.uri;
+              if (s5) {
+                const i6 = { start: { x: d2 + 1, y: e5 }, end: { x: t5 + (_2 || t5 !== c2 - 1 ? 0 : 1), y: e5 } };
+                let n4 = false;
+                if (!(null == o3 ? void 0 : o3.allowNonHttpProtocols)) try {
+                  const e6 = new URL(s5);
+                  ["http:", "https:"].includes(e6.protocol) || (n4 = true);
+                } catch (e6) {
+                  n4 = true;
+                }
+                n4 || r3.push({ text: s5, range: i6, activate: (e6, t6) => o3 ? o3.activate(e6, t6, i6) : h2(0, t6), hover: (e6, t6) => {
+                  var s6;
+                  return null === (s6 = null == o3 ? void 0 : o3.hover) || void 0 === s6 ? void 0 : s6.call(o3, e6, t6, i6);
+                }, leave: (e6, t6) => {
+                  var s6;
+                  return null === (s6 = null == o3 ? void 0 : o3.leave) || void 0 === s6 ? void 0 : s6.call(o3, e6, t6, i6);
+                } });
+              }
+              _2 = false, a3.hasExtendedAttrs() && a3.extended.urlId ? (d2 = t5, l2 = a3.extended.urlId) : (d2 = -1, l2 = -1);
+            }
+          }
+          t4(r3);
+        }
+      };
+      function h2(e5, t4) {
+        if (confirm(`Do you want to navigate to ${t4}?
+
+WARNING: This link could potentially be dangerous`)) {
+          const e6 = window.open();
+          if (e6) {
+            try {
+              e6.opener = null;
+            } catch (e7) {
+            }
+            e6.location.href = t4;
+          } else console.warn("Opening link blocked as opener could not be cleared");
+        }
+      }
+      t3.OscLinkProvider = a2 = s3([r2(0, o2.IBufferService), r2(1, o2.IOptionsService), r2(2, o2.IOscLinkService)], a2);
+    }, 6193: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.RenderDebouncer = void 0, t3.RenderDebouncer = class {
+        constructor(e5, t4) {
+          this._parentWindow = e5, this._renderCallback = t4, this._refreshCallbacks = [];
+        }
+        dispose() {
+          this._animationFrame && (this._parentWindow.cancelAnimationFrame(this._animationFrame), this._animationFrame = void 0);
+        }
+        addRefreshCallback(e5) {
+          return this._refreshCallbacks.push(e5), this._animationFrame || (this._animationFrame = this._parentWindow.requestAnimationFrame(() => this._innerRefresh())), this._animationFrame;
+        }
+        refresh(e5, t4, i4) {
+          this._rowCount = i4, e5 = void 0 !== e5 ? e5 : 0, t4 = void 0 !== t4 ? t4 : this._rowCount - 1, this._rowStart = void 0 !== this._rowStart ? Math.min(this._rowStart, e5) : e5, this._rowEnd = void 0 !== this._rowEnd ? Math.max(this._rowEnd, t4) : t4, this._animationFrame || (this._animationFrame = this._parentWindow.requestAnimationFrame(() => this._innerRefresh()));
+        }
+        _innerRefresh() {
+          if (this._animationFrame = void 0, void 0 === this._rowStart || void 0 === this._rowEnd || void 0 === this._rowCount) return void this._runRefreshCallbacks();
+          const e5 = Math.max(this._rowStart, 0), t4 = Math.min(this._rowEnd, this._rowCount - 1);
+          this._rowStart = void 0, this._rowEnd = void 0, this._renderCallback(e5, t4), this._runRefreshCallbacks();
+        }
+        _runRefreshCallbacks() {
+          for (const e5 of this._refreshCallbacks) e5(0);
+          this._refreshCallbacks = [];
+        }
+      };
+    }, 5596: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.ScreenDprMonitor = void 0;
+      const s3 = i4(844);
+      class r2 extends s3.Disposable {
+        constructor(e5) {
+          super(), this._parentWindow = e5, this._currentDevicePixelRatio = this._parentWindow.devicePixelRatio, this.register((0, s3.toDisposable)(() => {
+            this.clearListener();
+          }));
+        }
+        setListener(e5) {
+          this._listener && this.clearListener(), this._listener = e5, this._outerListener = () => {
+            this._listener && (this._listener(this._parentWindow.devicePixelRatio, this._currentDevicePixelRatio), this._updateDpr());
+          }, this._updateDpr();
+        }
+        _updateDpr() {
+          var e5;
+          this._outerListener && (null === (e5 = this._resolutionMediaMatchList) || void 0 === e5 || e5.removeListener(this._outerListener), this._currentDevicePixelRatio = this._parentWindow.devicePixelRatio, this._resolutionMediaMatchList = this._parentWindow.matchMedia(`screen and (resolution: ${this._parentWindow.devicePixelRatio}dppx)`), this._resolutionMediaMatchList.addListener(this._outerListener));
+        }
+        clearListener() {
+          this._resolutionMediaMatchList && this._listener && this._outerListener && (this._resolutionMediaMatchList.removeListener(this._outerListener), this._resolutionMediaMatchList = void 0, this._listener = void 0, this._outerListener = void 0);
+        }
+      }
+      t3.ScreenDprMonitor = r2;
+    }, 3236: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.Terminal = void 0;
+      const s3 = i4(3614), r2 = i4(3656), n3 = i4(6465), o2 = i4(9042), a2 = i4(3730), h2 = i4(1680), c2 = i4(3107), l2 = i4(5744), d2 = i4(2950), _2 = i4(1296), u2 = i4(428), f2 = i4(4269), v2 = i4(5114), p2 = i4(8934), g2 = i4(3230), m2 = i4(9312), S2 = i4(4725), C2 = i4(6731), b2 = i4(8055), y3 = i4(8969), w2 = i4(8460), E2 = i4(844), k2 = i4(6114), L2 = i4(8437), D2 = i4(2584), R2 = i4(7399), x2 = i4(5941), A2 = i4(9074), B2 = i4(2585), T = i4(5435), M2 = i4(4567), O = "undefined" != typeof window ? window.document : null;
+      class P2 extends y3.CoreTerminal {
+        get onFocus() {
+          return this._onFocus.event;
+        }
+        get onBlur() {
+          return this._onBlur.event;
+        }
+        get onA11yChar() {
+          return this._onA11yCharEmitter.event;
+        }
+        get onA11yTab() {
+          return this._onA11yTabEmitter.event;
+        }
+        get onWillOpen() {
+          return this._onWillOpen.event;
+        }
+        constructor(e5 = {}) {
+          super(e5), this.browser = k2, this._keyDownHandled = false, this._keyDownSeen = false, this._keyPressHandled = false, this._unprocessedDeadKey = false, this._accessibilityManager = this.register(new E2.MutableDisposable()), this._onCursorMove = this.register(new w2.EventEmitter()), this.onCursorMove = this._onCursorMove.event, this._onKey = this.register(new w2.EventEmitter()), this.onKey = this._onKey.event, this._onRender = this.register(new w2.EventEmitter()), this.onRender = this._onRender.event, this._onSelectionChange = this.register(new w2.EventEmitter()), this.onSelectionChange = this._onSelectionChange.event, this._onTitleChange = this.register(new w2.EventEmitter()), this.onTitleChange = this._onTitleChange.event, this._onBell = this.register(new w2.EventEmitter()), this.onBell = this._onBell.event, this._onFocus = this.register(new w2.EventEmitter()), this._onBlur = this.register(new w2.EventEmitter()), this._onA11yCharEmitter = this.register(new w2.EventEmitter()), this._onA11yTabEmitter = this.register(new w2.EventEmitter()), this._onWillOpen = this.register(new w2.EventEmitter()), this._setup(), this.linkifier2 = this.register(this._instantiationService.createInstance(n3.Linkifier2)), this.linkifier2.registerLinkProvider(this._instantiationService.createInstance(a2.OscLinkProvider)), this._decorationService = this._instantiationService.createInstance(A2.DecorationService), this._instantiationService.setService(B2.IDecorationService, this._decorationService), this.register(this._inputHandler.onRequestBell(() => this._onBell.fire())), this.register(this._inputHandler.onRequestRefreshRows((e6, t4) => this.refresh(e6, t4))), this.register(this._inputHandler.onRequestSendFocus(() => this._reportFocus())), this.register(this._inputHandler.onRequestReset(() => this.reset())), this.register(this._inputHandler.onRequestWindowsOptionsReport((e6) => this._reportWindowsOptions(e6))), this.register(this._inputHandler.onColor((e6) => this._handleColorEvent(e6))), this.register((0, w2.forwardEvent)(this._inputHandler.onCursorMove, this._onCursorMove)), this.register((0, w2.forwardEvent)(this._inputHandler.onTitleChange, this._onTitleChange)), this.register((0, w2.forwardEvent)(this._inputHandler.onA11yChar, this._onA11yCharEmitter)), this.register((0, w2.forwardEvent)(this._inputHandler.onA11yTab, this._onA11yTabEmitter)), this.register(this._bufferService.onResize((e6) => this._afterResize(e6.cols, e6.rows))), this.register((0, E2.toDisposable)(() => {
+            var e6, t4;
+            this._customKeyEventHandler = void 0, null === (t4 = null === (e6 = this.element) || void 0 === e6 ? void 0 : e6.parentNode) || void 0 === t4 || t4.removeChild(this.element);
+          }));
+        }
+        _handleColorEvent(e5) {
+          if (this._themeService) for (const t4 of e5) {
+            let e6, i5 = "";
+            switch (t4.index) {
+              case 256:
+                e6 = "foreground", i5 = "10";
+                break;
+              case 257:
+                e6 = "background", i5 = "11";
+                break;
+              case 258:
+                e6 = "cursor", i5 = "12";
+                break;
+              default:
+                e6 = "ansi", i5 = "4;" + t4.index;
+            }
+            switch (t4.type) {
+              case 0:
+                const s4 = b2.color.toColorRGB("ansi" === e6 ? this._themeService.colors.ansi[t4.index] : this._themeService.colors[e6]);
+                this.coreService.triggerDataEvent(`${D2.C0.ESC}]${i5};${(0, x2.toRgbString)(s4)}${D2.C1_ESCAPED.ST}`);
+                break;
+              case 1:
+                if ("ansi" === e6) this._themeService.modifyColors((e7) => e7.ansi[t4.index] = b2.rgba.toColor(...t4.color));
+                else {
+                  const i6 = e6;
+                  this._themeService.modifyColors((e7) => e7[i6] = b2.rgba.toColor(...t4.color));
+                }
+                break;
+              case 2:
+                this._themeService.restoreColor(t4.index);
+            }
+          }
+        }
+        _setup() {
+          super._setup(), this._customKeyEventHandler = void 0;
+        }
+        get buffer() {
+          return this.buffers.active;
+        }
+        focus() {
+          this.textarea && this.textarea.focus({ preventScroll: true });
+        }
+        _handleScreenReaderModeOptionChange(e5) {
+          e5 ? !this._accessibilityManager.value && this._renderService && (this._accessibilityManager.value = this._instantiationService.createInstance(M2.AccessibilityManager, this)) : this._accessibilityManager.clear();
+        }
+        _handleTextAreaFocus(e5) {
+          this.coreService.decPrivateModes.sendFocus && this.coreService.triggerDataEvent(D2.C0.ESC + "[I"), this.updateCursorStyle(e5), this.element.classList.add("focus"), this._showCursor(), this._onFocus.fire();
+        }
+        blur() {
+          var e5;
+          return null === (e5 = this.textarea) || void 0 === e5 ? void 0 : e5.blur();
+        }
+        _handleTextAreaBlur() {
+          this.textarea.value = "", this.refresh(this.buffer.y, this.buffer.y), this.coreService.decPrivateModes.sendFocus && this.coreService.triggerDataEvent(D2.C0.ESC + "[O"), this.element.classList.remove("focus"), this._onBlur.fire();
+        }
+        _syncTextArea() {
+          if (!this.textarea || !this.buffer.isCursorInViewport || this._compositionHelper.isComposing || !this._renderService) return;
+          const e5 = this.buffer.ybase + this.buffer.y, t4 = this.buffer.lines.get(e5);
+          if (!t4) return;
+          const i5 = Math.min(this.buffer.x, this.cols - 1), s4 = this._renderService.dimensions.css.cell.height, r3 = t4.getWidth(i5), n4 = this._renderService.dimensions.css.cell.width * r3, o3 = this.buffer.y * this._renderService.dimensions.css.cell.height, a3 = i5 * this._renderService.dimensions.css.cell.width;
+          this.textarea.style.left = a3 + "px", this.textarea.style.top = o3 + "px", this.textarea.style.width = n4 + "px", this.textarea.style.height = s4 + "px", this.textarea.style.lineHeight = s4 + "px", this.textarea.style.zIndex = "-5";
+        }
+        _initGlobal() {
+          this._bindKeys(), this.register((0, r2.addDisposableDomListener)(this.element, "copy", (e6) => {
+            this.hasSelection() && (0, s3.copyHandler)(e6, this._selectionService);
+          }));
+          const e5 = (e6) => (0, s3.handlePasteEvent)(e6, this.textarea, this.coreService, this.optionsService);
+          this.register((0, r2.addDisposableDomListener)(this.textarea, "paste", e5)), this.register((0, r2.addDisposableDomListener)(this.element, "paste", e5)), k2.isFirefox ? this.register((0, r2.addDisposableDomListener)(this.element, "mousedown", (e6) => {
+            2 === e6.button && (0, s3.rightClickHandler)(e6, this.textarea, this.screenElement, this._selectionService, this.options.rightClickSelectsWord);
+          })) : this.register((0, r2.addDisposableDomListener)(this.element, "contextmenu", (e6) => {
+            (0, s3.rightClickHandler)(e6, this.textarea, this.screenElement, this._selectionService, this.options.rightClickSelectsWord);
+          })), k2.isLinux && this.register((0, r2.addDisposableDomListener)(this.element, "auxclick", (e6) => {
+            1 === e6.button && (0, s3.moveTextAreaUnderMouseCursor)(e6, this.textarea, this.screenElement);
+          }));
+        }
+        _bindKeys() {
+          this.register((0, r2.addDisposableDomListener)(this.textarea, "keyup", (e5) => this._keyUp(e5), true)), this.register((0, r2.addDisposableDomListener)(this.textarea, "keydown", (e5) => this._keyDown(e5), true)), this.register((0, r2.addDisposableDomListener)(this.textarea, "keypress", (e5) => this._keyPress(e5), true)), this.register((0, r2.addDisposableDomListener)(this.textarea, "compositionstart", () => this._compositionHelper.compositionstart())), this.register((0, r2.addDisposableDomListener)(this.textarea, "compositionupdate", (e5) => this._compositionHelper.compositionupdate(e5))), this.register((0, r2.addDisposableDomListener)(this.textarea, "compositionend", () => this._compositionHelper.compositionend())), this.register((0, r2.addDisposableDomListener)(this.textarea, "input", (e5) => this._inputEvent(e5), true)), this.register(this.onRender(() => this._compositionHelper.updateCompositionElements()));
+        }
+        open(e5) {
+          var t4;
+          if (!e5) throw new Error("Terminal requires a parent element.");
+          e5.isConnected || this._logService.debug("Terminal.open was called on an element that was not attached to the DOM"), this._document = e5.ownerDocument, this.element = this._document.createElement("div"), this.element.dir = "ltr", this.element.classList.add("terminal"), this.element.classList.add("xterm"), e5.appendChild(this.element);
+          const i5 = O.createDocumentFragment();
+          this._viewportElement = O.createElement("div"), this._viewportElement.classList.add("xterm-viewport"), i5.appendChild(this._viewportElement), this._viewportScrollArea = O.createElement("div"), this._viewportScrollArea.classList.add("xterm-scroll-area"), this._viewportElement.appendChild(this._viewportScrollArea), this.screenElement = O.createElement("div"), this.screenElement.classList.add("xterm-screen"), this._helperContainer = O.createElement("div"), this._helperContainer.classList.add("xterm-helpers"), this.screenElement.appendChild(this._helperContainer), i5.appendChild(this.screenElement), this.textarea = O.createElement("textarea"), this.textarea.classList.add("xterm-helper-textarea"), this.textarea.setAttribute("aria-label", o2.promptLabel), k2.isChromeOS || this.textarea.setAttribute("aria-multiline", "false"), this.textarea.setAttribute("autocorrect", "off"), this.textarea.setAttribute("autocapitalize", "off"), this.textarea.setAttribute("spellcheck", "false"), this.textarea.tabIndex = 0, this._coreBrowserService = this._instantiationService.createInstance(v2.CoreBrowserService, this.textarea, null !== (t4 = this._document.defaultView) && void 0 !== t4 ? t4 : window), this._instantiationService.setService(S2.ICoreBrowserService, this._coreBrowserService), this.register((0, r2.addDisposableDomListener)(this.textarea, "focus", (e6) => this._handleTextAreaFocus(e6))), this.register((0, r2.addDisposableDomListener)(this.textarea, "blur", () => this._handleTextAreaBlur())), this._helperContainer.appendChild(this.textarea), this._charSizeService = this._instantiationService.createInstance(u2.CharSizeService, this._document, this._helperContainer), this._instantiationService.setService(S2.ICharSizeService, this._charSizeService), this._themeService = this._instantiationService.createInstance(C2.ThemeService), this._instantiationService.setService(S2.IThemeService, this._themeService), this._characterJoinerService = this._instantiationService.createInstance(f2.CharacterJoinerService), this._instantiationService.setService(S2.ICharacterJoinerService, this._characterJoinerService), this._renderService = this.register(this._instantiationService.createInstance(g2.RenderService, this.rows, this.screenElement)), this._instantiationService.setService(S2.IRenderService, this._renderService), this.register(this._renderService.onRenderedViewportChange((e6) => this._onRender.fire(e6))), this.onResize((e6) => this._renderService.resize(e6.cols, e6.rows)), this._compositionView = O.createElement("div"), this._compositionView.classList.add("composition-view"), this._compositionHelper = this._instantiationService.createInstance(d2.CompositionHelper, this.textarea, this._compositionView), this._helperContainer.appendChild(this._compositionView), this.element.appendChild(i5);
+          try {
+            this._onWillOpen.fire(this.element);
+          } catch (e6) {
+          }
+          this._renderService.hasRenderer() || this._renderService.setRenderer(this._createRenderer()), this._mouseService = this._instantiationService.createInstance(p2.MouseService), this._instantiationService.setService(S2.IMouseService, this._mouseService), this.viewport = this._instantiationService.createInstance(h2.Viewport, this._viewportElement, this._viewportScrollArea), this.viewport.onRequestScrollLines((e6) => this.scrollLines(e6.amount, e6.suppressScrollEvent, 1)), this.register(this._inputHandler.onRequestSyncScrollBar(() => this.viewport.syncScrollArea())), this.register(this.viewport), this.register(this.onCursorMove(() => {
+            this._renderService.handleCursorMove(), this._syncTextArea();
+          })), this.register(this.onResize(() => this._renderService.handleResize(this.cols, this.rows))), this.register(this.onBlur(() => this._renderService.handleBlur())), this.register(this.onFocus(() => this._renderService.handleFocus())), this.register(this._renderService.onDimensionsChange(() => this.viewport.syncScrollArea())), this._selectionService = this.register(this._instantiationService.createInstance(m2.SelectionService, this.element, this.screenElement, this.linkifier2)), this._instantiationService.setService(S2.ISelectionService, this._selectionService), this.register(this._selectionService.onRequestScrollLines((e6) => this.scrollLines(e6.amount, e6.suppressScrollEvent))), this.register(this._selectionService.onSelectionChange(() => this._onSelectionChange.fire())), this.register(this._selectionService.onRequestRedraw((e6) => this._renderService.handleSelectionChanged(e6.start, e6.end, e6.columnSelectMode))), this.register(this._selectionService.onLinuxMouseSelection((e6) => {
+            this.textarea.value = e6, this.textarea.focus(), this.textarea.select();
+          })), this.register(this._onScroll.event((e6) => {
+            this.viewport.syncScrollArea(), this._selectionService.refresh();
+          })), this.register((0, r2.addDisposableDomListener)(this._viewportElement, "scroll", () => this._selectionService.refresh())), this.linkifier2.attachToDom(this.screenElement, this._mouseService, this._renderService), this.register(this._instantiationService.createInstance(c2.BufferDecorationRenderer, this.screenElement)), this.register((0, r2.addDisposableDomListener)(this.element, "mousedown", (e6) => this._selectionService.handleMouseDown(e6))), this.coreMouseService.areMouseEventsActive ? (this._selectionService.disable(), this.element.classList.add("enable-mouse-events")) : this._selectionService.enable(), this.options.screenReaderMode && (this._accessibilityManager.value = this._instantiationService.createInstance(M2.AccessibilityManager, this)), this.register(this.optionsService.onSpecificOptionChange("screenReaderMode", (e6) => this._handleScreenReaderModeOptionChange(e6))), this.options.overviewRulerWidth && (this._overviewRulerRenderer = this.register(this._instantiationService.createInstance(l2.OverviewRulerRenderer, this._viewportElement, this.screenElement))), this.optionsService.onSpecificOptionChange("overviewRulerWidth", (e6) => {
+            !this._overviewRulerRenderer && e6 && this._viewportElement && this.screenElement && (this._overviewRulerRenderer = this.register(this._instantiationService.createInstance(l2.OverviewRulerRenderer, this._viewportElement, this.screenElement)));
+          }), this._charSizeService.measure(), this.refresh(0, this.rows - 1), this._initGlobal(), this.bindMouse();
+        }
+        _createRenderer() {
+          return this._instantiationService.createInstance(_2.DomRenderer, this.element, this.screenElement, this._viewportElement, this.linkifier2);
+        }
+        bindMouse() {
+          const e5 = this, t4 = this.element;
+          function i5(t5) {
+            const i6 = e5._mouseService.getMouseReportCoords(t5, e5.screenElement);
+            if (!i6) return false;
+            let s5, r3;
+            switch (t5.overrideType || t5.type) {
+              case "mousemove":
+                r3 = 32, void 0 === t5.buttons ? (s5 = 3, void 0 !== t5.button && (s5 = t5.button < 3 ? t5.button : 3)) : s5 = 1 & t5.buttons ? 0 : 4 & t5.buttons ? 1 : 2 & t5.buttons ? 2 : 3;
+                break;
+              case "mouseup":
+                r3 = 0, s5 = t5.button < 3 ? t5.button : 3;
+                break;
+              case "mousedown":
+                r3 = 1, s5 = t5.button < 3 ? t5.button : 3;
+                break;
+              case "wheel":
+                if (0 === e5.viewport.getLinesScrolled(t5)) return false;
+                r3 = t5.deltaY < 0 ? 0 : 1, s5 = 4;
+                break;
+              default:
+                return false;
+            }
+            return !(void 0 === r3 || void 0 === s5 || s5 > 4) && e5.coreMouseService.triggerMouseEvent({ col: i6.col, row: i6.row, x: i6.x, y: i6.y, button: s5, action: r3, ctrl: t5.ctrlKey, alt: t5.altKey, shift: t5.shiftKey });
+          }
+          const s4 = { mouseup: null, wheel: null, mousedrag: null, mousemove: null }, n4 = { mouseup: (e6) => (i5(e6), e6.buttons || (this._document.removeEventListener("mouseup", s4.mouseup), s4.mousedrag && this._document.removeEventListener("mousemove", s4.mousedrag)), this.cancel(e6)), wheel: (e6) => (i5(e6), this.cancel(e6, true)), mousedrag: (e6) => {
+            e6.buttons && i5(e6);
+          }, mousemove: (e6) => {
+            e6.buttons || i5(e6);
+          } };
+          this.register(this.coreMouseService.onProtocolChange((e6) => {
+            e6 ? ("debug" === this.optionsService.rawOptions.logLevel && this._logService.debug("Binding to mouse events:", this.coreMouseService.explainEvents(e6)), this.element.classList.add("enable-mouse-events"), this._selectionService.disable()) : (this._logService.debug("Unbinding from mouse events."), this.element.classList.remove("enable-mouse-events"), this._selectionService.enable()), 8 & e6 ? s4.mousemove || (t4.addEventListener("mousemove", n4.mousemove), s4.mousemove = n4.mousemove) : (t4.removeEventListener("mousemove", s4.mousemove), s4.mousemove = null), 16 & e6 ? s4.wheel || (t4.addEventListener("wheel", n4.wheel, { passive: false }), s4.wheel = n4.wheel) : (t4.removeEventListener("wheel", s4.wheel), s4.wheel = null), 2 & e6 ? s4.mouseup || (t4.addEventListener("mouseup", n4.mouseup), s4.mouseup = n4.mouseup) : (this._document.removeEventListener("mouseup", s4.mouseup), t4.removeEventListener("mouseup", s4.mouseup), s4.mouseup = null), 4 & e6 ? s4.mousedrag || (s4.mousedrag = n4.mousedrag) : (this._document.removeEventListener("mousemove", s4.mousedrag), s4.mousedrag = null);
+          })), this.coreMouseService.activeProtocol = this.coreMouseService.activeProtocol, this.register((0, r2.addDisposableDomListener)(t4, "mousedown", (e6) => {
+            if (e6.preventDefault(), this.focus(), this.coreMouseService.areMouseEventsActive && !this._selectionService.shouldForceSelection(e6)) return i5(e6), s4.mouseup && this._document.addEventListener("mouseup", s4.mouseup), s4.mousedrag && this._document.addEventListener("mousemove", s4.mousedrag), this.cancel(e6);
+          })), this.register((0, r2.addDisposableDomListener)(t4, "wheel", (e6) => {
+            if (!s4.wheel) {
+              if (!this.buffer.hasScrollback) {
+                const t5 = this.viewport.getLinesScrolled(e6);
+                if (0 === t5) return;
+                const i6 = D2.C0.ESC + (this.coreService.decPrivateModes.applicationCursorKeys ? "O" : "[") + (e6.deltaY < 0 ? "A" : "B");
+                let s5 = "";
+                for (let e7 = 0; e7 < Math.abs(t5); e7++) s5 += i6;
+                return this.coreService.triggerDataEvent(s5, true), this.cancel(e6, true);
+              }
+              return this.viewport.handleWheel(e6) ? this.cancel(e6) : void 0;
+            }
+          }, { passive: false })), this.register((0, r2.addDisposableDomListener)(t4, "touchstart", (e6) => {
+            if (!this.coreMouseService.areMouseEventsActive) return this.viewport.handleTouchStart(e6), this.cancel(e6);
+          }, { passive: true })), this.register((0, r2.addDisposableDomListener)(t4, "touchmove", (e6) => {
+            if (!this.coreMouseService.areMouseEventsActive) return this.viewport.handleTouchMove(e6) ? void 0 : this.cancel(e6);
+          }, { passive: false }));
+        }
+        refresh(e5, t4) {
+          var i5;
+          null === (i5 = this._renderService) || void 0 === i5 || i5.refreshRows(e5, t4);
+        }
+        updateCursorStyle(e5) {
+          var t4;
+          (null === (t4 = this._selectionService) || void 0 === t4 ? void 0 : t4.shouldColumnSelect(e5)) ? this.element.classList.add("column-select") : this.element.classList.remove("column-select");
+        }
+        _showCursor() {
+          this.coreService.isCursorInitialized || (this.coreService.isCursorInitialized = true, this.refresh(this.buffer.y, this.buffer.y));
+        }
+        scrollLines(e5, t4, i5 = 0) {
+          var s4;
+          1 === i5 ? (super.scrollLines(e5, t4, i5), this.refresh(0, this.rows - 1)) : null === (s4 = this.viewport) || void 0 === s4 || s4.scrollLines(e5);
+        }
+        paste(e5) {
+          (0, s3.paste)(e5, this.textarea, this.coreService, this.optionsService);
+        }
+        attachCustomKeyEventHandler(e5) {
+          this._customKeyEventHandler = e5;
+        }
+        registerLinkProvider(e5) {
+          return this.linkifier2.registerLinkProvider(e5);
+        }
+        registerCharacterJoiner(e5) {
+          if (!this._characterJoinerService) throw new Error("Terminal must be opened first");
+          const t4 = this._characterJoinerService.register(e5);
+          return this.refresh(0, this.rows - 1), t4;
+        }
+        deregisterCharacterJoiner(e5) {
+          if (!this._characterJoinerService) throw new Error("Terminal must be opened first");
+          this._characterJoinerService.deregister(e5) && this.refresh(0, this.rows - 1);
+        }
+        get markers() {
+          return this.buffer.markers;
+        }
+        registerMarker(e5) {
+          return this.buffer.addMarker(this.buffer.ybase + this.buffer.y + e5);
+        }
+        registerDecoration(e5) {
+          return this._decorationService.registerDecoration(e5);
+        }
+        hasSelection() {
+          return !!this._selectionService && this._selectionService.hasSelection;
+        }
+        select(e5, t4, i5) {
+          this._selectionService.setSelection(e5, t4, i5);
+        }
+        getSelection() {
+          return this._selectionService ? this._selectionService.selectionText : "";
+        }
+        getSelectionPosition() {
+          if (this._selectionService && this._selectionService.hasSelection) return { start: { x: this._selectionService.selectionStart[0], y: this._selectionService.selectionStart[1] }, end: { x: this._selectionService.selectionEnd[0], y: this._selectionService.selectionEnd[1] } };
+        }
+        clearSelection() {
+          var e5;
+          null === (e5 = this._selectionService) || void 0 === e5 || e5.clearSelection();
+        }
+        selectAll() {
+          var e5;
+          null === (e5 = this._selectionService) || void 0 === e5 || e5.selectAll();
+        }
+        selectLines(e5, t4) {
+          var i5;
+          null === (i5 = this._selectionService) || void 0 === i5 || i5.selectLines(e5, t4);
+        }
+        _keyDown(e5) {
+          if (this._keyDownHandled = false, this._keyDownSeen = true, this._customKeyEventHandler && false === this._customKeyEventHandler(e5)) return false;
+          const t4 = this.browser.isMac && this.options.macOptionIsMeta && e5.altKey;
+          if (!t4 && !this._compositionHelper.keydown(e5)) return this.options.scrollOnUserInput && this.buffer.ybase !== this.buffer.ydisp && this.scrollToBottom(), false;
+          t4 || "Dead" !== e5.key && "AltGraph" !== e5.key || (this._unprocessedDeadKey = true);
+          const i5 = (0, R2.evaluateKeyboardEvent)(e5, this.coreService.decPrivateModes.applicationCursorKeys, this.browser.isMac, this.options.macOptionIsMeta);
+          if (this.updateCursorStyle(e5), 3 === i5.type || 2 === i5.type) {
+            const t5 = this.rows - 1;
+            return this.scrollLines(2 === i5.type ? -t5 : t5), this.cancel(e5, true);
+          }
+          return 1 === i5.type && this.selectAll(), !!this._isThirdLevelShift(this.browser, e5) || (i5.cancel && this.cancel(e5, true), !i5.key || !!(e5.key && !e5.ctrlKey && !e5.altKey && !e5.metaKey && 1 === e5.key.length && e5.key.charCodeAt(0) >= 65 && e5.key.charCodeAt(0) <= 90) || (this._unprocessedDeadKey ? (this._unprocessedDeadKey = false, true) : (i5.key !== D2.C0.ETX && i5.key !== D2.C0.CR || (this.textarea.value = ""), this._onKey.fire({ key: i5.key, domEvent: e5 }), this._showCursor(), this.coreService.triggerDataEvent(i5.key, true), !this.optionsService.rawOptions.screenReaderMode || e5.altKey || e5.ctrlKey ? this.cancel(e5, true) : void (this._keyDownHandled = true))));
+        }
+        _isThirdLevelShift(e5, t4) {
+          const i5 = e5.isMac && !this.options.macOptionIsMeta && t4.altKey && !t4.ctrlKey && !t4.metaKey || e5.isWindows && t4.altKey && t4.ctrlKey && !t4.metaKey || e5.isWindows && t4.getModifierState("AltGraph");
+          return "keypress" === t4.type ? i5 : i5 && (!t4.keyCode || t4.keyCode > 47);
+        }
+        _keyUp(e5) {
+          this._keyDownSeen = false, this._customKeyEventHandler && false === this._customKeyEventHandler(e5) || (function(e6) {
+            return 16 === e6.keyCode || 17 === e6.keyCode || 18 === e6.keyCode;
+          }(e5) || this.focus(), this.updateCursorStyle(e5), this._keyPressHandled = false);
+        }
+        _keyPress(e5) {
+          let t4;
+          if (this._keyPressHandled = false, this._keyDownHandled) return false;
+          if (this._customKeyEventHandler && false === this._customKeyEventHandler(e5)) return false;
+          if (this.cancel(e5), e5.charCode) t4 = e5.charCode;
+          else if (null === e5.which || void 0 === e5.which) t4 = e5.keyCode;
+          else {
+            if (0 === e5.which || 0 === e5.charCode) return false;
+            t4 = e5.which;
+          }
+          return !(!t4 || (e5.altKey || e5.ctrlKey || e5.metaKey) && !this._isThirdLevelShift(this.browser, e5) || (t4 = String.fromCharCode(t4), this._onKey.fire({ key: t4, domEvent: e5 }), this._showCursor(), this.coreService.triggerDataEvent(t4, true), this._keyPressHandled = true, this._unprocessedDeadKey = false, 0));
+        }
+        _inputEvent(e5) {
+          if (e5.data && "insertText" === e5.inputType && (!e5.composed || !this._keyDownSeen) && !this.optionsService.rawOptions.screenReaderMode) {
+            if (this._keyPressHandled) return false;
+            this._unprocessedDeadKey = false;
+            const t4 = e5.data;
+            return this.coreService.triggerDataEvent(t4, true), this.cancel(e5), true;
+          }
+          return false;
+        }
+        resize(e5, t4) {
+          e5 !== this.cols || t4 !== this.rows ? super.resize(e5, t4) : this._charSizeService && !this._charSizeService.hasValidSize && this._charSizeService.measure();
+        }
+        _afterResize(e5, t4) {
+          var i5, s4;
+          null === (i5 = this._charSizeService) || void 0 === i5 || i5.measure(), null === (s4 = this.viewport) || void 0 === s4 || s4.syncScrollArea(true);
+        }
+        clear() {
+          var e5;
+          if (0 !== this.buffer.ybase || 0 !== this.buffer.y) {
+            this.buffer.clearAllMarkers(), this.buffer.lines.set(0, this.buffer.lines.get(this.buffer.ybase + this.buffer.y)), this.buffer.lines.length = 1, this.buffer.ydisp = 0, this.buffer.ybase = 0, this.buffer.y = 0;
+            for (let e6 = 1; e6 < this.rows; e6++) this.buffer.lines.push(this.buffer.getBlankLine(L2.DEFAULT_ATTR_DATA));
+            this._onScroll.fire({ position: this.buffer.ydisp, source: 0 }), null === (e5 = this.viewport) || void 0 === e5 || e5.reset(), this.refresh(0, this.rows - 1);
+          }
+        }
+        reset() {
+          var e5, t4;
+          this.options.rows = this.rows, this.options.cols = this.cols;
+          const i5 = this._customKeyEventHandler;
+          this._setup(), super.reset(), null === (e5 = this._selectionService) || void 0 === e5 || e5.reset(), this._decorationService.reset(), null === (t4 = this.viewport) || void 0 === t4 || t4.reset(), this._customKeyEventHandler = i5, this.refresh(0, this.rows - 1);
+        }
+        clearTextureAtlas() {
+          var e5;
+          null === (e5 = this._renderService) || void 0 === e5 || e5.clearTextureAtlas();
+        }
+        _reportFocus() {
+          var e5;
+          (null === (e5 = this.element) || void 0 === e5 ? void 0 : e5.classList.contains("focus")) ? this.coreService.triggerDataEvent(D2.C0.ESC + "[I") : this.coreService.triggerDataEvent(D2.C0.ESC + "[O");
+        }
+        _reportWindowsOptions(e5) {
+          if (this._renderService) switch (e5) {
+            case T.WindowsOptionsReportType.GET_WIN_SIZE_PIXELS:
+              const e6 = this._renderService.dimensions.css.canvas.width.toFixed(0), t4 = this._renderService.dimensions.css.canvas.height.toFixed(0);
+              this.coreService.triggerDataEvent(`${D2.C0.ESC}[4;${t4};${e6}t`);
+              break;
+            case T.WindowsOptionsReportType.GET_CELL_SIZE_PIXELS:
+              const i5 = this._renderService.dimensions.css.cell.width.toFixed(0), s4 = this._renderService.dimensions.css.cell.height.toFixed(0);
+              this.coreService.triggerDataEvent(`${D2.C0.ESC}[6;${s4};${i5}t`);
+          }
+        }
+        cancel(e5, t4) {
+          if (this.options.cancelEvents || t4) return e5.preventDefault(), e5.stopPropagation(), false;
+        }
+      }
+      t3.Terminal = P2;
+    }, 9924: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.TimeBasedDebouncer = void 0, t3.TimeBasedDebouncer = class {
+        constructor(e5, t4 = 1e3) {
+          this._renderCallback = e5, this._debounceThresholdMS = t4, this._lastRefreshMs = 0, this._additionalRefreshRequested = false;
+        }
+        dispose() {
+          this._refreshTimeoutID && clearTimeout(this._refreshTimeoutID);
+        }
+        refresh(e5, t4, i4) {
+          this._rowCount = i4, e5 = void 0 !== e5 ? e5 : 0, t4 = void 0 !== t4 ? t4 : this._rowCount - 1, this._rowStart = void 0 !== this._rowStart ? Math.min(this._rowStart, e5) : e5, this._rowEnd = void 0 !== this._rowEnd ? Math.max(this._rowEnd, t4) : t4;
+          const s3 = Date.now();
+          if (s3 - this._lastRefreshMs >= this._debounceThresholdMS) this._lastRefreshMs = s3, this._innerRefresh();
+          else if (!this._additionalRefreshRequested) {
+            const e6 = s3 - this._lastRefreshMs, t5 = this._debounceThresholdMS - e6;
+            this._additionalRefreshRequested = true, this._refreshTimeoutID = window.setTimeout(() => {
+              this._lastRefreshMs = Date.now(), this._innerRefresh(), this._additionalRefreshRequested = false, this._refreshTimeoutID = void 0;
+            }, t5);
+          }
+        }
+        _innerRefresh() {
+          if (void 0 === this._rowStart || void 0 === this._rowEnd || void 0 === this._rowCount) return;
+          const e5 = Math.max(this._rowStart, 0), t4 = Math.min(this._rowEnd, this._rowCount - 1);
+          this._rowStart = void 0, this._rowEnd = void 0, this._renderCallback(e5, t4);
+        }
+      };
+    }, 1680: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.Viewport = void 0;
+      const n3 = i4(3656), o2 = i4(4725), a2 = i4(8460), h2 = i4(844), c2 = i4(2585);
+      let l2 = t3.Viewport = class extends h2.Disposable {
+        constructor(e5, t4, i5, s4, r3, o3, h3, c3) {
+          super(), this._viewportElement = e5, this._scrollArea = t4, this._bufferService = i5, this._optionsService = s4, this._charSizeService = r3, this._renderService = o3, this._coreBrowserService = h3, this.scrollBarWidth = 0, this._currentRowHeight = 0, this._currentDeviceCellHeight = 0, this._lastRecordedBufferLength = 0, this._lastRecordedViewportHeight = 0, this._lastRecordedBufferHeight = 0, this._lastTouchY = 0, this._lastScrollTop = 0, this._wheelPartialScroll = 0, this._refreshAnimationFrame = null, this._ignoreNextScrollEvent = false, this._smoothScrollState = { startTime: 0, origin: -1, target: -1 }, this._onRequestScrollLines = this.register(new a2.EventEmitter()), this.onRequestScrollLines = this._onRequestScrollLines.event, this.scrollBarWidth = this._viewportElement.offsetWidth - this._scrollArea.offsetWidth || 15, this.register((0, n3.addDisposableDomListener)(this._viewportElement, "scroll", this._handleScroll.bind(this))), this._activeBuffer = this._bufferService.buffer, this.register(this._bufferService.buffers.onBufferActivate((e6) => this._activeBuffer = e6.activeBuffer)), this._renderDimensions = this._renderService.dimensions, this.register(this._renderService.onDimensionsChange((e6) => this._renderDimensions = e6)), this._handleThemeChange(c3.colors), this.register(c3.onChangeColors((e6) => this._handleThemeChange(e6))), this.register(this._optionsService.onSpecificOptionChange("scrollback", () => this.syncScrollArea())), setTimeout(() => this.syncScrollArea());
+        }
+        _handleThemeChange(e5) {
+          this._viewportElement.style.backgroundColor = e5.background.css;
+        }
+        reset() {
+          this._currentRowHeight = 0, this._currentDeviceCellHeight = 0, this._lastRecordedBufferLength = 0, this._lastRecordedViewportHeight = 0, this._lastRecordedBufferHeight = 0, this._lastTouchY = 0, this._lastScrollTop = 0, this._coreBrowserService.window.requestAnimationFrame(() => this.syncScrollArea());
+        }
+        _refresh(e5) {
+          if (e5) return this._innerRefresh(), void (null !== this._refreshAnimationFrame && this._coreBrowserService.window.cancelAnimationFrame(this._refreshAnimationFrame));
+          null === this._refreshAnimationFrame && (this._refreshAnimationFrame = this._coreBrowserService.window.requestAnimationFrame(() => this._innerRefresh()));
+        }
+        _innerRefresh() {
+          if (this._charSizeService.height > 0) {
+            this._currentRowHeight = this._renderService.dimensions.device.cell.height / this._coreBrowserService.dpr, this._currentDeviceCellHeight = this._renderService.dimensions.device.cell.height, this._lastRecordedViewportHeight = this._viewportElement.offsetHeight;
+            const e6 = Math.round(this._currentRowHeight * this._lastRecordedBufferLength) + (this._lastRecordedViewportHeight - this._renderService.dimensions.css.canvas.height);
+            this._lastRecordedBufferHeight !== e6 && (this._lastRecordedBufferHeight = e6, this._scrollArea.style.height = this._lastRecordedBufferHeight + "px");
+          }
+          const e5 = this._bufferService.buffer.ydisp * this._currentRowHeight;
+          this._viewportElement.scrollTop !== e5 && (this._ignoreNextScrollEvent = true, this._viewportElement.scrollTop = e5), this._refreshAnimationFrame = null;
+        }
+        syncScrollArea(e5 = false) {
+          if (this._lastRecordedBufferLength !== this._bufferService.buffer.lines.length) return this._lastRecordedBufferLength = this._bufferService.buffer.lines.length, void this._refresh(e5);
+          this._lastRecordedViewportHeight === this._renderService.dimensions.css.canvas.height && this._lastScrollTop === this._activeBuffer.ydisp * this._currentRowHeight && this._renderDimensions.device.cell.height === this._currentDeviceCellHeight || this._refresh(e5);
+        }
+        _handleScroll(e5) {
+          if (this._lastScrollTop = this._viewportElement.scrollTop, !this._viewportElement.offsetParent) return;
+          if (this._ignoreNextScrollEvent) return this._ignoreNextScrollEvent = false, void this._onRequestScrollLines.fire({ amount: 0, suppressScrollEvent: true });
+          const t4 = Math.round(this._lastScrollTop / this._currentRowHeight) - this._bufferService.buffer.ydisp;
+          this._onRequestScrollLines.fire({ amount: t4, suppressScrollEvent: true });
+        }
+        _smoothScroll() {
+          if (this._isDisposed || -1 === this._smoothScrollState.origin || -1 === this._smoothScrollState.target) return;
+          const e5 = this._smoothScrollPercent();
+          this._viewportElement.scrollTop = this._smoothScrollState.origin + Math.round(e5 * (this._smoothScrollState.target - this._smoothScrollState.origin)), e5 < 1 ? this._coreBrowserService.window.requestAnimationFrame(() => this._smoothScroll()) : this._clearSmoothScrollState();
+        }
+        _smoothScrollPercent() {
+          return this._optionsService.rawOptions.smoothScrollDuration && this._smoothScrollState.startTime ? Math.max(Math.min((Date.now() - this._smoothScrollState.startTime) / this._optionsService.rawOptions.smoothScrollDuration, 1), 0) : 1;
+        }
+        _clearSmoothScrollState() {
+          this._smoothScrollState.startTime = 0, this._smoothScrollState.origin = -1, this._smoothScrollState.target = -1;
+        }
+        _bubbleScroll(e5, t4) {
+          const i5 = this._viewportElement.scrollTop + this._lastRecordedViewportHeight;
+          return !(t4 < 0 && 0 !== this._viewportElement.scrollTop || t4 > 0 && i5 < this._lastRecordedBufferHeight) || (e5.cancelable && e5.preventDefault(), false);
+        }
+        handleWheel(e5) {
+          const t4 = this._getPixelsScrolled(e5);
+          return 0 !== t4 && (this._optionsService.rawOptions.smoothScrollDuration ? (this._smoothScrollState.startTime = Date.now(), this._smoothScrollPercent() < 1 ? (this._smoothScrollState.origin = this._viewportElement.scrollTop, -1 === this._smoothScrollState.target ? this._smoothScrollState.target = this._viewportElement.scrollTop + t4 : this._smoothScrollState.target += t4, this._smoothScrollState.target = Math.max(Math.min(this._smoothScrollState.target, this._viewportElement.scrollHeight), 0), this._smoothScroll()) : this._clearSmoothScrollState()) : this._viewportElement.scrollTop += t4, this._bubbleScroll(e5, t4));
+        }
+        scrollLines(e5) {
+          if (0 !== e5) if (this._optionsService.rawOptions.smoothScrollDuration) {
+            const t4 = e5 * this._currentRowHeight;
+            this._smoothScrollState.startTime = Date.now(), this._smoothScrollPercent() < 1 ? (this._smoothScrollState.origin = this._viewportElement.scrollTop, this._smoothScrollState.target = this._smoothScrollState.origin + t4, this._smoothScrollState.target = Math.max(Math.min(this._smoothScrollState.target, this._viewportElement.scrollHeight), 0), this._smoothScroll()) : this._clearSmoothScrollState();
+          } else this._onRequestScrollLines.fire({ amount: e5, suppressScrollEvent: false });
+        }
+        _getPixelsScrolled(e5) {
+          if (0 === e5.deltaY || e5.shiftKey) return 0;
+          let t4 = this._applyScrollModifier(e5.deltaY, e5);
+          return e5.deltaMode === WheelEvent.DOM_DELTA_LINE ? t4 *= this._currentRowHeight : e5.deltaMode === WheelEvent.DOM_DELTA_PAGE && (t4 *= this._currentRowHeight * this._bufferService.rows), t4;
+        }
+        getBufferElements(e5, t4) {
+          var i5;
+          let s4, r3 = "";
+          const n4 = [], o3 = null != t4 ? t4 : this._bufferService.buffer.lines.length, a3 = this._bufferService.buffer.lines;
+          for (let t5 = e5; t5 < o3; t5++) {
+            const e6 = a3.get(t5);
+            if (!e6) continue;
+            const o4 = null === (i5 = a3.get(t5 + 1)) || void 0 === i5 ? void 0 : i5.isWrapped;
+            if (r3 += e6.translateToString(!o4), !o4 || t5 === a3.length - 1) {
+              const e7 = document.createElement("div");
+              e7.textContent = r3, n4.push(e7), r3.length > 0 && (s4 = e7), r3 = "";
+            }
+          }
+          return { bufferElements: n4, cursorElement: s4 };
+        }
+        getLinesScrolled(e5) {
+          if (0 === e5.deltaY || e5.shiftKey) return 0;
+          let t4 = this._applyScrollModifier(e5.deltaY, e5);
+          return e5.deltaMode === WheelEvent.DOM_DELTA_PIXEL ? (t4 /= this._currentRowHeight + 0, this._wheelPartialScroll += t4, t4 = Math.floor(Math.abs(this._wheelPartialScroll)) * (this._wheelPartialScroll > 0 ? 1 : -1), this._wheelPartialScroll %= 1) : e5.deltaMode === WheelEvent.DOM_DELTA_PAGE && (t4 *= this._bufferService.rows), t4;
+        }
+        _applyScrollModifier(e5, t4) {
+          const i5 = this._optionsService.rawOptions.fastScrollModifier;
+          return "alt" === i5 && t4.altKey || "ctrl" === i5 && t4.ctrlKey || "shift" === i5 && t4.shiftKey ? e5 * this._optionsService.rawOptions.fastScrollSensitivity * this._optionsService.rawOptions.scrollSensitivity : e5 * this._optionsService.rawOptions.scrollSensitivity;
+        }
+        handleTouchStart(e5) {
+          this._lastTouchY = e5.touches[0].pageY;
+        }
+        handleTouchMove(e5) {
+          const t4 = this._lastTouchY - e5.touches[0].pageY;
+          return this._lastTouchY = e5.touches[0].pageY, 0 !== t4 && (this._viewportElement.scrollTop += t4, this._bubbleScroll(e5, t4));
+        }
+      };
+      t3.Viewport = l2 = s3([r2(2, c2.IBufferService), r2(3, c2.IOptionsService), r2(4, o2.ICharSizeService), r2(5, o2.IRenderService), r2(6, o2.ICoreBrowserService), r2(7, o2.IThemeService)], l2);
+    }, 3107: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.BufferDecorationRenderer = void 0;
+      const n3 = i4(3656), o2 = i4(4725), a2 = i4(844), h2 = i4(2585);
+      let c2 = t3.BufferDecorationRenderer = class extends a2.Disposable {
+        constructor(e5, t4, i5, s4) {
+          super(), this._screenElement = e5, this._bufferService = t4, this._decorationService = i5, this._renderService = s4, this._decorationElements = /* @__PURE__ */ new Map(), this._altBufferIsActive = false, this._dimensionsChanged = false, this._container = document.createElement("div"), this._container.classList.add("xterm-decoration-container"), this._screenElement.appendChild(this._container), this.register(this._renderService.onRenderedViewportChange(() => this._doRefreshDecorations())), this.register(this._renderService.onDimensionsChange(() => {
+            this._dimensionsChanged = true, this._queueRefresh();
+          })), this.register((0, n3.addDisposableDomListener)(window, "resize", () => this._queueRefresh())), this.register(this._bufferService.buffers.onBufferActivate(() => {
+            this._altBufferIsActive = this._bufferService.buffer === this._bufferService.buffers.alt;
+          })), this.register(this._decorationService.onDecorationRegistered(() => this._queueRefresh())), this.register(this._decorationService.onDecorationRemoved((e6) => this._removeDecoration(e6))), this.register((0, a2.toDisposable)(() => {
+            this._container.remove(), this._decorationElements.clear();
+          }));
+        }
+        _queueRefresh() {
+          void 0 === this._animationFrame && (this._animationFrame = this._renderService.addRefreshCallback(() => {
+            this._doRefreshDecorations(), this._animationFrame = void 0;
+          }));
+        }
+        _doRefreshDecorations() {
+          for (const e5 of this._decorationService.decorations) this._renderDecoration(e5);
+          this._dimensionsChanged = false;
+        }
+        _renderDecoration(e5) {
+          this._refreshStyle(e5), this._dimensionsChanged && this._refreshXPosition(e5);
+        }
+        _createElement(e5) {
+          var t4, i5;
+          const s4 = document.createElement("div");
+          s4.classList.add("xterm-decoration"), s4.classList.toggle("xterm-decoration-top-layer", "top" === (null === (t4 = null == e5 ? void 0 : e5.options) || void 0 === t4 ? void 0 : t4.layer)), s4.style.width = `${Math.round((e5.options.width || 1) * this._renderService.dimensions.css.cell.width)}px`, s4.style.height = (e5.options.height || 1) * this._renderService.dimensions.css.cell.height + "px", s4.style.top = (e5.marker.line - this._bufferService.buffers.active.ydisp) * this._renderService.dimensions.css.cell.height + "px", s4.style.lineHeight = `${this._renderService.dimensions.css.cell.height}px`;
+          const r3 = null !== (i5 = e5.options.x) && void 0 !== i5 ? i5 : 0;
+          return r3 && r3 > this._bufferService.cols && (s4.style.display = "none"), this._refreshXPosition(e5, s4), s4;
+        }
+        _refreshStyle(e5) {
+          const t4 = e5.marker.line - this._bufferService.buffers.active.ydisp;
+          if (t4 < 0 || t4 >= this._bufferService.rows) e5.element && (e5.element.style.display = "none", e5.onRenderEmitter.fire(e5.element));
+          else {
+            let i5 = this._decorationElements.get(e5);
+            i5 || (i5 = this._createElement(e5), e5.element = i5, this._decorationElements.set(e5, i5), this._container.appendChild(i5), e5.onDispose(() => {
+              this._decorationElements.delete(e5), i5.remove();
+            })), i5.style.top = t4 * this._renderService.dimensions.css.cell.height + "px", i5.style.display = this._altBufferIsActive ? "none" : "block", e5.onRenderEmitter.fire(i5);
+          }
+        }
+        _refreshXPosition(e5, t4 = e5.element) {
+          var i5;
+          if (!t4) return;
+          const s4 = null !== (i5 = e5.options.x) && void 0 !== i5 ? i5 : 0;
+          "right" === (e5.options.anchor || "left") ? t4.style.right = s4 ? s4 * this._renderService.dimensions.css.cell.width + "px" : "" : t4.style.left = s4 ? s4 * this._renderService.dimensions.css.cell.width + "px" : "";
+        }
+        _removeDecoration(e5) {
+          var t4;
+          null === (t4 = this._decorationElements.get(e5)) || void 0 === t4 || t4.remove(), this._decorationElements.delete(e5), e5.dispose();
+        }
+      };
+      t3.BufferDecorationRenderer = c2 = s3([r2(1, h2.IBufferService), r2(2, h2.IDecorationService), r2(3, o2.IRenderService)], c2);
+    }, 5871: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.ColorZoneStore = void 0, t3.ColorZoneStore = class {
+        constructor() {
+          this._zones = [], this._zonePool = [], this._zonePoolIndex = 0, this._linePadding = { full: 0, left: 0, center: 0, right: 0 };
+        }
+        get zones() {
+          return this._zonePool.length = Math.min(this._zonePool.length, this._zones.length), this._zones;
+        }
+        clear() {
+          this._zones.length = 0, this._zonePoolIndex = 0;
+        }
+        addDecoration(e5) {
+          if (e5.options.overviewRulerOptions) {
+            for (const t4 of this._zones) if (t4.color === e5.options.overviewRulerOptions.color && t4.position === e5.options.overviewRulerOptions.position) {
+              if (this._lineIntersectsZone(t4, e5.marker.line)) return;
+              if (this._lineAdjacentToZone(t4, e5.marker.line, e5.options.overviewRulerOptions.position)) return void this._addLineToZone(t4, e5.marker.line);
+            }
+            if (this._zonePoolIndex < this._zonePool.length) return this._zonePool[this._zonePoolIndex].color = e5.options.overviewRulerOptions.color, this._zonePool[this._zonePoolIndex].position = e5.options.overviewRulerOptions.position, this._zonePool[this._zonePoolIndex].startBufferLine = e5.marker.line, this._zonePool[this._zonePoolIndex].endBufferLine = e5.marker.line, void this._zones.push(this._zonePool[this._zonePoolIndex++]);
+            this._zones.push({ color: e5.options.overviewRulerOptions.color, position: e5.options.overviewRulerOptions.position, startBufferLine: e5.marker.line, endBufferLine: e5.marker.line }), this._zonePool.push(this._zones[this._zones.length - 1]), this._zonePoolIndex++;
+          }
+        }
+        setPadding(e5) {
+          this._linePadding = e5;
+        }
+        _lineIntersectsZone(e5, t4) {
+          return t4 >= e5.startBufferLine && t4 <= e5.endBufferLine;
+        }
+        _lineAdjacentToZone(e5, t4, i4) {
+          return t4 >= e5.startBufferLine - this._linePadding[i4 || "full"] && t4 <= e5.endBufferLine + this._linePadding[i4 || "full"];
+        }
+        _addLineToZone(e5, t4) {
+          e5.startBufferLine = Math.min(e5.startBufferLine, t4), e5.endBufferLine = Math.max(e5.endBufferLine, t4);
+        }
+      };
+    }, 5744: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.OverviewRulerRenderer = void 0;
+      const n3 = i4(5871), o2 = i4(3656), a2 = i4(4725), h2 = i4(844), c2 = i4(2585), l2 = { full: 0, left: 0, center: 0, right: 0 }, d2 = { full: 0, left: 0, center: 0, right: 0 }, _2 = { full: 0, left: 0, center: 0, right: 0 };
+      let u2 = t3.OverviewRulerRenderer = class extends h2.Disposable {
+        get _width() {
+          return this._optionsService.options.overviewRulerWidth || 0;
+        }
+        constructor(e5, t4, i5, s4, r3, o3, a3) {
+          var c3;
+          super(), this._viewportElement = e5, this._screenElement = t4, this._bufferService = i5, this._decorationService = s4, this._renderService = r3, this._optionsService = o3, this._coreBrowseService = a3, this._colorZoneStore = new n3.ColorZoneStore(), this._shouldUpdateDimensions = true, this._shouldUpdateAnchor = true, this._lastKnownBufferLength = 0, this._canvas = document.createElement("canvas"), this._canvas.classList.add("xterm-decoration-overview-ruler"), this._refreshCanvasDimensions(), null === (c3 = this._viewportElement.parentElement) || void 0 === c3 || c3.insertBefore(this._canvas, this._viewportElement);
+          const l3 = this._canvas.getContext("2d");
+          if (!l3) throw new Error("Ctx cannot be null");
+          this._ctx = l3, this._registerDecorationListeners(), this._registerBufferChangeListeners(), this._registerDimensionChangeListeners(), this.register((0, h2.toDisposable)(() => {
+            var e6;
+            null === (e6 = this._canvas) || void 0 === e6 || e6.remove();
+          }));
+        }
+        _registerDecorationListeners() {
+          this.register(this._decorationService.onDecorationRegistered(() => this._queueRefresh(void 0, true))), this.register(this._decorationService.onDecorationRemoved(() => this._queueRefresh(void 0, true)));
+        }
+        _registerBufferChangeListeners() {
+          this.register(this._renderService.onRenderedViewportChange(() => this._queueRefresh())), this.register(this._bufferService.buffers.onBufferActivate(() => {
+            this._canvas.style.display = this._bufferService.buffer === this._bufferService.buffers.alt ? "none" : "block";
+          })), this.register(this._bufferService.onScroll(() => {
+            this._lastKnownBufferLength !== this._bufferService.buffers.normal.lines.length && (this._refreshDrawHeightConstants(), this._refreshColorZonePadding());
+          }));
+        }
+        _registerDimensionChangeListeners() {
+          this.register(this._renderService.onRender(() => {
+            this._containerHeight && this._containerHeight === this._screenElement.clientHeight || (this._queueRefresh(true), this._containerHeight = this._screenElement.clientHeight);
+          })), this.register(this._optionsService.onSpecificOptionChange("overviewRulerWidth", () => this._queueRefresh(true))), this.register((0, o2.addDisposableDomListener)(this._coreBrowseService.window, "resize", () => this._queueRefresh(true))), this._queueRefresh(true);
+        }
+        _refreshDrawConstants() {
+          const e5 = Math.floor(this._canvas.width / 3), t4 = Math.ceil(this._canvas.width / 3);
+          d2.full = this._canvas.width, d2.left = e5, d2.center = t4, d2.right = e5, this._refreshDrawHeightConstants(), _2.full = 0, _2.left = 0, _2.center = d2.left, _2.right = d2.left + d2.center;
+        }
+        _refreshDrawHeightConstants() {
+          l2.full = Math.round(2 * this._coreBrowseService.dpr);
+          const e5 = this._canvas.height / this._bufferService.buffer.lines.length, t4 = Math.round(Math.max(Math.min(e5, 12), 6) * this._coreBrowseService.dpr);
+          l2.left = t4, l2.center = t4, l2.right = t4;
+        }
+        _refreshColorZonePadding() {
+          this._colorZoneStore.setPadding({ full: Math.floor(this._bufferService.buffers.active.lines.length / (this._canvas.height - 1) * l2.full), left: Math.floor(this._bufferService.buffers.active.lines.length / (this._canvas.height - 1) * l2.left), center: Math.floor(this._bufferService.buffers.active.lines.length / (this._canvas.height - 1) * l2.center), right: Math.floor(this._bufferService.buffers.active.lines.length / (this._canvas.height - 1) * l2.right) }), this._lastKnownBufferLength = this._bufferService.buffers.normal.lines.length;
+        }
+        _refreshCanvasDimensions() {
+          this._canvas.style.width = `${this._width}px`, this._canvas.width = Math.round(this._width * this._coreBrowseService.dpr), this._canvas.style.height = `${this._screenElement.clientHeight}px`, this._canvas.height = Math.round(this._screenElement.clientHeight * this._coreBrowseService.dpr), this._refreshDrawConstants(), this._refreshColorZonePadding();
+        }
+        _refreshDecorations() {
+          this._shouldUpdateDimensions && this._refreshCanvasDimensions(), this._ctx.clearRect(0, 0, this._canvas.width, this._canvas.height), this._colorZoneStore.clear();
+          for (const e6 of this._decorationService.decorations) this._colorZoneStore.addDecoration(e6);
+          this._ctx.lineWidth = 1;
+          const e5 = this._colorZoneStore.zones;
+          for (const t4 of e5) "full" !== t4.position && this._renderColorZone(t4);
+          for (const t4 of e5) "full" === t4.position && this._renderColorZone(t4);
+          this._shouldUpdateDimensions = false, this._shouldUpdateAnchor = false;
+        }
+        _renderColorZone(e5) {
+          this._ctx.fillStyle = e5.color, this._ctx.fillRect(_2[e5.position || "full"], Math.round((this._canvas.height - 1) * (e5.startBufferLine / this._bufferService.buffers.active.lines.length) - l2[e5.position || "full"] / 2), d2[e5.position || "full"], Math.round((this._canvas.height - 1) * ((e5.endBufferLine - e5.startBufferLine) / this._bufferService.buffers.active.lines.length) + l2[e5.position || "full"]));
+        }
+        _queueRefresh(e5, t4) {
+          this._shouldUpdateDimensions = e5 || this._shouldUpdateDimensions, this._shouldUpdateAnchor = t4 || this._shouldUpdateAnchor, void 0 === this._animationFrame && (this._animationFrame = this._coreBrowseService.window.requestAnimationFrame(() => {
+            this._refreshDecorations(), this._animationFrame = void 0;
+          }));
+        }
+      };
+      t3.OverviewRulerRenderer = u2 = s3([r2(2, c2.IBufferService), r2(3, c2.IDecorationService), r2(4, a2.IRenderService), r2(5, c2.IOptionsService), r2(6, a2.ICoreBrowserService)], u2);
+    }, 2950: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CompositionHelper = void 0;
+      const n3 = i4(4725), o2 = i4(2585), a2 = i4(2584);
+      let h2 = t3.CompositionHelper = class {
+        get isComposing() {
+          return this._isComposing;
+        }
+        constructor(e5, t4, i5, s4, r3, n4) {
+          this._textarea = e5, this._compositionView = t4, this._bufferService = i5, this._optionsService = s4, this._coreService = r3, this._renderService = n4, this._isComposing = false, this._isSendingComposition = false, this._compositionPosition = { start: 0, end: 0 }, this._dataAlreadySent = "";
+        }
+        compositionstart() {
+          this._isComposing = true, this._compositionPosition.start = this._textarea.value.length, this._compositionView.textContent = "", this._dataAlreadySent = "", this._compositionView.classList.add("active");
+        }
+        compositionupdate(e5) {
+          this._compositionView.textContent = e5.data, this.updateCompositionElements(), setTimeout(() => {
+            this._compositionPosition.end = this._textarea.value.length;
+          }, 0);
+        }
+        compositionend() {
+          this._finalizeComposition(true);
+        }
+        keydown(e5) {
+          if (this._isComposing || this._isSendingComposition) {
+            if (229 === e5.keyCode) return false;
+            if (16 === e5.keyCode || 17 === e5.keyCode || 18 === e5.keyCode) return false;
+            this._finalizeComposition(false);
+          }
+          return 229 !== e5.keyCode || (this._handleAnyTextareaChanges(), false);
+        }
+        _finalizeComposition(e5) {
+          if (this._compositionView.classList.remove("active"), this._isComposing = false, e5) {
+            const e6 = { start: this._compositionPosition.start, end: this._compositionPosition.end };
+            this._isSendingComposition = true, setTimeout(() => {
+              if (this._isSendingComposition) {
+                let t4;
+                this._isSendingComposition = false, e6.start += this._dataAlreadySent.length, t4 = this._isComposing ? this._textarea.value.substring(e6.start, e6.end) : this._textarea.value.substring(e6.start), t4.length > 0 && this._coreService.triggerDataEvent(t4, true);
+              }
+            }, 0);
+          } else {
+            this._isSendingComposition = false;
+            const e6 = this._textarea.value.substring(this._compositionPosition.start, this._compositionPosition.end);
+            this._coreService.triggerDataEvent(e6, true);
+          }
+        }
+        _handleAnyTextareaChanges() {
+          const e5 = this._textarea.value;
+          setTimeout(() => {
+            if (!this._isComposing) {
+              const t4 = this._textarea.value, i5 = t4.replace(e5, "");
+              this._dataAlreadySent = i5, t4.length > e5.length ? this._coreService.triggerDataEvent(i5, true) : t4.length < e5.length ? this._coreService.triggerDataEvent(`${a2.C0.DEL}`, true) : t4.length === e5.length && t4 !== e5 && this._coreService.triggerDataEvent(t4, true);
+            }
+          }, 0);
+        }
+        updateCompositionElements(e5) {
+          if (this._isComposing) {
+            if (this._bufferService.buffer.isCursorInViewport) {
+              const e6 = Math.min(this._bufferService.buffer.x, this._bufferService.cols - 1), t4 = this._renderService.dimensions.css.cell.height, i5 = this._bufferService.buffer.y * this._renderService.dimensions.css.cell.height, s4 = e6 * this._renderService.dimensions.css.cell.width;
+              this._compositionView.style.left = s4 + "px", this._compositionView.style.top = i5 + "px", this._compositionView.style.height = t4 + "px", this._compositionView.style.lineHeight = t4 + "px", this._compositionView.style.fontFamily = this._optionsService.rawOptions.fontFamily, this._compositionView.style.fontSize = this._optionsService.rawOptions.fontSize + "px";
+              const r3 = this._compositionView.getBoundingClientRect();
+              this._textarea.style.left = s4 + "px", this._textarea.style.top = i5 + "px", this._textarea.style.width = Math.max(r3.width, 1) + "px", this._textarea.style.height = Math.max(r3.height, 1) + "px", this._textarea.style.lineHeight = r3.height + "px";
+            }
+            e5 || setTimeout(() => this.updateCompositionElements(true), 0);
+          }
+        }
+      };
+      t3.CompositionHelper = h2 = s3([r2(2, o2.IBufferService), r2(3, o2.IOptionsService), r2(4, o2.ICoreService), r2(5, n3.IRenderService)], h2);
+    }, 9806: (e4, t3) => {
+      function i4(e5, t4, i5) {
+        const s3 = i5.getBoundingClientRect(), r2 = e5.getComputedStyle(i5), n3 = parseInt(r2.getPropertyValue("padding-left")), o2 = parseInt(r2.getPropertyValue("padding-top"));
+        return [t4.clientX - s3.left - n3, t4.clientY - s3.top - o2];
+      }
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.getCoords = t3.getCoordsRelativeToElement = void 0, t3.getCoordsRelativeToElement = i4, t3.getCoords = function(e5, t4, s3, r2, n3, o2, a2, h2, c2) {
+        if (!o2) return;
+        const l2 = i4(e5, t4, s3);
+        return l2 ? (l2[0] = Math.ceil((l2[0] + (c2 ? a2 / 2 : 0)) / a2), l2[1] = Math.ceil(l2[1] / h2), l2[0] = Math.min(Math.max(l2[0], 1), r2 + (c2 ? 1 : 0)), l2[1] = Math.min(Math.max(l2[1], 1), n3), l2) : void 0;
+      };
+    }, 9504: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.moveToCellSequence = void 0;
+      const s3 = i4(2584);
+      function r2(e5, t4, i5, s4) {
+        const r3 = e5 - n3(e5, i5), a3 = t4 - n3(t4, i5), l2 = Math.abs(r3 - a3) - function(e6, t5, i6) {
+          let s5 = 0;
+          const r4 = e6 - n3(e6, i6), a4 = t5 - n3(t5, i6);
+          for (let n4 = 0; n4 < Math.abs(r4 - a4); n4++) {
+            const a5 = "A" === o2(e6, t5) ? -1 : 1, h3 = i6.buffer.lines.get(r4 + a5 * n4);
+            (null == h3 ? void 0 : h3.isWrapped) && s5++;
+          }
+          return s5;
+        }(e5, t4, i5);
+        return c2(l2, h2(o2(e5, t4), s4));
+      }
+      function n3(e5, t4) {
+        let i5 = 0, s4 = t4.buffer.lines.get(e5), r3 = null == s4 ? void 0 : s4.isWrapped;
+        for (; r3 && e5 >= 0 && e5 < t4.rows; ) i5++, s4 = t4.buffer.lines.get(--e5), r3 = null == s4 ? void 0 : s4.isWrapped;
+        return i5;
+      }
+      function o2(e5, t4) {
+        return e5 > t4 ? "A" : "B";
+      }
+      function a2(e5, t4, i5, s4, r3, n4) {
+        let o3 = e5, a3 = t4, h3 = "";
+        for (; o3 !== i5 || a3 !== s4; ) o3 += r3 ? 1 : -1, r3 && o3 > n4.cols - 1 ? (h3 += n4.buffer.translateBufferLineToString(a3, false, e5, o3), o3 = 0, e5 = 0, a3++) : !r3 && o3 < 0 && (h3 += n4.buffer.translateBufferLineToString(a3, false, 0, e5 + 1), o3 = n4.cols - 1, e5 = o3, a3--);
+        return h3 + n4.buffer.translateBufferLineToString(a3, false, e5, o3);
+      }
+      function h2(e5, t4) {
+        const i5 = t4 ? "O" : "[";
+        return s3.C0.ESC + i5 + e5;
+      }
+      function c2(e5, t4) {
+        e5 = Math.floor(e5);
+        let i5 = "";
+        for (let s4 = 0; s4 < e5; s4++) i5 += t4;
+        return i5;
+      }
+      t3.moveToCellSequence = function(e5, t4, i5, s4) {
+        const o3 = i5.buffer.x, l2 = i5.buffer.y;
+        if (!i5.buffer.hasScrollback) return function(e6, t5, i6, s5, o4, l3) {
+          return 0 === r2(t5, s5, o4, l3).length ? "" : c2(a2(e6, t5, e6, t5 - n3(t5, o4), false, o4).length, h2("D", l3));
+        }(o3, l2, 0, t4, i5, s4) + r2(l2, t4, i5, s4) + function(e6, t5, i6, s5, o4, l3) {
+          let d3;
+          d3 = r2(t5, s5, o4, l3).length > 0 ? s5 - n3(s5, o4) : t5;
+          const _3 = s5, u2 = function(e7, t6, i7, s6, o5, a3) {
+            let h3;
+            return h3 = r2(i7, s6, o5, a3).length > 0 ? s6 - n3(s6, o5) : t6, e7 < i7 && h3 <= s6 || e7 >= i7 && h3 < s6 ? "C" : "D";
+          }(e6, t5, i6, s5, o4, l3);
+          return c2(a2(e6, d3, i6, _3, "C" === u2, o4).length, h2(u2, l3));
+        }(o3, l2, e5, t4, i5, s4);
+        let d2;
+        if (l2 === t4) return d2 = o3 > e5 ? "D" : "C", c2(Math.abs(o3 - e5), h2(d2, s4));
+        d2 = l2 > t4 ? "D" : "C";
+        const _2 = Math.abs(l2 - t4);
+        return c2(function(e6, t5) {
+          return t5.cols - e6;
+        }(l2 > t4 ? e5 : o3, i5) + (_2 - 1) * i5.cols + 1 + ((l2 > t4 ? o3 : e5) - 1), h2(d2, s4));
+      };
+    }, 1296: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.DomRenderer = void 0;
+      const n3 = i4(3787), o2 = i4(2550), a2 = i4(2223), h2 = i4(6171), c2 = i4(4725), l2 = i4(8055), d2 = i4(8460), _2 = i4(844), u2 = i4(2585), f2 = "xterm-dom-renderer-owner-", v2 = "xterm-rows", p2 = "xterm-fg-", g2 = "xterm-bg-", m2 = "xterm-focus", S2 = "xterm-selection";
+      let C2 = 1, b2 = t3.DomRenderer = class extends _2.Disposable {
+        constructor(e5, t4, i5, s4, r3, a3, c3, l3, u3, p3) {
+          super(), this._element = e5, this._screenElement = t4, this._viewportElement = i5, this._linkifier2 = s4, this._charSizeService = a3, this._optionsService = c3, this._bufferService = l3, this._coreBrowserService = u3, this._themeService = p3, this._terminalClass = C2++, this._rowElements = [], this.onRequestRedraw = this.register(new d2.EventEmitter()).event, this._rowContainer = document.createElement("div"), this._rowContainer.classList.add(v2), this._rowContainer.style.lineHeight = "normal", this._rowContainer.setAttribute("aria-hidden", "true"), this._refreshRowElements(this._bufferService.cols, this._bufferService.rows), this._selectionContainer = document.createElement("div"), this._selectionContainer.classList.add(S2), this._selectionContainer.setAttribute("aria-hidden", "true"), this.dimensions = (0, h2.createRenderDimensions)(), this._updateDimensions(), this.register(this._optionsService.onOptionChange(() => this._handleOptionsChanged())), this.register(this._themeService.onChangeColors((e6) => this._injectCss(e6))), this._injectCss(this._themeService.colors), this._rowFactory = r3.createInstance(n3.DomRendererRowFactory, document), this._element.classList.add(f2 + this._terminalClass), this._screenElement.appendChild(this._rowContainer), this._screenElement.appendChild(this._selectionContainer), this.register(this._linkifier2.onShowLinkUnderline((e6) => this._handleLinkHover(e6))), this.register(this._linkifier2.onHideLinkUnderline((e6) => this._handleLinkLeave(e6))), this.register((0, _2.toDisposable)(() => {
+            this._element.classList.remove(f2 + this._terminalClass), this._rowContainer.remove(), this._selectionContainer.remove(), this._widthCache.dispose(), this._themeStyleElement.remove(), this._dimensionsStyleElement.remove();
+          })), this._widthCache = new o2.WidthCache(document), this._widthCache.setFont(this._optionsService.rawOptions.fontFamily, this._optionsService.rawOptions.fontSize, this._optionsService.rawOptions.fontWeight, this._optionsService.rawOptions.fontWeightBold), this._setDefaultSpacing();
+        }
+        _updateDimensions() {
+          const e5 = this._coreBrowserService.dpr;
+          this.dimensions.device.char.width = this._charSizeService.width * e5, this.dimensions.device.char.height = Math.ceil(this._charSizeService.height * e5), this.dimensions.device.cell.width = this.dimensions.device.char.width + Math.round(this._optionsService.rawOptions.letterSpacing), this.dimensions.device.cell.height = Math.floor(this.dimensions.device.char.height * this._optionsService.rawOptions.lineHeight), this.dimensions.device.char.left = 0, this.dimensions.device.char.top = 0, this.dimensions.device.canvas.width = this.dimensions.device.cell.width * this._bufferService.cols, this.dimensions.device.canvas.height = this.dimensions.device.cell.height * this._bufferService.rows, this.dimensions.css.canvas.width = Math.round(this.dimensions.device.canvas.width / e5), this.dimensions.css.canvas.height = Math.round(this.dimensions.device.canvas.height / e5), this.dimensions.css.cell.width = this.dimensions.css.canvas.width / this._bufferService.cols, this.dimensions.css.cell.height = this.dimensions.css.canvas.height / this._bufferService.rows;
+          for (const e6 of this._rowElements) e6.style.width = `${this.dimensions.css.canvas.width}px`, e6.style.height = `${this.dimensions.css.cell.height}px`, e6.style.lineHeight = `${this.dimensions.css.cell.height}px`, e6.style.overflow = "hidden";
+          this._dimensionsStyleElement || (this._dimensionsStyleElement = document.createElement("style"), this._screenElement.appendChild(this._dimensionsStyleElement));
+          const t4 = `${this._terminalSelector} .${v2} span { display: inline-block; height: 100%; vertical-align: top;}`;
+          this._dimensionsStyleElement.textContent = t4, this._selectionContainer.style.height = this._viewportElement.style.height, this._screenElement.style.width = `${this.dimensions.css.canvas.width}px`, this._screenElement.style.height = `${this.dimensions.css.canvas.height}px`;
+        }
+        _injectCss(e5) {
+          this._themeStyleElement || (this._themeStyleElement = document.createElement("style"), this._screenElement.appendChild(this._themeStyleElement));
+          let t4 = `${this._terminalSelector} .${v2} { color: ${e5.foreground.css}; font-family: ${this._optionsService.rawOptions.fontFamily}; font-size: ${this._optionsService.rawOptions.fontSize}px; font-kerning: none; white-space: pre}`;
+          t4 += `${this._terminalSelector} .${v2} .xterm-dim { color: ${l2.color.multiplyOpacity(e5.foreground, 0.5).css};}`, t4 += `${this._terminalSelector} span:not(.xterm-bold) { font-weight: ${this._optionsService.rawOptions.fontWeight};}${this._terminalSelector} span.xterm-bold { font-weight: ${this._optionsService.rawOptions.fontWeightBold};}${this._terminalSelector} span.xterm-italic { font-style: italic;}`, t4 += "@keyframes blink_box_shadow_" + this._terminalClass + " { 50% {  border-bottom-style: hidden; }}", t4 += "@keyframes blink_block_" + this._terminalClass + ` { 0% {  background-color: ${e5.cursor.css};  color: ${e5.cursorAccent.css}; } 50% {  background-color: inherit;  color: ${e5.cursor.css}; }}`, t4 += `${this._terminalSelector} .${v2}.${m2} .xterm-cursor.xterm-cursor-blink:not(.xterm-cursor-block) { animation: blink_box_shadow_` + this._terminalClass + ` 1s step-end infinite;}${this._terminalSelector} .${v2}.${m2} .xterm-cursor.xterm-cursor-blink.xterm-cursor-block { animation: blink_block_` + this._terminalClass + ` 1s step-end infinite;}${this._terminalSelector} .${v2} .xterm-cursor.xterm-cursor-block { background-color: ${e5.cursor.css}; color: ${e5.cursorAccent.css};}${this._terminalSelector} .${v2} .xterm-cursor.xterm-cursor-outline { outline: 1px solid ${e5.cursor.css}; outline-offset: -1px;}${this._terminalSelector} .${v2} .xterm-cursor.xterm-cursor-bar { box-shadow: ${this._optionsService.rawOptions.cursorWidth}px 0 0 ${e5.cursor.css} inset;}${this._terminalSelector} .${v2} .xterm-cursor.xterm-cursor-underline { border-bottom: 1px ${e5.cursor.css}; border-bottom-style: solid; height: calc(100% - 1px);}`, t4 += `${this._terminalSelector} .${S2} { position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none;}${this._terminalSelector}.focus .${S2} div { position: absolute; background-color: ${e5.selectionBackgroundOpaque.css};}${this._terminalSelector} .${S2} div { position: absolute; background-color: ${e5.selectionInactiveBackgroundOpaque.css};}`;
+          for (const [i5, s4] of e5.ansi.entries()) t4 += `${this._terminalSelector} .${p2}${i5} { color: ${s4.css}; }${this._terminalSelector} .${p2}${i5}.xterm-dim { color: ${l2.color.multiplyOpacity(s4, 0.5).css}; }${this._terminalSelector} .${g2}${i5} { background-color: ${s4.css}; }`;
+          t4 += `${this._terminalSelector} .${p2}${a2.INVERTED_DEFAULT_COLOR} { color: ${l2.color.opaque(e5.background).css}; }${this._terminalSelector} .${p2}${a2.INVERTED_DEFAULT_COLOR}.xterm-dim { color: ${l2.color.multiplyOpacity(l2.color.opaque(e5.background), 0.5).css}; }${this._terminalSelector} .${g2}${a2.INVERTED_DEFAULT_COLOR} { background-color: ${e5.foreground.css}; }`, this._themeStyleElement.textContent = t4;
+        }
+        _setDefaultSpacing() {
+          const e5 = this.dimensions.css.cell.width - this._widthCache.get("W", false, false);
+          this._rowContainer.style.letterSpacing = `${e5}px`, this._rowFactory.defaultSpacing = e5;
+        }
+        handleDevicePixelRatioChange() {
+          this._updateDimensions(), this._widthCache.clear(), this._setDefaultSpacing();
+        }
+        _refreshRowElements(e5, t4) {
+          for (let e6 = this._rowElements.length; e6 <= t4; e6++) {
+            const e7 = document.createElement("div");
+            this._rowContainer.appendChild(e7), this._rowElements.push(e7);
+          }
+          for (; this._rowElements.length > t4; ) this._rowContainer.removeChild(this._rowElements.pop());
+        }
+        handleResize(e5, t4) {
+          this._refreshRowElements(e5, t4), this._updateDimensions();
+        }
+        handleCharSizeChanged() {
+          this._updateDimensions(), this._widthCache.clear(), this._setDefaultSpacing();
+        }
+        handleBlur() {
+          this._rowContainer.classList.remove(m2);
+        }
+        handleFocus() {
+          this._rowContainer.classList.add(m2), this.renderRows(this._bufferService.buffer.y, this._bufferService.buffer.y);
+        }
+        handleSelectionChanged(e5, t4, i5) {
+          if (this._selectionContainer.replaceChildren(), this._rowFactory.handleSelectionChanged(e5, t4, i5), this.renderRows(0, this._bufferService.rows - 1), !e5 || !t4) return;
+          const s4 = e5[1] - this._bufferService.buffer.ydisp, r3 = t4[1] - this._bufferService.buffer.ydisp, n4 = Math.max(s4, 0), o3 = Math.min(r3, this._bufferService.rows - 1);
+          if (n4 >= this._bufferService.rows || o3 < 0) return;
+          const a3 = document.createDocumentFragment();
+          if (i5) {
+            const i6 = e5[0] > t4[0];
+            a3.appendChild(this._createSelectionElement(n4, i6 ? t4[0] : e5[0], i6 ? e5[0] : t4[0], o3 - n4 + 1));
+          } else {
+            const i6 = s4 === n4 ? e5[0] : 0, h3 = n4 === r3 ? t4[0] : this._bufferService.cols;
+            a3.appendChild(this._createSelectionElement(n4, i6, h3));
+            const c3 = o3 - n4 - 1;
+            if (a3.appendChild(this._createSelectionElement(n4 + 1, 0, this._bufferService.cols, c3)), n4 !== o3) {
+              const e6 = r3 === o3 ? t4[0] : this._bufferService.cols;
+              a3.appendChild(this._createSelectionElement(o3, 0, e6));
+            }
+          }
+          this._selectionContainer.appendChild(a3);
+        }
+        _createSelectionElement(e5, t4, i5, s4 = 1) {
+          const r3 = document.createElement("div");
+          return r3.style.height = s4 * this.dimensions.css.cell.height + "px", r3.style.top = e5 * this.dimensions.css.cell.height + "px", r3.style.left = t4 * this.dimensions.css.cell.width + "px", r3.style.width = this.dimensions.css.cell.width * (i5 - t4) + "px", r3;
+        }
+        handleCursorMove() {
+        }
+        _handleOptionsChanged() {
+          this._updateDimensions(), this._injectCss(this._themeService.colors), this._widthCache.setFont(this._optionsService.rawOptions.fontFamily, this._optionsService.rawOptions.fontSize, this._optionsService.rawOptions.fontWeight, this._optionsService.rawOptions.fontWeightBold), this._setDefaultSpacing();
+        }
+        clear() {
+          for (const e5 of this._rowElements) e5.replaceChildren();
+        }
+        renderRows(e5, t4) {
+          const i5 = this._bufferService.buffer, s4 = i5.ybase + i5.y, r3 = Math.min(i5.x, this._bufferService.cols - 1), n4 = this._optionsService.rawOptions.cursorBlink, o3 = this._optionsService.rawOptions.cursorStyle, a3 = this._optionsService.rawOptions.cursorInactiveStyle;
+          for (let h3 = e5; h3 <= t4; h3++) {
+            const e6 = h3 + i5.ydisp, t5 = this._rowElements[h3], c3 = i5.lines.get(e6);
+            if (!t5 || !c3) break;
+            t5.replaceChildren(...this._rowFactory.createRow(c3, e6, e6 === s4, o3, a3, r3, n4, this.dimensions.css.cell.width, this._widthCache, -1, -1));
+          }
+        }
+        get _terminalSelector() {
+          return `.${f2}${this._terminalClass}`;
+        }
+        _handleLinkHover(e5) {
+          this._setCellUnderline(e5.x1, e5.x2, e5.y1, e5.y2, e5.cols, true);
+        }
+        _handleLinkLeave(e5) {
+          this._setCellUnderline(e5.x1, e5.x2, e5.y1, e5.y2, e5.cols, false);
+        }
+        _setCellUnderline(e5, t4, i5, s4, r3, n4) {
+          i5 < 0 && (e5 = 0), s4 < 0 && (t4 = 0);
+          const o3 = this._bufferService.rows - 1;
+          i5 = Math.max(Math.min(i5, o3), 0), s4 = Math.max(Math.min(s4, o3), 0), r3 = Math.min(r3, this._bufferService.cols);
+          const a3 = this._bufferService.buffer, h3 = a3.ybase + a3.y, c3 = Math.min(a3.x, r3 - 1), l3 = this._optionsService.rawOptions.cursorBlink, d3 = this._optionsService.rawOptions.cursorStyle, _3 = this._optionsService.rawOptions.cursorInactiveStyle;
+          for (let o4 = i5; o4 <= s4; ++o4) {
+            const u3 = o4 + a3.ydisp, f3 = this._rowElements[o4], v3 = a3.lines.get(u3);
+            if (!f3 || !v3) break;
+            f3.replaceChildren(...this._rowFactory.createRow(v3, u3, u3 === h3, d3, _3, c3, l3, this.dimensions.css.cell.width, this._widthCache, n4 ? o4 === i5 ? e5 : 0 : -1, n4 ? (o4 === s4 ? t4 : r3) - 1 : -1));
+          }
+        }
+      };
+      t3.DomRenderer = b2 = s3([r2(4, u2.IInstantiationService), r2(5, c2.ICharSizeService), r2(6, u2.IOptionsService), r2(7, u2.IBufferService), r2(8, c2.ICoreBrowserService), r2(9, c2.IThemeService)], b2);
+    }, 3787: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.DomRendererRowFactory = void 0;
+      const n3 = i4(2223), o2 = i4(643), a2 = i4(511), h2 = i4(2585), c2 = i4(8055), l2 = i4(4725), d2 = i4(4269), _2 = i4(6171), u2 = i4(3734);
+      let f2 = t3.DomRendererRowFactory = class {
+        constructor(e5, t4, i5, s4, r3, n4, o3) {
+          this._document = e5, this._characterJoinerService = t4, this._optionsService = i5, this._coreBrowserService = s4, this._coreService = r3, this._decorationService = n4, this._themeService = o3, this._workCell = new a2.CellData(), this._columnSelectMode = false, this.defaultSpacing = 0;
+        }
+        handleSelectionChanged(e5, t4, i5) {
+          this._selectionStart = e5, this._selectionEnd = t4, this._columnSelectMode = i5;
+        }
+        createRow(e5, t4, i5, s4, r3, a3, h3, l3, _3, f3, p2) {
+          const g2 = [], m2 = this._characterJoinerService.getJoinedCharacters(t4), S2 = this._themeService.colors;
+          let C2, b2 = e5.getNoBgTrimmedLength();
+          i5 && b2 < a3 + 1 && (b2 = a3 + 1);
+          let y3 = 0, w2 = "", E2 = 0, k2 = 0, L2 = 0, D2 = false, R2 = 0, x2 = false, A2 = 0;
+          const B2 = [], T = -1 !== f3 && -1 !== p2;
+          for (let M2 = 0; M2 < b2; M2++) {
+            e5.loadCell(M2, this._workCell);
+            let b3 = this._workCell.getWidth();
+            if (0 === b3) continue;
+            let O = false, P2 = M2, I2 = this._workCell;
+            if (m2.length > 0 && M2 === m2[0][0]) {
+              O = true;
+              const t5 = m2.shift();
+              I2 = new d2.JoinedCellData(this._workCell, e5.translateToString(true, t5[0], t5[1]), t5[1] - t5[0]), P2 = t5[1] - 1, b3 = I2.getWidth();
+            }
+            const H2 = this._isCellInSelection(M2, t4), F = i5 && M2 === a3, W = T && M2 >= f3 && M2 <= p2;
+            let U = false;
+            this._decorationService.forEachDecorationAtCell(M2, t4, void 0, (e6) => {
+              U = true;
+            });
+            let N2 = I2.getChars() || o2.WHITESPACE_CELL_CHAR;
+            if (" " === N2 && (I2.isUnderline() || I2.isOverline()) && (N2 = " "), A2 = b3 * l3 - _3.get(N2, I2.isBold(), I2.isItalic()), C2) {
+              if (y3 && (H2 && x2 || !H2 && !x2 && I2.bg === E2) && (H2 && x2 && S2.selectionForeground || I2.fg === k2) && I2.extended.ext === L2 && W === D2 && A2 === R2 && !F && !O && !U) {
+                w2 += N2, y3++;
+                continue;
+              }
+              y3 && (C2.textContent = w2), C2 = this._document.createElement("span"), y3 = 0, w2 = "";
+            } else C2 = this._document.createElement("span");
+            if (E2 = I2.bg, k2 = I2.fg, L2 = I2.extended.ext, D2 = W, R2 = A2, x2 = H2, O && a3 >= M2 && a3 <= P2 && (a3 = M2), !this._coreService.isCursorHidden && F) {
+              if (B2.push("xterm-cursor"), this._coreBrowserService.isFocused) h3 && B2.push("xterm-cursor-blink"), B2.push("bar" === s4 ? "xterm-cursor-bar" : "underline" === s4 ? "xterm-cursor-underline" : "xterm-cursor-block");
+              else if (r3) switch (r3) {
+                case "outline":
+                  B2.push("xterm-cursor-outline");
+                  break;
+                case "block":
+                  B2.push("xterm-cursor-block");
+                  break;
+                case "bar":
+                  B2.push("xterm-cursor-bar");
+                  break;
+                case "underline":
+                  B2.push("xterm-cursor-underline");
+              }
+            }
+            if (I2.isBold() && B2.push("xterm-bold"), I2.isItalic() && B2.push("xterm-italic"), I2.isDim() && B2.push("xterm-dim"), w2 = I2.isInvisible() ? o2.WHITESPACE_CELL_CHAR : I2.getChars() || o2.WHITESPACE_CELL_CHAR, I2.isUnderline() && (B2.push(`xterm-underline-${I2.extended.underlineStyle}`), " " === w2 && (w2 = " "), !I2.isUnderlineColorDefault())) if (I2.isUnderlineColorRGB()) C2.style.textDecorationColor = `rgb(${u2.AttributeData.toColorRGB(I2.getUnderlineColor()).join(",")})`;
+            else {
+              let e6 = I2.getUnderlineColor();
+              this._optionsService.rawOptions.drawBoldTextInBrightColors && I2.isBold() && e6 < 8 && (e6 += 8), C2.style.textDecorationColor = S2.ansi[e6].css;
+            }
+            I2.isOverline() && (B2.push("xterm-overline"), " " === w2 && (w2 = " ")), I2.isStrikethrough() && B2.push("xterm-strikethrough"), W && (C2.style.textDecoration = "underline");
+            let $2 = I2.getFgColor(), j = I2.getFgColorMode(), z2 = I2.getBgColor(), K = I2.getBgColorMode();
+            const q = !!I2.isInverse();
+            if (q) {
+              const e6 = $2;
+              $2 = z2, z2 = e6;
+              const t5 = j;
+              j = K, K = t5;
+            }
+            let V2, G, X, J = false;
+            switch (this._decorationService.forEachDecorationAtCell(M2, t4, void 0, (e6) => {
+              "top" !== e6.options.layer && J || (e6.backgroundColorRGB && (K = 50331648, z2 = e6.backgroundColorRGB.rgba >> 8 & 16777215, V2 = e6.backgroundColorRGB), e6.foregroundColorRGB && (j = 50331648, $2 = e6.foregroundColorRGB.rgba >> 8 & 16777215, G = e6.foregroundColorRGB), J = "top" === e6.options.layer);
+            }), !J && H2 && (V2 = this._coreBrowserService.isFocused ? S2.selectionBackgroundOpaque : S2.selectionInactiveBackgroundOpaque, z2 = V2.rgba >> 8 & 16777215, K = 50331648, J = true, S2.selectionForeground && (j = 50331648, $2 = S2.selectionForeground.rgba >> 8 & 16777215, G = S2.selectionForeground)), J && B2.push("xterm-decoration-top"), K) {
+              case 16777216:
+              case 33554432:
+                X = S2.ansi[z2], B2.push(`xterm-bg-${z2}`);
+                break;
+              case 50331648:
+                X = c2.rgba.toColor(z2 >> 16, z2 >> 8 & 255, 255 & z2), this._addStyle(C2, `background-color:#${v2((z2 >>> 0).toString(16), "0", 6)}`);
+                break;
+              default:
+                q ? (X = S2.foreground, B2.push(`xterm-bg-${n3.INVERTED_DEFAULT_COLOR}`)) : X = S2.background;
+            }
+            switch (V2 || I2.isDim() && (V2 = c2.color.multiplyOpacity(X, 0.5)), j) {
+              case 16777216:
+              case 33554432:
+                I2.isBold() && $2 < 8 && this._optionsService.rawOptions.drawBoldTextInBrightColors && ($2 += 8), this._applyMinimumContrast(C2, X, S2.ansi[$2], I2, V2, void 0) || B2.push(`xterm-fg-${$2}`);
+                break;
+              case 50331648:
+                const e6 = c2.rgba.toColor($2 >> 16 & 255, $2 >> 8 & 255, 255 & $2);
+                this._applyMinimumContrast(C2, X, e6, I2, V2, G) || this._addStyle(C2, `color:#${v2($2.toString(16), "0", 6)}`);
+                break;
+              default:
+                this._applyMinimumContrast(C2, X, S2.foreground, I2, V2, void 0) || q && B2.push(`xterm-fg-${n3.INVERTED_DEFAULT_COLOR}`);
+            }
+            B2.length && (C2.className = B2.join(" "), B2.length = 0), F || O || U ? C2.textContent = w2 : y3++, A2 !== this.defaultSpacing && (C2.style.letterSpacing = `${A2}px`), g2.push(C2), M2 = P2;
+          }
+          return C2 && y3 && (C2.textContent = w2), g2;
+        }
+        _applyMinimumContrast(e5, t4, i5, s4, r3, n4) {
+          if (1 === this._optionsService.rawOptions.minimumContrastRatio || (0, _2.excludeFromContrastRatioDemands)(s4.getCode())) return false;
+          const o3 = this._getContrastCache(s4);
+          let a3;
+          if (r3 || n4 || (a3 = o3.getColor(t4.rgba, i5.rgba)), void 0 === a3) {
+            const e6 = this._optionsService.rawOptions.minimumContrastRatio / (s4.isDim() ? 2 : 1);
+            a3 = c2.color.ensureContrastRatio(r3 || t4, n4 || i5, e6), o3.setColor((r3 || t4).rgba, (n4 || i5).rgba, null != a3 ? a3 : null);
+          }
+          return !!a3 && (this._addStyle(e5, `color:${a3.css}`), true);
+        }
+        _getContrastCache(e5) {
+          return e5.isDim() ? this._themeService.colors.halfContrastCache : this._themeService.colors.contrastCache;
+        }
+        _addStyle(e5, t4) {
+          e5.setAttribute("style", `${e5.getAttribute("style") || ""}${t4};`);
+        }
+        _isCellInSelection(e5, t4) {
+          const i5 = this._selectionStart, s4 = this._selectionEnd;
+          return !(!i5 || !s4) && (this._columnSelectMode ? i5[0] <= s4[0] ? e5 >= i5[0] && t4 >= i5[1] && e5 < s4[0] && t4 <= s4[1] : e5 < i5[0] && t4 >= i5[1] && e5 >= s4[0] && t4 <= s4[1] : t4 > i5[1] && t4 < s4[1] || i5[1] === s4[1] && t4 === i5[1] && e5 >= i5[0] && e5 < s4[0] || i5[1] < s4[1] && t4 === s4[1] && e5 < s4[0] || i5[1] < s4[1] && t4 === i5[1] && e5 >= i5[0]);
+        }
+      };
+      function v2(e5, t4, i5) {
+        for (; e5.length < i5; ) e5 = t4 + e5;
+        return e5;
+      }
+      t3.DomRendererRowFactory = f2 = s3([r2(1, l2.ICharacterJoinerService), r2(2, h2.IOptionsService), r2(3, l2.ICoreBrowserService), r2(4, h2.ICoreService), r2(5, h2.IDecorationService), r2(6, l2.IThemeService)], f2);
+    }, 2550: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.WidthCache = void 0, t3.WidthCache = class {
+        constructor(e5) {
+          this._flat = new Float32Array(256), this._font = "", this._fontSize = 0, this._weight = "normal", this._weightBold = "bold", this._measureElements = [], this._container = e5.createElement("div"), this._container.style.position = "absolute", this._container.style.top = "-50000px", this._container.style.width = "50000px", this._container.style.whiteSpace = "pre", this._container.style.fontKerning = "none";
+          const t4 = e5.createElement("span"), i4 = e5.createElement("span");
+          i4.style.fontWeight = "bold";
+          const s3 = e5.createElement("span");
+          s3.style.fontStyle = "italic";
+          const r2 = e5.createElement("span");
+          r2.style.fontWeight = "bold", r2.style.fontStyle = "italic", this._measureElements = [t4, i4, s3, r2], this._container.appendChild(t4), this._container.appendChild(i4), this._container.appendChild(s3), this._container.appendChild(r2), e5.body.appendChild(this._container), this.clear();
+        }
+        dispose() {
+          this._container.remove(), this._measureElements.length = 0, this._holey = void 0;
+        }
+        clear() {
+          this._flat.fill(-9999), this._holey = /* @__PURE__ */ new Map();
+        }
+        setFont(e5, t4, i4, s3) {
+          e5 === this._font && t4 === this._fontSize && i4 === this._weight && s3 === this._weightBold || (this._font = e5, this._fontSize = t4, this._weight = i4, this._weightBold = s3, this._container.style.fontFamily = this._font, this._container.style.fontSize = `${this._fontSize}px`, this._measureElements[0].style.fontWeight = `${i4}`, this._measureElements[1].style.fontWeight = `${s3}`, this._measureElements[2].style.fontWeight = `${i4}`, this._measureElements[3].style.fontWeight = `${s3}`, this.clear());
+        }
+        get(e5, t4, i4) {
+          let s3 = 0;
+          if (!t4 && !i4 && 1 === e5.length && (s3 = e5.charCodeAt(0)) < 256) return -9999 !== this._flat[s3] ? this._flat[s3] : this._flat[s3] = this._measure(e5, 0);
+          let r2 = e5;
+          t4 && (r2 += "B"), i4 && (r2 += "I");
+          let n3 = this._holey.get(r2);
+          if (void 0 === n3) {
+            let s4 = 0;
+            t4 && (s4 |= 1), i4 && (s4 |= 2), n3 = this._measure(e5, s4), this._holey.set(r2, n3);
+          }
+          return n3;
+        }
+        _measure(e5, t4) {
+          const i4 = this._measureElements[t4];
+          return i4.textContent = e5.repeat(32), i4.offsetWidth / 32;
+        }
+      };
+    }, 2223: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.TEXT_BASELINE = t3.DIM_OPACITY = t3.INVERTED_DEFAULT_COLOR = void 0;
+      const s3 = i4(6114);
+      t3.INVERTED_DEFAULT_COLOR = 257, t3.DIM_OPACITY = 0.5, t3.TEXT_BASELINE = s3.isFirefox || s3.isLegacyEdge ? "bottom" : "ideographic";
+    }, 6171: (e4, t3) => {
+      function i4(e5) {
+        return 57508 <= e5 && e5 <= 57558;
+      }
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.createRenderDimensions = t3.excludeFromContrastRatioDemands = t3.isRestrictedPowerlineGlyph = t3.isPowerlineGlyph = t3.throwIfFalsy = void 0, t3.throwIfFalsy = function(e5) {
+        if (!e5) throw new Error("value must not be falsy");
+        return e5;
+      }, t3.isPowerlineGlyph = i4, t3.isRestrictedPowerlineGlyph = function(e5) {
+        return 57520 <= e5 && e5 <= 57527;
+      }, t3.excludeFromContrastRatioDemands = function(e5) {
+        return i4(e5) || function(e6) {
+          return 9472 <= e6 && e6 <= 9631;
+        }(e5);
+      }, t3.createRenderDimensions = function() {
+        return { css: { canvas: { width: 0, height: 0 }, cell: { width: 0, height: 0 } }, device: { canvas: { width: 0, height: 0 }, cell: { width: 0, height: 0 }, char: { width: 0, height: 0, left: 0, top: 0 } } };
+      };
+    }, 456: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.SelectionModel = void 0, t3.SelectionModel = class {
+        constructor(e5) {
+          this._bufferService = e5, this.isSelectAllActive = false, this.selectionStartLength = 0;
+        }
+        clearSelection() {
+          this.selectionStart = void 0, this.selectionEnd = void 0, this.isSelectAllActive = false, this.selectionStartLength = 0;
+        }
+        get finalSelectionStart() {
+          return this.isSelectAllActive ? [0, 0] : this.selectionEnd && this.selectionStart && this.areSelectionValuesReversed() ? this.selectionEnd : this.selectionStart;
+        }
+        get finalSelectionEnd() {
+          if (this.isSelectAllActive) return [this._bufferService.cols, this._bufferService.buffer.ybase + this._bufferService.rows - 1];
+          if (this.selectionStart) {
+            if (!this.selectionEnd || this.areSelectionValuesReversed()) {
+              const e5 = this.selectionStart[0] + this.selectionStartLength;
+              return e5 > this._bufferService.cols ? e5 % this._bufferService.cols == 0 ? [this._bufferService.cols, this.selectionStart[1] + Math.floor(e5 / this._bufferService.cols) - 1] : [e5 % this._bufferService.cols, this.selectionStart[1] + Math.floor(e5 / this._bufferService.cols)] : [e5, this.selectionStart[1]];
+            }
+            if (this.selectionStartLength && this.selectionEnd[1] === this.selectionStart[1]) {
+              const e5 = this.selectionStart[0] + this.selectionStartLength;
+              return e5 > this._bufferService.cols ? [e5 % this._bufferService.cols, this.selectionStart[1] + Math.floor(e5 / this._bufferService.cols)] : [Math.max(e5, this.selectionEnd[0]), this.selectionEnd[1]];
+            }
+            return this.selectionEnd;
+          }
+        }
+        areSelectionValuesReversed() {
+          const e5 = this.selectionStart, t4 = this.selectionEnd;
+          return !(!e5 || !t4) && (e5[1] > t4[1] || e5[1] === t4[1] && e5[0] > t4[0]);
+        }
+        handleTrim(e5) {
+          return this.selectionStart && (this.selectionStart[1] -= e5), this.selectionEnd && (this.selectionEnd[1] -= e5), this.selectionEnd && this.selectionEnd[1] < 0 ? (this.clearSelection(), true) : (this.selectionStart && this.selectionStart[1] < 0 && (this.selectionStart[1] = 0), false);
+        }
+      };
+    }, 428: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CharSizeService = void 0;
+      const n3 = i4(2585), o2 = i4(8460), a2 = i4(844);
+      let h2 = t3.CharSizeService = class extends a2.Disposable {
+        get hasValidSize() {
+          return this.width > 0 && this.height > 0;
+        }
+        constructor(e5, t4, i5) {
+          super(), this._optionsService = i5, this.width = 0, this.height = 0, this._onCharSizeChange = this.register(new o2.EventEmitter()), this.onCharSizeChange = this._onCharSizeChange.event, this._measureStrategy = new c2(e5, t4, this._optionsService), this.register(this._optionsService.onMultipleOptionChange(["fontFamily", "fontSize"], () => this.measure()));
+        }
+        measure() {
+          const e5 = this._measureStrategy.measure();
+          e5.width === this.width && e5.height === this.height || (this.width = e5.width, this.height = e5.height, this._onCharSizeChange.fire());
+        }
+      };
+      t3.CharSizeService = h2 = s3([r2(2, n3.IOptionsService)], h2);
+      class c2 {
+        constructor(e5, t4, i5) {
+          this._document = e5, this._parentElement = t4, this._optionsService = i5, this._result = { width: 0, height: 0 }, this._measureElement = this._document.createElement("span"), this._measureElement.classList.add("xterm-char-measure-element"), this._measureElement.textContent = "W".repeat(32), this._measureElement.setAttribute("aria-hidden", "true"), this._measureElement.style.whiteSpace = "pre", this._measureElement.style.fontKerning = "none", this._parentElement.appendChild(this._measureElement);
+        }
+        measure() {
+          this._measureElement.style.fontFamily = this._optionsService.rawOptions.fontFamily, this._measureElement.style.fontSize = `${this._optionsService.rawOptions.fontSize}px`;
+          const e5 = { height: Number(this._measureElement.offsetHeight), width: Number(this._measureElement.offsetWidth) };
+          return 0 !== e5.width && 0 !== e5.height && (this._result.width = e5.width / 32, this._result.height = Math.ceil(e5.height)), this._result;
+        }
+      }
+    }, 4269: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CharacterJoinerService = t3.JoinedCellData = void 0;
+      const n3 = i4(3734), o2 = i4(643), a2 = i4(511), h2 = i4(2585);
+      class c2 extends n3.AttributeData {
+        constructor(e5, t4, i5) {
+          super(), this.content = 0, this.combinedData = "", this.fg = e5.fg, this.bg = e5.bg, this.combinedData = t4, this._width = i5;
+        }
+        isCombined() {
+          return 2097152;
+        }
+        getWidth() {
+          return this._width;
+        }
+        getChars() {
+          return this.combinedData;
+        }
+        getCode() {
+          return 2097151;
+        }
+        setFromCharData(e5) {
+          throw new Error("not implemented");
+        }
+        getAsCharData() {
+          return [this.fg, this.getChars(), this.getWidth(), this.getCode()];
+        }
+      }
+      t3.JoinedCellData = c2;
+      let l2 = t3.CharacterJoinerService = class e5 {
+        constructor(e6) {
+          this._bufferService = e6, this._characterJoiners = [], this._nextCharacterJoinerId = 0, this._workCell = new a2.CellData();
+        }
+        register(e6) {
+          const t4 = { id: this._nextCharacterJoinerId++, handler: e6 };
+          return this._characterJoiners.push(t4), t4.id;
+        }
+        deregister(e6) {
+          for (let t4 = 0; t4 < this._characterJoiners.length; t4++) if (this._characterJoiners[t4].id === e6) return this._characterJoiners.splice(t4, 1), true;
+          return false;
+        }
+        getJoinedCharacters(e6) {
+          if (0 === this._characterJoiners.length) return [];
+          const t4 = this._bufferService.buffer.lines.get(e6);
+          if (!t4 || 0 === t4.length) return [];
+          const i5 = [], s4 = t4.translateToString(true);
+          let r3 = 0, n4 = 0, a3 = 0, h3 = t4.getFg(0), c3 = t4.getBg(0);
+          for (let e7 = 0; e7 < t4.getTrimmedLength(); e7++) if (t4.loadCell(e7, this._workCell), 0 !== this._workCell.getWidth()) {
+            if (this._workCell.fg !== h3 || this._workCell.bg !== c3) {
+              if (e7 - r3 > 1) {
+                const e8 = this._getJoinedRanges(s4, a3, n4, t4, r3);
+                for (let t5 = 0; t5 < e8.length; t5++) i5.push(e8[t5]);
+              }
+              r3 = e7, a3 = n4, h3 = this._workCell.fg, c3 = this._workCell.bg;
+            }
+            n4 += this._workCell.getChars().length || o2.WHITESPACE_CELL_CHAR.length;
+          }
+          if (this._bufferService.cols - r3 > 1) {
+            const e7 = this._getJoinedRanges(s4, a3, n4, t4, r3);
+            for (let t5 = 0; t5 < e7.length; t5++) i5.push(e7[t5]);
+          }
+          return i5;
+        }
+        _getJoinedRanges(t4, i5, s4, r3, n4) {
+          const o3 = t4.substring(i5, s4);
+          let a3 = [];
+          try {
+            a3 = this._characterJoiners[0].handler(o3);
+          } catch (e6) {
+            console.error(e6);
+          }
+          for (let t5 = 1; t5 < this._characterJoiners.length; t5++) try {
+            const i6 = this._characterJoiners[t5].handler(o3);
+            for (let t6 = 0; t6 < i6.length; t6++) e5._mergeRanges(a3, i6[t6]);
+          } catch (e6) {
+            console.error(e6);
+          }
+          return this._stringRangesToCellRanges(a3, r3, n4), a3;
+        }
+        _stringRangesToCellRanges(e6, t4, i5) {
+          let s4 = 0, r3 = false, n4 = 0, a3 = e6[s4];
+          if (a3) {
+            for (let h3 = i5; h3 < this._bufferService.cols; h3++) {
+              const i6 = t4.getWidth(h3), c3 = t4.getString(h3).length || o2.WHITESPACE_CELL_CHAR.length;
+              if (0 !== i6) {
+                if (!r3 && a3[0] <= n4 && (a3[0] = h3, r3 = true), a3[1] <= n4) {
+                  if (a3[1] = h3, a3 = e6[++s4], !a3) break;
+                  a3[0] <= n4 ? (a3[0] = h3, r3 = true) : r3 = false;
+                }
+                n4 += c3;
+              }
+            }
+            a3 && (a3[1] = this._bufferService.cols);
+          }
+        }
+        static _mergeRanges(e6, t4) {
+          let i5 = false;
+          for (let s4 = 0; s4 < e6.length; s4++) {
+            const r3 = e6[s4];
+            if (i5) {
+              if (t4[1] <= r3[0]) return e6[s4 - 1][1] = t4[1], e6;
+              if (t4[1] <= r3[1]) return e6[s4 - 1][1] = Math.max(t4[1], r3[1]), e6.splice(s4, 1), e6;
+              e6.splice(s4, 1), s4--;
+            } else {
+              if (t4[1] <= r3[0]) return e6.splice(s4, 0, t4), e6;
+              if (t4[1] <= r3[1]) return r3[0] = Math.min(t4[0], r3[0]), e6;
+              t4[0] < r3[1] && (r3[0] = Math.min(t4[0], r3[0]), i5 = true);
+            }
+          }
+          return i5 ? e6[e6.length - 1][1] = t4[1] : e6.push(t4), e6;
+        }
+      };
+      t3.CharacterJoinerService = l2 = s3([r2(0, h2.IBufferService)], l2);
+    }, 5114: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CoreBrowserService = void 0, t3.CoreBrowserService = class {
+        constructor(e5, t4) {
+          this._textarea = e5, this.window = t4, this._isFocused = false, this._cachedIsFocused = void 0, this._textarea.addEventListener("focus", () => this._isFocused = true), this._textarea.addEventListener("blur", () => this._isFocused = false);
+        }
+        get dpr() {
+          return this.window.devicePixelRatio;
+        }
+        get isFocused() {
+          return void 0 === this._cachedIsFocused && (this._cachedIsFocused = this._isFocused && this._textarea.ownerDocument.hasFocus(), queueMicrotask(() => this._cachedIsFocused = void 0)), this._cachedIsFocused;
+        }
+      };
+    }, 8934: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.MouseService = void 0;
+      const n3 = i4(4725), o2 = i4(9806);
+      let a2 = t3.MouseService = class {
+        constructor(e5, t4) {
+          this._renderService = e5, this._charSizeService = t4;
+        }
+        getCoords(e5, t4, i5, s4, r3) {
+          return (0, o2.getCoords)(window, e5, t4, i5, s4, this._charSizeService.hasValidSize, this._renderService.dimensions.css.cell.width, this._renderService.dimensions.css.cell.height, r3);
+        }
+        getMouseReportCoords(e5, t4) {
+          const i5 = (0, o2.getCoordsRelativeToElement)(window, e5, t4);
+          if (this._charSizeService.hasValidSize) return i5[0] = Math.min(Math.max(i5[0], 0), this._renderService.dimensions.css.canvas.width - 1), i5[1] = Math.min(Math.max(i5[1], 0), this._renderService.dimensions.css.canvas.height - 1), { col: Math.floor(i5[0] / this._renderService.dimensions.css.cell.width), row: Math.floor(i5[1] / this._renderService.dimensions.css.cell.height), x: Math.floor(i5[0]), y: Math.floor(i5[1]) };
+        }
+      };
+      t3.MouseService = a2 = s3([r2(0, n3.IRenderService), r2(1, n3.ICharSizeService)], a2);
+    }, 3230: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.RenderService = void 0;
+      const n3 = i4(3656), o2 = i4(6193), a2 = i4(5596), h2 = i4(4725), c2 = i4(8460), l2 = i4(844), d2 = i4(7226), _2 = i4(2585);
+      let u2 = t3.RenderService = class extends l2.Disposable {
+        get dimensions() {
+          return this._renderer.value.dimensions;
+        }
+        constructor(e5, t4, i5, s4, r3, h3, _3, u3) {
+          if (super(), this._rowCount = e5, this._charSizeService = s4, this._renderer = this.register(new l2.MutableDisposable()), this._pausedResizeTask = new d2.DebouncedIdleTask(), this._isPaused = false, this._needsFullRefresh = false, this._isNextRenderRedrawOnly = true, this._needsSelectionRefresh = false, this._canvasWidth = 0, this._canvasHeight = 0, this._selectionState = { start: void 0, end: void 0, columnSelectMode: false }, this._onDimensionsChange = this.register(new c2.EventEmitter()), this.onDimensionsChange = this._onDimensionsChange.event, this._onRenderedViewportChange = this.register(new c2.EventEmitter()), this.onRenderedViewportChange = this._onRenderedViewportChange.event, this._onRender = this.register(new c2.EventEmitter()), this.onRender = this._onRender.event, this._onRefreshRequest = this.register(new c2.EventEmitter()), this.onRefreshRequest = this._onRefreshRequest.event, this._renderDebouncer = new o2.RenderDebouncer(_3.window, (e6, t5) => this._renderRows(e6, t5)), this.register(this._renderDebouncer), this._screenDprMonitor = new a2.ScreenDprMonitor(_3.window), this._screenDprMonitor.setListener(() => this.handleDevicePixelRatioChange()), this.register(this._screenDprMonitor), this.register(h3.onResize(() => this._fullRefresh())), this.register(h3.buffers.onBufferActivate(() => {
+            var e6;
+            return null === (e6 = this._renderer.value) || void 0 === e6 ? void 0 : e6.clear();
+          })), this.register(i5.onOptionChange(() => this._handleOptionsChanged())), this.register(this._charSizeService.onCharSizeChange(() => this.handleCharSizeChanged())), this.register(r3.onDecorationRegistered(() => this._fullRefresh())), this.register(r3.onDecorationRemoved(() => this._fullRefresh())), this.register(i5.onMultipleOptionChange(["customGlyphs", "drawBoldTextInBrightColors", "letterSpacing", "lineHeight", "fontFamily", "fontSize", "fontWeight", "fontWeightBold", "minimumContrastRatio"], () => {
+            this.clear(), this.handleResize(h3.cols, h3.rows), this._fullRefresh();
+          })), this.register(i5.onMultipleOptionChange(["cursorBlink", "cursorStyle"], () => this.refreshRows(h3.buffer.y, h3.buffer.y, true))), this.register((0, n3.addDisposableDomListener)(_3.window, "resize", () => this.handleDevicePixelRatioChange())), this.register(u3.onChangeColors(() => this._fullRefresh())), "IntersectionObserver" in _3.window) {
+            const e6 = new _3.window.IntersectionObserver((e7) => this._handleIntersectionChange(e7[e7.length - 1]), { threshold: 0 });
+            e6.observe(t4), this.register({ dispose: () => e6.disconnect() });
+          }
+        }
+        _handleIntersectionChange(e5) {
+          this._isPaused = void 0 === e5.isIntersecting ? 0 === e5.intersectionRatio : !e5.isIntersecting, this._isPaused || this._charSizeService.hasValidSize || this._charSizeService.measure(), !this._isPaused && this._needsFullRefresh && (this._pausedResizeTask.flush(), this.refreshRows(0, this._rowCount - 1), this._needsFullRefresh = false);
+        }
+        refreshRows(e5, t4, i5 = false) {
+          this._isPaused ? this._needsFullRefresh = true : (i5 || (this._isNextRenderRedrawOnly = false), this._renderDebouncer.refresh(e5, t4, this._rowCount));
+        }
+        _renderRows(e5, t4) {
+          this._renderer.value && (e5 = Math.min(e5, this._rowCount - 1), t4 = Math.min(t4, this._rowCount - 1), this._renderer.value.renderRows(e5, t4), this._needsSelectionRefresh && (this._renderer.value.handleSelectionChanged(this._selectionState.start, this._selectionState.end, this._selectionState.columnSelectMode), this._needsSelectionRefresh = false), this._isNextRenderRedrawOnly || this._onRenderedViewportChange.fire({ start: e5, end: t4 }), this._onRender.fire({ start: e5, end: t4 }), this._isNextRenderRedrawOnly = true);
+        }
+        resize(e5, t4) {
+          this._rowCount = t4, this._fireOnCanvasResize();
+        }
+        _handleOptionsChanged() {
+          this._renderer.value && (this.refreshRows(0, this._rowCount - 1), this._fireOnCanvasResize());
+        }
+        _fireOnCanvasResize() {
+          this._renderer.value && (this._renderer.value.dimensions.css.canvas.width === this._canvasWidth && this._renderer.value.dimensions.css.canvas.height === this._canvasHeight || this._onDimensionsChange.fire(this._renderer.value.dimensions));
+        }
+        hasRenderer() {
+          return !!this._renderer.value;
+        }
+        setRenderer(e5) {
+          this._renderer.value = e5, this._renderer.value.onRequestRedraw((e6) => this.refreshRows(e6.start, e6.end, true)), this._needsSelectionRefresh = true, this._fullRefresh();
+        }
+        addRefreshCallback(e5) {
+          return this._renderDebouncer.addRefreshCallback(e5);
+        }
+        _fullRefresh() {
+          this._isPaused ? this._needsFullRefresh = true : this.refreshRows(0, this._rowCount - 1);
+        }
+        clearTextureAtlas() {
+          var e5, t4;
+          this._renderer.value && (null === (t4 = (e5 = this._renderer.value).clearTextureAtlas) || void 0 === t4 || t4.call(e5), this._fullRefresh());
+        }
+        handleDevicePixelRatioChange() {
+          this._charSizeService.measure(), this._renderer.value && (this._renderer.value.handleDevicePixelRatioChange(), this.refreshRows(0, this._rowCount - 1));
+        }
+        handleResize(e5, t4) {
+          this._renderer.value && (this._isPaused ? this._pausedResizeTask.set(() => this._renderer.value.handleResize(e5, t4)) : this._renderer.value.handleResize(e5, t4), this._fullRefresh());
+        }
+        handleCharSizeChanged() {
+          var e5;
+          null === (e5 = this._renderer.value) || void 0 === e5 || e5.handleCharSizeChanged();
+        }
+        handleBlur() {
+          var e5;
+          null === (e5 = this._renderer.value) || void 0 === e5 || e5.handleBlur();
+        }
+        handleFocus() {
+          var e5;
+          null === (e5 = this._renderer.value) || void 0 === e5 || e5.handleFocus();
+        }
+        handleSelectionChanged(e5, t4, i5) {
+          var s4;
+          this._selectionState.start = e5, this._selectionState.end = t4, this._selectionState.columnSelectMode = i5, null === (s4 = this._renderer.value) || void 0 === s4 || s4.handleSelectionChanged(e5, t4, i5);
+        }
+        handleCursorMove() {
+          var e5;
+          null === (e5 = this._renderer.value) || void 0 === e5 || e5.handleCursorMove();
+        }
+        clear() {
+          var e5;
+          null === (e5 = this._renderer.value) || void 0 === e5 || e5.clear();
+        }
+      };
+      t3.RenderService = u2 = s3([r2(2, _2.IOptionsService), r2(3, h2.ICharSizeService), r2(4, _2.IDecorationService), r2(5, _2.IBufferService), r2(6, h2.ICoreBrowserService), r2(7, h2.IThemeService)], u2);
+    }, 9312: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.SelectionService = void 0;
+      const n3 = i4(9806), o2 = i4(9504), a2 = i4(456), h2 = i4(4725), c2 = i4(8460), l2 = i4(844), d2 = i4(6114), _2 = i4(4841), u2 = i4(511), f2 = i4(2585), v2 = String.fromCharCode(160), p2 = new RegExp(v2, "g");
+      let g2 = t3.SelectionService = class extends l2.Disposable {
+        constructor(e5, t4, i5, s4, r3, n4, o3, h3, d3) {
+          super(), this._element = e5, this._screenElement = t4, this._linkifier = i5, this._bufferService = s4, this._coreService = r3, this._mouseService = n4, this._optionsService = o3, this._renderService = h3, this._coreBrowserService = d3, this._dragScrollAmount = 0, this._enabled = true, this._workCell = new u2.CellData(), this._mouseDownTimeStamp = 0, this._oldHasSelection = false, this._oldSelectionStart = void 0, this._oldSelectionEnd = void 0, this._onLinuxMouseSelection = this.register(new c2.EventEmitter()), this.onLinuxMouseSelection = this._onLinuxMouseSelection.event, this._onRedrawRequest = this.register(new c2.EventEmitter()), this.onRequestRedraw = this._onRedrawRequest.event, this._onSelectionChange = this.register(new c2.EventEmitter()), this.onSelectionChange = this._onSelectionChange.event, this._onRequestScrollLines = this.register(new c2.EventEmitter()), this.onRequestScrollLines = this._onRequestScrollLines.event, this._mouseMoveListener = (e6) => this._handleMouseMove(e6), this._mouseUpListener = (e6) => this._handleMouseUp(e6), this._coreService.onUserInput(() => {
+            this.hasSelection && this.clearSelection();
+          }), this._trimListener = this._bufferService.buffer.lines.onTrim((e6) => this._handleTrim(e6)), this.register(this._bufferService.buffers.onBufferActivate((e6) => this._handleBufferActivate(e6))), this.enable(), this._model = new a2.SelectionModel(this._bufferService), this._activeSelectionMode = 0, this.register((0, l2.toDisposable)(() => {
+            this._removeMouseDownListeners();
+          }));
+        }
+        reset() {
+          this.clearSelection();
+        }
+        disable() {
+          this.clearSelection(), this._enabled = false;
+        }
+        enable() {
+          this._enabled = true;
+        }
+        get selectionStart() {
+          return this._model.finalSelectionStart;
+        }
+        get selectionEnd() {
+          return this._model.finalSelectionEnd;
+        }
+        get hasSelection() {
+          const e5 = this._model.finalSelectionStart, t4 = this._model.finalSelectionEnd;
+          return !(!e5 || !t4 || e5[0] === t4[0] && e5[1] === t4[1]);
+        }
+        get selectionText() {
+          const e5 = this._model.finalSelectionStart, t4 = this._model.finalSelectionEnd;
+          if (!e5 || !t4) return "";
+          const i5 = this._bufferService.buffer, s4 = [];
+          if (3 === this._activeSelectionMode) {
+            if (e5[0] === t4[0]) return "";
+            const r3 = e5[0] < t4[0] ? e5[0] : t4[0], n4 = e5[0] < t4[0] ? t4[0] : e5[0];
+            for (let o3 = e5[1]; o3 <= t4[1]; o3++) {
+              const e6 = i5.translateBufferLineToString(o3, true, r3, n4);
+              s4.push(e6);
+            }
+          } else {
+            const r3 = e5[1] === t4[1] ? t4[0] : void 0;
+            s4.push(i5.translateBufferLineToString(e5[1], true, e5[0], r3));
+            for (let r4 = e5[1] + 1; r4 <= t4[1] - 1; r4++) {
+              const e6 = i5.lines.get(r4), t5 = i5.translateBufferLineToString(r4, true);
+              (null == e6 ? void 0 : e6.isWrapped) ? s4[s4.length - 1] += t5 : s4.push(t5);
+            }
+            if (e5[1] !== t4[1]) {
+              const e6 = i5.lines.get(t4[1]), r4 = i5.translateBufferLineToString(t4[1], true, 0, t4[0]);
+              e6 && e6.isWrapped ? s4[s4.length - 1] += r4 : s4.push(r4);
+            }
+          }
+          return s4.map((e6) => e6.replace(p2, " ")).join(d2.isWindows ? "\r\n" : "\n");
+        }
+        clearSelection() {
+          this._model.clearSelection(), this._removeMouseDownListeners(), this.refresh(), this._onSelectionChange.fire();
+        }
+        refresh(e5) {
+          this._refreshAnimationFrame || (this._refreshAnimationFrame = this._coreBrowserService.window.requestAnimationFrame(() => this._refresh())), d2.isLinux && e5 && this.selectionText.length && this._onLinuxMouseSelection.fire(this.selectionText);
+        }
+        _refresh() {
+          this._refreshAnimationFrame = void 0, this._onRedrawRequest.fire({ start: this._model.finalSelectionStart, end: this._model.finalSelectionEnd, columnSelectMode: 3 === this._activeSelectionMode });
+        }
+        _isClickInSelection(e5) {
+          const t4 = this._getMouseBufferCoords(e5), i5 = this._model.finalSelectionStart, s4 = this._model.finalSelectionEnd;
+          return !!(i5 && s4 && t4) && this._areCoordsInSelection(t4, i5, s4);
+        }
+        isCellInSelection(e5, t4) {
+          const i5 = this._model.finalSelectionStart, s4 = this._model.finalSelectionEnd;
+          return !(!i5 || !s4) && this._areCoordsInSelection([e5, t4], i5, s4);
+        }
+        _areCoordsInSelection(e5, t4, i5) {
+          return e5[1] > t4[1] && e5[1] < i5[1] || t4[1] === i5[1] && e5[1] === t4[1] && e5[0] >= t4[0] && e5[0] < i5[0] || t4[1] < i5[1] && e5[1] === i5[1] && e5[0] < i5[0] || t4[1] < i5[1] && e5[1] === t4[1] && e5[0] >= t4[0];
+        }
+        _selectWordAtCursor(e5, t4) {
+          var i5, s4;
+          const r3 = null === (s4 = null === (i5 = this._linkifier.currentLink) || void 0 === i5 ? void 0 : i5.link) || void 0 === s4 ? void 0 : s4.range;
+          if (r3) return this._model.selectionStart = [r3.start.x - 1, r3.start.y - 1], this._model.selectionStartLength = (0, _2.getRangeLength)(r3, this._bufferService.cols), this._model.selectionEnd = void 0, true;
+          const n4 = this._getMouseBufferCoords(e5);
+          return !!n4 && (this._selectWordAt(n4, t4), this._model.selectionEnd = void 0, true);
+        }
+        selectAll() {
+          this._model.isSelectAllActive = true, this.refresh(), this._onSelectionChange.fire();
+        }
+        selectLines(e5, t4) {
+          this._model.clearSelection(), e5 = Math.max(e5, 0), t4 = Math.min(t4, this._bufferService.buffer.lines.length - 1), this._model.selectionStart = [0, e5], this._model.selectionEnd = [this._bufferService.cols, t4], this.refresh(), this._onSelectionChange.fire();
+        }
+        _handleTrim(e5) {
+          this._model.handleTrim(e5) && this.refresh();
+        }
+        _getMouseBufferCoords(e5) {
+          const t4 = this._mouseService.getCoords(e5, this._screenElement, this._bufferService.cols, this._bufferService.rows, true);
+          if (t4) return t4[0]--, t4[1]--, t4[1] += this._bufferService.buffer.ydisp, t4;
+        }
+        _getMouseEventScrollAmount(e5) {
+          let t4 = (0, n3.getCoordsRelativeToElement)(this._coreBrowserService.window, e5, this._screenElement)[1];
+          const i5 = this._renderService.dimensions.css.canvas.height;
+          return t4 >= 0 && t4 <= i5 ? 0 : (t4 > i5 && (t4 -= i5), t4 = Math.min(Math.max(t4, -50), 50), t4 /= 50, t4 / Math.abs(t4) + Math.round(14 * t4));
+        }
+        shouldForceSelection(e5) {
+          return d2.isMac ? e5.altKey && this._optionsService.rawOptions.macOptionClickForcesSelection : e5.shiftKey;
+        }
+        handleMouseDown(e5) {
+          if (this._mouseDownTimeStamp = e5.timeStamp, (2 !== e5.button || !this.hasSelection) && 0 === e5.button) {
+            if (!this._enabled) {
+              if (!this.shouldForceSelection(e5)) return;
+              e5.stopPropagation();
+            }
+            e5.preventDefault(), this._dragScrollAmount = 0, this._enabled && e5.shiftKey ? this._handleIncrementalClick(e5) : 1 === e5.detail ? this._handleSingleClick(e5) : 2 === e5.detail ? this._handleDoubleClick(e5) : 3 === e5.detail && this._handleTripleClick(e5), this._addMouseDownListeners(), this.refresh(true);
+          }
+        }
+        _addMouseDownListeners() {
+          this._screenElement.ownerDocument && (this._screenElement.ownerDocument.addEventListener("mousemove", this._mouseMoveListener), this._screenElement.ownerDocument.addEventListener("mouseup", this._mouseUpListener)), this._dragScrollIntervalTimer = this._coreBrowserService.window.setInterval(() => this._dragScroll(), 50);
+        }
+        _removeMouseDownListeners() {
+          this._screenElement.ownerDocument && (this._screenElement.ownerDocument.removeEventListener("mousemove", this._mouseMoveListener), this._screenElement.ownerDocument.removeEventListener("mouseup", this._mouseUpListener)), this._coreBrowserService.window.clearInterval(this._dragScrollIntervalTimer), this._dragScrollIntervalTimer = void 0;
+        }
+        _handleIncrementalClick(e5) {
+          this._model.selectionStart && (this._model.selectionEnd = this._getMouseBufferCoords(e5));
+        }
+        _handleSingleClick(e5) {
+          if (this._model.selectionStartLength = 0, this._model.isSelectAllActive = false, this._activeSelectionMode = this.shouldColumnSelect(e5) ? 3 : 0, this._model.selectionStart = this._getMouseBufferCoords(e5), !this._model.selectionStart) return;
+          this._model.selectionEnd = void 0;
+          const t4 = this._bufferService.buffer.lines.get(this._model.selectionStart[1]);
+          t4 && t4.length !== this._model.selectionStart[0] && 0 === t4.hasWidth(this._model.selectionStart[0]) && this._model.selectionStart[0]++;
+        }
+        _handleDoubleClick(e5) {
+          this._selectWordAtCursor(e5, true) && (this._activeSelectionMode = 1);
+        }
+        _handleTripleClick(e5) {
+          const t4 = this._getMouseBufferCoords(e5);
+          t4 && (this._activeSelectionMode = 2, this._selectLineAt(t4[1]));
+        }
+        shouldColumnSelect(e5) {
+          return e5.altKey && !(d2.isMac && this._optionsService.rawOptions.macOptionClickForcesSelection);
+        }
+        _handleMouseMove(e5) {
+          if (e5.stopImmediatePropagation(), !this._model.selectionStart) return;
+          const t4 = this._model.selectionEnd ? [this._model.selectionEnd[0], this._model.selectionEnd[1]] : null;
+          if (this._model.selectionEnd = this._getMouseBufferCoords(e5), !this._model.selectionEnd) return void this.refresh(true);
+          2 === this._activeSelectionMode ? this._model.selectionEnd[1] < this._model.selectionStart[1] ? this._model.selectionEnd[0] = 0 : this._model.selectionEnd[0] = this._bufferService.cols : 1 === this._activeSelectionMode && this._selectToWordAt(this._model.selectionEnd), this._dragScrollAmount = this._getMouseEventScrollAmount(e5), 3 !== this._activeSelectionMode && (this._dragScrollAmount > 0 ? this._model.selectionEnd[0] = this._bufferService.cols : this._dragScrollAmount < 0 && (this._model.selectionEnd[0] = 0));
+          const i5 = this._bufferService.buffer;
+          if (this._model.selectionEnd[1] < i5.lines.length) {
+            const e6 = i5.lines.get(this._model.selectionEnd[1]);
+            e6 && 0 === e6.hasWidth(this._model.selectionEnd[0]) && this._model.selectionEnd[0]++;
+          }
+          t4 && t4[0] === this._model.selectionEnd[0] && t4[1] === this._model.selectionEnd[1] || this.refresh(true);
+        }
+        _dragScroll() {
+          if (this._model.selectionEnd && this._model.selectionStart && this._dragScrollAmount) {
+            this._onRequestScrollLines.fire({ amount: this._dragScrollAmount, suppressScrollEvent: false });
+            const e5 = this._bufferService.buffer;
+            this._dragScrollAmount > 0 ? (3 !== this._activeSelectionMode && (this._model.selectionEnd[0] = this._bufferService.cols), this._model.selectionEnd[1] = Math.min(e5.ydisp + this._bufferService.rows, e5.lines.length - 1)) : (3 !== this._activeSelectionMode && (this._model.selectionEnd[0] = 0), this._model.selectionEnd[1] = e5.ydisp), this.refresh();
+          }
+        }
+        _handleMouseUp(e5) {
+          const t4 = e5.timeStamp - this._mouseDownTimeStamp;
+          if (this._removeMouseDownListeners(), this.selectionText.length <= 1 && t4 < 500 && e5.altKey && this._optionsService.rawOptions.altClickMovesCursor) {
+            if (this._bufferService.buffer.ybase === this._bufferService.buffer.ydisp) {
+              const t5 = this._mouseService.getCoords(e5, this._element, this._bufferService.cols, this._bufferService.rows, false);
+              if (t5 && void 0 !== t5[0] && void 0 !== t5[1]) {
+                const e6 = (0, o2.moveToCellSequence)(t5[0] - 1, t5[1] - 1, this._bufferService, this._coreService.decPrivateModes.applicationCursorKeys);
+                this._coreService.triggerDataEvent(e6, true);
+              }
+            }
+          } else this._fireEventIfSelectionChanged();
+        }
+        _fireEventIfSelectionChanged() {
+          const e5 = this._model.finalSelectionStart, t4 = this._model.finalSelectionEnd, i5 = !(!e5 || !t4 || e5[0] === t4[0] && e5[1] === t4[1]);
+          i5 ? e5 && t4 && (this._oldSelectionStart && this._oldSelectionEnd && e5[0] === this._oldSelectionStart[0] && e5[1] === this._oldSelectionStart[1] && t4[0] === this._oldSelectionEnd[0] && t4[1] === this._oldSelectionEnd[1] || this._fireOnSelectionChange(e5, t4, i5)) : this._oldHasSelection && this._fireOnSelectionChange(e5, t4, i5);
+        }
+        _fireOnSelectionChange(e5, t4, i5) {
+          this._oldSelectionStart = e5, this._oldSelectionEnd = t4, this._oldHasSelection = i5, this._onSelectionChange.fire();
+        }
+        _handleBufferActivate(e5) {
+          this.clearSelection(), this._trimListener.dispose(), this._trimListener = e5.activeBuffer.lines.onTrim((e6) => this._handleTrim(e6));
+        }
+        _convertViewportColToCharacterIndex(e5, t4) {
+          let i5 = t4;
+          for (let s4 = 0; t4 >= s4; s4++) {
+            const r3 = e5.loadCell(s4, this._workCell).getChars().length;
+            0 === this._workCell.getWidth() ? i5-- : r3 > 1 && t4 !== s4 && (i5 += r3 - 1);
+          }
+          return i5;
+        }
+        setSelection(e5, t4, i5) {
+          this._model.clearSelection(), this._removeMouseDownListeners(), this._model.selectionStart = [e5, t4], this._model.selectionStartLength = i5, this.refresh(), this._fireEventIfSelectionChanged();
+        }
+        rightClickSelect(e5) {
+          this._isClickInSelection(e5) || (this._selectWordAtCursor(e5, false) && this.refresh(true), this._fireEventIfSelectionChanged());
+        }
+        _getWordAt(e5, t4, i5 = true, s4 = true) {
+          if (e5[0] >= this._bufferService.cols) return;
+          const r3 = this._bufferService.buffer, n4 = r3.lines.get(e5[1]);
+          if (!n4) return;
+          const o3 = r3.translateBufferLineToString(e5[1], false);
+          let a3 = this._convertViewportColToCharacterIndex(n4, e5[0]), h3 = a3;
+          const c3 = e5[0] - a3;
+          let l3 = 0, d3 = 0, _3 = 0, u3 = 0;
+          if (" " === o3.charAt(a3)) {
+            for (; a3 > 0 && " " === o3.charAt(a3 - 1); ) a3--;
+            for (; h3 < o3.length && " " === o3.charAt(h3 + 1); ) h3++;
+          } else {
+            let t5 = e5[0], i6 = e5[0];
+            0 === n4.getWidth(t5) && (l3++, t5--), 2 === n4.getWidth(i6) && (d3++, i6++);
+            const s5 = n4.getString(i6).length;
+            for (s5 > 1 && (u3 += s5 - 1, h3 += s5 - 1); t5 > 0 && a3 > 0 && !this._isCharWordSeparator(n4.loadCell(t5 - 1, this._workCell)); ) {
+              n4.loadCell(t5 - 1, this._workCell);
+              const e6 = this._workCell.getChars().length;
+              0 === this._workCell.getWidth() ? (l3++, t5--) : e6 > 1 && (_3 += e6 - 1, a3 -= e6 - 1), a3--, t5--;
+            }
+            for (; i6 < n4.length && h3 + 1 < o3.length && !this._isCharWordSeparator(n4.loadCell(i6 + 1, this._workCell)); ) {
+              n4.loadCell(i6 + 1, this._workCell);
+              const e6 = this._workCell.getChars().length;
+              2 === this._workCell.getWidth() ? (d3++, i6++) : e6 > 1 && (u3 += e6 - 1, h3 += e6 - 1), h3++, i6++;
+            }
+          }
+          h3++;
+          let f3 = a3 + c3 - l3 + _3, v3 = Math.min(this._bufferService.cols, h3 - a3 + l3 + d3 - _3 - u3);
+          if (t4 || "" !== o3.slice(a3, h3).trim()) {
+            if (i5 && 0 === f3 && 32 !== n4.getCodePoint(0)) {
+              const t5 = r3.lines.get(e5[1] - 1);
+              if (t5 && n4.isWrapped && 32 !== t5.getCodePoint(this._bufferService.cols - 1)) {
+                const t6 = this._getWordAt([this._bufferService.cols - 1, e5[1] - 1], false, true, false);
+                if (t6) {
+                  const e6 = this._bufferService.cols - t6.start;
+                  f3 -= e6, v3 += e6;
+                }
+              }
+            }
+            if (s4 && f3 + v3 === this._bufferService.cols && 32 !== n4.getCodePoint(this._bufferService.cols - 1)) {
+              const t5 = r3.lines.get(e5[1] + 1);
+              if ((null == t5 ? void 0 : t5.isWrapped) && 32 !== t5.getCodePoint(0)) {
+                const t6 = this._getWordAt([0, e5[1] + 1], false, false, true);
+                t6 && (v3 += t6.length);
+              }
+            }
+            return { start: f3, length: v3 };
+          }
+        }
+        _selectWordAt(e5, t4) {
+          const i5 = this._getWordAt(e5, t4);
+          if (i5) {
+            for (; i5.start < 0; ) i5.start += this._bufferService.cols, e5[1]--;
+            this._model.selectionStart = [i5.start, e5[1]], this._model.selectionStartLength = i5.length;
+          }
+        }
+        _selectToWordAt(e5) {
+          const t4 = this._getWordAt(e5, true);
+          if (t4) {
+            let i5 = e5[1];
+            for (; t4.start < 0; ) t4.start += this._bufferService.cols, i5--;
+            if (!this._model.areSelectionValuesReversed()) for (; t4.start + t4.length > this._bufferService.cols; ) t4.length -= this._bufferService.cols, i5++;
+            this._model.selectionEnd = [this._model.areSelectionValuesReversed() ? t4.start : t4.start + t4.length, i5];
+          }
+        }
+        _isCharWordSeparator(e5) {
+          return 0 !== e5.getWidth() && this._optionsService.rawOptions.wordSeparator.indexOf(e5.getChars()) >= 0;
+        }
+        _selectLineAt(e5) {
+          const t4 = this._bufferService.buffer.getWrappedRangeForLine(e5), i5 = { start: { x: 0, y: t4.first }, end: { x: this._bufferService.cols - 1, y: t4.last } };
+          this._model.selectionStart = [0, t4.first], this._model.selectionEnd = void 0, this._model.selectionStartLength = (0, _2.getRangeLength)(i5, this._bufferService.cols);
+        }
+      };
+      t3.SelectionService = g2 = s3([r2(3, f2.IBufferService), r2(4, f2.ICoreService), r2(5, h2.IMouseService), r2(6, f2.IOptionsService), r2(7, h2.IRenderService), r2(8, h2.ICoreBrowserService)], g2);
+    }, 4725: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.IThemeService = t3.ICharacterJoinerService = t3.ISelectionService = t3.IRenderService = t3.IMouseService = t3.ICoreBrowserService = t3.ICharSizeService = void 0;
+      const s3 = i4(8343);
+      t3.ICharSizeService = (0, s3.createDecorator)("CharSizeService"), t3.ICoreBrowserService = (0, s3.createDecorator)("CoreBrowserService"), t3.IMouseService = (0, s3.createDecorator)("MouseService"), t3.IRenderService = (0, s3.createDecorator)("RenderService"), t3.ISelectionService = (0, s3.createDecorator)("SelectionService"), t3.ICharacterJoinerService = (0, s3.createDecorator)("CharacterJoinerService"), t3.IThemeService = (0, s3.createDecorator)("ThemeService");
+    }, 6731: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.ThemeService = t3.DEFAULT_ANSI_COLORS = void 0;
+      const n3 = i4(7239), o2 = i4(8055), a2 = i4(8460), h2 = i4(844), c2 = i4(2585), l2 = o2.css.toColor("#ffffff"), d2 = o2.css.toColor("#000000"), _2 = o2.css.toColor("#ffffff"), u2 = o2.css.toColor("#000000"), f2 = { css: "rgba(255, 255, 255, 0.3)", rgba: 4294967117 };
+      t3.DEFAULT_ANSI_COLORS = Object.freeze((() => {
+        const e5 = [o2.css.toColor("#2e3436"), o2.css.toColor("#cc0000"), o2.css.toColor("#4e9a06"), o2.css.toColor("#c4a000"), o2.css.toColor("#3465a4"), o2.css.toColor("#75507b"), o2.css.toColor("#06989a"), o2.css.toColor("#d3d7cf"), o2.css.toColor("#555753"), o2.css.toColor("#ef2929"), o2.css.toColor("#8ae234"), o2.css.toColor("#fce94f"), o2.css.toColor("#729fcf"), o2.css.toColor("#ad7fa8"), o2.css.toColor("#34e2e2"), o2.css.toColor("#eeeeec")], t4 = [0, 95, 135, 175, 215, 255];
+        for (let i5 = 0; i5 < 216; i5++) {
+          const s4 = t4[i5 / 36 % 6 | 0], r3 = t4[i5 / 6 % 6 | 0], n4 = t4[i5 % 6];
+          e5.push({ css: o2.channels.toCss(s4, r3, n4), rgba: o2.channels.toRgba(s4, r3, n4) });
+        }
+        for (let t5 = 0; t5 < 24; t5++) {
+          const i5 = 8 + 10 * t5;
+          e5.push({ css: o2.channels.toCss(i5, i5, i5), rgba: o2.channels.toRgba(i5, i5, i5) });
+        }
+        return e5;
+      })());
+      let v2 = t3.ThemeService = class extends h2.Disposable {
+        get colors() {
+          return this._colors;
+        }
+        constructor(e5) {
+          super(), this._optionsService = e5, this._contrastCache = new n3.ColorContrastCache(), this._halfContrastCache = new n3.ColorContrastCache(), this._onChangeColors = this.register(new a2.EventEmitter()), this.onChangeColors = this._onChangeColors.event, this._colors = { foreground: l2, background: d2, cursor: _2, cursorAccent: u2, selectionForeground: void 0, selectionBackgroundTransparent: f2, selectionBackgroundOpaque: o2.color.blend(d2, f2), selectionInactiveBackgroundTransparent: f2, selectionInactiveBackgroundOpaque: o2.color.blend(d2, f2), ansi: t3.DEFAULT_ANSI_COLORS.slice(), contrastCache: this._contrastCache, halfContrastCache: this._halfContrastCache }, this._updateRestoreColors(), this._setTheme(this._optionsService.rawOptions.theme), this.register(this._optionsService.onSpecificOptionChange("minimumContrastRatio", () => this._contrastCache.clear())), this.register(this._optionsService.onSpecificOptionChange("theme", () => this._setTheme(this._optionsService.rawOptions.theme)));
+        }
+        _setTheme(e5 = {}) {
+          const i5 = this._colors;
+          if (i5.foreground = p2(e5.foreground, l2), i5.background = p2(e5.background, d2), i5.cursor = p2(e5.cursor, _2), i5.cursorAccent = p2(e5.cursorAccent, u2), i5.selectionBackgroundTransparent = p2(e5.selectionBackground, f2), i5.selectionBackgroundOpaque = o2.color.blend(i5.background, i5.selectionBackgroundTransparent), i5.selectionInactiveBackgroundTransparent = p2(e5.selectionInactiveBackground, i5.selectionBackgroundTransparent), i5.selectionInactiveBackgroundOpaque = o2.color.blend(i5.background, i5.selectionInactiveBackgroundTransparent), i5.selectionForeground = e5.selectionForeground ? p2(e5.selectionForeground, o2.NULL_COLOR) : void 0, i5.selectionForeground === o2.NULL_COLOR && (i5.selectionForeground = void 0), o2.color.isOpaque(i5.selectionBackgroundTransparent)) {
+            const e6 = 0.3;
+            i5.selectionBackgroundTransparent = o2.color.opacity(i5.selectionBackgroundTransparent, e6);
+          }
+          if (o2.color.isOpaque(i5.selectionInactiveBackgroundTransparent)) {
+            const e6 = 0.3;
+            i5.selectionInactiveBackgroundTransparent = o2.color.opacity(i5.selectionInactiveBackgroundTransparent, e6);
+          }
+          if (i5.ansi = t3.DEFAULT_ANSI_COLORS.slice(), i5.ansi[0] = p2(e5.black, t3.DEFAULT_ANSI_COLORS[0]), i5.ansi[1] = p2(e5.red, t3.DEFAULT_ANSI_COLORS[1]), i5.ansi[2] = p2(e5.green, t3.DEFAULT_ANSI_COLORS[2]), i5.ansi[3] = p2(e5.yellow, t3.DEFAULT_ANSI_COLORS[3]), i5.ansi[4] = p2(e5.blue, t3.DEFAULT_ANSI_COLORS[4]), i5.ansi[5] = p2(e5.magenta, t3.DEFAULT_ANSI_COLORS[5]), i5.ansi[6] = p2(e5.cyan, t3.DEFAULT_ANSI_COLORS[6]), i5.ansi[7] = p2(e5.white, t3.DEFAULT_ANSI_COLORS[7]), i5.ansi[8] = p2(e5.brightBlack, t3.DEFAULT_ANSI_COLORS[8]), i5.ansi[9] = p2(e5.brightRed, t3.DEFAULT_ANSI_COLORS[9]), i5.ansi[10] = p2(e5.brightGreen, t3.DEFAULT_ANSI_COLORS[10]), i5.ansi[11] = p2(e5.brightYellow, t3.DEFAULT_ANSI_COLORS[11]), i5.ansi[12] = p2(e5.brightBlue, t3.DEFAULT_ANSI_COLORS[12]), i5.ansi[13] = p2(e5.brightMagenta, t3.DEFAULT_ANSI_COLORS[13]), i5.ansi[14] = p2(e5.brightCyan, t3.DEFAULT_ANSI_COLORS[14]), i5.ansi[15] = p2(e5.brightWhite, t3.DEFAULT_ANSI_COLORS[15]), e5.extendedAnsi) {
+            const s4 = Math.min(i5.ansi.length - 16, e5.extendedAnsi.length);
+            for (let r3 = 0; r3 < s4; r3++) i5.ansi[r3 + 16] = p2(e5.extendedAnsi[r3], t3.DEFAULT_ANSI_COLORS[r3 + 16]);
+          }
+          this._contrastCache.clear(), this._halfContrastCache.clear(), this._updateRestoreColors(), this._onChangeColors.fire(this.colors);
+        }
+        restoreColor(e5) {
+          this._restoreColor(e5), this._onChangeColors.fire(this.colors);
+        }
+        _restoreColor(e5) {
+          if (void 0 !== e5) switch (e5) {
+            case 256:
+              this._colors.foreground = this._restoreColors.foreground;
+              break;
+            case 257:
+              this._colors.background = this._restoreColors.background;
+              break;
+            case 258:
+              this._colors.cursor = this._restoreColors.cursor;
+              break;
+            default:
+              this._colors.ansi[e5] = this._restoreColors.ansi[e5];
+          }
+          else for (let e6 = 0; e6 < this._restoreColors.ansi.length; ++e6) this._colors.ansi[e6] = this._restoreColors.ansi[e6];
+        }
+        modifyColors(e5) {
+          e5(this._colors), this._onChangeColors.fire(this.colors);
+        }
+        _updateRestoreColors() {
+          this._restoreColors = { foreground: this._colors.foreground, background: this._colors.background, cursor: this._colors.cursor, ansi: this._colors.ansi.slice() };
+        }
+      };
+      function p2(e5, t4) {
+        if (void 0 !== e5) try {
+          return o2.css.toColor(e5);
+        } catch (e6) {
+        }
+        return t4;
+      }
+      t3.ThemeService = v2 = s3([r2(0, c2.IOptionsService)], v2);
+    }, 6349: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CircularList = void 0;
+      const s3 = i4(8460), r2 = i4(844);
+      class n3 extends r2.Disposable {
+        constructor(e5) {
+          super(), this._maxLength = e5, this.onDeleteEmitter = this.register(new s3.EventEmitter()), this.onDelete = this.onDeleteEmitter.event, this.onInsertEmitter = this.register(new s3.EventEmitter()), this.onInsert = this.onInsertEmitter.event, this.onTrimEmitter = this.register(new s3.EventEmitter()), this.onTrim = this.onTrimEmitter.event, this._array = new Array(this._maxLength), this._startIndex = 0, this._length = 0;
+        }
+        get maxLength() {
+          return this._maxLength;
+        }
+        set maxLength(e5) {
+          if (this._maxLength === e5) return;
+          const t4 = new Array(e5);
+          for (let i5 = 0; i5 < Math.min(e5, this.length); i5++) t4[i5] = this._array[this._getCyclicIndex(i5)];
+          this._array = t4, this._maxLength = e5, this._startIndex = 0;
+        }
+        get length() {
+          return this._length;
+        }
+        set length(e5) {
+          if (e5 > this._length) for (let t4 = this._length; t4 < e5; t4++) this._array[t4] = void 0;
+          this._length = e5;
+        }
+        get(e5) {
+          return this._array[this._getCyclicIndex(e5)];
+        }
+        set(e5, t4) {
+          this._array[this._getCyclicIndex(e5)] = t4;
+        }
+        push(e5) {
+          this._array[this._getCyclicIndex(this._length)] = e5, this._length === this._maxLength ? (this._startIndex = ++this._startIndex % this._maxLength, this.onTrimEmitter.fire(1)) : this._length++;
+        }
+        recycle() {
+          if (this._length !== this._maxLength) throw new Error("Can only recycle when the buffer is full");
+          return this._startIndex = ++this._startIndex % this._maxLength, this.onTrimEmitter.fire(1), this._array[this._getCyclicIndex(this._length - 1)];
+        }
+        get isFull() {
+          return this._length === this._maxLength;
+        }
+        pop() {
+          return this._array[this._getCyclicIndex(this._length-- - 1)];
+        }
+        splice(e5, t4, ...i5) {
+          if (t4) {
+            for (let i6 = e5; i6 < this._length - t4; i6++) this._array[this._getCyclicIndex(i6)] = this._array[this._getCyclicIndex(i6 + t4)];
+            this._length -= t4, this.onDeleteEmitter.fire({ index: e5, amount: t4 });
+          }
+          for (let t5 = this._length - 1; t5 >= e5; t5--) this._array[this._getCyclicIndex(t5 + i5.length)] = this._array[this._getCyclicIndex(t5)];
+          for (let t5 = 0; t5 < i5.length; t5++) this._array[this._getCyclicIndex(e5 + t5)] = i5[t5];
+          if (i5.length && this.onInsertEmitter.fire({ index: e5, amount: i5.length }), this._length + i5.length > this._maxLength) {
+            const e6 = this._length + i5.length - this._maxLength;
+            this._startIndex += e6, this._length = this._maxLength, this.onTrimEmitter.fire(e6);
+          } else this._length += i5.length;
+        }
+        trimStart(e5) {
+          e5 > this._length && (e5 = this._length), this._startIndex += e5, this._length -= e5, this.onTrimEmitter.fire(e5);
+        }
+        shiftElements(e5, t4, i5) {
+          if (!(t4 <= 0)) {
+            if (e5 < 0 || e5 >= this._length) throw new Error("start argument out of range");
+            if (e5 + i5 < 0) throw new Error("Cannot shift elements in list beyond index 0");
+            if (i5 > 0) {
+              for (let s5 = t4 - 1; s5 >= 0; s5--) this.set(e5 + s5 + i5, this.get(e5 + s5));
+              const s4 = e5 + t4 + i5 - this._length;
+              if (s4 > 0) for (this._length += s4; this._length > this._maxLength; ) this._length--, this._startIndex++, this.onTrimEmitter.fire(1);
+            } else for (let s4 = 0; s4 < t4; s4++) this.set(e5 + s4 + i5, this.get(e5 + s4));
+          }
+        }
+        _getCyclicIndex(e5) {
+          return (this._startIndex + e5) % this._maxLength;
+        }
+      }
+      t3.CircularList = n3;
+    }, 1439: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.clone = void 0, t3.clone = function e5(t4, i4 = 5) {
+        if ("object" != typeof t4) return t4;
+        const s3 = Array.isArray(t4) ? [] : {};
+        for (const r2 in t4) s3[r2] = i4 <= 1 ? t4[r2] : t4[r2] && e5(t4[r2], i4 - 1);
+        return s3;
+      };
+    }, 8055: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.contrastRatio = t3.toPaddedHex = t3.rgba = t3.rgb = t3.css = t3.color = t3.channels = t3.NULL_COLOR = void 0;
+      const s3 = i4(6114);
+      let r2 = 0, n3 = 0, o2 = 0, a2 = 0;
+      var h2, c2, l2, d2, _2;
+      function u2(e5) {
+        const t4 = e5.toString(16);
+        return t4.length < 2 ? "0" + t4 : t4;
+      }
+      function f2(e5, t4) {
+        return e5 < t4 ? (t4 + 0.05) / (e5 + 0.05) : (e5 + 0.05) / (t4 + 0.05);
+      }
+      t3.NULL_COLOR = { css: "#00000000", rgba: 0 }, function(e5) {
+        e5.toCss = function(e6, t4, i5, s4) {
+          return void 0 !== s4 ? `#${u2(e6)}${u2(t4)}${u2(i5)}${u2(s4)}` : `#${u2(e6)}${u2(t4)}${u2(i5)}`;
+        }, e5.toRgba = function(e6, t4, i5, s4 = 255) {
+          return (e6 << 24 | t4 << 16 | i5 << 8 | s4) >>> 0;
+        };
+      }(h2 || (t3.channels = h2 = {})), function(e5) {
+        function t4(e6, t5) {
+          return a2 = Math.round(255 * t5), [r2, n3, o2] = _2.toChannels(e6.rgba), { css: h2.toCss(r2, n3, o2, a2), rgba: h2.toRgba(r2, n3, o2, a2) };
+        }
+        e5.blend = function(e6, t5) {
+          if (a2 = (255 & t5.rgba) / 255, 1 === a2) return { css: t5.css, rgba: t5.rgba };
+          const i5 = t5.rgba >> 24 & 255, s4 = t5.rgba >> 16 & 255, c3 = t5.rgba >> 8 & 255, l3 = e6.rgba >> 24 & 255, d3 = e6.rgba >> 16 & 255, _3 = e6.rgba >> 8 & 255;
+          return r2 = l3 + Math.round((i5 - l3) * a2), n3 = d3 + Math.round((s4 - d3) * a2), o2 = _3 + Math.round((c3 - _3) * a2), { css: h2.toCss(r2, n3, o2), rgba: h2.toRgba(r2, n3, o2) };
+        }, e5.isOpaque = function(e6) {
+          return 255 == (255 & e6.rgba);
+        }, e5.ensureContrastRatio = function(e6, t5, i5) {
+          const s4 = _2.ensureContrastRatio(e6.rgba, t5.rgba, i5);
+          if (s4) return _2.toColor(s4 >> 24 & 255, s4 >> 16 & 255, s4 >> 8 & 255);
+        }, e5.opaque = function(e6) {
+          const t5 = (255 | e6.rgba) >>> 0;
+          return [r2, n3, o2] = _2.toChannels(t5), { css: h2.toCss(r2, n3, o2), rgba: t5 };
+        }, e5.opacity = t4, e5.multiplyOpacity = function(e6, i5) {
+          return a2 = 255 & e6.rgba, t4(e6, a2 * i5 / 255);
+        }, e5.toColorRGB = function(e6) {
+          return [e6.rgba >> 24 & 255, e6.rgba >> 16 & 255, e6.rgba >> 8 & 255];
+        };
+      }(c2 || (t3.color = c2 = {})), function(e5) {
+        let t4, i5;
+        if (!s3.isNode) {
+          const e6 = document.createElement("canvas");
+          e6.width = 1, e6.height = 1;
+          const s4 = e6.getContext("2d", { willReadFrequently: true });
+          s4 && (t4 = s4, t4.globalCompositeOperation = "copy", i5 = t4.createLinearGradient(0, 0, 1, 1));
+        }
+        e5.toColor = function(e6) {
+          if (e6.match(/#[\da-f]{3,8}/i)) switch (e6.length) {
+            case 4:
+              return r2 = parseInt(e6.slice(1, 2).repeat(2), 16), n3 = parseInt(e6.slice(2, 3).repeat(2), 16), o2 = parseInt(e6.slice(3, 4).repeat(2), 16), _2.toColor(r2, n3, o2);
+            case 5:
+              return r2 = parseInt(e6.slice(1, 2).repeat(2), 16), n3 = parseInt(e6.slice(2, 3).repeat(2), 16), o2 = parseInt(e6.slice(3, 4).repeat(2), 16), a2 = parseInt(e6.slice(4, 5).repeat(2), 16), _2.toColor(r2, n3, o2, a2);
+            case 7:
+              return { css: e6, rgba: (parseInt(e6.slice(1), 16) << 8 | 255) >>> 0 };
+            case 9:
+              return { css: e6, rgba: parseInt(e6.slice(1), 16) >>> 0 };
+          }
+          const s4 = e6.match(/rgba?\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*(,\s*(0|1|\d?\.(\d+))\s*)?\)/);
+          if (s4) return r2 = parseInt(s4[1]), n3 = parseInt(s4[2]), o2 = parseInt(s4[3]), a2 = Math.round(255 * (void 0 === s4[5] ? 1 : parseFloat(s4[5]))), _2.toColor(r2, n3, o2, a2);
+          if (!t4 || !i5) throw new Error("css.toColor: Unsupported css format");
+          if (t4.fillStyle = i5, t4.fillStyle = e6, "string" != typeof t4.fillStyle) throw new Error("css.toColor: Unsupported css format");
+          if (t4.fillRect(0, 0, 1, 1), [r2, n3, o2, a2] = t4.getImageData(0, 0, 1, 1).data, 255 !== a2) throw new Error("css.toColor: Unsupported css format");
+          return { rgba: h2.toRgba(r2, n3, o2, a2), css: e6 };
+        };
+      }(l2 || (t3.css = l2 = {})), function(e5) {
+        function t4(e6, t5, i5) {
+          const s4 = e6 / 255, r3 = t5 / 255, n4 = i5 / 255;
+          return 0.2126 * (s4 <= 0.03928 ? s4 / 12.92 : Math.pow((s4 + 0.055) / 1.055, 2.4)) + 0.7152 * (r3 <= 0.03928 ? r3 / 12.92 : Math.pow((r3 + 0.055) / 1.055, 2.4)) + 0.0722 * (n4 <= 0.03928 ? n4 / 12.92 : Math.pow((n4 + 0.055) / 1.055, 2.4));
+        }
+        e5.relativeLuminance = function(e6) {
+          return t4(e6 >> 16 & 255, e6 >> 8 & 255, 255 & e6);
+        }, e5.relativeLuminance2 = t4;
+      }(d2 || (t3.rgb = d2 = {})), function(e5) {
+        function t4(e6, t5, i6) {
+          const s4 = e6 >> 24 & 255, r3 = e6 >> 16 & 255, n4 = e6 >> 8 & 255;
+          let o3 = t5 >> 24 & 255, a3 = t5 >> 16 & 255, h3 = t5 >> 8 & 255, c3 = f2(d2.relativeLuminance2(o3, a3, h3), d2.relativeLuminance2(s4, r3, n4));
+          for (; c3 < i6 && (o3 > 0 || a3 > 0 || h3 > 0); ) o3 -= Math.max(0, Math.ceil(0.1 * o3)), a3 -= Math.max(0, Math.ceil(0.1 * a3)), h3 -= Math.max(0, Math.ceil(0.1 * h3)), c3 = f2(d2.relativeLuminance2(o3, a3, h3), d2.relativeLuminance2(s4, r3, n4));
+          return (o3 << 24 | a3 << 16 | h3 << 8 | 255) >>> 0;
+        }
+        function i5(e6, t5, i6) {
+          const s4 = e6 >> 24 & 255, r3 = e6 >> 16 & 255, n4 = e6 >> 8 & 255;
+          let o3 = t5 >> 24 & 255, a3 = t5 >> 16 & 255, h3 = t5 >> 8 & 255, c3 = f2(d2.relativeLuminance2(o3, a3, h3), d2.relativeLuminance2(s4, r3, n4));
+          for (; c3 < i6 && (o3 < 255 || a3 < 255 || h3 < 255); ) o3 = Math.min(255, o3 + Math.ceil(0.1 * (255 - o3))), a3 = Math.min(255, a3 + Math.ceil(0.1 * (255 - a3))), h3 = Math.min(255, h3 + Math.ceil(0.1 * (255 - h3))), c3 = f2(d2.relativeLuminance2(o3, a3, h3), d2.relativeLuminance2(s4, r3, n4));
+          return (o3 << 24 | a3 << 16 | h3 << 8 | 255) >>> 0;
+        }
+        e5.ensureContrastRatio = function(e6, s4, r3) {
+          const n4 = d2.relativeLuminance(e6 >> 8), o3 = d2.relativeLuminance(s4 >> 8);
+          if (f2(n4, o3) < r3) {
+            if (o3 < n4) {
+              const o4 = t4(e6, s4, r3), a4 = f2(n4, d2.relativeLuminance(o4 >> 8));
+              if (a4 < r3) {
+                const t5 = i5(e6, s4, r3);
+                return a4 > f2(n4, d2.relativeLuminance(t5 >> 8)) ? o4 : t5;
+              }
+              return o4;
+            }
+            const a3 = i5(e6, s4, r3), h3 = f2(n4, d2.relativeLuminance(a3 >> 8));
+            if (h3 < r3) {
+              const i6 = t4(e6, s4, r3);
+              return h3 > f2(n4, d2.relativeLuminance(i6 >> 8)) ? a3 : i6;
+            }
+            return a3;
+          }
+        }, e5.reduceLuminance = t4, e5.increaseLuminance = i5, e5.toChannels = function(e6) {
+          return [e6 >> 24 & 255, e6 >> 16 & 255, e6 >> 8 & 255, 255 & e6];
+        }, e5.toColor = function(e6, t5, i6, s4) {
+          return { css: h2.toCss(e6, t5, i6, s4), rgba: h2.toRgba(e6, t5, i6, s4) };
+        };
+      }(_2 || (t3.rgba = _2 = {})), t3.toPaddedHex = u2, t3.contrastRatio = f2;
+    }, 8969: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CoreTerminal = void 0;
+      const s3 = i4(844), r2 = i4(2585), n3 = i4(4348), o2 = i4(7866), a2 = i4(744), h2 = i4(7302), c2 = i4(6975), l2 = i4(8460), d2 = i4(1753), _2 = i4(1480), u2 = i4(7994), f2 = i4(9282), v2 = i4(5435), p2 = i4(5981), g2 = i4(2660);
+      let m2 = false;
+      class S2 extends s3.Disposable {
+        get onScroll() {
+          return this._onScrollApi || (this._onScrollApi = this.register(new l2.EventEmitter()), this._onScroll.event((e5) => {
+            var t4;
+            null === (t4 = this._onScrollApi) || void 0 === t4 || t4.fire(e5.position);
+          })), this._onScrollApi.event;
+        }
+        get cols() {
+          return this._bufferService.cols;
+        }
+        get rows() {
+          return this._bufferService.rows;
+        }
+        get buffers() {
+          return this._bufferService.buffers;
+        }
+        get options() {
+          return this.optionsService.options;
+        }
+        set options(e5) {
+          for (const t4 in e5) this.optionsService.options[t4] = e5[t4];
+        }
+        constructor(e5) {
+          super(), this._windowsWrappingHeuristics = this.register(new s3.MutableDisposable()), this._onBinary = this.register(new l2.EventEmitter()), this.onBinary = this._onBinary.event, this._onData = this.register(new l2.EventEmitter()), this.onData = this._onData.event, this._onLineFeed = this.register(new l2.EventEmitter()), this.onLineFeed = this._onLineFeed.event, this._onResize = this.register(new l2.EventEmitter()), this.onResize = this._onResize.event, this._onWriteParsed = this.register(new l2.EventEmitter()), this.onWriteParsed = this._onWriteParsed.event, this._onScroll = this.register(new l2.EventEmitter()), this._instantiationService = new n3.InstantiationService(), this.optionsService = this.register(new h2.OptionsService(e5)), this._instantiationService.setService(r2.IOptionsService, this.optionsService), this._bufferService = this.register(this._instantiationService.createInstance(a2.BufferService)), this._instantiationService.setService(r2.IBufferService, this._bufferService), this._logService = this.register(this._instantiationService.createInstance(o2.LogService)), this._instantiationService.setService(r2.ILogService, this._logService), this.coreService = this.register(this._instantiationService.createInstance(c2.CoreService)), this._instantiationService.setService(r2.ICoreService, this.coreService), this.coreMouseService = this.register(this._instantiationService.createInstance(d2.CoreMouseService)), this._instantiationService.setService(r2.ICoreMouseService, this.coreMouseService), this.unicodeService = this.register(this._instantiationService.createInstance(_2.UnicodeService)), this._instantiationService.setService(r2.IUnicodeService, this.unicodeService), this._charsetService = this._instantiationService.createInstance(u2.CharsetService), this._instantiationService.setService(r2.ICharsetService, this._charsetService), this._oscLinkService = this._instantiationService.createInstance(g2.OscLinkService), this._instantiationService.setService(r2.IOscLinkService, this._oscLinkService), this._inputHandler = this.register(new v2.InputHandler(this._bufferService, this._charsetService, this.coreService, this._logService, this.optionsService, this._oscLinkService, this.coreMouseService, this.unicodeService)), this.register((0, l2.forwardEvent)(this._inputHandler.onLineFeed, this._onLineFeed)), this.register(this._inputHandler), this.register((0, l2.forwardEvent)(this._bufferService.onResize, this._onResize)), this.register((0, l2.forwardEvent)(this.coreService.onData, this._onData)), this.register((0, l2.forwardEvent)(this.coreService.onBinary, this._onBinary)), this.register(this.coreService.onRequestScrollToBottom(() => this.scrollToBottom())), this.register(this.coreService.onUserInput(() => this._writeBuffer.handleUserInput())), this.register(this.optionsService.onMultipleOptionChange(["windowsMode", "windowsPty"], () => this._handleWindowsPtyOptionChange())), this.register(this._bufferService.onScroll((e6) => {
+            this._onScroll.fire({ position: this._bufferService.buffer.ydisp, source: 0 }), this._inputHandler.markRangeDirty(this._bufferService.buffer.scrollTop, this._bufferService.buffer.scrollBottom);
+          })), this.register(this._inputHandler.onScroll((e6) => {
+            this._onScroll.fire({ position: this._bufferService.buffer.ydisp, source: 0 }), this._inputHandler.markRangeDirty(this._bufferService.buffer.scrollTop, this._bufferService.buffer.scrollBottom);
+          })), this._writeBuffer = this.register(new p2.WriteBuffer((e6, t4) => this._inputHandler.parse(e6, t4))), this.register((0, l2.forwardEvent)(this._writeBuffer.onWriteParsed, this._onWriteParsed));
+        }
+        write(e5, t4) {
+          this._writeBuffer.write(e5, t4);
+        }
+        writeSync(e5, t4) {
+          this._logService.logLevel <= r2.LogLevelEnum.WARN && !m2 && (this._logService.warn("writeSync is unreliable and will be removed soon."), m2 = true), this._writeBuffer.writeSync(e5, t4);
+        }
+        resize(e5, t4) {
+          isNaN(e5) || isNaN(t4) || (e5 = Math.max(e5, a2.MINIMUM_COLS), t4 = Math.max(t4, a2.MINIMUM_ROWS), this._bufferService.resize(e5, t4));
+        }
+        scroll(e5, t4 = false) {
+          this._bufferService.scroll(e5, t4);
+        }
+        scrollLines(e5, t4, i5) {
+          this._bufferService.scrollLines(e5, t4, i5);
+        }
+        scrollPages(e5) {
+          this.scrollLines(e5 * (this.rows - 1));
+        }
+        scrollToTop() {
+          this.scrollLines(-this._bufferService.buffer.ydisp);
+        }
+        scrollToBottom() {
+          this.scrollLines(this._bufferService.buffer.ybase - this._bufferService.buffer.ydisp);
+        }
+        scrollToLine(e5) {
+          const t4 = e5 - this._bufferService.buffer.ydisp;
+          0 !== t4 && this.scrollLines(t4);
+        }
+        registerEscHandler(e5, t4) {
+          return this._inputHandler.registerEscHandler(e5, t4);
+        }
+        registerDcsHandler(e5, t4) {
+          return this._inputHandler.registerDcsHandler(e5, t4);
+        }
+        registerCsiHandler(e5, t4) {
+          return this._inputHandler.registerCsiHandler(e5, t4);
+        }
+        registerOscHandler(e5, t4) {
+          return this._inputHandler.registerOscHandler(e5, t4);
+        }
+        _setup() {
+          this._handleWindowsPtyOptionChange();
+        }
+        reset() {
+          this._inputHandler.reset(), this._bufferService.reset(), this._charsetService.reset(), this.coreService.reset(), this.coreMouseService.reset();
+        }
+        _handleWindowsPtyOptionChange() {
+          let e5 = false;
+          const t4 = this.optionsService.rawOptions.windowsPty;
+          t4 && void 0 !== t4.buildNumber && void 0 !== t4.buildNumber ? e5 = !!("conpty" === t4.backend && t4.buildNumber < 21376) : this.optionsService.rawOptions.windowsMode && (e5 = true), e5 ? this._enableWindowsWrappingHeuristics() : this._windowsWrappingHeuristics.clear();
+        }
+        _enableWindowsWrappingHeuristics() {
+          if (!this._windowsWrappingHeuristics.value) {
+            const e5 = [];
+            e5.push(this.onLineFeed(f2.updateWindowsModeWrappedState.bind(null, this._bufferService))), e5.push(this.registerCsiHandler({ final: "H" }, () => ((0, f2.updateWindowsModeWrappedState)(this._bufferService), false))), this._windowsWrappingHeuristics.value = (0, s3.toDisposable)(() => {
+              for (const t4 of e5) t4.dispose();
+            });
+          }
+        }
+      }
+      t3.CoreTerminal = S2;
+    }, 8460: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.forwardEvent = t3.EventEmitter = void 0, t3.EventEmitter = class {
+        constructor() {
+          this._listeners = [], this._disposed = false;
+        }
+        get event() {
+          return this._event || (this._event = (e5) => (this._listeners.push(e5), { dispose: () => {
+            if (!this._disposed) {
+              for (let t4 = 0; t4 < this._listeners.length; t4++) if (this._listeners[t4] === e5) return void this._listeners.splice(t4, 1);
+            }
+          } })), this._event;
+        }
+        fire(e5, t4) {
+          const i4 = [];
+          for (let e6 = 0; e6 < this._listeners.length; e6++) i4.push(this._listeners[e6]);
+          for (let s3 = 0; s3 < i4.length; s3++) i4[s3].call(void 0, e5, t4);
+        }
+        dispose() {
+          this.clearListeners(), this._disposed = true;
+        }
+        clearListeners() {
+          this._listeners && (this._listeners.length = 0);
+        }
+      }, t3.forwardEvent = function(e5, t4) {
+        return e5((e6) => t4.fire(e6));
+      };
+    }, 5435: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.InputHandler = t3.WindowsOptionsReportType = void 0;
+      const n3 = i4(2584), o2 = i4(7116), a2 = i4(2015), h2 = i4(844), c2 = i4(482), l2 = i4(8437), d2 = i4(8460), _2 = i4(643), u2 = i4(511), f2 = i4(3734), v2 = i4(2585), p2 = i4(6242), g2 = i4(6351), m2 = i4(5941), S2 = { "(": 0, ")": 1, "*": 2, "+": 3, "-": 1, ".": 2 }, C2 = 131072;
+      function b2(e5, t4) {
+        if (e5 > 24) return t4.setWinLines || false;
+        switch (e5) {
+          case 1:
+            return !!t4.restoreWin;
+          case 2:
+            return !!t4.minimizeWin;
+          case 3:
+            return !!t4.setWinPosition;
+          case 4:
+            return !!t4.setWinSizePixels;
+          case 5:
+            return !!t4.raiseWin;
+          case 6:
+            return !!t4.lowerWin;
+          case 7:
+            return !!t4.refreshWin;
+          case 8:
+            return !!t4.setWinSizeChars;
+          case 9:
+            return !!t4.maximizeWin;
+          case 10:
+            return !!t4.fullscreenWin;
+          case 11:
+            return !!t4.getWinState;
+          case 13:
+            return !!t4.getWinPosition;
+          case 14:
+            return !!t4.getWinSizePixels;
+          case 15:
+            return !!t4.getScreenSizePixels;
+          case 16:
+            return !!t4.getCellSizePixels;
+          case 18:
+            return !!t4.getWinSizeChars;
+          case 19:
+            return !!t4.getScreenSizeChars;
+          case 20:
+            return !!t4.getIconTitle;
+          case 21:
+            return !!t4.getWinTitle;
+          case 22:
+            return !!t4.pushTitle;
+          case 23:
+            return !!t4.popTitle;
+          case 24:
+            return !!t4.setWinLines;
+        }
+        return false;
+      }
+      var y3;
+      !function(e5) {
+        e5[e5.GET_WIN_SIZE_PIXELS = 0] = "GET_WIN_SIZE_PIXELS", e5[e5.GET_CELL_SIZE_PIXELS = 1] = "GET_CELL_SIZE_PIXELS";
+      }(y3 || (t3.WindowsOptionsReportType = y3 = {}));
+      let w2 = 0;
+      class E2 extends h2.Disposable {
+        getAttrData() {
+          return this._curAttrData;
+        }
+        constructor(e5, t4, i5, s4, r3, h3, _3, f3, v3 = new a2.EscapeSequenceParser()) {
+          super(), this._bufferService = e5, this._charsetService = t4, this._coreService = i5, this._logService = s4, this._optionsService = r3, this._oscLinkService = h3, this._coreMouseService = _3, this._unicodeService = f3, this._parser = v3, this._parseBuffer = new Uint32Array(4096), this._stringDecoder = new c2.StringToUtf32(), this._utf8Decoder = new c2.Utf8ToUtf32(), this._workCell = new u2.CellData(), this._windowTitle = "", this._iconName = "", this._windowTitleStack = [], this._iconNameStack = [], this._curAttrData = l2.DEFAULT_ATTR_DATA.clone(), this._eraseAttrDataInternal = l2.DEFAULT_ATTR_DATA.clone(), this._onRequestBell = this.register(new d2.EventEmitter()), this.onRequestBell = this._onRequestBell.event, this._onRequestRefreshRows = this.register(new d2.EventEmitter()), this.onRequestRefreshRows = this._onRequestRefreshRows.event, this._onRequestReset = this.register(new d2.EventEmitter()), this.onRequestReset = this._onRequestReset.event, this._onRequestSendFocus = this.register(new d2.EventEmitter()), this.onRequestSendFocus = this._onRequestSendFocus.event, this._onRequestSyncScrollBar = this.register(new d2.EventEmitter()), this.onRequestSyncScrollBar = this._onRequestSyncScrollBar.event, this._onRequestWindowsOptionsReport = this.register(new d2.EventEmitter()), this.onRequestWindowsOptionsReport = this._onRequestWindowsOptionsReport.event, this._onA11yChar = this.register(new d2.EventEmitter()), this.onA11yChar = this._onA11yChar.event, this._onA11yTab = this.register(new d2.EventEmitter()), this.onA11yTab = this._onA11yTab.event, this._onCursorMove = this.register(new d2.EventEmitter()), this.onCursorMove = this._onCursorMove.event, this._onLineFeed = this.register(new d2.EventEmitter()), this.onLineFeed = this._onLineFeed.event, this._onScroll = this.register(new d2.EventEmitter()), this.onScroll = this._onScroll.event, this._onTitleChange = this.register(new d2.EventEmitter()), this.onTitleChange = this._onTitleChange.event, this._onColor = this.register(new d2.EventEmitter()), this.onColor = this._onColor.event, this._parseStack = { paused: false, cursorStartX: 0, cursorStartY: 0, decodedLength: 0, position: 0 }, this._specialColors = [256, 257, 258], this.register(this._parser), this._dirtyRowTracker = new k2(this._bufferService), this._activeBuffer = this._bufferService.buffer, this.register(this._bufferService.buffers.onBufferActivate((e6) => this._activeBuffer = e6.activeBuffer)), this._parser.setCsiHandlerFallback((e6, t5) => {
+            this._logService.debug("Unknown CSI code: ", { identifier: this._parser.identToString(e6), params: t5.toArray() });
+          }), this._parser.setEscHandlerFallback((e6) => {
+            this._logService.debug("Unknown ESC code: ", { identifier: this._parser.identToString(e6) });
+          }), this._parser.setExecuteHandlerFallback((e6) => {
+            this._logService.debug("Unknown EXECUTE code: ", { code: e6 });
+          }), this._parser.setOscHandlerFallback((e6, t5, i6) => {
+            this._logService.debug("Unknown OSC code: ", { identifier: e6, action: t5, data: i6 });
+          }), this._parser.setDcsHandlerFallback((e6, t5, i6) => {
+            "HOOK" === t5 && (i6 = i6.toArray()), this._logService.debug("Unknown DCS code: ", { identifier: this._parser.identToString(e6), action: t5, payload: i6 });
+          }), this._parser.setPrintHandler((e6, t5, i6) => this.print(e6, t5, i6)), this._parser.registerCsiHandler({ final: "@" }, (e6) => this.insertChars(e6)), this._parser.registerCsiHandler({ intermediates: " ", final: "@" }, (e6) => this.scrollLeft(e6)), this._parser.registerCsiHandler({ final: "A" }, (e6) => this.cursorUp(e6)), this._parser.registerCsiHandler({ intermediates: " ", final: "A" }, (e6) => this.scrollRight(e6)), this._parser.registerCsiHandler({ final: "B" }, (e6) => this.cursorDown(e6)), this._parser.registerCsiHandler({ final: "C" }, (e6) => this.cursorForward(e6)), this._parser.registerCsiHandler({ final: "D" }, (e6) => this.cursorBackward(e6)), this._parser.registerCsiHandler({ final: "E" }, (e6) => this.cursorNextLine(e6)), this._parser.registerCsiHandler({ final: "F" }, (e6) => this.cursorPrecedingLine(e6)), this._parser.registerCsiHandler({ final: "G" }, (e6) => this.cursorCharAbsolute(e6)), this._parser.registerCsiHandler({ final: "H" }, (e6) => this.cursorPosition(e6)), this._parser.registerCsiHandler({ final: "I" }, (e6) => this.cursorForwardTab(e6)), this._parser.registerCsiHandler({ final: "J" }, (e6) => this.eraseInDisplay(e6, false)), this._parser.registerCsiHandler({ prefix: "?", final: "J" }, (e6) => this.eraseInDisplay(e6, true)), this._parser.registerCsiHandler({ final: "K" }, (e6) => this.eraseInLine(e6, false)), this._parser.registerCsiHandler({ prefix: "?", final: "K" }, (e6) => this.eraseInLine(e6, true)), this._parser.registerCsiHandler({ final: "L" }, (e6) => this.insertLines(e6)), this._parser.registerCsiHandler({ final: "M" }, (e6) => this.deleteLines(e6)), this._parser.registerCsiHandler({ final: "P" }, (e6) => this.deleteChars(e6)), this._parser.registerCsiHandler({ final: "S" }, (e6) => this.scrollUp(e6)), this._parser.registerCsiHandler({ final: "T" }, (e6) => this.scrollDown(e6)), this._parser.registerCsiHandler({ final: "X" }, (e6) => this.eraseChars(e6)), this._parser.registerCsiHandler({ final: "Z" }, (e6) => this.cursorBackwardTab(e6)), this._parser.registerCsiHandler({ final: "`" }, (e6) => this.charPosAbsolute(e6)), this._parser.registerCsiHandler({ final: "a" }, (e6) => this.hPositionRelative(e6)), this._parser.registerCsiHandler({ final: "b" }, (e6) => this.repeatPrecedingCharacter(e6)), this._parser.registerCsiHandler({ final: "c" }, (e6) => this.sendDeviceAttributesPrimary(e6)), this._parser.registerCsiHandler({ prefix: ">", final: "c" }, (e6) => this.sendDeviceAttributesSecondary(e6)), this._parser.registerCsiHandler({ final: "d" }, (e6) => this.linePosAbsolute(e6)), this._parser.registerCsiHandler({ final: "e" }, (e6) => this.vPositionRelative(e6)), this._parser.registerCsiHandler({ final: "f" }, (e6) => this.hVPosition(e6)), this._parser.registerCsiHandler({ final: "g" }, (e6) => this.tabClear(e6)), this._parser.registerCsiHandler({ final: "h" }, (e6) => this.setMode(e6)), this._parser.registerCsiHandler({ prefix: "?", final: "h" }, (e6) => this.setModePrivate(e6)), this._parser.registerCsiHandler({ final: "l" }, (e6) => this.resetMode(e6)), this._parser.registerCsiHandler({ prefix: "?", final: "l" }, (e6) => this.resetModePrivate(e6)), this._parser.registerCsiHandler({ final: "m" }, (e6) => this.charAttributes(e6)), this._parser.registerCsiHandler({ final: "n" }, (e6) => this.deviceStatus(e6)), this._parser.registerCsiHandler({ prefix: "?", final: "n" }, (e6) => this.deviceStatusPrivate(e6)), this._parser.registerCsiHandler({ intermediates: "!", final: "p" }, (e6) => this.softReset(e6)), this._parser.registerCsiHandler({ intermediates: " ", final: "q" }, (e6) => this.setCursorStyle(e6)), this._parser.registerCsiHandler({ final: "r" }, (e6) => this.setScrollRegion(e6)), this._parser.registerCsiHandler({ final: "s" }, (e6) => this.saveCursor(e6)), this._parser.registerCsiHandler({ final: "t" }, (e6) => this.windowOptions(e6)), this._parser.registerCsiHandler({ final: "u" }, (e6) => this.restoreCursor(e6)), this._parser.registerCsiHandler({ intermediates: "'", final: "}" }, (e6) => this.insertColumns(e6)), this._parser.registerCsiHandler({ intermediates: "'", final: "~" }, (e6) => this.deleteColumns(e6)), this._parser.registerCsiHandler({ intermediates: '"', final: "q" }, (e6) => this.selectProtected(e6)), this._parser.registerCsiHandler({ intermediates: "$", final: "p" }, (e6) => this.requestMode(e6, true)), this._parser.registerCsiHandler({ prefix: "?", intermediates: "$", final: "p" }, (e6) => this.requestMode(e6, false)), this._parser.setExecuteHandler(n3.C0.BEL, () => this.bell()), this._parser.setExecuteHandler(n3.C0.LF, () => this.lineFeed()), this._parser.setExecuteHandler(n3.C0.VT, () => this.lineFeed()), this._parser.setExecuteHandler(n3.C0.FF, () => this.lineFeed()), this._parser.setExecuteHandler(n3.C0.CR, () => this.carriageReturn()), this._parser.setExecuteHandler(n3.C0.BS, () => this.backspace()), this._parser.setExecuteHandler(n3.C0.HT, () => this.tab()), this._parser.setExecuteHandler(n3.C0.SO, () => this.shiftOut()), this._parser.setExecuteHandler(n3.C0.SI, () => this.shiftIn()), this._parser.setExecuteHandler(n3.C1.IND, () => this.index()), this._parser.setExecuteHandler(n3.C1.NEL, () => this.nextLine()), this._parser.setExecuteHandler(n3.C1.HTS, () => this.tabSet()), this._parser.registerOscHandler(0, new p2.OscHandler((e6) => (this.setTitle(e6), this.setIconName(e6), true))), this._parser.registerOscHandler(1, new p2.OscHandler((e6) => this.setIconName(e6))), this._parser.registerOscHandler(2, new p2.OscHandler((e6) => this.setTitle(e6))), this._parser.registerOscHandler(4, new p2.OscHandler((e6) => this.setOrReportIndexedColor(e6))), this._parser.registerOscHandler(8, new p2.OscHandler((e6) => this.setHyperlink(e6))), this._parser.registerOscHandler(10, new p2.OscHandler((e6) => this.setOrReportFgColor(e6))), this._parser.registerOscHandler(11, new p2.OscHandler((e6) => this.setOrReportBgColor(e6))), this._parser.registerOscHandler(12, new p2.OscHandler((e6) => this.setOrReportCursorColor(e6))), this._parser.registerOscHandler(104, new p2.OscHandler((e6) => this.restoreIndexedColor(e6))), this._parser.registerOscHandler(110, new p2.OscHandler((e6) => this.restoreFgColor(e6))), this._parser.registerOscHandler(111, new p2.OscHandler((e6) => this.restoreBgColor(e6))), this._parser.registerOscHandler(112, new p2.OscHandler((e6) => this.restoreCursorColor(e6))), this._parser.registerEscHandler({ final: "7" }, () => this.saveCursor()), this._parser.registerEscHandler({ final: "8" }, () => this.restoreCursor()), this._parser.registerEscHandler({ final: "D" }, () => this.index()), this._parser.registerEscHandler({ final: "E" }, () => this.nextLine()), this._parser.registerEscHandler({ final: "H" }, () => this.tabSet()), this._parser.registerEscHandler({ final: "M" }, () => this.reverseIndex()), this._parser.registerEscHandler({ final: "=" }, () => this.keypadApplicationMode()), this._parser.registerEscHandler({ final: ">" }, () => this.keypadNumericMode()), this._parser.registerEscHandler({ final: "c" }, () => this.fullReset()), this._parser.registerEscHandler({ final: "n" }, () => this.setgLevel(2)), this._parser.registerEscHandler({ final: "o" }, () => this.setgLevel(3)), this._parser.registerEscHandler({ final: "|" }, () => this.setgLevel(3)), this._parser.registerEscHandler({ final: "}" }, () => this.setgLevel(2)), this._parser.registerEscHandler({ final: "~" }, () => this.setgLevel(1)), this._parser.registerEscHandler({ intermediates: "%", final: "@" }, () => this.selectDefaultCharset()), this._parser.registerEscHandler({ intermediates: "%", final: "G" }, () => this.selectDefaultCharset());
+          for (const e6 in o2.CHARSETS) this._parser.registerEscHandler({ intermediates: "(", final: e6 }, () => this.selectCharset("(" + e6)), this._parser.registerEscHandler({ intermediates: ")", final: e6 }, () => this.selectCharset(")" + e6)), this._parser.registerEscHandler({ intermediates: "*", final: e6 }, () => this.selectCharset("*" + e6)), this._parser.registerEscHandler({ intermediates: "+", final: e6 }, () => this.selectCharset("+" + e6)), this._parser.registerEscHandler({ intermediates: "-", final: e6 }, () => this.selectCharset("-" + e6)), this._parser.registerEscHandler({ intermediates: ".", final: e6 }, () => this.selectCharset("." + e6)), this._parser.registerEscHandler({ intermediates: "/", final: e6 }, () => this.selectCharset("/" + e6));
+          this._parser.registerEscHandler({ intermediates: "#", final: "8" }, () => this.screenAlignmentPattern()), this._parser.setErrorHandler((e6) => (this._logService.error("Parsing error: ", e6), e6)), this._parser.registerDcsHandler({ intermediates: "$", final: "q" }, new g2.DcsHandler((e6, t5) => this.requestStatusString(e6, t5)));
+        }
+        _preserveStack(e5, t4, i5, s4) {
+          this._parseStack.paused = true, this._parseStack.cursorStartX = e5, this._parseStack.cursorStartY = t4, this._parseStack.decodedLength = i5, this._parseStack.position = s4;
+        }
+        _logSlowResolvingAsync(e5) {
+          this._logService.logLevel <= v2.LogLevelEnum.WARN && Promise.race([e5, new Promise((e6, t4) => setTimeout(() => t4("#SLOW_TIMEOUT"), 5e3))]).catch((e6) => {
+            if ("#SLOW_TIMEOUT" !== e6) throw e6;
+            console.warn("async parser handler taking longer than 5000 ms");
+          });
+        }
+        _getCurrentLinkId() {
+          return this._curAttrData.extended.urlId;
+        }
+        parse(e5, t4) {
+          let i5, s4 = this._activeBuffer.x, r3 = this._activeBuffer.y, n4 = 0;
+          const o3 = this._parseStack.paused;
+          if (o3) {
+            if (i5 = this._parser.parse(this._parseBuffer, this._parseStack.decodedLength, t4)) return this._logSlowResolvingAsync(i5), i5;
+            s4 = this._parseStack.cursorStartX, r3 = this._parseStack.cursorStartY, this._parseStack.paused = false, e5.length > C2 && (n4 = this._parseStack.position + C2);
+          }
+          if (this._logService.logLevel <= v2.LogLevelEnum.DEBUG && this._logService.debug("parsing data" + ("string" == typeof e5 ? ` "${e5}"` : ` "${Array.prototype.map.call(e5, (e6) => String.fromCharCode(e6)).join("")}"`), "string" == typeof e5 ? e5.split("").map((e6) => e6.charCodeAt(0)) : e5), this._parseBuffer.length < e5.length && this._parseBuffer.length < C2 && (this._parseBuffer = new Uint32Array(Math.min(e5.length, C2))), o3 || this._dirtyRowTracker.clearRange(), e5.length > C2) for (let t5 = n4; t5 < e5.length; t5 += C2) {
+            const n5 = t5 + C2 < e5.length ? t5 + C2 : e5.length, o4 = "string" == typeof e5 ? this._stringDecoder.decode(e5.substring(t5, n5), this._parseBuffer) : this._utf8Decoder.decode(e5.subarray(t5, n5), this._parseBuffer);
+            if (i5 = this._parser.parse(this._parseBuffer, o4)) return this._preserveStack(s4, r3, o4, t5), this._logSlowResolvingAsync(i5), i5;
+          }
+          else if (!o3) {
+            const t5 = "string" == typeof e5 ? this._stringDecoder.decode(e5, this._parseBuffer) : this._utf8Decoder.decode(e5, this._parseBuffer);
+            if (i5 = this._parser.parse(this._parseBuffer, t5)) return this._preserveStack(s4, r3, t5, 0), this._logSlowResolvingAsync(i5), i5;
+          }
+          this._activeBuffer.x === s4 && this._activeBuffer.y === r3 || this._onCursorMove.fire(), this._onRequestRefreshRows.fire(this._dirtyRowTracker.start, this._dirtyRowTracker.end);
+        }
+        print(e5, t4, i5) {
+          let s4, r3;
+          const n4 = this._charsetService.charset, o3 = this._optionsService.rawOptions.screenReaderMode, a3 = this._bufferService.cols, h3 = this._coreService.decPrivateModes.wraparound, l3 = this._coreService.modes.insertMode, d3 = this._curAttrData;
+          let u3 = this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y);
+          this._dirtyRowTracker.markDirty(this._activeBuffer.y), this._activeBuffer.x && i5 - t4 > 0 && 2 === u3.getWidth(this._activeBuffer.x - 1) && u3.setCellFromCodePoint(this._activeBuffer.x - 1, 0, 1, d3.fg, d3.bg, d3.extended);
+          for (let f3 = t4; f3 < i5; ++f3) {
+            if (s4 = e5[f3], r3 = this._unicodeService.wcwidth(s4), s4 < 127 && n4) {
+              const e6 = n4[String.fromCharCode(s4)];
+              e6 && (s4 = e6.charCodeAt(0));
+            }
+            if (o3 && this._onA11yChar.fire((0, c2.stringFromCodePoint)(s4)), this._getCurrentLinkId() && this._oscLinkService.addLineToLink(this._getCurrentLinkId(), this._activeBuffer.ybase + this._activeBuffer.y), r3 || !this._activeBuffer.x) {
+              if (this._activeBuffer.x + r3 - 1 >= a3) {
+                if (h3) {
+                  for (; this._activeBuffer.x < a3; ) u3.setCellFromCodePoint(this._activeBuffer.x++, 0, 1, d3.fg, d3.bg, d3.extended);
+                  this._activeBuffer.x = 0, this._activeBuffer.y++, this._activeBuffer.y === this._activeBuffer.scrollBottom + 1 ? (this._activeBuffer.y--, this._bufferService.scroll(this._eraseAttrData(), true)) : (this._activeBuffer.y >= this._bufferService.rows && (this._activeBuffer.y = this._bufferService.rows - 1), this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y).isWrapped = true), u3 = this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y);
+                } else if (this._activeBuffer.x = a3 - 1, 2 === r3) continue;
+              }
+              if (l3 && (u3.insertCells(this._activeBuffer.x, r3, this._activeBuffer.getNullCell(d3), d3), 2 === u3.getWidth(a3 - 1) && u3.setCellFromCodePoint(a3 - 1, _2.NULL_CELL_CODE, _2.NULL_CELL_WIDTH, d3.fg, d3.bg, d3.extended)), u3.setCellFromCodePoint(this._activeBuffer.x++, s4, r3, d3.fg, d3.bg, d3.extended), r3 > 0) for (; --r3; ) u3.setCellFromCodePoint(this._activeBuffer.x++, 0, 0, d3.fg, d3.bg, d3.extended);
+            } else u3.getWidth(this._activeBuffer.x - 1) ? u3.addCodepointToCell(this._activeBuffer.x - 1, s4) : u3.addCodepointToCell(this._activeBuffer.x - 2, s4);
+          }
+          i5 - t4 > 0 && (u3.loadCell(this._activeBuffer.x - 1, this._workCell), 2 === this._workCell.getWidth() || this._workCell.getCode() > 65535 ? this._parser.precedingCodepoint = 0 : this._workCell.isCombined() ? this._parser.precedingCodepoint = this._workCell.getChars().charCodeAt(0) : this._parser.precedingCodepoint = this._workCell.content), this._activeBuffer.x < a3 && i5 - t4 > 0 && 0 === u3.getWidth(this._activeBuffer.x) && !u3.hasContent(this._activeBuffer.x) && u3.setCellFromCodePoint(this._activeBuffer.x, 0, 1, d3.fg, d3.bg, d3.extended), this._dirtyRowTracker.markDirty(this._activeBuffer.y);
+        }
+        registerCsiHandler(e5, t4) {
+          return "t" !== e5.final || e5.prefix || e5.intermediates ? this._parser.registerCsiHandler(e5, t4) : this._parser.registerCsiHandler(e5, (e6) => !b2(e6.params[0], this._optionsService.rawOptions.windowOptions) || t4(e6));
+        }
+        registerDcsHandler(e5, t4) {
+          return this._parser.registerDcsHandler(e5, new g2.DcsHandler(t4));
+        }
+        registerEscHandler(e5, t4) {
+          return this._parser.registerEscHandler(e5, t4);
+        }
+        registerOscHandler(e5, t4) {
+          return this._parser.registerOscHandler(e5, new p2.OscHandler(t4));
+        }
+        bell() {
+          return this._onRequestBell.fire(), true;
+        }
+        lineFeed() {
+          return this._dirtyRowTracker.markDirty(this._activeBuffer.y), this._optionsService.rawOptions.convertEol && (this._activeBuffer.x = 0), this._activeBuffer.y++, this._activeBuffer.y === this._activeBuffer.scrollBottom + 1 ? (this._activeBuffer.y--, this._bufferService.scroll(this._eraseAttrData())) : this._activeBuffer.y >= this._bufferService.rows ? this._activeBuffer.y = this._bufferService.rows - 1 : this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y).isWrapped = false, this._activeBuffer.x >= this._bufferService.cols && this._activeBuffer.x--, this._dirtyRowTracker.markDirty(this._activeBuffer.y), this._onLineFeed.fire(), true;
+        }
+        carriageReturn() {
+          return this._activeBuffer.x = 0, true;
+        }
+        backspace() {
+          var e5;
+          if (!this._coreService.decPrivateModes.reverseWraparound) return this._restrictCursor(), this._activeBuffer.x > 0 && this._activeBuffer.x--, true;
+          if (this._restrictCursor(this._bufferService.cols), this._activeBuffer.x > 0) this._activeBuffer.x--;
+          else if (0 === this._activeBuffer.x && this._activeBuffer.y > this._activeBuffer.scrollTop && this._activeBuffer.y <= this._activeBuffer.scrollBottom && (null === (e5 = this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y)) || void 0 === e5 ? void 0 : e5.isWrapped)) {
+            this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y).isWrapped = false, this._activeBuffer.y--, this._activeBuffer.x = this._bufferService.cols - 1;
+            const e6 = this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y);
+            e6.hasWidth(this._activeBuffer.x) && !e6.hasContent(this._activeBuffer.x) && this._activeBuffer.x--;
+          }
+          return this._restrictCursor(), true;
+        }
+        tab() {
+          if (this._activeBuffer.x >= this._bufferService.cols) return true;
+          const e5 = this._activeBuffer.x;
+          return this._activeBuffer.x = this._activeBuffer.nextStop(), this._optionsService.rawOptions.screenReaderMode && this._onA11yTab.fire(this._activeBuffer.x - e5), true;
+        }
+        shiftOut() {
+          return this._charsetService.setgLevel(1), true;
+        }
+        shiftIn() {
+          return this._charsetService.setgLevel(0), true;
+        }
+        _restrictCursor(e5 = this._bufferService.cols - 1) {
+          this._activeBuffer.x = Math.min(e5, Math.max(0, this._activeBuffer.x)), this._activeBuffer.y = this._coreService.decPrivateModes.origin ? Math.min(this._activeBuffer.scrollBottom, Math.max(this._activeBuffer.scrollTop, this._activeBuffer.y)) : Math.min(this._bufferService.rows - 1, Math.max(0, this._activeBuffer.y)), this._dirtyRowTracker.markDirty(this._activeBuffer.y);
+        }
+        _setCursor(e5, t4) {
+          this._dirtyRowTracker.markDirty(this._activeBuffer.y), this._coreService.decPrivateModes.origin ? (this._activeBuffer.x = e5, this._activeBuffer.y = this._activeBuffer.scrollTop + t4) : (this._activeBuffer.x = e5, this._activeBuffer.y = t4), this._restrictCursor(), this._dirtyRowTracker.markDirty(this._activeBuffer.y);
+        }
+        _moveCursor(e5, t4) {
+          this._restrictCursor(), this._setCursor(this._activeBuffer.x + e5, this._activeBuffer.y + t4);
+        }
+        cursorUp(e5) {
+          const t4 = this._activeBuffer.y - this._activeBuffer.scrollTop;
+          return t4 >= 0 ? this._moveCursor(0, -Math.min(t4, e5.params[0] || 1)) : this._moveCursor(0, -(e5.params[0] || 1)), true;
+        }
+        cursorDown(e5) {
+          const t4 = this._activeBuffer.scrollBottom - this._activeBuffer.y;
+          return t4 >= 0 ? this._moveCursor(0, Math.min(t4, e5.params[0] || 1)) : this._moveCursor(0, e5.params[0] || 1), true;
+        }
+        cursorForward(e5) {
+          return this._moveCursor(e5.params[0] || 1, 0), true;
+        }
+        cursorBackward(e5) {
+          return this._moveCursor(-(e5.params[0] || 1), 0), true;
+        }
+        cursorNextLine(e5) {
+          return this.cursorDown(e5), this._activeBuffer.x = 0, true;
+        }
+        cursorPrecedingLine(e5) {
+          return this.cursorUp(e5), this._activeBuffer.x = 0, true;
+        }
+        cursorCharAbsolute(e5) {
+          return this._setCursor((e5.params[0] || 1) - 1, this._activeBuffer.y), true;
+        }
+        cursorPosition(e5) {
+          return this._setCursor(e5.length >= 2 ? (e5.params[1] || 1) - 1 : 0, (e5.params[0] || 1) - 1), true;
+        }
+        charPosAbsolute(e5) {
+          return this._setCursor((e5.params[0] || 1) - 1, this._activeBuffer.y), true;
+        }
+        hPositionRelative(e5) {
+          return this._moveCursor(e5.params[0] || 1, 0), true;
+        }
+        linePosAbsolute(e5) {
+          return this._setCursor(this._activeBuffer.x, (e5.params[0] || 1) - 1), true;
+        }
+        vPositionRelative(e5) {
+          return this._moveCursor(0, e5.params[0] || 1), true;
+        }
+        hVPosition(e5) {
+          return this.cursorPosition(e5), true;
+        }
+        tabClear(e5) {
+          const t4 = e5.params[0];
+          return 0 === t4 ? delete this._activeBuffer.tabs[this._activeBuffer.x] : 3 === t4 && (this._activeBuffer.tabs = {}), true;
+        }
+        cursorForwardTab(e5) {
+          if (this._activeBuffer.x >= this._bufferService.cols) return true;
+          let t4 = e5.params[0] || 1;
+          for (; t4--; ) this._activeBuffer.x = this._activeBuffer.nextStop();
+          return true;
+        }
+        cursorBackwardTab(e5) {
+          if (this._activeBuffer.x >= this._bufferService.cols) return true;
+          let t4 = e5.params[0] || 1;
+          for (; t4--; ) this._activeBuffer.x = this._activeBuffer.prevStop();
+          return true;
+        }
+        selectProtected(e5) {
+          const t4 = e5.params[0];
+          return 1 === t4 && (this._curAttrData.bg |= 536870912), 2 !== t4 && 0 !== t4 || (this._curAttrData.bg &= -536870913), true;
+        }
+        _eraseInBufferLine(e5, t4, i5, s4 = false, r3 = false) {
+          const n4 = this._activeBuffer.lines.get(this._activeBuffer.ybase + e5);
+          n4.replaceCells(t4, i5, this._activeBuffer.getNullCell(this._eraseAttrData()), this._eraseAttrData(), r3), s4 && (n4.isWrapped = false);
+        }
+        _resetBufferLine(e5, t4 = false) {
+          const i5 = this._activeBuffer.lines.get(this._activeBuffer.ybase + e5);
+          i5 && (i5.fill(this._activeBuffer.getNullCell(this._eraseAttrData()), t4), this._bufferService.buffer.clearMarkers(this._activeBuffer.ybase + e5), i5.isWrapped = false);
+        }
+        eraseInDisplay(e5, t4 = false) {
+          let i5;
+          switch (this._restrictCursor(this._bufferService.cols), e5.params[0]) {
+            case 0:
+              for (i5 = this._activeBuffer.y, this._dirtyRowTracker.markDirty(i5), this._eraseInBufferLine(i5++, this._activeBuffer.x, this._bufferService.cols, 0 === this._activeBuffer.x, t4); i5 < this._bufferService.rows; i5++) this._resetBufferLine(i5, t4);
+              this._dirtyRowTracker.markDirty(i5);
+              break;
+            case 1:
+              for (i5 = this._activeBuffer.y, this._dirtyRowTracker.markDirty(i5), this._eraseInBufferLine(i5, 0, this._activeBuffer.x + 1, true, t4), this._activeBuffer.x + 1 >= this._bufferService.cols && (this._activeBuffer.lines.get(i5 + 1).isWrapped = false); i5--; ) this._resetBufferLine(i5, t4);
+              this._dirtyRowTracker.markDirty(0);
+              break;
+            case 2:
+              for (i5 = this._bufferService.rows, this._dirtyRowTracker.markDirty(i5 - 1); i5--; ) this._resetBufferLine(i5, t4);
+              this._dirtyRowTracker.markDirty(0);
+              break;
+            case 3:
+              const e6 = this._activeBuffer.lines.length - this._bufferService.rows;
+              e6 > 0 && (this._activeBuffer.lines.trimStart(e6), this._activeBuffer.ybase = Math.max(this._activeBuffer.ybase - e6, 0), this._activeBuffer.ydisp = Math.max(this._activeBuffer.ydisp - e6, 0), this._onScroll.fire(0));
+          }
+          return true;
+        }
+        eraseInLine(e5, t4 = false) {
+          switch (this._restrictCursor(this._bufferService.cols), e5.params[0]) {
+            case 0:
+              this._eraseInBufferLine(this._activeBuffer.y, this._activeBuffer.x, this._bufferService.cols, 0 === this._activeBuffer.x, t4);
+              break;
+            case 1:
+              this._eraseInBufferLine(this._activeBuffer.y, 0, this._activeBuffer.x + 1, false, t4);
+              break;
+            case 2:
+              this._eraseInBufferLine(this._activeBuffer.y, 0, this._bufferService.cols, true, t4);
+          }
+          return this._dirtyRowTracker.markDirty(this._activeBuffer.y), true;
+        }
+        insertLines(e5) {
+          this._restrictCursor();
+          let t4 = e5.params[0] || 1;
+          if (this._activeBuffer.y > this._activeBuffer.scrollBottom || this._activeBuffer.y < this._activeBuffer.scrollTop) return true;
+          const i5 = this._activeBuffer.ybase + this._activeBuffer.y, s4 = this._bufferService.rows - 1 - this._activeBuffer.scrollBottom, r3 = this._bufferService.rows - 1 + this._activeBuffer.ybase - s4 + 1;
+          for (; t4--; ) this._activeBuffer.lines.splice(r3 - 1, 1), this._activeBuffer.lines.splice(i5, 0, this._activeBuffer.getBlankLine(this._eraseAttrData()));
+          return this._dirtyRowTracker.markRangeDirty(this._activeBuffer.y, this._activeBuffer.scrollBottom), this._activeBuffer.x = 0, true;
+        }
+        deleteLines(e5) {
+          this._restrictCursor();
+          let t4 = e5.params[0] || 1;
+          if (this._activeBuffer.y > this._activeBuffer.scrollBottom || this._activeBuffer.y < this._activeBuffer.scrollTop) return true;
+          const i5 = this._activeBuffer.ybase + this._activeBuffer.y;
+          let s4;
+          for (s4 = this._bufferService.rows - 1 - this._activeBuffer.scrollBottom, s4 = this._bufferService.rows - 1 + this._activeBuffer.ybase - s4; t4--; ) this._activeBuffer.lines.splice(i5, 1), this._activeBuffer.lines.splice(s4, 0, this._activeBuffer.getBlankLine(this._eraseAttrData()));
+          return this._dirtyRowTracker.markRangeDirty(this._activeBuffer.y, this._activeBuffer.scrollBottom), this._activeBuffer.x = 0, true;
+        }
+        insertChars(e5) {
+          this._restrictCursor();
+          const t4 = this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y);
+          return t4 && (t4.insertCells(this._activeBuffer.x, e5.params[0] || 1, this._activeBuffer.getNullCell(this._eraseAttrData()), this._eraseAttrData()), this._dirtyRowTracker.markDirty(this._activeBuffer.y)), true;
+        }
+        deleteChars(e5) {
+          this._restrictCursor();
+          const t4 = this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y);
+          return t4 && (t4.deleteCells(this._activeBuffer.x, e5.params[0] || 1, this._activeBuffer.getNullCell(this._eraseAttrData()), this._eraseAttrData()), this._dirtyRowTracker.markDirty(this._activeBuffer.y)), true;
+        }
+        scrollUp(e5) {
+          let t4 = e5.params[0] || 1;
+          for (; t4--; ) this._activeBuffer.lines.splice(this._activeBuffer.ybase + this._activeBuffer.scrollTop, 1), this._activeBuffer.lines.splice(this._activeBuffer.ybase + this._activeBuffer.scrollBottom, 0, this._activeBuffer.getBlankLine(this._eraseAttrData()));
+          return this._dirtyRowTracker.markRangeDirty(this._activeBuffer.scrollTop, this._activeBuffer.scrollBottom), true;
+        }
+        scrollDown(e5) {
+          let t4 = e5.params[0] || 1;
+          for (; t4--; ) this._activeBuffer.lines.splice(this._activeBuffer.ybase + this._activeBuffer.scrollBottom, 1), this._activeBuffer.lines.splice(this._activeBuffer.ybase + this._activeBuffer.scrollTop, 0, this._activeBuffer.getBlankLine(l2.DEFAULT_ATTR_DATA));
+          return this._dirtyRowTracker.markRangeDirty(this._activeBuffer.scrollTop, this._activeBuffer.scrollBottom), true;
+        }
+        scrollLeft(e5) {
+          if (this._activeBuffer.y > this._activeBuffer.scrollBottom || this._activeBuffer.y < this._activeBuffer.scrollTop) return true;
+          const t4 = e5.params[0] || 1;
+          for (let e6 = this._activeBuffer.scrollTop; e6 <= this._activeBuffer.scrollBottom; ++e6) {
+            const i5 = this._activeBuffer.lines.get(this._activeBuffer.ybase + e6);
+            i5.deleteCells(0, t4, this._activeBuffer.getNullCell(this._eraseAttrData()), this._eraseAttrData()), i5.isWrapped = false;
+          }
+          return this._dirtyRowTracker.markRangeDirty(this._activeBuffer.scrollTop, this._activeBuffer.scrollBottom), true;
+        }
+        scrollRight(e5) {
+          if (this._activeBuffer.y > this._activeBuffer.scrollBottom || this._activeBuffer.y < this._activeBuffer.scrollTop) return true;
+          const t4 = e5.params[0] || 1;
+          for (let e6 = this._activeBuffer.scrollTop; e6 <= this._activeBuffer.scrollBottom; ++e6) {
+            const i5 = this._activeBuffer.lines.get(this._activeBuffer.ybase + e6);
+            i5.insertCells(0, t4, this._activeBuffer.getNullCell(this._eraseAttrData()), this._eraseAttrData()), i5.isWrapped = false;
+          }
+          return this._dirtyRowTracker.markRangeDirty(this._activeBuffer.scrollTop, this._activeBuffer.scrollBottom), true;
+        }
+        insertColumns(e5) {
+          if (this._activeBuffer.y > this._activeBuffer.scrollBottom || this._activeBuffer.y < this._activeBuffer.scrollTop) return true;
+          const t4 = e5.params[0] || 1;
+          for (let e6 = this._activeBuffer.scrollTop; e6 <= this._activeBuffer.scrollBottom; ++e6) {
+            const i5 = this._activeBuffer.lines.get(this._activeBuffer.ybase + e6);
+            i5.insertCells(this._activeBuffer.x, t4, this._activeBuffer.getNullCell(this._eraseAttrData()), this._eraseAttrData()), i5.isWrapped = false;
+          }
+          return this._dirtyRowTracker.markRangeDirty(this._activeBuffer.scrollTop, this._activeBuffer.scrollBottom), true;
+        }
+        deleteColumns(e5) {
+          if (this._activeBuffer.y > this._activeBuffer.scrollBottom || this._activeBuffer.y < this._activeBuffer.scrollTop) return true;
+          const t4 = e5.params[0] || 1;
+          for (let e6 = this._activeBuffer.scrollTop; e6 <= this._activeBuffer.scrollBottom; ++e6) {
+            const i5 = this._activeBuffer.lines.get(this._activeBuffer.ybase + e6);
+            i5.deleteCells(this._activeBuffer.x, t4, this._activeBuffer.getNullCell(this._eraseAttrData()), this._eraseAttrData()), i5.isWrapped = false;
+          }
+          return this._dirtyRowTracker.markRangeDirty(this._activeBuffer.scrollTop, this._activeBuffer.scrollBottom), true;
+        }
+        eraseChars(e5) {
+          this._restrictCursor();
+          const t4 = this._activeBuffer.lines.get(this._activeBuffer.ybase + this._activeBuffer.y);
+          return t4 && (t4.replaceCells(this._activeBuffer.x, this._activeBuffer.x + (e5.params[0] || 1), this._activeBuffer.getNullCell(this._eraseAttrData()), this._eraseAttrData()), this._dirtyRowTracker.markDirty(this._activeBuffer.y)), true;
+        }
+        repeatPrecedingCharacter(e5) {
+          if (!this._parser.precedingCodepoint) return true;
+          const t4 = e5.params[0] || 1, i5 = new Uint32Array(t4);
+          for (let e6 = 0; e6 < t4; ++e6) i5[e6] = this._parser.precedingCodepoint;
+          return this.print(i5, 0, i5.length), true;
+        }
+        sendDeviceAttributesPrimary(e5) {
+          return e5.params[0] > 0 || (this._is("xterm") || this._is("rxvt-unicode") || this._is("screen") ? this._coreService.triggerDataEvent(n3.C0.ESC + "[?1;2c") : this._is("linux") && this._coreService.triggerDataEvent(n3.C0.ESC + "[?6c")), true;
+        }
+        sendDeviceAttributesSecondary(e5) {
+          return e5.params[0] > 0 || (this._is("xterm") ? this._coreService.triggerDataEvent(n3.C0.ESC + "[>0;276;0c") : this._is("rxvt-unicode") ? this._coreService.triggerDataEvent(n3.C0.ESC + "[>85;95;0c") : this._is("linux") ? this._coreService.triggerDataEvent(e5.params[0] + "c") : this._is("screen") && this._coreService.triggerDataEvent(n3.C0.ESC + "[>83;40003;0c")), true;
+        }
+        _is(e5) {
+          return 0 === (this._optionsService.rawOptions.termName + "").indexOf(e5);
+        }
+        setMode(e5) {
+          for (let t4 = 0; t4 < e5.length; t4++) switch (e5.params[t4]) {
+            case 4:
+              this._coreService.modes.insertMode = true;
+              break;
+            case 20:
+              this._optionsService.options.convertEol = true;
+          }
+          return true;
+        }
+        setModePrivate(e5) {
+          for (let t4 = 0; t4 < e5.length; t4++) switch (e5.params[t4]) {
+            case 1:
+              this._coreService.decPrivateModes.applicationCursorKeys = true;
+              break;
+            case 2:
+              this._charsetService.setgCharset(0, o2.DEFAULT_CHARSET), this._charsetService.setgCharset(1, o2.DEFAULT_CHARSET), this._charsetService.setgCharset(2, o2.DEFAULT_CHARSET), this._charsetService.setgCharset(3, o2.DEFAULT_CHARSET);
+              break;
+            case 3:
+              this._optionsService.rawOptions.windowOptions.setWinLines && (this._bufferService.resize(132, this._bufferService.rows), this._onRequestReset.fire());
+              break;
+            case 6:
+              this._coreService.decPrivateModes.origin = true, this._setCursor(0, 0);
+              break;
+            case 7:
+              this._coreService.decPrivateModes.wraparound = true;
+              break;
+            case 12:
+              this._optionsService.options.cursorBlink = true;
+              break;
+            case 45:
+              this._coreService.decPrivateModes.reverseWraparound = true;
+              break;
+            case 66:
+              this._logService.debug("Serial port requested application keypad."), this._coreService.decPrivateModes.applicationKeypad = true, this._onRequestSyncScrollBar.fire();
+              break;
+            case 9:
+              this._coreMouseService.activeProtocol = "X10";
+              break;
+            case 1e3:
+              this._coreMouseService.activeProtocol = "VT200";
+              break;
+            case 1002:
+              this._coreMouseService.activeProtocol = "DRAG";
+              break;
+            case 1003:
+              this._coreMouseService.activeProtocol = "ANY";
+              break;
+            case 1004:
+              this._coreService.decPrivateModes.sendFocus = true, this._onRequestSendFocus.fire();
+              break;
+            case 1005:
+              this._logService.debug("DECSET 1005 not supported (see #2507)");
+              break;
+            case 1006:
+              this._coreMouseService.activeEncoding = "SGR";
+              break;
+            case 1015:
+              this._logService.debug("DECSET 1015 not supported (see #2507)");
+              break;
+            case 1016:
+              this._coreMouseService.activeEncoding = "SGR_PIXELS";
+              break;
+            case 25:
+              this._coreService.isCursorHidden = false;
+              break;
+            case 1048:
+              this.saveCursor();
+              break;
+            case 1049:
+              this.saveCursor();
+            case 47:
+            case 1047:
+              this._bufferService.buffers.activateAltBuffer(this._eraseAttrData()), this._coreService.isCursorInitialized = true, this._onRequestRefreshRows.fire(0, this._bufferService.rows - 1), this._onRequestSyncScrollBar.fire();
+              break;
+            case 2004:
+              this._coreService.decPrivateModes.bracketedPasteMode = true;
+          }
+          return true;
+        }
+        resetMode(e5) {
+          for (let t4 = 0; t4 < e5.length; t4++) switch (e5.params[t4]) {
+            case 4:
+              this._coreService.modes.insertMode = false;
+              break;
+            case 20:
+              this._optionsService.options.convertEol = false;
+          }
+          return true;
+        }
+        resetModePrivate(e5) {
+          for (let t4 = 0; t4 < e5.length; t4++) switch (e5.params[t4]) {
+            case 1:
+              this._coreService.decPrivateModes.applicationCursorKeys = false;
+              break;
+            case 3:
+              this._optionsService.rawOptions.windowOptions.setWinLines && (this._bufferService.resize(80, this._bufferService.rows), this._onRequestReset.fire());
+              break;
+            case 6:
+              this._coreService.decPrivateModes.origin = false, this._setCursor(0, 0);
+              break;
+            case 7:
+              this._coreService.decPrivateModes.wraparound = false;
+              break;
+            case 12:
+              this._optionsService.options.cursorBlink = false;
+              break;
+            case 45:
+              this._coreService.decPrivateModes.reverseWraparound = false;
+              break;
+            case 66:
+              this._logService.debug("Switching back to normal keypad."), this._coreService.decPrivateModes.applicationKeypad = false, this._onRequestSyncScrollBar.fire();
+              break;
+            case 9:
+            case 1e3:
+            case 1002:
+            case 1003:
+              this._coreMouseService.activeProtocol = "NONE";
+              break;
+            case 1004:
+              this._coreService.decPrivateModes.sendFocus = false;
+              break;
+            case 1005:
+              this._logService.debug("DECRST 1005 not supported (see #2507)");
+              break;
+            case 1006:
+            case 1016:
+              this._coreMouseService.activeEncoding = "DEFAULT";
+              break;
+            case 1015:
+              this._logService.debug("DECRST 1015 not supported (see #2507)");
+              break;
+            case 25:
+              this._coreService.isCursorHidden = true;
+              break;
+            case 1048:
+              this.restoreCursor();
+              break;
+            case 1049:
+            case 47:
+            case 1047:
+              this._bufferService.buffers.activateNormalBuffer(), 1049 === e5.params[t4] && this.restoreCursor(), this._coreService.isCursorInitialized = true, this._onRequestRefreshRows.fire(0, this._bufferService.rows - 1), this._onRequestSyncScrollBar.fire();
+              break;
+            case 2004:
+              this._coreService.decPrivateModes.bracketedPasteMode = false;
+          }
+          return true;
+        }
+        requestMode(e5, t4) {
+          const i5 = this._coreService.decPrivateModes, { activeProtocol: s4, activeEncoding: r3 } = this._coreMouseService, o3 = this._coreService, { buffers: a3, cols: h3 } = this._bufferService, { active: c3, alt: l3 } = a3, d3 = this._optionsService.rawOptions, _3 = (e6) => e6 ? 1 : 2, u3 = e5.params[0];
+          return f3 = u3, v3 = t4 ? 2 === u3 ? 4 : 4 === u3 ? _3(o3.modes.insertMode) : 12 === u3 ? 3 : 20 === u3 ? _3(d3.convertEol) : 0 : 1 === u3 ? _3(i5.applicationCursorKeys) : 3 === u3 ? d3.windowOptions.setWinLines ? 80 === h3 ? 2 : 132 === h3 ? 1 : 0 : 0 : 6 === u3 ? _3(i5.origin) : 7 === u3 ? _3(i5.wraparound) : 8 === u3 ? 3 : 9 === u3 ? _3("X10" === s4) : 12 === u3 ? _3(d3.cursorBlink) : 25 === u3 ? _3(!o3.isCursorHidden) : 45 === u3 ? _3(i5.reverseWraparound) : 66 === u3 ? _3(i5.applicationKeypad) : 67 === u3 ? 4 : 1e3 === u3 ? _3("VT200" === s4) : 1002 === u3 ? _3("DRAG" === s4) : 1003 === u3 ? _3("ANY" === s4) : 1004 === u3 ? _3(i5.sendFocus) : 1005 === u3 ? 4 : 1006 === u3 ? _3("SGR" === r3) : 1015 === u3 ? 4 : 1016 === u3 ? _3("SGR_PIXELS" === r3) : 1048 === u3 ? 1 : 47 === u3 || 1047 === u3 || 1049 === u3 ? _3(c3 === l3) : 2004 === u3 ? _3(i5.bracketedPasteMode) : 0, o3.triggerDataEvent(`${n3.C0.ESC}[${t4 ? "" : "?"}${f3};${v3}$y`), true;
+          var f3, v3;
+        }
+        _updateAttrColor(e5, t4, i5, s4, r3) {
+          return 2 === t4 ? (e5 |= 50331648, e5 &= -16777216, e5 |= f2.AttributeData.fromColorRGB([i5, s4, r3])) : 5 === t4 && (e5 &= -50331904, e5 |= 33554432 | 255 & i5), e5;
+        }
+        _extractColor(e5, t4, i5) {
+          const s4 = [0, 0, -1, 0, 0, 0];
+          let r3 = 0, n4 = 0;
+          do {
+            if (s4[n4 + r3] = e5.params[t4 + n4], e5.hasSubParams(t4 + n4)) {
+              const i6 = e5.getSubParams(t4 + n4);
+              let o3 = 0;
+              do {
+                5 === s4[1] && (r3 = 1), s4[n4 + o3 + 1 + r3] = i6[o3];
+              } while (++o3 < i6.length && o3 + n4 + 1 + r3 < s4.length);
+              break;
+            }
+            if (5 === s4[1] && n4 + r3 >= 2 || 2 === s4[1] && n4 + r3 >= 5) break;
+            s4[1] && (r3 = 1);
+          } while (++n4 + t4 < e5.length && n4 + r3 < s4.length);
+          for (let e6 = 2; e6 < s4.length; ++e6) -1 === s4[e6] && (s4[e6] = 0);
+          switch (s4[0]) {
+            case 38:
+              i5.fg = this._updateAttrColor(i5.fg, s4[1], s4[3], s4[4], s4[5]);
+              break;
+            case 48:
+              i5.bg = this._updateAttrColor(i5.bg, s4[1], s4[3], s4[4], s4[5]);
+              break;
+            case 58:
+              i5.extended = i5.extended.clone(), i5.extended.underlineColor = this._updateAttrColor(i5.extended.underlineColor, s4[1], s4[3], s4[4], s4[5]);
+          }
+          return n4;
+        }
+        _processUnderline(e5, t4) {
+          t4.extended = t4.extended.clone(), (!~e5 || e5 > 5) && (e5 = 1), t4.extended.underlineStyle = e5, t4.fg |= 268435456, 0 === e5 && (t4.fg &= -268435457), t4.updateExtended();
+        }
+        _processSGR0(e5) {
+          e5.fg = l2.DEFAULT_ATTR_DATA.fg, e5.bg = l2.DEFAULT_ATTR_DATA.bg, e5.extended = e5.extended.clone(), e5.extended.underlineStyle = 0, e5.extended.underlineColor &= -67108864, e5.updateExtended();
+        }
+        charAttributes(e5) {
+          if (1 === e5.length && 0 === e5.params[0]) return this._processSGR0(this._curAttrData), true;
+          const t4 = e5.length;
+          let i5;
+          const s4 = this._curAttrData;
+          for (let r3 = 0; r3 < t4; r3++) i5 = e5.params[r3], i5 >= 30 && i5 <= 37 ? (s4.fg &= -50331904, s4.fg |= 16777216 | i5 - 30) : i5 >= 40 && i5 <= 47 ? (s4.bg &= -50331904, s4.bg |= 16777216 | i5 - 40) : i5 >= 90 && i5 <= 97 ? (s4.fg &= -50331904, s4.fg |= 16777224 | i5 - 90) : i5 >= 100 && i5 <= 107 ? (s4.bg &= -50331904, s4.bg |= 16777224 | i5 - 100) : 0 === i5 ? this._processSGR0(s4) : 1 === i5 ? s4.fg |= 134217728 : 3 === i5 ? s4.bg |= 67108864 : 4 === i5 ? (s4.fg |= 268435456, this._processUnderline(e5.hasSubParams(r3) ? e5.getSubParams(r3)[0] : 1, s4)) : 5 === i5 ? s4.fg |= 536870912 : 7 === i5 ? s4.fg |= 67108864 : 8 === i5 ? s4.fg |= 1073741824 : 9 === i5 ? s4.fg |= 2147483648 : 2 === i5 ? s4.bg |= 134217728 : 21 === i5 ? this._processUnderline(2, s4) : 22 === i5 ? (s4.fg &= -134217729, s4.bg &= -134217729) : 23 === i5 ? s4.bg &= -67108865 : 24 === i5 ? (s4.fg &= -268435457, this._processUnderline(0, s4)) : 25 === i5 ? s4.fg &= -536870913 : 27 === i5 ? s4.fg &= -67108865 : 28 === i5 ? s4.fg &= -1073741825 : 29 === i5 ? s4.fg &= 2147483647 : 39 === i5 ? (s4.fg &= -67108864, s4.fg |= 16777215 & l2.DEFAULT_ATTR_DATA.fg) : 49 === i5 ? (s4.bg &= -67108864, s4.bg |= 16777215 & l2.DEFAULT_ATTR_DATA.bg) : 38 === i5 || 48 === i5 || 58 === i5 ? r3 += this._extractColor(e5, r3, s4) : 53 === i5 ? s4.bg |= 1073741824 : 55 === i5 ? s4.bg &= -1073741825 : 59 === i5 ? (s4.extended = s4.extended.clone(), s4.extended.underlineColor = -1, s4.updateExtended()) : 100 === i5 ? (s4.fg &= -67108864, s4.fg |= 16777215 & l2.DEFAULT_ATTR_DATA.fg, s4.bg &= -67108864, s4.bg |= 16777215 & l2.DEFAULT_ATTR_DATA.bg) : this._logService.debug("Unknown SGR attribute: %d.", i5);
+          return true;
+        }
+        deviceStatus(e5) {
+          switch (e5.params[0]) {
+            case 5:
+              this._coreService.triggerDataEvent(`${n3.C0.ESC}[0n`);
+              break;
+            case 6:
+              const e6 = this._activeBuffer.y + 1, t4 = this._activeBuffer.x + 1;
+              this._coreService.triggerDataEvent(`${n3.C0.ESC}[${e6};${t4}R`);
+          }
+          return true;
+        }
+        deviceStatusPrivate(e5) {
+          if (6 === e5.params[0]) {
+            const e6 = this._activeBuffer.y + 1, t4 = this._activeBuffer.x + 1;
+            this._coreService.triggerDataEvent(`${n3.C0.ESC}[?${e6};${t4}R`);
+          }
+          return true;
+        }
+        softReset(e5) {
+          return this._coreService.isCursorHidden = false, this._onRequestSyncScrollBar.fire(), this._activeBuffer.scrollTop = 0, this._activeBuffer.scrollBottom = this._bufferService.rows - 1, this._curAttrData = l2.DEFAULT_ATTR_DATA.clone(), this._coreService.reset(), this._charsetService.reset(), this._activeBuffer.savedX = 0, this._activeBuffer.savedY = this._activeBuffer.ybase, this._activeBuffer.savedCurAttrData.fg = this._curAttrData.fg, this._activeBuffer.savedCurAttrData.bg = this._curAttrData.bg, this._activeBuffer.savedCharset = this._charsetService.charset, this._coreService.decPrivateModes.origin = false, true;
+        }
+        setCursorStyle(e5) {
+          const t4 = e5.params[0] || 1;
+          switch (t4) {
+            case 1:
+            case 2:
+              this._optionsService.options.cursorStyle = "block";
+              break;
+            case 3:
+            case 4:
+              this._optionsService.options.cursorStyle = "underline";
+              break;
+            case 5:
+            case 6:
+              this._optionsService.options.cursorStyle = "bar";
+          }
+          const i5 = t4 % 2 == 1;
+          return this._optionsService.options.cursorBlink = i5, true;
+        }
+        setScrollRegion(e5) {
+          const t4 = e5.params[0] || 1;
+          let i5;
+          return (e5.length < 2 || (i5 = e5.params[1]) > this._bufferService.rows || 0 === i5) && (i5 = this._bufferService.rows), i5 > t4 && (this._activeBuffer.scrollTop = t4 - 1, this._activeBuffer.scrollBottom = i5 - 1, this._setCursor(0, 0)), true;
+        }
+        windowOptions(e5) {
+          if (!b2(e5.params[0], this._optionsService.rawOptions.windowOptions)) return true;
+          const t4 = e5.length > 1 ? e5.params[1] : 0;
+          switch (e5.params[0]) {
+            case 14:
+              2 !== t4 && this._onRequestWindowsOptionsReport.fire(y3.GET_WIN_SIZE_PIXELS);
+              break;
+            case 16:
+              this._onRequestWindowsOptionsReport.fire(y3.GET_CELL_SIZE_PIXELS);
+              break;
+            case 18:
+              this._bufferService && this._coreService.triggerDataEvent(`${n3.C0.ESC}[8;${this._bufferService.rows};${this._bufferService.cols}t`);
+              break;
+            case 22:
+              0 !== t4 && 2 !== t4 || (this._windowTitleStack.push(this._windowTitle), this._windowTitleStack.length > 10 && this._windowTitleStack.shift()), 0 !== t4 && 1 !== t4 || (this._iconNameStack.push(this._iconName), this._iconNameStack.length > 10 && this._iconNameStack.shift());
+              break;
+            case 23:
+              0 !== t4 && 2 !== t4 || this._windowTitleStack.length && this.setTitle(this._windowTitleStack.pop()), 0 !== t4 && 1 !== t4 || this._iconNameStack.length && this.setIconName(this._iconNameStack.pop());
+          }
+          return true;
+        }
+        saveCursor(e5) {
+          return this._activeBuffer.savedX = this._activeBuffer.x, this._activeBuffer.savedY = this._activeBuffer.ybase + this._activeBuffer.y, this._activeBuffer.savedCurAttrData.fg = this._curAttrData.fg, this._activeBuffer.savedCurAttrData.bg = this._curAttrData.bg, this._activeBuffer.savedCharset = this._charsetService.charset, true;
+        }
+        restoreCursor(e5) {
+          return this._activeBuffer.x = this._activeBuffer.savedX || 0, this._activeBuffer.y = Math.max(this._activeBuffer.savedY - this._activeBuffer.ybase, 0), this._curAttrData.fg = this._activeBuffer.savedCurAttrData.fg, this._curAttrData.bg = this._activeBuffer.savedCurAttrData.bg, this._charsetService.charset = this._savedCharset, this._activeBuffer.savedCharset && (this._charsetService.charset = this._activeBuffer.savedCharset), this._restrictCursor(), true;
+        }
+        setTitle(e5) {
+          return this._windowTitle = e5, this._onTitleChange.fire(e5), true;
+        }
+        setIconName(e5) {
+          return this._iconName = e5, true;
+        }
+        setOrReportIndexedColor(e5) {
+          const t4 = [], i5 = e5.split(";");
+          for (; i5.length > 1; ) {
+            const e6 = i5.shift(), s4 = i5.shift();
+            if (/^\d+$/.exec(e6)) {
+              const i6 = parseInt(e6);
+              if (L2(i6)) if ("?" === s4) t4.push({ type: 0, index: i6 });
+              else {
+                const e7 = (0, m2.parseColor)(s4);
+                e7 && t4.push({ type: 1, index: i6, color: e7 });
+              }
+            }
+          }
+          return t4.length && this._onColor.fire(t4), true;
+        }
+        setHyperlink(e5) {
+          const t4 = e5.split(";");
+          return !(t4.length < 2) && (t4[1] ? this._createHyperlink(t4[0], t4[1]) : !t4[0] && this._finishHyperlink());
+        }
+        _createHyperlink(e5, t4) {
+          this._getCurrentLinkId() && this._finishHyperlink();
+          const i5 = e5.split(":");
+          let s4;
+          const r3 = i5.findIndex((e6) => e6.startsWith("id="));
+          return -1 !== r3 && (s4 = i5[r3].slice(3) || void 0), this._curAttrData.extended = this._curAttrData.extended.clone(), this._curAttrData.extended.urlId = this._oscLinkService.registerLink({ id: s4, uri: t4 }), this._curAttrData.updateExtended(), true;
+        }
+        _finishHyperlink() {
+          return this._curAttrData.extended = this._curAttrData.extended.clone(), this._curAttrData.extended.urlId = 0, this._curAttrData.updateExtended(), true;
+        }
+        _setOrReportSpecialColor(e5, t4) {
+          const i5 = e5.split(";");
+          for (let e6 = 0; e6 < i5.length && !(t4 >= this._specialColors.length); ++e6, ++t4) if ("?" === i5[e6]) this._onColor.fire([{ type: 0, index: this._specialColors[t4] }]);
+          else {
+            const s4 = (0, m2.parseColor)(i5[e6]);
+            s4 && this._onColor.fire([{ type: 1, index: this._specialColors[t4], color: s4 }]);
+          }
+          return true;
+        }
+        setOrReportFgColor(e5) {
+          return this._setOrReportSpecialColor(e5, 0);
+        }
+        setOrReportBgColor(e5) {
+          return this._setOrReportSpecialColor(e5, 1);
+        }
+        setOrReportCursorColor(e5) {
+          return this._setOrReportSpecialColor(e5, 2);
+        }
+        restoreIndexedColor(e5) {
+          if (!e5) return this._onColor.fire([{ type: 2 }]), true;
+          const t4 = [], i5 = e5.split(";");
+          for (let e6 = 0; e6 < i5.length; ++e6) if (/^\d+$/.exec(i5[e6])) {
+            const s4 = parseInt(i5[e6]);
+            L2(s4) && t4.push({ type: 2, index: s4 });
+          }
+          return t4.length && this._onColor.fire(t4), true;
+        }
+        restoreFgColor(e5) {
+          return this._onColor.fire([{ type: 2, index: 256 }]), true;
+        }
+        restoreBgColor(e5) {
+          return this._onColor.fire([{ type: 2, index: 257 }]), true;
+        }
+        restoreCursorColor(e5) {
+          return this._onColor.fire([{ type: 2, index: 258 }]), true;
+        }
+        nextLine() {
+          return this._activeBuffer.x = 0, this.index(), true;
+        }
+        keypadApplicationMode() {
+          return this._logService.debug("Serial port requested application keypad."), this._coreService.decPrivateModes.applicationKeypad = true, this._onRequestSyncScrollBar.fire(), true;
+        }
+        keypadNumericMode() {
+          return this._logService.debug("Switching back to normal keypad."), this._coreService.decPrivateModes.applicationKeypad = false, this._onRequestSyncScrollBar.fire(), true;
+        }
+        selectDefaultCharset() {
+          return this._charsetService.setgLevel(0), this._charsetService.setgCharset(0, o2.DEFAULT_CHARSET), true;
+        }
+        selectCharset(e5) {
+          return 2 !== e5.length ? (this.selectDefaultCharset(), true) : ("/" === e5[0] || this._charsetService.setgCharset(S2[e5[0]], o2.CHARSETS[e5[1]] || o2.DEFAULT_CHARSET), true);
+        }
+        index() {
+          return this._restrictCursor(), this._activeBuffer.y++, this._activeBuffer.y === this._activeBuffer.scrollBottom + 1 ? (this._activeBuffer.y--, this._bufferService.scroll(this._eraseAttrData())) : this._activeBuffer.y >= this._bufferService.rows && (this._activeBuffer.y = this._bufferService.rows - 1), this._restrictCursor(), true;
+        }
+        tabSet() {
+          return this._activeBuffer.tabs[this._activeBuffer.x] = true, true;
+        }
+        reverseIndex() {
+          if (this._restrictCursor(), this._activeBuffer.y === this._activeBuffer.scrollTop) {
+            const e5 = this._activeBuffer.scrollBottom - this._activeBuffer.scrollTop;
+            this._activeBuffer.lines.shiftElements(this._activeBuffer.ybase + this._activeBuffer.y, e5, 1), this._activeBuffer.lines.set(this._activeBuffer.ybase + this._activeBuffer.y, this._activeBuffer.getBlankLine(this._eraseAttrData())), this._dirtyRowTracker.markRangeDirty(this._activeBuffer.scrollTop, this._activeBuffer.scrollBottom);
+          } else this._activeBuffer.y--, this._restrictCursor();
+          return true;
+        }
+        fullReset() {
+          return this._parser.reset(), this._onRequestReset.fire(), true;
+        }
+        reset() {
+          this._curAttrData = l2.DEFAULT_ATTR_DATA.clone(), this._eraseAttrDataInternal = l2.DEFAULT_ATTR_DATA.clone();
+        }
+        _eraseAttrData() {
+          return this._eraseAttrDataInternal.bg &= -67108864, this._eraseAttrDataInternal.bg |= 67108863 & this._curAttrData.bg, this._eraseAttrDataInternal;
+        }
+        setgLevel(e5) {
+          return this._charsetService.setgLevel(e5), true;
+        }
+        screenAlignmentPattern() {
+          const e5 = new u2.CellData();
+          e5.content = 1 << 22 | "E".charCodeAt(0), e5.fg = this._curAttrData.fg, e5.bg = this._curAttrData.bg, this._setCursor(0, 0);
+          for (let t4 = 0; t4 < this._bufferService.rows; ++t4) {
+            const i5 = this._activeBuffer.ybase + this._activeBuffer.y + t4, s4 = this._activeBuffer.lines.get(i5);
+            s4 && (s4.fill(e5), s4.isWrapped = false);
+          }
+          return this._dirtyRowTracker.markAllDirty(), this._setCursor(0, 0), true;
+        }
+        requestStatusString(e5, t4) {
+          const i5 = this._bufferService.buffer, s4 = this._optionsService.rawOptions;
+          return ((e6) => (this._coreService.triggerDataEvent(`${n3.C0.ESC}${e6}${n3.C0.ESC}\\`), true))('"q' === e5 ? `P1$r${this._curAttrData.isProtected() ? 1 : 0}"q` : '"p' === e5 ? 'P1$r61;1"p' : "r" === e5 ? `P1$r${i5.scrollTop + 1};${i5.scrollBottom + 1}r` : "m" === e5 ? "P1$r0m" : " q" === e5 ? `P1$r${{ block: 2, underline: 4, bar: 6 }[s4.cursorStyle] - (s4.cursorBlink ? 1 : 0)} q` : "P0$r");
+        }
+        markRangeDirty(e5, t4) {
+          this._dirtyRowTracker.markRangeDirty(e5, t4);
+        }
+      }
+      t3.InputHandler = E2;
+      let k2 = class {
+        constructor(e5) {
+          this._bufferService = e5, this.clearRange();
+        }
+        clearRange() {
+          this.start = this._bufferService.buffer.y, this.end = this._bufferService.buffer.y;
+        }
+        markDirty(e5) {
+          e5 < this.start ? this.start = e5 : e5 > this.end && (this.end = e5);
+        }
+        markRangeDirty(e5, t4) {
+          e5 > t4 && (w2 = e5, e5 = t4, t4 = w2), e5 < this.start && (this.start = e5), t4 > this.end && (this.end = t4);
+        }
+        markAllDirty() {
+          this.markRangeDirty(0, this._bufferService.rows - 1);
+        }
+      };
+      function L2(e5) {
+        return 0 <= e5 && e5 < 256;
+      }
+      k2 = s3([r2(0, v2.IBufferService)], k2);
+    }, 844: (e4, t3) => {
+      function i4(e5) {
+        for (const t4 of e5) t4.dispose();
+        e5.length = 0;
+      }
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.getDisposeArrayDisposable = t3.disposeArray = t3.toDisposable = t3.MutableDisposable = t3.Disposable = void 0, t3.Disposable = class {
+        constructor() {
+          this._disposables = [], this._isDisposed = false;
+        }
+        dispose() {
+          this._isDisposed = true;
+          for (const e5 of this._disposables) e5.dispose();
+          this._disposables.length = 0;
+        }
+        register(e5) {
+          return this._disposables.push(e5), e5;
+        }
+        unregister(e5) {
+          const t4 = this._disposables.indexOf(e5);
+          -1 !== t4 && this._disposables.splice(t4, 1);
+        }
+      }, t3.MutableDisposable = class {
+        constructor() {
+          this._isDisposed = false;
+        }
+        get value() {
+          return this._isDisposed ? void 0 : this._value;
+        }
+        set value(e5) {
+          var t4;
+          this._isDisposed || e5 === this._value || (null === (t4 = this._value) || void 0 === t4 || t4.dispose(), this._value = e5);
+        }
+        clear() {
+          this.value = void 0;
+        }
+        dispose() {
+          var e5;
+          this._isDisposed = true, null === (e5 = this._value) || void 0 === e5 || e5.dispose(), this._value = void 0;
+        }
+      }, t3.toDisposable = function(e5) {
+        return { dispose: e5 };
+      }, t3.disposeArray = i4, t3.getDisposeArrayDisposable = function(e5) {
+        return { dispose: () => i4(e5) };
+      };
+    }, 1505: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.FourKeyMap = t3.TwoKeyMap = void 0;
+      class i4 {
+        constructor() {
+          this._data = {};
+        }
+        set(e5, t4, i5) {
+          this._data[e5] || (this._data[e5] = {}), this._data[e5][t4] = i5;
+        }
+        get(e5, t4) {
+          return this._data[e5] ? this._data[e5][t4] : void 0;
+        }
+        clear() {
+          this._data = {};
+        }
+      }
+      t3.TwoKeyMap = i4, t3.FourKeyMap = class {
+        constructor() {
+          this._data = new i4();
+        }
+        set(e5, t4, s3, r2, n3) {
+          this._data.get(e5, t4) || this._data.set(e5, t4, new i4()), this._data.get(e5, t4).set(s3, r2, n3);
+        }
+        get(e5, t4, i5, s3) {
+          var r2;
+          return null === (r2 = this._data.get(e5, t4)) || void 0 === r2 ? void 0 : r2.get(i5, s3);
+        }
+        clear() {
+          this._data.clear();
+        }
+      };
+    }, 6114: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.isChromeOS = t3.isLinux = t3.isWindows = t3.isIphone = t3.isIpad = t3.isMac = t3.getSafariVersion = t3.isSafari = t3.isLegacyEdge = t3.isFirefox = t3.isNode = void 0, t3.isNode = "undefined" == typeof navigator;
+      const i4 = t3.isNode ? "node" : navigator.userAgent, s3 = t3.isNode ? "node" : navigator.platform;
+      t3.isFirefox = i4.includes("Firefox"), t3.isLegacyEdge = i4.includes("Edge"), t3.isSafari = /^((?!chrome|android).)*safari/i.test(i4), t3.getSafariVersion = function() {
+        if (!t3.isSafari) return 0;
+        const e5 = i4.match(/Version\/(\d+)/);
+        return null === e5 || e5.length < 2 ? 0 : parseInt(e5[1]);
+      }, t3.isMac = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"].includes(s3), t3.isIpad = "iPad" === s3, t3.isIphone = "iPhone" === s3, t3.isWindows = ["Windows", "Win16", "Win32", "WinCE"].includes(s3), t3.isLinux = s3.indexOf("Linux") >= 0, t3.isChromeOS = /\bCrOS\b/.test(i4);
+    }, 6106: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.SortedList = void 0;
+      let i4 = 0;
+      t3.SortedList = class {
+        constructor(e5) {
+          this._getKey = e5, this._array = [];
+        }
+        clear() {
+          this._array.length = 0;
+        }
+        insert(e5) {
+          0 !== this._array.length ? (i4 = this._search(this._getKey(e5)), this._array.splice(i4, 0, e5)) : this._array.push(e5);
+        }
+        delete(e5) {
+          if (0 === this._array.length) return false;
+          const t4 = this._getKey(e5);
+          if (void 0 === t4) return false;
+          if (i4 = this._search(t4), -1 === i4) return false;
+          if (this._getKey(this._array[i4]) !== t4) return false;
+          do {
+            if (this._array[i4] === e5) return this._array.splice(i4, 1), true;
+          } while (++i4 < this._array.length && this._getKey(this._array[i4]) === t4);
+          return false;
+        }
+        *getKeyIterator(e5) {
+          if (0 !== this._array.length && (i4 = this._search(e5), !(i4 < 0 || i4 >= this._array.length) && this._getKey(this._array[i4]) === e5)) do {
+            yield this._array[i4];
+          } while (++i4 < this._array.length && this._getKey(this._array[i4]) === e5);
+        }
+        forEachByKey(e5, t4) {
+          if (0 !== this._array.length && (i4 = this._search(e5), !(i4 < 0 || i4 >= this._array.length) && this._getKey(this._array[i4]) === e5)) do {
+            t4(this._array[i4]);
+          } while (++i4 < this._array.length && this._getKey(this._array[i4]) === e5);
+        }
+        values() {
+          return [...this._array].values();
+        }
+        _search(e5) {
+          let t4 = 0, i5 = this._array.length - 1;
+          for (; i5 >= t4; ) {
+            let s3 = t4 + i5 >> 1;
+            const r2 = this._getKey(this._array[s3]);
+            if (r2 > e5) i5 = s3 - 1;
+            else {
+              if (!(r2 < e5)) {
+                for (; s3 > 0 && this._getKey(this._array[s3 - 1]) === e5; ) s3--;
+                return s3;
+              }
+              t4 = s3 + 1;
+            }
+          }
+          return t4;
+        }
+      };
+    }, 7226: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.DebouncedIdleTask = t3.IdleTaskQueue = t3.PriorityTaskQueue = void 0;
+      const s3 = i4(6114);
+      class r2 {
+        constructor() {
+          this._tasks = [], this._i = 0;
+        }
+        enqueue(e5) {
+          this._tasks.push(e5), this._start();
+        }
+        flush() {
+          for (; this._i < this._tasks.length; ) this._tasks[this._i]() || this._i++;
+          this.clear();
+        }
+        clear() {
+          this._idleCallback && (this._cancelCallback(this._idleCallback), this._idleCallback = void 0), this._i = 0, this._tasks.length = 0;
+        }
+        _start() {
+          this._idleCallback || (this._idleCallback = this._requestCallback(this._process.bind(this)));
+        }
+        _process(e5) {
+          this._idleCallback = void 0;
+          let t4 = 0, i5 = 0, s4 = e5.timeRemaining(), r3 = 0;
+          for (; this._i < this._tasks.length; ) {
+            if (t4 = Date.now(), this._tasks[this._i]() || this._i++, t4 = Math.max(1, Date.now() - t4), i5 = Math.max(t4, i5), r3 = e5.timeRemaining(), 1.5 * i5 > r3) return s4 - t4 < -20 && console.warn(`task queue exceeded allotted deadline by ${Math.abs(Math.round(s4 - t4))}ms`), void this._start();
+            s4 = r3;
+          }
+          this.clear();
+        }
+      }
+      class n3 extends r2 {
+        _requestCallback(e5) {
+          return setTimeout(() => e5(this._createDeadline(16)));
+        }
+        _cancelCallback(e5) {
+          clearTimeout(e5);
+        }
+        _createDeadline(e5) {
+          const t4 = Date.now() + e5;
+          return { timeRemaining: () => Math.max(0, t4 - Date.now()) };
+        }
+      }
+      t3.PriorityTaskQueue = n3, t3.IdleTaskQueue = !s3.isNode && "requestIdleCallback" in window ? class extends r2 {
+        _requestCallback(e5) {
+          return requestIdleCallback(e5);
+        }
+        _cancelCallback(e5) {
+          cancelIdleCallback(e5);
+        }
+      } : n3, t3.DebouncedIdleTask = class {
+        constructor() {
+          this._queue = new t3.IdleTaskQueue();
+        }
+        set(e5) {
+          this._queue.clear(), this._queue.enqueue(e5);
+        }
+        flush() {
+          this._queue.flush();
+        }
+      };
+    }, 9282: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.updateWindowsModeWrappedState = void 0;
+      const s3 = i4(643);
+      t3.updateWindowsModeWrappedState = function(e5) {
+        const t4 = e5.buffer.lines.get(e5.buffer.ybase + e5.buffer.y - 1), i5 = null == t4 ? void 0 : t4.get(e5.cols - 1), r2 = e5.buffer.lines.get(e5.buffer.ybase + e5.buffer.y);
+        r2 && i5 && (r2.isWrapped = i5[s3.CHAR_DATA_CODE_INDEX] !== s3.NULL_CELL_CODE && i5[s3.CHAR_DATA_CODE_INDEX] !== s3.WHITESPACE_CELL_CODE);
+      };
+    }, 3734: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.ExtendedAttrs = t3.AttributeData = void 0;
+      class i4 {
+        constructor() {
+          this.fg = 0, this.bg = 0, this.extended = new s3();
+        }
+        static toColorRGB(e5) {
+          return [e5 >>> 16 & 255, e5 >>> 8 & 255, 255 & e5];
+        }
+        static fromColorRGB(e5) {
+          return (255 & e5[0]) << 16 | (255 & e5[1]) << 8 | 255 & e5[2];
+        }
+        clone() {
+          const e5 = new i4();
+          return e5.fg = this.fg, e5.bg = this.bg, e5.extended = this.extended.clone(), e5;
+        }
+        isInverse() {
+          return 67108864 & this.fg;
+        }
+        isBold() {
+          return 134217728 & this.fg;
+        }
+        isUnderline() {
+          return this.hasExtendedAttrs() && 0 !== this.extended.underlineStyle ? 1 : 268435456 & this.fg;
+        }
+        isBlink() {
+          return 536870912 & this.fg;
+        }
+        isInvisible() {
+          return 1073741824 & this.fg;
+        }
+        isItalic() {
+          return 67108864 & this.bg;
+        }
+        isDim() {
+          return 134217728 & this.bg;
+        }
+        isStrikethrough() {
+          return 2147483648 & this.fg;
+        }
+        isProtected() {
+          return 536870912 & this.bg;
+        }
+        isOverline() {
+          return 1073741824 & this.bg;
+        }
+        getFgColorMode() {
+          return 50331648 & this.fg;
+        }
+        getBgColorMode() {
+          return 50331648 & this.bg;
+        }
+        isFgRGB() {
+          return 50331648 == (50331648 & this.fg);
+        }
+        isBgRGB() {
+          return 50331648 == (50331648 & this.bg);
+        }
+        isFgPalette() {
+          return 16777216 == (50331648 & this.fg) || 33554432 == (50331648 & this.fg);
+        }
+        isBgPalette() {
+          return 16777216 == (50331648 & this.bg) || 33554432 == (50331648 & this.bg);
+        }
+        isFgDefault() {
+          return 0 == (50331648 & this.fg);
+        }
+        isBgDefault() {
+          return 0 == (50331648 & this.bg);
+        }
+        isAttributeDefault() {
+          return 0 === this.fg && 0 === this.bg;
+        }
+        getFgColor() {
+          switch (50331648 & this.fg) {
+            case 16777216:
+            case 33554432:
+              return 255 & this.fg;
+            case 50331648:
+              return 16777215 & this.fg;
+            default:
+              return -1;
+          }
+        }
+        getBgColor() {
+          switch (50331648 & this.bg) {
+            case 16777216:
+            case 33554432:
+              return 255 & this.bg;
+            case 50331648:
+              return 16777215 & this.bg;
+            default:
+              return -1;
+          }
+        }
+        hasExtendedAttrs() {
+          return 268435456 & this.bg;
+        }
+        updateExtended() {
+          this.extended.isEmpty() ? this.bg &= -268435457 : this.bg |= 268435456;
+        }
+        getUnderlineColor() {
+          if (268435456 & this.bg && ~this.extended.underlineColor) switch (50331648 & this.extended.underlineColor) {
+            case 16777216:
+            case 33554432:
+              return 255 & this.extended.underlineColor;
+            case 50331648:
+              return 16777215 & this.extended.underlineColor;
+            default:
+              return this.getFgColor();
+          }
+          return this.getFgColor();
+        }
+        getUnderlineColorMode() {
+          return 268435456 & this.bg && ~this.extended.underlineColor ? 50331648 & this.extended.underlineColor : this.getFgColorMode();
+        }
+        isUnderlineColorRGB() {
+          return 268435456 & this.bg && ~this.extended.underlineColor ? 50331648 == (50331648 & this.extended.underlineColor) : this.isFgRGB();
+        }
+        isUnderlineColorPalette() {
+          return 268435456 & this.bg && ~this.extended.underlineColor ? 16777216 == (50331648 & this.extended.underlineColor) || 33554432 == (50331648 & this.extended.underlineColor) : this.isFgPalette();
+        }
+        isUnderlineColorDefault() {
+          return 268435456 & this.bg && ~this.extended.underlineColor ? 0 == (50331648 & this.extended.underlineColor) : this.isFgDefault();
+        }
+        getUnderlineStyle() {
+          return 268435456 & this.fg ? 268435456 & this.bg ? this.extended.underlineStyle : 1 : 0;
+        }
+      }
+      t3.AttributeData = i4;
+      class s3 {
+        get ext() {
+          return this._urlId ? -469762049 & this._ext | this.underlineStyle << 26 : this._ext;
+        }
+        set ext(e5) {
+          this._ext = e5;
+        }
+        get underlineStyle() {
+          return this._urlId ? 5 : (469762048 & this._ext) >> 26;
+        }
+        set underlineStyle(e5) {
+          this._ext &= -469762049, this._ext |= e5 << 26 & 469762048;
+        }
+        get underlineColor() {
+          return 67108863 & this._ext;
+        }
+        set underlineColor(e5) {
+          this._ext &= -67108864, this._ext |= 67108863 & e5;
+        }
+        get urlId() {
+          return this._urlId;
+        }
+        set urlId(e5) {
+          this._urlId = e5;
+        }
+        constructor(e5 = 0, t4 = 0) {
+          this._ext = 0, this._urlId = 0, this._ext = e5, this._urlId = t4;
+        }
+        clone() {
+          return new s3(this._ext, this._urlId);
+        }
+        isEmpty() {
+          return 0 === this.underlineStyle && 0 === this._urlId;
+        }
+      }
+      t3.ExtendedAttrs = s3;
+    }, 9092: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.Buffer = t3.MAX_BUFFER_SIZE = void 0;
+      const s3 = i4(6349), r2 = i4(7226), n3 = i4(3734), o2 = i4(8437), a2 = i4(4634), h2 = i4(511), c2 = i4(643), l2 = i4(4863), d2 = i4(7116);
+      t3.MAX_BUFFER_SIZE = 4294967295, t3.Buffer = class {
+        constructor(e5, t4, i5) {
+          this._hasScrollback = e5, this._optionsService = t4, this._bufferService = i5, this.ydisp = 0, this.ybase = 0, this.y = 0, this.x = 0, this.tabs = {}, this.savedY = 0, this.savedX = 0, this.savedCurAttrData = o2.DEFAULT_ATTR_DATA.clone(), this.savedCharset = d2.DEFAULT_CHARSET, this.markers = [], this._nullCell = h2.CellData.fromCharData([0, c2.NULL_CELL_CHAR, c2.NULL_CELL_WIDTH, c2.NULL_CELL_CODE]), this._whitespaceCell = h2.CellData.fromCharData([0, c2.WHITESPACE_CELL_CHAR, c2.WHITESPACE_CELL_WIDTH, c2.WHITESPACE_CELL_CODE]), this._isClearing = false, this._memoryCleanupQueue = new r2.IdleTaskQueue(), this._memoryCleanupPosition = 0, this._cols = this._bufferService.cols, this._rows = this._bufferService.rows, this.lines = new s3.CircularList(this._getCorrectBufferLength(this._rows)), this.scrollTop = 0, this.scrollBottom = this._rows - 1, this.setupTabStops();
+        }
+        getNullCell(e5) {
+          return e5 ? (this._nullCell.fg = e5.fg, this._nullCell.bg = e5.bg, this._nullCell.extended = e5.extended) : (this._nullCell.fg = 0, this._nullCell.bg = 0, this._nullCell.extended = new n3.ExtendedAttrs()), this._nullCell;
+        }
+        getWhitespaceCell(e5) {
+          return e5 ? (this._whitespaceCell.fg = e5.fg, this._whitespaceCell.bg = e5.bg, this._whitespaceCell.extended = e5.extended) : (this._whitespaceCell.fg = 0, this._whitespaceCell.bg = 0, this._whitespaceCell.extended = new n3.ExtendedAttrs()), this._whitespaceCell;
+        }
+        getBlankLine(e5, t4) {
+          return new o2.BufferLine(this._bufferService.cols, this.getNullCell(e5), t4);
+        }
+        get hasScrollback() {
+          return this._hasScrollback && this.lines.maxLength > this._rows;
+        }
+        get isCursorInViewport() {
+          const e5 = this.ybase + this.y - this.ydisp;
+          return e5 >= 0 && e5 < this._rows;
+        }
+        _getCorrectBufferLength(e5) {
+          if (!this._hasScrollback) return e5;
+          const i5 = e5 + this._optionsService.rawOptions.scrollback;
+          return i5 > t3.MAX_BUFFER_SIZE ? t3.MAX_BUFFER_SIZE : i5;
+        }
+        fillViewportRows(e5) {
+          if (0 === this.lines.length) {
+            void 0 === e5 && (e5 = o2.DEFAULT_ATTR_DATA);
+            let t4 = this._rows;
+            for (; t4--; ) this.lines.push(this.getBlankLine(e5));
+          }
+        }
+        clear() {
+          this.ydisp = 0, this.ybase = 0, this.y = 0, this.x = 0, this.lines = new s3.CircularList(this._getCorrectBufferLength(this._rows)), this.scrollTop = 0, this.scrollBottom = this._rows - 1, this.setupTabStops();
+        }
+        resize(e5, t4) {
+          const i5 = this.getNullCell(o2.DEFAULT_ATTR_DATA);
+          let s4 = 0;
+          const r3 = this._getCorrectBufferLength(t4);
+          if (r3 > this.lines.maxLength && (this.lines.maxLength = r3), this.lines.length > 0) {
+            if (this._cols < e5) for (let t5 = 0; t5 < this.lines.length; t5++) s4 += +this.lines.get(t5).resize(e5, i5);
+            let n4 = 0;
+            if (this._rows < t4) for (let s5 = this._rows; s5 < t4; s5++) this.lines.length < t4 + this.ybase && (this._optionsService.rawOptions.windowsMode || void 0 !== this._optionsService.rawOptions.windowsPty.backend || void 0 !== this._optionsService.rawOptions.windowsPty.buildNumber ? this.lines.push(new o2.BufferLine(e5, i5)) : this.ybase > 0 && this.lines.length <= this.ybase + this.y + n4 + 1 ? (this.ybase--, n4++, this.ydisp > 0 && this.ydisp--) : this.lines.push(new o2.BufferLine(e5, i5)));
+            else for (let e6 = this._rows; e6 > t4; e6--) this.lines.length > t4 + this.ybase && (this.lines.length > this.ybase + this.y + 1 ? this.lines.pop() : (this.ybase++, this.ydisp++));
+            if (r3 < this.lines.maxLength) {
+              const e6 = this.lines.length - r3;
+              e6 > 0 && (this.lines.trimStart(e6), this.ybase = Math.max(this.ybase - e6, 0), this.ydisp = Math.max(this.ydisp - e6, 0), this.savedY = Math.max(this.savedY - e6, 0)), this.lines.maxLength = r3;
+            }
+            this.x = Math.min(this.x, e5 - 1), this.y = Math.min(this.y, t4 - 1), n4 && (this.y += n4), this.savedX = Math.min(this.savedX, e5 - 1), this.scrollTop = 0;
+          }
+          if (this.scrollBottom = t4 - 1, this._isReflowEnabled && (this._reflow(e5, t4), this._cols > e5)) for (let t5 = 0; t5 < this.lines.length; t5++) s4 += +this.lines.get(t5).resize(e5, i5);
+          this._cols = e5, this._rows = t4, this._memoryCleanupQueue.clear(), s4 > 0.1 * this.lines.length && (this._memoryCleanupPosition = 0, this._memoryCleanupQueue.enqueue(() => this._batchedMemoryCleanup()));
+        }
+        _batchedMemoryCleanup() {
+          let e5 = true;
+          this._memoryCleanupPosition >= this.lines.length && (this._memoryCleanupPosition = 0, e5 = false);
+          let t4 = 0;
+          for (; this._memoryCleanupPosition < this.lines.length; ) if (t4 += this.lines.get(this._memoryCleanupPosition++).cleanupMemory(), t4 > 100) return true;
+          return e5;
+        }
+        get _isReflowEnabled() {
+          const e5 = this._optionsService.rawOptions.windowsPty;
+          return e5 && e5.buildNumber ? this._hasScrollback && "conpty" === e5.backend && e5.buildNumber >= 21376 : this._hasScrollback && !this._optionsService.rawOptions.windowsMode;
+        }
+        _reflow(e5, t4) {
+          this._cols !== e5 && (e5 > this._cols ? this._reflowLarger(e5, t4) : this._reflowSmaller(e5, t4));
+        }
+        _reflowLarger(e5, t4) {
+          const i5 = (0, a2.reflowLargerGetLinesToRemove)(this.lines, this._cols, e5, this.ybase + this.y, this.getNullCell(o2.DEFAULT_ATTR_DATA));
+          if (i5.length > 0) {
+            const s4 = (0, a2.reflowLargerCreateNewLayout)(this.lines, i5);
+            (0, a2.reflowLargerApplyNewLayout)(this.lines, s4.layout), this._reflowLargerAdjustViewport(e5, t4, s4.countRemoved);
+          }
+        }
+        _reflowLargerAdjustViewport(e5, t4, i5) {
+          const s4 = this.getNullCell(o2.DEFAULT_ATTR_DATA);
+          let r3 = i5;
+          for (; r3-- > 0; ) 0 === this.ybase ? (this.y > 0 && this.y--, this.lines.length < t4 && this.lines.push(new o2.BufferLine(e5, s4))) : (this.ydisp === this.ybase && this.ydisp--, this.ybase--);
+          this.savedY = Math.max(this.savedY - i5, 0);
+        }
+        _reflowSmaller(e5, t4) {
+          const i5 = this.getNullCell(o2.DEFAULT_ATTR_DATA), s4 = [];
+          let r3 = 0;
+          for (let n4 = this.lines.length - 1; n4 >= 0; n4--) {
+            let h3 = this.lines.get(n4);
+            if (!h3 || !h3.isWrapped && h3.getTrimmedLength() <= e5) continue;
+            const c3 = [h3];
+            for (; h3.isWrapped && n4 > 0; ) h3 = this.lines.get(--n4), c3.unshift(h3);
+            const l3 = this.ybase + this.y;
+            if (l3 >= n4 && l3 < n4 + c3.length) continue;
+            const d3 = c3[c3.length - 1].getTrimmedLength(), _2 = (0, a2.reflowSmallerGetNewLineLengths)(c3, this._cols, e5), u2 = _2.length - c3.length;
+            let f2;
+            f2 = 0 === this.ybase && this.y !== this.lines.length - 1 ? Math.max(0, this.y - this.lines.maxLength + u2) : Math.max(0, this.lines.length - this.lines.maxLength + u2);
+            const v2 = [];
+            for (let e6 = 0; e6 < u2; e6++) {
+              const e7 = this.getBlankLine(o2.DEFAULT_ATTR_DATA, true);
+              v2.push(e7);
+            }
+            v2.length > 0 && (s4.push({ start: n4 + c3.length + r3, newLines: v2 }), r3 += v2.length), c3.push(...v2);
+            let p2 = _2.length - 1, g2 = _2[p2];
+            0 === g2 && (p2--, g2 = _2[p2]);
+            let m2 = c3.length - u2 - 1, S2 = d3;
+            for (; m2 >= 0; ) {
+              const e6 = Math.min(S2, g2);
+              if (void 0 === c3[p2]) break;
+              if (c3[p2].copyCellsFrom(c3[m2], S2 - e6, g2 - e6, e6, true), g2 -= e6, 0 === g2 && (p2--, g2 = _2[p2]), S2 -= e6, 0 === S2) {
+                m2--;
+                const e7 = Math.max(m2, 0);
+                S2 = (0, a2.getWrappedLineTrimmedLength)(c3, e7, this._cols);
+              }
+            }
+            for (let t5 = 0; t5 < c3.length; t5++) _2[t5] < e5 && c3[t5].setCell(_2[t5], i5);
+            let C2 = u2 - f2;
+            for (; C2-- > 0; ) 0 === this.ybase ? this.y < t4 - 1 ? (this.y++, this.lines.pop()) : (this.ybase++, this.ydisp++) : this.ybase < Math.min(this.lines.maxLength, this.lines.length + r3) - t4 && (this.ybase === this.ydisp && this.ydisp++, this.ybase++);
+            this.savedY = Math.min(this.savedY + u2, this.ybase + t4 - 1);
+          }
+          if (s4.length > 0) {
+            const e6 = [], t5 = [];
+            for (let e7 = 0; e7 < this.lines.length; e7++) t5.push(this.lines.get(e7));
+            const i6 = this.lines.length;
+            let n4 = i6 - 1, o3 = 0, a3 = s4[o3];
+            this.lines.length = Math.min(this.lines.maxLength, this.lines.length + r3);
+            let h3 = 0;
+            for (let c4 = Math.min(this.lines.maxLength - 1, i6 + r3 - 1); c4 >= 0; c4--) if (a3 && a3.start > n4 + h3) {
+              for (let e7 = a3.newLines.length - 1; e7 >= 0; e7--) this.lines.set(c4--, a3.newLines[e7]);
+              c4++, e6.push({ index: n4 + 1, amount: a3.newLines.length }), h3 += a3.newLines.length, a3 = s4[++o3];
+            } else this.lines.set(c4, t5[n4--]);
+            let c3 = 0;
+            for (let t6 = e6.length - 1; t6 >= 0; t6--) e6[t6].index += c3, this.lines.onInsertEmitter.fire(e6[t6]), c3 += e6[t6].amount;
+            const l3 = Math.max(0, i6 + r3 - this.lines.maxLength);
+            l3 > 0 && this.lines.onTrimEmitter.fire(l3);
+          }
+        }
+        translateBufferLineToString(e5, t4, i5 = 0, s4) {
+          const r3 = this.lines.get(e5);
+          return r3 ? r3.translateToString(t4, i5, s4) : "";
+        }
+        getWrappedRangeForLine(e5) {
+          let t4 = e5, i5 = e5;
+          for (; t4 > 0 && this.lines.get(t4).isWrapped; ) t4--;
+          for (; i5 + 1 < this.lines.length && this.lines.get(i5 + 1).isWrapped; ) i5++;
+          return { first: t4, last: i5 };
+        }
+        setupTabStops(e5) {
+          for (null != e5 ? this.tabs[e5] || (e5 = this.prevStop(e5)) : (this.tabs = {}, e5 = 0); e5 < this._cols; e5 += this._optionsService.rawOptions.tabStopWidth) this.tabs[e5] = true;
+        }
+        prevStop(e5) {
+          for (null == e5 && (e5 = this.x); !this.tabs[--e5] && e5 > 0; ) ;
+          return e5 >= this._cols ? this._cols - 1 : e5 < 0 ? 0 : e5;
+        }
+        nextStop(e5) {
+          for (null == e5 && (e5 = this.x); !this.tabs[++e5] && e5 < this._cols; ) ;
+          return e5 >= this._cols ? this._cols - 1 : e5 < 0 ? 0 : e5;
+        }
+        clearMarkers(e5) {
+          this._isClearing = true;
+          for (let t4 = 0; t4 < this.markers.length; t4++) this.markers[t4].line === e5 && (this.markers[t4].dispose(), this.markers.splice(t4--, 1));
+          this._isClearing = false;
+        }
+        clearAllMarkers() {
+          this._isClearing = true;
+          for (let e5 = 0; e5 < this.markers.length; e5++) this.markers[e5].dispose(), this.markers.splice(e5--, 1);
+          this._isClearing = false;
+        }
+        addMarker(e5) {
+          const t4 = new l2.Marker(e5);
+          return this.markers.push(t4), t4.register(this.lines.onTrim((e6) => {
+            t4.line -= e6, t4.line < 0 && t4.dispose();
+          })), t4.register(this.lines.onInsert((e6) => {
+            t4.line >= e6.index && (t4.line += e6.amount);
+          })), t4.register(this.lines.onDelete((e6) => {
+            t4.line >= e6.index && t4.line < e6.index + e6.amount && t4.dispose(), t4.line > e6.index && (t4.line -= e6.amount);
+          })), t4.register(t4.onDispose(() => this._removeMarker(t4))), t4;
+        }
+        _removeMarker(e5) {
+          this._isClearing || this.markers.splice(this.markers.indexOf(e5), 1);
+        }
+      };
+    }, 8437: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.BufferLine = t3.DEFAULT_ATTR_DATA = void 0;
+      const s3 = i4(3734), r2 = i4(511), n3 = i4(643), o2 = i4(482);
+      t3.DEFAULT_ATTR_DATA = Object.freeze(new s3.AttributeData());
+      let a2 = 0;
+      class h2 {
+        constructor(e5, t4, i5 = false) {
+          this.isWrapped = i5, this._combined = {}, this._extendedAttrs = {}, this._data = new Uint32Array(3 * e5);
+          const s4 = t4 || r2.CellData.fromCharData([0, n3.NULL_CELL_CHAR, n3.NULL_CELL_WIDTH, n3.NULL_CELL_CODE]);
+          for (let t5 = 0; t5 < e5; ++t5) this.setCell(t5, s4);
+          this.length = e5;
+        }
+        get(e5) {
+          const t4 = this._data[3 * e5 + 0], i5 = 2097151 & t4;
+          return [this._data[3 * e5 + 1], 2097152 & t4 ? this._combined[e5] : i5 ? (0, o2.stringFromCodePoint)(i5) : "", t4 >> 22, 2097152 & t4 ? this._combined[e5].charCodeAt(this._combined[e5].length - 1) : i5];
+        }
+        set(e5, t4) {
+          this._data[3 * e5 + 1] = t4[n3.CHAR_DATA_ATTR_INDEX], t4[n3.CHAR_DATA_CHAR_INDEX].length > 1 ? (this._combined[e5] = t4[1], this._data[3 * e5 + 0] = 2097152 | e5 | t4[n3.CHAR_DATA_WIDTH_INDEX] << 22) : this._data[3 * e5 + 0] = t4[n3.CHAR_DATA_CHAR_INDEX].charCodeAt(0) | t4[n3.CHAR_DATA_WIDTH_INDEX] << 22;
+        }
+        getWidth(e5) {
+          return this._data[3 * e5 + 0] >> 22;
+        }
+        hasWidth(e5) {
+          return 12582912 & this._data[3 * e5 + 0];
+        }
+        getFg(e5) {
+          return this._data[3 * e5 + 1];
+        }
+        getBg(e5) {
+          return this._data[3 * e5 + 2];
+        }
+        hasContent(e5) {
+          return 4194303 & this._data[3 * e5 + 0];
+        }
+        getCodePoint(e5) {
+          const t4 = this._data[3 * e5 + 0];
+          return 2097152 & t4 ? this._combined[e5].charCodeAt(this._combined[e5].length - 1) : 2097151 & t4;
+        }
+        isCombined(e5) {
+          return 2097152 & this._data[3 * e5 + 0];
+        }
+        getString(e5) {
+          const t4 = this._data[3 * e5 + 0];
+          return 2097152 & t4 ? this._combined[e5] : 2097151 & t4 ? (0, o2.stringFromCodePoint)(2097151 & t4) : "";
+        }
+        isProtected(e5) {
+          return 536870912 & this._data[3 * e5 + 2];
+        }
+        loadCell(e5, t4) {
+          return a2 = 3 * e5, t4.content = this._data[a2 + 0], t4.fg = this._data[a2 + 1], t4.bg = this._data[a2 + 2], 2097152 & t4.content && (t4.combinedData = this._combined[e5]), 268435456 & t4.bg && (t4.extended = this._extendedAttrs[e5]), t4;
+        }
+        setCell(e5, t4) {
+          2097152 & t4.content && (this._combined[e5] = t4.combinedData), 268435456 & t4.bg && (this._extendedAttrs[e5] = t4.extended), this._data[3 * e5 + 0] = t4.content, this._data[3 * e5 + 1] = t4.fg, this._data[3 * e5 + 2] = t4.bg;
+        }
+        setCellFromCodePoint(e5, t4, i5, s4, r3, n4) {
+          268435456 & r3 && (this._extendedAttrs[e5] = n4), this._data[3 * e5 + 0] = t4 | i5 << 22, this._data[3 * e5 + 1] = s4, this._data[3 * e5 + 2] = r3;
+        }
+        addCodepointToCell(e5, t4) {
+          let i5 = this._data[3 * e5 + 0];
+          2097152 & i5 ? this._combined[e5] += (0, o2.stringFromCodePoint)(t4) : (2097151 & i5 ? (this._combined[e5] = (0, o2.stringFromCodePoint)(2097151 & i5) + (0, o2.stringFromCodePoint)(t4), i5 &= -2097152, i5 |= 2097152) : i5 = t4 | 1 << 22, this._data[3 * e5 + 0] = i5);
+        }
+        insertCells(e5, t4, i5, n4) {
+          if ((e5 %= this.length) && 2 === this.getWidth(e5 - 1) && this.setCellFromCodePoint(e5 - 1, 0, 1, (null == n4 ? void 0 : n4.fg) || 0, (null == n4 ? void 0 : n4.bg) || 0, (null == n4 ? void 0 : n4.extended) || new s3.ExtendedAttrs()), t4 < this.length - e5) {
+            const s4 = new r2.CellData();
+            for (let i6 = this.length - e5 - t4 - 1; i6 >= 0; --i6) this.setCell(e5 + t4 + i6, this.loadCell(e5 + i6, s4));
+            for (let s5 = 0; s5 < t4; ++s5) this.setCell(e5 + s5, i5);
+          } else for (let t5 = e5; t5 < this.length; ++t5) this.setCell(t5, i5);
+          2 === this.getWidth(this.length - 1) && this.setCellFromCodePoint(this.length - 1, 0, 1, (null == n4 ? void 0 : n4.fg) || 0, (null == n4 ? void 0 : n4.bg) || 0, (null == n4 ? void 0 : n4.extended) || new s3.ExtendedAttrs());
+        }
+        deleteCells(e5, t4, i5, n4) {
+          if (e5 %= this.length, t4 < this.length - e5) {
+            const s4 = new r2.CellData();
+            for (let i6 = 0; i6 < this.length - e5 - t4; ++i6) this.setCell(e5 + i6, this.loadCell(e5 + t4 + i6, s4));
+            for (let e6 = this.length - t4; e6 < this.length; ++e6) this.setCell(e6, i5);
+          } else for (let t5 = e5; t5 < this.length; ++t5) this.setCell(t5, i5);
+          e5 && 2 === this.getWidth(e5 - 1) && this.setCellFromCodePoint(e5 - 1, 0, 1, (null == n4 ? void 0 : n4.fg) || 0, (null == n4 ? void 0 : n4.bg) || 0, (null == n4 ? void 0 : n4.extended) || new s3.ExtendedAttrs()), 0 !== this.getWidth(e5) || this.hasContent(e5) || this.setCellFromCodePoint(e5, 0, 1, (null == n4 ? void 0 : n4.fg) || 0, (null == n4 ? void 0 : n4.bg) || 0, (null == n4 ? void 0 : n4.extended) || new s3.ExtendedAttrs());
+        }
+        replaceCells(e5, t4, i5, r3, n4 = false) {
+          if (n4) for (e5 && 2 === this.getWidth(e5 - 1) && !this.isProtected(e5 - 1) && this.setCellFromCodePoint(e5 - 1, 0, 1, (null == r3 ? void 0 : r3.fg) || 0, (null == r3 ? void 0 : r3.bg) || 0, (null == r3 ? void 0 : r3.extended) || new s3.ExtendedAttrs()), t4 < this.length && 2 === this.getWidth(t4 - 1) && !this.isProtected(t4) && this.setCellFromCodePoint(t4, 0, 1, (null == r3 ? void 0 : r3.fg) || 0, (null == r3 ? void 0 : r3.bg) || 0, (null == r3 ? void 0 : r3.extended) || new s3.ExtendedAttrs()); e5 < t4 && e5 < this.length; ) this.isProtected(e5) || this.setCell(e5, i5), e5++;
+          else for (e5 && 2 === this.getWidth(e5 - 1) && this.setCellFromCodePoint(e5 - 1, 0, 1, (null == r3 ? void 0 : r3.fg) || 0, (null == r3 ? void 0 : r3.bg) || 0, (null == r3 ? void 0 : r3.extended) || new s3.ExtendedAttrs()), t4 < this.length && 2 === this.getWidth(t4 - 1) && this.setCellFromCodePoint(t4, 0, 1, (null == r3 ? void 0 : r3.fg) || 0, (null == r3 ? void 0 : r3.bg) || 0, (null == r3 ? void 0 : r3.extended) || new s3.ExtendedAttrs()); e5 < t4 && e5 < this.length; ) this.setCell(e5++, i5);
+        }
+        resize(e5, t4) {
+          if (e5 === this.length) return 4 * this._data.length * 2 < this._data.buffer.byteLength;
+          const i5 = 3 * e5;
+          if (e5 > this.length) {
+            if (this._data.buffer.byteLength >= 4 * i5) this._data = new Uint32Array(this._data.buffer, 0, i5);
+            else {
+              const e6 = new Uint32Array(i5);
+              e6.set(this._data), this._data = e6;
+            }
+            for (let i6 = this.length; i6 < e5; ++i6) this.setCell(i6, t4);
+          } else {
+            this._data = this._data.subarray(0, i5);
+            const t5 = Object.keys(this._combined);
+            for (let i6 = 0; i6 < t5.length; i6++) {
+              const s5 = parseInt(t5[i6], 10);
+              s5 >= e5 && delete this._combined[s5];
+            }
+            const s4 = Object.keys(this._extendedAttrs);
+            for (let t6 = 0; t6 < s4.length; t6++) {
+              const i6 = parseInt(s4[t6], 10);
+              i6 >= e5 && delete this._extendedAttrs[i6];
+            }
+          }
+          return this.length = e5, 4 * i5 * 2 < this._data.buffer.byteLength;
+        }
+        cleanupMemory() {
+          if (4 * this._data.length * 2 < this._data.buffer.byteLength) {
+            const e5 = new Uint32Array(this._data.length);
+            return e5.set(this._data), this._data = e5, 1;
+          }
+          return 0;
+        }
+        fill(e5, t4 = false) {
+          if (t4) for (let t5 = 0; t5 < this.length; ++t5) this.isProtected(t5) || this.setCell(t5, e5);
+          else {
+            this._combined = {}, this._extendedAttrs = {};
+            for (let t5 = 0; t5 < this.length; ++t5) this.setCell(t5, e5);
+          }
+        }
+        copyFrom(e5) {
+          this.length !== e5.length ? this._data = new Uint32Array(e5._data) : this._data.set(e5._data), this.length = e5.length, this._combined = {};
+          for (const t4 in e5._combined) this._combined[t4] = e5._combined[t4];
+          this._extendedAttrs = {};
+          for (const t4 in e5._extendedAttrs) this._extendedAttrs[t4] = e5._extendedAttrs[t4];
+          this.isWrapped = e5.isWrapped;
+        }
+        clone() {
+          const e5 = new h2(0);
+          e5._data = new Uint32Array(this._data), e5.length = this.length;
+          for (const t4 in this._combined) e5._combined[t4] = this._combined[t4];
+          for (const t4 in this._extendedAttrs) e5._extendedAttrs[t4] = this._extendedAttrs[t4];
+          return e5.isWrapped = this.isWrapped, e5;
+        }
+        getTrimmedLength() {
+          for (let e5 = this.length - 1; e5 >= 0; --e5) if (4194303 & this._data[3 * e5 + 0]) return e5 + (this._data[3 * e5 + 0] >> 22);
+          return 0;
+        }
+        getNoBgTrimmedLength() {
+          for (let e5 = this.length - 1; e5 >= 0; --e5) if (4194303 & this._data[3 * e5 + 0] || 50331648 & this._data[3 * e5 + 2]) return e5 + (this._data[3 * e5 + 0] >> 22);
+          return 0;
+        }
+        copyCellsFrom(e5, t4, i5, s4, r3) {
+          const n4 = e5._data;
+          if (r3) for (let r4 = s4 - 1; r4 >= 0; r4--) {
+            for (let e6 = 0; e6 < 3; e6++) this._data[3 * (i5 + r4) + e6] = n4[3 * (t4 + r4) + e6];
+            268435456 & n4[3 * (t4 + r4) + 2] && (this._extendedAttrs[i5 + r4] = e5._extendedAttrs[t4 + r4]);
+          }
+          else for (let r4 = 0; r4 < s4; r4++) {
+            for (let e6 = 0; e6 < 3; e6++) this._data[3 * (i5 + r4) + e6] = n4[3 * (t4 + r4) + e6];
+            268435456 & n4[3 * (t4 + r4) + 2] && (this._extendedAttrs[i5 + r4] = e5._extendedAttrs[t4 + r4]);
+          }
+          const o3 = Object.keys(e5._combined);
+          for (let s5 = 0; s5 < o3.length; s5++) {
+            const r4 = parseInt(o3[s5], 10);
+            r4 >= t4 && (this._combined[r4 - t4 + i5] = e5._combined[r4]);
+          }
+        }
+        translateToString(e5 = false, t4 = 0, i5 = this.length) {
+          e5 && (i5 = Math.min(i5, this.getTrimmedLength()));
+          let s4 = "";
+          for (; t4 < i5; ) {
+            const e6 = this._data[3 * t4 + 0], i6 = 2097151 & e6;
+            s4 += 2097152 & e6 ? this._combined[t4] : i6 ? (0, o2.stringFromCodePoint)(i6) : n3.WHITESPACE_CELL_CHAR, t4 += e6 >> 22 || 1;
+          }
+          return s4;
+        }
+      }
+      t3.BufferLine = h2;
+    }, 4841: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.getRangeLength = void 0, t3.getRangeLength = function(e5, t4) {
+        if (e5.start.y > e5.end.y) throw new Error(`Buffer range end (${e5.end.x}, ${e5.end.y}) cannot be before start (${e5.start.x}, ${e5.start.y})`);
+        return t4 * (e5.end.y - e5.start.y) + (e5.end.x - e5.start.x + 1);
+      };
+    }, 4634: (e4, t3) => {
+      function i4(e5, t4, i5) {
+        if (t4 === e5.length - 1) return e5[t4].getTrimmedLength();
+        const s3 = !e5[t4].hasContent(i5 - 1) && 1 === e5[t4].getWidth(i5 - 1), r2 = 2 === e5[t4 + 1].getWidth(0);
+        return s3 && r2 ? i5 - 1 : i5;
+      }
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.getWrappedLineTrimmedLength = t3.reflowSmallerGetNewLineLengths = t3.reflowLargerApplyNewLayout = t3.reflowLargerCreateNewLayout = t3.reflowLargerGetLinesToRemove = void 0, t3.reflowLargerGetLinesToRemove = function(e5, t4, s3, r2, n3) {
+        const o2 = [];
+        for (let a2 = 0; a2 < e5.length - 1; a2++) {
+          let h2 = a2, c2 = e5.get(++h2);
+          if (!c2.isWrapped) continue;
+          const l2 = [e5.get(a2)];
+          for (; h2 < e5.length && c2.isWrapped; ) l2.push(c2), c2 = e5.get(++h2);
+          if (r2 >= a2 && r2 < h2) {
+            a2 += l2.length - 1;
+            continue;
+          }
+          let d2 = 0, _2 = i4(l2, d2, t4), u2 = 1, f2 = 0;
+          for (; u2 < l2.length; ) {
+            const e6 = i4(l2, u2, t4), r3 = e6 - f2, o3 = s3 - _2, a3 = Math.min(r3, o3);
+            l2[d2].copyCellsFrom(l2[u2], f2, _2, a3, false), _2 += a3, _2 === s3 && (d2++, _2 = 0), f2 += a3, f2 === e6 && (u2++, f2 = 0), 0 === _2 && 0 !== d2 && 2 === l2[d2 - 1].getWidth(s3 - 1) && (l2[d2].copyCellsFrom(l2[d2 - 1], s3 - 1, _2++, 1, false), l2[d2 - 1].setCell(s3 - 1, n3));
+          }
+          l2[d2].replaceCells(_2, s3, n3);
+          let v2 = 0;
+          for (let e6 = l2.length - 1; e6 > 0 && (e6 > d2 || 0 === l2[e6].getTrimmedLength()); e6--) v2++;
+          v2 > 0 && (o2.push(a2 + l2.length - v2), o2.push(v2)), a2 += l2.length - 1;
+        }
+        return o2;
+      }, t3.reflowLargerCreateNewLayout = function(e5, t4) {
+        const i5 = [];
+        let s3 = 0, r2 = t4[s3], n3 = 0;
+        for (let o2 = 0; o2 < e5.length; o2++) if (r2 === o2) {
+          const i6 = t4[++s3];
+          e5.onDeleteEmitter.fire({ index: o2 - n3, amount: i6 }), o2 += i6 - 1, n3 += i6, r2 = t4[++s3];
+        } else i5.push(o2);
+        return { layout: i5, countRemoved: n3 };
+      }, t3.reflowLargerApplyNewLayout = function(e5, t4) {
+        const i5 = [];
+        for (let s3 = 0; s3 < t4.length; s3++) i5.push(e5.get(t4[s3]));
+        for (let t5 = 0; t5 < i5.length; t5++) e5.set(t5, i5[t5]);
+        e5.length = t4.length;
+      }, t3.reflowSmallerGetNewLineLengths = function(e5, t4, s3) {
+        const r2 = [], n3 = e5.map((s4, r3) => i4(e5, r3, t4)).reduce((e6, t5) => e6 + t5);
+        let o2 = 0, a2 = 0, h2 = 0;
+        for (; h2 < n3; ) {
+          if (n3 - h2 < s3) {
+            r2.push(n3 - h2);
+            break;
+          }
+          o2 += s3;
+          const c2 = i4(e5, a2, t4);
+          o2 > c2 && (o2 -= c2, a2++);
+          const l2 = 2 === e5[a2].getWidth(o2 - 1);
+          l2 && o2--;
+          const d2 = l2 ? s3 - 1 : s3;
+          r2.push(d2), h2 += d2;
+        }
+        return r2;
+      }, t3.getWrappedLineTrimmedLength = i4;
+    }, 5295: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.BufferSet = void 0;
+      const s3 = i4(8460), r2 = i4(844), n3 = i4(9092);
+      class o2 extends r2.Disposable {
+        constructor(e5, t4) {
+          super(), this._optionsService = e5, this._bufferService = t4, this._onBufferActivate = this.register(new s3.EventEmitter()), this.onBufferActivate = this._onBufferActivate.event, this.reset(), this.register(this._optionsService.onSpecificOptionChange("scrollback", () => this.resize(this._bufferService.cols, this._bufferService.rows))), this.register(this._optionsService.onSpecificOptionChange("tabStopWidth", () => this.setupTabStops()));
+        }
+        reset() {
+          this._normal = new n3.Buffer(true, this._optionsService, this._bufferService), this._normal.fillViewportRows(), this._alt = new n3.Buffer(false, this._optionsService, this._bufferService), this._activeBuffer = this._normal, this._onBufferActivate.fire({ activeBuffer: this._normal, inactiveBuffer: this._alt }), this.setupTabStops();
+        }
+        get alt() {
+          return this._alt;
+        }
+        get active() {
+          return this._activeBuffer;
+        }
+        get normal() {
+          return this._normal;
+        }
+        activateNormalBuffer() {
+          this._activeBuffer !== this._normal && (this._normal.x = this._alt.x, this._normal.y = this._alt.y, this._alt.clearAllMarkers(), this._alt.clear(), this._activeBuffer = this._normal, this._onBufferActivate.fire({ activeBuffer: this._normal, inactiveBuffer: this._alt }));
+        }
+        activateAltBuffer(e5) {
+          this._activeBuffer !== this._alt && (this._alt.fillViewportRows(e5), this._alt.x = this._normal.x, this._alt.y = this._normal.y, this._activeBuffer = this._alt, this._onBufferActivate.fire({ activeBuffer: this._alt, inactiveBuffer: this._normal }));
+        }
+        resize(e5, t4) {
+          this._normal.resize(e5, t4), this._alt.resize(e5, t4), this.setupTabStops(e5);
+        }
+        setupTabStops(e5) {
+          this._normal.setupTabStops(e5), this._alt.setupTabStops(e5);
+        }
+      }
+      t3.BufferSet = o2;
+    }, 511: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CellData = void 0;
+      const s3 = i4(482), r2 = i4(643), n3 = i4(3734);
+      class o2 extends n3.AttributeData {
+        constructor() {
+          super(...arguments), this.content = 0, this.fg = 0, this.bg = 0, this.extended = new n3.ExtendedAttrs(), this.combinedData = "";
+        }
+        static fromCharData(e5) {
+          const t4 = new o2();
+          return t4.setFromCharData(e5), t4;
+        }
+        isCombined() {
+          return 2097152 & this.content;
+        }
+        getWidth() {
+          return this.content >> 22;
+        }
+        getChars() {
+          return 2097152 & this.content ? this.combinedData : 2097151 & this.content ? (0, s3.stringFromCodePoint)(2097151 & this.content) : "";
+        }
+        getCode() {
+          return this.isCombined() ? this.combinedData.charCodeAt(this.combinedData.length - 1) : 2097151 & this.content;
+        }
+        setFromCharData(e5) {
+          this.fg = e5[r2.CHAR_DATA_ATTR_INDEX], this.bg = 0;
+          let t4 = false;
+          if (e5[r2.CHAR_DATA_CHAR_INDEX].length > 2) t4 = true;
+          else if (2 === e5[r2.CHAR_DATA_CHAR_INDEX].length) {
+            const i5 = e5[r2.CHAR_DATA_CHAR_INDEX].charCodeAt(0);
+            if (55296 <= i5 && i5 <= 56319) {
+              const s4 = e5[r2.CHAR_DATA_CHAR_INDEX].charCodeAt(1);
+              56320 <= s4 && s4 <= 57343 ? this.content = 1024 * (i5 - 55296) + s4 - 56320 + 65536 | e5[r2.CHAR_DATA_WIDTH_INDEX] << 22 : t4 = true;
+            } else t4 = true;
+          } else this.content = e5[r2.CHAR_DATA_CHAR_INDEX].charCodeAt(0) | e5[r2.CHAR_DATA_WIDTH_INDEX] << 22;
+          t4 && (this.combinedData = e5[r2.CHAR_DATA_CHAR_INDEX], this.content = 2097152 | e5[r2.CHAR_DATA_WIDTH_INDEX] << 22);
+        }
+        getAsCharData() {
+          return [this.fg, this.getChars(), this.getWidth(), this.getCode()];
+        }
+      }
+      t3.CellData = o2;
+    }, 643: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.WHITESPACE_CELL_CODE = t3.WHITESPACE_CELL_WIDTH = t3.WHITESPACE_CELL_CHAR = t3.NULL_CELL_CODE = t3.NULL_CELL_WIDTH = t3.NULL_CELL_CHAR = t3.CHAR_DATA_CODE_INDEX = t3.CHAR_DATA_WIDTH_INDEX = t3.CHAR_DATA_CHAR_INDEX = t3.CHAR_DATA_ATTR_INDEX = t3.DEFAULT_EXT = t3.DEFAULT_ATTR = t3.DEFAULT_COLOR = void 0, t3.DEFAULT_COLOR = 0, t3.DEFAULT_ATTR = 256 | t3.DEFAULT_COLOR << 9, t3.DEFAULT_EXT = 0, t3.CHAR_DATA_ATTR_INDEX = 0, t3.CHAR_DATA_CHAR_INDEX = 1, t3.CHAR_DATA_WIDTH_INDEX = 2, t3.CHAR_DATA_CODE_INDEX = 3, t3.NULL_CELL_CHAR = "", t3.NULL_CELL_WIDTH = 1, t3.NULL_CELL_CODE = 0, t3.WHITESPACE_CELL_CHAR = " ", t3.WHITESPACE_CELL_WIDTH = 1, t3.WHITESPACE_CELL_CODE = 32;
+    }, 4863: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.Marker = void 0;
+      const s3 = i4(8460), r2 = i4(844);
+      class n3 {
+        get id() {
+          return this._id;
+        }
+        constructor(e5) {
+          this.line = e5, this.isDisposed = false, this._disposables = [], this._id = n3._nextId++, this._onDispose = this.register(new s3.EventEmitter()), this.onDispose = this._onDispose.event;
+        }
+        dispose() {
+          this.isDisposed || (this.isDisposed = true, this.line = -1, this._onDispose.fire(), (0, r2.disposeArray)(this._disposables), this._disposables.length = 0);
+        }
+        register(e5) {
+          return this._disposables.push(e5), e5;
+        }
+      }
+      t3.Marker = n3, n3._nextId = 1;
+    }, 7116: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.DEFAULT_CHARSET = t3.CHARSETS = void 0, t3.CHARSETS = {}, t3.DEFAULT_CHARSET = t3.CHARSETS.B, t3.CHARSETS[0] = { "`": "◆", a: "▒", b: "␉", c: "␌", d: "␍", e: "␊", f: "°", g: "±", h: "␤", i: "␋", j: "┘", k: "┐", l: "┌", m: "└", n: "┼", o: "⎺", p: "⎻", q: "─", r: "⎼", s: "⎽", t: "├", u: "┤", v: "┴", w: "┬", x: "│", y: "≤", z: "≥", "{": "π", "|": "≠", "}": "£", "~": "·" }, t3.CHARSETS.A = { "#": "£" }, t3.CHARSETS.B = void 0, t3.CHARSETS[4] = { "#": "£", "@": "¾", "[": "ij", "\\": "½", "]": "|", "{": "¨", "|": "f", "}": "¼", "~": "´" }, t3.CHARSETS.C = t3.CHARSETS[5] = { "[": "Ä", "\\": "Ö", "]": "Å", "^": "Ü", "`": "é", "{": "ä", "|": "ö", "}": "å", "~": "ü" }, t3.CHARSETS.R = { "#": "£", "@": "à", "[": "°", "\\": "ç", "]": "§", "{": "é", "|": "ù", "}": "è", "~": "¨" }, t3.CHARSETS.Q = { "@": "à", "[": "â", "\\": "ç", "]": "ê", "^": "î", "`": "ô", "{": "é", "|": "ù", "}": "è", "~": "û" }, t3.CHARSETS.K = { "@": "§", "[": "Ä", "\\": "Ö", "]": "Ü", "{": "ä", "|": "ö", "}": "ü", "~": "ß" }, t3.CHARSETS.Y = { "#": "£", "@": "§", "[": "°", "\\": "ç", "]": "é", "`": "ù", "{": "à", "|": "ò", "}": "è", "~": "ì" }, t3.CHARSETS.E = t3.CHARSETS[6] = { "@": "Ä", "[": "Æ", "\\": "Ø", "]": "Å", "^": "Ü", "`": "ä", "{": "æ", "|": "ø", "}": "å", "~": "ü" }, t3.CHARSETS.Z = { "#": "£", "@": "§", "[": "¡", "\\": "Ñ", "]": "¿", "{": "°", "|": "ñ", "}": "ç" }, t3.CHARSETS.H = t3.CHARSETS[7] = { "@": "É", "[": "Ä", "\\": "Ö", "]": "Å", "^": "Ü", "`": "é", "{": "ä", "|": "ö", "}": "å", "~": "ü" }, t3.CHARSETS["="] = { "#": "ù", "@": "à", "[": "é", "\\": "ç", "]": "ê", "^": "î", _: "è", "`": "ô", "{": "ä", "|": "ö", "}": "ü", "~": "û" };
+    }, 2584: (e4, t3) => {
+      var i4, s3, r2;
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.C1_ESCAPED = t3.C1 = t3.C0 = void 0, function(e5) {
+        e5.NUL = "\0", e5.SOH = "", e5.STX = "", e5.ETX = "", e5.EOT = "", e5.ENQ = "", e5.ACK = "", e5.BEL = "\x07", e5.BS = "\b", e5.HT = "	", e5.LF = "\n", e5.VT = "\v", e5.FF = "\f", e5.CR = "\r", e5.SO = "", e5.SI = "", e5.DLE = "", e5.DC1 = "", e5.DC2 = "", e5.DC3 = "", e5.DC4 = "", e5.NAK = "", e5.SYN = "", e5.ETB = "", e5.CAN = "", e5.EM = "", e5.SUB = "", e5.ESC = "\x1B", e5.FS = "", e5.GS = "", e5.RS = "", e5.US = "", e5.SP = " ", e5.DEL = "";
+      }(i4 || (t3.C0 = i4 = {})), function(e5) {
+        e5.PAD = "", e5.HOP = "", e5.BPH = "", e5.NBH = "", e5.IND = "", e5.NEL = "", e5.SSA = "", e5.ESA = "", e5.HTS = "", e5.HTJ = "", e5.VTS = "", e5.PLD = "", e5.PLU = "", e5.RI = "", e5.SS2 = "", e5.SS3 = "", e5.DCS = "", e5.PU1 = "", e5.PU2 = "", e5.STS = "", e5.CCH = "", e5.MW = "", e5.SPA = "", e5.EPA = "", e5.SOS = "", e5.SGCI = "", e5.SCI = "", e5.CSI = "", e5.ST = "", e5.OSC = "", e5.PM = "", e5.APC = "";
+      }(s3 || (t3.C1 = s3 = {})), function(e5) {
+        e5.ST = `${i4.ESC}\\`;
+      }(r2 || (t3.C1_ESCAPED = r2 = {}));
+    }, 7399: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.evaluateKeyboardEvent = void 0;
+      const s3 = i4(2584), r2 = { 48: ["0", ")"], 49: ["1", "!"], 50: ["2", "@"], 51: ["3", "#"], 52: ["4", "$"], 53: ["5", "%"], 54: ["6", "^"], 55: ["7", "&"], 56: ["8", "*"], 57: ["9", "("], 186: [";", ":"], 187: ["=", "+"], 188: [",", "<"], 189: ["-", "_"], 190: [".", ">"], 191: ["/", "?"], 192: ["`", "~"], 219: ["[", "{"], 220: ["\\", "|"], 221: ["]", "}"], 222: ["'", '"'] };
+      t3.evaluateKeyboardEvent = function(e5, t4, i5, n3) {
+        const o2 = { type: 0, cancel: false, key: void 0 }, a2 = (e5.shiftKey ? 1 : 0) | (e5.altKey ? 2 : 0) | (e5.ctrlKey ? 4 : 0) | (e5.metaKey ? 8 : 0);
+        switch (e5.keyCode) {
+          case 0:
+            "UIKeyInputUpArrow" === e5.key ? o2.key = t4 ? s3.C0.ESC + "OA" : s3.C0.ESC + "[A" : "UIKeyInputLeftArrow" === e5.key ? o2.key = t4 ? s3.C0.ESC + "OD" : s3.C0.ESC + "[D" : "UIKeyInputRightArrow" === e5.key ? o2.key = t4 ? s3.C0.ESC + "OC" : s3.C0.ESC + "[C" : "UIKeyInputDownArrow" === e5.key && (o2.key = t4 ? s3.C0.ESC + "OB" : s3.C0.ESC + "[B");
+            break;
+          case 8:
+            if (e5.altKey) {
+              o2.key = s3.C0.ESC + s3.C0.DEL;
+              break;
+            }
+            o2.key = s3.C0.DEL;
+            break;
+          case 9:
+            if (e5.shiftKey) {
+              o2.key = s3.C0.ESC + "[Z";
+              break;
+            }
+            o2.key = s3.C0.HT, o2.cancel = true;
+            break;
+          case 13:
+            o2.key = e5.altKey ? s3.C0.ESC + s3.C0.CR : s3.C0.CR, o2.cancel = true;
+            break;
+          case 27:
+            o2.key = s3.C0.ESC, e5.altKey && (o2.key = s3.C0.ESC + s3.C0.ESC), o2.cancel = true;
+            break;
+          case 37:
+            if (e5.metaKey) break;
+            a2 ? (o2.key = s3.C0.ESC + "[1;" + (a2 + 1) + "D", o2.key === s3.C0.ESC + "[1;3D" && (o2.key = s3.C0.ESC + (i5 ? "b" : "[1;5D"))) : o2.key = t4 ? s3.C0.ESC + "OD" : s3.C0.ESC + "[D";
+            break;
+          case 39:
+            if (e5.metaKey) break;
+            a2 ? (o2.key = s3.C0.ESC + "[1;" + (a2 + 1) + "C", o2.key === s3.C0.ESC + "[1;3C" && (o2.key = s3.C0.ESC + (i5 ? "f" : "[1;5C"))) : o2.key = t4 ? s3.C0.ESC + "OC" : s3.C0.ESC + "[C";
+            break;
+          case 38:
+            if (e5.metaKey) break;
+            a2 ? (o2.key = s3.C0.ESC + "[1;" + (a2 + 1) + "A", i5 || o2.key !== s3.C0.ESC + "[1;3A" || (o2.key = s3.C0.ESC + "[1;5A")) : o2.key = t4 ? s3.C0.ESC + "OA" : s3.C0.ESC + "[A";
+            break;
+          case 40:
+            if (e5.metaKey) break;
+            a2 ? (o2.key = s3.C0.ESC + "[1;" + (a2 + 1) + "B", i5 || o2.key !== s3.C0.ESC + "[1;3B" || (o2.key = s3.C0.ESC + "[1;5B")) : o2.key = t4 ? s3.C0.ESC + "OB" : s3.C0.ESC + "[B";
+            break;
+          case 45:
+            e5.shiftKey || e5.ctrlKey || (o2.key = s3.C0.ESC + "[2~");
+            break;
+          case 46:
+            o2.key = a2 ? s3.C0.ESC + "[3;" + (a2 + 1) + "~" : s3.C0.ESC + "[3~";
+            break;
+          case 36:
+            o2.key = a2 ? s3.C0.ESC + "[1;" + (a2 + 1) + "H" : t4 ? s3.C0.ESC + "OH" : s3.C0.ESC + "[H";
+            break;
+          case 35:
+            o2.key = a2 ? s3.C0.ESC + "[1;" + (a2 + 1) + "F" : t4 ? s3.C0.ESC + "OF" : s3.C0.ESC + "[F";
+            break;
+          case 33:
+            e5.shiftKey ? o2.type = 2 : e5.ctrlKey ? o2.key = s3.C0.ESC + "[5;" + (a2 + 1) + "~" : o2.key = s3.C0.ESC + "[5~";
+            break;
+          case 34:
+            e5.shiftKey ? o2.type = 3 : e5.ctrlKey ? o2.key = s3.C0.ESC + "[6;" + (a2 + 1) + "~" : o2.key = s3.C0.ESC + "[6~";
+            break;
+          case 112:
+            o2.key = a2 ? s3.C0.ESC + "[1;" + (a2 + 1) + "P" : s3.C0.ESC + "OP";
+            break;
+          case 113:
+            o2.key = a2 ? s3.C0.ESC + "[1;" + (a2 + 1) + "Q" : s3.C0.ESC + "OQ";
+            break;
+          case 114:
+            o2.key = a2 ? s3.C0.ESC + "[1;" + (a2 + 1) + "R" : s3.C0.ESC + "OR";
+            break;
+          case 115:
+            o2.key = a2 ? s3.C0.ESC + "[1;" + (a2 + 1) + "S" : s3.C0.ESC + "OS";
+            break;
+          case 116:
+            o2.key = a2 ? s3.C0.ESC + "[15;" + (a2 + 1) + "~" : s3.C0.ESC + "[15~";
+            break;
+          case 117:
+            o2.key = a2 ? s3.C0.ESC + "[17;" + (a2 + 1) + "~" : s3.C0.ESC + "[17~";
+            break;
+          case 118:
+            o2.key = a2 ? s3.C0.ESC + "[18;" + (a2 + 1) + "~" : s3.C0.ESC + "[18~";
+            break;
+          case 119:
+            o2.key = a2 ? s3.C0.ESC + "[19;" + (a2 + 1) + "~" : s3.C0.ESC + "[19~";
+            break;
+          case 120:
+            o2.key = a2 ? s3.C0.ESC + "[20;" + (a2 + 1) + "~" : s3.C0.ESC + "[20~";
+            break;
+          case 121:
+            o2.key = a2 ? s3.C0.ESC + "[21;" + (a2 + 1) + "~" : s3.C0.ESC + "[21~";
+            break;
+          case 122:
+            o2.key = a2 ? s3.C0.ESC + "[23;" + (a2 + 1) + "~" : s3.C0.ESC + "[23~";
+            break;
+          case 123:
+            o2.key = a2 ? s3.C0.ESC + "[24;" + (a2 + 1) + "~" : s3.C0.ESC + "[24~";
+            break;
+          default:
+            if (!e5.ctrlKey || e5.shiftKey || e5.altKey || e5.metaKey) if (i5 && !n3 || !e5.altKey || e5.metaKey) !i5 || e5.altKey || e5.ctrlKey || e5.shiftKey || !e5.metaKey ? e5.key && !e5.ctrlKey && !e5.altKey && !e5.metaKey && e5.keyCode >= 48 && 1 === e5.key.length ? o2.key = e5.key : e5.key && e5.ctrlKey && ("_" === e5.key && (o2.key = s3.C0.US), "@" === e5.key && (o2.key = s3.C0.NUL)) : 65 === e5.keyCode && (o2.type = 1);
+            else {
+              const t5 = r2[e5.keyCode], i6 = null == t5 ? void 0 : t5[e5.shiftKey ? 1 : 0];
+              if (i6) o2.key = s3.C0.ESC + i6;
+              else if (e5.keyCode >= 65 && e5.keyCode <= 90) {
+                const t6 = e5.ctrlKey ? e5.keyCode - 64 : e5.keyCode + 32;
+                let i7 = String.fromCharCode(t6);
+                e5.shiftKey && (i7 = i7.toUpperCase()), o2.key = s3.C0.ESC + i7;
+              } else if (32 === e5.keyCode) o2.key = s3.C0.ESC + (e5.ctrlKey ? s3.C0.NUL : " ");
+              else if ("Dead" === e5.key && e5.code.startsWith("Key")) {
+                let t6 = e5.code.slice(3, 4);
+                e5.shiftKey || (t6 = t6.toLowerCase()), o2.key = s3.C0.ESC + t6, o2.cancel = true;
+              }
+            }
+            else e5.keyCode >= 65 && e5.keyCode <= 90 ? o2.key = String.fromCharCode(e5.keyCode - 64) : 32 === e5.keyCode ? o2.key = s3.C0.NUL : e5.keyCode >= 51 && e5.keyCode <= 55 ? o2.key = String.fromCharCode(e5.keyCode - 51 + 27) : 56 === e5.keyCode ? o2.key = s3.C0.DEL : 219 === e5.keyCode ? o2.key = s3.C0.ESC : 220 === e5.keyCode ? o2.key = s3.C0.FS : 221 === e5.keyCode && (o2.key = s3.C0.GS);
+        }
+        return o2;
+      };
+    }, 482: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.Utf8ToUtf32 = t3.StringToUtf32 = t3.utf32ToString = t3.stringFromCodePoint = void 0, t3.stringFromCodePoint = function(e5) {
+        return e5 > 65535 ? (e5 -= 65536, String.fromCharCode(55296 + (e5 >> 10)) + String.fromCharCode(e5 % 1024 + 56320)) : String.fromCharCode(e5);
+      }, t3.utf32ToString = function(e5, t4 = 0, i4 = e5.length) {
+        let s3 = "";
+        for (let r2 = t4; r2 < i4; ++r2) {
+          let t5 = e5[r2];
+          t5 > 65535 ? (t5 -= 65536, s3 += String.fromCharCode(55296 + (t5 >> 10)) + String.fromCharCode(t5 % 1024 + 56320)) : s3 += String.fromCharCode(t5);
+        }
+        return s3;
+      }, t3.StringToUtf32 = class {
+        constructor() {
+          this._interim = 0;
+        }
+        clear() {
+          this._interim = 0;
+        }
+        decode(e5, t4) {
+          const i4 = e5.length;
+          if (!i4) return 0;
+          let s3 = 0, r2 = 0;
+          if (this._interim) {
+            const i5 = e5.charCodeAt(r2++);
+            56320 <= i5 && i5 <= 57343 ? t4[s3++] = 1024 * (this._interim - 55296) + i5 - 56320 + 65536 : (t4[s3++] = this._interim, t4[s3++] = i5), this._interim = 0;
+          }
+          for (let n3 = r2; n3 < i4; ++n3) {
+            const r3 = e5.charCodeAt(n3);
+            if (55296 <= r3 && r3 <= 56319) {
+              if (++n3 >= i4) return this._interim = r3, s3;
+              const o2 = e5.charCodeAt(n3);
+              56320 <= o2 && o2 <= 57343 ? t4[s3++] = 1024 * (r3 - 55296) + o2 - 56320 + 65536 : (t4[s3++] = r3, t4[s3++] = o2);
+            } else 65279 !== r3 && (t4[s3++] = r3);
+          }
+          return s3;
+        }
+      }, t3.Utf8ToUtf32 = class {
+        constructor() {
+          this.interim = new Uint8Array(3);
+        }
+        clear() {
+          this.interim.fill(0);
+        }
+        decode(e5, t4) {
+          const i4 = e5.length;
+          if (!i4) return 0;
+          let s3, r2, n3, o2, a2 = 0, h2 = 0, c2 = 0;
+          if (this.interim[0]) {
+            let s4 = false, r3 = this.interim[0];
+            r3 &= 192 == (224 & r3) ? 31 : 224 == (240 & r3) ? 15 : 7;
+            let n4, o3 = 0;
+            for (; (n4 = 63 & this.interim[++o3]) && o3 < 4; ) r3 <<= 6, r3 |= n4;
+            const h3 = 192 == (224 & this.interim[0]) ? 2 : 224 == (240 & this.interim[0]) ? 3 : 4, l3 = h3 - o3;
+            for (; c2 < l3; ) {
+              if (c2 >= i4) return 0;
+              if (n4 = e5[c2++], 128 != (192 & n4)) {
+                c2--, s4 = true;
+                break;
+              }
+              this.interim[o3++] = n4, r3 <<= 6, r3 |= 63 & n4;
+            }
+            s4 || (2 === h3 ? r3 < 128 ? c2-- : t4[a2++] = r3 : 3 === h3 ? r3 < 2048 || r3 >= 55296 && r3 <= 57343 || 65279 === r3 || (t4[a2++] = r3) : r3 < 65536 || r3 > 1114111 || (t4[a2++] = r3)), this.interim.fill(0);
+          }
+          const l2 = i4 - 4;
+          let d2 = c2;
+          for (; d2 < i4; ) {
+            for (; !(!(d2 < l2) || 128 & (s3 = e5[d2]) || 128 & (r2 = e5[d2 + 1]) || 128 & (n3 = e5[d2 + 2]) || 128 & (o2 = e5[d2 + 3])); ) t4[a2++] = s3, t4[a2++] = r2, t4[a2++] = n3, t4[a2++] = o2, d2 += 4;
+            if (s3 = e5[d2++], s3 < 128) t4[a2++] = s3;
+            else if (192 == (224 & s3)) {
+              if (d2 >= i4) return this.interim[0] = s3, a2;
+              if (r2 = e5[d2++], 128 != (192 & r2)) {
+                d2--;
+                continue;
+              }
+              if (h2 = (31 & s3) << 6 | 63 & r2, h2 < 128) {
+                d2--;
+                continue;
+              }
+              t4[a2++] = h2;
+            } else if (224 == (240 & s3)) {
+              if (d2 >= i4) return this.interim[0] = s3, a2;
+              if (r2 = e5[d2++], 128 != (192 & r2)) {
+                d2--;
+                continue;
+              }
+              if (d2 >= i4) return this.interim[0] = s3, this.interim[1] = r2, a2;
+              if (n3 = e5[d2++], 128 != (192 & n3)) {
+                d2--;
+                continue;
+              }
+              if (h2 = (15 & s3) << 12 | (63 & r2) << 6 | 63 & n3, h2 < 2048 || h2 >= 55296 && h2 <= 57343 || 65279 === h2) continue;
+              t4[a2++] = h2;
+            } else if (240 == (248 & s3)) {
+              if (d2 >= i4) return this.interim[0] = s3, a2;
+              if (r2 = e5[d2++], 128 != (192 & r2)) {
+                d2--;
+                continue;
+              }
+              if (d2 >= i4) return this.interim[0] = s3, this.interim[1] = r2, a2;
+              if (n3 = e5[d2++], 128 != (192 & n3)) {
+                d2--;
+                continue;
+              }
+              if (d2 >= i4) return this.interim[0] = s3, this.interim[1] = r2, this.interim[2] = n3, a2;
+              if (o2 = e5[d2++], 128 != (192 & o2)) {
+                d2--;
+                continue;
+              }
+              if (h2 = (7 & s3) << 18 | (63 & r2) << 12 | (63 & n3) << 6 | 63 & o2, h2 < 65536 || h2 > 1114111) continue;
+              t4[a2++] = h2;
+            }
+          }
+          return a2;
+        }
+      };
+    }, 225: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.UnicodeV6 = void 0;
+      const i4 = [[768, 879], [1155, 1158], [1160, 1161], [1425, 1469], [1471, 1471], [1473, 1474], [1476, 1477], [1479, 1479], [1536, 1539], [1552, 1557], [1611, 1630], [1648, 1648], [1750, 1764], [1767, 1768], [1770, 1773], [1807, 1807], [1809, 1809], [1840, 1866], [1958, 1968], [2027, 2035], [2305, 2306], [2364, 2364], [2369, 2376], [2381, 2381], [2385, 2388], [2402, 2403], [2433, 2433], [2492, 2492], [2497, 2500], [2509, 2509], [2530, 2531], [2561, 2562], [2620, 2620], [2625, 2626], [2631, 2632], [2635, 2637], [2672, 2673], [2689, 2690], [2748, 2748], [2753, 2757], [2759, 2760], [2765, 2765], [2786, 2787], [2817, 2817], [2876, 2876], [2879, 2879], [2881, 2883], [2893, 2893], [2902, 2902], [2946, 2946], [3008, 3008], [3021, 3021], [3134, 3136], [3142, 3144], [3146, 3149], [3157, 3158], [3260, 3260], [3263, 3263], [3270, 3270], [3276, 3277], [3298, 3299], [3393, 3395], [3405, 3405], [3530, 3530], [3538, 3540], [3542, 3542], [3633, 3633], [3636, 3642], [3655, 3662], [3761, 3761], [3764, 3769], [3771, 3772], [3784, 3789], [3864, 3865], [3893, 3893], [3895, 3895], [3897, 3897], [3953, 3966], [3968, 3972], [3974, 3975], [3984, 3991], [3993, 4028], [4038, 4038], [4141, 4144], [4146, 4146], [4150, 4151], [4153, 4153], [4184, 4185], [4448, 4607], [4959, 4959], [5906, 5908], [5938, 5940], [5970, 5971], [6002, 6003], [6068, 6069], [6071, 6077], [6086, 6086], [6089, 6099], [6109, 6109], [6155, 6157], [6313, 6313], [6432, 6434], [6439, 6440], [6450, 6450], [6457, 6459], [6679, 6680], [6912, 6915], [6964, 6964], [6966, 6970], [6972, 6972], [6978, 6978], [7019, 7027], [7616, 7626], [7678, 7679], [8203, 8207], [8234, 8238], [8288, 8291], [8298, 8303], [8400, 8431], [12330, 12335], [12441, 12442], [43014, 43014], [43019, 43019], [43045, 43046], [64286, 64286], [65024, 65039], [65056, 65059], [65279, 65279], [65529, 65531]], s3 = [[68097, 68099], [68101, 68102], [68108, 68111], [68152, 68154], [68159, 68159], [119143, 119145], [119155, 119170], [119173, 119179], [119210, 119213], [119362, 119364], [917505, 917505], [917536, 917631], [917760, 917999]];
+      let r2;
+      t3.UnicodeV6 = class {
+        constructor() {
+          if (this.version = "6", !r2) {
+            r2 = new Uint8Array(65536), r2.fill(1), r2[0] = 0, r2.fill(0, 1, 32), r2.fill(0, 127, 160), r2.fill(2, 4352, 4448), r2[9001] = 2, r2[9002] = 2, r2.fill(2, 11904, 42192), r2[12351] = 1, r2.fill(2, 44032, 55204), r2.fill(2, 63744, 64256), r2.fill(2, 65040, 65050), r2.fill(2, 65072, 65136), r2.fill(2, 65280, 65377), r2.fill(2, 65504, 65511);
+            for (let e5 = 0; e5 < i4.length; ++e5) r2.fill(0, i4[e5][0], i4[e5][1] + 1);
+          }
+        }
+        wcwidth(e5) {
+          return e5 < 32 ? 0 : e5 < 127 ? 1 : e5 < 65536 ? r2[e5] : function(e6, t4) {
+            let i5, s4 = 0, r3 = t4.length - 1;
+            if (e6 < t4[0][0] || e6 > t4[r3][1]) return false;
+            for (; r3 >= s4; ) if (i5 = s4 + r3 >> 1, e6 > t4[i5][1]) s4 = i5 + 1;
+            else {
+              if (!(e6 < t4[i5][0])) return true;
+              r3 = i5 - 1;
+            }
+            return false;
+          }(e5, s3) ? 0 : e5 >= 131072 && e5 <= 196605 || e5 >= 196608 && e5 <= 262141 ? 2 : 1;
+        }
+      };
+    }, 5981: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.WriteBuffer = void 0;
+      const s3 = i4(8460), r2 = i4(844);
+      class n3 extends r2.Disposable {
+        constructor(e5) {
+          super(), this._action = e5, this._writeBuffer = [], this._callbacks = [], this._pendingData = 0, this._bufferOffset = 0, this._isSyncWriting = false, this._syncCalls = 0, this._didUserInput = false, this._onWriteParsed = this.register(new s3.EventEmitter()), this.onWriteParsed = this._onWriteParsed.event;
+        }
+        handleUserInput() {
+          this._didUserInput = true;
+        }
+        writeSync(e5, t4) {
+          if (void 0 !== t4 && this._syncCalls > t4) return void (this._syncCalls = 0);
+          if (this._pendingData += e5.length, this._writeBuffer.push(e5), this._callbacks.push(void 0), this._syncCalls++, this._isSyncWriting) return;
+          let i5;
+          for (this._isSyncWriting = true; i5 = this._writeBuffer.shift(); ) {
+            this._action(i5);
+            const e6 = this._callbacks.shift();
+            e6 && e6();
+          }
+          this._pendingData = 0, this._bufferOffset = 2147483647, this._isSyncWriting = false, this._syncCalls = 0;
+        }
+        write(e5, t4) {
+          if (this._pendingData > 5e7) throw new Error("write data discarded, use flow control to avoid losing data");
+          if (!this._writeBuffer.length) {
+            if (this._bufferOffset = 0, this._didUserInput) return this._didUserInput = false, this._pendingData += e5.length, this._writeBuffer.push(e5), this._callbacks.push(t4), void this._innerWrite();
+            setTimeout(() => this._innerWrite());
+          }
+          this._pendingData += e5.length, this._writeBuffer.push(e5), this._callbacks.push(t4);
+        }
+        _innerWrite(e5 = 0, t4 = true) {
+          const i5 = e5 || Date.now();
+          for (; this._writeBuffer.length > this._bufferOffset; ) {
+            const e6 = this._writeBuffer[this._bufferOffset], s4 = this._action(e6, t4);
+            if (s4) {
+              const e7 = (e8) => Date.now() - i5 >= 12 ? setTimeout(() => this._innerWrite(0, e8)) : this._innerWrite(i5, e8);
+              return void s4.catch((e8) => (queueMicrotask(() => {
+                throw e8;
+              }), Promise.resolve(false))).then(e7);
+            }
+            const r3 = this._callbacks[this._bufferOffset];
+            if (r3 && r3(), this._bufferOffset++, this._pendingData -= e6.length, Date.now() - i5 >= 12) break;
+          }
+          this._writeBuffer.length > this._bufferOffset ? (this._bufferOffset > 50 && (this._writeBuffer = this._writeBuffer.slice(this._bufferOffset), this._callbacks = this._callbacks.slice(this._bufferOffset), this._bufferOffset = 0), setTimeout(() => this._innerWrite())) : (this._writeBuffer.length = 0, this._callbacks.length = 0, this._pendingData = 0, this._bufferOffset = 0), this._onWriteParsed.fire();
+        }
+      }
+      t3.WriteBuffer = n3;
+    }, 5941: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.toRgbString = t3.parseColor = void 0;
+      const i4 = /^([\da-f])\/([\da-f])\/([\da-f])$|^([\da-f]{2})\/([\da-f]{2})\/([\da-f]{2})$|^([\da-f]{3})\/([\da-f]{3})\/([\da-f]{3})$|^([\da-f]{4})\/([\da-f]{4})\/([\da-f]{4})$/, s3 = /^[\da-f]+$/;
+      function r2(e5, t4) {
+        const i5 = e5.toString(16), s4 = i5.length < 2 ? "0" + i5 : i5;
+        switch (t4) {
+          case 4:
+            return i5[0];
+          case 8:
+            return s4;
+          case 12:
+            return (s4 + s4).slice(0, 3);
+          default:
+            return s4 + s4;
+        }
+      }
+      t3.parseColor = function(e5) {
+        if (!e5) return;
+        let t4 = e5.toLowerCase();
+        if (0 === t4.indexOf("rgb:")) {
+          t4 = t4.slice(4);
+          const e6 = i4.exec(t4);
+          if (e6) {
+            const t5 = e6[1] ? 15 : e6[4] ? 255 : e6[7] ? 4095 : 65535;
+            return [Math.round(parseInt(e6[1] || e6[4] || e6[7] || e6[10], 16) / t5 * 255), Math.round(parseInt(e6[2] || e6[5] || e6[8] || e6[11], 16) / t5 * 255), Math.round(parseInt(e6[3] || e6[6] || e6[9] || e6[12], 16) / t5 * 255)];
+          }
+        } else if (0 === t4.indexOf("#") && (t4 = t4.slice(1), s3.exec(t4) && [3, 6, 9, 12].includes(t4.length))) {
+          const e6 = t4.length / 3, i5 = [0, 0, 0];
+          for (let s4 = 0; s4 < 3; ++s4) {
+            const r3 = parseInt(t4.slice(e6 * s4, e6 * s4 + e6), 16);
+            i5[s4] = 1 === e6 ? r3 << 4 : 2 === e6 ? r3 : 3 === e6 ? r3 >> 4 : r3 >> 8;
+          }
+          return i5;
+        }
+      }, t3.toRgbString = function(e5, t4 = 16) {
+        const [i5, s4, n3] = e5;
+        return `rgb:${r2(i5, t4)}/${r2(s4, t4)}/${r2(n3, t4)}`;
+      };
+    }, 5770: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.PAYLOAD_LIMIT = void 0, t3.PAYLOAD_LIMIT = 1e7;
+    }, 6351: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.DcsHandler = t3.DcsParser = void 0;
+      const s3 = i4(482), r2 = i4(8742), n3 = i4(5770), o2 = [];
+      t3.DcsParser = class {
+        constructor() {
+          this._handlers = /* @__PURE__ */ Object.create(null), this._active = o2, this._ident = 0, this._handlerFb = () => {
+          }, this._stack = { paused: false, loopPosition: 0, fallThrough: false };
+        }
+        dispose() {
+          this._handlers = /* @__PURE__ */ Object.create(null), this._handlerFb = () => {
+          }, this._active = o2;
+        }
+        registerHandler(e5, t4) {
+          void 0 === this._handlers[e5] && (this._handlers[e5] = []);
+          const i5 = this._handlers[e5];
+          return i5.push(t4), { dispose: () => {
+            const e6 = i5.indexOf(t4);
+            -1 !== e6 && i5.splice(e6, 1);
+          } };
+        }
+        clearHandler(e5) {
+          this._handlers[e5] && delete this._handlers[e5];
+        }
+        setHandlerFallback(e5) {
+          this._handlerFb = e5;
+        }
+        reset() {
+          if (this._active.length) for (let e5 = this._stack.paused ? this._stack.loopPosition - 1 : this._active.length - 1; e5 >= 0; --e5) this._active[e5].unhook(false);
+          this._stack.paused = false, this._active = o2, this._ident = 0;
+        }
+        hook(e5, t4) {
+          if (this.reset(), this._ident = e5, this._active = this._handlers[e5] || o2, this._active.length) for (let e6 = this._active.length - 1; e6 >= 0; e6--) this._active[e6].hook(t4);
+          else this._handlerFb(this._ident, "HOOK", t4);
+        }
+        put(e5, t4, i5) {
+          if (this._active.length) for (let s4 = this._active.length - 1; s4 >= 0; s4--) this._active[s4].put(e5, t4, i5);
+          else this._handlerFb(this._ident, "PUT", (0, s3.utf32ToString)(e5, t4, i5));
+        }
+        unhook(e5, t4 = true) {
+          if (this._active.length) {
+            let i5 = false, s4 = this._active.length - 1, r3 = false;
+            if (this._stack.paused && (s4 = this._stack.loopPosition - 1, i5 = t4, r3 = this._stack.fallThrough, this._stack.paused = false), !r3 && false === i5) {
+              for (; s4 >= 0 && (i5 = this._active[s4].unhook(e5), true !== i5); s4--) if (i5 instanceof Promise) return this._stack.paused = true, this._stack.loopPosition = s4, this._stack.fallThrough = false, i5;
+              s4--;
+            }
+            for (; s4 >= 0; s4--) if (i5 = this._active[s4].unhook(false), i5 instanceof Promise) return this._stack.paused = true, this._stack.loopPosition = s4, this._stack.fallThrough = true, i5;
+          } else this._handlerFb(this._ident, "UNHOOK", e5);
+          this._active = o2, this._ident = 0;
+        }
+      };
+      const a2 = new r2.Params();
+      a2.addParam(0), t3.DcsHandler = class {
+        constructor(e5) {
+          this._handler = e5, this._data = "", this._params = a2, this._hitLimit = false;
+        }
+        hook(e5) {
+          this._params = e5.length > 1 || e5.params[0] ? e5.clone() : a2, this._data = "", this._hitLimit = false;
+        }
+        put(e5, t4, i5) {
+          this._hitLimit || (this._data += (0, s3.utf32ToString)(e5, t4, i5), this._data.length > n3.PAYLOAD_LIMIT && (this._data = "", this._hitLimit = true));
+        }
+        unhook(e5) {
+          let t4 = false;
+          if (this._hitLimit) t4 = false;
+          else if (e5 && (t4 = this._handler(this._data, this._params), t4 instanceof Promise)) return t4.then((e6) => (this._params = a2, this._data = "", this._hitLimit = false, e6));
+          return this._params = a2, this._data = "", this._hitLimit = false, t4;
+        }
+      };
+    }, 2015: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.EscapeSequenceParser = t3.VT500_TRANSITION_TABLE = t3.TransitionTable = void 0;
+      const s3 = i4(844), r2 = i4(8742), n3 = i4(6242), o2 = i4(6351);
+      class a2 {
+        constructor(e5) {
+          this.table = new Uint8Array(e5);
+        }
+        setDefault(e5, t4) {
+          this.table.fill(e5 << 4 | t4);
+        }
+        add(e5, t4, i5, s4) {
+          this.table[t4 << 8 | e5] = i5 << 4 | s4;
+        }
+        addMany(e5, t4, i5, s4) {
+          for (let r3 = 0; r3 < e5.length; r3++) this.table[t4 << 8 | e5[r3]] = i5 << 4 | s4;
+        }
+      }
+      t3.TransitionTable = a2;
+      const h2 = 160;
+      t3.VT500_TRANSITION_TABLE = function() {
+        const e5 = new a2(4095), t4 = Array.apply(null, Array(256)).map((e6, t5) => t5), i5 = (e6, i6) => t4.slice(e6, i6), s4 = i5(32, 127), r3 = i5(0, 24);
+        r3.push(25), r3.push.apply(r3, i5(28, 32));
+        const n4 = i5(0, 14);
+        let o3;
+        for (o3 in e5.setDefault(1, 0), e5.addMany(s4, 0, 2, 0), n4) e5.addMany([24, 26, 153, 154], o3, 3, 0), e5.addMany(i5(128, 144), o3, 3, 0), e5.addMany(i5(144, 152), o3, 3, 0), e5.add(156, o3, 0, 0), e5.add(27, o3, 11, 1), e5.add(157, o3, 4, 8), e5.addMany([152, 158, 159], o3, 0, 7), e5.add(155, o3, 11, 3), e5.add(144, o3, 11, 9);
+        return e5.addMany(r3, 0, 3, 0), e5.addMany(r3, 1, 3, 1), e5.add(127, 1, 0, 1), e5.addMany(r3, 8, 0, 8), e5.addMany(r3, 3, 3, 3), e5.add(127, 3, 0, 3), e5.addMany(r3, 4, 3, 4), e5.add(127, 4, 0, 4), e5.addMany(r3, 6, 3, 6), e5.addMany(r3, 5, 3, 5), e5.add(127, 5, 0, 5), e5.addMany(r3, 2, 3, 2), e5.add(127, 2, 0, 2), e5.add(93, 1, 4, 8), e5.addMany(s4, 8, 5, 8), e5.add(127, 8, 5, 8), e5.addMany([156, 27, 24, 26, 7], 8, 6, 0), e5.addMany(i5(28, 32), 8, 0, 8), e5.addMany([88, 94, 95], 1, 0, 7), e5.addMany(s4, 7, 0, 7), e5.addMany(r3, 7, 0, 7), e5.add(156, 7, 0, 0), e5.add(127, 7, 0, 7), e5.add(91, 1, 11, 3), e5.addMany(i5(64, 127), 3, 7, 0), e5.addMany(i5(48, 60), 3, 8, 4), e5.addMany([60, 61, 62, 63], 3, 9, 4), e5.addMany(i5(48, 60), 4, 8, 4), e5.addMany(i5(64, 127), 4, 7, 0), e5.addMany([60, 61, 62, 63], 4, 0, 6), e5.addMany(i5(32, 64), 6, 0, 6), e5.add(127, 6, 0, 6), e5.addMany(i5(64, 127), 6, 0, 0), e5.addMany(i5(32, 48), 3, 9, 5), e5.addMany(i5(32, 48), 5, 9, 5), e5.addMany(i5(48, 64), 5, 0, 6), e5.addMany(i5(64, 127), 5, 7, 0), e5.addMany(i5(32, 48), 4, 9, 5), e5.addMany(i5(32, 48), 1, 9, 2), e5.addMany(i5(32, 48), 2, 9, 2), e5.addMany(i5(48, 127), 2, 10, 0), e5.addMany(i5(48, 80), 1, 10, 0), e5.addMany(i5(81, 88), 1, 10, 0), e5.addMany([89, 90, 92], 1, 10, 0), e5.addMany(i5(96, 127), 1, 10, 0), e5.add(80, 1, 11, 9), e5.addMany(r3, 9, 0, 9), e5.add(127, 9, 0, 9), e5.addMany(i5(28, 32), 9, 0, 9), e5.addMany(i5(32, 48), 9, 9, 12), e5.addMany(i5(48, 60), 9, 8, 10), e5.addMany([60, 61, 62, 63], 9, 9, 10), e5.addMany(r3, 11, 0, 11), e5.addMany(i5(32, 128), 11, 0, 11), e5.addMany(i5(28, 32), 11, 0, 11), e5.addMany(r3, 10, 0, 10), e5.add(127, 10, 0, 10), e5.addMany(i5(28, 32), 10, 0, 10), e5.addMany(i5(48, 60), 10, 8, 10), e5.addMany([60, 61, 62, 63], 10, 0, 11), e5.addMany(i5(32, 48), 10, 9, 12), e5.addMany(r3, 12, 0, 12), e5.add(127, 12, 0, 12), e5.addMany(i5(28, 32), 12, 0, 12), e5.addMany(i5(32, 48), 12, 9, 12), e5.addMany(i5(48, 64), 12, 0, 11), e5.addMany(i5(64, 127), 12, 12, 13), e5.addMany(i5(64, 127), 10, 12, 13), e5.addMany(i5(64, 127), 9, 12, 13), e5.addMany(r3, 13, 13, 13), e5.addMany(s4, 13, 13, 13), e5.add(127, 13, 0, 13), e5.addMany([27, 156, 24, 26], 13, 14, 0), e5.add(h2, 0, 2, 0), e5.add(h2, 8, 5, 8), e5.add(h2, 6, 0, 6), e5.add(h2, 11, 0, 11), e5.add(h2, 13, 13, 13), e5;
+      }();
+      class c2 extends s3.Disposable {
+        constructor(e5 = t3.VT500_TRANSITION_TABLE) {
+          super(), this._transitions = e5, this._parseStack = { state: 0, handlers: [], handlerPos: 0, transition: 0, chunkPos: 0 }, this.initialState = 0, this.currentState = this.initialState, this._params = new r2.Params(), this._params.addParam(0), this._collect = 0, this.precedingCodepoint = 0, this._printHandlerFb = (e6, t4, i5) => {
+          }, this._executeHandlerFb = (e6) => {
+          }, this._csiHandlerFb = (e6, t4) => {
+          }, this._escHandlerFb = (e6) => {
+          }, this._errorHandlerFb = (e6) => e6, this._printHandler = this._printHandlerFb, this._executeHandlers = /* @__PURE__ */ Object.create(null), this._csiHandlers = /* @__PURE__ */ Object.create(null), this._escHandlers = /* @__PURE__ */ Object.create(null), this.register((0, s3.toDisposable)(() => {
+            this._csiHandlers = /* @__PURE__ */ Object.create(null), this._executeHandlers = /* @__PURE__ */ Object.create(null), this._escHandlers = /* @__PURE__ */ Object.create(null);
+          })), this._oscParser = this.register(new n3.OscParser()), this._dcsParser = this.register(new o2.DcsParser()), this._errorHandler = this._errorHandlerFb, this.registerEscHandler({ final: "\\" }, () => true);
+        }
+        _identifier(e5, t4 = [64, 126]) {
+          let i5 = 0;
+          if (e5.prefix) {
+            if (e5.prefix.length > 1) throw new Error("only one byte as prefix supported");
+            if (i5 = e5.prefix.charCodeAt(0), i5 && 60 > i5 || i5 > 63) throw new Error("prefix must be in range 0x3c .. 0x3f");
+          }
+          if (e5.intermediates) {
+            if (e5.intermediates.length > 2) throw new Error("only two bytes as intermediates are supported");
+            for (let t5 = 0; t5 < e5.intermediates.length; ++t5) {
+              const s5 = e5.intermediates.charCodeAt(t5);
+              if (32 > s5 || s5 > 47) throw new Error("intermediate must be in range 0x20 .. 0x2f");
+              i5 <<= 8, i5 |= s5;
+            }
+          }
+          if (1 !== e5.final.length) throw new Error("final must be a single byte");
+          const s4 = e5.final.charCodeAt(0);
+          if (t4[0] > s4 || s4 > t4[1]) throw new Error(`final must be in range ${t4[0]} .. ${t4[1]}`);
+          return i5 <<= 8, i5 |= s4, i5;
+        }
+        identToString(e5) {
+          const t4 = [];
+          for (; e5; ) t4.push(String.fromCharCode(255 & e5)), e5 >>= 8;
+          return t4.reverse().join("");
+        }
+        setPrintHandler(e5) {
+          this._printHandler = e5;
+        }
+        clearPrintHandler() {
+          this._printHandler = this._printHandlerFb;
+        }
+        registerEscHandler(e5, t4) {
+          const i5 = this._identifier(e5, [48, 126]);
+          void 0 === this._escHandlers[i5] && (this._escHandlers[i5] = []);
+          const s4 = this._escHandlers[i5];
+          return s4.push(t4), { dispose: () => {
+            const e6 = s4.indexOf(t4);
+            -1 !== e6 && s4.splice(e6, 1);
+          } };
+        }
+        clearEscHandler(e5) {
+          this._escHandlers[this._identifier(e5, [48, 126])] && delete this._escHandlers[this._identifier(e5, [48, 126])];
+        }
+        setEscHandlerFallback(e5) {
+          this._escHandlerFb = e5;
+        }
+        setExecuteHandler(e5, t4) {
+          this._executeHandlers[e5.charCodeAt(0)] = t4;
+        }
+        clearExecuteHandler(e5) {
+          this._executeHandlers[e5.charCodeAt(0)] && delete this._executeHandlers[e5.charCodeAt(0)];
+        }
+        setExecuteHandlerFallback(e5) {
+          this._executeHandlerFb = e5;
+        }
+        registerCsiHandler(e5, t4) {
+          const i5 = this._identifier(e5);
+          void 0 === this._csiHandlers[i5] && (this._csiHandlers[i5] = []);
+          const s4 = this._csiHandlers[i5];
+          return s4.push(t4), { dispose: () => {
+            const e6 = s4.indexOf(t4);
+            -1 !== e6 && s4.splice(e6, 1);
+          } };
+        }
+        clearCsiHandler(e5) {
+          this._csiHandlers[this._identifier(e5)] && delete this._csiHandlers[this._identifier(e5)];
+        }
+        setCsiHandlerFallback(e5) {
+          this._csiHandlerFb = e5;
+        }
+        registerDcsHandler(e5, t4) {
+          return this._dcsParser.registerHandler(this._identifier(e5), t4);
+        }
+        clearDcsHandler(e5) {
+          this._dcsParser.clearHandler(this._identifier(e5));
+        }
+        setDcsHandlerFallback(e5) {
+          this._dcsParser.setHandlerFallback(e5);
+        }
+        registerOscHandler(e5, t4) {
+          return this._oscParser.registerHandler(e5, t4);
+        }
+        clearOscHandler(e5) {
+          this._oscParser.clearHandler(e5);
+        }
+        setOscHandlerFallback(e5) {
+          this._oscParser.setHandlerFallback(e5);
+        }
+        setErrorHandler(e5) {
+          this._errorHandler = e5;
+        }
+        clearErrorHandler() {
+          this._errorHandler = this._errorHandlerFb;
+        }
+        reset() {
+          this.currentState = this.initialState, this._oscParser.reset(), this._dcsParser.reset(), this._params.reset(), this._params.addParam(0), this._collect = 0, this.precedingCodepoint = 0, 0 !== this._parseStack.state && (this._parseStack.state = 2, this._parseStack.handlers = []);
+        }
+        _preserveStack(e5, t4, i5, s4, r3) {
+          this._parseStack.state = e5, this._parseStack.handlers = t4, this._parseStack.handlerPos = i5, this._parseStack.transition = s4, this._parseStack.chunkPos = r3;
+        }
+        parse(e5, t4, i5) {
+          let s4, r3 = 0, n4 = 0, o3 = 0;
+          if (this._parseStack.state) if (2 === this._parseStack.state) this._parseStack.state = 0, o3 = this._parseStack.chunkPos + 1;
+          else {
+            if (void 0 === i5 || 1 === this._parseStack.state) throw this._parseStack.state = 1, new Error("improper continuation due to previous async handler, giving up parsing");
+            const t5 = this._parseStack.handlers;
+            let n5 = this._parseStack.handlerPos - 1;
+            switch (this._parseStack.state) {
+              case 3:
+                if (false === i5 && n5 > -1) {
+                  for (; n5 >= 0 && (s4 = t5[n5](this._params), true !== s4); n5--) if (s4 instanceof Promise) return this._parseStack.handlerPos = n5, s4;
+                }
+                this._parseStack.handlers = [];
+                break;
+              case 4:
+                if (false === i5 && n5 > -1) {
+                  for (; n5 >= 0 && (s4 = t5[n5](), true !== s4); n5--) if (s4 instanceof Promise) return this._parseStack.handlerPos = n5, s4;
+                }
+                this._parseStack.handlers = [];
+                break;
+              case 6:
+                if (r3 = e5[this._parseStack.chunkPos], s4 = this._dcsParser.unhook(24 !== r3 && 26 !== r3, i5), s4) return s4;
+                27 === r3 && (this._parseStack.transition |= 1), this._params.reset(), this._params.addParam(0), this._collect = 0;
+                break;
+              case 5:
+                if (r3 = e5[this._parseStack.chunkPos], s4 = this._oscParser.end(24 !== r3 && 26 !== r3, i5), s4) return s4;
+                27 === r3 && (this._parseStack.transition |= 1), this._params.reset(), this._params.addParam(0), this._collect = 0;
+            }
+            this._parseStack.state = 0, o3 = this._parseStack.chunkPos + 1, this.precedingCodepoint = 0, this.currentState = 15 & this._parseStack.transition;
+          }
+          for (let i6 = o3; i6 < t4; ++i6) {
+            switch (r3 = e5[i6], n4 = this._transitions.table[this.currentState << 8 | (r3 < 160 ? r3 : h2)], n4 >> 4) {
+              case 2:
+                for (let s5 = i6 + 1; ; ++s5) {
+                  if (s5 >= t4 || (r3 = e5[s5]) < 32 || r3 > 126 && r3 < h2) {
+                    this._printHandler(e5, i6, s5), i6 = s5 - 1;
+                    break;
+                  }
+                  if (++s5 >= t4 || (r3 = e5[s5]) < 32 || r3 > 126 && r3 < h2) {
+                    this._printHandler(e5, i6, s5), i6 = s5 - 1;
+                    break;
+                  }
+                  if (++s5 >= t4 || (r3 = e5[s5]) < 32 || r3 > 126 && r3 < h2) {
+                    this._printHandler(e5, i6, s5), i6 = s5 - 1;
+                    break;
+                  }
+                  if (++s5 >= t4 || (r3 = e5[s5]) < 32 || r3 > 126 && r3 < h2) {
+                    this._printHandler(e5, i6, s5), i6 = s5 - 1;
+                    break;
+                  }
+                }
+                break;
+              case 3:
+                this._executeHandlers[r3] ? this._executeHandlers[r3]() : this._executeHandlerFb(r3), this.precedingCodepoint = 0;
+                break;
+              case 0:
+                break;
+              case 1:
+                if (this._errorHandler({ position: i6, code: r3, currentState: this.currentState, collect: this._collect, params: this._params, abort: false }).abort) return;
+                break;
+              case 7:
+                const o4 = this._csiHandlers[this._collect << 8 | r3];
+                let a3 = o4 ? o4.length - 1 : -1;
+                for (; a3 >= 0 && (s4 = o4[a3](this._params), true !== s4); a3--) if (s4 instanceof Promise) return this._preserveStack(3, o4, a3, n4, i6), s4;
+                a3 < 0 && this._csiHandlerFb(this._collect << 8 | r3, this._params), this.precedingCodepoint = 0;
+                break;
+              case 8:
+                do {
+                  switch (r3) {
+                    case 59:
+                      this._params.addParam(0);
+                      break;
+                    case 58:
+                      this._params.addSubParam(-1);
+                      break;
+                    default:
+                      this._params.addDigit(r3 - 48);
+                  }
+                } while (++i6 < t4 && (r3 = e5[i6]) > 47 && r3 < 60);
+                i6--;
+                break;
+              case 9:
+                this._collect <<= 8, this._collect |= r3;
+                break;
+              case 10:
+                const c3 = this._escHandlers[this._collect << 8 | r3];
+                let l2 = c3 ? c3.length - 1 : -1;
+                for (; l2 >= 0 && (s4 = c3[l2](), true !== s4); l2--) if (s4 instanceof Promise) return this._preserveStack(4, c3, l2, n4, i6), s4;
+                l2 < 0 && this._escHandlerFb(this._collect << 8 | r3), this.precedingCodepoint = 0;
+                break;
+              case 11:
+                this._params.reset(), this._params.addParam(0), this._collect = 0;
+                break;
+              case 12:
+                this._dcsParser.hook(this._collect << 8 | r3, this._params);
+                break;
+              case 13:
+                for (let s5 = i6 + 1; ; ++s5) if (s5 >= t4 || 24 === (r3 = e5[s5]) || 26 === r3 || 27 === r3 || r3 > 127 && r3 < h2) {
+                  this._dcsParser.put(e5, i6, s5), i6 = s5 - 1;
+                  break;
+                }
+                break;
+              case 14:
+                if (s4 = this._dcsParser.unhook(24 !== r3 && 26 !== r3), s4) return this._preserveStack(6, [], 0, n4, i6), s4;
+                27 === r3 && (n4 |= 1), this._params.reset(), this._params.addParam(0), this._collect = 0, this.precedingCodepoint = 0;
+                break;
+              case 4:
+                this._oscParser.start();
+                break;
+              case 5:
+                for (let s5 = i6 + 1; ; s5++) if (s5 >= t4 || (r3 = e5[s5]) < 32 || r3 > 127 && r3 < h2) {
+                  this._oscParser.put(e5, i6, s5), i6 = s5 - 1;
+                  break;
+                }
+                break;
+              case 6:
+                if (s4 = this._oscParser.end(24 !== r3 && 26 !== r3), s4) return this._preserveStack(5, [], 0, n4, i6), s4;
+                27 === r3 && (n4 |= 1), this._params.reset(), this._params.addParam(0), this._collect = 0, this.precedingCodepoint = 0;
+            }
+            this.currentState = 15 & n4;
+          }
+        }
+      }
+      t3.EscapeSequenceParser = c2;
+    }, 6242: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.OscHandler = t3.OscParser = void 0;
+      const s3 = i4(5770), r2 = i4(482), n3 = [];
+      t3.OscParser = class {
+        constructor() {
+          this._state = 0, this._active = n3, this._id = -1, this._handlers = /* @__PURE__ */ Object.create(null), this._handlerFb = () => {
+          }, this._stack = { paused: false, loopPosition: 0, fallThrough: false };
+        }
+        registerHandler(e5, t4) {
+          void 0 === this._handlers[e5] && (this._handlers[e5] = []);
+          const i5 = this._handlers[e5];
+          return i5.push(t4), { dispose: () => {
+            const e6 = i5.indexOf(t4);
+            -1 !== e6 && i5.splice(e6, 1);
+          } };
+        }
+        clearHandler(e5) {
+          this._handlers[e5] && delete this._handlers[e5];
+        }
+        setHandlerFallback(e5) {
+          this._handlerFb = e5;
+        }
+        dispose() {
+          this._handlers = /* @__PURE__ */ Object.create(null), this._handlerFb = () => {
+          }, this._active = n3;
+        }
+        reset() {
+          if (2 === this._state) for (let e5 = this._stack.paused ? this._stack.loopPosition - 1 : this._active.length - 1; e5 >= 0; --e5) this._active[e5].end(false);
+          this._stack.paused = false, this._active = n3, this._id = -1, this._state = 0;
+        }
+        _start() {
+          if (this._active = this._handlers[this._id] || n3, this._active.length) for (let e5 = this._active.length - 1; e5 >= 0; e5--) this._active[e5].start();
+          else this._handlerFb(this._id, "START");
+        }
+        _put(e5, t4, i5) {
+          if (this._active.length) for (let s4 = this._active.length - 1; s4 >= 0; s4--) this._active[s4].put(e5, t4, i5);
+          else this._handlerFb(this._id, "PUT", (0, r2.utf32ToString)(e5, t4, i5));
+        }
+        start() {
+          this.reset(), this._state = 1;
+        }
+        put(e5, t4, i5) {
+          if (3 !== this._state) {
+            if (1 === this._state) for (; t4 < i5; ) {
+              const i6 = e5[t4++];
+              if (59 === i6) {
+                this._state = 2, this._start();
+                break;
+              }
+              if (i6 < 48 || 57 < i6) return void (this._state = 3);
+              -1 === this._id && (this._id = 0), this._id = 10 * this._id + i6 - 48;
+            }
+            2 === this._state && i5 - t4 > 0 && this._put(e5, t4, i5);
+          }
+        }
+        end(e5, t4 = true) {
+          if (0 !== this._state) {
+            if (3 !== this._state) if (1 === this._state && this._start(), this._active.length) {
+              let i5 = false, s4 = this._active.length - 1, r3 = false;
+              if (this._stack.paused && (s4 = this._stack.loopPosition - 1, i5 = t4, r3 = this._stack.fallThrough, this._stack.paused = false), !r3 && false === i5) {
+                for (; s4 >= 0 && (i5 = this._active[s4].end(e5), true !== i5); s4--) if (i5 instanceof Promise) return this._stack.paused = true, this._stack.loopPosition = s4, this._stack.fallThrough = false, i5;
+                s4--;
+              }
+              for (; s4 >= 0; s4--) if (i5 = this._active[s4].end(false), i5 instanceof Promise) return this._stack.paused = true, this._stack.loopPosition = s4, this._stack.fallThrough = true, i5;
+            } else this._handlerFb(this._id, "END", e5);
+            this._active = n3, this._id = -1, this._state = 0;
+          }
+        }
+      }, t3.OscHandler = class {
+        constructor(e5) {
+          this._handler = e5, this._data = "", this._hitLimit = false;
+        }
+        start() {
+          this._data = "", this._hitLimit = false;
+        }
+        put(e5, t4, i5) {
+          this._hitLimit || (this._data += (0, r2.utf32ToString)(e5, t4, i5), this._data.length > s3.PAYLOAD_LIMIT && (this._data = "", this._hitLimit = true));
+        }
+        end(e5) {
+          let t4 = false;
+          if (this._hitLimit) t4 = false;
+          else if (e5 && (t4 = this._handler(this._data), t4 instanceof Promise)) return t4.then((e6) => (this._data = "", this._hitLimit = false, e6));
+          return this._data = "", this._hitLimit = false, t4;
+        }
+      };
+    }, 8742: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.Params = void 0;
+      const i4 = 2147483647;
+      class s3 {
+        static fromArray(e5) {
+          const t4 = new s3();
+          if (!e5.length) return t4;
+          for (let i5 = Array.isArray(e5[0]) ? 1 : 0; i5 < e5.length; ++i5) {
+            const s4 = e5[i5];
+            if (Array.isArray(s4)) for (let e6 = 0; e6 < s4.length; ++e6) t4.addSubParam(s4[e6]);
+            else t4.addParam(s4);
+          }
+          return t4;
+        }
+        constructor(e5 = 32, t4 = 32) {
+          if (this.maxLength = e5, this.maxSubParamsLength = t4, t4 > 256) throw new Error("maxSubParamsLength must not be greater than 256");
+          this.params = new Int32Array(e5), this.length = 0, this._subParams = new Int32Array(t4), this._subParamsLength = 0, this._subParamsIdx = new Uint16Array(e5), this._rejectDigits = false, this._rejectSubDigits = false, this._digitIsSub = false;
+        }
+        clone() {
+          const e5 = new s3(this.maxLength, this.maxSubParamsLength);
+          return e5.params.set(this.params), e5.length = this.length, e5._subParams.set(this._subParams), e5._subParamsLength = this._subParamsLength, e5._subParamsIdx.set(this._subParamsIdx), e5._rejectDigits = this._rejectDigits, e5._rejectSubDigits = this._rejectSubDigits, e5._digitIsSub = this._digitIsSub, e5;
+        }
+        toArray() {
+          const e5 = [];
+          for (let t4 = 0; t4 < this.length; ++t4) {
+            e5.push(this.params[t4]);
+            const i5 = this._subParamsIdx[t4] >> 8, s4 = 255 & this._subParamsIdx[t4];
+            s4 - i5 > 0 && e5.push(Array.prototype.slice.call(this._subParams, i5, s4));
+          }
+          return e5;
+        }
+        reset() {
+          this.length = 0, this._subParamsLength = 0, this._rejectDigits = false, this._rejectSubDigits = false, this._digitIsSub = false;
+        }
+        addParam(e5) {
+          if (this._digitIsSub = false, this.length >= this.maxLength) this._rejectDigits = true;
+          else {
+            if (e5 < -1) throw new Error("values lesser than -1 are not allowed");
+            this._subParamsIdx[this.length] = this._subParamsLength << 8 | this._subParamsLength, this.params[this.length++] = e5 > i4 ? i4 : e5;
+          }
+        }
+        addSubParam(e5) {
+          if (this._digitIsSub = true, this.length) if (this._rejectDigits || this._subParamsLength >= this.maxSubParamsLength) this._rejectSubDigits = true;
+          else {
+            if (e5 < -1) throw new Error("values lesser than -1 are not allowed");
+            this._subParams[this._subParamsLength++] = e5 > i4 ? i4 : e5, this._subParamsIdx[this.length - 1]++;
+          }
+        }
+        hasSubParams(e5) {
+          return (255 & this._subParamsIdx[e5]) - (this._subParamsIdx[e5] >> 8) > 0;
+        }
+        getSubParams(e5) {
+          const t4 = this._subParamsIdx[e5] >> 8, i5 = 255 & this._subParamsIdx[e5];
+          return i5 - t4 > 0 ? this._subParams.subarray(t4, i5) : null;
+        }
+        getSubParamsAll() {
+          const e5 = {};
+          for (let t4 = 0; t4 < this.length; ++t4) {
+            const i5 = this._subParamsIdx[t4] >> 8, s4 = 255 & this._subParamsIdx[t4];
+            s4 - i5 > 0 && (e5[t4] = this._subParams.slice(i5, s4));
+          }
+          return e5;
+        }
+        addDigit(e5) {
+          let t4;
+          if (this._rejectDigits || !(t4 = this._digitIsSub ? this._subParamsLength : this.length) || this._digitIsSub && this._rejectSubDigits) return;
+          const s4 = this._digitIsSub ? this._subParams : this.params, r2 = s4[t4 - 1];
+          s4[t4 - 1] = ~r2 ? Math.min(10 * r2 + e5, i4) : e5;
+        }
+      }
+      t3.Params = s3;
+    }, 5741: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.AddonManager = void 0, t3.AddonManager = class {
+        constructor() {
+          this._addons = [];
+        }
+        dispose() {
+          for (let e5 = this._addons.length - 1; e5 >= 0; e5--) this._addons[e5].instance.dispose();
+        }
+        loadAddon(e5, t4) {
+          const i4 = { instance: t4, dispose: t4.dispose, isDisposed: false };
+          this._addons.push(i4), t4.dispose = () => this._wrappedAddonDispose(i4), t4.activate(e5);
+        }
+        _wrappedAddonDispose(e5) {
+          if (e5.isDisposed) return;
+          let t4 = -1;
+          for (let i4 = 0; i4 < this._addons.length; i4++) if (this._addons[i4] === e5) {
+            t4 = i4;
+            break;
+          }
+          if (-1 === t4) throw new Error("Could not dispose an addon that has not been loaded");
+          e5.isDisposed = true, e5.dispose.apply(e5.instance), this._addons.splice(t4, 1);
+        }
+      };
+    }, 8771: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.BufferApiView = void 0;
+      const s3 = i4(3785), r2 = i4(511);
+      t3.BufferApiView = class {
+        constructor(e5, t4) {
+          this._buffer = e5, this.type = t4;
+        }
+        init(e5) {
+          return this._buffer = e5, this;
+        }
+        get cursorY() {
+          return this._buffer.y;
+        }
+        get cursorX() {
+          return this._buffer.x;
+        }
+        get viewportY() {
+          return this._buffer.ydisp;
+        }
+        get baseY() {
+          return this._buffer.ybase;
+        }
+        get length() {
+          return this._buffer.lines.length;
+        }
+        getLine(e5) {
+          const t4 = this._buffer.lines.get(e5);
+          if (t4) return new s3.BufferLineApiView(t4);
+        }
+        getNullCell() {
+          return new r2.CellData();
+        }
+      };
+    }, 3785: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.BufferLineApiView = void 0;
+      const s3 = i4(511);
+      t3.BufferLineApiView = class {
+        constructor(e5) {
+          this._line = e5;
+        }
+        get isWrapped() {
+          return this._line.isWrapped;
+        }
+        get length() {
+          return this._line.length;
+        }
+        getCell(e5, t4) {
+          if (!(e5 < 0 || e5 >= this._line.length)) return t4 ? (this._line.loadCell(e5, t4), t4) : this._line.loadCell(e5, new s3.CellData());
+        }
+        translateToString(e5, t4, i5) {
+          return this._line.translateToString(e5, t4, i5);
+        }
+      };
+    }, 8285: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.BufferNamespaceApi = void 0;
+      const s3 = i4(8771), r2 = i4(8460), n3 = i4(844);
+      class o2 extends n3.Disposable {
+        constructor(e5) {
+          super(), this._core = e5, this._onBufferChange = this.register(new r2.EventEmitter()), this.onBufferChange = this._onBufferChange.event, this._normal = new s3.BufferApiView(this._core.buffers.normal, "normal"), this._alternate = new s3.BufferApiView(this._core.buffers.alt, "alternate"), this._core.buffers.onBufferActivate(() => this._onBufferChange.fire(this.active));
+        }
+        get active() {
+          if (this._core.buffers.active === this._core.buffers.normal) return this.normal;
+          if (this._core.buffers.active === this._core.buffers.alt) return this.alternate;
+          throw new Error("Active buffer is neither normal nor alternate");
+        }
+        get normal() {
+          return this._normal.init(this._core.buffers.normal);
+        }
+        get alternate() {
+          return this._alternate.init(this._core.buffers.alt);
+        }
+      }
+      t3.BufferNamespaceApi = o2;
+    }, 7975: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.ParserApi = void 0, t3.ParserApi = class {
+        constructor(e5) {
+          this._core = e5;
+        }
+        registerCsiHandler(e5, t4) {
+          return this._core.registerCsiHandler(e5, (e6) => t4(e6.toArray()));
+        }
+        addCsiHandler(e5, t4) {
+          return this.registerCsiHandler(e5, t4);
+        }
+        registerDcsHandler(e5, t4) {
+          return this._core.registerDcsHandler(e5, (e6, i4) => t4(e6, i4.toArray()));
+        }
+        addDcsHandler(e5, t4) {
+          return this.registerDcsHandler(e5, t4);
+        }
+        registerEscHandler(e5, t4) {
+          return this._core.registerEscHandler(e5, t4);
+        }
+        addEscHandler(e5, t4) {
+          return this.registerEscHandler(e5, t4);
+        }
+        registerOscHandler(e5, t4) {
+          return this._core.registerOscHandler(e5, t4);
+        }
+        addOscHandler(e5, t4) {
+          return this.registerOscHandler(e5, t4);
+        }
+      };
+    }, 7090: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.UnicodeApi = void 0, t3.UnicodeApi = class {
+        constructor(e5) {
+          this._core = e5;
+        }
+        register(e5) {
+          this._core.unicodeService.register(e5);
+        }
+        get versions() {
+          return this._core.unicodeService.versions;
+        }
+        get activeVersion() {
+          return this._core.unicodeService.activeVersion;
+        }
+        set activeVersion(e5) {
+          this._core.unicodeService.activeVersion = e5;
+        }
+      };
+    }, 744: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.BufferService = t3.MINIMUM_ROWS = t3.MINIMUM_COLS = void 0;
+      const n3 = i4(8460), o2 = i4(844), a2 = i4(5295), h2 = i4(2585);
+      t3.MINIMUM_COLS = 2, t3.MINIMUM_ROWS = 1;
+      let c2 = t3.BufferService = class extends o2.Disposable {
+        get buffer() {
+          return this.buffers.active;
+        }
+        constructor(e5) {
+          super(), this.isUserScrolling = false, this._onResize = this.register(new n3.EventEmitter()), this.onResize = this._onResize.event, this._onScroll = this.register(new n3.EventEmitter()), this.onScroll = this._onScroll.event, this.cols = Math.max(e5.rawOptions.cols || 0, t3.MINIMUM_COLS), this.rows = Math.max(e5.rawOptions.rows || 0, t3.MINIMUM_ROWS), this.buffers = this.register(new a2.BufferSet(e5, this));
+        }
+        resize(e5, t4) {
+          this.cols = e5, this.rows = t4, this.buffers.resize(e5, t4), this._onResize.fire({ cols: e5, rows: t4 });
+        }
+        reset() {
+          this.buffers.reset(), this.isUserScrolling = false;
+        }
+        scroll(e5, t4 = false) {
+          const i5 = this.buffer;
+          let s4;
+          s4 = this._cachedBlankLine, s4 && s4.length === this.cols && s4.getFg(0) === e5.fg && s4.getBg(0) === e5.bg || (s4 = i5.getBlankLine(e5, t4), this._cachedBlankLine = s4), s4.isWrapped = t4;
+          const r3 = i5.ybase + i5.scrollTop, n4 = i5.ybase + i5.scrollBottom;
+          if (0 === i5.scrollTop) {
+            const e6 = i5.lines.isFull;
+            n4 === i5.lines.length - 1 ? e6 ? i5.lines.recycle().copyFrom(s4) : i5.lines.push(s4.clone()) : i5.lines.splice(n4 + 1, 0, s4.clone()), e6 ? this.isUserScrolling && (i5.ydisp = Math.max(i5.ydisp - 1, 0)) : (i5.ybase++, this.isUserScrolling || i5.ydisp++);
+          } else {
+            const e6 = n4 - r3 + 1;
+            i5.lines.shiftElements(r3 + 1, e6 - 1, -1), i5.lines.set(n4, s4.clone());
+          }
+          this.isUserScrolling || (i5.ydisp = i5.ybase), this._onScroll.fire(i5.ydisp);
+        }
+        scrollLines(e5, t4, i5) {
+          const s4 = this.buffer;
+          if (e5 < 0) {
+            if (0 === s4.ydisp) return;
+            this.isUserScrolling = true;
+          } else e5 + s4.ydisp >= s4.ybase && (this.isUserScrolling = false);
+          const r3 = s4.ydisp;
+          s4.ydisp = Math.max(Math.min(s4.ydisp + e5, s4.ybase), 0), r3 !== s4.ydisp && (t4 || this._onScroll.fire(s4.ydisp));
+        }
+      };
+      t3.BufferService = c2 = s3([r2(0, h2.IOptionsService)], c2);
+    }, 7994: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CharsetService = void 0, t3.CharsetService = class {
+        constructor() {
+          this.glevel = 0, this._charsets = [];
+        }
+        reset() {
+          this.charset = void 0, this._charsets = [], this.glevel = 0;
+        }
+        setgLevel(e5) {
+          this.glevel = e5, this.charset = this._charsets[e5];
+        }
+        setgCharset(e5, t4) {
+          this._charsets[e5] = t4, this.glevel === e5 && (this.charset = t4);
+        }
+      };
+    }, 1753: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CoreMouseService = void 0;
+      const n3 = i4(2585), o2 = i4(8460), a2 = i4(844), h2 = { NONE: { events: 0, restrict: () => false }, X10: { events: 1, restrict: (e5) => 4 !== e5.button && 1 === e5.action && (e5.ctrl = false, e5.alt = false, e5.shift = false, true) }, VT200: { events: 19, restrict: (e5) => 32 !== e5.action }, DRAG: { events: 23, restrict: (e5) => 32 !== e5.action || 3 !== e5.button }, ANY: { events: 31, restrict: (e5) => true } };
+      function c2(e5, t4) {
+        let i5 = (e5.ctrl ? 16 : 0) | (e5.shift ? 4 : 0) | (e5.alt ? 8 : 0);
+        return 4 === e5.button ? (i5 |= 64, i5 |= e5.action) : (i5 |= 3 & e5.button, 4 & e5.button && (i5 |= 64), 8 & e5.button && (i5 |= 128), 32 === e5.action ? i5 |= 32 : 0 !== e5.action || t4 || (i5 |= 3)), i5;
+      }
+      const l2 = String.fromCharCode, d2 = { DEFAULT: (e5) => {
+        const t4 = [c2(e5, false) + 32, e5.col + 32, e5.row + 32];
+        return t4[0] > 255 || t4[1] > 255 || t4[2] > 255 ? "" : `\x1B[M${l2(t4[0])}${l2(t4[1])}${l2(t4[2])}`;
+      }, SGR: (e5) => {
+        const t4 = 0 === e5.action && 4 !== e5.button ? "m" : "M";
+        return `\x1B[<${c2(e5, true)};${e5.col};${e5.row}${t4}`;
+      }, SGR_PIXELS: (e5) => {
+        const t4 = 0 === e5.action && 4 !== e5.button ? "m" : "M";
+        return `\x1B[<${c2(e5, true)};${e5.x};${e5.y}${t4}`;
+      } };
+      let _2 = t3.CoreMouseService = class extends a2.Disposable {
+        constructor(e5, t4) {
+          super(), this._bufferService = e5, this._coreService = t4, this._protocols = {}, this._encodings = {}, this._activeProtocol = "", this._activeEncoding = "", this._lastEvent = null, this._onProtocolChange = this.register(new o2.EventEmitter()), this.onProtocolChange = this._onProtocolChange.event;
+          for (const e6 of Object.keys(h2)) this.addProtocol(e6, h2[e6]);
+          for (const e6 of Object.keys(d2)) this.addEncoding(e6, d2[e6]);
+          this.reset();
+        }
+        addProtocol(e5, t4) {
+          this._protocols[e5] = t4;
+        }
+        addEncoding(e5, t4) {
+          this._encodings[e5] = t4;
+        }
+        get activeProtocol() {
+          return this._activeProtocol;
+        }
+        get areMouseEventsActive() {
+          return 0 !== this._protocols[this._activeProtocol].events;
+        }
+        set activeProtocol(e5) {
+          if (!this._protocols[e5]) throw new Error(`unknown protocol "${e5}"`);
+          this._activeProtocol = e5, this._onProtocolChange.fire(this._protocols[e5].events);
+        }
+        get activeEncoding() {
+          return this._activeEncoding;
+        }
+        set activeEncoding(e5) {
+          if (!this._encodings[e5]) throw new Error(`unknown encoding "${e5}"`);
+          this._activeEncoding = e5;
+        }
+        reset() {
+          this.activeProtocol = "NONE", this.activeEncoding = "DEFAULT", this._lastEvent = null;
+        }
+        triggerMouseEvent(e5) {
+          if (e5.col < 0 || e5.col >= this._bufferService.cols || e5.row < 0 || e5.row >= this._bufferService.rows) return false;
+          if (4 === e5.button && 32 === e5.action) return false;
+          if (3 === e5.button && 32 !== e5.action) return false;
+          if (4 !== e5.button && (2 === e5.action || 3 === e5.action)) return false;
+          if (e5.col++, e5.row++, 32 === e5.action && this._lastEvent && this._equalEvents(this._lastEvent, e5, "SGR_PIXELS" === this._activeEncoding)) return false;
+          if (!this._protocols[this._activeProtocol].restrict(e5)) return false;
+          const t4 = this._encodings[this._activeEncoding](e5);
+          return t4 && ("DEFAULT" === this._activeEncoding ? this._coreService.triggerBinaryEvent(t4) : this._coreService.triggerDataEvent(t4, true)), this._lastEvent = e5, true;
+        }
+        explainEvents(e5) {
+          return { down: !!(1 & e5), up: !!(2 & e5), drag: !!(4 & e5), move: !!(8 & e5), wheel: !!(16 & e5) };
+        }
+        _equalEvents(e5, t4, i5) {
+          if (i5) {
+            if (e5.x !== t4.x) return false;
+            if (e5.y !== t4.y) return false;
+          } else {
+            if (e5.col !== t4.col) return false;
+            if (e5.row !== t4.row) return false;
+          }
+          return e5.button === t4.button && e5.action === t4.action && e5.ctrl === t4.ctrl && e5.alt === t4.alt && e5.shift === t4.shift;
+        }
+      };
+      t3.CoreMouseService = _2 = s3([r2(0, n3.IBufferService), r2(1, n3.ICoreService)], _2);
+    }, 6975: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.CoreService = void 0;
+      const n3 = i4(1439), o2 = i4(8460), a2 = i4(844), h2 = i4(2585), c2 = Object.freeze({ insertMode: false }), l2 = Object.freeze({ applicationCursorKeys: false, applicationKeypad: false, bracketedPasteMode: false, origin: false, reverseWraparound: false, sendFocus: false, wraparound: true });
+      let d2 = t3.CoreService = class extends a2.Disposable {
+        constructor(e5, t4, i5) {
+          super(), this._bufferService = e5, this._logService = t4, this._optionsService = i5, this.isCursorInitialized = false, this.isCursorHidden = false, this._onData = this.register(new o2.EventEmitter()), this.onData = this._onData.event, this._onUserInput = this.register(new o2.EventEmitter()), this.onUserInput = this._onUserInput.event, this._onBinary = this.register(new o2.EventEmitter()), this.onBinary = this._onBinary.event, this._onRequestScrollToBottom = this.register(new o2.EventEmitter()), this.onRequestScrollToBottom = this._onRequestScrollToBottom.event, this.modes = (0, n3.clone)(c2), this.decPrivateModes = (0, n3.clone)(l2);
+        }
+        reset() {
+          this.modes = (0, n3.clone)(c2), this.decPrivateModes = (0, n3.clone)(l2);
+        }
+        triggerDataEvent(e5, t4 = false) {
+          if (this._optionsService.rawOptions.disableStdin) return;
+          const i5 = this._bufferService.buffer;
+          t4 && this._optionsService.rawOptions.scrollOnUserInput && i5.ybase !== i5.ydisp && this._onRequestScrollToBottom.fire(), t4 && this._onUserInput.fire(), this._logService.debug(`sending data "${e5}"`, () => e5.split("").map((e6) => e6.charCodeAt(0))), this._onData.fire(e5);
+        }
+        triggerBinaryEvent(e5) {
+          this._optionsService.rawOptions.disableStdin || (this._logService.debug(`sending binary "${e5}"`, () => e5.split("").map((e6) => e6.charCodeAt(0))), this._onBinary.fire(e5));
+        }
+      };
+      t3.CoreService = d2 = s3([r2(0, h2.IBufferService), r2(1, h2.ILogService), r2(2, h2.IOptionsService)], d2);
+    }, 9074: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.DecorationService = void 0;
+      const s3 = i4(8055), r2 = i4(8460), n3 = i4(844), o2 = i4(6106);
+      let a2 = 0, h2 = 0;
+      class c2 extends n3.Disposable {
+        get decorations() {
+          return this._decorations.values();
+        }
+        constructor() {
+          super(), this._decorations = new o2.SortedList((e5) => null == e5 ? void 0 : e5.marker.line), this._onDecorationRegistered = this.register(new r2.EventEmitter()), this.onDecorationRegistered = this._onDecorationRegistered.event, this._onDecorationRemoved = this.register(new r2.EventEmitter()), this.onDecorationRemoved = this._onDecorationRemoved.event, this.register((0, n3.toDisposable)(() => this.reset()));
+        }
+        registerDecoration(e5) {
+          if (e5.marker.isDisposed) return;
+          const t4 = new l2(e5);
+          if (t4) {
+            const e6 = t4.marker.onDispose(() => t4.dispose());
+            t4.onDispose(() => {
+              t4 && (this._decorations.delete(t4) && this._onDecorationRemoved.fire(t4), e6.dispose());
+            }), this._decorations.insert(t4), this._onDecorationRegistered.fire(t4);
+          }
+          return t4;
+        }
+        reset() {
+          for (const e5 of this._decorations.values()) e5.dispose();
+          this._decorations.clear();
+        }
+        *getDecorationsAtCell(e5, t4, i5) {
+          var s4, r3, n4;
+          let o3 = 0, a3 = 0;
+          for (const h3 of this._decorations.getKeyIterator(t4)) o3 = null !== (s4 = h3.options.x) && void 0 !== s4 ? s4 : 0, a3 = o3 + (null !== (r3 = h3.options.width) && void 0 !== r3 ? r3 : 1), e5 >= o3 && e5 < a3 && (!i5 || (null !== (n4 = h3.options.layer) && void 0 !== n4 ? n4 : "bottom") === i5) && (yield h3);
+        }
+        forEachDecorationAtCell(e5, t4, i5, s4) {
+          this._decorations.forEachByKey(t4, (t5) => {
+            var r3, n4, o3;
+            a2 = null !== (r3 = t5.options.x) && void 0 !== r3 ? r3 : 0, h2 = a2 + (null !== (n4 = t5.options.width) && void 0 !== n4 ? n4 : 1), e5 >= a2 && e5 < h2 && (!i5 || (null !== (o3 = t5.options.layer) && void 0 !== o3 ? o3 : "bottom") === i5) && s4(t5);
+          });
+        }
+      }
+      t3.DecorationService = c2;
+      class l2 extends n3.Disposable {
+        get isDisposed() {
+          return this._isDisposed;
+        }
+        get backgroundColorRGB() {
+          return null === this._cachedBg && (this.options.backgroundColor ? this._cachedBg = s3.css.toColor(this.options.backgroundColor) : this._cachedBg = void 0), this._cachedBg;
+        }
+        get foregroundColorRGB() {
+          return null === this._cachedFg && (this.options.foregroundColor ? this._cachedFg = s3.css.toColor(this.options.foregroundColor) : this._cachedFg = void 0), this._cachedFg;
+        }
+        constructor(e5) {
+          super(), this.options = e5, this.onRenderEmitter = this.register(new r2.EventEmitter()), this.onRender = this.onRenderEmitter.event, this._onDispose = this.register(new r2.EventEmitter()), this.onDispose = this._onDispose.event, this._cachedBg = null, this._cachedFg = null, this.marker = e5.marker, this.options.overviewRulerOptions && !this.options.overviewRulerOptions.position && (this.options.overviewRulerOptions.position = "full");
+        }
+        dispose() {
+          this._onDispose.fire(), super.dispose();
+        }
+      }
+    }, 4348: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.InstantiationService = t3.ServiceCollection = void 0;
+      const s3 = i4(2585), r2 = i4(8343);
+      class n3 {
+        constructor(...e5) {
+          this._entries = /* @__PURE__ */ new Map();
+          for (const [t4, i5] of e5) this.set(t4, i5);
+        }
+        set(e5, t4) {
+          const i5 = this._entries.get(e5);
+          return this._entries.set(e5, t4), i5;
+        }
+        forEach(e5) {
+          for (const [t4, i5] of this._entries.entries()) e5(t4, i5);
+        }
+        has(e5) {
+          return this._entries.has(e5);
+        }
+        get(e5) {
+          return this._entries.get(e5);
+        }
+      }
+      t3.ServiceCollection = n3, t3.InstantiationService = class {
+        constructor() {
+          this._services = new n3(), this._services.set(s3.IInstantiationService, this);
+        }
+        setService(e5, t4) {
+          this._services.set(e5, t4);
+        }
+        getService(e5) {
+          return this._services.get(e5);
+        }
+        createInstance(e5, ...t4) {
+          const i5 = (0, r2.getServiceDependencies)(e5).sort((e6, t5) => e6.index - t5.index), s4 = [];
+          for (const t5 of i5) {
+            const i6 = this._services.get(t5.id);
+            if (!i6) throw new Error(`[createInstance] ${e5.name} depends on UNKNOWN service ${t5.id}.`);
+            s4.push(i6);
+          }
+          const n4 = i5.length > 0 ? i5[0].index : t4.length;
+          if (t4.length !== n4) throw new Error(`[createInstance] First service dependency of ${e5.name} at position ${n4 + 1} conflicts with ${t4.length} static arguments`);
+          return new e5(...[...t4, ...s4]);
+        }
+      };
+    }, 7866: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a3 = e5.length - 1; a3 >= 0; a3--) (r3 = e5[a3]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.traceCall = t3.setTraceLogger = t3.LogService = void 0;
+      const n3 = i4(844), o2 = i4(2585), a2 = { trace: o2.LogLevelEnum.TRACE, debug: o2.LogLevelEnum.DEBUG, info: o2.LogLevelEnum.INFO, warn: o2.LogLevelEnum.WARN, error: o2.LogLevelEnum.ERROR, off: o2.LogLevelEnum.OFF };
+      let h2, c2 = t3.LogService = class extends n3.Disposable {
+        get logLevel() {
+          return this._logLevel;
+        }
+        constructor(e5) {
+          super(), this._optionsService = e5, this._logLevel = o2.LogLevelEnum.OFF, this._updateLogLevel(), this.register(this._optionsService.onSpecificOptionChange("logLevel", () => this._updateLogLevel())), h2 = this;
+        }
+        _updateLogLevel() {
+          this._logLevel = a2[this._optionsService.rawOptions.logLevel];
+        }
+        _evalLazyOptionalParams(e5) {
+          for (let t4 = 0; t4 < e5.length; t4++) "function" == typeof e5[t4] && (e5[t4] = e5[t4]());
+        }
+        _log(e5, t4, i5) {
+          this._evalLazyOptionalParams(i5), e5.call(console, (this._optionsService.options.logger ? "" : "xterm.js: ") + t4, ...i5);
+        }
+        trace(e5, ...t4) {
+          var i5, s4;
+          this._logLevel <= o2.LogLevelEnum.TRACE && this._log(null !== (s4 = null === (i5 = this._optionsService.options.logger) || void 0 === i5 ? void 0 : i5.trace.bind(this._optionsService.options.logger)) && void 0 !== s4 ? s4 : console.log, e5, t4);
+        }
+        debug(e5, ...t4) {
+          var i5, s4;
+          this._logLevel <= o2.LogLevelEnum.DEBUG && this._log(null !== (s4 = null === (i5 = this._optionsService.options.logger) || void 0 === i5 ? void 0 : i5.debug.bind(this._optionsService.options.logger)) && void 0 !== s4 ? s4 : console.log, e5, t4);
+        }
+        info(e5, ...t4) {
+          var i5, s4;
+          this._logLevel <= o2.LogLevelEnum.INFO && this._log(null !== (s4 = null === (i5 = this._optionsService.options.logger) || void 0 === i5 ? void 0 : i5.info.bind(this._optionsService.options.logger)) && void 0 !== s4 ? s4 : console.info, e5, t4);
+        }
+        warn(e5, ...t4) {
+          var i5, s4;
+          this._logLevel <= o2.LogLevelEnum.WARN && this._log(null !== (s4 = null === (i5 = this._optionsService.options.logger) || void 0 === i5 ? void 0 : i5.warn.bind(this._optionsService.options.logger)) && void 0 !== s4 ? s4 : console.warn, e5, t4);
+        }
+        error(e5, ...t4) {
+          var i5, s4;
+          this._logLevel <= o2.LogLevelEnum.ERROR && this._log(null !== (s4 = null === (i5 = this._optionsService.options.logger) || void 0 === i5 ? void 0 : i5.error.bind(this._optionsService.options.logger)) && void 0 !== s4 ? s4 : console.error, e5, t4);
+        }
+      };
+      t3.LogService = c2 = s3([r2(0, o2.IOptionsService)], c2), t3.setTraceLogger = function(e5) {
+        h2 = e5;
+      }, t3.traceCall = function(e5, t4, i5) {
+        if ("function" != typeof i5.value) throw new Error("not supported");
+        const s4 = i5.value;
+        i5.value = function(...e6) {
+          if (h2.logLevel !== o2.LogLevelEnum.TRACE) return s4.apply(this, e6);
+          h2.trace(`GlyphRenderer#${s4.name}(${e6.map((e7) => JSON.stringify(e7)).join(", ")})`);
+          const t5 = s4.apply(this, e6);
+          return h2.trace(`GlyphRenderer#${s4.name} return`, t5), t5;
+        };
+      };
+    }, 7302: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.OptionsService = t3.DEFAULT_OPTIONS = void 0;
+      const s3 = i4(8460), r2 = i4(844), n3 = i4(6114);
+      t3.DEFAULT_OPTIONS = { cols: 80, rows: 24, cursorBlink: false, cursorStyle: "block", cursorWidth: 1, cursorInactiveStyle: "outline", customGlyphs: true, drawBoldTextInBrightColors: true, fastScrollModifier: "alt", fastScrollSensitivity: 5, fontFamily: "courier-new, courier, monospace", fontSize: 15, fontWeight: "normal", fontWeightBold: "bold", ignoreBracketedPasteMode: false, lineHeight: 1, letterSpacing: 0, linkHandler: null, logLevel: "info", logger: null, scrollback: 1e3, scrollOnUserInput: true, scrollSensitivity: 1, screenReaderMode: false, smoothScrollDuration: 0, macOptionIsMeta: false, macOptionClickForcesSelection: false, minimumContrastRatio: 1, disableStdin: false, allowProposedApi: false, allowTransparency: false, tabStopWidth: 8, theme: {}, rightClickSelectsWord: n3.isMac, windowOptions: {}, windowsMode: false, windowsPty: {}, wordSeparator: " ()[]{}',\"`", altClickMovesCursor: true, convertEol: false, termName: "xterm", cancelEvents: false, overviewRulerWidth: 0 };
+      const o2 = ["normal", "bold", "100", "200", "300", "400", "500", "600", "700", "800", "900"];
+      class a2 extends r2.Disposable {
+        constructor(e5) {
+          super(), this._onOptionChange = this.register(new s3.EventEmitter()), this.onOptionChange = this._onOptionChange.event;
+          const i5 = Object.assign({}, t3.DEFAULT_OPTIONS);
+          for (const t4 in e5) if (t4 in i5) try {
+            const s4 = e5[t4];
+            i5[t4] = this._sanitizeAndValidateOption(t4, s4);
+          } catch (e6) {
+            console.error(e6);
+          }
+          this.rawOptions = i5, this.options = Object.assign({}, i5), this._setupOptions();
+        }
+        onSpecificOptionChange(e5, t4) {
+          return this.onOptionChange((i5) => {
+            i5 === e5 && t4(this.rawOptions[e5]);
+          });
+        }
+        onMultipleOptionChange(e5, t4) {
+          return this.onOptionChange((i5) => {
+            -1 !== e5.indexOf(i5) && t4();
+          });
+        }
+        _setupOptions() {
+          const e5 = (e6) => {
+            if (!(e6 in t3.DEFAULT_OPTIONS)) throw new Error(`No option with key "${e6}"`);
+            return this.rawOptions[e6];
+          }, i5 = (e6, i6) => {
+            if (!(e6 in t3.DEFAULT_OPTIONS)) throw new Error(`No option with key "${e6}"`);
+            i6 = this._sanitizeAndValidateOption(e6, i6), this.rawOptions[e6] !== i6 && (this.rawOptions[e6] = i6, this._onOptionChange.fire(e6));
+          };
+          for (const t4 in this.rawOptions) {
+            const s4 = { get: e5.bind(this, t4), set: i5.bind(this, t4) };
+            Object.defineProperty(this.options, t4, s4);
+          }
+        }
+        _sanitizeAndValidateOption(e5, i5) {
+          switch (e5) {
+            case "cursorStyle":
+              if (i5 || (i5 = t3.DEFAULT_OPTIONS[e5]), !/* @__PURE__ */ function(e6) {
+                return "block" === e6 || "underline" === e6 || "bar" === e6;
+              }(i5)) throw new Error(`"${i5}" is not a valid value for ${e5}`);
+              break;
+            case "wordSeparator":
+              i5 || (i5 = t3.DEFAULT_OPTIONS[e5]);
+              break;
+            case "fontWeight":
+            case "fontWeightBold":
+              if ("number" == typeof i5 && 1 <= i5 && i5 <= 1e3) break;
+              i5 = o2.includes(i5) ? i5 : t3.DEFAULT_OPTIONS[e5];
+              break;
+            case "cursorWidth":
+              i5 = Math.floor(i5);
+            case "lineHeight":
+            case "tabStopWidth":
+              if (i5 < 1) throw new Error(`${e5} cannot be less than 1, value: ${i5}`);
+              break;
+            case "minimumContrastRatio":
+              i5 = Math.max(1, Math.min(21, Math.round(10 * i5) / 10));
+              break;
+            case "scrollback":
+              if ((i5 = Math.min(i5, 4294967295)) < 0) throw new Error(`${e5} cannot be less than 0, value: ${i5}`);
+              break;
+            case "fastScrollSensitivity":
+            case "scrollSensitivity":
+              if (i5 <= 0) throw new Error(`${e5} cannot be less than or equal to 0, value: ${i5}`);
+              break;
+            case "rows":
+            case "cols":
+              if (!i5 && 0 !== i5) throw new Error(`${e5} must be numeric, value: ${i5}`);
+              break;
+            case "windowsPty":
+              i5 = null != i5 ? i5 : {};
+          }
+          return i5;
+        }
+      }
+      t3.OptionsService = a2;
+    }, 2660: function(e4, t3, i4) {
+      var s3 = this && this.__decorate || function(e5, t4, i5, s4) {
+        var r3, n4 = arguments.length, o3 = n4 < 3 ? t4 : null === s4 ? s4 = Object.getOwnPropertyDescriptor(t4, i5) : s4;
+        if ("object" == typeof Reflect && "function" == typeof Reflect.decorate) o3 = Reflect.decorate(e5, t4, i5, s4);
+        else for (var a2 = e5.length - 1; a2 >= 0; a2--) (r3 = e5[a2]) && (o3 = (n4 < 3 ? r3(o3) : n4 > 3 ? r3(t4, i5, o3) : r3(t4, i5)) || o3);
+        return n4 > 3 && o3 && Object.defineProperty(t4, i5, o3), o3;
+      }, r2 = this && this.__param || function(e5, t4) {
+        return function(i5, s4) {
+          t4(i5, s4, e5);
+        };
+      };
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.OscLinkService = void 0;
+      const n3 = i4(2585);
+      let o2 = t3.OscLinkService = class {
+        constructor(e5) {
+          this._bufferService = e5, this._nextId = 1, this._entriesWithId = /* @__PURE__ */ new Map(), this._dataByLinkId = /* @__PURE__ */ new Map();
+        }
+        registerLink(e5) {
+          const t4 = this._bufferService.buffer;
+          if (void 0 === e5.id) {
+            const i6 = t4.addMarker(t4.ybase + t4.y), s5 = { data: e5, id: this._nextId++, lines: [i6] };
+            return i6.onDispose(() => this._removeMarkerFromLink(s5, i6)), this._dataByLinkId.set(s5.id, s5), s5.id;
+          }
+          const i5 = e5, s4 = this._getEntryIdKey(i5), r3 = this._entriesWithId.get(s4);
+          if (r3) return this.addLineToLink(r3.id, t4.ybase + t4.y), r3.id;
+          const n4 = t4.addMarker(t4.ybase + t4.y), o3 = { id: this._nextId++, key: this._getEntryIdKey(i5), data: i5, lines: [n4] };
+          return n4.onDispose(() => this._removeMarkerFromLink(o3, n4)), this._entriesWithId.set(o3.key, o3), this._dataByLinkId.set(o3.id, o3), o3.id;
+        }
+        addLineToLink(e5, t4) {
+          const i5 = this._dataByLinkId.get(e5);
+          if (i5 && i5.lines.every((e6) => e6.line !== t4)) {
+            const e6 = this._bufferService.buffer.addMarker(t4);
+            i5.lines.push(e6), e6.onDispose(() => this._removeMarkerFromLink(i5, e6));
+          }
+        }
+        getLinkData(e5) {
+          var t4;
+          return null === (t4 = this._dataByLinkId.get(e5)) || void 0 === t4 ? void 0 : t4.data;
+        }
+        _getEntryIdKey(e5) {
+          return `${e5.id};;${e5.uri}`;
+        }
+        _removeMarkerFromLink(e5, t4) {
+          const i5 = e5.lines.indexOf(t4);
+          -1 !== i5 && (e5.lines.splice(i5, 1), 0 === e5.lines.length && (void 0 !== e5.data.id && this._entriesWithId.delete(e5.key), this._dataByLinkId.delete(e5.id)));
+        }
+      };
+      t3.OscLinkService = o2 = s3([r2(0, n3.IBufferService)], o2);
+    }, 8343: (e4, t3) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.createDecorator = t3.getServiceDependencies = t3.serviceRegistry = void 0;
+      const i4 = "di$target", s3 = "di$dependencies";
+      t3.serviceRegistry = /* @__PURE__ */ new Map(), t3.getServiceDependencies = function(e5) {
+        return e5[s3] || [];
+      }, t3.createDecorator = function(e5) {
+        if (t3.serviceRegistry.has(e5)) return t3.serviceRegistry.get(e5);
+        const r2 = function(e6, t4, n3) {
+          if (3 !== arguments.length) throw new Error("@IServiceName-decorator can only be used to decorate a parameter");
+          !function(e7, t5, r3) {
+            t5[i4] === t5 ? t5[s3].push({ id: e7, index: r3 }) : (t5[s3] = [{ id: e7, index: r3 }], t5[i4] = t5);
+          }(r2, e6, n3);
+        };
+        return r2.toString = () => e5, t3.serviceRegistry.set(e5, r2), r2;
+      };
+    }, 2585: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.IDecorationService = t3.IUnicodeService = t3.IOscLinkService = t3.IOptionsService = t3.ILogService = t3.LogLevelEnum = t3.IInstantiationService = t3.ICharsetService = t3.ICoreService = t3.ICoreMouseService = t3.IBufferService = void 0;
+      const s3 = i4(8343);
+      var r2;
+      t3.IBufferService = (0, s3.createDecorator)("BufferService"), t3.ICoreMouseService = (0, s3.createDecorator)("CoreMouseService"), t3.ICoreService = (0, s3.createDecorator)("CoreService"), t3.ICharsetService = (0, s3.createDecorator)("CharsetService"), t3.IInstantiationService = (0, s3.createDecorator)("InstantiationService"), function(e5) {
+        e5[e5.TRACE = 0] = "TRACE", e5[e5.DEBUG = 1] = "DEBUG", e5[e5.INFO = 2] = "INFO", e5[e5.WARN = 3] = "WARN", e5[e5.ERROR = 4] = "ERROR", e5[e5.OFF = 5] = "OFF";
+      }(r2 || (t3.LogLevelEnum = r2 = {})), t3.ILogService = (0, s3.createDecorator)("LogService"), t3.IOptionsService = (0, s3.createDecorator)("OptionsService"), t3.IOscLinkService = (0, s3.createDecorator)("OscLinkService"), t3.IUnicodeService = (0, s3.createDecorator)("UnicodeService"), t3.IDecorationService = (0, s3.createDecorator)("DecorationService");
+    }, 1480: (e4, t3, i4) => {
+      Object.defineProperty(t3, "__esModule", { value: true }), t3.UnicodeService = void 0;
+      const s3 = i4(8460), r2 = i4(225);
+      t3.UnicodeService = class {
+        constructor() {
+          this._providers = /* @__PURE__ */ Object.create(null), this._active = "", this._onChange = new s3.EventEmitter(), this.onChange = this._onChange.event;
+          const e5 = new r2.UnicodeV6();
+          this.register(e5), this._active = e5.version, this._activeProvider = e5;
+        }
+        dispose() {
+          this._onChange.dispose();
+        }
+        get versions() {
+          return Object.keys(this._providers);
+        }
+        get activeVersion() {
+          return this._active;
+        }
+        set activeVersion(e5) {
+          if (!this._providers[e5]) throw new Error(`unknown Unicode version "${e5}"`);
+          this._active = e5, this._activeProvider = this._providers[e5], this._onChange.fire(e5);
+        }
+        register(e5) {
+          this._providers[e5.version] = e5;
+        }
+        wcwidth(e5) {
+          return this._activeProvider.wcwidth(e5);
+        }
+        getStringCellWidth(e5) {
+          let t4 = 0;
+          const i5 = e5.length;
+          for (let s4 = 0; s4 < i5; ++s4) {
+            let r3 = e5.charCodeAt(s4);
+            if (55296 <= r3 && r3 <= 56319) {
+              if (++s4 >= i5) return t4 + this.wcwidth(r3);
+              const n3 = e5.charCodeAt(s4);
+              56320 <= n3 && n3 <= 57343 ? r3 = 1024 * (r3 - 55296) + n3 - 56320 + 65536 : t4 += this.wcwidth(n3);
+            }
+            t4 += this.wcwidth(r3);
+          }
+          return t4;
+        }
+      };
+    } }, t2 = {};
+    function i3(s3) {
+      var r2 = t2[s3];
+      if (void 0 !== r2) return r2.exports;
+      var n3 = t2[s3] = { exports: {} };
+      return e3[s3].call(n3.exports, n3, n3.exports, i3), n3.exports;
+    }
+    var s2 = {};
+    return (() => {
+      var e4 = s2;
+      Object.defineProperty(e4, "__esModule", { value: true }), e4.Terminal = void 0;
+      const t3 = i3(9042), r2 = i3(3236), n3 = i3(844), o2 = i3(5741), a2 = i3(8285), h2 = i3(7975), c2 = i3(7090), l2 = ["cols", "rows"];
+      class d2 extends n3.Disposable {
+        constructor(e5) {
+          super(), this._core = this.register(new r2.Terminal(e5)), this._addonManager = this.register(new o2.AddonManager()), this._publicOptions = Object.assign({}, this._core.options);
+          const t4 = (e6) => this._core.options[e6], i4 = (e6, t5) => {
+            this._checkReadonlyOptions(e6), this._core.options[e6] = t5;
+          };
+          for (const e6 in this._core.options) {
+            const s3 = { get: t4.bind(this, e6), set: i4.bind(this, e6) };
+            Object.defineProperty(this._publicOptions, e6, s3);
+          }
+        }
+        _checkReadonlyOptions(e5) {
+          if (l2.includes(e5)) throw new Error(`Option "${e5}" can only be set in the constructor`);
+        }
+        _checkProposedApi() {
+          if (!this._core.optionsService.rawOptions.allowProposedApi) throw new Error("You must set the allowProposedApi option to true to use proposed API");
+        }
+        get onBell() {
+          return this._core.onBell;
+        }
+        get onBinary() {
+          return this._core.onBinary;
+        }
+        get onCursorMove() {
+          return this._core.onCursorMove;
+        }
+        get onData() {
+          return this._core.onData;
+        }
+        get onKey() {
+          return this._core.onKey;
+        }
+        get onLineFeed() {
+          return this._core.onLineFeed;
+        }
+        get onRender() {
+          return this._core.onRender;
+        }
+        get onResize() {
+          return this._core.onResize;
+        }
+        get onScroll() {
+          return this._core.onScroll;
+        }
+        get onSelectionChange() {
+          return this._core.onSelectionChange;
+        }
+        get onTitleChange() {
+          return this._core.onTitleChange;
+        }
+        get onWriteParsed() {
+          return this._core.onWriteParsed;
+        }
+        get element() {
+          return this._core.element;
+        }
+        get parser() {
+          return this._parser || (this._parser = new h2.ParserApi(this._core)), this._parser;
+        }
+        get unicode() {
+          return this._checkProposedApi(), new c2.UnicodeApi(this._core);
+        }
+        get textarea() {
+          return this._core.textarea;
+        }
+        get rows() {
+          return this._core.rows;
+        }
+        get cols() {
+          return this._core.cols;
+        }
+        get buffer() {
+          return this._buffer || (this._buffer = this.register(new a2.BufferNamespaceApi(this._core))), this._buffer;
+        }
+        get markers() {
+          return this._checkProposedApi(), this._core.markers;
+        }
+        get modes() {
+          const e5 = this._core.coreService.decPrivateModes;
+          let t4 = "none";
+          switch (this._core.coreMouseService.activeProtocol) {
+            case "X10":
+              t4 = "x10";
+              break;
+            case "VT200":
+              t4 = "vt200";
+              break;
+            case "DRAG":
+              t4 = "drag";
+              break;
+            case "ANY":
+              t4 = "any";
+          }
+          return { applicationCursorKeysMode: e5.applicationCursorKeys, applicationKeypadMode: e5.applicationKeypad, bracketedPasteMode: e5.bracketedPasteMode, insertMode: this._core.coreService.modes.insertMode, mouseTrackingMode: t4, originMode: e5.origin, reverseWraparoundMode: e5.reverseWraparound, sendFocusMode: e5.sendFocus, wraparoundMode: e5.wraparound };
+        }
+        get options() {
+          return this._publicOptions;
+        }
+        set options(e5) {
+          for (const t4 in e5) this._publicOptions[t4] = e5[t4];
+        }
+        blur() {
+          this._core.blur();
+        }
+        focus() {
+          this._core.focus();
+        }
+        resize(e5, t4) {
+          this._verifyIntegers(e5, t4), this._core.resize(e5, t4);
+        }
+        open(e5) {
+          this._core.open(e5);
+        }
+        attachCustomKeyEventHandler(e5) {
+          this._core.attachCustomKeyEventHandler(e5);
+        }
+        registerLinkProvider(e5) {
+          return this._core.registerLinkProvider(e5);
+        }
+        registerCharacterJoiner(e5) {
+          return this._checkProposedApi(), this._core.registerCharacterJoiner(e5);
+        }
+        deregisterCharacterJoiner(e5) {
+          this._checkProposedApi(), this._core.deregisterCharacterJoiner(e5);
+        }
+        registerMarker(e5 = 0) {
+          return this._verifyIntegers(e5), this._core.registerMarker(e5);
+        }
+        registerDecoration(e5) {
+          var t4, i4, s3;
+          return this._checkProposedApi(), this._verifyPositiveIntegers(null !== (t4 = e5.x) && void 0 !== t4 ? t4 : 0, null !== (i4 = e5.width) && void 0 !== i4 ? i4 : 0, null !== (s3 = e5.height) && void 0 !== s3 ? s3 : 0), this._core.registerDecoration(e5);
+        }
+        hasSelection() {
+          return this._core.hasSelection();
+        }
+        select(e5, t4, i4) {
+          this._verifyIntegers(e5, t4, i4), this._core.select(e5, t4, i4);
+        }
+        getSelection() {
+          return this._core.getSelection();
+        }
+        getSelectionPosition() {
+          return this._core.getSelectionPosition();
+        }
+        clearSelection() {
+          this._core.clearSelection();
+        }
+        selectAll() {
+          this._core.selectAll();
+        }
+        selectLines(e5, t4) {
+          this._verifyIntegers(e5, t4), this._core.selectLines(e5, t4);
+        }
+        dispose() {
+          super.dispose();
+        }
+        scrollLines(e5) {
+          this._verifyIntegers(e5), this._core.scrollLines(e5);
+        }
+        scrollPages(e5) {
+          this._verifyIntegers(e5), this._core.scrollPages(e5);
+        }
+        scrollToTop() {
+          this._core.scrollToTop();
+        }
+        scrollToBottom() {
+          this._core.scrollToBottom();
+        }
+        scrollToLine(e5) {
+          this._verifyIntegers(e5), this._core.scrollToLine(e5);
+        }
+        clear() {
+          this._core.clear();
+        }
+        write(e5, t4) {
+          this._core.write(e5, t4);
+        }
+        writeln(e5, t4) {
+          this._core.write(e5), this._core.write("\r\n", t4);
+        }
+        paste(e5) {
+          this._core.paste(e5);
+        }
+        refresh(e5, t4) {
+          this._verifyIntegers(e5, t4), this._core.refresh(e5, t4);
+        }
+        reset() {
+          this._core.reset();
+        }
+        clearTextureAtlas() {
+          this._core.clearTextureAtlas();
+        }
+        loadAddon(e5) {
+          this._addonManager.loadAddon(this, e5);
+        }
+        static get strings() {
+          return t3;
+        }
+        _verifyIntegers(...e5) {
+          for (const t4 of e5) if (t4 === 1 / 0 || isNaN(t4) || t4 % 1 != 0) throw new Error("This API only accepts integers");
+        }
+        _verifyPositiveIntegers(...e5) {
+          for (const t4 of e5) if (t4 && (t4 === 1 / 0 || isNaN(t4) || t4 % 1 != 0 || t4 < 0)) throw new Error("This API only accepts positive integers");
+        }
+      }
+      e4.Terminal = d2;
+    })(), s2;
+  })());
+})(xterm);
+var xtermExports = xterm.exports;
+/**
+ * Copyright (c) 2014-2024 The xterm.js authors. All rights reserved.
+ * @license MIT
+ *
+ * Copyright (c) 2012-2013, Christopher Jeffrey (MIT License)
+ * @license MIT
+ *
+ * Originally forked from (with the author's permission):
+ *   Fabrice Bellard's javascript vt100 for jslinux:
+ *   http://bellard.org/jslinux/
+ *   Copyright (c) 2011 Fabrice Bellard
+ */
+var h$1 = 2, _ = 1, o = class {
+  activate(e3) {
+    this._terminal = e3;
+  }
+  dispose() {
+  }
+  fit() {
+    let e3 = this.proposeDimensions();
+    if (!e3 || !this._terminal || isNaN(e3.cols) || isNaN(e3.rows)) return;
+    let t2 = this._terminal._core;
+    (this._terminal.rows !== e3.rows || this._terminal.cols !== e3.cols) && (t2._renderService.clear(), this._terminal.resize(e3.cols, e3.rows));
+  }
+  proposeDimensions() {
+    if (!this._terminal || !this._terminal.element || !this._terminal.element.parentElement) return;
+    let t2 = this._terminal._core._renderService.dimensions;
+    if (t2.css.cell.width === 0 || t2.css.cell.height === 0) return;
+    let s2 = this._terminal.options.scrollback === 0 ? 0 : this._terminal.options.overviewRuler?.width || 14, r2 = window.getComputedStyle(this._terminal.element.parentElement), l2 = parseInt(r2.getPropertyValue("height")), a2 = Math.max(0, parseInt(r2.getPropertyValue("width"))), i3 = window.getComputedStyle(this._terminal.element), n3 = { top: parseInt(i3.getPropertyValue("padding-top")), bottom: parseInt(i3.getPropertyValue("padding-bottom")), right: parseInt(i3.getPropertyValue("padding-right")), left: parseInt(i3.getPropertyValue("padding-left")) }, m2 = n3.top + n3.bottom, d2 = n3.right + n3.left, c2 = l2 - m2, p2 = a2 - d2 - s2;
+    return { cols: Math.max(h$1, Math.floor(p2 / t2.css.cell.width)), rows: Math.max(_, Math.floor(c2 / t2.css.cell.height)) };
+  }
+};
+class TerminalManager {
+  constructor(container, shellType) {
+    this.shellType = shellType;
+    this._initTerminal(container);
+    this._bindEvents();
+    this.spawnShell();
+  }
+  _initTerminal(container) {
+    this.term = new xtermExports.Terminal({
+      fontSize: 13,
+      fontFamily: "'Cascadia Code', 'Consolas', 'Courier New', monospace",
+      theme: {
+        background: "#1e1e1e",
+        foreground: "#cccccc",
+        cursor: "#aeafad",
+        selectionBackground: "#264f78",
+        black: "#1e1e1e",
+        red: "#f44747",
+        green: "#6a9955",
+        yellow: "#ce9178",
+        blue: "#569cd6",
+        magenta: "#c586c0",
+        cyan: "#4ec9b0",
+        white: "#d4d4d4",
+        brightBlack: "#808080",
+        brightBlue: "#5af"
+      },
+      cursorBlink: true,
+      allowTransparency: false,
+      scrollback: 5e3
+    });
+    this.fitAddon = new o();
+    this.term.loadAddon(this.fitAddon);
+    this.term.open(container);
+    this.fitAddon.fit();
+    this._resizeObserver = new ResizeObserver(() => this.resize());
+    this._resizeObserver.observe(container);
+  }
+  _bindEvents() {
+    this.term.onData((data) => window.api.terminal.write(data));
+    this._unsubData = window.api.terminal.onData((chunk) => this.term.write(chunk));
+  }
+  async spawnShell() {
+    let cwd2;
+    try {
+      const state = await window.api.state.loadLastFolder();
+      cwd2 = state?.folderPath;
+    } catch (_2) {
+    }
+    await window.api.terminal.create(this.shellType, cwd2);
+    requestAnimationFrame(() => this.resize());
+  }
+  resize() {
+    if (!this.fitAddon || !this.term) return;
+    this.fitAddon.fit();
+    const { cols, rows } = this.term;
+    if (cols > 0 && rows > 0) window.api.terminal.resize(cols, rows);
+  }
+  changeShell(shellType) {
+    this.shellType = shellType;
+    this.term.clear();
+    this.spawnShell();
+  }
+  clear() {
+    this.term.clear();
+  }
+  kill() {
+    window.api.terminal.kill();
+    this.term.writeln("\r\n\x1B[90m[Process exited]\x1B[0m");
+  }
+  dispose() {
+    this._unsubData?.();
+    this._resizeObserver?.disconnect();
+    this.term.dispose();
+    window.api.terminal.kill();
+  }
+}
+class PanelElement extends i$1 {
+  static styles = [r$2(xtermStyles), r$2(panelStyles)];
+  static properties = {
+    shellType: { type: String },
+    visible: { type: Boolean }
+  };
+  constructor() {
+    super();
+    this.shellType = "powershell";
+    this.visible = true;
+  }
+  render() {
+    return panelTemplate(this);
+  }
+  firstUpdated() {
+    const area = this.shadowRoot.getElementById("terminal-area");
+    if (area) {
+      this._termManager = new TerminalManager(area, this.shellType);
+    }
+  }
+  handleShellChange(shellType) {
+    this.shellType = shellType;
+    this._termManager?.changeShell(shellType);
+  }
+  handleNew() {
+    this._termManager?.changeShell(this.shellType);
+  }
+  handleClear() {
+    this._termManager?.clear();
+  }
+  handleKill() {
+    this._termManager?.kill();
+  }
+  handleClose() {
+    this.visible = false;
+    this.style.display = "none";
+  }
+  disconnectedCallback() {
+    super.disconnectedCallback();
+    this._termManager?.dispose();
+  }
+}
+customElements.define("workbench-panel", PanelElement);
+function statusbarTemplate(host) {
+  return b`
+    <span>${host.branch}</span>
+    <span>${host.encoding}</span>
+    <span>${host.language}</span>
+    <span class="statusbar-right">${host.cursorPosition}</span>
+  `;
+}
+const styles$6 = ":host {\r\n  display: flex;\r\n  align-items: center;\r\n  height: 22px;\r\n  background: #007acc;\r\n  color: #ffffff;\r\n  font-size: 12px;\r\n  padding: 0 8px;\r\n  gap: 12px;\r\n}\r\n\r\n.statusbar-right {\r\n  margin-left: auto;\r\n}";
+class StatusbarElement extends i$1 {
+  static styles = r$2(styles$6);
+  static properties = {
+    branch: { type: String },
+    encoding: { type: String },
+    language: { type: String },
+    cursorPosition: { type: String }
+  };
+  constructor() {
+    super();
+    this.branch = "main";
+    this.encoding = "UTF-8";
+    this.language = "JavaScript";
+    this.cursorPosition = "Ln 1, Col 1";
+  }
+  render() {
+    return statusbarTemplate(this);
+  }
+}
+customElements.define("workbench-statusbar", StatusbarElement);
+const filesIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-files"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <path d="M20 7h-3a2 2 0 0 1-2-2V2" />\n  <path d="M9 18a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h7l4 4v10a2 2 0 0 1-2 2Z" />\n  <path d="M3 7.6v12.8A1.6 1.6 0 0 0 4.6 22h9.8" />\n</svg>\n';
 const newFileIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-file-plus"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />\n  <path d="M14 2v4a2 2 0 0 0 2 2h4" />\n  <path d="M9 15h6" />\n  <path d="M12 18v-6" />\n</svg>\n';
 const newFolderIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-folder-plus"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <path d="M12 10v6" />\n  <path d="M9 13h6" />\n  <path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z" />\n</svg>\n';
 const collapseIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-chevrons-up-down"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <path d="m7 15 5 5 5-5" />\n  <path d="m7 9 5-5 5 5" />\n</svg>\n';
@@ -754,7 +7372,7 @@ function sidebarTemplate(host) {
   ` : b``;
   let createInput = b``;
   if (host.creatingType) {
-    const icon = host.creatingType === "folder" ? b`<span class="tree-icon" style="color:#dcb67a">${o(folderIcon)}</span>` : b`<span class="tree-icon" style="color:#cccccc">${o(fileIcon)}</span>`;
+    const icon = host.creatingType === "folder" ? b`<span class="tree-icon" style="color:#dcb67a">${o$2(folderIcon)}</span>` : b`<span class="tree-icon" style="color:#cccccc">${o$2(fileIcon)}</span>`;
     createInput = b`
       <div class="tree-row" style="padding-left: 16px">
         ${icon}
@@ -777,27 +7395,54 @@ function sidebarTemplate(host) {
     <div class="sidebar-header">
       <span class="sidebar-header-title">${host.folderName}</span>
       <div class="sidebar-header-actions">
-        <button class="icon-btn" title="New File"
-          @click=${() => host.handleNewFile()}>${o(newFileIcon)}</button>
-        <button class="icon-btn" title="New Folder"
-          @click=${() => host.handleNewFolder()}>${o(newFolderIcon)}</button>
-        <button class="icon-btn" title="Refresh Explorer"
-          @click=${() => host.handleReload()}>${o(refreshIcon)}</button>
-        <button class="icon-btn" title="Collapse All"
-          @click=${() => host.handleCollapseAll()}>${o(collapseIcon)}</button>
+        <button
+          class="icon-btn"
+          title="New File"
+          @click=${() => host.handleNewFile()}
+        >
+          ${o$2(newFileIcon)}
+        </button>
+        <button
+          class="icon-btn"
+          title="New Folder"
+          @click=${() => host.handleNewFolder()}
+        >
+          ${o$2(newFolderIcon)}
+        </button>
+        <button
+          class="icon-btn"
+          title="Refresh Explorer"
+          @click=${() => host.handleReload()}
+        >
+          ${o$2(refreshIcon)}
+        </button>
+        <button
+          class="icon-btn"
+          title="Collapse All"
+          @click=${() => host.handleCollapseAll()}
+        >
+          ${o$2(collapseIcon)}
+        </button>
       </div>
     </div>
-    <div class="sidebar-content" @contextmenu=${(e3) => host.handleContextMenu(e3)}>
+    <div
+      class="sidebar-content"
+      @contextmenu=${(e3) => host.handleContextMenu(e3)}
+      @dragover=${(e3) => host.handleRootDragOver(e3)}
+      @drop=${(e3) => host.handleRootDrop(e3)}
+    >
       ${createInput}
-      ${host.items.map((item) => b`
-        <ed-tree-item
-          name=${item.name}
-          path=${`${host.folderPath}/${item.name}`}
-          ?isDirectory=${item.isDirectory}
-          depth=${0}
-          .selectedPath=${host.selectedPath}
-        ></ed-tree-item>
-      `)}
+      ${host.items.map(
+    (item) => b`
+          <ed-tree-item
+            name=${item.name}
+            path=${`${host.folderPath}/${item.name}`}
+            ?isDirectory=${item.isDirectory}
+            depth=${0}
+            .selectedPath=${host.selectedPath}
+          ></ed-tree-item>
+        `
+  )}
     </div>
     ${menu}
   `;
@@ -844,7 +7489,48 @@ async function renamePath(oldPath, newName, isDirectory) {
 async function deletePath(targetPath) {
   return window.api.fs.delete(targetPath);
 }
-const styles$6 = ":host {\n  display: block;\n  width: 240px;\n  background: #252526;\n  color: #cccccc;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.sidebar-header {\n  display: flex;\n  align-items: center;\n  padding: 0 8px 0 12px;\n  height: 35px;\n  min-height: 35px;\n  text-transform: uppercase;\n  font-size: 11px;\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  color: #bbbbbb;\n}\n\n.sidebar-header-title {\n  flex: 1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.sidebar-header-actions {\n  display: flex;\n  gap: 2px;\n  opacity: 0;\n  transition: opacity 0.1s;\n}\n\n.sidebar-header:hover .sidebar-header-actions {\n  opacity: 1;\n}\n\n.icon-btn {\n  background: none;\n  border: none;\n  color: #cccccc;\n  cursor: pointer;\n  padding: 3px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 3px;\n}\n\n.icon-btn:hover {\n  background: rgba(255, 255, 255, 0.1);\n}\n\n.icon-btn svg {\n  width: 16px;\n  height: 16px;\n}\n\n.sidebar-content {\n  flex: 1;\n  overflow-y: auto;\n  min-height: 0;\n}\n\n.sidebar-content::-webkit-scrollbar {\n  width: 6px;\n}\n\n.sidebar-content::-webkit-scrollbar-thumb {\n  background: rgba(255, 255, 255, 0.15);\n  border-radius: 3px;\n}\n\n.sidebar-empty {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  padding: 40px 20px;\n  gap: 12px;\n  color: #888;\n  font-size: 13px;\n  text-align: center;\n}\n\n.sidebar-open-folder-btn {\n  background: #0e639c;\n  color: #ffffff;\n  border: none;\n  padding: 6px 16px;\n  font-size: 13px;\n  cursor: pointer;\n  border-radius: 2px;\n}\n\n.sidebar-open-folder-btn:hover {\n  background: #1177bb;\n}\n\n/* Style cho inline creation input ở root */\n.tree-row {\n  display: flex;\n  align-items: center;\n  height: 22px;\n  padding-right: 12px;\n  font-size: 13px;\n  color: #cccccc;\n}\n\n.tree-icon {\n  width: 16px;\n  min-width: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-right: 4px;\n}\n\n.tree-icon svg {\n  width: 14px;\n  height: 14px;\n}\n\n.rename-input {\n  flex: 1;\n  background: #3c3c3c;\n  border: 1px solid #007fd4;\n  color: #cccccc;\n  font-size: 13px;\n  font-family: inherit;\n  padding: 0 4px;\n  height: 18px;\n  outline: none;\n  min-width: 0;\n}";
+const normalize$3 = (p2) => p2 ? p2.replace(/\\/g, "/").toLowerCase() : "";
+async function movePath(sourcePath, targetFolderPath, isDirectory) {
+  const srcNorm = normalize$3(sourcePath);
+  const targetNorm = normalize$3(targetFolderPath);
+  const parentNorm = normalize$3(getParentPath(sourcePath));
+  if (targetNorm === parentNorm) return null;
+  if (targetNorm === srcNorm || targetNorm.startsWith(srcNorm + "/"))
+    return null;
+  const name = sourcePath.split(/[\\/]/).pop();
+  const uniqueName = await resolveUniqueName(
+    targetFolderPath,
+    name,
+    isDirectory
+  );
+  return window.api.fs.rename(sourcePath, `${targetFolderPath}/${uniqueName}`);
+}
+async function copyPath(sourcePath, targetFolderPath, isDirectory) {
+  const name = sourcePath.split(/[\\/]/).pop();
+  const uniqueName = await resolveUniqueName(
+    targetFolderPath,
+    name,
+    isDirectory
+  );
+  return window.api.fs.copy(sourcePath, `${targetFolderPath}/${uniqueName}`);
+}
+let clipboard = null;
+function setClipboard(path, isDirectory, mode) {
+  clipboard = { path, isDirectory, mode };
+  window.dispatchEvent(
+    new CustomEvent("ed:clipboard-changed", { detail: clipboard })
+  );
+}
+function getClipboard() {
+  return clipboard;
+}
+function clearClipboard() {
+  clipboard = null;
+  window.dispatchEvent(
+    new CustomEvent("ed:clipboard-changed", { detail: null })
+  );
+}
+const styles$5 = ":host {\n  display: block;\n  width: 240px;\n  background: #252526;\n  color: #cccccc;\n  display: flex;\n  flex-direction: column;\n  overflow: hidden;\n}\n\n.sidebar-header {\n  display: flex;\n  align-items: center;\n  padding: 0 8px 0 12px;\n  height: 35px;\n  min-height: 35px;\n  text-transform: uppercase;\n  font-size: 11px;\n  font-weight: 600;\n  letter-spacing: 0.08em;\n  color: #bbbbbb;\n}\n\n.sidebar-header-title {\n  flex: 1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.sidebar-header-actions {\n  display: flex;\n  gap: 2px;\n  opacity: 0;\n  transition: opacity 0.1s;\n}\n\n.sidebar-header:hover .sidebar-header-actions {\n  opacity: 1;\n}\n\n.icon-btn {\n  background: none;\n  border: none;\n  color: #cccccc;\n  cursor: pointer;\n  padding: 3px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  border-radius: 3px;\n}\n\n.icon-btn:hover {\n  background: rgba(255, 255, 255, 0.1);\n}\n\n.icon-btn svg {\n  width: 16px;\n  height: 16px;\n}\n\n.sidebar-content {\n  flex: 1;\n  overflow-y: auto;\n  min-height: 0;\n}\n\n.sidebar-content::-webkit-scrollbar {\n  width: 6px;\n}\n\n.sidebar-content::-webkit-scrollbar-thumb {\n  background: rgba(255, 255, 255, 0.15);\n  border-radius: 3px;\n}\n\n.sidebar-empty {\n  display: flex;\n  flex-direction: column;\n  align-items: center;\n  justify-content: center;\n  padding: 40px 20px;\n  gap: 12px;\n  color: #888;\n  font-size: 13px;\n  text-align: center;\n}\n\n.sidebar-open-folder-btn {\n  background: #0e639c;\n  color: #ffffff;\n  border: none;\n  padding: 6px 16px;\n  font-size: 13px;\n  cursor: pointer;\n  border-radius: 2px;\n}\n\n.sidebar-open-folder-btn:hover {\n  background: #1177bb;\n}\n\n/* Style cho inline creation input ở root */\n.tree-row {\n  display: flex;\n  align-items: center;\n  height: 22px;\n  padding-right: 12px;\n  font-size: 13px;\n  color: #cccccc;\n}\n\n.tree-icon {\n  width: 16px;\n  min-width: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-right: 4px;\n}\n\n.tree-icon svg {\n  width: 14px;\n  height: 14px;\n}\n\n.rename-input {\n  flex: 1;\n  background: #3c3c3c;\n  border: 1px solid #007fd4;\n  color: #cccccc;\n  font-size: 13px;\n  font-family: inherit;\n  padding: 0 4px;\n  height: 18px;\n  outline: none;\n  min-width: 0;\n}";
 const folderOpenIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-folder-open"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />\n</svg>\n';
 function getFileIcon(name) {
   const ext = name.split(".").pop()?.toLowerCase();
@@ -859,13 +7545,13 @@ function getFileIcon(name) {
     svg: "#ff9900"
   };
   const color = colors[ext] || "#cccccc";
-  return b`<span style="color:${color}">${o(fileIcon)}</span>`;
+  return b`<span style="color:${color}">${o$2(fileIcon)}</span>`;
 }
 function treeItemTemplate(host) {
   const indent = host.depth * 12;
   const chevron = host.isDirectory ? b`<span class="tree-chevron ${host.expanded ? "open" : ""}">&#9658;</span>` : b`<span class="tree-chevron"></span>`;
   const icon = host.isDirectory ? b`<span class="tree-icon" style="color:#dcb67a">
-        ${o(host.expanded ? folderOpenIcon : folderIcon)}
+        ${o$2(host.expanded ? folderOpenIcon : folderIcon)}
       </span>` : b`<span class="tree-icon">${getFileIcon(host.name)}</span>`;
   const nameBlock = host.renaming ? b`<input
         class="rename-input"
@@ -884,7 +7570,7 @@ function treeItemTemplate(host) {
     let createInput = b``;
     if (host.creatingType) {
       const cIndent = (host.depth + 1) * 12;
-      const cIcon = host.creatingType === "folder" ? b`<span class="tree-icon" style="color:#dcb67a">${o(folderIcon)}</span>` : b`<span class="tree-icon" style="color:#cccccc">${o(fileIcon)}</span>`;
+      const cIcon = host.creatingType === "folder" ? b`<span class="tree-icon" style="color:#dcb67a">${o$2(folderIcon)}</span>` : b`<span class="tree-icon" style="color:#cccccc">${o$2(fileIcon)}</span>`;
       createInput = b`
         <div class="tree-row" style="padding-left:${cIndent}px">
           <span class="tree-chevron"></span>
@@ -918,8 +7604,13 @@ function treeItemTemplate(host) {
   }
   return b`
     <div
-      class="tree-row ${host.path === host.selectedPath ? "selected" : ""}"
+      class="tree-row ${host.path === host.selectedPath ? "selected" : ""} ${host.dragOver ? "drag-over" : ""}" ${host.isCut ? "cut" : ""}"
       style="padding-left:${indent}px"
+      draggable="true"
+      @dragstart=${(e3) => host.handleDragStart(e3)}
+      @dragover=${(e3) => host.handleDragOver(e3)}
+      @dragleave=${() => host.handleDragLeave()}
+      @drop=${(e3) => host.handleDrop(e3)}
       @click=${() => host.handleToggle()}
       @contextmenu=${(e3) => host.handleContextMenu(e3)}
     >
@@ -928,10 +7619,10 @@ function treeItemTemplate(host) {
     ${children}
   `;
 }
-const styles$5 = ":host {\n  display: block;\n}\n\n.tree-row {\n  display: flex;\n  align-items: center;\n  height: 22px;\n  padding-right: 12px;\n  font-size: 13px;\n  cursor: pointer;\n  user-select: none;\n  white-space: nowrap;\n  color: #cccccc;\n  position: relative;\n}\n\n.tree-row:hover {\n  background: rgba(255, 255, 255, 0.05);\n}\n\n.tree-row.selected {\n  background: #37373d;\n  color: #ffffff;\n}\n\n.tree-chevron {\n  width: 16px;\n  min-width: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #858585;\n  font-size: 10px;\n  transition: transform 0.1s ease;\n}\n\n.tree-chevron.open {\n  transform: rotate(90deg);\n}\n\n.tree-icon {\n  width: 16px;\n  min-width: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-right: 4px;\n}\n\n.tree-icon svg {\n  width: 14px;\n  height: 14px;\n}\n\n.tree-name {\n  flex: 1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.rename-input {\n  flex: 1;\n  background: #3c3c3c;\n  border: 1px solid #007fd4;\n  color: #cccccc;\n  font-size: 13px;\n  font-family: inherit;\n  padding: 0 4px;\n  height: 18px;\n  outline: none;\n  min-width: 0;\n}";
+const styles$4 = ":host {\n  display: block;\n}\n\n.tree-row {\n  display: flex;\n  align-items: center;\n  height: 22px;\n  padding-right: 12px;\n  font-size: 13px;\n  cursor: pointer;\n  user-select: none;\n  white-space: nowrap;\n  color: #cccccc;\n  position: relative;\n}\n\n.tree-row:hover {\n  background: rgba(255, 255, 255, 0.05);\n}\n\n.tree-row.selected {\n  background: #37373d;\n  color: #ffffff;\n}\n\n.tree-chevron {\n  width: 16px;\n  min-width: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  color: #858585;\n  font-size: 10px;\n  transition: transform 0.1s ease;\n}\n\n.tree-chevron.open {\n  transform: rotate(90deg);\n}\n\n.tree-icon {\n  width: 16px;\n  min-width: 16px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  margin-right: 4px;\n}\n\n.tree-icon svg {\n  width: 14px;\n  height: 14px;\n}\n\n.tree-name {\n  flex: 1;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.rename-input {\n  flex: 1;\n  background: #3c3c3c;\n  border: 1px solid #007fd4;\n  color: #cccccc;\n  font-size: 13px;\n  font-family: inherit;\n  padding: 0 4px;\n  height: 18px;\n  outline: none;\n  min-width: 0;\n}\n\n.tree-row.drag-over {\n  outline: 1px solid #007acc;\n  background: rgba(0, 122, 204, 0.15);\n}\n\n.tree-row.cut {\n  opacity: 0.5;\n}";
 const normalize$2 = (p2) => p2 ? p2.replace(/\\/g, "/").toLowerCase() : "";
 class TreeItemElement extends i$1 {
-  static styles = r$2(styles$5);
+  static styles = r$2(styles$4);
   static properties = {
     name: { type: String },
     path: { type: String },
@@ -941,7 +7632,9 @@ class TreeItemElement extends i$1 {
     children: { state: true },
     renaming: { state: true },
     creatingType: { state: true },
-    selectedPath: { type: String }
+    selectedPath: { type: String },
+    dragOver: { state: true },
+    isCut: { state: true }
   };
   constructor() {
     super();
@@ -951,19 +7644,33 @@ class TreeItemElement extends i$1 {
     this.renaming = false;
     this.creatingType = null;
     this.selectedPath = "";
+    this.dragOver = false;
+    this.isCut = false;
   }
   connectedCallback() {
     super.connectedCallback();
     this.addEventListener("ed:tree-refresh", this.handleTreeRefresh);
     window.addEventListener("ed:start-create", this.handleExternalStartCreate);
+    window.addEventListener(
+      "ed:clipboard-changed",
+      this.handleClipboardChanged
+    );
   }
   disconnectedCallback() {
     this.removeEventListener("ed:tree-refresh", this.handleTreeRefresh);
-    window.removeEventListener("ed:start-create", this.handleExternalStartCreate);
+    window.removeEventListener(
+      "ed:start-create",
+      this.handleExternalStartCreate
+    );
+    window.removeEventListener(
+      "ed:clipboard-changed",
+      this.handleClipboardChanged
+    );
     super.disconnectedCallback();
   }
   handleTreeRefresh = (e3) => {
-    if (normalize$2(e3.detail.parentPath) === normalize$2(this.path)) this.loadChildren();
+    if (normalize$2(e3.detail.parentPath) === normalize$2(this.path))
+      this.loadChildren();
   };
   handleExternalStartCreate = (e3) => {
     if (e3.detail.targetPath === this.path) this.startCreate(e3.detail.type);
@@ -972,15 +7679,19 @@ class TreeItemElement extends i$1 {
     this.children = await window.api.fs.readDirectory(this.path);
   }
   async handleToggle() {
-    this.dispatchEvent(new CustomEvent("ed:select", {
-      bubbles: true,
-      composed: true,
-      detail: { path: this.path, isDirectory: this.isDirectory }
-    }));
+    this.dispatchEvent(
+      new CustomEvent("ed:select", {
+        bubbles: true,
+        composed: true,
+        detail: { path: this.path, isDirectory: this.isDirectory }
+      })
+    );
     if (!this.isDirectory) {
-      window.dispatchEvent(new CustomEvent("workbench:open-file", {
-        detail: { filePath: this.path, fileName: this.name }
-      }));
+      window.dispatchEvent(
+        new CustomEvent("workbench:open-file", {
+          detail: { filePath: this.path, fileName: this.name }
+        })
+      );
       return;
     }
     this.expanded = !this.expanded;
@@ -989,31 +7700,46 @@ class TreeItemElement extends i$1 {
   handleContextMenu(e3) {
     e3.preventDefault();
     e3.stopPropagation();
-    this.dispatchEvent(new CustomEvent("ed:select", {
-      bubbles: true,
-      composed: true,
-      detail: { path: this.path, isDirectory: this.isDirectory }
-    }));
+    this.dispatchEvent(
+      new CustomEvent("ed:select", {
+        bubbles: true,
+        composed: true,
+        detail: { path: this.path, isDirectory: this.isDirectory }
+      })
+    );
     const items = [];
     if (this.isDirectory) {
       items.push({ label: "New File", onClick: () => this.handleNewFile() });
-      items.push({ label: "New Folder", onClick: () => this.handleNewFolder() });
+      items.push({
+        label: "New Folder",
+        onClick: () => this.handleNewFolder()
+      });
       items.push({ type: "separator" });
     }
+    items.push({ label: "Copy", onClick: () => this.handleCopy() });
+    items.push({ label: "Cut", onClick: () => this.handleCut() });
+    if (this.isDirectory && getClipboard()) {
+      items.push({ label: "Paste", onClick: () => this.handlePaste() });
+    }
+    items.push({ type: "separator" });
     items.push({ label: "Rename", onClick: () => this.handleRenameStart() });
     items.push({ label: "Delete", onClick: () => this.handleDelete() });
-    this.dispatchEvent(new CustomEvent("ed:contextmenu", {
-      bubbles: true,
-      composed: true,
-      detail: { x: e3.clientX, y: e3.clientY, items }
-    }));
+    this.dispatchEvent(
+      new CustomEvent("ed:contextmenu", {
+        bubbles: true,
+        composed: true,
+        detail: { x: e3.clientX, y: e3.clientY, items }
+      })
+    );
   }
   notifyParentRefresh() {
-    this.dispatchEvent(new CustomEvent("ed:tree-refresh", {
-      detail: { parentPath: getParentPath(this.path) },
-      bubbles: true,
-      composed: true
-    }));
+    this.dispatchEvent(
+      new CustomEvent("ed:tree-refresh", {
+        detail: { parentPath: getParentPath(this.path) },
+        bubbles: true,
+        composed: true
+      })
+    );
   }
   async handleRenameStart() {
     this.renaming = true;
@@ -1065,6 +7791,76 @@ class TreeItemElement extends i$1 {
       this.notifyParentRefresh();
     }
   }
+  handleDragStart(e3) {
+    e3.stopPropagation();
+    e3.dataTransfer.setData(
+      "application/json",
+      JSON.stringify({
+        path: this.path,
+        isDirectory: this.isDirectory,
+        name: this.name
+      })
+    );
+    e3.dataTransfer.effectAllowed = "move";
+  }
+  handleDragOver(e3) {
+    if (!this.isDirectory) return;
+    e3.preventDefault();
+    e3.stopPropagation();
+    this.dragOver = true;
+  }
+  handleClipboardChanged = (e3) => {
+    this.isCut = e3.detail?.mode === "cut" && e3.detail.path === this.path;
+  };
+  handleCopy() {
+    setClipboard(this.path, this.isDirectory, "copy");
+  }
+  handleCut() {
+    setClipboard(this.path, this.isDirectory, "cut");
+  }
+  async handlePaste() {
+    const clip = getClipboard();
+    if (!clip) return;
+    if (clip.mode === "copy")
+      await copyPath(clip.path, this.path, clip.isDirectory);
+    else {
+      await movePath(clip.path, this.path, clip.isDirectory);
+      clearClipboard();
+    }
+    await this.loadChildren();
+    this.dispatchEvent(
+      new CustomEvent("ed:tree-refresh", {
+        detail: { parentPath: getParentPath(clip.path) },
+        bubbles: true,
+        composed: true
+      })
+    );
+  }
+  handleDragLeave() {
+    this.dragOver = false;
+  }
+  async handleDrop(e3) {
+    if (!this.isDirectory) return;
+    e3.preventDefault();
+    e3.stopPropagation();
+    this.dragOver = false;
+    const data = JSON.parse(e3.dataTransfer.getData("application/json"));
+    await movePath(data.path, this.path, data.isDirectory);
+    this.dispatchEvent(
+      new CustomEvent("ed:tree-refresh", {
+        detail: { parentPath: this.path },
+        bubbles: true,
+        composed: true
+      })
+    );
+    this.dispatchEvent(
+      new CustomEvent("ed:tree-refresh", {
+        detail: { parentPath: getParentPath(data.path) },
+        bubbles: true,
+        composed: true
+      })
+    );
+  }
   render() {
     return treeItemTemplate(this);
   }
@@ -1082,9 +7878,9 @@ function contextMenuTemplate(host) {
     </div>
   `;
 }
-const styles$4 = ".context-menu {\n  position: fixed;\n  background: #1f1f1f;\n  border: 1px solid #454545;\n  min-width: 180px;\n  z-index: 9999;\n  display: flex;\n  flex-direction: column;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);\n  padding: 4px 0;\n  border-radius: 4px;\n  font-size: 13px;\n}\n\n.menu-item {\n  background: none;\n  border: none;\n  color: #cccccc;\n  text-align: left;\n  padding: 4px 20px;\n  cursor: pointer;\n  display: block;\n  width: 100%;\n  font-size: 13px;\n  font-family: inherit;\n  white-space: nowrap;\n}\n\n.menu-item:hover {\n  background: #04395e;\n  color: #ffffff;\n}\n\n.menu-separator {\n  height: 1px;\n  background: #454545;\n  margin: 4px 0;\n}";
+const styles$3 = ".context-menu {\n  position: fixed;\n  background: #1f1f1f;\n  border: 1px solid #454545;\n  min-width: 180px;\n  z-index: 9999;\n  display: flex;\n  flex-direction: column;\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);\n  padding: 4px 0;\n  border-radius: 4px;\n  font-size: 13px;\n}\n\n.menu-item {\n  background: none;\n  border: none;\n  color: #cccccc;\n  text-align: left;\n  padding: 4px 20px;\n  cursor: pointer;\n  display: block;\n  width: 100%;\n  font-size: 13px;\n  font-family: inherit;\n  white-space: nowrap;\n}\n\n.menu-item:hover {\n  background: #04395e;\n  color: #ffffff;\n}\n\n.menu-separator {\n  height: 1px;\n  background: #454545;\n  margin: 4px 0;\n}";
 class ContextMenuElement extends i$1 {
-  static styles = r$2(styles$4);
+  static styles = r$2(styles$3);
   static properties = {
     items: { type: Array },
     x: { type: Number },
@@ -1120,7 +7916,7 @@ class ContextMenuElement extends i$1 {
 customElements.define("ed-context-menu", ContextMenuElement);
 const normalize$1 = (p2) => p2 ? p2.replace(/\\/g, "/").toLowerCase() : "";
 class ModuleSidebarElement extends i$1 {
-  static styles = r$2(styles$6);
+  static styles = r$2(styles$5);
   static properties = {
     folderPath: { type: String },
     folderName: { type: String },
@@ -1158,7 +7954,10 @@ class ModuleSidebarElement extends i$1 {
     this.restoreLastFolder();
   }
   disconnectedCallback() {
-    window.removeEventListener("workbench:folder-opened", this.handleFolderOpened);
+    window.removeEventListener(
+      "workbench:folder-opened",
+      this.handleFolderOpened
+    );
     this.removeEventListener("ed:tree-refresh", this.handleTreeRefresh);
     this.removeEventListener("ed:contextmenu", this.handleTreeContextMenu);
     super.disconnectedCallback();
@@ -1195,6 +7994,13 @@ class ModuleSidebarElement extends i$1 {
       { label: "New File", onClick: () => this.handleNewFile() },
       { label: "New Folder", onClick: () => this.handleNewFolder() }
     ];
+    if (getClipboard()) {
+      this.menuItems.push({ type: "separator" });
+      this.menuItems.push({
+        label: "Paste",
+        onClick: () => this.handlePasteToRoot()
+      });
+    }
     this.menuOpen = true;
   }
   closeMenu() {
@@ -1211,7 +8017,11 @@ class ModuleSidebarElement extends i$1 {
     if (this.selectedPath) {
       const target = this.selectedIsDirectory ? this.selectedPath : getParentPath(this.selectedPath);
       if (normalize$1(target) !== normalize$1(this.folderPath)) {
-        window.dispatchEvent(new CustomEvent("ed:start-create", { detail: { targetPath: target, type } }));
+        window.dispatchEvent(
+          new CustomEvent("ed:start-create", {
+            detail: { targetPath: target, type }
+          })
+        );
         return;
       }
     }
@@ -1242,37 +8052,37 @@ class ModuleSidebarElement extends i$1 {
       el.children = null;
     });
   }
+  async handleRootDrop(e3) {
+    e3.preventDefault();
+    const data = JSON.parse(e3.dataTransfer.getData("application/json"));
+    await movePath(data.path, this.folderPath, data.isDirectory);
+    this.items = await window.api.fs.readDirectory(this.folderPath);
+  }
+  handleRootDragOver(e3) {
+    e3.preventDefault();
+  }
+  async handlePasteToRoot() {
+    const clip = getClipboard();
+    if (!clip) return;
+    if (clip.mode === "copy")
+      await copyPath(clip.path, this.folderPath, clip.isDirectory);
+    else {
+      await movePath(clip.path, this.folderPath, clip.isDirectory);
+      clearClipboard();
+    }
+    this.items = await window.api.fs.readDirectory(this.folderPath);
+  }
   render() {
     return sidebarTemplate(this);
   }
 }
 customElements.define("module-sidebar", ModuleSidebarElement);
-class SidebarElement extends i$1 {
-  static styles = r$2(styles$7);
-  render() {
-    return sidebarTemplate$1();
-  }
-}
-customElements.define("workbench-sidebar", SidebarElement);
-function editorGroupTemplate(host) {
-  if (!host.hasFile) {
-    return b`<div class="editor-empty">Chưa có file nào được mở</div>`;
-  }
-  return b`
-    <div class="editor-tab-bar">
-      <div class="editor-tab active">
-        <span class="tab-label">${host.activeFileName}</span>
-        <button class="tab-close-btn" @click=${() => host.handleCloseFile()}>&times;</button>
-      </div>
-    </div>
-    <div class="editor-container">
-      <module-editor .path=${host.activeFilePath}></module-editor>
-    </div>
-  `;
-}
-const styles$3 = ":host {\n  display: flex;\n  flex-direction: column;\n  flex: 1;\n  background: #1e1e1e;\n  min-width: 0;\n  min-height: 0;\n}\n\n.editor-container {\n  flex: 1;\n  min-height: 0;\n  display: flex;\n}\n\nmodule-editor {\n  display: block;\n  width: 100%;\n  height: 100%;\n}\n\n.editor-empty {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  width: 100%;\n  height: 100%;\n  color: #6b6b6b;\n  font-size: 13px;\n}\n\n/* Tab Bar */\n.editor-tab-bar {\n  display: flex;\n  height: 35px;\n  background: #252526;\n  border-bottom: 1px solid #1e1e1e;\n  overflow-x: auto;\n}\n\n.editor-tab {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 0 12px;\n  background: #2d2d2d;\n  color: #969696;\n  font-size: 13px;\n  border-right: 1px solid #252526;\n  cursor: pointer;\n  user-select: none;\n}\n\n.editor-tab.active {\n  background: #1e1e1e;\n  color: #ffffff;\n}\n\n.tab-close-btn {\n  background: none;\n  border: none;\n  color: #969696;\n  font-size: 14px;\n  cursor: pointer;\n  padding: 0 4px;\n  border-radius: 3px;\n  line-height: 1;\n}\n\n.tab-close-btn:hover {\n  background: rgba(255, 255, 255, 0.1);\n  color: #ffffff;\n}";
+const styles$2 = "\r\n#editor-mount {\r\n  position: relative;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  height: 100%;\r\n}";
 function editorTemplate() {
-  return b`<div id="editor-mount"></div>`;
+  return b`
+    <style>${styles$2}</style>
+    <div id="editor-mount"></div>
+  `;
 }
 function tail(array2, n3 = 0) {
   return array2[array2.length - (1 + n3)];
@@ -12348,20 +19158,20 @@ class StandardKeyboardEvent {
   }
 }
 const sameOriginWindowChainCache = /* @__PURE__ */ new WeakMap();
-function getParentWindowIfSameOrigin(w) {
-  if (!w.parent || w.parent === w) {
+function getParentWindowIfSameOrigin(w2) {
+  if (!w2.parent || w2.parent === w2) {
     return null;
   }
   try {
-    const location = w.location;
-    const parentLocation = w.parent.location;
+    const location = w2.location;
+    const parentLocation = w2.parent.location;
     if (location.origin !== "null" && parentLocation.origin !== "null" && location.origin !== parentLocation.origin) {
       return null;
     }
   } catch (e3) {
     return null;
   }
-  return w.parent;
+  return w2.parent;
 }
 class IframeUtils {
   /**
@@ -12373,23 +19183,23 @@ class IframeUtils {
     if (!windowChainCache) {
       windowChainCache = [];
       sameOriginWindowChainCache.set(targetWindow, windowChainCache);
-      let w = targetWindow;
+      let w2 = targetWindow;
       let parent;
       do {
-        parent = getParentWindowIfSameOrigin(w);
+        parent = getParentWindowIfSameOrigin(w2);
         if (parent) {
           windowChainCache.push({
-            window: new WeakRef(w),
-            iframeElement: w.frameElement || null
+            window: new WeakRef(w2),
+            iframeElement: w2.frameElement || null
           });
         } else {
           windowChainCache.push({
-            window: new WeakRef(w),
+            window: new WeakRef(w2),
             iframeElement: null
           });
         }
-        w = parent;
-      } while (w);
+        w2 = parent;
+      } while (w2);
     }
     return windowChainCache.slice(0);
   }
@@ -18865,7 +25675,7 @@ class RegistryImpl {
     return this.data.get(id) || null;
   }
 }
-const Registry = new RegistryImpl();
+const Registry2 = new RegistryImpl();
 class KeybindingsRegistryImpl {
   constructor() {
     this._coreKeybindings = new LinkedList();
@@ -18943,7 +25753,7 @@ const KeybindingsRegistry = new KeybindingsRegistryImpl();
 const Extensions$9 = {
   EditorModes: "platform.keybindingsRegistry"
 };
-Registry.add(Extensions$9.EditorModes, KeybindingsRegistry);
+Registry2.add(Extensions$9.EditorModes, KeybindingsRegistry);
 function sorter(a2, b2) {
   if (a2.weight1 !== b2.weight1) {
     return a2.weight1 - b2.weight1;
@@ -20257,7 +27067,7 @@ class EditorContributionRegistry {
     return this.editorCommands[commandId] || null;
   }
 }
-Registry.add(Extensions$8.EditorCommonContributions, EditorContributionRegistry.INSTANCE);
+Registry2.add(Extensions$8.EditorCommonContributions, EditorContributionRegistry.INSTANCE);
 function registerCommand$3(command) {
   command.register();
   return command;
@@ -20812,21 +27622,21 @@ class WebWorker extends Disposable {
       this.worker = Promise.resolve(workerOrPromise);
     }
     this.postMessage(amdModuleId, []);
-    this.worker.then((w) => {
-      w.onmessage = function(ev) {
+    this.worker.then((w2) => {
+      w2.onmessage = function(ev) {
         onMessageCallback(ev.data);
       };
-      w.onmessageerror = onErrorCallback;
-      if (typeof w.addEventListener === "function") {
-        w.addEventListener("error", onErrorCallback);
+      w2.onmessageerror = onErrorCallback;
+      if (typeof w2.addEventListener === "function") {
+        w2.addEventListener("error", onErrorCallback);
       }
     });
     this._register(toDisposable(() => {
-      this.worker?.then((w) => {
-        w.onmessage = null;
-        w.onmessageerror = null;
-        w.removeEventListener("error", onErrorCallback);
-        w.terminate();
+      this.worker?.then((w2) => {
+        w2.onmessage = null;
+        w2.onmessageerror = null;
+        w2.removeEventListener("error", onErrorCallback);
+        w2.terminate();
       });
       this.worker = null;
     }));
@@ -20835,9 +27645,9 @@ class WebWorker extends Disposable {
     return this.id;
   }
   postMessage(message, transfer) {
-    this.worker?.then((w) => {
+    this.worker?.then((w2) => {
       try {
-        w.postMessage(message, transfer);
+        w2.postMessage(message, transfer);
       } catch (err) {
         onUnexpectedError(err);
         onUnexpectedError(new Error(`FAILED to post message to '${this.label}'-worker`, { cause: err }));
@@ -21814,12 +28624,12 @@ class JSONContributionRegistry {
   }
 }
 const jsonContributionRegistry = new JSONContributionRegistry();
-Registry.add(Extensions$7.JSONContribution, jsonContributionRegistry);
+Registry2.add(Extensions$7.JSONContribution, jsonContributionRegistry);
 const Extensions$6 = {
   Configuration: "base.contributions.configuration"
 };
 const resourceLanguageSettingsSchemaId = "vscode://schemas/settings/resourceLanguage";
-const contributionRegistry = Registry.as(Extensions$7.JSONContribution);
+const contributionRegistry = Registry2.as(Extensions$7.JSONContribution);
 class ConfigurationRegistry {
   constructor() {
     this.registeredConfigurationDefaults = [];
@@ -22126,7 +28936,7 @@ function getDefaultValue(type) {
   }
 }
 const configurationRegistry$2 = new ConfigurationRegistry();
-Registry.add(Extensions$6.Configuration, configurationRegistry$2);
+Registry2.add(Extensions$6.Configuration, configurationRegistry$2);
 function validateProperty(property, schema) {
   if (!property.trim()) {
     return localize("config.property.empty", "Cannot register an empty property");
@@ -22170,7 +28980,7 @@ class EditorModesRegistry {
   }
 }
 const ModesRegistry = new EditorModesRegistry();
-Registry.add(Extensions$5.ModesRegistry, ModesRegistry);
+Registry2.add(Extensions$5.ModesRegistry, ModesRegistry);
 const PLAINTEXT_LANGUAGE_ID = "plaintext";
 const PLAINTEXT_EXTENSION = ".txt";
 ModesRegistry.registerLanguage({
@@ -22179,7 +28989,7 @@ ModesRegistry.registerLanguage({
   aliases: [localize("plainText.alias", "Plain Text"), "text"],
   mimetypes: [Mimes.text]
 });
-Registry.as(Extensions$6.Configuration).registerDefaultConfigurations([{
+Registry2.as(Extensions$6.Configuration).registerDefaultConfigurations([{
   overrides: {
     "[plaintext]": {
       "editor.unicodeHighlight.ambiguousCharacters": false,
@@ -22362,8 +29172,8 @@ LanguageConfigurationService = __decorate$2A([
   __param$2u(0, IConfigurationService),
   __param$2u(1, ILanguageService)
 ], LanguageConfigurationService);
-function computeConfig(languageId, registry, configurationService, languageService) {
-  let languageConfig = registry.getLanguageConfiguration(languageId);
+function computeConfig(languageId, registry2, configurationService, languageService) {
+  let languageConfig = registry2.getLanguageConfiguration(languageId);
   if (!languageConfig) {
     if (!languageService.isRegisteredLanguageId(languageId)) {
       return new ResolvedLanguageConfiguration(languageId, {});
@@ -27457,13 +34267,13 @@ function extendDiffsToEntireWordIfAppropriate(sequence1, sequence2, sequenceDiff
     if (!w1 || !w2) {
       return;
     }
-    let w = new SequenceDiff(w1, w2);
-    const equalPart = w.intersect(equalMapping);
+    let w3 = new SequenceDiff(w1, w2);
+    const equalPart = w3.intersect(equalMapping);
     let equalChars1 = equalPart.seq1Range.length;
     let equalChars2 = equalPart.seq2Range.length;
     while (equalMappings.length > 0) {
       const next = equalMappings[0];
-      const intersects2 = next.seq1Range.intersects(w.seq1Range) || next.seq2Range.intersects(w.seq2Range);
+      const intersects2 = next.seq1Range.intersects(w3.seq1Range) || next.seq2Range.intersects(w3.seq2Range);
       if (!intersects2) {
         break;
       }
@@ -27473,17 +34283,17 @@ function extendDiffsToEntireWordIfAppropriate(sequence1, sequence2, sequenceDiff
       const equalPart2 = v3.intersect(next);
       equalChars1 += equalPart2.seq1Range.length;
       equalChars2 += equalPart2.seq2Range.length;
-      w = w.join(v3);
-      if (w.seq1Range.endExclusive >= next.seq1Range.endExclusive) {
+      w3 = w3.join(v3);
+      if (w3.seq1Range.endExclusive >= next.seq1Range.endExclusive) {
         equalMappings.shift();
       } else {
         break;
       }
     }
-    if (equalChars1 + equalChars2 < (w.seq1Range.length + w.seq2Range.length) * 2 / 3) {
-      additional.push(w);
+    if (equalChars1 + equalChars2 < (w3.seq1Range.length + w3.seq2Range.length) * 2 / 3) {
+      additional.push(w3);
     }
-    lastPoint = w.getEndExclusives();
+    lastPoint = w3.getEndExclusives();
   }
   while (equalMappings.length > 0) {
     const next = equalMappings.shift();
@@ -29749,7 +36559,7 @@ class ThemingRegistry {
   }
 }
 const themingRegistry$1 = new ThemingRegistry();
-Registry.add(Extensions$4.ThemingContribution, themingRegistry$1);
+Registry2.add(Extensions$4.ThemingContribution, themingRegistry$1);
 function registerThemingParticipant(participant) {
   return themingRegistry$1.onColorThemeChange(participant);
 }
@@ -33090,7 +39900,7 @@ class ColorRegistry {
   }
 }
 const colorRegistry$1 = new ColorRegistry();
-Registry.add(Extensions$3.ColorContribution, colorRegistry$1);
+Registry2.add(Extensions$3.ColorContribution, colorRegistry$1);
 function registerColor(id, defaults2, description, needsTransparency, deprecationMessage) {
   return colorRegistry$1.registerColor(id, defaults2, description, needsTransparency, deprecationMessage);
 }
@@ -33168,7 +39978,7 @@ function resolveColorValue(colorValue, theme) {
   return void 0;
 }
 const workbenchColorsSchemaId = "vscode://schemas/workbench-colors";
-const schemaRegistry$1 = Registry.as(Extensions$7.JSONContribution);
+const schemaRegistry$1 = Registry2.as(Extensions$7.JSONContribution);
 schemaRegistry$1.registerSchema(workbenchColorsSchemaId, colorRegistry$1.getColorSchema());
 const delayer$1 = new RunOnceScheduler(() => schemaRegistry$1.notifySchemaChanged(workbenchColorsSchemaId), 200);
 colorRegistry$1.onDidChangeSchema(() => {
@@ -42072,7 +48882,7 @@ function isDiffEditorConfigurationKey(key) {
   const editorConfigurationKeys = getEditorConfigurationKeys();
   return editorConfigurationKeys[`diffEditor.${key}`] || false;
 }
-const configurationRegistry$1 = Registry.as(Extensions$6.Configuration);
+const configurationRegistry$1 = Registry2.as(Extensions$6.Configuration);
 configurationRegistry$1.registerConfiguration(editorConfiguration);
 class EditOperation {
   static insert(position, text2) {
@@ -42330,7 +49140,7 @@ class ConfigurationModelParser {
     this._restrictedConfigurations = restricted || [];
   }
   doParseRaw(raw, options) {
-    const configurationProperties = Registry.as(Extensions$6.Configuration).getConfigurationProperties();
+    const configurationProperties = Registry2.as(Extensions$6.Configuration).getConfigurationProperties();
     const filtered = this.filter(raw, configurationProperties, true, options);
     raw = filtered.raw;
     const contents = toValuesTree(raw, (message) => this.logService.error(`Conflict in settings file ${this._name}: ${message}`));
@@ -44497,7 +51307,7 @@ class LanguagesRegistry extends Disposable {
         this._mimeTypesMap[mimetype] = language2.identifier;
       });
     });
-    Registry.as(Extensions$6.Configuration).registerOverrideIdentifiers(this.getRegisteredLanguageIds());
+    Registry2.as(Extensions$6.Configuration).registerOverrideIdentifiers(this.getRegisteredLanguageIds());
     this._onDidChange.fire();
   }
   _registerLanguage(lang) {
@@ -57966,13 +64776,13 @@ function rbTreeDelete(T, z2) {
     recomputeMaxEndWalkToRoot(y3);
     recomputeMaxEndWalkToRoot(y3.parent);
   }
-  let w;
+  let w2;
   while (x2 !== T.root && getNodeColor(x2) === 0) {
     if (x2 === x2.parent.left) {
-      w = x2.parent.right;
-      if (getNodeColor(w) === 1) {
+      w2 = x2.parent.right;
+      if (getNodeColor(w2) === 1) {
         setNodeColor(
-          w,
+          w2,
           0
           /* NodeColor.Black */
         );
@@ -57982,38 +64792,38 @@ function rbTreeDelete(T, z2) {
           /* NodeColor.Red */
         );
         leftRotate$1(T, x2.parent);
-        w = x2.parent.right;
+        w2 = x2.parent.right;
       }
-      if (getNodeColor(w.left) === 0 && getNodeColor(w.right) === 0) {
+      if (getNodeColor(w2.left) === 0 && getNodeColor(w2.right) === 0) {
         setNodeColor(
-          w,
+          w2,
           1
           /* NodeColor.Red */
         );
         x2 = x2.parent;
       } else {
-        if (getNodeColor(w.right) === 0) {
+        if (getNodeColor(w2.right) === 0) {
           setNodeColor(
-            w.left,
+            w2.left,
             0
             /* NodeColor.Black */
           );
           setNodeColor(
-            w,
+            w2,
             1
             /* NodeColor.Red */
           );
-          rightRotate$1(T, w);
-          w = x2.parent.right;
+          rightRotate$1(T, w2);
+          w2 = x2.parent.right;
         }
-        setNodeColor(w, getNodeColor(x2.parent));
+        setNodeColor(w2, getNodeColor(x2.parent));
         setNodeColor(
           x2.parent,
           0
           /* NodeColor.Black */
         );
         setNodeColor(
-          w.right,
+          w2.right,
           0
           /* NodeColor.Black */
         );
@@ -58021,10 +64831,10 @@ function rbTreeDelete(T, z2) {
         x2 = T.root;
       }
     } else {
-      w = x2.parent.left;
-      if (getNodeColor(w) === 1) {
+      w2 = x2.parent.left;
+      if (getNodeColor(w2) === 1) {
         setNodeColor(
-          w,
+          w2,
           0
           /* NodeColor.Black */
         );
@@ -58034,38 +64844,38 @@ function rbTreeDelete(T, z2) {
           /* NodeColor.Red */
         );
         rightRotate$1(T, x2.parent);
-        w = x2.parent.left;
+        w2 = x2.parent.left;
       }
-      if (getNodeColor(w.left) === 0 && getNodeColor(w.right) === 0) {
+      if (getNodeColor(w2.left) === 0 && getNodeColor(w2.right) === 0) {
         setNodeColor(
-          w,
+          w2,
           1
           /* NodeColor.Red */
         );
         x2 = x2.parent;
       } else {
-        if (getNodeColor(w.left) === 0) {
+        if (getNodeColor(w2.left) === 0) {
           setNodeColor(
-            w.right,
+            w2.right,
             0
             /* NodeColor.Black */
           );
           setNodeColor(
-            w,
+            w2,
             1
             /* NodeColor.Red */
           );
-          leftRotate$1(T, w);
-          w = x2.parent.left;
+          leftRotate$1(T, w2);
+          w2 = x2.parent.left;
         }
-        setNodeColor(w, getNodeColor(x2.parent));
+        setNodeColor(w2, getNodeColor(x2.parent));
         setNodeColor(
           x2.parent,
           0
           /* NodeColor.Black */
         );
         setNodeColor(
-          w.left,
+          w2.left,
           0
           /* NodeColor.Black */
         );
@@ -58379,53 +65189,53 @@ function rbDelete(tree, z2) {
     resetSentinel();
     return;
   }
-  let w;
+  let w2;
   while (x2 !== tree.root && x2.color === 0) {
     if (x2 === x2.parent.left) {
-      w = x2.parent.right;
-      if (w.color === 1) {
-        w.color = 0;
+      w2 = x2.parent.right;
+      if (w2.color === 1) {
+        w2.color = 0;
         x2.parent.color = 1;
         leftRotate(tree, x2.parent);
-        w = x2.parent.right;
+        w2 = x2.parent.right;
       }
-      if (w.left.color === 0 && w.right.color === 0) {
-        w.color = 1;
+      if (w2.left.color === 0 && w2.right.color === 0) {
+        w2.color = 1;
         x2 = x2.parent;
       } else {
-        if (w.right.color === 0) {
-          w.left.color = 0;
-          w.color = 1;
-          rightRotate(tree, w);
-          w = x2.parent.right;
+        if (w2.right.color === 0) {
+          w2.left.color = 0;
+          w2.color = 1;
+          rightRotate(tree, w2);
+          w2 = x2.parent.right;
         }
-        w.color = x2.parent.color;
+        w2.color = x2.parent.color;
         x2.parent.color = 0;
-        w.right.color = 0;
+        w2.right.color = 0;
         leftRotate(tree, x2.parent);
         x2 = tree.root;
       }
     } else {
-      w = x2.parent.left;
-      if (w.color === 1) {
-        w.color = 0;
+      w2 = x2.parent.left;
+      if (w2.color === 1) {
+        w2.color = 0;
         x2.parent.color = 1;
         rightRotate(tree, x2.parent);
-        w = x2.parent.left;
+        w2 = x2.parent.left;
       }
-      if (w.left.color === 0 && w.right.color === 0) {
-        w.color = 1;
+      if (w2.left.color === 0 && w2.right.color === 0) {
+        w2.color = 1;
         x2 = x2.parent;
       } else {
-        if (w.left.color === 0) {
-          w.right.color = 0;
-          w.color = 1;
-          leftRotate(tree, w);
-          w = x2.parent.left;
+        if (w2.left.color === 0) {
+          w2.right.color = 0;
+          w2.color = 1;
+          leftRotate(tree, w2);
+          w2 = x2.parent.left;
         }
-        w.color = x2.parent.color;
+        w2.color = x2.parent.color;
         x2.parent.color = 0;
-        w.left.color = 0;
+        w2.left.color = 0;
         rightRotate(tree, x2.parent);
         x2 = tree.root;
       }
@@ -64340,7 +71150,7 @@ class QuickAccessRegistry {
     return result || this.defaultProvider;
   }
 }
-Registry.add(Extensions$2.Quickaccess, new QuickAccessRegistry());
+Registry2.add(Extensions$2.Quickaccess, new QuickAccessRegistry());
 const NO_KEY_MODS = { ctrlCmd: false, alt: false };
 var QuickInputHideReason;
 (function(QuickInputHideReason2) {
@@ -64389,7 +71199,7 @@ let QuickAccessController = class QuickAccessController2 extends Disposable {
     super();
     this.quickInputService = quickInputService;
     this.instantiationService = instantiationService;
-    this.registry = Registry.as(Extensions$2.Quickaccess);
+    this.registry = Registry2.as(Extensions$2.Quickaccess);
     this.mapProviderToDescriptor = /* @__PURE__ */ new Map();
     this.lastAcceptedPickerValues = /* @__PURE__ */ new Map();
     this.visibleQuickAccess = void 0;
@@ -73236,7 +80046,7 @@ WorkbenchTreeInternals = __decorate$27([
   __param$27(5, IListService),
   __param$27(6, IConfigurationService)
 ], WorkbenchTreeInternals);
-const configurationRegistry = Registry.as(Extensions$6.Configuration);
+const configurationRegistry = Registry2.as(Extensions$6.Configuration);
 configurationRegistry.registerConfiguration({
   id: "workbench",
   order: 7,
@@ -76620,7 +83430,7 @@ const Extensions$1 = {
 };
 var IconContribution;
 (function(IconContribution2) {
-  function getDefinition(contribution, registry) {
+  function getDefinition(contribution, registry2) {
     let definition = contribution.defaults;
     while (ThemeIcon.isThemeIcon(definition)) {
       const c2 = iconRegistry.getIcon(definition.id);
@@ -76743,7 +83553,7 @@ class IconRegistry {
   }
 }
 const iconRegistry = new IconRegistry();
-Registry.add(Extensions$1.IconContribution, iconRegistry);
+Registry2.add(Extensions$1.IconContribution, iconRegistry);
 function registerIcon(id, defaults2, description, deprecationMessage) {
   return iconRegistry.registerIcon(id, defaults2, description, deprecationMessage);
 }
@@ -76759,7 +83569,7 @@ function initialize() {
 }
 initialize();
 const iconsSchemaId = "vscode://schemas/icons";
-const schemaRegistry = Registry.as(Extensions$7.JSONContribution);
+const schemaRegistry = Registry2.as(Extensions$7.JSONContribution);
 schemaRegistry.registerSchema(iconsSchemaId, iconRegistry.getIconSchema());
 const delayer = new RunOnceScheduler(() => schemaRegistry.notifySchemaChanged(iconsSchemaId), 200);
 iconRegistry.onDidChange(() => {
@@ -76835,8 +83645,8 @@ const VS_LIGHT_THEME_NAME = "vs";
 const VS_DARK_THEME_NAME = "vs-dark";
 const HC_BLACK_THEME_NAME = "hc-black";
 const HC_LIGHT_THEME_NAME = "hc-light";
-const colorRegistry = Registry.as(Extensions$3.ColorContribution);
-const themingRegistry = Registry.as(Extensions$4.ThemingContribution);
+const colorRegistry = Registry2.as(Extensions$3.ColorContribution);
+const themingRegistry = Registry2.as(Extensions$4.ThemingContribution);
 class StandaloneTheme {
   constructor(name, standaloneThemeData) {
     this.semanticHighlighting = false;
@@ -78962,7 +85772,7 @@ class DefaultConfiguration extends Disposable {
   }
   resetConfigurationModel() {
     this._configurationModel = ConfigurationModel.createEmptyModel(this.logService);
-    const properties = Registry.as(Extensions$6.Configuration).getConfigurationProperties();
+    const properties = Registry2.as(Extensions$6.Configuration).getConfigurationProperties();
     this.updateConfigurationModel(Object.keys(properties), properties);
   }
   updateConfigurationModel(properties, configurationProperties) {
@@ -99059,9 +105869,9 @@ class Settings {
       this.canvasWidth = this.domWidth * this.pixelRatio | 0;
       this.canvasHeight = this.domHeight * this.pixelRatio | 0;
     }
-    const [x2, w] = this._initLanes(1, this.canvasWidth, this.overviewRulerLanes);
+    const [x2, w2] = this._initLanes(1, this.canvasWidth, this.overviewRulerLanes);
     this.x = x2;
-    this.w = w;
+    this.w = w2;
   }
   _initLanes(canvasLeftOffset, canvasWidth, laneCount) {
     const remainingWidth = canvasWidth - canvasLeftOffset;
@@ -99330,7 +106140,7 @@ class DecorationsOverviewRuler extends ViewPart {
       canvasCtx.clearRect(0, 0, canvasWidth, canvasHeight);
     }
     const x2 = this._settings.x;
-    const w = this._settings.w;
+    const w2 = this._settings.w;
     for (const decorationGroup of decorations) {
       const color = decorationGroup.color;
       const decorationGroupData = decorationGroup.data;
@@ -99357,7 +106167,7 @@ class DecorationsOverviewRuler extends ViewPart {
         }
         if (y1 > prevY2 + 1 || lane !== prevLane) {
           if (i3 !== 0) {
-            canvasCtx.fillRect(x2[prevLane], prevY1, w[prevLane], prevY2 - prevY1);
+            canvasCtx.fillRect(x2[prevLane], prevY1, w2[prevLane], prevY2 - prevY1);
           }
           prevLane = lane;
           prevY1 = y1;
@@ -99368,7 +106178,7 @@ class DecorationsOverviewRuler extends ViewPart {
           }
         }
       }
-      canvasCtx.fillRect(x2[prevLane], prevY1, w[prevLane], prevY2 - prevY1);
+      canvasCtx.fillRect(x2[prevLane], prevY1, w2[prevLane], prevY2 - prevY1);
     }
     if (!this._settings.hideCursor) {
       const cursorHeight = 2 * this._settings.pixelRatio | 0;
@@ -112501,12 +119311,12 @@ function getAdditionalLineHeights(editor2, viewZonesToIgnore) {
       }
     }
   }
-  for (const w of editor2.getWhitespaces()) {
-    if (viewZonesToIgnore.has(w.id)) {
+  for (const w2 of editor2.getWhitespaces()) {
+    if (viewZonesToIgnore.has(w2.id)) {
       continue;
     }
-    const modelLineNumber = w.afterLineNumber === 0 ? 0 : coordinatesConverter.convertViewPositionToModelPosition(new Position$1(w.afterLineNumber, 1)).lineNumber;
-    viewZoneHeights.push({ lineNumber: modelLineNumber, heightInPx: w.height });
+    const modelLineNumber = w2.afterLineNumber === 0 ? 0 : coordinatesConverter.convertViewPositionToModelPosition(new Position$1(w2.afterLineNumber, 1)).lineNumber;
+    viewZoneHeights.push({ lineNumber: modelLineNumber, heightInPx: w2.height });
   }
   const result = joinCombine(viewZoneHeights, wrappingZoneHeights, (v2) => v2.lineNumber, (v1, v2) => ({ lineNumber: v1.lineNumber, heightInPx: v1.heightInPx + v2.heightInPx }));
   return result;
@@ -113785,22 +120595,22 @@ class ObservableCodeEditor extends Disposable {
   }
   createOverlayWidget(widget) {
     const overlayWidgetId = "observableOverlayWidget" + this._overlayWidgetCounter++;
-    const w = {
+    const w2 = {
       getDomNode: () => widget.domNode,
       getPosition: () => widget.position.get(),
       getId: () => overlayWidgetId,
       allowEditorOverflow: widget.allowEditorOverflow,
       getMinContentWidthInPx: () => widget.minContentWidthInPx.get()
     };
-    this.editor.addOverlayWidget(w);
+    this.editor.addOverlayWidget(w2);
     const d2 = autorun((reader) => {
       widget.position.read(reader);
       widget.minContentWidthInPx.read(reader);
-      this.editor.layoutOverlayWidget(w);
+      this.editor.layoutOverlayWidget(w2);
     });
     return toDisposable(() => {
       d2.dispose();
-      this.editor.removeOverlayWidget(w);
+      this.editor.removeOverlayWidget(w2);
     });
   }
 }
@@ -114447,8 +121257,8 @@ class RevertButtonsFeature extends Disposable {
         }
       }
       store.add(toDisposable(() => {
-        for (const w of glyphWidgetsModified) {
-          this._editors.modified.removeGlyphMarginWidget(w);
+        for (const w2 of glyphWidgetsModified) {
+          this._editors.modified.removeGlyphMarginWidget(w2);
         }
       }));
     }));
@@ -115066,7 +121876,7 @@ let DiffEditorWidget = class DiffEditorWidget2 extends DelegatingEditor {
     this._overviewRulerPart = derivedDisposable(this, (reader) => !this._options.renderOverviewRuler.read(reader) ? void 0 : this._instantiationService.createInstance(readHotReloadableExport(OverviewRulerFeature, reader), this._editors, this.elements.root, this._diffModel, this._rootSizeObserver.width, this._rootSizeObserver.height, this._layoutInfo.map((i3) => i3.modifiedEditor))).recomputeInitiallyAndOnChange(this._store);
     const dimensions = {
       height: this._rootSizeObserver.height,
-      width: this._rootSizeObserver.width.map((w, reader) => w - (this._overviewRulerPart.read(reader)?.width ?? 0))
+      width: this._rootSizeObserver.width.map((w2, reader) => w2 - (this._overviewRulerPart.read(reader)?.width ?? 0))
     };
     this._sashLayout = new SashLayout(this._options, dimensions);
     this._sash = derivedDisposable(this, (reader) => {
@@ -118430,7 +125240,7 @@ registerLanguage({
   aliases: ["FreeMarker2", "Apache FreeMarker2"],
   loader: () => {
     {
-      return __vitePreload(() => import("./freemarker2-BnFG5Awn.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAutoInterpolationDollar);
+      return __vitePreload(() => import("./freemarker2-BMCIDuBF.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAutoInterpolationDollar);
     }
   }
 });
@@ -118439,7 +125249,7 @@ registerLanguage({
   aliases: ["FreeMarker2 (Angle/Dollar)", "Apache FreeMarker2 (Angle/Dollar)"],
   loader: () => {
     {
-      return __vitePreload(() => import("./freemarker2-BnFG5Awn.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAngleInterpolationDollar);
+      return __vitePreload(() => import("./freemarker2-BMCIDuBF.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAngleInterpolationDollar);
     }
   }
 });
@@ -118448,7 +125258,7 @@ registerLanguage({
   aliases: ["FreeMarker2 (Bracket/Dollar)", "Apache FreeMarker2 (Bracket/Dollar)"],
   loader: () => {
     {
-      return __vitePreload(() => import("./freemarker2-BnFG5Awn.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagBracketInterpolationDollar);
+      return __vitePreload(() => import("./freemarker2-BMCIDuBF.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagBracketInterpolationDollar);
     }
   }
 });
@@ -118457,7 +125267,7 @@ registerLanguage({
   aliases: ["FreeMarker2 (Angle/Bracket)", "Apache FreeMarker2 (Angle/Bracket)"],
   loader: () => {
     {
-      return __vitePreload(() => import("./freemarker2-BnFG5Awn.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAngleInterpolationBracket);
+      return __vitePreload(() => import("./freemarker2-BMCIDuBF.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAngleInterpolationBracket);
     }
   }
 });
@@ -118466,7 +125276,7 @@ registerLanguage({
   aliases: ["FreeMarker2 (Bracket/Bracket)", "Apache FreeMarker2 (Bracket/Bracket)"],
   loader: () => {
     {
-      return __vitePreload(() => import("./freemarker2-BnFG5Awn.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagBracketInterpolationBracket);
+      return __vitePreload(() => import("./freemarker2-BMCIDuBF.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagBracketInterpolationBracket);
     }
   }
 });
@@ -118475,7 +125285,7 @@ registerLanguage({
   aliases: ["FreeMarker2 (Auto/Dollar)", "Apache FreeMarker2 (Auto/Dollar)"],
   loader: () => {
     {
-      return __vitePreload(() => import("./freemarker2-BnFG5Awn.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAutoInterpolationDollar);
+      return __vitePreload(() => import("./freemarker2-BMCIDuBF.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAutoInterpolationDollar);
     }
   }
 });
@@ -118484,7 +125294,7 @@ registerLanguage({
   aliases: ["FreeMarker2 (Auto/Bracket)", "Apache FreeMarker2 (Auto/Bracket)"],
   loader: () => {
     {
-      return __vitePreload(() => import("./freemarker2-BnFG5Awn.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAutoInterpolationBracket);
+      return __vitePreload(() => import("./freemarker2-BMCIDuBF.js"), true ? [] : void 0, import.meta.url).then((m2) => m2.TagAutoInterpolationBracket);
     }
   }
 });
@@ -118516,7 +125326,7 @@ registerLanguage({
   mimetypes: ["text/x-handlebars-template"],
   loader: () => {
     {
-      return __vitePreload(() => import("./handlebars-Ca7cB6yK.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./handlebars-BEh6KDkj.js"), true ? [] : void 0, import.meta.url);
     }
   }
 });
@@ -118537,7 +125347,7 @@ registerLanguage({
   mimetypes: ["text/html", "text/x-jshtm", "text/template", "text/ng-template"],
   loader: () => {
     {
-      return __vitePreload(() => import("./html-DBqFpIlo.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./html-CXtwSQMT.js"), true ? [] : void 0, import.meta.url);
     }
   }
 });
@@ -118572,7 +125382,7 @@ registerLanguage({
   mimetypes: ["text/javascript"],
   loader: () => {
     {
-      return __vitePreload(() => import("./javascript-CJSL6TBk.js"), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
+      return __vitePreload(() => import("./javascript-CiOsdO8F.js"), true ? __vite__mapDeps([0,1]) : void 0, import.meta.url);
     }
   }
 });
@@ -118635,7 +125445,7 @@ registerLanguage({
   mimetypes: ["application/liquid"],
   loader: () => {
     {
-      return __vitePreload(() => import("./liquid-90CYlk2F.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./liquid-DfcuzlMN.js"), true ? [] : void 0, import.meta.url);
     }
   }
 });
@@ -118665,7 +125475,7 @@ registerLanguage({
   aliases: ["MDX", "mdx"],
   loader: () => {
     {
-      return __vitePreload(() => import("./mdx-BnqpDGmD.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./mdx-DnEUouAZ.js"), true ? [] : void 0, import.meta.url);
     }
   }
 });
@@ -118828,7 +125638,7 @@ registerLanguage({
   firstLine: "^#!/.*\\bpython[0-9.-]*\\b",
   loader: () => {
     {
-      return __vitePreload(() => import("./python-CLwLahgQ.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./python-CmoZ7d6X.js"), true ? [] : void 0, import.meta.url);
     }
   }
 });
@@ -118859,7 +125669,7 @@ registerLanguage({
   mimetypes: ["text/x-cshtml"],
   loader: () => {
     {
-      return __vitePreload(() => import("./razor-BcLRBX0K.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./razor-BjzW2Tbx.js"), true ? [] : void 0, import.meta.url);
     }
   }
 });
@@ -119075,7 +125885,7 @@ registerLanguage({
   mimetypes: ["text/typescript"],
   loader: () => {
     {
-      return __vitePreload(() => import("./typescript-DQz83zZn.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./typescript-BBNhZPOd.js"), true ? [] : void 0, import.meta.url);
     }
   }
 });
@@ -119135,7 +125945,7 @@ registerLanguage({
   mimetypes: ["text/xml", "application/xml", "application/xaml+xml", "application/xml-dtd"],
   loader: () => {
     {
-      return __vitePreload(() => import("./xml-BGJf1u07.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./xml-DV3ZEjIW.js"), true ? [] : void 0, import.meta.url);
     }
   }
 });
@@ -119146,7 +125956,7 @@ registerLanguage({
   mimetypes: ["application/x-yaml", "text/x-yaml"],
   loader: () => {
     {
-      return __vitePreload(() => import("./yaml-BiePIkqa.js"), true ? [] : void 0, import.meta.url);
+      return __vitePreload(() => import("./yaml-CQ4fs_zo.js"), true ? [] : void 0, import.meta.url);
     }
   }
 });
@@ -119270,7 +126080,7 @@ var lessDefaults = new LanguageServiceDefaultsImpl$3(
 monaco_editor_core_exports$3.languages.css = { cssDefaults, lessDefaults, scssDefaults };
 function getMode$3() {
   {
-    return __vitePreload(() => import("./cssMode-EA2wxzj4.js"), true ? [] : void 0, import.meta.url);
+    return __vitePreload(() => import("./cssMode-D0Xbtplw.js"), true ? [] : void 0, import.meta.url);
   }
 }
 monaco_editor_core_exports$3.languages.onLanguage("less", () => {
@@ -119401,7 +126211,7 @@ monaco_editor_core_exports$2.languages.html = {
 };
 function getMode$2() {
   {
-    return __vitePreload(() => import("./htmlMode-C4lrB8mx.js"), true ? [] : void 0, import.meta.url);
+    return __vitePreload(() => import("./htmlMode-DBszMGQz.js"), true ? [] : void 0, import.meta.url);
   }
 }
 function registerHTMLLanguageService(languageId, options = optionsDefault, modeConfiguration = getConfigurationDefault(languageId)) {
@@ -119499,7 +126309,7 @@ var getWorker = () => getMode$1().then((mode) => mode.getWorker());
 monaco_editor_core_exports$1.languages.json = { jsonDefaults, getWorker };
 function getMode$1() {
   {
-    return __vitePreload(() => import("./jsonMode-Dy4Y_cFz.js"), true ? [] : void 0, import.meta.url);
+    return __vitePreload(() => import("./jsonMode-B_sK3uWQ.js"), true ? [] : void 0, import.meta.url);
   }
 }
 monaco_editor_core_exports$1.languages.register({
@@ -119775,7 +126585,7 @@ monaco_editor_core_exports.languages.typescript = {
 };
 function getMode() {
   {
-    return __vitePreload(() => import("./tsMode-DZkFhndn.js"), true ? [] : void 0, import.meta.url);
+    return __vitePreload(() => import("./tsMode-DOR7q1Lz.js"), true ? [] : void 0, import.meta.url);
   }
 }
 monaco_editor_core_exports.languages.onLanguage("typescript", () => {
@@ -120929,7 +127739,7 @@ class DragAndDropContributionRegistry {
 const Extensions = {
   DragAndDropContribution: "workbench.contributions.dragAndDrop"
 };
-Registry.add(Extensions.DragAndDropContribution, new DragAndDropContributionRegistry());
+Registry2.add(Extensions.DragAndDropContribution, new DragAndDropContributionRegistry());
 class LocalSelectionTransfer {
   static {
     this.INSTANCE = new LocalSelectionTransfer();
@@ -123630,7 +130440,7 @@ class ManagedCodeActionSet extends Disposable {
   }
 }
 const emptyCodeActionsResponse = { actions: [], documentation: void 0 };
-async function getCodeActions(registry, model, rangeOrSelection, trigger, progress, token) {
+async function getCodeActions(registry2, model, rangeOrSelection, trigger, progress, token) {
   const filter = trigger.filter || {};
   const notebookFilter = {
     ...filter,
@@ -123642,7 +130452,7 @@ async function getCodeActions(registry, model, rangeOrSelection, trigger, progre
   };
   const cts = new TextModelCancellationTokenSource(model, token);
   const excludeNotebookCodeActions = trigger.type === 2;
-  const providers = getCodeActionProviders(registry, model, excludeNotebookCodeActions ? notebookFilter : filter);
+  const providers = getCodeActionProviders(registry2, model, excludeNotebookCodeActions ? notebookFilter : filter);
   const disposables = new DisposableStore();
   const promises = providers.map(async (provider) => {
     try {
@@ -123668,8 +130478,8 @@ async function getCodeActions(registry, model, rangeOrSelection, trigger, progre
       return emptyCodeActionsResponse;
     }
   });
-  const listener = registry.onDidChange(() => {
-    const newProviders = registry.all(model);
+  const listener = registry2.onDidChange(() => {
+    const newProviders = registry2.all(model);
     if (!equals$1(newProviders, providers)) {
       cts.cancel();
     }
@@ -123679,7 +130489,7 @@ async function getCodeActions(registry, model, rangeOrSelection, trigger, progre
     const allActions = actions.map((x2) => x2.actions).flat();
     const allDocumentation = [
       ...coalesce(actions.map((x2) => x2.documentation)),
-      ...getAdditionalDocumentationForShowingActions(registry, model, trigger, allActions)
+      ...getAdditionalDocumentationForShowingActions(registry2, model, trigger, allActions)
     ];
     return new ManagedCodeActionSet(allActions, allDocumentation, disposables);
   } finally {
@@ -123687,17 +130497,17 @@ async function getCodeActions(registry, model, rangeOrSelection, trigger, progre
     cts.dispose();
   }
 }
-function getCodeActionProviders(registry, model, filter) {
-  return registry.all(model).filter((provider) => {
+function getCodeActionProviders(registry2, model, filter) {
+  return registry2.all(model).filter((provider) => {
     if (!provider.providedCodeActionKinds) {
       return true;
     }
     return provider.providedCodeActionKinds.some((kind) => mayIncludeActionsOfKind(filter, new HierarchicalKind(kind)));
   });
 }
-function* getAdditionalDocumentationForShowingActions(registry, model, trigger, actionsToShow) {
+function* getAdditionalDocumentationForShowingActions(registry2, model, trigger, actionsToShow) {
   if (model && actionsToShow.length) {
-    for (const provider of registry.all(model)) {
+    for (const provider of registry2.all(model)) {
       if (provider._getAdditionalMenuItems) {
         yield* provider._getAdditionalMenuItems?.({ trigger: trigger.type, only: trigger.filter?.include?.value }, actionsToShow.map((item) => item.action));
       }
@@ -125766,7 +132576,7 @@ registerEditorAction(OrganizeImportsAction);
 registerEditorAction(AutoFixAction);
 registerEditorAction(FixAllAction);
 registerEditorCommand(new CodeActionCommand());
-Registry.as(Extensions$6.Configuration).registerConfiguration({
+Registry2.as(Extensions$6.Configuration).registerConfiguration({
   ...editorConfigurationBaseNode,
   properties: {
     "editor.codeActionWidget.showHeaders": {
@@ -125777,7 +132587,7 @@ Registry.as(Extensions$6.Configuration).registerConfiguration({
     }
   }
 });
-Registry.as(Extensions$6.Configuration).registerConfiguration({
+Registry2.as(Extensions$6.Configuration).registerConfiguration({
   ...editorConfigurationBaseNode,
   properties: {
     "editor.codeActionWidget.includeNearbyQuickFixes": {
@@ -125788,7 +132598,7 @@ Registry.as(Extensions$6.Configuration).registerConfiguration({
     }
   }
 });
-Registry.as(Extensions$6.Configuration).registerConfiguration({
+Registry2.as(Extensions$6.Configuration).registerConfiguration({
   ...editorConfigurationBaseNode,
   properties: {
     "editor.codeActions.triggerOnFocusChange": {
@@ -125817,8 +132627,8 @@ class CodeLensModel {
     }
   }
 }
-async function getCodeLensModel(registry, model, token) {
-  const provider = registry.ordered(model);
+async function getCodeLensModel(registry2, model, token) {
+  const provider = registry2.ordered(model);
   const providerRanks = /* @__PURE__ */ new Map();
   const result = new CodeLensModel();
   const promises = provider.map(async (provider2, i3) => {
@@ -128990,13 +135800,13 @@ async function executeProvider(provider, ordinal, model, position, token) {
   }
   return new HoverProviderResult(provider, result, ordinal);
 }
-function getHoverProviderResultsAsAsyncIterable(registry, model, position, token, recursive = false) {
-  const providers = registry.ordered(model, recursive);
+function getHoverProviderResultsAsAsyncIterable(registry2, model, position, token, recursive = false) {
+  const providers = registry2.ordered(model, recursive);
   const promises = providers.map((provider, index) => executeProvider(provider, index, model, position, token));
   return AsyncIterableObject.fromPromises(promises).coalesce();
 }
-function getHoversPromise(registry, model, position, token, recursive = false) {
-  return getHoverProviderResultsAsAsyncIterable(registry, model, position, token, recursive).map((item) => item.hover).toPromise();
+function getHoversPromise(registry2, model, position, token, recursive = false) {
+  return getHoverProviderResultsAsAsyncIterable(registry2, model, position, token, recursive).map((item) => item.hover).toPromise();
 }
 registerModelAndPositionCommand("_executeHoverProvider", (accessor, model, position) => {
   const languageFeaturesService = accessor.get(ILanguageFeaturesService);
@@ -129550,9 +136360,9 @@ class InlayHintsFragments {
     this._emptyInlayHintList = Object.freeze({ dispose() {
     }, hints: [] });
   }
-  static async create(registry, model, ranges, token) {
+  static async create(registry2, model, ranges, token) {
     const data = [];
-    const promises = registry.ordered(model).reverse().map((provider) => ranges.map(async (range2) => {
+    const promises = registry2.ordered(model).reverse().map((provider) => ranges.map(async (range2) => {
       try {
         const result = await provider.provideInlayHints(model, range2, token);
         if (result?.hints.length || provider.onDidChangeInlayHints) {
@@ -131632,8 +138442,8 @@ function shouldIncludeLocationLink(sourceModel, loc) {
   }
   return true;
 }
-async function getLocationLinks(model, position, registry, recursive, provide) {
-  const provider = registry.ordered(model, recursive);
+async function getLocationLinks(model, position, registry2, recursive, provide) {
+  const provider = registry2.ordered(model, recursive);
   const promises = provider.map((provider2) => {
     return Promise.resolve(provide(provider2, model, position)).then(void 0, (err) => {
       onUnexpectedExternalError(err);
@@ -131643,28 +138453,28 @@ async function getLocationLinks(model, position, registry, recursive, provide) {
   const values = await Promise.all(promises);
   return coalesce(values.flat()).filter((loc) => shouldIncludeLocationLink(model, loc));
 }
-function getDefinitionsAtPosition(registry, model, position, recursive, token) {
-  return getLocationLinks(model, position, registry, recursive, (provider, model2, position2) => {
+function getDefinitionsAtPosition(registry2, model, position, recursive, token) {
+  return getLocationLinks(model, position, registry2, recursive, (provider, model2, position2) => {
     return provider.provideDefinition(model2, position2, token);
   });
 }
-function getDeclarationsAtPosition(registry, model, position, recursive, token) {
-  return getLocationLinks(model, position, registry, recursive, (provider, model2, position2) => {
+function getDeclarationsAtPosition(registry2, model, position, recursive, token) {
+  return getLocationLinks(model, position, registry2, recursive, (provider, model2, position2) => {
     return provider.provideDeclaration(model2, position2, token);
   });
 }
-function getImplementationsAtPosition(registry, model, position, recursive, token) {
-  return getLocationLinks(model, position, registry, recursive, (provider, model2, position2) => {
+function getImplementationsAtPosition(registry2, model, position, recursive, token) {
+  return getLocationLinks(model, position, registry2, recursive, (provider, model2, position2) => {
     return provider.provideImplementation(model2, position2, token);
   });
 }
-function getTypeDefinitionsAtPosition(registry, model, position, recursive, token) {
-  return getLocationLinks(model, position, registry, recursive, (provider, model2, position2) => {
+function getTypeDefinitionsAtPosition(registry2, model, position, recursive, token) {
+  return getLocationLinks(model, position, registry2, recursive, (provider, model2, position2) => {
     return provider.provideTypeDefinition(model2, position2, token);
   });
 }
-function getReferencesAtPosition(registry, model, position, compact, recursive, token) {
-  return getLocationLinks(model, position, registry, recursive, async (provider, model2, position2) => {
+function getReferencesAtPosition(registry2, model, position, compact, recursive, token) {
+  return getLocationLinks(model, position, registry2, recursive, async (provider, model2, position2) => {
     const result = (await provider.provideReferences(model2, position2, { includeDeclaration: true }, token))?.filter((ref) => shouldIncludeLocationLink(model2, ref));
     if (!compact || !result || result.length !== 2) {
       return result;
@@ -135934,7 +142744,7 @@ registerEditorCommand(new class extends EditorCommand {
     DropIntoEditorController.get(editor2)?.clearWidgets();
   }
 }());
-Registry.as(Extensions$6.Configuration).registerConfiguration({
+Registry2.as(Extensions$6.Configuration).registerConfiguration({
   ...editorConfigurationBaseNode,
   properties: {
     [defaultProviderConfig]: {
@@ -142836,10 +149646,10 @@ class OutlineGroup extends TreeElement {
   }
 }
 class OutlineModel extends TreeElement {
-  static create(registry, textModel, token) {
+  static create(registry2, textModel, token) {
     const cts = new CancellationTokenSource$1(token);
     const result = new OutlineModel(textModel.uri);
-    const provider = registry.ordered(textModel);
+    const provider = registry2.ordered(textModel);
     const promises = provider.map((provider2, index) => {
       const id = TreeElement.findId(`provider_${index}`, result);
       const group = new OutlineGroup(id, result, provider2.displayName ?? "Unknown Outline Provider", index);
@@ -142859,15 +149669,15 @@ class OutlineModel extends TreeElement {
         }
       });
     });
-    const listener = registry.onDidChange(() => {
-      const newProvider = registry.ordered(textModel);
+    const listener = registry2.onDidChange(() => {
+      const newProvider = registry2.ordered(textModel);
       if (!equals$1(newProvider, provider)) {
         cts.cancel();
       }
     });
     return Promise.all(promises).then(() => {
       if (cts.token.isCancellationRequested && !token.isCancellationRequested) {
-        return OutlineModel.create(registry, textModel, token);
+        return OutlineModel.create(registry2, textModel, token);
       } else {
         return result._compact();
       }
@@ -142968,8 +149778,8 @@ let OutlineModelService = class OutlineModelService2 {
     this._disposables.dispose();
   }
   async getOrCreate(textModel, token) {
-    const registry = this._languageFeaturesService.documentSymbolProvider;
-    const provider = registry.ordered(textModel);
+    const registry2 = this._languageFeaturesService.documentSymbolProvider;
+    const provider = registry2.ordered(textModel);
     let data = this._cache.get(textModel.id);
     if (!data || data.versionId !== textModel.getVersionId() || !equals$1(data.provider, provider)) {
       const source = new CancellationTokenSource$1();
@@ -142978,7 +149788,7 @@ let OutlineModelService = class OutlineModelService2 {
         provider,
         promiseCnt: 0,
         source,
-        promise: OutlineModel.create(registry, textModel, source.token),
+        promise: OutlineModel.create(registry2, textModel, source.token),
         model: void 0
       };
       this._cache.set(textModel.id, data);
@@ -143088,9 +149898,9 @@ class InlineCompletionContextKeys extends Disposable {
 }
 function createStyleSheetFromObservable(css) {
   const store = new DisposableStore();
-  const w = store.add(createStyleSheet2());
+  const w2 = store.add(createStyleSheet2());
   store.add(autorun((reader) => {
-    w.setStyle(css.read(reader));
+    w2.setStyle(css.read(reader));
   }));
   return store;
 }
@@ -143546,9 +150356,9 @@ class StaticTokenizerSource {
     return this.lines[lineNumber - 1].getLineContent().length;
   }
 }
-async function provideInlineCompletions(registry, positionOrRange, model, context, token = CancellationToken.None, languageConfigurationService) {
+async function provideInlineCompletions(registry2, positionOrRange, model, context, token = CancellationToken.None, languageConfigurationService) {
   const defaultReplaceRange = positionOrRange instanceof Position$1 ? getDefaultRange(positionOrRange, model) : positionOrRange;
-  const providers = registry.all(model);
+  const providers = registry2.all(model);
   const multiMap = new SetMap();
   for (const provider of providers) {
     if (provider.groupId) {
@@ -144241,7 +151051,7 @@ class CompletionItemModel {
     this.disposable = disposable;
   }
 }
-async function provideSuggestionItems(registry, model, position, options = CompletionOptions.default, context = {
+async function provideSuggestionItems(registry2, model, position, options = CompletionOptions.default, context = {
   triggerKind: 0
   /* languages.CompletionTriggerKind.Invoke */
 }, token = CancellationToken.None) {
@@ -144295,7 +151105,7 @@ async function provideSuggestionItems(registry, model, position, options = Compl
       return;
     }
   })();
-  for (const providerGroup of registry.orderedGroups(model)) {
+  for (const providerGroup of registry2.orderedGroups(model)) {
     let didAddResult = false;
     await Promise.all(providerGroup.map(async (provider) => {
       if (options.providerItemsToReuse.has(provider)) {
@@ -150699,11 +157509,11 @@ let InlineCompletionsHoverParticipant = class InlineCompletionsHoverParticipant2
       disposables.add(this.renderScreenReaderText(context, part));
     }
     const model = part.controller.model.get();
-    const w = this._instantiationService.createInstance(InlineSuggestionHintsContentWidget, this._editor, false, constObservable(null), model.selectedInlineCompletionIndex, model.inlineCompletionsCount, model.activeCommands);
-    const widgetNode = w.getDomNode();
+    const w2 = this._instantiationService.createInstance(InlineSuggestionHintsContentWidget, this._editor, false, constObservable(null), model.selectedInlineCompletionIndex, model.inlineCompletionsCount, model.activeCommands);
+    const widgetNode = w2.getDomNode();
     context.fragment.appendChild(widgetNode);
     model.triggerExplicitly();
-    disposables.add(w);
+    disposables.add(w2);
     const renderedHoverPart = {
       hoverPart: part,
       hoverElement: widgetNode,
@@ -159274,8 +166084,8 @@ const Context2 = {
   Visible: new RawContextKey("parameterHintsVisible", false),
   MultipleSignatures: new RawContextKey("parameterHintsMultipleSignatures", false)
 };
-async function provideSignatureHelp(registry, model, position, context, token) {
-  const supports = registry.ordered(model);
+async function provideSignatureHelp(registry2, model, position, context, token) {
+  const supports = registry2.ordered(model);
   for (const support of supports) {
     try {
       const result = await support.provideSignatureHelp(model, position, token, context);
@@ -160762,11 +167572,11 @@ var __param$n = function(paramIndex, decorator) {
 };
 var RenameController_1;
 class RenameSkeleton {
-  constructor(model, position, registry) {
+  constructor(model, position, registry2) {
     this.model = model;
     this.position = position;
     this._providerRenameIdx = 0;
-    this._providers = registry.ordered(model);
+    this._providers = registry2.ordered(model);
   }
   hasProvider() {
     return this._providers.length > 0;
@@ -160823,8 +167633,8 @@ class RenameSkeleton {
     return result;
   }
 }
-async function rename(registry, model, position, newName) {
-  const skeleton = new RenameSkeleton(model, position, registry);
+async function rename(registry2, model, position, newName) {
+  const skeleton = new RenameSkeleton(model, position, registry2);
   const loc = await skeleton.resolveRenameLocation(CancellationToken.None);
   if (loc?.rejectReason) {
     return { edits: [], rejectReason: loc.rejectReason };
@@ -161182,7 +167992,7 @@ registerModelAndPositionCommand("_executePrepareRename", async function(accessor
   }
   return loc;
 });
-Registry.as(Extensions$6.Configuration).registerConfiguration({
+Registry2.as(Extensions$6.Configuration).registerConfiguration({
   id: "editor",
   properties: {
     "editor.rename.enablePreview": {
@@ -161452,15 +168262,15 @@ class DocumentSemanticTokensResult {
     this.error = error;
   }
 }
-function hasDocumentSemanticTokensProvider(registry, model) {
-  return registry.has(model);
+function hasDocumentSemanticTokensProvider(registry2, model) {
+  return registry2.has(model);
 }
-function getDocumentSemanticTokensProviders(registry, model) {
-  const groups = registry.orderedGroups(model);
+function getDocumentSemanticTokensProviders(registry2, model) {
+  const groups = registry2.orderedGroups(model);
   return groups.length > 0 ? groups[0] : [];
 }
-async function getDocumentSemanticTokens(registry, model, lastProvider, lastResultId, token) {
-  const providers = getDocumentSemanticTokensProviders(registry, model);
+async function getDocumentSemanticTokens(registry2, model, lastProvider, lastResultId, token) {
+  const providers = getDocumentSemanticTokensProviders(registry2, model);
   const results = await Promise.all(providers.map(async (provider) => {
     let result;
     let error = null;
@@ -161488,8 +168298,8 @@ async function getDocumentSemanticTokens(registry, model, lastProvider, lastResu
   }
   return null;
 }
-function _getDocumentSemanticTokensProviderHighestGroup(registry, model) {
-  const result = registry.orderedGroups(model);
+function _getDocumentSemanticTokensProviderHighestGroup(registry2, model) {
+  const result = registry2.orderedGroups(model);
   return result.length > 0 ? result[0] : null;
 }
 class DocumentRangeSemanticTokensResult {
@@ -161505,8 +168315,8 @@ function getDocumentRangeSemanticTokensProviders(providers, model) {
   const groups = providers.orderedGroups(model);
   return groups.length > 0 ? groups[0] : [];
 }
-async function getDocumentRangeSemanticTokens(registry, model, range2, token) {
-  const providers = getDocumentRangeSemanticTokensProviders(registry, model);
+async function getDocumentRangeSemanticTokens(registry2, model, range2, token) {
+  const providers = getDocumentRangeSemanticTokensProviders(registry2, model);
   const results = await Promise.all(providers.map(async (provider) => {
     let result;
     try {
@@ -162309,8 +169119,8 @@ registerEditorContribution(
 );
 registerEditorAction(GrowSelectionAction);
 registerEditorAction(ShrinkSelectionAction);
-async function provideSelectionRanges(registry, model, positions, options, token) {
-  const providers = registry.all(model).concat(new WordSelectionRangeProvider(options.selectSubwords));
+async function provideSelectionRanges(registry2, model, positions, options, token) {
+  const providers = registry2.all(model).concat(new WordSelectionRangeProvider(options.selectSubwords));
   if (providers.length === 1) {
     providers.unshift(new BracketSelectionRangeProvider());
   }
@@ -162383,10 +169193,10 @@ async function provideSelectionRanges(registry, model, positions, options, token
 CommandsRegistry.registerCommand("_executeSelectionRangeProvider", async function(accessor, ...args) {
   const [resource, positions] = args;
   assertType(URI.isUri(resource));
-  const registry = accessor.get(ILanguageFeaturesService).selectionRangeProvider;
+  const registry2 = accessor.get(ILanguageFeaturesService).selectionRangeProvider;
   const reference = await accessor.get(ITextModelService).createModelReference(resource);
   try {
-    return provideSelectionRanges(registry, reference.object.textEditorModel, positions, { selectLeadingAndTrailingWhitespace: true, selectSubwords: true }, CancellationToken.None);
+    return provideSelectionRanges(registry2, reference.object.textEditorModel, positions, { selectLeadingAndTrailingWhitespace: true, selectSubwords: true }, CancellationToken.None);
   } finally {
     reference.dispose();
   }
@@ -165222,8 +172032,8 @@ var __param$9 = function(paramIndex, decorator) {
 };
 var WordHighlighter_1, WordHighlighterContribution_1;
 const ctxHasWordHighlights = new RawContextKey("hasWordHighlights", false);
-function getOccurrencesAtPosition(registry, model, position, token) {
-  const orderedByScore = registry.ordered(model);
+function getOccurrencesAtPosition(registry2, model, position, token) {
+  const orderedByScore = registry2.ordered(model);
   return first(orderedByScore.map((provider) => () => {
     return Promise.resolve(provider.provideDocumentHighlights(model, position, token)).then(void 0, onUnexpectedExternalError);
   }), (result) => result !== void 0 && result !== null).then((result) => {
@@ -165235,8 +172045,8 @@ function getOccurrencesAtPosition(registry, model, position, token) {
     return new ResourceMap();
   });
 }
-function getOccurrencesAcrossMultipleModels(registry, model, position, wordSeparators2, token, otherModels) {
-  const orderedByScore = registry.ordered(model);
+function getOccurrencesAcrossMultipleModels(registry2, model, position, wordSeparators2, token, otherModels) {
+  const orderedByScore = registry2.ordered(model);
   return first(orderedByScore.map((provider) => () => {
     const filteredModels = otherModels.filter((otherModel) => {
       return shouldSynchronizeModel(otherModel);
@@ -165316,11 +172126,11 @@ class MultiModelOccurenceRequest extends OccurenceAtPositionRequest {
     });
   }
 }
-function computeOccurencesAtPosition(registry, model, selection, word, wordSeparators2) {
-  return new SemanticOccurenceAtPositionRequest(model, selection, wordSeparators2, registry);
+function computeOccurencesAtPosition(registry2, model, selection, word, wordSeparators2) {
+  return new SemanticOccurenceAtPositionRequest(model, selection, wordSeparators2, registry2);
 }
-function computeOccurencesMultiModel(registry, model, selection, word, wordSeparators2, otherModels) {
-  return new MultiModelOccurenceRequest(model, selection, wordSeparators2, registry, otherModels);
+function computeOccurencesMultiModel(registry2, model, selection, word, wordSeparators2, otherModels) {
+  return new MultiModelOccurenceRequest(model, selection, wordSeparators2, registry2, otherModels);
 }
 registerModelAndPositionCommand("_executeDocumentHighlights", async (accessor, model, position) => {
   const languageFeaturesService = accessor.get(ILanguageFeaturesService);
@@ -166949,7 +173759,7 @@ let HelpQuickAccessProvider = class HelpQuickAccessProvider2 {
   constructor(quickInputService, keybindingService) {
     this.quickInputService = quickInputService;
     this.keybindingService = keybindingService;
-    this.registry = Registry.as(Extensions$2.Quickaccess);
+    this.registry = Registry2.as(Extensions$2.Quickaccess);
   }
   provide(picker) {
     const disposables = new DisposableStore();
@@ -166990,7 +173800,7 @@ HelpQuickAccessProvider = HelpQuickAccessProvider_1 = __decorate$6([
   __param$6(0, IQuickInputService),
   __param$6(1, IKeybindingService)
 ], HelpQuickAccessProvider);
-Registry.as(Extensions$2.Quickaccess).registerQuickAccessProvider({
+Registry2.as(Extensions$2.Quickaccess).registerQuickAccessProvider({
   ctor: HelpQuickAccessProvider,
   prefix: "",
   helpEntries: [{ description: QuickHelpNLS.helpQuickAccessActionLabel }]
@@ -167280,7 +174090,7 @@ let GotoLineAction$1 = class GotoLineAction extends EditorAction {
   }
 };
 registerEditorAction(GotoLineAction$1);
-Registry.as(Extensions$2.Quickaccess).registerQuickAccessProvider({
+Registry2.as(Extensions$2.Quickaccess).registerQuickAccessProvider({
   ctor: StandaloneGotoLineQuickAccessProvider,
   prefix: StandaloneGotoLineQuickAccessProvider.PREFIX,
   helpEntries: [{ description: GoToLineNLS.gotoLineActionLabel, commandId: GotoLineAction$1.ID }]
@@ -167866,7 +174676,7 @@ class GotoSymbolAction extends EditorAction {
   }
 }
 registerEditorAction(GotoSymbolAction);
-Registry.as(Extensions$2.Quickaccess).registerQuickAccessProvider({
+Registry2.as(Extensions$2.Quickaccess).registerQuickAccessProvider({
   ctor: StandaloneGotoSymbolQuickAccessProvider,
   prefix: AbstractGotoSymbolQuickAccessProvider.PREFIX,
   helpEntries: [
@@ -168663,7 +175473,7 @@ class GotoLineAction2 extends EditorAction {
   }
 }
 registerEditorAction(GotoLineAction2);
-Registry.as(Extensions$2.Quickaccess).registerQuickAccessProvider({
+Registry2.as(Extensions$2.Quickaccess).registerQuickAccessProvider({
   ctor: StandaloneCommandsQuickAccessProvider,
   prefix: StandaloneCommandsQuickAccessProvider.PREFIX,
   helpEntries: [{ description: QuickCommandNLS.quickCommandHelp, commandId: GotoLineAction2.ID }]
@@ -168722,17 +175532,23 @@ class ToggleHighContrast extends EditorAction {
 }
 registerEditorAction(ToggleHighContrast);
 function mountEditor(container) {
-  return editor.create(container, {
-    value: "// Editor sẵn sàng\n",
-    language: "javascript",
-    theme: "vs-dark"
-    // automaticLayout: true, // tự resize theo container cha
-    // lineNumbers: "off", // tắt số dòng
-    // glyphMargin: false, // tắt vùng icon debug/breakpoint
-    // folding: false, // tắt vùng gấp code (thường đi kèm margin)
-    // lineDecorationsWidth: 0, // triệt tiêu khoảng trắng còn lại của margin
-    // lineNumbersMinChars: 0,
+  const instance = editor.create(container, {
+    value: "",
+    theme: "vs-dark",
+    fontFamily: "Consolas, 'Courier New', monospace",
+    fontSize: 14,
+    tabSize: 2,
+    insertSpaces: true,
+    automaticLayout: true,
+    minimap: { enabled: true },
+    scrollBeyondLastLine: false,
+    cursorBlinking: "blink",
+    cursorSmoothCaretAnimation: "on",
+    renderWhitespace: "selection",
+    wordWrap: "on"
   });
+  requestAnimationFrame(() => instance.layout());
+  return instance;
 }
 async function readFile(path) {
   return window.api.fs.readFile(path);
@@ -168740,133 +175556,227 @@ async function readFile(path) {
 async function writeFile(path, content) {
   return window.api.fs.writeFile(path, content);
 }
-const styles$2 = ":host {\r\n  display: block;\r\n  width: 100%;\r\n  height: 100%;\r\n}\r\n\r\n#editor-mount {\r\n  position: relative;\r\n  overflow: hidden;\r\n  width: 100%;\r\n  height: 100%;\r\n}";
+const LANGS = {
+  js: "javascript",
+  ts: "typescript",
+  json: "json",
+  html: "html",
+  css: "css",
+  py: "python",
+  md: "markdown"
+};
+function detectLang(path) {
+  const ext = path.split(".").pop().toLowerCase();
+  return LANGS[ext] || "plaintext";
+}
 class EditorElement extends i$1 {
-  static styles = r$2(styles$2);
   static properties = { path: { type: String } };
   constructor() {
     super();
     this.path = "";
     this.instance = null;
-    this.saveTimeout = null;
+    this.models = /* @__PURE__ */ new Map();
+  }
+  createRenderRoot() {
+    return this;
   }
   firstUpdated() {
-    const mountPoint = this.shadowRoot.getElementById("editor-mount");
+    const mountPoint = this.querySelector("#editor-mount");
     this.instance = mountEditor(mountPoint);
-    this.instance.onDidChangeModelContent(() => {
-      if (!this.path) return;
-      clearTimeout(this.saveTimeout);
-      this.saveTimeout = setTimeout(() => {
-        writeFile(this.path, this.instance.getValue());
-      }, 800);
-    });
-  }
-  async willUpdate(changedProperties) {
-    if (changedProperties.has("path") && this.path && this.instance) {
-      const content = await readFile(this.path);
-      this.instance.setValue(content);
-      const ext = this.path.split(".").pop().toLowerCase();
-      const langs = {
-        js: "javascript",
-        ts: "typescript",
-        json: "json",
-        html: "html",
-        css: "css",
-        py: "python",
-        md: "markdown"
-      };
-      const model = this.instance.getModel();
-      if (model) editor.setModelLanguage(model, langs[ext] || "plaintext");
-    }
+    window.addEventListener("workbench:close-file", this.handleFileClosed);
   }
   disconnectedCallback() {
-    clearTimeout(this.saveTimeout);
+    window.removeEventListener("workbench:close-file", this.handleFileClosed);
     super.disconnectedCallback();
+  }
+  handleFileClosed = (e3) => {
+    const entry = this.models.get(e3.detail.filePath);
+    if (!entry) return;
+    clearTimeout(entry.saveTimeout);
+    entry.model.dispose();
+    this.models.delete(e3.detail.filePath);
+  };
+  async getOrCreateModel(path) {
+    if (this.models.has(path)) return this.models.get(path).model;
+    const content = await readFile(path);
+    const model = editor.createModel(content, detectLang(path));
+    const entry = { model, saveTimeout: null };
+    model.onDidChangeContent(() => {
+      clearTimeout(entry.saveTimeout);
+      entry.saveTimeout = setTimeout(() => writeFile(path, model.getValue()), 800);
+    });
+    this.models.set(path, entry);
+    return model;
+  }
+  async willUpdate(changedProperties) {
+    if (!changedProperties.has("path") || !this.path || !this.instance) return;
+    const targetPath = this.path;
+    const model = await this.getOrCreateModel(targetPath);
+    if (this.path !== targetPath) return;
+    this.instance.setModel(model);
   }
   render() {
     return editorTemplate();
   }
 }
 customElements.define("module-editor", EditorElement);
-class EditorGroupElement extends i$1 {
-  static styles = r$2(styles$3);
-  static properties = {
-    hasFile: { type: Boolean },
-    activeFilePath: { state: true },
-    activeFileName: { state: true }
-  };
-  constructor() {
-    super();
-    this.hasFile = false;
-    this.activeFilePath = "";
-    this.activeFileName = "";
-  }
-  connectedCallback() {
-    super.connectedCallback();
-    window.addEventListener("workbench:open-file", this.handleOpenFile);
-  }
-  disconnectedCallback() {
-    window.removeEventListener("workbench:open-file", this.handleOpenFile);
-    super.disconnectedCallback();
-  }
-  handleOpenFile = (e3) => {
-    this.activeFilePath = e3.detail.filePath;
-    this.activeFileName = e3.detail.fileName;
-    this.hasFile = true;
-  };
-  handleCloseFile() {
-    this.hasFile = false;
-    this.activeFilePath = "";
-    this.activeFileName = "";
-  }
-  render() {
-    return editorGroupTemplate(this);
-  }
-}
-customElements.define("workbench-editor-group", EditorGroupElement);
-function panelTemplate() {
-  return b`<div id="panel-mount"></div>`;
-}
-const styles$1 = ":host {\r\n  display: block;\r\n  height: 200px;\r\n  background: #1e1e1e;\r\n  border-top: 1px solid #333333;\r\n}";
-class PanelElement extends i$1 {
-  static styles = r$2(styles$1);
-  render() {
-    return panelTemplate();
-  }
-}
-customElements.define("workbench-panel", PanelElement);
-function statusbarTemplate(host) {
+registry.registerActivitybarItem({
+  id: "explorer",
+  icon: filesIcon,
+  title: "Explorer"
+});
+registry.registerSidebarView("explorer", "module-sidebar");
+const keyIcon = '<!-- @license lucide-static v0.400.0 - ISC -->\n<svg\n  class="lucide lucide-key"\n  xmlns="http://www.w3.org/2000/svg"\n  width="24"\n  height="24"\n  viewBox="0 0 24 24"\n  fill="none"\n  stroke="currentColor"\n  stroke-width="2"\n  stroke-linecap="round"\n  stroke-linejoin="round"\n>\n  <path d="m15.5 7.5 2.3 2.3a1 1 0 0 0 1.4 0l2.1-2.1a1 1 0 0 0 0-1.4L19 4" />\n  <path d="m21 2-9.6 9.6" />\n  <circle cx="7.5" cy="15.5" r="5.5" />\n</svg>\n';
+function pvSidebarTemplate(host) {
+  const providers = registry.getProviders();
+  const groups = [...new Set(providers.map((p2) => p2.group))];
   return b`
-    <span>${host.branch}</span>
-    <span>${host.encoding}</span>
-    <span>${host.language}</span>
-    <span class="statusbar-right">${host.cursorPosition}</span>
+    ${groups.map(
+    (group) => b`
+        <div class="section-title">${group}</div>
+        ${providers.filter((p2) => p2.group === group).map(
+      (p2) => b`
+            <div
+              class=${e2({
+        "provider-item": true,
+        active: host.activeId === p2.id
+      })}
+              @click=${() => host.handleSelect(p2.id)}
+            >
+              <span
+                class="provider-icon"
+                style="background:${p2.color}; color:${p2.textColor ?? "#fff"}"
+              >${p2.abbr}</span>
+              <span class="provider-name">${p2.name}</span>
+            </div>
+          `
+    )}
+        <div class="divider"></div>
+      `
+  )}
   `;
 }
-const styles = ":host {\r\n  display: flex;\r\n  align-items: center;\r\n  height: 22px;\r\n  background: #007acc;\r\n  color: #ffffff;\r\n  font-size: 12px;\r\n  padding: 0 8px;\r\n  gap: 12px;\r\n}\r\n\r\n.statusbar-right {\r\n  margin-left: auto;\r\n}";
-class StatusbarElement extends i$1 {
-  static styles = r$2(styles);
-  static properties = {
-    branch: { type: String },
-    encoding: { type: String },
-    language: { type: String },
-    cursorPosition: { type: String }
-  };
+const styles$1 = "/* pv-sidebar/sidebar.css */\n:host {\n  display: block;\n  width: 100%;\n  height: 100%;\n  font-family: -apple-system, 'Segoe UI', sans-serif;\n  font-size: 11px;\n  color: #cccccc;\n  overflow-y: auto;\n}\n\n.section-title {\n  padding: 8px 12px 4px;\n  font-size: 10px;\n  font-weight: 700;\n  letter-spacing: 0.08em;\n  color: #bbbbbb;\n  text-transform: uppercase;\n  user-select: none;\n}\n\n.provider-item {\n  display: flex;\n  align-items: center;\n  gap: 8px;\n  padding: 5px 12px;\n  cursor: pointer;\n  border-radius: 0;\n  transition: background 0.1s;\n  color: #cccccc;\n  user-select: none;\n}\n\n.provider-item:hover { background: #2a2d2e; }\n.provider-item.active { background: #37373d; }\n\n.provider-icon {\n  width: 20px;\n  height: 20px;\n  border-radius: 4px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 11px;\n  font-weight: 700;\n  flex-shrink: 0;\n}\n\n.provider-name {\n  flex: 1;\n  font-size: 12px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n}\n\n.divider {\n  height: 1px;\n  background: #303030;\n  margin: 4px 0;\n}\n";
+class PvSidebarElement extends i$1 {
+  static styles = r$2(styles$1);
+  static properties = { activeId: { type: String } };
   constructor() {
     super();
-    this.branch = "main";
-    this.encoding = "UTF-8";
-    this.language = "JavaScript";
-    this.cursorPosition = "Ln 1, Col 1";
+    this.activeId = "";
+  }
+  handleSelect(id) {
+    this.activeId = id;
+    window.dispatchEvent(
+      new CustomEvent("providers:select", { detail: { providerId: id } })
+    );
   }
   render() {
-    return statusbarTemplate(this);
+    return pvSidebarTemplate(this);
   }
 }
-customElements.define("workbench-statusbar", StatusbarElement);
-function initWorkbench() {
+customElements.define("module-pv-sidebar", PvSidebarElement);
+function pvEditorTemplate(host) {
+  const providers = registry.getProviders();
+  const groups = [...new Set(providers.map((p2) => p2.group))];
+  return b`
+    <div class="provider-dashboard">
+      <div class="dashboard-title">Providers</div>
+      
+      ${groups.map(
+    (group) => b`
+          <div class="provider-group">
+            <div class="group-title">${group}</div>
+            <div class="provider-grid">
+              ${providers.filter((p2) => p2.group === group).map(
+      (p2) => b`
+                  <div class="provider-card" @click=${() => host.handleSelect(p2.id)}>
+                    <div
+                      class="provider-icon-large"
+                      style="background:${p2.color}; color:${p2.textColor ?? "#fff"}"
+                    >
+                      ${p2.abbr}
+                    </div>
+                    <div class="provider-info">
+                      <div class="provider-name">${p2.name}</div>
+                      <div class="provider-desc">${p2.desc}</div>
+                      <div class="provider-tags">
+                        ${(p2.tags || []).map((tag) => b`<span class="tag">${tag}</span>`)}
+                      </div>
+                    </div>
+                  </div>
+                `
+    )}
+            </div>
+          </div>
+        `
+  )}
+    </div>
+  `;
 }
-document.addEventListener("DOMContentLoaded", initWorkbench);
+const styles = "/* pv-editor-group/editor.css */\n:host {\n  display: block;\n  width: 100%;\n  height: 100%;\n  font-family: -apple-system, 'Segoe UI', sans-serif;\n  background: #1e1e1e;\n  color: #cccccc;\n  overflow-y: auto;\n  padding: 24px;\n  box-sizing: border-box;\n}\n\n.provider-dashboard {\n  max-width: 800px;\n  margin: 0 auto;\n}\n\n.dashboard-title {\n  font-size: 24px;\n  font-weight: 600;\n  color: #ffffff;\n  margin-bottom: 32px;\n  letter-spacing: -0.5px;\n}\n\n.provider-group {\n  margin-bottom: 40px;\n}\n\n.group-title {\n  font-size: 14px;\n  font-weight: 600;\n  color: #858585;\n  text-transform: uppercase;\n  letter-spacing: 0.1em;\n  margin-bottom: 16px;\n  border-bottom: 1px solid #333;\n  padding-bottom: 8px;\n}\n\n.provider-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));\n  gap: 16px;\n}\n\n.provider-card {\n  background: #252526;\n  border: 1px solid #333;\n  border-radius: 8px;\n  padding: 16px;\n  display: flex;\n  align-items: flex-start;\n  gap: 16px;\n  cursor: pointer;\n  transition: all 0.2s ease;\n}\n\n.provider-card:hover {\n  background: #2d2d2d;\n  border-color: #454545;\n  transform: translateY(-2px);\n  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);\n}\n\n.provider-icon-large {\n  width: 48px;\n  height: 48px;\n  border-radius: 12px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  font-size: 20px;\n  font-weight: 700;\n  flex-shrink: 0;\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\n}\n\n.provider-info {\n  flex: 1;\n  min-width: 0;\n}\n\n.provider-name {\n  font-size: 15px;\n  font-weight: 600;\n  color: #ffffff;\n  margin-bottom: 4px;\n}\n\n.provider-desc {\n  font-size: 12px;\n  color: #999999;\n  line-height: 1.4;\n  margin-bottom: 12px;\n  display: -webkit-box;\n  -webkit-line-clamp: 2;\n  -webkit-box-orient: vertical;\n  overflow: hidden;\n}\n\n.provider-tags {\n  display: flex;\n  flex-wrap: wrap;\n  gap: 6px;\n}\n\n.tag {\n  background: #333333;\n  color: #cccccc;\n  font-size: 10px;\n  padding: 2px 6px;\n  border-radius: 4px;\n  text-transform: uppercase;\n  letter-spacing: 0.05em;\n}\n";
+class PvEditorGroupElement extends i$1 {
+  static styles = r$2(styles);
+  handleSelect(id) {
+    window.dispatchEvent(
+      new CustomEvent("providers:select", { detail: { providerId: id } })
+    );
+  }
+  render() {
+    return pvEditorTemplate(this);
+  }
+}
+customElements.define("module-pv-editor-group", PvEditorGroupElement);
+const chatgpt = {
+  id: "chatgpt",
+  name: "ChatGPT",
+  abbr: "GP",
+  group: "AI",
+  color: "#10a37f",
+  textColor: "#fff",
+  desc: "OpenAI's conversational AI model",
+  tags: ["chat", "code", "reasoning"]
+};
+const gemini = {
+  id: "gemini",
+  name: "Gemini",
+  abbr: "Gm",
+  group: "AI",
+  color: "#4285f4",
+  textColor: "#fff",
+  desc: "Google's multimodal AI model",
+  tags: ["chat", "multimodal", "code"]
+};
+const anti = {
+  id: "anti",
+  name: "Anti",
+  abbr: "An",
+  group: "Agent",
+  color: "#7c3aed",
+  textColor: "#fff",
+  desc: "Antigravity agentic assistant",
+  tags: ["agent", "code", "tools"]
+};
+const codex = {
+  id: "codex",
+  name: "Codex",
+  abbr: "Cx",
+  group: "Agent",
+  color: "#0ea5e9",
+  textColor: "#fff",
+  desc: "OpenAI Codex coding agent",
+  tags: ["agent", "code"]
+};
+registry.registerProvider(chatgpt);
+registry.registerProvider(gemini);
+registry.registerProvider(anti);
+registry.registerProvider(codex);
+registry.registerActivitybarItem({
+  id: "providers",
+  icon: keyIcon,
+  title: "Providers"
+});
+registry.registerSidebarView("providers", "module-pv-sidebar");
+registry.registerEmptyEditorView("module-pv-editor-group");
 export {
   monaco_editor_core_star as m,
   typescriptDefaults as t

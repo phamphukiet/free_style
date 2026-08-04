@@ -1,5 +1,5 @@
-import { conf as conf$1, language as language$1 } from "./typescript-DQz83zZn.js";
-import "./workbench-u5Xafi2K.js";
+import { conf as conf$1, language as language$1 } from "./typescript-BBNhZPOd.js";
+import "./workbench-C2s0cGX6.js";
 /*!-----------------------------------------------------------------------------
  * Copyright (c) Microsoft Corporation. All rights reserved.
  * Version: 0.52.2(404545bded1df6ffa41ea0af4e8ddb219018c6c1)
