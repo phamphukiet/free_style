@@ -6,7 +6,8 @@ class Registry {
   constructor() {
     this.activitybarItems = []; // { id, icon, title }
     this.sidebarViews = {};     // { [id]: tagName }
-    this.emptyEditorViews = []; // [tagName]
+    this.emptyEditorViews = {}; // { [id]: tagName }
+    this.providerEditorViews = {}; // { [id]: tagName }
     this.providers = [];        // { id, name, abbr, group, color, textColor, desc, tags }
     this.listeners = {};        // { eventName: [callbacks] }
   }
@@ -43,12 +44,12 @@ class Registry {
   }
 
   // --- Empty Editor ---
-  registerEmptyEditorView(tagName) {
-    this.emptyEditorViews.push(tagName);
+  registerEmptyEditorView(id, tagName) {
+    this.emptyEditorViews[id] = tagName;
   }
   
-  getEmptyEditorView() {
-    return this.emptyEditorViews[0]; // Hiện tại chỉ hỗ trợ 1 view mặc định
+  getEmptyEditorView(id) {
+    return this.emptyEditorViews[id];
   }
 
   // --- Providers ---
@@ -59,6 +60,15 @@ class Registry {
 
   getProviders() {
     return this.providers;
+  }
+
+  // --- Provider Editor Views ---
+  registerProviderEditorView(id, tagName) {
+    this.providerEditorViews[id] = tagName;
+  }
+
+  getProviderEditorView(id) {
+    return this.providerEditorViews[id];
   }
 }
 

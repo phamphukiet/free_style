@@ -5,12 +5,14 @@
 const { registerWindowIpc } = require("./ipc/window");
 const { registerFsIpc } = require("./ipc/fs");
 const { registerTerminalIpc } = require("./ipc/terminal");
+const { registerCredentialsIpc } = require("./ipc/credentials");
 const { app } = require("electron");
 
 function registerWindowIpcWrapper() {
   registerWindowIpc();
   registerFsIpc();
   registerTerminalIpc();
+  registerCredentialsIpc();
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };

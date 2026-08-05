@@ -21,9 +21,6 @@
 
 ## Tổng kết Giai đoạn 1 — quy tắc & quyết định
 
-**Sửa lỗi phát hiện được**
-- File `electron-main/preloead.js` bị gõ sai tên → đổi thành `preload.js` cho khớp với `window.js`.
-
 **Kiến trúc renderer**
 - Dùng bundler **Vite** cho renderer (`workbench/`), build output vào `dist/workbench/`. `electron-main/` không qua Vite, chạy Node thuần.
 - Renderer dùng ESM (`import`/`export`), cần bundler nên không dùng `<script>` thường.
@@ -60,3 +57,7 @@
 - Chuyển từ Vite thuần + `concurrently`/`wait-on` sang **electron-vite** để có HMR/auto-restart cho cả main, preload, renderer (không chỉ renderer).
 - Cấu trúc đổi: `electron-main/` → `src/main/`, `electron-main/preload.js` → `src/preload/index.js`, `workbench/` → `src/renderer/`. `modules/` và `shared/` giữ nguyên ở gốc project.
 - Dùng alias `@modules` và `@shared` (khai báo trong `electron.vite.config.js`) thay cho đường dẫn tương đối `../../../` khi import giữa renderer/main và modules/shared — tránh lỗi đếm sai cấp thư mục.
+
+## Tổng kết Giai đoạn 2 — quy tắc & quyết định
+**Ưu tiên code tái sử dụng**
+**Hạn chế thay đổi code ở src/parts**

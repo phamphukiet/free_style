@@ -22,6 +22,9 @@ const channels = {
   TERMINAL_RESIZE: "terminal:resize",
   TERMINAL_KILL: "terminal:kill",
   TERMINAL_DATA: "terminal:data",
+  CREDENTIALS_SAVE: "credentials:save",
+  CREDENTIALS_LOAD: "credentials:load",
+  CREDENTIALS_DELETE: "credentials:delete",
 };
 
 /**
@@ -75,6 +78,12 @@ function getExposedApi() {
         return () =>
           ipcRenderer.removeListener(channels.TERMINAL_DATA, listener);
       },
+    },
+
+    credentials: {
+      save: (serviceId, keyString) => ipcRenderer.invoke(channels.CREDENTIALS_SAVE, serviceId, keyString),
+      load: (serviceId) => ipcRenderer.invoke(channels.CREDENTIALS_LOAD, serviceId),
+      delete: (serviceId) => ipcRenderer.invoke(channels.CREDENTIALS_DELETE, serviceId),
     },
   };
 }

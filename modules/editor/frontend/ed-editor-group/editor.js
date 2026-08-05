@@ -58,7 +58,7 @@ class EditorElement extends LitElement {
     return model;
   }
 
-  async willUpdate(changedProperties) {
+  async updated(changedProperties) {
     if (!changedProperties.has("path") || !this.path || !this.instance) return;
     const targetPath = this.path;
     const model = await this.getOrCreateModel(targetPath);

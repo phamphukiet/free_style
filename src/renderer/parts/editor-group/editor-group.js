@@ -7,12 +7,14 @@ class EditorGroupElement extends LitElement {
   static properties = {
     openFiles: { state: true },
     activePath: { state: true },
+    activeModuleId: { state: true },
   };
 
   constructor() {
     super();
     this.openFiles = [];
     this.activePath = "";
+    this.activeModuleId = "explorer";
   }
 
   createRenderRoot() {
@@ -22,12 +24,18 @@ class EditorGroupElement extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("workbench:open-file", this.handleOpenFile);
+    window.addEventListener("workbench:sidebar-tab", this.handleSidebarTab);
   }
 
   disconnectedCallback() {
     window.removeEventListener("workbench:open-file", this.handleOpenFile);
+    window.removeEventListener("workbench:sidebar-tab", this.handleSidebarTab);
     super.disconnectedCallback();
   }
+
+  handleSidebarTab = (e) => {
+    this.activeModuleId = e.detail.tabId;
+  };
 
   handleOpenFile = (e) => {
     const { filePath, fileName } = e.detail;
@@ -58,7 +66,7 @@ class EditorGroupElement extends LitElement {
   }
 
   render() {
-    const emptyTagName = registry.getEmptyEditorView();
+    const emptyTagName = registry.getEmptyEditorView(this.activeModuleId);
     return editorGroupTemplate(this, emptyTagName);
   }
 }

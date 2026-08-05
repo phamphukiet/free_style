@@ -5,11 +5,38 @@ import styles from "./editor.css?inline";
 
 class PvEditorGroupElement extends LitElement {
   static styles = unsafeCSS(styles);
+  static properties = { activeProviderId: { type: String } };
+
+  constructor() {
+    super();
+    this.activeProviderId = "";
+  }
+
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("providers:select", this.handleProviderSelect);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener("providers:select", this.handleProviderSelect);
+    super.disconnectedCallback();
+  }
+
+  handleProviderSelect = (e) => {
+    this.activeProviderId = e.detail.providerId;
+  };
 
   handleSelect(id) {
-    // Tương lai: click vào provider card sẽ mở chat/config của provider đó
     window.dispatchEvent(
       new CustomEvent("providers:select", { detail: { providerId: id } })
+    );
+  }
+
+  handleBack() {
+    this.activeProviderId = "";
+    // also notify sidebar to clear selection if we want
+    window.dispatchEvent(
+      new CustomEvent("providers:select", { detail: { providerId: "" } })
     );
   }
 

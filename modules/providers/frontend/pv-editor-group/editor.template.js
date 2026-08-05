@@ -1,43 +1,27 @@
 // editor.template.js
-import { html } from "lit";
+import { html, unsafeStatic } from "lit/static-html.js";
 import { registry } from "@modules/registry.js";
+import { dashboardTemplate } from "./dashboard.template.js";
 
 export function pvEditorTemplate(host) {
-  const providers = registry.getProviders();
-  const groups = [...new Set(providers.map((p) => p.group))];
-
-  return html`
-    <div class="provider-dashboard">
-      <div class="dashboard-title">Providers</div>
-      
-      ${groups.map(
-        (group) => html`
-          <div class="provider-group">
-            <div class="group-title">${group}</div>
-            <div class="provider-grid">
-              ${providers.filter((p) => p.group === group).map(
-                (p) => html`
-                  <div class="provider-card" @click=${() => host.handleSelect(p.id)}>
-                    <div
-                      class="provider-icon-large"
-                      style="background:${p.color}; color:${p.textColor ?? "#fff"}"
-                    >
-                      ${p.abbr}
-                    </div>
-                    <div class="provider-info">
-                      <div class="provider-name">${p.name}</div>
-                      <div class="provider-desc">${p.desc}</div>
-                      <div class="provider-tags">
-                        ${(p.tags || []).map((tag) => html`<span class="tag">${tag}</span>`)}
-                      </div>
-                    </div>
-                  </div>
-                `
-              )}
-            </div>
+  if (host.activeProviderId) {
+    const tagName = registry.getProviderEditorView(host.activeProviderId);
+    if (tagName) {
+      const tag = unsafeStatic(tagName);
+      return html`
+        <div style="padding: 20px; display: flex; flex-direction: column; height: 100%;">
+          <div style="margin-bottom: 20px;">
+            <button @click=${() => host.handleBack()} style="background: var(--bg-modifier-hover); color: var(--text-normal); border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer;">
+              &larr; Quay lại
+            </button>
           </div>
-        `
-      )}
-    </div>
-  `;
+          <div style="flex: 1;">
+            <${tag}></${tag}>
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  return dashboardTemplate(host);
 }
