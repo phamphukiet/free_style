@@ -13,6 +13,18 @@ function registerWindowIpcWrapper() {
   registerFsIpc();
   registerTerminalIpc();
   registerCredentialsIpc();
+  try {
+    const { registerChatGptBackend } = require("../../modules/api/chatgpt/backend/index.js");
+    const { registerGeminiBackend } = require("../../modules/api/gemini/backend/index.js");
+    const { registerCodexBackend } = require("../../modules/api/codex/backend/index.js");
+    const { registerAntigravityBackend } = require("../../modules/api/antigravity/backend/index.js");
+    registerChatGptBackend();
+    registerGeminiBackend();
+    registerCodexBackend();
+    registerAntigravityBackend();
+  } catch (e) {
+    console.error("Failed to load api backends", e);
+  }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };

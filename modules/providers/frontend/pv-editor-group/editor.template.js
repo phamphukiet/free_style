@@ -16,7 +16,7 @@ export function pvEditorTemplate(host) {
             </button>
           </div>
           <div style="flex: 1;">
-            <${tag}></${tag}>
+            <${tag} .providerId=${host.activeProviderId}></${tag}>
           </div>
         </div>
       `;

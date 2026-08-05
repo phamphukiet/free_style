@@ -8,6 +8,7 @@ class Registry {
     this.sidebarViews = {};     // { [id]: tagName }
     this.emptyEditorViews = {}; // { [id]: tagName }
     this.providerEditorViews = {}; // { [id]: tagName }
+    this.providerCreatorViews = {}; // { [id]: tagName }
     this.providers = [];        // { id, name, abbr, group, color, textColor, desc, tags }
     this.listeners = {};        // { eventName: [callbacks] }
   }
@@ -69,6 +70,15 @@ class Registry {
 
   getProviderEditorView(id) {
     return this.providerEditorViews[id];
+  }
+
+  // --- Provider Creator Views ---
+  registerProviderCreatorView(id, tagName) {
+    this.providerCreatorViews[id] = tagName;
+  }
+
+  getProviderCreatorView(id) {
+    return this.providerCreatorViews[id];
   }
 }
 

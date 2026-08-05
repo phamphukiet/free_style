@@ -1,5 +1,5 @@
 import { registry } from "@modules/registry.js";
-import "./api-editor.js";
+import "./chatgpt-key-creator.js";
 
 const metadata = {
   id: "chatgpt",
@@ -13,4 +13,6 @@ const metadata = {
 };
 
 registry.registerProvider(metadata);
-registry.registerProviderEditorView("chatgpt", "module-api-chatgpt");
+registry.registerProviderEditorView("chatgpt", "api-key-manager");
+registry.registerProviderCreatorView("chatgpt", "chatgpt-key-creator");
+

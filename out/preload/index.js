@@ -16,10 +16,7 @@ const channels = {
   TERMINAL_WRITE: "terminal:write",
   TERMINAL_RESIZE: "terminal:resize",
   TERMINAL_KILL: "terminal:kill",
-  TERMINAL_DATA: "terminal:data",
-  CREDENTIALS_SAVE: "credentials:save",
-  CREDENTIALS_LOAD: "credentials:load",
-  CREDENTIALS_DELETE: "credentials:delete"
+  TERMINAL_DATA: "terminal:data"
 };
 function getExposedApi() {
   return {
@@ -58,9 +55,14 @@ function getExposedApi() {
       }
     },
     credentials: {
-      save: (serviceId, keyString) => ipcRenderer.invoke(channels.CREDENTIALS_SAVE, serviceId, keyString),
-      load: (serviceId) => ipcRenderer.invoke(channels.CREDENTIALS_LOAD, serviceId),
-      delete: (serviceId) => ipcRenderer.invoke(channels.CREDENTIALS_DELETE, serviceId)
+      list: (serviceId) => ipcRenderer.invoke("credentials:list", serviceId),
+      save: (serviceId, keyData) => ipcRenderer.invoke("credentials:save", serviceId, keyData),
+      load: (serviceId) => ipcRenderer.invoke("credentials:load", serviceId),
+      delete: (serviceId, keyId) => ipcRenderer.invoke("credentials:delete", serviceId, keyId)
+    },
+    providers: {
+      createKey: (providerId) => ipcRenderer.invoke(`api:create-key:${providerId}`),
+      validateKey: (providerId, keyData) => ipcRenderer.invoke(`api:validate-key:${providerId}`, keyData)
     }
   };
 }

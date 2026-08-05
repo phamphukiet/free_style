@@ -12,3 +12,4 @@ const metadata = {
 };
 
 registry.registerProvider(metadata);
+registry.registerProviderEditorView("antigravity", "api-key-manager");

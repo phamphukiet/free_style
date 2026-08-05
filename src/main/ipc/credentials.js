@@ -1,45 +1,60 @@
-const { ipcMain, safeStorage, app } = require("electron");
-const fs = require("fs");
-const path = require("path");
-
-function getCredentialsPath() {
-  const userDataPath = app.getPath("userData");
-  const credPath = path.join(userDataPath, "credentials.json");
-  return credPath;
-}
-
-function loadCredentialsSync() {
-  const credPath = getCredentialsPath();
-  if (!fs.existsSync(credPath)) {
-    return {};
-  }
-  try {
-    const data = fs.readFileSync(credPath, "utf-8");
-    return JSON.parse(data);
-  } catch (error) {
-    console.error("Failed to read credentials file:", error);
-    return {};
-  }
-}
-
-function saveCredentialsSync(data) {
-  const credPath = getCredentialsPath();
-  fs.writeFileSync(credPath, JSON.stringify(data, null, 2), "utf-8");
-  console.log("[Credentials] Saved to:", credPath); // Log the path as requested
-}
+const { ipcMain } = require("electron");
+const crypto = require("crypto");
+const { loadCredentialsSync, saveCredentialsSync, encrypt, decrypt } = require("./credentials-storage");
 
 function registerCredentialsIpc() {
-  ipcMain.handle("credentials:save", (event, serviceId, keyString) => {
+  ipcMain.handle("credentials:list", (event, serviceId) => {
     try {
       const data = loadCredentialsSync();
-      if (safeStorage.isEncryptionAvailable()) {
-        const encrypted = safeStorage.encryptString(keyString);
-        // Store as base64 or hex because buffer is not easily JSON serializable
-        data[serviceId] = { encrypted: encrypted.toString('base64') };
-      } else {
-        // Fallback if safe storage is not available on this OS
-        data[serviceId] = { plaintext: keyString };
+      const serviceData = data[serviceId];
+      if (!serviceData) return [];
+      if (serviceData.encrypted || serviceData.plaintext) {
+        const value = decrypt(serviceData);
+        if (value) {
+          const newKeys = [{ id: "default", name: "Default Key", value }];
+          data[serviceId] = { keys: newKeys.map(k => ({ id: k.id, name: k.name, ...encrypt(k.value) })) };
+          saveCredentialsSync(data);
+          return newKeys;
+        }
+        return [];
       }
+      if (serviceData.keys) {
+        return serviceData.keys.map(k => ({
+          id: k.id,
+          name: k.name,
+          value: decrypt(k)
+        })).filter(k => k.value !== null);
+      }
+      return [];
+    } catch (error) {
+      console.error("Failed to list credentials:", error);
+      return [];
+    }
+  });
+
+  ipcMain.handle("credentials:save", (event, serviceId, keyData) => {
+    try {
+      const data = loadCredentialsSync();
+      if (!data[serviceId]) data[serviceId] = { keys: [] };
+      if (!data[serviceId].keys) {
+        const oldVal = decrypt(data[serviceId]);
+        data[serviceId].keys = oldVal ? [{ id: "default", name: "Default Key", ...encrypt(oldVal) }] : [];
+        delete data[serviceId].encrypted;
+        delete data[serviceId].plaintext;
+      }
+      
+      const keys = data[serviceId].keys;
+      const id = keyData.id || crypto.randomUUID();
+      const existingIdx = keys.findIndex(k => k.id === id);
+      
+      const newKeyEntry = { id, name: keyData.name || "New Key", ...encrypt(keyData.value) };
+
+      if (existingIdx >= 0) {
+        keys[existingIdx] = newKeyEntry;
+      } else {
+        keys.push(newKeyEntry);
+      }
+      
       saveCredentialsSync(data);
       return true;
     } catch (error) {
@@ -53,27 +68,26 @@ function registerCredentialsIpc() {
       const data = loadCredentialsSync();
       const serviceData = data[serviceId];
       if (!serviceData) return null;
-
-      if (serviceData.encrypted && safeStorage.isEncryptionAvailable()) {
-        const buffer = Buffer.from(serviceData.encrypted, 'base64');
-        return safeStorage.decryptString(buffer);
-      } else if (serviceData.plaintext) {
-        return serviceData.plaintext;
-      }
+      if (serviceData.encrypted || serviceData.plaintext) return decrypt(serviceData);
+      if (serviceData.keys && serviceData.keys.length > 0) return decrypt(serviceData.keys[0]);
       return null;
     } catch (error) {
-      console.error("Failed to load credentials:", error);
       return null;
     }
   });
 
-  ipcMain.handle("credentials:delete", (event, serviceId) => {
+  ipcMain.handle("credentials:delete", (event, serviceId, keyId) => {
     try {
       const data = loadCredentialsSync();
-      if (data[serviceId]) {
+      if (!data[serviceId]) return false;
+      
+      if (!keyId) {
         delete data[serviceId];
-        saveCredentialsSync(data);
+      } else if (data[serviceId].keys) {
+        data[serviceId].keys = data[serviceId].keys.filter(k => k.id !== keyId);
       }
+      
+      saveCredentialsSync(data);
       return true;
     } catch (error) {
       console.error("Failed to delete credentials:", error);
