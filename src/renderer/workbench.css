@@ -72,3 +72,8 @@ workbench-panel {
   flex-shrink: 0;
   /* panel có chiều cao cố định (200px, set trong :host riêng) */
 }
+
+/* rightsidebar cố định chiều rộng, mặc định ẩn (display:none set trong :host riêng) */
+workbench-rightsidebar {
+  flex-shrink: 0;
+}

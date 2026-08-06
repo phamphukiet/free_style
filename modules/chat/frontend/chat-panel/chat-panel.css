@@ -1,0 +1,103 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-family: -apple-system, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  color: #cccccc;
+}
+
+.chat-selectors {
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  border-bottom: 1px solid #303030;
+  flex-shrink: 0;
+}
+
+.chat-select {
+  flex: 1;
+  background: #3c3c3c;
+  color: #cccccc;
+  border: 1px solid #454545;
+  font-size: 12px;
+  padding: 4px 6px;
+  border-radius: 3px;
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.chat-empty {
+  color: #858585;
+  text-align: center;
+  padding: 20px 8px;
+}
+
+.chat-message {
+  padding: 6px 8px;
+  border-radius: 4px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 85%;
+}
+
+.chat-message.user {
+  background: #094771;
+  align-self: flex-end;
+}
+
+.chat-message.assistant {
+  background: #2d2d2d;
+  align-self: flex-start;
+}
+
+.chat-input-row {
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  border-top: 1px solid #303030;
+  flex-shrink: 0;
+}
+
+.chat-input {
+  flex: 1;
+  resize: none;
+  background: #3c3c3c;
+  border: 1px solid #454545;
+  color: #cccccc;
+  font-family: inherit;
+  font-size: 12px;
+  padding: 6px;
+  border-radius: 3px;
+  outline: none;
+  max-height: 80px;
+}
+
+.chat-send-btn {
+  background: #0e639c;
+  border: none;
+  color: #ffffff;
+  padding: 0 14px;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.chat-send-btn:hover {
+  background: #1177bb;
+}
+
+.chat-send-btn:disabled {
+  background: #3c3c3c;
+  color: #858585;
+  cursor: default;
+}

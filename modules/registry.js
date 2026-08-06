@@ -5,12 +5,13 @@
 class Registry {
   constructor() {
     this.activitybarItems = []; // { id, icon, title }
-    this.sidebarViews = {};     // { [id]: tagName }
+    this.sidebarViews = {}; // { [id]: tagName }
     this.emptyEditorViews = {}; // { [id]: tagName }
     this.providerEditorViews = {}; // { [id]: tagName }
     this.providerCreatorViews = {}; // { [id]: tagName }
-    this.providers = [];        // { id, name, abbr, group, color, textColor, desc, tags }
-    this.listeners = {};        // { eventName: [callbacks] }
+    this.providers = []; // { id, name, abbr, group, color, textColor, desc, tags }
+    this.listeners = {}; // { eventName: [callbacks] }
+    this.rightSidebarView = null; // tagName duy nhất, khác sidebarViews (đa view theo id)
   }
 
   // --- Events ---
@@ -30,7 +31,7 @@ class Registry {
     this.activitybarItems.push(item);
     this.emit("activitybar:changed", this.activitybarItems);
   }
-  
+
   getActivitybarItems() {
     return this.activitybarItems;
   }
@@ -39,16 +40,25 @@ class Registry {
   registerSidebarView(id, tagName) {
     this.sidebarViews[id] = tagName;
   }
-  
+
   getSidebarView(id) {
     return this.sidebarViews[id];
+  }
+
+  // --- Right Sidebar ---
+  registerRightSidebarView(tagName) {
+    this.rightSidebarView = tagName;
+  }
+
+  getRightSidebarView() {
+    return this.rightSidebarView;
   }
 
   // --- Empty Editor ---
   registerEmptyEditorView(id, tagName) {
     this.emptyEditorViews[id] = tagName;
   }
-  
+
   getEmptyEditorView(id) {
     return this.emptyEditorViews[id];
   }

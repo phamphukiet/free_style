@@ -82,13 +82,20 @@ function getExposedApi() {
 
     credentials: {
       list: (serviceId) => ipcRenderer.invoke("credentials:list", serviceId),
-      save: (serviceId, keyData) => ipcRenderer.invoke("credentials:save", serviceId, keyData),
+      save: (serviceId, keyData) =>
+        ipcRenderer.invoke("credentials:save", serviceId, keyData),
       load: (serviceId) => ipcRenderer.invoke("credentials:load", serviceId),
-      delete: (serviceId, keyId) => ipcRenderer.invoke("credentials:delete", serviceId, keyId),
+      delete: (serviceId, keyId) =>
+        ipcRenderer.invoke("credentials:delete", serviceId, keyId),
     },
     providers: {
-      createKey: (providerId) => ipcRenderer.invoke(`api:create-key:${providerId}`),
-      validateKey: (providerId, keyData) => ipcRenderer.invoke(`api:validate-key:${providerId}`, keyData),
+      createKey: (providerId) =>
+        ipcRenderer.invoke(`api:create-key:${providerId}`),
+      validateKey: (providerId, keyData) =>
+        ipcRenderer.invoke(`api:validate-key:${providerId}`, keyData),
+    },
+    chat: {
+      send: (payload) => ipcRenderer.invoke("chat:send", payload),
     },
   };
 }

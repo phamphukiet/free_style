@@ -25,6 +25,14 @@ function registerWindowIpcWrapper() {
   } catch (e) {
     console.error("Failed to load api backends", e);
   }
+  try {
+    const {
+      registerChatBackend,
+    } = require("../../modules/chat/backend/index.js");
+    registerChatBackend();
+  } catch (e) {
+    console.error("Failed to load chat backend", e);
+  }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };

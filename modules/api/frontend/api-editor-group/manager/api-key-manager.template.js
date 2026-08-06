@@ -6,6 +6,17 @@ import editIcon from "lucide-static/icons/pencil.svg?raw";
 import { registry } from "../../../../registry.js";
 
 export function apiKeyManagerTemplate(host) {
+  if (host.editingKey) {
+    return html`
+      <api-key-editor
+        .providerId=${host.providerId}
+        .keyObj=${host.editingKey}
+        @cancel=${() => host.handleEditCancel()}
+        @updated=${() => host.handleEditUpdated()}
+      ></api-key-editor>
+    `;
+  }
+  
   if (host.isCreating) {
     const creatorTagName = registry.getProviderCreatorView(host.providerId);
     if (creatorTagName) {

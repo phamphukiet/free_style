@@ -35,6 +35,10 @@ class TitlebarElement extends LitElement {
     window.api.window.close();
   }
 
+  handleToggleRightSidebar() {
+    window.dispatchEvent(new CustomEvent("workbench:toggle-rightsidebar"));
+  }
+
   handleToggleFileMenu() {
     this.menuOpen = !this.menuOpen;
   }

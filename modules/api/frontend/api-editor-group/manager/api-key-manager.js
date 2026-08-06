@@ -1,13 +1,14 @@
 import { LitElement } from "lit";
 import { apiKeyManagerTemplate } from "./api-key-manager.template.js";
-
 import { registry } from "../../../../registry.js";
+import "../edit_key/api-key-editor.js";
 
 class ApiKeyManagerElement extends LitElement {
   static properties = {
     providerId: { type: String },
     keys: { state: true },
     isCreating: { state: true },
+    editingKey: { state: true },
   };
 
   constructor() {
@@ -15,6 +16,7 @@ class ApiKeyManagerElement extends LitElement {
     this.providerId = "";
     this.keys = [];
     this.isCreating = false;
+    this.editingKey = null;
   }
 
   async connectedCallback() {
@@ -62,23 +64,22 @@ class ApiKeyManagerElement extends LitElement {
     this.isCreating = false;
   }
 
+  handleEditCancel() {
+    this.editingKey = null;
+  }
+
+  async handleEditUpdated() {
+    this.editingKey = null;
+    await this.loadKeys();
+  }
+
   async handleKeyCreated() {
     this.isCreating = false;
     await this.loadKeys();
   }
 
   async handleEdit(keyObj) {
-    const newName = window.prompt("Nhập tên mới cho API Key:", keyObj.name);
-    if (newName && newName.trim() !== "" && newName !== keyObj.name) {
-      const updatedKey = { ...keyObj, name: newName.trim() };
-      const success = await window.api.credentials.save(
-        this.providerId,
-        updatedKey,
-      );
-      if (success) {
-        await this.loadKeys();
-      }
-    }
+    this.editingKey = keyObj;
   }
 
   async handleDelete(keyId) {
