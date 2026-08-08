@@ -5,7 +5,7 @@
 const { registerWindowIpc } = require("./ipc/window");
 const { registerFsIpc } = require("./ipc/fs");
 const { registerTerminalIpc } = require("./ipc/terminal");
-const { registerCredentialsIpc } = require("./ipc/credentials");
+const { registerCredentialsIpc } = require("./ipc/credentials/index.js");
 const { app } = require("electron");
 
 function registerWindowIpcWrapper() {
