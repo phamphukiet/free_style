@@ -1,29 +1,28 @@
 const { ipcMain } = require("electron");
 const crypto = require("crypto");
-const { loadCredentialsSync, saveCredentialsSync, encrypt, decrypt } = require("./credentials-storage");
+const {
+  loadCredentialsSync,
+  saveCredentialsSync,
+  encrypt,
+  decrypt,
+  decryptSafe,
+} = require("./credentials-storage");
 
 function registerCredentialsIpc() {
-  ipcMain.handle("credentials:list", (event, serviceId) => {
+  ipcMain.handle("credentials:list", async (event, serviceId) => {
     try {
       const data = loadCredentialsSync();
       const serviceData = data[serviceId];
       if (!serviceData) return [];
-      if (serviceData.encrypted || serviceData.plaintext) {
-        const value = decrypt(serviceData);
-        if (value) {
-          const newKeys = [{ id: "default", name: "Default Key", value }];
-          data[serviceId] = { keys: newKeys.map(k => ({ id: k.id, name: k.name, ...encrypt(k.value) })) };
-          saveCredentialsSync(data);
-          return newKeys;
-        }
-        return [];
-      }
       if (serviceData.keys) {
-        return serviceData.keys.map(k => ({
-          id: k.id,
-          name: k.name,
-          value: decrypt(k)
-        })).filter(k => k.value !== null);
+        const results = await Promise.all(
+          serviceData.keys.map(async (k) => ({
+            id: k.id,
+            name: k.name,
+            value: await decryptSafe(k),
+          })),
+        );
+        return results.filter((k) => k.value !== null);
       }
       return [];
     } catch (error) {
@@ -32,7 +31,7 @@ function registerCredentialsIpc() {
     }
   });
 
-  ipcMain.handle("credentials:save", (event, serviceId, keyData) => {
+  ipcMain.handle("credentials:save", async (event, serviceId, keyData) => {
     try {
       const data = loadCredentialsSync();
       if (!data[serviceId]) data[serviceId] = { keys: [] };

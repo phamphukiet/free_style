@@ -5,16 +5,6 @@ export function chatPanelTemplate(host) {
     <div class="chat-selectors">
       <select
         class="chat-select"
-        .value=${host.selectedModuleId}
-        @change=${(e) => host.handleSelectModule(e.target.value)}
-      >
-        <option value="">-- Module --</option>
-        ${host.modules.map(
-          (m) => html`<option value=${m.id}>${m.title || m.id}</option>`,
-        )}
-      </select>
-      <select
-        class="chat-select"
         .value=${host.selectedKeyRef}
         @change=${(e) => host.handleSelectKey(e.target.value)}
       >
@@ -25,6 +15,17 @@ export function chatPanelTemplate(host) {
               ${k.providerName} · ${k.name}
             </option>`,
         )}
+      </select>
+      <select
+        class="chat-select"
+        .value=${host.selectedModel}
+        ?disabled=${host.models.length === 0}
+        @change=${(e) => host.handleSelectModel(e.target.value)}
+      >
+        <option value="">
+          ${host.models.length === 0 ? "-- Chọn key trước --" : "-- Model --"}
+        </option>
+        ${host.models.map((m) => html`<option value=${m.id}>${m.id}</option>`)}
       </select>
     </div>
 

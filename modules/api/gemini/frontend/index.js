@@ -1,4 +1,5 @@
 import { registry } from "@modules/registry.js";
+import "./gemini-key-creator.js";
 
 const metadata = {
   id: "gemini",
@@ -13,3 +14,4 @@ const metadata = {
 
 registry.registerProvider(metadata);
 registry.registerProviderEditorView("gemini", "api-key-manager");
+registry.registerProviderCreatorView("gemini", "gemini-key-creator");

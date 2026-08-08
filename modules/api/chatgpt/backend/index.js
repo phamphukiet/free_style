@@ -1,4 +1,15 @@
 const { ipcMain } = require("electron");
+const {
+  chatCompletion,
+  listModels,
+} = require("./chatgpt-client");
+const {
+  registerChatProvider,
+} = require("../../../chat/backend/providers-registry");
+
+registerChatProvider("chatgpt", (apiKey, message, model) =>
+  chatCompletion(apiKey, message, model || "gpt-4o-mini"),
+);
 
 function registerChatGptBackend() {
   ipcMain.handle("api:create-key:chatgpt", async (event) => {
@@ -36,6 +47,18 @@ function registerChatGptBackend() {
       return { success: false, message: "Lỗi kết nối mạng: " + error.message };
     }
   });
+  ipcMain.handle("api:list-models:chatgpt", async (event, apiKey) => {
+    try {
+      return await listModels(apiKey);
+    } catch (error) {
+      console.error("Failed to list ChatGPT models:", error);
+      return { error: error.message };
+    }
+  });
 }
+
+registerChatProvider("chatgpt", (apiKey, message, model) =>
+  chatCompletion(apiKey, message, "gpt-4o-mini"),
+);
 
 module.exports = { registerChatGptBackend };

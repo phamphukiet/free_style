@@ -13,16 +13,21 @@
   padding: 8px;
   border-bottom: 1px solid #303030;
   flex-shrink: 0;
+  min-width: 0;
 }
 
 .chat-select {
   flex: 1;
+  min-width: 0;
   background: #3c3c3c;
   color: #cccccc;
   border: 1px solid #454545;
   font-size: 12px;
   padding: 4px 6px;
   border-radius: 3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .chat-messages {

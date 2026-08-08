@@ -38,6 +38,10 @@ class ApiKeyManagerElement extends LitElement {
     this.keys = keys || [];
   }
 
+  notifyCredentialsChanged() {
+    window.dispatchEvent(new CustomEvent("workbench:credentials-changed"));
+  }
+
   async handleCreate() {
     const creatorView = registry.getProviderCreatorView(this.providerId);
     if (creatorView) {
@@ -54,6 +58,7 @@ class ApiKeyManagerElement extends LitElement {
       );
       if (success) {
         await this.loadKeys();
+        this.notifyCredentialsChanged();
       } else {
         alert("Lỗi khi lưu API Key");
       }
@@ -71,15 +76,13 @@ class ApiKeyManagerElement extends LitElement {
   async handleEditUpdated() {
     this.editingKey = null;
     await this.loadKeys();
+    this.notifyCredentialsChanged();
   }
 
   async handleKeyCreated() {
     this.isCreating = false;
     await this.loadKeys();
-  }
-
-  async handleEdit(keyObj) {
-    this.editingKey = keyObj;
+    this.notifyCredentialsChanged();
   }
 
   async handleDelete(keyId) {
@@ -90,8 +93,13 @@ class ApiKeyManagerElement extends LitElement {
       );
       if (success) {
         await this.loadKeys();
+        this.notifyCredentialsChanged();
       }
     }
+  }
+
+  async handleEdit(keyObj) {
+    this.editingKey = keyObj;
   }
 
   render() {

@@ -93,6 +93,8 @@ function getExposedApi() {
         ipcRenderer.invoke(`api:create-key:${providerId}`),
       validateKey: (providerId, keyData) =>
         ipcRenderer.invoke(`api:validate-key:${providerId}`, keyData),
+      listModels: (providerId, apiKey) =>
+        ipcRenderer.invoke(`api:list-models:${providerId}`, apiKey),
     },
     chat: {
       send: (payload) => ipcRenderer.invoke("chat:send", payload),

@@ -61,3 +61,4 @@
 ## Tổng kết Giai đoạn 2 — quy tắc & quyết định
 **Ưu tiên code tái sử dụng**
 **Hạn chế thay đổi code ở src/parts**
+**Các folder trong modules lập trình có thể hoạt động độc lập mà không cần biết nhau**

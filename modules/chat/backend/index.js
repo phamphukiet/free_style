@@ -4,6 +4,7 @@
 // Bước sau: dùng providerId/keyId để gọi API thật (OpenAI, Gemini...).
 
 const { ipcMain } = require("electron");
+const { getChatProvider } = require("./providers-registry");
 const {
   loadCredentialsSync,
   decrypt,
@@ -19,14 +20,31 @@ function resolveKey(providerId, keyId) {
 }
 
 function registerChatBackend() {
-  ipcMain.handle("chat:send", async (event, { message, providerId, keyId }) => {
-    const apiKey = resolveKey(providerId, keyId);
-    if (providerId && !apiKey) {
-      return { content: `Chưa có API key hợp lệ cho "${providerId}".` };
-    }
-    // TODO: gọi API thật của provider tương ứng dựa trên providerId + apiKey.
-    return { content: `(stub) Đã nhận: "${message}"` };
-  });
+  ipcMain.handle(
+    "chat:send",
+    async (event, { message, providerId, keyId, model }) => {
+      if (!providerId) {
+        return { content: `Chưa chọn provider. Nhận: "${message}"` };
+      }
+
+      const apiKey = resolveKey(providerId, keyId);
+      if (!apiKey) {
+        return { content: `Chưa có API key hợp lệ cho "${providerId}".` };
+      }
+
+      const sendMessage = getChatProvider(providerId);
+      if (!sendMessage) {
+        return { content: `Provider "${providerId}" chưa hỗ trợ chat thật.` };
+      }
+
+      try {
+        const content = await sendMessage(apiKey, message, model);
+        return { content };
+      } catch (error) {
+        return { content: `Lỗi: ${error.message}` };
+      }
+    },
+  );
 }
 
 module.exports = { registerChatBackend };

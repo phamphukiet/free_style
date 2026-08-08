@@ -7,37 +7,47 @@ class ChatPanelElement extends LitElement {
   static styles = unsafeCSS(styles);
 
   static properties = {
-    modules: { state: true },
     keys: { state: true },
+    models: { state: true },
     messages: { state: true },
-    selectedModuleId: { state: true },
     selectedKeyRef: { state: true },
+    selectedModel: { state: true },
     inputValue: { state: true },
     sending: { state: true },
   };
 
   constructor() {
     super();
-    this.modules = [];
     this.keys = [];
+    this.models = [];
     this.messages = [];
-    this.selectedModuleId = "";
     this.selectedKeyRef = "";
+    this.selectedModel = "";
     this.inputValue = "";
     this.sending = false;
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.loadModules();
     this.loadKeys();
-    registry.on("activitybar:changed", () => this.loadModules());
     registry.on("providers:changed", () => this.loadKeys());
+    window.addEventListener(
+      "workbench:credentials-changed",
+      this.handleCredentialsChanged,
+    );
   }
 
-  loadModules() {
-    this.modules = registry.getActivitybarItems();
+  disconnectedCallback() {
+    window.removeEventListener(
+      "workbench:credentials-changed",
+      this.handleCredentialsChanged,
+    );
+    super.disconnectedCallback();
   }
+
+  handleCredentialsChanged = () => {
+    this.loadKeys();
+  };
 
   async loadKeys() {
     const providers = registry.getProviders();
@@ -54,12 +64,29 @@ class ChatPanelElement extends LitElement {
     this.keys = lists.flat();
   }
 
-  handleSelectModule(id) {
-    this.selectedModuleId = id;
+  async handleSelectKey(ref) {
+    this.selectedKeyRef = ref;
+    this.selectedModel = "";
+    this.models = [];
+
+    const [providerId, keyId] = ref.split(":");
+    const keyObj = this.keys.find(
+      (k) => k.providerId === providerId && k.id === keyId,
+    );
+    if (!keyObj || !window.api.providers.listModels) return;
+
+    const result = await window.api.providers.listModels(
+      providerId,
+      keyObj.value,
+    );
+    if (Array.isArray(result)) {
+      this.models = result;
+      if (result.length > 0) this.selectedModel = result[0].id;
+    }
   }
 
-  handleSelectKey(ref) {
-    this.selectedKeyRef = ref;
+  handleSelectModel(model) {
+    this.selectedModel = model;
   }
 
   async handleSend() {
@@ -76,7 +103,7 @@ class ChatPanelElement extends LitElement {
         message: content,
         providerId: providerId || null,
         keyId: keyId || null,
-        moduleId: this.selectedModuleId || null,
+        model: this.selectedModel || null,
       });
       this.messages = [
         ...this.messages,

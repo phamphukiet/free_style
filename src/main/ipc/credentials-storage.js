@@ -38,9 +38,28 @@ function decrypt(data) {
   return data.plaintext || null;
 }
 
+function withTimeout(fn, ms = 3000) {
+  return Promise.race([
+    Promise.resolve().then(fn),
+    new Promise((_, reject) =>
+      setTimeout(() => reject(new Error("safeStorage timeout")), ms),
+    ),
+  ]);
+}
+
+async function decryptSafe(data) {
+  try {
+    return await withTimeout(() => decrypt(data));
+  } catch (error) {
+    console.error("[Credentials] decrypt timeout/lỗi:", error.message);
+    return null;
+  }
+}
+
 module.exports = {
   loadCredentialsSync,
   saveCredentialsSync,
   encrypt,
   decrypt,
+  decryptSafe,
 };
