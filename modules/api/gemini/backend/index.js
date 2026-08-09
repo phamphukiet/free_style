@@ -2,7 +2,7 @@ const { ipcMain } = require("electron");
 const {
   chatCompletion,
   listModels,
-} = require("../../../../shared/gemini-client");
+} = require("./gemini-client");
 const {
   registerChatProvider,
 } = require("../../../chat/backend/providers-registry");
