@@ -62,3 +62,6 @@
 **Ưu tiên code tái sử dụng**
 **Hạn chế thay đổi code ở src/parts**
 **Các folder trong modules lập trình có thể hoạt động độc lập mà không cần biết nhau**
+
+# Tổng kết giai đoạn 3
+**Tính năng module có thể hoạt động runtime khi các module khác kích event**

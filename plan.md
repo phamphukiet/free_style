@@ -3,7 +3,7 @@
   - quota
   - api agent conect
   - quota
-- chat
++ chat
 - setting by prompt
 - agent
   - agent
