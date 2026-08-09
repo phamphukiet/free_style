@@ -1,5 +1,5 @@
 const { ipcMain } = require("electron");
-const { loadCredentialsSync, decryptSafe } = require("../credentials-storage");
+const { loadCredentialsSync, decryptSafe } = require("./storage");
 
 function registerListHandler() {
   ipcMain.handle("credentials:list", async (event, serviceId) => {

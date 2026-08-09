@@ -1,8 +1,5 @@
 const { ipcMain } = require("electron");
-const {
-  loadCredentialsSync,
-  saveCredentialsSync,
-} = require("../credentials-storage");
+const { loadCredentialsSync, saveCredentialsSync } = require("./storage");
 
 function registerDeleteHandler() {
   ipcMain.handle("credentials:delete", (event, serviceId, keyId) => {

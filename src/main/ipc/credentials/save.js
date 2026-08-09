@@ -5,7 +5,7 @@ const {
   saveCredentialsSync,
   encrypt,
   decrypt,
-} = require("../credentials-storage");
+} = require("./storage");
 
 function normalizeToKeysFormat(serviceData) {
   // Dữ liệu cũ (trước khi có multi-key) lưu 1 key trực tiếp, không có mảng `keys`.

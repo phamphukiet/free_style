@@ -8,7 +8,7 @@ const { getChatProvider } = require("./providers-registry");
 const {
   loadCredentialsSync,
   decrypt,
-} = require("../../../src/main/ipc/credentials-storage");
+} = require("../../../src/main/ipc/credentials/storage");
 
 function resolveKey(providerId, keyId) {
   if (!providerId) return null;

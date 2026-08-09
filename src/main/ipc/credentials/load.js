@@ -1,5 +1,5 @@
 const { ipcMain } = require("electron");
-const { loadCredentialsSync, decryptSafe } = require("../credentials-storage");
+const { loadCredentialsSync, decryptSafe } = require("./storage");
 
 // Legacy: lấy giá trị key đầu tiên của 1 service, dùng cho chỗ chỉ cần 1 key duy nhất.
 function registerLoadHandler() {
