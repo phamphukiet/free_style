@@ -6,20 +6,17 @@
 const { ipcMain, BrowserWindow } = require("electron");
 const channels = require("../../../shared/ipc-channels");
 const commands = require("./commands");
-
-function broadcast(channel, payload) {
-  BrowserWindow.getAllWindows().forEach((win) =>
-    win.webContents.send(channel, payload),
-  );
-}
+const prime = require("./prime/index.js");
+const { notifyChanged, notifySchemaChanged } = require("./notify");
 
 function registerSettingsIpc() {
+  prime.initPrimeModules();
   ipcMain.handle(channels.SETTINGS_GET_SCHEMA, () => commands.getDefinitions());
   ipcMain.handle(channels.SETTINGS_GET_ALL, () => commands.getValues());
 
   ipcMain.handle(channels.SETTINGS_SET, (event, id, value) => {
     const result = commands.setValue(id, value);
-    broadcast(channels.SETTINGS_CHANGED, { id, value: result });
+    notifyChanged(id, result);
     return result;
   });
 
@@ -31,21 +28,24 @@ function registerSettingsIpc() {
         return commands.getValue(payload.id);
       case "set": {
         const value = commands.setValue(payload.id, payload.value);
-        broadcast(channels.SETTINGS_CHANGED, { id: payload.id, value });
+        notifyChanged(payload.id, value);
         return value;
       }
       case "reset": {
         const value = commands.resetValue(payload.id);
-        broadcast(channels.SETTINGS_CHANGED, { id: payload.id, value });
+        notifyChanged(payload.id, value);
         return value;
       }
       case "register": {
         const def = commands.registerSetting(payload);
-        broadcast(channels.SETTINGS_SCHEMA_CHANGED, def);
+        notifySchemaChanged(def);
         return def;
       }
-      default:
-        throw new Error(`Lệnh setting không hợp lệ: "${action}"`);
+      default: {
+        const handler = prime.getExtraActions()[action];
+        if (!handler) throw new Error(`Lệnh setting không hợp lệ: "${action}"`);
+        return handler(payload);
+      }
     }
   });
 }

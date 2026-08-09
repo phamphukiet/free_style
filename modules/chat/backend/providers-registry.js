@@ -12,4 +12,14 @@ function getChatProvider(id) {
   return providers[id];
 }
 
-module.exports = { registerChatProvider, getChatProvider };
+const toolProviders = {};
+
+function registerToolCapableProvider(id, sendMessageWithTools) {
+  toolProviders[id] = sendMessageWithTools;
+}
+
+function getToolCapableProvider(id) {
+  return toolProviders[id];
+}
+
+module.exports = { registerChatProvider, getChatProvider, registerToolCapableProvider, getToolCapableProvider };

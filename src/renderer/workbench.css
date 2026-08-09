@@ -7,8 +7,8 @@ body {
   margin: 0;
   height: 100vh;
   overflow: hidden;
-  background: #1e1e1e;
-  color: #cccccc;
+  background: var(--bg-primary, #1e1e1e);
+  color: var(--text-primary, #cccccc);
   font-family:
     -apple-system,
     Segoe UI,

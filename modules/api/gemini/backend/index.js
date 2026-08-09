@@ -2,14 +2,17 @@ const { ipcMain } = require("electron");
 const {
   chatCompletion,
   listModels,
+  chatWithTools,
 } = require("./gemini-client");
 const {
   registerChatProvider,
+  registerToolCapableProvider,
 } = require("../../../chat/backend/providers-registry");
 
 registerChatProvider("gemini", (apiKey, message, model) =>
   chatCompletion(apiKey, message, model),
 );
+registerToolCapableProvider("gemini", chatWithTools);
 
 function registerGeminiBackend() {
   ipcMain.handle("api:create-key:gemini", async (event) => {

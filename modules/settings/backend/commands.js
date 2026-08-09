@@ -66,6 +66,27 @@ function registerSetting(def) {
   return registry.registerDefinition(def);
 }
 
+function getSummary() {
+  const values = getValues();
+  return registry.getAllDefinitions().map((def) => ({
+    id: def.id,
+    type: def.type,
+    allowed: def.type === "enum" ? def.options.map((o) => o.value) : undefined,
+    current: values[def.id],
+  }));
+}
+
+// Dạng nén tối đa để nhúng vào description của tool-spec, giảm token
+// mỗi lần agent gọi — không lặp key JSON, chỉ giữ thông tin cần quyết định.
+function getCompactSummary() {
+  return getSummary()
+    .map((s) => {
+      const allowed = s.allowed ? `:${s.allowed.join("|")}` : "";
+      return `${s.id}(${s.type}${allowed})=${s.current}`;
+    })
+    .join("; ");
+}
+
 module.exports = {
   getDefinitions,
   getValues,
@@ -73,4 +94,6 @@ module.exports = {
   setValue,
   resetValue,
   registerSetting,
+  getSummary,
+  getCompactSummary
 };

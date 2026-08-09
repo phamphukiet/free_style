@@ -2,8 +2,8 @@
   display: flex;
   align-items: center;
   height: 22px;
-  background: #007acc;
-  color: #ffffff;
+  background: var(--accent, #007acc); 
+  color: var(--text-primary, #ffffff);
   font-size: 12px;
   padding: 0 8px;
   gap: 12px;

@@ -52,4 +52,70 @@ async function listModels(apiKey) {
     .sort((a, b) => b.version - a.version || b.id.localeCompare(a.id)); // mới nhất trước, cùng version thì so tên
 }
 
-module.exports = { chatCompletion, listModels };
+// Gemini yêu cầu type viết HOA (STRING, OBJECT...), còn tool-spec.js dùng
+// JSON Schema chuẩn (chữ thường) để giữ tính di động sang provider khác.
+function toGeminiSchema(schema) {
+  if (!schema || typeof schema !== "object") return schema;
+  const { type, properties, items, ...rest } = schema;
+  const converted = { ...rest };
+  if (type) converted.type = type.toUpperCase();
+  if (properties) {
+    converted.properties = Object.fromEntries(
+      Object.entries(properties).map(([k, v]) => [k, toGeminiSchema(v)]),
+    );
+  }
+  if (items) converted.items = toGeminiSchema(items);
+  return converted;
+}
+
+function toGeminiTool(spec) {
+  return {
+    functionDeclarations: [
+      { name: spec.name, description: spec.description, parameters: toGeminiSchema(spec.parameters) },
+    ],
+  };
+}
+
+// Vòng lặp function-calling: model gọi tool → mình chạy executeToolCall →
+// gửi kết quả lại → model trả lời tự nhiên. Giới hạn 4 vòng tránh loop vô hạn.
+async function chatWithTools(apiKey, message, model, toolSpec, executeToolCall) {
+  const modelId = model || "gemini-1.5-flash";
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
+  const tools = [toGeminiTool(toolSpec)];
+  const contents = [{ role: "user", parts: [{ text: message }] }];
+
+  for (let step = 0; step < 4; step++) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ contents, tools }),
+    });
+    if (!response.ok) {
+      const err = await response.json().catch(() => ({}));
+      throw new Error(err?.error?.message || `Lỗi API Gemini (${response.status})`);
+    }
+    const data = await response.json();
+    const parts = data.candidates?.[0]?.content?.parts || [];
+    const call = parts.find((p) => p.functionCall);
+
+    if (!call) return parts.map((p) => p.text || "").join("") || "(không có phản hồi)";
+
+    contents.push({ role: "model", parts: [{ functionCall: call.functionCall }] });
+
+    let result;
+    try {
+      result = await executeToolCall(call.functionCall.name, call.functionCall.args || {});
+    } catch (error) {
+      result = { error: error.message };
+    }
+
+    contents.push({
+      role: "function",
+      parts: [{ functionResponse: { name: call.functionCall.name, response: result } }],
+    });
+  }
+
+  return "Đã vượt quá số lần gọi lệnh cho phép.";
+}
+
+module.exports = { chatCompletion, listModels, chatWithTools };

@@ -3,7 +3,7 @@
   justify-content: space-between;
   align-items: center;
   height: 32px;
-  background: #252526;
+  background: var(--bg-secondary, #252526);
   -webkit-app-region: drag; /* cho phép kéo cửa sổ qua vùng titlebar */
   padding: 0 8px;
 }
