@@ -3,8 +3,8 @@
   justify-content: space-between;
   align-items: center;
   height: 32px;
-  background: var(--bg-secondary, #252526);
-  -webkit-app-region: drag; /* cho phép kéo cửa sổ qua vùng titlebar */
+  background: var(--titlebar-bg, var(--bg-secondary, #252526));
+  -webkit-app-region: drag;
   padding: 0 8px;
 }
 
@@ -22,7 +22,7 @@
 .titlebar-btn {
   background: none;
   border: none;
-  color: #cccccc;
+  color: var(--titlebar-text, #cccccc);
   width: 32px;
   height: 32px;
   display: flex;
@@ -32,7 +32,7 @@
 }
 
 .titlebar-btn:hover {
-  background: #3a3d41;
+  background: var(--titlebar-hover, #3a3d41);
 }
 
 .titlebar-btn-close:hover {
@@ -67,8 +67,8 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background: #252526;
-  border: 1px solid #3a3d41;
+  background: var(--titlebar-bg, #252526);
+  border: 1px solid var(--titlebar-border, #3a3d41);
   min-width: 160px;
   z-index: 100;
   display: flex;

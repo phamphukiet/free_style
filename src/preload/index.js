@@ -126,10 +126,6 @@ function getExposedApi() {
             listener,
           );
       },
-      theme: {
-        getActive: () => ipcRenderer.invoke("theme:get-active"),
-        list: () => ipcRenderer.invoke("theme:list"),
-      },
     },
   };
 }

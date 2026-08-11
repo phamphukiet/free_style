@@ -3,7 +3,7 @@
 // Dùng chung cho đường IPC (người dùng đổi qua UI) và đường tool-call (agent đổi qua chat).
 
 const { BrowserWindow } = require("electron");
-const channels = require("../../../shared/ipc-channels");
+const channels = require("../../../../shared/ipc-channels");
 
 function notifyChanged(id, value) {
   BrowserWindow.getAllWindows().forEach((win) =>

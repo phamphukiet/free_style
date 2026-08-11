@@ -16,5 +16,3 @@ import "@modules/editor/frontend/index.js";
 import "@modules/providers/frontend/index.js";
 import "@modules/chat/frontend/index.js";
 import "@modules/settings/frontend/index.js";
-import { initTheme } from "./theme-apply.js";
-initTheme();

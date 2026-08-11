@@ -12,11 +12,10 @@ const {
   getChatProvider,
   getToolCapableProvider,
 } = require("./providers-registry");
-const { getToolSpec } = require("../../settings/backend/tool-spec");
-const settingsCommands = require("../../settings/backend/commands");
-const { notifyChanged } = require("../../settings/backend/notify");
-const prime = require("../../settings/backend/prime/index.js");
-const themeCommands = require("../../settings/backend/prime/001_theme/theme.commands");
+const { getToolSpec } = require("../../settings/backend/core/tool-spec");
+const settingsCommands = require("../../settings/backend/core/commands");
+const { notifyChanged } = require("../../settings/backend/core/notify");
+const sources = require("../../settings/backend/sources");
 
 function resolveKey(providerId, keyId) {
   if (!providerId) return null;
@@ -27,9 +26,9 @@ function resolveKey(providerId, keyId) {
   return entry ? decrypt(entry) : null;
 }
 
-// Cầu nối duy nhất giữa "tool call" của agent và command layer thật —
-// đi qua đúng commands.js, không có đường tắt nào khác (giữ nguyên tắc
-// một điểm vào duy nhất cho mọi thay đổi setting).
+// Cầu nối duy nhất giữa "tool call" của agent và command layer thật.
+// Không biết action nào thuộc module nào — mỗi action (ở sources/*)
+// tự chịu trách nhiệm notify khi nó thay đổi gì đó.
 function executeSettingsTool(name, args) {
   if (name !== "settings") throw new Error(`Tool "${name}" không tồn tại`);
   switch (args.action) {
@@ -43,14 +42,9 @@ function executeSettingsTool(name, args) {
       return { id: args.id, value };
     }
     default: {
-      const handler = prime.getExtraActions()[args.action];
+      const handler = sources.getExtraActions()[args.action];
       if (!handler) throw new Error(`action "${args.action}" không hợp lệ`);
-      const result = handler(args);
-      if (args.action === "create_theme" || args.action === "set_theme") {
-        notifyChanged("workbench.theme", themeCommands.getActiveThemeId());
-        notifySchemaChanged({ id: "workbench.theme" });
-      }
-      return result;
+      return handler(args);
     }
   }
 }
@@ -75,8 +69,8 @@ function registerChatBackend() {
       }
 
       try {
-        const hint = `${settingsCommands.getCompactSummary()} ${prime.getExtraHints()}`;
-        const spec = getToolSpec(hint, Object.keys(prime.getExtraActions()));
+        const hint = `${settingsCommands.getCompactSummary()} ${sources.getExtraHints()}`;
+        const spec = getToolSpec(hint, Object.keys(sources.getExtraActions()));
         const content = toolSend
           ? await toolSend(apiKey, message, model, spec, executeSettingsTool)
           : await sendMessage(apiKey, message, model);

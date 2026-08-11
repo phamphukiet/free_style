@@ -25,7 +25,7 @@ app.whenReady().then(() => {
   buildAppMenu();
   registerWindowIpc();
   initApp();
-
+  console.log(app.getPath("userData"));
   // macOS: bấm icon dock khi không có cửa sổ nào → mở lại cửa sổ.
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {

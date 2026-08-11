@@ -1,4 +1,3 @@
-
 .editor-container {
   flex: 1;
   min-height: 0;
@@ -17,7 +16,7 @@ module-editor, module-pv-editor-group {
   justify-content: center;
   width: 100%;
   height: 100%;
-  color: #6b6b6b;
+  color: var(--editor-group-text,  #6b6b6b);
   font-size: 13px;
 }
 
@@ -25,8 +24,8 @@ module-editor, module-pv-editor-group {
 .editor-tab-bar {
   display: flex;
   height: 35px;
-  background: #252526;
-  border-bottom: 1px solid #1e1e1e;
+  background: var(--editor-group-bg, var(--bg-secondary, #252526));
+  border-bottom: 1px solid var(--editor-group-border,var(--bg-primary, #1e1e1e));
   overflow-x: auto;
 }
 
@@ -35,31 +34,16 @@ module-editor, module-pv-editor-group {
   align-items: center;
   gap: 8px;
   padding: 0 12px;
-  background: #2d2d2d;
-  color: #969696;
+  background: var(--bg-hover, #2d2d2d);
+  color: var(--editor-group-tab-text, #969696);
   font-size: 13px;
-  border-right: 1px solid #252526;
+  border-right: 1px solid var(--editor-group-border, var(--bg-secondary, #252526));
   cursor: pointer;
   user-select: none;
 }
 
 .editor-tab.active {
-  background: #1e1e1e;
-  color: #ffffff;
-}
-
-.tab-close-btn {
-  background: none;
-  border: none;
-  color: #969696;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 0 4px;
-  border-radius: 3px;
-  line-height: 1;
-}
-
-.tab-close-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: #ffffff;
+  background: var(--editor-group-bg, var(--bg-primary, #1e1e1e));
+  /* color: var(--editor-group-tab-active-text, #ffffff); */
+  color: var(--editor-group-tab-active-text, var(--text-primary, #cccccc));
 }

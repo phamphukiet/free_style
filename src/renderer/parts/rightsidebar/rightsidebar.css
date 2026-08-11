@@ -2,9 +2,9 @@
   display: none;
   flex-direction: column;
   width: 240px;
-  background: var(--bg-secondary, #252526);
-  color: var(--text-primary, #cccccc);
-  border-left: 1px solid #1e1e1e;
+  background: var(--rightsidebar-bg, var(--bg-secondary, #252526));
+  color: var(--rightsidebar-text, var(--text-primary, #cccccc));
+  border-left: 1px solid var(--rightsidebar-border, #1e1e1e);
   overflow: hidden;
 }
 

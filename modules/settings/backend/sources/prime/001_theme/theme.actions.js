@@ -5,9 +5,10 @@
 
 const commands = require("./theme.commands");
 const { TOKEN_KEYS } = require("./theme.tokens");
+const { notifyChanged, notifySchemaChanged } = require("../../../core/notify");
 
-// tokens truyền dạng chuỗi nén "--bg-primary:#112233,--accent:#33ccff" —
-// tránh nested object trong tool schema (đỡ token, đỡ lỗi schema với 1 số provider).
+const THEME_SETTING_ID = "workbench.theme";
+
 function parseTokens(str) {
   if (!str || typeof str !== "string") {
     throw new Error(
@@ -37,10 +38,17 @@ const actions = {
       label: payload.label,
       tokens: parseTokens(payload.tokens),
     });
-    commands.setActiveTheme(theme.id); // tạo xong thì áp dụng luôn
+    commands.setActiveTheme(theme.id);
+    notifySchemaChanged({ id: THEME_SETTING_ID }); // options vừa có thêm theme mới
+    notifyChanged(THEME_SETTING_ID, theme.id);
     return { ...theme, active: true };
   },
-  set_theme: (payload) => commands.setActiveTheme(payload.id),
+  set_theme: (payload) => {
+    const result = commands.setActiveTheme(payload.id);
+    notifyChanged(THEME_SETTING_ID, payload.id);
+    return result;
+  },
+  get_active_tokens: () => commands.getActiveTheme(),
 };
 
 function getHint() {

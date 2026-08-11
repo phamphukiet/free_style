@@ -1,16 +1,12 @@
 // index.js
-// Trách nhiệm duy nhất: nối commands.js với IPC.
-// channels.SETTINGS_COMMAND là cổng lệnh chung cho AI/agent —
-// action: "list" | "get" | "set" | "reset" | "register".
-
 const { ipcMain, BrowserWindow } = require("electron");
 const channels = require("../../../shared/ipc-channels");
-const commands = require("./commands");
-const prime = require("./prime/index.js");
-const { notifyChanged, notifySchemaChanged } = require("./notify");
+const commands = require("./core/commands");
+const sources = require("./sources");
+const { notifyChanged, notifySchemaChanged } = require("./core/notify");
 
 function registerSettingsIpc() {
-  prime.initPrimeModules();
+  sources.initSources();
   ipcMain.handle(channels.SETTINGS_GET_SCHEMA, () => commands.getDefinitions());
   ipcMain.handle(channels.SETTINGS_GET_ALL, () => commands.getValues());
 
@@ -41,10 +37,15 @@ function registerSettingsIpc() {
         notifySchemaChanged(def);
         return def;
       }
+      case "delete": {
+        commands.deleteSetting(payload.id);
+        notifySchemaChanged({ id: payload.id, deleted: true });
+        return { id: payload.id, deleted: true };
+      }
       default: {
-        const handler = prime.getExtraActions()[action];
+        const handler = sources.getExtraActions()[action];
         if (!handler) throw new Error(`Lệnh setting không hợp lệ: "${action}"`);
-        return handler(payload);
+        return handler(payload); // action tự notify nếu cần, index.js không đoán
       }
     }
   });

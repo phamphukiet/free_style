@@ -6,7 +6,7 @@
 const { BUILTIN_THEMES } = require("./theme.schema");
 const { TOKEN_KEYS, HEX_COLOR_RE } = require("./theme.tokens");
 const store = require("./theme.store");
-const settingsCommands = require("../../commands");
+const settingsCommands = require("../../../core/commands");
 
 const THEME_SETTING_ID = "workbench.theme";
 
@@ -89,6 +89,8 @@ function syncThemeOptions() {
     type: "enum",
     options: getThemeOptions(),
     default: "dark",
+    origin: "prime",
+    locked: false,
   });
 }
 

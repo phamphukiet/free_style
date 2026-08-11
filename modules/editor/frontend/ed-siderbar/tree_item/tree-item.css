@@ -11,7 +11,7 @@
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
-  color: #cccccc;
+  color: var(--tree-item-text, var(--text-primary, #cccccc));
   position: relative;
 }
 
@@ -21,7 +21,7 @@
 
 .tree-row.selected {
   background: #37373d;
-  color: #ffffff;
+  color: var(--tree-item-selected-text, #ffffff);
 }
 
 .tree-chevron {
@@ -30,7 +30,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #858585;
+  color: var(--tree-item-chevron, var(--text-muted, #858585));
   font-size: 10px;
   transition: transform 0.1s ease;
 }
@@ -62,8 +62,8 @@
 .rename-input {
   flex: 1;
   background: #3c3c3c;
-  border: 1px solid #007fd4;
-  color: #cccccc;
+  border: 1px solid var(--tree-item-input-border, var(--accent, #007fd4));
+  color: var(--tree-item-input-text, var(--text-primary, #cccccc));
   font-size: 13px;
   font-family: inherit;
   padding: 0 4px;
@@ -73,7 +73,7 @@
 }
 
 .tree-row.drag-over {
-  outline: 1px solid #007acc;
+  outline: 1px solid var(--tree-item-drag-over-border, var(--accent, #007fd4));
   background: rgba(0, 122, 204, 0.15);
 }
 

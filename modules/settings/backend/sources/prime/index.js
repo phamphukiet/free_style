@@ -4,31 +4,32 @@
 // {init, actions, getHint}, khai báo ở đây — không sửa settings/backend/commands.js.
 
 const themeCommands = require("./001_theme/theme.commands");
-const themeIpc = require("./001_theme/theme.ipc");
 const themeActionsModule = require("./001_theme/theme.actions");
+const componentTokensActionsModule = require("./001_theme/component/component-tokens.actions");
 
 const PRIME_MODULES = [
   {
     id: "theme",
-    init: () => {
-      themeCommands.syncThemeOptions();
-      themeIpc.registerThemeIpc();
-    },
+    init: () => themeCommands.syncThemeOptions(),
     actions: themeActionsModule.actions,
     getHint: themeActionsModule.getHint,
   },
+  {
+    id: "component-tokens",
+    init: () => {},
+    actions: componentTokensActionsModule.actions,
+    getHint: componentTokensActionsModule.getHint,
+  },
 ];
 
-function initPrimeModules() {
+function init() {
   PRIME_MODULES.forEach((m) => m.init());
 }
-
 function getExtraActions() {
   return Object.assign({}, ...PRIME_MODULES.map((m) => m.actions));
 }
-
 function getExtraHints() {
   return PRIME_MODULES.map((m) => m.getHint()).join(" ");
 }
 
-module.exports = { initPrimeModules, getExtraActions, getExtraHints };
+module.exports = { init, getExtraActions, getExtraHints };

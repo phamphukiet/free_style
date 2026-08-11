@@ -65,3 +65,8 @@
 
 # Tổng kết giai đoạn 3
 **Tính năng module có thể hoạt động runtime khi các module khác kích event**
+**Khi thêm 1 prime module hay 1 custom setting**
+Cần logic áp dụng riêng (không chỉ là dropdown/list hiển thị ở Settings UI):
+- Tạo file xxx-apply.js ngay trong thư mục sources/<origin>/<module>/ của chính setting đó.
+- File tự viết logic đọc giá trị + tự đăng ký window.api.settings.onChanged để nghe real-time — y hệt mẫu theme.
+- Không đụng apply-loader.js, không đụng frontend/index.js.

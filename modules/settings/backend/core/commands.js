@@ -87,6 +87,16 @@ function getCompactSummary() {
     .join("; ");
 }
 
+function deleteSetting(id) {
+  if (!registry.getDefinition(id)) throw new Error(`Setting "${id}" chưa tồn tại`);
+  registry.unregisterDefinition(id);
+  const stored = store.readValues();
+  delete stored[id];
+  store.writeValues(stored);
+  return true;
+}
+// nhớ export thêm deleteSetting
+
 module.exports = {
   getDefinitions,
   getValues,
@@ -95,5 +105,6 @@ module.exports = {
   resetValue,
   registerSetting,
   getSummary,
-  getCompactSummary
+  getCompactSummary,
+  deleteSetting,
 };
