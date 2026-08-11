@@ -1,7 +1,7 @@
 .context-menu {
   position: fixed;
-  background: #1f1f1f;
-  border: 1px solid #454545;
+  background: var(--context-menu-bg, var(--bg-elevated, #1f1f1f));
+  border: 1px solid var(--context-menu-border, var(--border, #454545));
   min-width: 180px;
   z-index: 9999;
   display: flex;
@@ -27,12 +27,12 @@
 }
 
 .menu-item:hover {
-  background: #04395e;
-  color: #ffffff;
+  background: var(--context-menu-hover, var(--accent, #04395e));
+  color: var(--context-menu-hover-text, #ffffff);
 }
 
 .menu-separator {
   height: 1px;
-  background: #454545;
+  background: var(--context-menu-border, var(--border, #454545));
   margin: 4px 0;
 }

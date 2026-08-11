@@ -11,16 +11,16 @@
   cursor: pointer;
   user-select: none;
   white-space: nowrap;
-  color: var(--tree-item-text, var(--text-primary, #cccccc));
+  background: var(--tree-item-hover, var(--bg-hover, rgba(255, 255, 255, 0.05)));
   position: relative;
 }
 
 .tree-row:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--tree-item-hover, var(--bg-hover, rgba(255, 255, 255, 0.05)));
 }
 
 .tree-row.selected {
-  background: #37373d;
+  background: var(--tree-item-selected-bg, var(--bg-elevated, #37373d));
   color: var(--tree-item-selected-text, #ffffff);
 }
 
@@ -61,7 +61,7 @@
 
 .rename-input {
   flex: 1;
-  background: #3c3c3c;
+  background: var(--tree-item-input-bg, var(--bg-elevated, #3c3c3c));
   border: 1px solid var(--tree-item-input-border, var(--accent, #007fd4));
   color: var(--tree-item-input-text, var(--text-primary, #cccccc));
   font-size: 13px;

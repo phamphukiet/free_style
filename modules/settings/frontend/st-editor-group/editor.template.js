@@ -14,6 +14,18 @@ function renderControl(host, def, value) {
       </select>
     `;
   }
+  if (def.type === "number") {
+    return html`
+      <input
+        type="number"
+        class="st-select"
+        min=${def.min ?? ""}
+        max=${def.max ?? ""}
+        .value=${value}
+        @change=${(e) => host.handleChange(def.id, Number(e.target.value))}
+      />
+    `;
+  }
   return html`<span>Kiểu setting "${def.type}" chưa hỗ trợ hiển thị.</span>`;
 }
 

@@ -4,7 +4,7 @@
   - api agent conect
   - quota
 + chat
-- setting by prompt
++ setting by prompt
 - agent
   - agent
   - skill/rule

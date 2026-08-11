@@ -7,7 +7,44 @@ export class TerminalManager {
     this.shellType = shellType;
     this._initTerminal(container);
     this._bindEvents();
+    this._unsubSettings = window.api.settings.onChanged(
+      this._onSettingsChanged,
+    );
+    this.loadFontSettings();
     this.spawnShell();
+  }
+
+  _onSettingsChanged = (detail) => {
+    if (!detail.id.startsWith("terminal.")) return;
+    this.loadFontSettings();
+  };
+
+  _resolveTheme(id) {
+    const PALETTES = {
+      dark: { background: "#1e1e1e", foreground: "#cccccc", cursor: "#aeafad" },
+      light: {
+        background: "#ffffff",
+        foreground: "#1e1e1e",
+        cursor: "#1e1e1e",
+      },
+      monokai: {
+        background: "#272822",
+        foreground: "#f8f8f2",
+        cursor: "#f8f8f0",
+      },
+    };
+    return { ...this.term.options.theme, ...(PALETTES[id] || PALETTES.dark) };
+  }
+
+  async loadFontSettings() {
+    const all = await window.api.settings.getAll();
+    Object.assign(this.term.options, {
+      fontSize: Number(all["terminal.fontSize"] ?? 13),
+      fontFamily: all["terminal.fontFamily"],
+      tabStopWidth: Number(all["terminal.tabSize"] ?? 4),
+      theme: this._resolveTheme(all["terminal.colorTheme"]),
+    });
+    this.resize();
   }
 
   _initTerminal(container) {
@@ -15,25 +52,39 @@ export class TerminalManager {
       fontSize: 13,
       fontFamily: "'Cascadia Code', 'Consolas', 'Courier New', monospace",
       theme: {
-        background: "#1e1e1e", foreground: "#cccccc", cursor: "#aeafad",
-        selectionBackground: "#264f78", black: "#1e1e1e", red: "#f44747",
-        green: "#6a9955", yellow: "#ce9178", blue: "#569cd6", magenta: "#c586c0",
-        cyan: "#4ec9b0", white: "#d4d4d4", brightBlack: "#808080", brightBlue: "#5af",
+        background: "#1e1e1e",
+        foreground: "#cccccc",
+        cursor: "#aeafad",
+        selectionBackground: "#264f78",
+        black: "#1e1e1e",
+        red: "#f44747",
+        green: "#6a9955",
+        yellow: "#ce9178",
+        blue: "#569cd6",
+        magenta: "#c586c0",
+        cyan: "#4ec9b0",
+        white: "#d4d4d4",
+        brightBlack: "#808080",
+        brightBlue: "#5af",
       },
-      cursorBlink: true, allowTransparency: false, scrollback: 5000,
+      cursorBlink: true,
+      allowTransparency: false,
+      scrollback: 5000,
     });
     this.fitAddon = new FitAddon();
     this.term.loadAddon(this.fitAddon);
     this.term.open(container);
     this.fitAddon.fit();
-    
+
     this._resizeObserver = new ResizeObserver(() => this.resize());
     this._resizeObserver.observe(container);
   }
 
   _bindEvents() {
     this.term.onData((data) => window.api.terminal.write(data));
-    this._unsubData = window.api.terminal.onData((chunk) => this.term.write(chunk));
+    this._unsubData = window.api.terminal.onData((chunk) =>
+      this.term.write(chunk),
+    );
   }
 
   async spawnShell() {
@@ -60,7 +111,9 @@ export class TerminalManager {
     this.spawnShell();
   }
 
-  clear() { this.term.clear(); }
+  clear() {
+    this.term.clear();
+  }
 
   kill() {
     window.api.terminal.kill();
@@ -69,6 +122,7 @@ export class TerminalManager {
 
   dispose() {
     this._unsubData?.();
+    this._unsubSettings?.();
     this._resizeObserver?.disconnect();
     this.term.dispose();
     window.api.terminal.kill();

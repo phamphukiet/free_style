@@ -6,6 +6,7 @@
 const themeCommands = require("./001_theme/theme.commands");
 const themeActionsModule = require("./001_theme/theme.actions");
 const componentTokensActionsModule = require("./001_theme/component/component-tokens.actions");
+const codeLetterCommands = require("./002_code_letter/code-letter.commands");
 
 const PRIME_MODULES = [
   {
@@ -19,6 +20,12 @@ const PRIME_MODULES = [
     init: () => {},
     actions: componentTokensActionsModule.actions,
     getHint: componentTokensActionsModule.getHint,
+  },
+  {
+    id: "code-letter",
+    init: () => codeLetterCommands.syncCodeLetterOptions(),
+    actions: {},
+    getHint: () => "",
   },
 ];
 

@@ -21,38 +21,60 @@ class EditorElement extends LitElement {
     super();
     this.path = "";
     this.instance = null;
-    this.models = new Map(); // path -> { model, saveTimeout }
+    this.models = new Map();
+    this._tabSize = 2; // cache để áp cho model mới tạo trước khi settings load xong
   }
 
-  createRenderRoot() { return this; }
+  createRenderRoot() {
+    return this;
+  }
 
-  firstUpdated() {
+  async firstUpdated() {
     const mountPoint = this.querySelector("#editor-mount");
     this.instance = mountEditor(mountPoint);
     window.addEventListener("workbench:close-file", this.handleFileClosed);
+    this._unsubSettings = window.api.settings.onChanged(
+      this.handleSettingsChanged,
+    );
+    await this.loadFontSettings();
   }
 
   disconnectedCallback() {
     window.removeEventListener("workbench:close-file", this.handleFileClosed);
+    this._unsubSettings?.();
     super.disconnectedCallback();
   }
 
-  handleFileClosed = (e) => {
-    const entry = this.models.get(e.detail.filePath);
-    if (!entry) return;
-    clearTimeout(entry.saveTimeout);
-    entry.model.dispose();
-    this.models.delete(e.detail.filePath);
+  handleSettingsChanged = (detail) => {
+    if (!detail.id.startsWith("editor.")) return;
+    this.loadFontSettings();
   };
+
+  async loadFontSettings() {
+    const all = await window.api.settings.getAll();
+    this._tabSize = Number(all["editor.tabSize"] ?? 2);
+    this.instance?.updateOptions({
+      fontSize: Number(all["editor.fontSize"] ?? 14),
+      fontFamily: all["editor.fontFamily"],
+    });
+    monaco.editor.setTheme(all["editor.colorTheme"] || "vs-dark");
+    this.models.forEach(({ model }) =>
+      model.updateOptions({ tabSize: this._tabSize }),
+    );
+  }
 
   async getOrCreateModel(path) {
     if (this.models.has(path)) return this.models.get(path).model;
     const content = await readFile(path);
     const model = monaco.editor.createModel(content, detectLang(path));
+    model.updateOptions({ tabSize: this._tabSize });
     const entry = { model, saveTimeout: null };
     model.onDidChangeContent(() => {
       clearTimeout(entry.saveTimeout);
-      entry.saveTimeout = setTimeout(() => writeFile(path, model.getValue()), 800);
+      entry.saveTimeout = setTimeout(
+        () => writeFile(path, model.getValue()),
+        800,
+      );
     });
     this.models.set(path, entry);
     return model;
@@ -66,7 +88,9 @@ class EditorElement extends LitElement {
     this.instance.setModel(model);
   }
 
-  render() { return editorTemplate(); }
+  render() {
+    return editorTemplate();
+  }
 }
 
 customElements.define("module-editor", EditorElement);

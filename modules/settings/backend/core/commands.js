@@ -32,6 +32,14 @@ function validateValue(def, value) {
       );
     }
   }
+  if (def.type === "number") {
+    const num = Number(value);
+    if (Number.isNaN(num)) throw new Error(`"${def.id}" phải là số`);
+    if (def.min != null && num < def.min)
+      throw new Error(`"${def.id}" tối thiểu ${def.min}`);
+    if (def.max != null && num > def.max)
+      throw new Error(`"${def.id}" tối đa ${def.max}`);
+  }
 }
 
 function setValue(id, value) {
@@ -72,17 +80,20 @@ function getSummary() {
     id: def.id,
     type: def.type,
     allowed: def.type === "enum" ? def.options.map((o) => o.value) : undefined,
+    range: def.type === "number" ? [def.min, def.max] : undefined,
     current: values[def.id],
   }));
 }
 
-// Dạng nén tối đa để nhúng vào description của tool-spec, giảm token
-// mỗi lần agent gọi — không lặp key JSON, chỉ giữ thông tin cần quyết định.
 function getCompactSummary() {
   return getSummary()
     .map((s) => {
-      const allowed = s.allowed ? `:${s.allowed.join("|")}` : "";
-      return `${s.id}(${s.type}${allowed})=${s.current}`;
+      const extra = s.allowed
+        ? `:${s.allowed.join("|")}`
+        : s.range
+          ? `:${s.range[0]}-${s.range[1]}`
+          : "";
+      return `${s.id}(${s.type}${extra})=${s.current}`;
     })
     .join("; ");
 }

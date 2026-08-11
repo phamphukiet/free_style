@@ -45,13 +45,17 @@ function getWindowOptions() {
 function createWindow() {
   const win = new BrowserWindow(getWindowOptions());
 
-  // electron-vite cấp sẵn biến này khi chạy `npm run dev` — trỏ tới Vite dev server
   if (process.env["ELECTRON_RENDERER_URL"]) {
     win.loadURL(`${process.env["ELECTRON_RENDERER_URL"]}/workbench.html`);
   } else {
     win.loadFile(path.join(__dirname, "../renderer/workbench.html"));
   }
   win.webContents.openDevTools({ mode: "detach" });
+
+  win.on("closed", () => {
+    require("../../modules/terminal/backend/terminal").killShell();
+  });
+
   return win;
 }
 

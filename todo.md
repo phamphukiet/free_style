@@ -1,2 +1,0 @@
-- Giúp AI/Agent điều chỉnh setting được mà không bị rối ngữ cảnh
-- thu gọn cách làm việc, khi thêm setting không cần fix nhiều nơi

@@ -5,8 +5,14 @@ const terminal = require("../../../modules/terminal/backend/terminal");
 function registerTerminalIpc() {
   ipcMain.handle(channels.TERMINAL_CREATE, (event, shellType, cwd) => {
     const result = terminal.spawnShell(shellType, cwd);
+    const sender = event.sender;
     terminal.onData((chunk) => {
-      event.sender.send(channels.TERMINAL_DATA, chunk);
+      if (sender.isDestroyed()) return;
+      try {
+        sender.send(channels.TERMINAL_DATA, chunk);
+      } catch (err) {
+        // webContents có thể bị destroy giữa lúc check và lúc send
+      }
     });
     return result;
   });

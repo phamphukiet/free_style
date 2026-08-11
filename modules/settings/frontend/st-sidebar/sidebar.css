@@ -5,7 +5,7 @@
   height: 100%;
   font-family: -apple-system, 'Segoe UI', sans-serif;
   font-size: 11px;
-  color: #cccccc;
+  color: var(--st-sidebar-text, var(--text-primary, #cccccc));
 }
 
 .st-search {
@@ -15,9 +15,9 @@
 
 .st-search input {
   width: 100%;
-  background: #3c3c3c;
-  border: 1px solid #454545;
-  color: #cccccc;
+  background: var(--st-sidebar-input-bg, var(--bg-elevated, #3c3c3c));
+  border: 1px solid var(--st-sidebar-border, var(--border, #454545));
+  color: var(--st-sidebar-text, var(--text-primary, #cccccc));
   font-size: 12px;
   padding: 5px 8px;
   border-radius: 3px;
@@ -26,7 +26,7 @@
 }
 
 .st-search input:focus {
-  border-color: #007fd4;
+  border-color: var(--st-sidebar-accent, var(--accent, #007fd4));
 }
 
 .st-list {
@@ -39,7 +39,7 @@
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.08em;
-  color: #bbbbbb;
+  color: var(--st-sidebar-header-text, var(--text-muted, #bbbbbb));
   text-transform: uppercase;
   user-select: none;
 }
@@ -51,10 +51,10 @@
   user-select: none;
 }
 
-.st-item:hover { background: #2a2d2e; }
-.st-item.active { background: #37373d; }
+.st-item:hover { background: var(--st-sidebar-hover, var(--bg-hover, #2a2d2e)); }
+.st-item.active { background: var(--st-sidebar-active, var(--bg-elevated, #37373d)); }
 
 .st-empty {
   padding: 16px 12px;
-  color: #858585;
+  color: var(--st-sidebar-muted, var(--text-muted, #858585));
 }

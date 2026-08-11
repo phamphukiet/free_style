@@ -88,7 +88,7 @@
 }
 
 .sidebar-open-folder-btn {
-  background: #0e639c;
+  background: var(--sidebar-accent, var(--accent, #0e639c));
   color: #ffffff;
   border: none;
   padding: 6px 16px;
@@ -98,7 +98,7 @@
 }
 
 .sidebar-open-folder-btn:hover {
-  background: #1177bb;
+  background: var(--sidebar-hover, var(--accent, #1177bb));
 }
 
 /* Style cho inline creation input ở root */
@@ -108,7 +108,7 @@
   height: 22px;
   padding-right: 12px;
   font-size: 13px;
-  color: #cccccc;
+  color: var(--sidebar-text, var(--text-primary, #cccccc));
 }
 
 .tree-icon {
@@ -127,9 +127,9 @@
 
 .rename-input {
   flex: 1;
-  background: #3c3c3c;
-  border: 1px solid #007fd4;
-  color: #cccccc;
+  background: var(--sidebar-input-bg, var(--bg-elevated, #3c3c3c));
+  border: 1px solid var(--sidebar-accent, var(--accent, #007fd4));
+  color: var(--sidebar-text, var(--text-primary, #cccccc));
   font-size: 13px;
   font-family: inherit;
   padding: 0 4px;
