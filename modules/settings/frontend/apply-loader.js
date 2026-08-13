@@ -1,16 +1,15 @@
 // apply-loader.js
-// Tự động nạp mọi file "*-apply.js" nằm trong backend/sources/<origin>/<module>/.
-// Đây là NƠI DUY NHẤT biết đường dẫn tới sources — mọi setting mới (prime/custom/
-// downloaded) chỉ cần đặt file đúng quy ước tên, không cần sửa dòng nào ở đây.
-//
-// Các file *-apply.js tuy nằm trong backend/ nhưng là code renderer thuần
-// (dùng window.api, document) — được đặt cạnh phần commands/actions của
-// chính setting đó để dễ bảo trì cùng nhau, không phải chạy trong main process.
+// Tự động nạp mọi "*-apply.js" (logic JS) và mọi "*.inject.css" (CSS toàn cục)
+// nằm trong backend/sources/<origin>/<module>/ — đây là NƠI DUY NHẤT biết
+// đường dẫn sources. Setting mới chỉ cần đặt đúng tên file, không cần
+// import ở workbench.css, part nào, hay module nào khác.
 
-const modules = import.meta.glob("../backend/sources/*/*/*-apply.js", {
+const applyModules = import.meta.glob("../backend/sources/*/*/*-apply.js", {
+  eager: true,
+});
+const cssModules = import.meta.glob("../backend/sources/*/*/*.inject.css", {
   eager: true,
 });
 
-// eager: true đã tự chạy code trong mỗi file lúc import ở trên.
-// Export ra để dễ debug xem đã nạp được đúng những file nào.
-export const loadedApplies = Object.keys(modules);
+export const loadedApplies = Object.keys(applyModules);
+export const loadedInjectedCss = Object.keys(cssModules);

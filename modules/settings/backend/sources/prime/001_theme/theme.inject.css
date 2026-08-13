@@ -1,0 +1,11 @@
+/* Tự sinh — nội dung sẽ bị ghi đè */
+:root {
+  --bg-primary: #1a1a2e;
+  --bg-secondary: #16213e;
+  --bg-elevated: #0f3460;
+  --bg-hover: #272c4a;
+  --text-primary: #e0e0e0;
+  --text-muted: #a0a0a0;
+  --accent: #00bcd4;
+  --border: #3e4451;
+}

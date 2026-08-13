@@ -4,10 +4,10 @@
 // thêm/bớt nguồn không cần sửa code ở nơi dùng.
 
 const prime = require("./prime");
-const custom = require("./custom");
+// const custom = require("./custom");
 // const download = require("./download");
 
-const SOURCES = [prime, custom];
+const SOURCES = [prime /*, custom, download*/];
 
 function initSources() {
   SOURCES.forEach((s) => s.init());

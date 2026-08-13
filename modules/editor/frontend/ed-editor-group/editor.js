@@ -37,6 +37,16 @@ class EditorElement extends LitElement {
       this.handleSettingsChanged,
     );
     await this.loadFontSettings();
+
+    registry.registerConfigConsumer("editor-save-trigger", () => {
+      this.models.forEach(({ model, path: p }, path) => {
+        const entry = this.models.get(path);
+        if (entry.dirty) {
+          writeFile(path, model.getValue());
+          entry.dirty = false;
+        }
+      });
+    });
   }
 
   disconnectedCallback() {
@@ -70,11 +80,7 @@ class EditorElement extends LitElement {
     model.updateOptions({ tabSize: this._tabSize });
     const entry = { model, saveTimeout: null };
     model.onDidChangeContent(() => {
-      clearTimeout(entry.saveTimeout);
-      entry.saveTimeout = setTimeout(
-        () => writeFile(path, model.getValue()),
-        800,
-      );
+      entry.dirty = true; // chỉ đánh dấu, không tự ghi nữa
     });
     this.models.set(path, entry);
     return model;

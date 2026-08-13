@@ -5,6 +5,8 @@
   - quota
 + chat
 + setting by prompt
+  + điều chỉnh bằng lệnh
+  - tạo setting mới bằng lệnh
 - agent
   - agent
   - skill/rule

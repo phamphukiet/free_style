@@ -3,29 +3,35 @@
 // cho AI chỉnh). Thêm prime module mới: tạo thư mục 00X_ten/, export
 // {init, actions, getHint}, khai báo ở đây — không sửa settings/backend/commands.js.
 
-const themeCommands = require("./001_theme/theme.commands");
-const themeActionsModule = require("./001_theme/theme.actions");
-const componentTokensActionsModule = require("./001_theme/component/component-tokens.actions");
+const theme = require("./001_theme/theme");
 const codeLetterCommands = require("./002_code_letter/code-letter.commands");
+const save = require("./003_save/save");
+
 
 const PRIME_MODULES = [
   {
     id: "theme",
-    init: () => themeCommands.syncThemeOptions(),
-    actions: themeActionsModule.actions,
-    getHint: themeActionsModule.getHint,
+    init: () => theme.syncThemeOptions(),
+    actions: theme.actions,
+    getHint: theme.getHint,
   },
   {
     id: "component-tokens",
     init: () => {},
-    actions: componentTokensActionsModule.actions,
-    getHint: componentTokensActionsModule.getHint,
+    actions: theme.componentTokensActions,
+    getHint: theme.getComponentTokensHint,
   },
   {
     id: "code-letter",
     init: () => codeLetterCommands.syncCodeLetterOptions(),
     actions: {},
     getHint: () => "",
+  },
+  {
+    id: "save",
+    init: () => save.syncSaveOptions(),
+    actions: save.actions,
+    getHint: save.getHint,
   },
 ];
 
