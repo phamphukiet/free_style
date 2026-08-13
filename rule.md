@@ -70,3 +70,9 @@ Cần logic áp dụng riêng (không chỉ là dropdown/list hiển thị ở S
 - Tạo file xxx-apply.js ngay trong thư mục sources/<origin>/<module>/ của chính setting đó.
 - File tự viết logic đọc giá trị + tự đăng ký window.api.settings.onChanged để nghe real-time — y hệt mẫu theme.
 - Không đụng apply-loader.js, không đụng frontend/index.js.
+
+# Tổng kết giai đoạn 4
+- Prime: kỹ sư viết tay, được sửa file khác nếu cần (hiếm, có chủ đích).
+- Custom: chỉ được cập nhật file .css và .template.js — 2 loại rủi ro thấp (thuần khai báo/render), không đụng file .js logic thật, không đụng src/main, src/preload.
+- File bị cập nhật phải nằm trong chính thư mục setting đó (VD: theme.css trong 001_theme/) — không setting nào ghi ra ngoài thư mục của nó.
+- Lý do chọn "cập nhật file thật" thay vì "inject runtime": hiệu năng tốt hơn, theo trải nghiệm thực tế dùng VSCode nhiều extension.
