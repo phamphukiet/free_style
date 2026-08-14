@@ -18,11 +18,4 @@ module.exports = {
   TERMINAL_RESIZE: "terminal:resize",
   TERMINAL_KILL: "terminal:kill",
   TERMINAL_DATA: "terminal:data",
-  // Settings
-  SETTINGS_GET_SCHEMA: "settings:get-schema",
-  SETTINGS_GET_ALL: "settings:get-all",
-  SETTINGS_SET: "settings:set",
-  SETTINGS_COMMAND: "settings:command",
-  SETTINGS_CHANGED: "settings:changed",
-  SETTINGS_SCHEMA_CHANGED: "settings:schema-changed",
 };

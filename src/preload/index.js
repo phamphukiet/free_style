@@ -25,12 +25,6 @@ const channels = {
   CREDENTIALS_SAVE: "credentials:save",
   CREDENTIALS_LOAD: "credentials:load",
   CREDENTIALS_DELETE: "credentials:delete",
-  SETTINGS_GET_SCHEMA: "settings:get-schema",
-  SETTINGS_GET_ALL: "settings:get-all",
-  SETTINGS_SET: "settings:set",
-  SETTINGS_COMMAND: "settings:command",
-  SETTINGS_CHANGED: "settings:changed",
-  SETTINGS_SCHEMA_CHANGED: "settings:schema-changed",
 };
 
 /**
@@ -104,28 +98,6 @@ function getExposedApi() {
     },
     chat: {
       send: (payload) => ipcRenderer.invoke("chat:send", payload),
-    },
-    settings: {
-      getSchema: () => ipcRenderer.invoke(channels.SETTINGS_GET_SCHEMA),
-      getAll: () => ipcRenderer.invoke(channels.SETTINGS_GET_ALL),
-      set: (id, value) => ipcRenderer.invoke(channels.SETTINGS_SET, id, value),
-      command: (action, payload) =>
-        ipcRenderer.invoke(channels.SETTINGS_COMMAND, action, payload),
-      onChanged: (callback) => {
-        const listener = (event, detail) => callback(detail);
-        ipcRenderer.on(channels.SETTINGS_CHANGED, listener);
-        return () =>
-          ipcRenderer.removeListener(channels.SETTINGS_CHANGED, listener);
-      },
-      onSchemaChanged: (callback) => {
-        const listener = (event, detail) => callback(detail);
-        ipcRenderer.on(channels.SETTINGS_SCHEMA_CHANGED, listener);
-        return () =>
-          ipcRenderer.removeListener(
-            channels.SETTINGS_SCHEMA_CHANGED,
-            listener,
-          );
-      },
     },
   };
 }
