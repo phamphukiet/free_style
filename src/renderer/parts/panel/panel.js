@@ -1,60 +1,44 @@
 // panel.js
+// Trách nhiệm duy nhất: khung chứa panel dưới cùng (ẩn/hiện, chiều cao cố định).
+// KHÔNG biết nội dung bên trong là gì (terminal, output...) — chỉ mount tag đã
+// đăng ký qua registry.registerPanelView(). Module cung cấp panel bị xóa →
+// registry trả null → tự hiện empty state, không lỗi.
+
 import { LitElement, unsafeCSS } from "lit";
 import { panelTemplate } from "./panel.template.js";
-import panelStyles from "./panel.css?inline";
-import xtermStyles from "xterm/css/xterm.css?inline";
-import { TerminalManager } from "./terminal-manager.js";
+import styles from "./panel.css?inline";
+import { registry } from "@modules/registry.js";
 
 class PanelElement extends LitElement {
-  static styles = [unsafeCSS(xtermStyles), unsafeCSS(panelStyles)];
+  static styles = unsafeCSS(styles);
 
   static properties = {
-    shellType: { type: String },
     visible: { type: Boolean },
   };
 
   constructor() {
     super();
-    this.shellType = "powershell";
     this.visible = true;
   }
 
-  render() {
-    return panelTemplate(this);
-  }
-
-  firstUpdated() {
-    const area = this.shadowRoot.getElementById("terminal-area");
-    if (area) {
-      this._termManager = new TerminalManager(area, this.shellType);
-    }
-  }
-
-  handleShellChange(shellType) {
-    this.shellType = shellType;
-    this._termManager?.changeShell(shellType);
-  }
-
-  handleNew() {
-    this._termManager?.changeShell(this.shellType);
-  }
-
-  handleClear() {
-    this._termManager?.clear();
-  }
-
-  handleKill() {
-    this._termManager?.kill();
-  }
-
-  handleClose() {
-    this.visible = false;
-    this.style.display = "none";
+  connectedCallback() {
+    super.connectedCallback();
+    // Nội dung con (VD module-terminal-panel) tự dispatch sự kiện này khi cần đóng.
+    this.addEventListener("panel:close", this.handleClose);
   }
 
   disconnectedCallback() {
+    this.removeEventListener("panel:close", this.handleClose);
     super.disconnectedCallback();
-    this._termManager?.dispose();
+  }
+
+  handleClose = () => {
+    this.visible = false;
+    this.style.display = "none";
+  };
+
+  render() {
+    return panelTemplate(registry.getPanelView());
   }
 }
 

@@ -99,6 +99,23 @@ function getExposedApi() {
     chat: {
       send: (payload) => ipcRenderer.invoke("chat:send", payload),
     },
+    settings: {
+      list: () => ipcRenderer.invoke("settings:list"),
+      listGroups: () => ipcRenderer.invoke("settings:list-groups"),
+      getAll: () => ipcRenderer.invoke("settings:get-all"),
+      get: (id) => ipcRenderer.invoke("settings:get", id),
+      set: (id, value) => ipcRenderer.invoke("settings:set", id, value),
+      addPreset: (id, preset) =>
+        ipcRenderer.invoke("settings:add-preset", id, preset),
+      create: (def) => ipcRenderer.invoke("settings:create", def),
+      update: (id, patch) => ipcRenderer.invoke("settings:update", id, patch),
+      delete: (id) => ipcRenderer.invoke("settings:delete", id),
+      onChanged: (callback) => {
+        const listener = (event, detail) => callback(detail);
+        ipcRenderer.on("settings:changed", listener);
+        return () => ipcRenderer.removeListener("settings:changed", listener);
+      },
+    },
   };
 }
 

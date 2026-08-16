@@ -6,22 +6,14 @@
   overflow: hidden;
 }
 
-.sidebar-content {
+.sidebar-content > * {
+  display: block;
   width: 100%;
   height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
 }
 
 .sidebar-empty {
   padding: 20px;
   text-align: center;
   color: var(--sidebar-empty-text, var(--text-muted, #858585));
-}
-
-/* Các module con phải set display: block, height: 100% tự động giãn */
-module-sidebar, module-pv-sidebar { 
-  display: block; 
-  width: 100%; 
-  height: 100%; 
 }

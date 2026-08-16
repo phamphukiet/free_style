@@ -8,7 +8,7 @@ export function editorGroupTemplate(host, emptyTagName) {
       const tag = unsafeStatic(emptyTagName);
       return html`
         <style>${styles}</style>
-        <${tag}></${tag}>
+        <div class="editor-dynamic-view"><${tag}></${tag}></div>
       `;
     }
     return html`
@@ -23,10 +23,8 @@ export function editorGroupTemplate(host, emptyTagName) {
     if (emptyTagName) {
       const tag = unsafeStatic(emptyTagName);
       return html`
-        <style>
-          ${styles}
-        </style>
-        <${tag}></${tag}>
+        <style>${styles}</style>
+        <div class="editor-dynamic-view"><${tag}></${tag}></div>
       `;
     }
     return html`

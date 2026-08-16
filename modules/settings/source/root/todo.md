@@ -1,0 +1,4 @@
+- cấu trúc: 1 setting = 1 thư mục đánh số
+- đảm bảo CRUD setting trong root không cần sử code bên ngoài root
+- user/AI chỉ có quyền truy cập và edit chỉ số
+- hoạt động theo hướng cập nhật các file UX/UI

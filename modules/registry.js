@@ -12,6 +12,7 @@ class Registry {
     this.providers = []; // { id, name, abbr, group, color, textColor, desc, tags }
     this.listeners = {}; // { eventName: [callbacks] }
     this.rightSidebarView = null; // tagName duy nhất, khác sidebarViews (đa view theo id)
+    this.panelView = null;
   }
 
   // --- Events ---
@@ -89,6 +90,15 @@ class Registry {
 
   getProviderCreatorView(id) {
     return this.providerCreatorViews[id];
+  }
+
+  // --- Panel ---
+  registerPanelView(tagName) {
+    this.panelView = tagName;
+  }
+
+  getPanelView() {
+    return this.panelView;
   }
 }
 

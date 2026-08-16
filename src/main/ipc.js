@@ -33,6 +33,15 @@ function registerWindowIpcWrapper() {
   } catch (e) {
     console.error("Failed to load chat backend", e);
   }
+
+  try {
+    const {
+      registerSettingsBackend,
+    } = require("../../modules/settings/backend/index.js");
+    registerSettingsBackend();
+  } catch (e) {
+    console.error("Failed to load settings backend", e);
+  }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };

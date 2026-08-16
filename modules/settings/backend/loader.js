@@ -1,0 +1,52 @@
+// loader.js
+// Trách nhiệm duy nhất: gom toàn bộ định nghĩa setting thành 1 danh sách phẳng.
+// Root: đọc file .js thật trong source/root/** (kỹ sư viết tay, chỉ định nghĩa schema).
+// Create: đọc từ store (JSON, do user/AI tạo runtime) — không phải file .js,
+// tránh phải eval code tuỳ ý lúc tạo setting mới.
+
+const fs = require("fs");
+const path = require("path");
+const store = require("./store");
+
+const ROOT_DIR = path.join(__dirname, "..", "source", "root");
+
+function walk(dir) {
+  if (!fs.existsSync(dir)) return [];
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  return entries.flatMap((entry) => {
+    const full = path.join(dir, entry.name);
+    if (entry.isDirectory()) return walk(full);
+    if (entry.name.endsWith("-apply.js")) return []; // logic riêng, không phải schema
+    if (!entry.name.endsWith(".js")) return [];
+    return [full];
+  });
+}
+
+function loadRootDefs() {
+  return walk(ROOT_DIR).map((file) => {
+    delete require.cache[require.resolve(file)]; // hot-reload schema lúc dev
+    return { ...require(file), origin: "root" };
+  });
+}
+
+function loadCreateDefs() {
+  return Object.values(store.getCreated()).map((def) => ({
+    ...def,
+    origin: "create",
+  }));
+}
+
+function loadAll() {
+  const defs = [...loadRootDefs(), ...loadCreateDefs()];
+  return defs.map((def) => {
+    const storedValue = store.getValue(def.id);
+    const extraPresets = store.getPresets(def.id);
+    return {
+      ...def,
+      value: storedValue !== undefined ? storedValue : def.default,
+      options: def.options ? [...def.options, ...extraPresets] : undefined,
+    };
+  });
+}
+
+module.exports = { loadAll };

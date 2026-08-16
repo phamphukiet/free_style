@@ -1,17 +1,41 @@
-// terminal-manager.js
+// modules/terminal/frontend/terminal-manager.js
+// Trách nhiệm duy nhất: dựng & điều khiển 1 instance xterm.js, nối với pty qua window.api.terminal.
+// Đặt trong modules/terminal (không phải src/renderer/parts/panel) vì đây là logic
+// thuộc domain "terminal" — panel.js chỉ là khung UI chung (tab bar, toolbar).
+// KHÔNG hard-require module settings: nếu window.api.settings có mặt thì dùng,
+// không thì fallback default cứng — tránh vỡ cả panel khi module khác bị xóa.
+
 import { Terminal } from "xterm";
 import { FitAddon } from "@xterm/addon-fit";
+
+const DEFAULT_FONT = {
+  fontSize: 13,
+  fontFamily: "'Cascadia Code', 'Consolas', 'Courier New', monospace",
+  tabStopWidth: 4,
+};
+
+const PALETTES = {
+  dark: { background: "#1e1e1e", foreground: "#cccccc", cursor: "#aeafad" },
+  light: { background: "#ffffff", foreground: "#1e1e1e", cursor: "#1e1e1e" },
+  monokai: { background: "#272822", foreground: "#f8f8f2", cursor: "#f8f8f0" },
+};
 
 export class TerminalManager {
   constructor(container, shellType) {
     this.shellType = shellType;
     this._initTerminal(container);
     this._bindEvents();
+    this._trySubscribeSettings();
+    this.spawnShell();
+  }
+
+  // Optional dependency: chỉ đăng ký nếu preload thật sự expose settings.
+  _trySubscribeSettings() {
+    if (!window.api?.settings?.onChanged) return; // module settings không tồn tại — bỏ qua êm
     this._unsubSettings = window.api.settings.onChanged(
       this._onSettingsChanged,
     );
     this.loadFontSettings();
-    this.spawnShell();
   }
 
   _onSettingsChanged = (detail) => {
@@ -20,28 +44,18 @@ export class TerminalManager {
   };
 
   _resolveTheme(id) {
-    const PALETTES = {
-      dark: { background: "#1e1e1e", foreground: "#cccccc", cursor: "#aeafad" },
-      light: {
-        background: "#ffffff",
-        foreground: "#1e1e1e",
-        cursor: "#1e1e1e",
-      },
-      monokai: {
-        background: "#272822",
-        foreground: "#f8f8f2",
-        cursor: "#f8f8f0",
-      },
-    };
     return { ...this.term.options.theme, ...(PALETTES[id] || PALETTES.dark) };
   }
 
   async loadFontSettings() {
+    if (!window.api?.settings?.getAll) return;
     const all = await window.api.settings.getAll();
     Object.assign(this.term.options, {
-      fontSize: Number(all["terminal.fontSize"] ?? 13),
-      fontFamily: all["terminal.fontFamily"],
-      tabStopWidth: Number(all["terminal.tabSize"] ?? 4),
+      fontSize: Number(all["terminal.fontSize"] ?? DEFAULT_FONT.fontSize),
+      fontFamily: all["terminal.fontFamily"] ?? DEFAULT_FONT.fontFamily,
+      tabStopWidth: Number(
+        all["terminal.tabSize"] ?? DEFAULT_FONT.tabStopWidth,
+      ),
       theme: this._resolveTheme(all["terminal.colorTheme"]),
     });
     this.resize();
@@ -49,12 +63,10 @@ export class TerminalManager {
 
   _initTerminal(container) {
     this.term = new Terminal({
-      fontSize: 13,
-      fontFamily: "'Cascadia Code', 'Consolas', 'Courier New', monospace",
+      fontSize: DEFAULT_FONT.fontSize,
+      fontFamily: DEFAULT_FONT.fontFamily,
       theme: {
-        background: "#1e1e1e",
-        foreground: "#cccccc",
-        cursor: "#aeafad",
+        ...PALETTES.dark,
         selectionBackground: "#264f78",
         black: "#1e1e1e",
         red: "#f44747",

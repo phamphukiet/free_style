@@ -1,0 +1,49 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  box-sizing: border-box;
+  padding: 24px;
+  font-family: -apple-system, 'Segoe UI', sans-serif;
+  color: var(--st-text, var(--text-primary, #cccccc));
+  background: var(--st-bg, var(--bg-primary, #1e1e1e));
+}
+
+.st-dashboard-title, .st-detail-title { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+
+.st-group-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+.st-group-card {
+  background: var(--st-card-bg, var(--bg-secondary, #252526));
+  border: 1px solid var(--st-border, var(--border, #333));
+  border-radius: 8px; padding: 16px; cursor: pointer;
+}
+.st-group-card:hover { background: var(--st-hover, var(--bg-hover, #2d2d2d)); }
+.st-group-card-title { font-weight: 600; margin-bottom: 4px; }
+.st-group-card-count { font-size: 12px; color: var(--text-muted, #999); }
+
+.st-back-btn {
+  background: var(--bg-modifier-hover, #333); color: inherit; border: none;
+  padding: 6px 12px; border-radius: 4px; cursor: pointer; margin-bottom: 16px; font-size: 12px;
+}
+
+.st-item-row {
+  display: flex; align-items: center; gap: 10px; padding: 10px 0;
+  border-bottom: 1px solid var(--st-border, var(--border, #303030));
+}
+.st-item-info { flex: 1; min-width: 0; }
+.st-item-label { font-size: 13px; }
+.st-item-id { font-size: 11px; color: var(--text-muted, #888); font-family: monospace; }
+
+.st-input, .st-select {
+  background: var(--bg-primary, #1e1e1e); color: inherit;
+  border: 1px solid var(--border, #454545); border-radius: 4px; padding: 5px 8px; font-size: 12px;
+}
+
+.st-mini-btn { background: var(--bg-modifier-hover, #333); color: inherit; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 12px; }
+.st-mini-btn.st-danger { color: #d9534f; }
+
+.st-add-btn { margin-top: 16px; background: #0e639c; color: #fff; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 13px; }
+.st-create-form { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; max-width: 320px; }
+.st-form-actions { display: flex; gap: 8px; }
+.st-empty { padding: 30px; text-align: center; color: var(--text-muted, #888); }
