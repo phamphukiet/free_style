@@ -12,13 +12,12 @@ export function valueInputTemplate(host, item) {
   }
   if (item.type === "select") {
     return html`
-      <select
-        class="st-select"
-        .value=${item.value}
-        @change=${(e) => onCommit(e.target.value)}
-      >
+      <select class="st-select" @change=${(e) => onCommit(e.target.value)}>
         ${item.options.map(
-          (o) => html`<option value=${o.value}>${o.label}</option>`,
+          (o) =>
+            html`<option value=${o.value} ?selected=${o.value === item.value}>
+              ${o.label}
+            </option>`,
         )}
       </select>
     `;

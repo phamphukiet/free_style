@@ -67,7 +67,6 @@ class EditorElement extends LitElement {
       fontSize: Number(all["editor.fontSize"] ?? 14),
       fontFamily: all["editor.fontFamily"],
     });
-    monaco.editor.setTheme(all["editor.colorTheme"] || "vs-dark");
     this.models.forEach(({ model }) =>
       model.updateOptions({ tabSize: this._tabSize }),
     );

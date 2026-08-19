@@ -1,12 +1,9 @@
-// modules/terminal/frontend/terminal-manager.js
-// Trách nhiệm duy nhất: dựng & điều khiển 1 instance xterm.js, nối với pty qua window.api.terminal.
-// Đặt trong modules/terminal (không phải src/renderer/parts/panel) vì đây là logic
-// thuộc domain "terminal" — panel.js chỉ là khung UI chung (tab bar, toolbar).
-// KHÔNG hard-require module settings: nếu window.api.settings có mặt thì dùng,
-// không thì fallback default cứng — tránh vỡ cả panel khi module khác bị xóa.
-
 import { Terminal } from "xterm";
 import { FitAddon } from "@xterm/addon-fit";
+import {
+  getTerminalTheme,
+  onTerminalThemeChange,
+} from "@shared/terminal-theme.js";
 
 const DEFAULT_FONT = {
   fontSize: 13,
@@ -14,10 +11,55 @@ const DEFAULT_FONT = {
   tabStopWidth: 4,
 };
 
+// Base 16-màu mặc định theo "terminal.colorTheme" (001-style, do part terminal
+// tự sở hữu). Đây chỉ là NỀN — nếu setting "syntax.palette" (002) có đóng góp
+// layer qua terminal-theme.js registry, layer đó luôn được áp SAU CÙNG nên thắng.
 const PALETTES = {
-  dark: { background: "#1e1e1e", foreground: "#cccccc", cursor: "#aeafad" },
-  light: { background: "#ffffff", foreground: "#1e1e1e", cursor: "#1e1e1e" },
-  monokai: { background: "#272822", foreground: "#f8f8f2", cursor: "#f8f8f0" },
+  dark: {
+    background: "#1e1e1e",
+    foreground: "#cccccc",
+    cursor: "#aeafad",
+    black: "#1e1e1e",
+    red: "#f44747",
+    green: "#6a9955",
+    yellow: "#ce9178",
+    blue: "#569cd6",
+    magenta: "#c586c0",
+    cyan: "#4ec9b0",
+    white: "#d4d4d4",
+    brightBlack: "#808080",
+    brightBlue: "#5af",
+  },
+  light: {
+    background: "#ffffff",
+    foreground: "#1e1e1e",
+    cursor: "#1e1e1e",
+    black: "#1e1e1e",
+    red: "#cd3131",
+    green: "#00871f",
+    yellow: "#795e26",
+    blue: "#0066b8",
+    magenta: "#af00db",
+    cyan: "#007c84",
+    white: "#5c5c5c",
+    brightBlack: "#666666",
+    brightBlue: "#0451a5",
+  },
+  monokai: {
+    background: "#272822",
+    foreground: "#f8f8f2",
+    cursor: "#f8f8f0",
+    black: "#272822",
+    red: "#f92672",
+    green: "#a6e22e",
+    yellow: "#e6db74",
+    blue: "#66d9ef",
+    magenta: "#ae81ff",
+    cyan: "#a1efe4",
+    white: "#f8f8f2",
+    brightBlack: "#75715e",
+    brightBlue: "#66d9ef",
+  },
 };
 
 export class TerminalManager {
@@ -26,10 +68,21 @@ export class TerminalManager {
     this._initTerminal(container);
     this._bindEvents();
     this._trySubscribeSettings();
+    // Nghe mọi setting đóng góp màu Terminal qua registry chung (hiện tại là
+    // syntax.palette) — hoàn toàn không biết settingId nào đang gọi.
+    this._unsubTerminalTheme = onTerminalThemeChange(() =>
+      this._applyTerminalThemeLayer(),
+    );
+    this._applyTerminalThemeLayer();
     this.spawnShell();
   }
 
-  // Optional dependency: chỉ đăng ký nếu preload thật sự expose settings.
+  // Áp layer từ registry chung LÊN TRÊN theme hiện tại — gọi lại hàm này bất
+  // cứ khi nào theme gốc đổi (VD sau loadFontSettings) để 002 luôn thắng.
+  _applyTerminalThemeLayer() {
+    Object.assign(this.term.options.theme, getTerminalTheme());
+  }
+
   _trySubscribeSettings() {
     if (!window.api?.settings?.onChanged) return; // module settings không tồn tại — bỏ qua êm
     this._unsubSettings = window.api.settings.onChanged(
@@ -43,8 +96,13 @@ export class TerminalManager {
     this.loadFontSettings();
   };
 
+  // base (001) trước, layer registry (002...) đè sau — đúng thứ tự ưu tiên.
   _resolveTheme(id) {
-    return { ...this.term.options.theme, ...(PALETTES[id] || PALETTES.dark) };
+    return {
+      ...this.term.options.theme,
+      ...(PALETTES[id] || PALETTES.dark),
+      ...getTerminalTheme(),
+    };
   }
 
   async loadFontSettings() {
@@ -65,20 +123,10 @@ export class TerminalManager {
     this.term = new Terminal({
       fontSize: DEFAULT_FONT.fontSize,
       fontFamily: DEFAULT_FONT.fontFamily,
-      theme: {
-        ...PALETTES.dark,
-        selectionBackground: "#264f78",
-        black: "#1e1e1e",
-        red: "#f44747",
-        green: "#6a9955",
-        yellow: "#ce9178",
-        blue: "#569cd6",
-        magenta: "#c586c0",
-        cyan: "#4ec9b0",
-        white: "#d4d4d4",
-        brightBlack: "#808080",
-        brightBlue: "#5af",
-      },
+      tabStopWidth: DEFAULT_FONT.tabStopWidth,
+      // Set sẵn base "dark" ngay từ đầu để tránh chớp giao diện mặc định của
+      // xterm trong lúc loadFontSettings() (async) chưa kịp resolve.
+      theme: { ...PALETTES.dark },
       cursorBlink: true,
       allowTransparency: false,
       scrollback: 5000,
@@ -135,6 +183,7 @@ export class TerminalManager {
   dispose() {
     this._unsubData?.();
     this._unsubSettings?.();
+    this._unsubTerminalTheme?.();
     this._resizeObserver?.disconnect();
     this.term.dispose();
     window.api.terminal.kill();
