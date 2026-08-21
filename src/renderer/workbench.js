@@ -17,3 +17,4 @@ import "@modules/providers/frontend/index.js";
 import "@modules/chat/frontend/index.js";
 import "@modules/terminal/frontend/index.js";
 import "@modules/settings/frontend/index.js";
+import "@modules/agent/frontend/index.js";

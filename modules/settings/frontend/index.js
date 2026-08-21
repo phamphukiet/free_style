@@ -8,6 +8,7 @@ registry.registerActivitybarItem({
   id: "settings",
   icon: settingsIcon,
   title: "Settings",
+  placement: "bottom",
 });
 registry.registerSidebarView("settings", "module-st-sidebar");
 registry.registerEmptyEditorView("settings", "module-st-editor-group");

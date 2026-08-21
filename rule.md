@@ -76,3 +76,4 @@ Cần logic áp dụng riêng (không chỉ là dropdown/list hiển thị ở S
 - Custom: chỉ được cập nhật file .css và .template.js — 2 loại rủi ro thấp (thuần khai báo/render), không đụng file .js logic thật, không đụng src/main, src/preload.
 - File bị cập nhật phải nằm trong chính thư mục setting đó (VD: theme.css trong 001_theme/) — không setting nào ghi ra ngoài thư mục của nó.
 - Lý do chọn "cập nhật file thật" thay vì "inject runtime": hiệu năng tốt hơn, theo trải nghiệm thực tế dùng VSCode nhiều extension.
+- modules khi bị xóa không ảnh hưởng đến code tổng thể

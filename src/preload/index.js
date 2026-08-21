@@ -119,6 +119,12 @@ function getExposedApi() {
         return () => ipcRenderer.removeListener("settings:changed", listener);
       },
     },
+    agent: {
+      list: () => ipcRenderer.invoke("agent:list"),
+      get: (id) => ipcRenderer.invoke("agent:get", id),
+      save: (agent) => ipcRenderer.invoke("agent:save", agent),
+      delete: (id) => ipcRenderer.invoke("agent:delete", id),
+    },
   };
 }
 

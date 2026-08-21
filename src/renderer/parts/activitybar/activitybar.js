@@ -10,19 +10,21 @@ class ActivitybarElement extends LitElement {
   static properties = {
     activeId: { type: String },
     items: { type: Array },
+    bottomItems: { type: Array },
   };
 
   constructor() {
     super();
-    this.activeId = "explorer"; // Default active tab
+    this.activeId = "explorer";
     this.items = registry.getActivitybarItems();
+    this.bottomItems = registry.getBottomActivitybarItems();
   }
 
   connectedCallback() {
     super.connectedCallback();
-    registry.on("activitybar:changed", (newItems) => {
-      this.items = [...newItems];
-      // Tự động set activeId nếu đang rỗng và có item mới
+    registry.on("activitybar:changed", ({ top, bottom }) => {
+      this.items = [...top];
+      this.bottomItems = [...bottom];
       if (!this.activeId && this.items.length > 0) {
         this.activeId = this.items[0].id;
         this.notifySidebar();
@@ -37,7 +39,9 @@ class ActivitybarElement extends LitElement {
 
   notifySidebar() {
     window.dispatchEvent(
-      new CustomEvent("workbench:sidebar-tab", { detail: { tabId: this.activeId } })
+      new CustomEvent("workbench:sidebar-tab", {
+        detail: { tabId: this.activeId },
+      }),
     );
   }
 

@@ -5,6 +5,7 @@
 class Registry {
   constructor() {
     this.activitybarItems = []; // { id, icon, title }
+    this.bottomActivitybarItems = []; // icon ghim cuối thanh (VD: Settings)
     this.sidebarViews = {}; // { [id]: tagName }
     this.emptyEditorViews = {}; // { [id]: tagName }
     this.providerEditorViews = {}; // { [id]: tagName }
@@ -29,12 +30,23 @@ class Registry {
 
   // --- Activitybar ---
   registerActivitybarItem(item) {
-    this.activitybarItems.push(item);
-    this.emit("activitybar:changed", this.activitybarItems);
+    const target =
+      item.placement === "bottom"
+        ? this.bottomActivitybarItems
+        : this.activitybarItems;
+    target.push(item);
+    this.emit("activitybar:changed", {
+      top: this.activitybarItems,
+      bottom: this.bottomActivitybarItems,
+    });
   }
 
   getActivitybarItems() {
     return this.activitybarItems;
+  }
+
+  getBottomActivitybarItems() {
+    return this.bottomActivitybarItems;
   }
 
   // --- Sidebar ---

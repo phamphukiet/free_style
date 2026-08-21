@@ -1,0 +1,119 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  color: var(--sidebar-text, var(--text-primary, #cccccc));
+  overflow-y: auto;
+}
+
+.ag-sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px 0 12px;
+  height: 35px;
+  min-height: 35px;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+}
+.icon-btn:hover { background: rgba(255, 255, 255, 0.1); }
+.icon-btn svg { width: 16px; height: 16px; }
+
+.ag-item {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 8px 0 12px;
+  font-size: 13px;
+  cursor: pointer;
+  gap: 8px;
+}
+.ag-item:hover { background: var(--bg-hover, rgba(255, 255, 255, 0.05)); }
+.ag-item.active { background: var(--bg-elevated, #37373d); color: #fff; }
+
+.ag-item-icon { width: 16px; height: 16px; display: flex; }
+.ag-item-icon svg { width: 14px; height: 14px; }
+
+.ag-item-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ag-item-delete {
+  background: none;
+  border: none;
+  color: var(--text-muted, #858585);
+  cursor: pointer;
+  padding: 2px;
+  display: none;
+  align-items: center;
+}
+.ag-item:hover .ag-item-delete { display: flex; }
+.ag-item-delete svg { width: 14px; height: 14px; }
+.ag-item-delete:hover { color: #d9534f; }
+
+.ag-sidebar-empty {
+  padding: 20px;
+  text-align: center;
+  color: var(--text-muted, #858585);
+  font-size: 12px;
+}
+
+.rename-input {
+  flex: 1;
+  background: var(--bg-elevated, #3c3c3c);
+  border: 1px solid var(--accent, #007fd4);
+  color: var(--text-primary, #cccccc);
+  font-size: 13px;
+  font-family: inherit;
+  padding: 0 4px;
+  height: 20px;
+  outline: none;
+  min-width: 0;
+}
+
+.ag-context-menu {
+  position: fixed;
+  background: var(--bg-elevated, #1f1f1f);
+  border: 1px solid var(--border, #454545);
+  min-width: 160px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  padding: 4px 0;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.ag-context-menu .menu-item {
+  background: none;
+  border: none;
+  color: var(--text-primary, #cccccc);
+  text-align: left;
+  padding: 4px 20px;
+  cursor: pointer;
+  width: 100%;
+  font-family: inherit;
+}
+
+.ag-context-menu .menu-item:hover {
+  background: var(--accent, #04395e);
+  color: #fff;
+}

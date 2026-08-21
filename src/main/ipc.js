@@ -42,6 +42,15 @@ function registerWindowIpcWrapper() {
   } catch (e) {
     console.error("Failed to load settings backend", e);
   }
+
+    try {
+      const {
+        registerAgentBackend,
+      } = require("../../modules/agent/backend/index.js");
+      registerAgentBackend();
+    } catch (e) {
+      console.error("Failed to load agent backend", e);
+    }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };
