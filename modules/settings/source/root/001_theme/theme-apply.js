@@ -114,7 +114,7 @@ const PALETTES = {
 // Set CSS variable lên :root → mọi part đổi màu NGAY LẬP TỨC (không cần
 // reload, không cần part nào tự code lại) vì đã dùng var(--xxx, fallback).
 function applyCssVars(themeId) {
-  const palette = PALETTES[themeId] || PALETTES.dark;
+  const palette = resolvePalette(themeId);
   const root = document.documentElement.style;
   Object.entries(palette).forEach(([key, value]) =>
     root.setProperty(key, value),
@@ -122,9 +122,7 @@ function applyCssVars(themeId) {
 }
 
 function applyMonacoLayer(themeId) {
-  setThemeLayer("appearance.theme", {
-    base: MONACO_BASE[themeId] || "vs-dark",
-  });
+  setThemeLayer("appearance.theme", { base: resolveMonacoBase(themeId) });
 }
 
 function applyAll(themeId) {
@@ -132,6 +130,73 @@ function applyAll(themeId) {
   applyMonacoLayer(themeId);
 }
 
+function isLightHex(hex) {
+  const n = parseInt(hex, 16);
+  const r = (n >> 16) & 255,
+    g = (n >> 8) & 255,
+    b = n & 255;
+  return (r * 299 + g * 587 + b * 114) / 1000 > 150;
+}
+
+// Giải nén seed 6 màu (do AI cung cấp) thành đủ CSS var — cùng shape với
+// PALETTES.dark/light/monokai, chỉ suy ra từ ít input hơn cho gọn.
+function buildFromSeed(seed) {
+  const { bg, bgElevated, text, textMuted, accent, border } = seed;
+  return {
+    "--bg-primary": `#${bg}`,
+    "--bg-secondary": `#${bgElevated}`,
+    "--bg-elevated": `#${bgElevated}`,
+    "--bg-hover": "rgba(255,255,255,0.05)",
+    "--text-primary": `#${text}`,
+    "--text-muted": `#${textMuted}`,
+    "--accent": `#${accent}`,
+    "--border": `#${border}`,
+    "--titlebar-bg": `#${bgElevated}`,
+    "--titlebar-text": `#${text}`,
+    "--titlebar-hover": `#${bgElevated}`,
+    "--titlebar-border": `#${border}`,
+    "--activitybar-bg": `#${bgElevated}`,
+    "--activitybar-text": `#${textMuted}`,
+    "--activitybar-hover": `#${text}`,
+    "--activitybar-accent": `#${accent}`,
+    "--sidebar-bg": `#${bgElevated}`,
+    "--sidebar-text": `#${text}`,
+    "--statusbar-bg": `#${accent}`,
+    "--statusbar-text": `#${bg}`,
+    "--rightsidebar-bg": `#${bgElevated}`,
+    "--rightsidebar-text": `#${text}`,
+    "--rightsidebar-border": `#${bg}`,
+    "--panel-bg": `#${bg}`,
+    "--panel-border": `#${bgElevated}`,
+    "--panel-accent": `#${accent}`,
+    "--context-menu-bg": `#${bgElevated}`,
+    "--context-menu-border": `#${border}`,
+    "--context-menu-text": `#${text}`,
+    "--context-menu-hover": `#${bgElevated}`,
+  };
+}
+
+function resolvePalette(rawValue) {
+  if (rawValue?.trim().startsWith("{")) {
+    try {
+      return buildFromSeed(JSON.parse(rawValue));
+    } catch {
+      console.warn("[theme] Seed JSON không hợp lệ, dùng dark.");
+    }
+  }
+  return PALETTES[rawValue] || PALETTES.dark;
+}
+
+function resolveMonacoBase(rawValue) {
+  if (rawValue?.trim().startsWith("{")) {
+    try {
+      return isLightHex(JSON.parse(rawValue).bg) ? "vs" : "vs-dark";
+    } catch {
+      return "vs-dark";
+    }
+  }
+  return MONACO_BASE[rawValue] || "vs-dark";
+}
 // Lúc app khởi động: đọc giá trị ĐÃ LƯU từ lần trước (store.js đã tự persist),
 // nên "giữ theme giữa các lần mở app" không cần code thêm gì khác.
 async function init() {

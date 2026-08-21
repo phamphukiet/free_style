@@ -16,17 +16,17 @@ function walk(dir) {
   return entries.flatMap((entry) => {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) return walk(full);
-    if (entry.name.endsWith("-apply.js")) return []; // logic riêng, không phải schema
-    if (!entry.name.endsWith(".js")) return [];
-    return [full];
+    return entry.name.endsWith(".js") ? [full] : [];
   });
 }
 
 function loadRootDefs() {
-  return walk(ROOT_DIR).map((file) => {
-    delete require.cache[require.resolve(file)]; // hot-reload schema lúc dev
-    return { ...require(file), origin: "root" };
-  });
+  return walk(ROOT_DIR)
+    .filter((f) => !f.endsWith("-apply.js") && !f.endsWith("-ai.js"))
+    .map((file) => {
+      delete require.cache[require.resolve(file)];
+      return { ...require(file), origin: "root" };
+    });
 }
 
 function loadCreateDefs() {
@@ -49,4 +49,13 @@ function loadAll() {
   });
 }
 
-module.exports = { loadAll };
+function loadRootAiExtensions() {
+  walk(ROOT_DIR)
+    .filter((f) => f.endsWith("-ai.js"))
+    .forEach((file) => {
+      delete require.cache[require.resolve(file)];
+      require(file);
+    });
+}
+
+module.exports = { loadAll, loadRootAiExtensions };

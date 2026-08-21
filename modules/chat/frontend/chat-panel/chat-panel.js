@@ -29,7 +29,7 @@ class ChatPanelElement extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    this.loadKeys();
+    this.loadKeys().then(() => this.restoreSelection());
     registry.on("providers:changed", () => this.loadKeys());
     window.addEventListener(
       "workbench:credentials-changed",
@@ -49,6 +49,21 @@ class ChatPanelElement extends LitElement {
     this.loadKeys();
   };
 
+  async restoreSelection() {
+    const saved = await window.api.chat.loadSelection();
+    if (!saved?.providerId || !saved?.keyId) return;
+
+    const exists = this.keys.some(
+      (k) => k.providerId === saved.providerId && k.id === saved.keyId,
+    );
+    if (!exists) return;
+
+    await this.handleSelectKey(
+      `${saved.providerId}:${saved.keyId}`,
+      saved.model,
+    );
+  }
+
   async loadKeys() {
     const providers = registry.getProviders();
     const lists = await Promise.all(
@@ -64,7 +79,7 @@ class ChatPanelElement extends LitElement {
     this.keys = lists.flat();
   }
 
-  async handleSelectKey(ref) {
+  async handleSelectKey(ref, preferredModel = null) {
     this.selectedKeyRef = ref;
     this.selectedModel = "";
     this.models = [];
@@ -81,8 +96,28 @@ class ChatPanelElement extends LitElement {
     );
     if (Array.isArray(result)) {
       this.models = result;
-      if (result.length > 0) this.selectedModel = result[0].id;
+      if (preferredModel && result.some((m) => m.id === preferredModel)) {
+        this.selectedModel = preferredModel;
+      } else if (result.length > 0) {
+        this.selectedModel = result[0].id;
+      }
     }
+    this.saveSelection();
+  }
+
+  handleSelectModel(model) {
+    this.selectedModel = model;
+    this.saveSelection();
+  }
+
+  saveSelection() {
+    const [providerId, keyId] = this.selectedKeyRef.split(":");
+    if (!providerId || !keyId) return;
+    window.api.chat.saveSelection({
+      providerId,
+      keyId,
+      model: this.selectedModel,
+    });
   }
 
   handleSelectModel(model) {

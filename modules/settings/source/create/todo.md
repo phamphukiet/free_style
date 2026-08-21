@@ -2,3 +2,4 @@
 - Cho phép user/AI thoãi mãi CRUD thư mục
 - Nếu có mâu thuẫn với root, ưu tiên root
 - Nếu setting ở đây có lỗi, thông báo đến người dùng và không kích hoạt setting đó
+- Xóa không ảnh hưởng đến file khác

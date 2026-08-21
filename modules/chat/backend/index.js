@@ -12,6 +12,7 @@ const {
   getChatProvider,
   getToolCapableProvider,
 } = require("./providers-registry");
+const { readState, writeState } = require("../../../src/main/state");
 
 function resolveKey(providerId, keyId) {
   if (!providerId) return null;
@@ -26,11 +27,7 @@ function resolveKey(providerId, keyId) {
 // không tồn tại (đúng rule: modules độc lập, không hard-require nhau).
 function loadSettingsBridge() {
   try {
-    const { getToolSpec } = require("../../settings/backend/core/tool-spec");
-    const settingsCommands = require("../../settings/backend/core/commands");
-    const { notifyChanged } = require("../../settings/backend/core/notify");
-    const sources = require("../../settings/backend/sources");
-    return { getToolSpec, settingsCommands, notifyChanged, sources };
+    return require("../../settings/backend/index.js").aiBridge;
   } catch (e) {
     console.warn("[chat] Module settings không có mặt — bỏ qua tool-calling.");
     return null;
@@ -41,24 +38,8 @@ const settingsBridge = loadSettingsBridge();
 
 function executeSettingsTool(name, args) {
   if (!settingsBridge) throw new Error("Settings module không khả dụng");
-  const { settingsCommands, notifyChanged, sources } = settingsBridge;
   if (name !== "settings") throw new Error(`Tool "${name}" không tồn tại`);
-  switch (args.action) {
-    case "list":
-      return { items: settingsCommands.getSummary() };
-    case "get":
-      return { id: args.id, value: settingsCommands.getValue(args.id) };
-    case "set": {
-      const value = settingsCommands.setValue(args.id, args.value);
-      notifyChanged(args.id, value);
-      return { id: args.id, value };
-    }
-    default: {
-      const handler = sources.getExtraActions()[args.action];
-      if (!handler) throw new Error(`action "${args.action}" không hợp lệ`);
-      return handler(args);
-    }
-  }
+  return settingsBridge.execute(args.action, args);
 }
 
 function registerChatBackend() {
@@ -83,10 +64,14 @@ function registerChatBackend() {
       try {
         let content;
         if (toolSend) {
-          const { settingsCommands, sources, getToolSpec } = settingsBridge;
-          const hint = `${settingsCommands.getCompactSummary()} ${sources.getExtraHints()}`;
-          const spec = getToolSpec(hint, Object.keys(sources.getExtraActions()));
-          content = await toolSend(apiKey, message, model, spec, executeSettingsTool);
+          const spec = settingsBridge.getToolSpec();
+          content = await toolSend(
+            apiKey,
+            message,
+            model,
+            spec,
+            executeSettingsTool,
+          );
         } else {
           content = await sendMessage(apiKey, message, model);
         }
@@ -96,6 +81,15 @@ function registerChatBackend() {
       }
     },
   );
+
+  ipcMain.handle("chat:save-selection", (event, selection) => {
+    writeState({ chatSelection: selection });
+    return true;
+  });
+
+  ipcMain.handle("chat:load-selection", () => {
+    return readState().chatSelection || null;
+  });
 }
 
 module.exports = { registerChatBackend };

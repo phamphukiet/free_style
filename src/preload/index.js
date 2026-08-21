@@ -98,6 +98,9 @@ function getExposedApi() {
     },
     chat: {
       send: (payload) => ipcRenderer.invoke("chat:send", payload),
+      saveSelection: (selection) =>
+        ipcRenderer.invoke("chat:save-selection", selection),
+      loadSelection: () => ipcRenderer.invoke("chat:load-selection"),
     },
     settings: {
       list: () => ipcRenderer.invoke("settings:list"),
