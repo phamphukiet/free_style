@@ -8,6 +8,7 @@ const {
   registerChatProvider,
   registerToolCapableProvider,
 } = require("../../../chat/backend/providers-registry");
+const { MAX_FILE_MB } = require("./limits");
 
 registerChatProvider("gemini", (apiKey, message, model) =>
   chatCompletion(apiKey, message, model),
@@ -47,6 +48,7 @@ function registerGeminiBackend() {
       return { success: false, message: error.message };
     }
   });
+  ipcMain.handle("api:file-limit:gemini", () => MAX_FILE_MB);
 }
 
-module.exports = { registerGeminiBackend };
+module.exports = { registerGeminiBackend, MAX_FILE_MB };

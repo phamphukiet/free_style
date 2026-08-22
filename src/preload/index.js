@@ -95,6 +95,8 @@ function getExposedApi() {
         ipcRenderer.invoke(`api:validate-key:${providerId}`, keyData),
       listModels: (providerId, apiKey) =>
         ipcRenderer.invoke(`api:list-models:${providerId}`, apiKey),
+      getFileLimit: (providerId) =>
+        ipcRenderer.invoke(`api:file-limit:${providerId}`),
     },
     chat: {
       send: (payload) => ipcRenderer.invoke("chat:send", payload),

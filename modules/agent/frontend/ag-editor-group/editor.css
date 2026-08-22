@@ -43,3 +43,8 @@
   font-size: 13px;
 }
 .ag-save-btn:hover { background: var(--titlebar-hover, #1177bb); }
+
+.ag-project-bar-row { display: flex; align-items: center; gap: 8px; margin-top: 4px; }
+.ag-project-bar-track { flex: 1; height: 6px; background: var(--border, #303030); border-radius: 3px; overflow: hidden; }
+.ag-project-bar-fill { height: 100%; border-radius: 3px; transition: width 0.3s ease, background 0.3s ease; }
+.ag-project-bar-label { font-size: 11px; color: var(--text-muted, #858585); white-space: nowrap; }

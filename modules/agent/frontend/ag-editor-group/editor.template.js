@@ -1,5 +1,30 @@
 import { html } from "lit";
 
+const DEFAULT_PROJECT_LIMIT_MB = 100;
+
+function projectBarTemplate(host) {
+  const limitBytes = host.fileLimitMB * 1048576;
+  const pct = Math.min(100, Math.round((host.currentBytes / limitBytes) * 100));
+  const color = pct >= 90 ? "#f44747" : pct >= 70 ? "#cca700" : "#4ec9b0";
+  const fmt = (b) =>
+    b >= 1048576
+      ? (b / 1048576).toFixed(1) + " MB"
+      : (b / 1024).toFixed(0) + " KB";
+  return html`
+    <div class="ag-project-bar-row">
+      <div class="ag-project-bar-track">
+        <div
+          class="ag-project-bar-fill"
+          style="width:${pct}%; background:${color}"
+        ></div>
+      </div>
+      <span class="ag-project-bar-label"
+        >${fmt(host.currentBytes)} / ${host.fileLimitMB} MB (${pct}%)</span
+      >
+    </div>
+  `;
+}
+
 export function agEditorTemplate(host) {
   if (!host.agentId) {
     return html`<div class="ag-empty">
@@ -45,6 +70,9 @@ export function agEditorTemplate(host) {
         </option>
         ${host.models.map((m) => html`<option value=${m.id}>${m.id}</option>`)}
       </select>
+
+      <label class="ag-label">Dung lượng project đang mở</label>
+      ${projectBarTemplate(host)}
 
       <div class="ag-actions">
         <button class="ag-save-btn" @click=${() => host.handleSave()}>
