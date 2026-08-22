@@ -133,6 +133,28 @@ function getExposedApi() {
       save: (agent) => ipcRenderer.invoke("agent:save", agent),
       delete: (id) => ipcRenderer.invoke("agent:delete", id),
     },
+    skill: {
+      platformsList: () => ipcRenderer.invoke("skill:platforms-list"),
+      platformTest: (endpoint) =>
+        ipcRenderer.invoke("skill:platform-test", endpoint),
+      platformSave: (platform) =>
+        ipcRenderer.invoke("skill:platform-save", platform),
+      platformDelete: (id) => ipcRenderer.invoke("skill:platform-delete", id),
+      search: (query, sortBy) =>
+        ipcRenderer.invoke("skill:search", query, sortBy),
+      catalogGet: (id) => ipcRenderer.invoke("skill:catalog-get", id),
+      catalogUpsert: (skill) =>
+        ipcRenderer.invoke("skill:catalog-upsert", skill),
+      catalogDelete: (id) => ipcRenderer.invoke("skill:catalog-delete", id),
+      assignAgents: (id, agentIds) =>
+        ipcRenderer.invoke("skill:assign-agents", id, agentIds),
+      listByAgent: (agentId) =>
+        ipcRenderer.invoke("skill:list-by-agent", agentId),
+      install: (skill, answers) =>
+        ipcRenderer.invoke("skill:install", skill, answers),
+      uninstall: (skillId) => ipcRenderer.invoke("skill:uninstall", skillId),
+      listInstalled: () => ipcRenderer.invoke("skill:list-installed"),
+    },
   };
 }
 

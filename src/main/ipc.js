@@ -51,6 +51,15 @@ function registerWindowIpcWrapper() {
     } catch (e) {
       console.error("Failed to load agent backend", e);
     }
+
+    try {
+      const {
+        registerSkillBackend,
+      } = require("../../modules/skill/backend/index.js");
+      registerSkillBackend();
+    } catch (e) {
+      console.error("Failed to load skill backend", e);
+    }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };

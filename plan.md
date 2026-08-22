@@ -8,7 +8,7 @@
   + điều chỉnh bằng lệnh
   - tạo setting mới bằng lệnh
 - agent
-  - agent
+  + agent
   - skill/rule
   - cách hỗ trợ chat thành agent
 - workflow làm việc
