@@ -1,3 +1,5 @@
+/* sidebar.css — layout chính của ag-sidebar */
+
 :host {
   display: block;
   width: 100%;
@@ -55,65 +57,9 @@
   white-space: nowrap;
 }
 
-.ag-item-delete {
-  background: none;
-  border: none;
-  color: var(--text-muted, #858585);
-  cursor: pointer;
-  padding: 2px;
-  display: none;
-  align-items: center;
-}
-.ag-item:hover .ag-item-delete { display: flex; }
-.ag-item-delete svg { width: 14px; height: 14px; }
-.ag-item-delete:hover { color: #d9534f; }
-
 .ag-sidebar-empty {
   padding: 20px;
   text-align: center;
   color: var(--text-muted, #858585);
   font-size: 12px;
-}
-
-.rename-input {
-  flex: 1;
-  background: var(--bg-elevated, #3c3c3c);
-  border: 1px solid var(--accent, #007fd4);
-  color: var(--text-primary, #cccccc);
-  font-size: 13px;
-  font-family: inherit;
-  padding: 0 4px;
-  height: 20px;
-  outline: none;
-  min-width: 0;
-}
-
-.ag-context-menu {
-  position: fixed;
-  background: var(--bg-elevated, #1f1f1f);
-  border: 1px solid var(--border, #454545);
-  min-width: 160px;
-  z-index: 9999;
-  display: flex;
-  flex-direction: column;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-  padding: 4px 0;
-  border-radius: 4px;
-  font-size: 13px;
-}
-
-.ag-context-menu .menu-item {
-  background: none;
-  border: none;
-  color: var(--text-primary, #cccccc);
-  text-align: left;
-  padding: 4px 20px;
-  cursor: pointer;
-  width: 100%;
-  font-family: inherit;
-}
-
-.ag-context-menu .menu-item:hover {
-  background: var(--accent, #04395e);
-  color: #fff;
 }

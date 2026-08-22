@@ -1,10 +1,13 @@
 import { LitElement, unsafeCSS } from "lit";
 import { agSidebarTemplate } from "./sidebar.template.js";
 import styles from "./sidebar.css?inline";
-import { setSelectedAgent, getSelectedAgent } from "../agent-selection.js";
+import contextStyles from "./partial/sidebar-context.css?inline";
+import * as agentSelection from "./partial/agent-selection.js";
+import { makeHandlers } from "./partial/sidebar-handlers.js";
+
 
 class AgSidebarElement extends LitElement {
-  static styles = unsafeCSS(styles);
+  static styles = [unsafeCSS(styles), unsafeCSS(contextStyles)];
   static properties = {
     agents: { state: true },
     activeId: { state: true },
@@ -19,14 +22,16 @@ class AgSidebarElement extends LitElement {
   constructor() {
     super();
     this.agents = [];
-    this.activeId = "";
+    this.activeId = agentSelection.getSelectedAgent();
     this.creating = false;
     this.editingId = "";
     this.menuOpen = false;
     this.menuX = 0;
     this.menuY = 0;
     this.menuTargetId = "";
-    this.activeId = getSelectedAgent();
+    // Expose agentSelection ở instance để handlers dùng được
+    this._agentSelection = agentSelection;
+    this._h = makeHandlers(this);
   }
 
   connectedCallback() {
@@ -37,94 +42,28 @@ class AgSidebarElement extends LitElement {
 
   disconnectedCallback() {
     window.removeEventListener("agents:changed", this.reload);
-    window.removeEventListener("click", this.handleOutsideClick);
+    window.removeEventListener("click", this._handleOutsideClick);
     super.disconnectedCallback();
   }
 
-  reload = async () => {
-    this.agents = await window.api.agent.list();
-  };
+  reload = async () => { this.agents = await window.api.agent.list(); };
 
-  handleSelect(id) {
-    this.activeId = id;
-    setSelectedAgent(id);
-  }
-
-  async startCreate() {
-    this.creating = true;
-    await this.updateComplete;
-    this.shadowRoot.querySelector(".create-input")?.focus();
-  }
-
-  handleCreateConfirm = async (e) => {
-    if (!this.creating) return;
-    const name = e.target.value.trim();
-    this.creating = false;
-    if (!name) return;
-    const created = await window.api.agent.save({ name });
-    window.dispatchEvent(new CustomEvent("agents:changed"));
-    this.handleSelect(created.id);
-  };
-
-  handleContextMenu(e, id) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.menuX = e.clientX;
-    this.menuY = e.clientY;
-    this.menuTargetId = id;
-    this.menuOpen = true;
-    setTimeout(
-      () => window.addEventListener("click", this.handleOutsideClick),
-      0,
-    );
-  }
-
-  handleOutsideClick = () => {
+  _handleOutsideClick = () => {
     this.menuOpen = false;
-    window.removeEventListener("click", this.handleOutsideClick);
+    window.removeEventListener("click", this._handleOutsideClick);
   };
 
-  async handleRenameStart(id) {
-    this.menuOpen = false;
-    this.editingId = id;
-    await this.updateComplete;
-    const input = this.shadowRoot.querySelector(".rename-input");
-    input?.focus();
-    input?.select();
-  }
+  // Delegate tất cả handlers sang sidebar-handlers.js
+  handleSelect(id) { this._h.handleSelect(id); }
+  startCreate() { return this._h.startCreate(); }
+  handleCreateConfirm(e) { return this._h.handleCreateConfirm(e); }
+  handleContextMenu(e, id) { this._h.handleContextMenu(e, id); }
+  handleRenameStart(id) { return this._h.handleRenameStart(id); }
+  handleRenameConfirm(e, id) { return this._h.handleRenameConfirm(e, id); }
+  handleRenameCancel() { this._h.handleRenameCancel(); }
+  handleDelete(id) { return this._h.handleDelete(id); }
 
-  handleRenameConfirm = async (e, id) => {
-    const name = e.target.value.trim();
-    this.editingId = "";
-    const current = this.agents.find((a) => a.id === id);
-    if (name && name !== current?.name) {
-      await window.api.agent.save({ id, name });
-      window.dispatchEvent(new CustomEvent("agents:changed"));
-    }
-  };
-
-  handleRenameCancel() {
-    this.editingId = "";
-  }
-
-  async handleDelete(id) {
-    this.menuOpen = false;
-    if (id === "manager") {
-      alert("Không thể xoá agent mặc định.");
-      return;
-    }
-    if (!window.confirm("Xoá agent này?")) return;
-    await window.api.agent.delete(id);
-    if (this.activeId === id) {
-      this.activeId = "";
-      setSelectedAgent("");
-    }
-    window.dispatchEvent(new CustomEvent("agents:changed"));
-  }
-
-  render() {
-    return agSidebarTemplate(this);
-  }
+  render() { return agSidebarTemplate(this); }
 }
 
 customElements.define("module-ag-sidebar", AgSidebarElement);

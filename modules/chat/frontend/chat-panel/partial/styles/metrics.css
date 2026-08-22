@@ -1,0 +1,42 @@
+/* metrics.css */
+.chat-metric-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 8px;
+  flex-shrink: 0;
+}
+
+.chat-metric-row:last-of-type {
+  border-bottom: 1px solid var(--chat-panel-border, var(--border, #303030));
+  padding-bottom: 6px;
+}
+
+.chat-metric-label {
+  font-size: 10px;
+  color: var(--chat-panel-muted, var(--text-muted, #858585));
+  width: 38px;
+  flex-shrink: 0;
+}
+
+.chat-bar-track {
+  flex: 1;
+  height: 4px;
+  background: var(--chat-panel-border, #303030);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.chat-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+.chat-metric-value {
+  font-size: 10px;
+  color: var(--chat-panel-muted, #858585);
+  white-space: nowrap;
+  min-width: 80px;
+  text-align: right;
+}

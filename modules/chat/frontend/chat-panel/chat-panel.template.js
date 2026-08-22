@@ -1,42 +1,32 @@
+// chat-panel.template.js
 import { html } from "lit";
+import { headerTemplate } from "./partial/template/header.template.js";
+import { sessionTemplate } from "./partial/template/session.template.js";
+import { metricsTemplate } from "./partial/template/metrics.template.js";
 
 export function chatPanelTemplate(host) {
   return html`
-    <div class="chat-selectors">
-      <select
-        class="chat-select"
-        .value=${host.selectedKeyRef}
-        @change=${(e) => host.handleSelectKey(e.target.value)}
-      >
-        <option value="">-- API Key --</option>
-        ${host.keys.map(
-          (k) =>
-            html`<option value=${`${k.providerId}:${k.id}`}>
-              ${k.providerName} · ${k.name}
-            </option>`,
-        )}
-      </select>
-      <select
-        class="chat-select"
-        .value=${host.selectedModel}
-        ?disabled=${host.models.length === 0}
-        @change=${(e) => host.handleSelectModel(e.target.value)}
-      >
-        <option value="">
-          ${host.models.length === 0 ? "-- Chọn key trước --" : "-- Model --"}
-        </option>
-        ${host.models.map((m) => html`<option value=${m.id}>${m.id}</option>`)}
-      </select>
-    </div>
+    <!-- ===== HEADER ===== -->
+    ${headerTemplate(host)}
 
+    <!-- ===== SESSION BAR ===== -->
+    ${sessionTemplate(host)}
+
+    <!-- ===== METRICS BARS ===== -->
+    ${metricsTemplate(host)}
+
+    <!-- ===== MESSAGES ===== -->
     <div class="chat-messages">
       ${host.messages.length === 0
-        ? html`<div class="chat-empty">Chưa có tin nhắn nào</div>`
+        ? html`<div class="chat-empty">
+            ${host.sessionId ? "Chưa có tin nhắn nào" : "Tạo hoặc chọn session để bắt đầu"}
+          </div>`
         : host.messages.map(
             (m) => html`<div class="chat-message ${m.role}">${m.content}</div>`,
           )}
     </div>
 
+    <!-- ===== INPUT ===== -->
     <div class="chat-input-row">
       <textarea
         class="chat-input"
@@ -56,7 +46,7 @@ export function chatPanelTemplate(host) {
         ?disabled=${!host.inputValue.trim() || host.sending}
         @click=${() => host.handleSend()}
       >
-        Gửi
+        ${host.sending ? "..." : "Gửi"}
       </button>
     </div>
   `;

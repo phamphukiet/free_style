@@ -101,6 +101,12 @@ function getExposedApi() {
       saveSelection: (selection) =>
         ipcRenderer.invoke("chat:save-selection", selection),
       loadSelection: () => ipcRenderer.invoke("chat:load-selection"),
+      sessionList: () => ipcRenderer.invoke("chat:session-list"),
+      sessionGet: (id) => ipcRenderer.invoke("chat:session-get", id),
+      sessionSave: (s) => ipcRenderer.invoke("chat:session-save", s),
+      sessionDelete: (id) => ipcRenderer.invoke("chat:session-delete", id),
+      projectSize: (folderPath) =>
+        ipcRenderer.invoke("chat:project-size", folderPath),
     },
     settings: {
       list: () => ipcRenderer.invoke("settings:list"),
