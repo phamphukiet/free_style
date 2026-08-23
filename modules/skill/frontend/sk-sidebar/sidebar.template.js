@@ -1,8 +1,32 @@
 import { html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 
+function pinnedSection(host) {
+  if (!host.pinnedSkills.length) return html``;
+  return html`
+    <div class="sk-pinned-section">
+      <div class="sk-section-title">Đã ghim</div>
+      ${host.pinnedSkills.map(
+        (s) => html`
+          <div
+            class=${classMap({
+              "sk-item": true,
+              "sk-item-compact": true,
+              active: host.selectedId === s.id,
+            })}
+            @click=${() => host.handleSelect(s.id)}
+          >
+            <span class="sk-item-name">★ ${s.name}</span>
+          </div>
+        `,
+      )}
+    </div>
+  `;
+}
+
 export function skSidebarTemplate(host) {
   return html`
+    ${pinnedSection(host)}
     <div class="sk-search-row">
       <input
         class="sk-search-input"

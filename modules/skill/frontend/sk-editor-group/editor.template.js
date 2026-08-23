@@ -1,4 +1,6 @@
 import { html } from "lit";
+import { skillTabsTemplate } from "./partial/tabs/tabs.template.js";
+import { skDashboardTemplate } from "./partial/dashboard/dashboard.template.js";
 
 function installFormTemplate(host) {
   if (!host.showInstallForm) return html``;
@@ -8,25 +10,20 @@ function installFormTemplate(host) {
         (opt) => html`
           <label class="sk-label">${opt.label}</label>
           ${opt.type === "select"
-            ? html`
-                <select
-                  class="sk-select"
-                  @change=${(e) =>
-                    host.handleAnswerInput(opt.key, e.target.value)}
-                >
-                  ${opt.options.map(
-                    (o) => html`<option value=${o.value}>${o.label}</option>`,
-                  )}
-                </select>
-              `
-            : html`
-                <input
-                  class="sk-input"
-                  .value=${host.answers[opt.key] ?? opt.default ?? ""}
-                  @input=${(e) =>
-                    host.handleAnswerInput(opt.key, e.target.value)}
-                />
-              `}
+            ? html`<select
+                class="sk-select"
+                @change=${(e) =>
+                  host.handleAnswerInput(opt.key, e.target.value)}
+              >
+                ${opt.options.map(
+                  (o) => html`<option value=${o.value}>${o.label}</option>`,
+                )}
+              </select>`
+            : html`<input
+                class="sk-input"
+                .value=${host.answers[opt.key] ?? opt.default ?? ""}
+                @input=${(e) => host.handleAnswerInput(opt.key, e.target.value)}
+              />`}
         `,
       )}
       <button
@@ -39,13 +36,18 @@ function installFormTemplate(host) {
   `;
 }
 
-export function skEditorTemplate(host) {
-  if (!host.skill)
-    return html`<div class="sk-empty-detail">Chọn 1 skill ở sidebar</div>`;
-
+function detailTemplate(host) {
   return html`
     <div class="sk-detail">
-      <h2>${host.skill.name}</h2>
+      <div class="sk-detail-header">
+        <h2>${host.skill.name}</h2>
+        <button
+          class="sk-pin-btn ${host.skill.pinned ? "pinned" : ""}"
+          @click=${() => host.handleTogglePin()}
+        >
+          ${host.skill.pinned ? "★ Đã ghim" : "☆ Ghim (tự cài mỗi project)"}
+        </button>
+      </div>
       <div class="sk-detail-meta">
         ★ ${host.skill.rating ?? "—"} · ⬇ ${host.skill.downloads ?? "—"} ·
         v${host.skill.version ?? "?"}
@@ -85,4 +87,10 @@ export function skEditorTemplate(host) {
       </button>
     </div>
   `;
+}
+
+export function skEditorTemplate(host) {
+  const tabBar = skillTabsTemplate(host);
+  const body = host.skill ? detailTemplate(host) : skDashboardTemplate(host);
+  return html`${tabBar}${body}`;
 }

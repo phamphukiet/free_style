@@ -8,6 +8,7 @@ const skillsStore = require("./skills-store");
 const { testConnection } = require("./connector");
 const { searchAll } = require("./search");
 const { installSkill, uninstallSkill, listInstalled } = require("./install");
+const { syncPinnedSkills } = require("./auto-install");
 
 function registerSkillIpc() {
   // Platforms
@@ -49,6 +50,9 @@ function registerSkillIpc() {
   });
   ipcMain.handle("skill:uninstall", (e, skillId) => uninstallSkill(skillId));
   ipcMain.handle("skill:list-installed", () => listInstalled());
+  ipcMain.handle("skill:toggle-pin", (e, id) => skillsStore.togglePin(id));
+  ipcMain.handle("skill:sync-pinned", () => syncPinnedSkills());
+  ipcMain.handle("skill:list-pinned", () => skillsStore.listPinned());
 }
 
 module.exports = { registerSkillIpc };

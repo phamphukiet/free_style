@@ -2,6 +2,7 @@ import { registry } from "@modules/registry.js";
 import packageIcon from "lucide-static/icons/package.svg?raw";
 import "./sk-sidebar/sidebar.js";
 import "./sk-editor-group/editor.js";
+import "./auto-install-listener.js";
 
 registry.registerActivitybarItem({
   id: "skills",

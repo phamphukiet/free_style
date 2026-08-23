@@ -62,5 +62,41 @@ function remove(id) {
 function listByAgent(agentId) {
   return list().filter((s) => (s.agentIds || []).includes(agentId));
 }
+function upsert(skill) {
+  const data = readAll();
+  const id = skill.id || skill.sourceUrl;
+  data[id] = {
+    agentIds: [],
+    rating: null,
+    downloads: null,
+    pinned: false,
+    ...data[id],
+    ...skill,
+    id,
+  };
+  writeAll(data);
+  return data[id];
+}
 
-module.exports = { list, get, upsert, assignAgents, remove, listByAgent };
+function togglePin(id) {
+  const data = readAll();
+  if (!data[id]) return null;
+  data[id].pinned = !data[id].pinned;
+  writeAll(data);
+  return data[id];
+}
+
+function listPinned() {
+  return list().filter((s) => s.pinned);
+}
+
+module.exports = {
+  list,
+  get,
+  upsert,
+  assignAgents,
+  remove,
+  listByAgent,
+  togglePin,
+  listPinned,
+};

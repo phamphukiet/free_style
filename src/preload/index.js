@@ -154,6 +154,9 @@ function getExposedApi() {
         ipcRenderer.invoke("skill:install", skill, answers),
       uninstall: (skillId) => ipcRenderer.invoke("skill:uninstall", skillId),
       listInstalled: () => ipcRenderer.invoke("skill:list-installed"),
+      togglePin: (id) => ipcRenderer.invoke("skill:toggle-pin", id),
+      syncPinned: () => ipcRenderer.invoke("skill:sync-pinned"),
+      listPinned: () => ipcRenderer.invoke("skill:list-pinned"),
     },
   };
 }

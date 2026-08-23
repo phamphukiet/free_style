@@ -9,6 +9,8 @@ class SkSidebarElement extends LitElement {
     sortBy: { state: true },
     results: { state: true },
     selectedId: { state: true },
+    selectedId: { state: true },
+    pinnedSkills: { state: true },
   };
 
   constructor() {
@@ -17,9 +19,25 @@ class SkSidebarElement extends LitElement {
     this.sortBy = "rating";
     this.results = [];
     this.selectedId = "";
+    this.pinnedSkills = [];
     this.search();
+    this.loadPinned();
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+    window.addEventListener("skills:changed", this.loadPinned);
+  }
+
+  disconnectedCallback() {
+    window.removeEventListener("skills:changed", this.loadPinned);
+    super.disconnectedCallback();
+  }
+
+  loadPinned = async () => {
+    this.pinnedSkills = await window.api.skill.listPinned();
+  };
+  
   async search() {
     this.results = await window.api.skill.search(this.query, this.sortBy);
   }

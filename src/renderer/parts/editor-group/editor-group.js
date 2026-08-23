@@ -1,20 +1,17 @@
-// editor-group.js
 import { LitElement } from "lit";
 import { editorGroupTemplate } from "./editor-group.template.js";
-import { registry } from "@modules/registry.js";
+import "./pane/pane.js";
+
+let paneSeq = 0;
 
 class EditorGroupElement extends LitElement {
-  static properties = {
-    openFiles: { state: true },
-    activePath: { state: true },
-    activeModuleId: { state: true },
-  };
+  static properties = { panes: { state: true }, activePaneId: { state: true } };
 
   constructor() {
     super();
-    this.openFiles = [];
-    this.activePath = "";
-    this.activeModuleId = "explorer";
+    const firstId = `pane-${++paneSeq}`;
+    this.panes = [{ id: firstId }];
+    this.activePaneId = firstId;
   }
 
   createRenderRoot() {
@@ -23,51 +20,40 @@ class EditorGroupElement extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.addEventListener("workbench:open-file", this.handleOpenFile);
-    window.addEventListener("workbench:sidebar-tab", this.handleSidebarTab);
+    this.addEventListener("workbench:pane-focus", this.handlePaneFocus);
+    this.addEventListener("workbench:pane-split", this.handleSplit);
+    this.addEventListener("workbench:pane-close", this.handleClosePane);
   }
 
   disconnectedCallback() {
-    window.removeEventListener("workbench:open-file", this.handleOpenFile);
-    window.removeEventListener("workbench:sidebar-tab", this.handleSidebarTab);
+    this.removeEventListener("workbench:pane-focus", this.handlePaneFocus);
+    this.removeEventListener("workbench:pane-split", this.handleSplit);
+    this.removeEventListener("workbench:pane-close", this.handleClosePane);
     super.disconnectedCallback();
   }
 
-  handleSidebarTab = (e) => {
-    this.activeModuleId = e.detail.tabId;
+  handlePaneFocus = (e) => {
+    this.activePaneId = e.detail.paneId;
   };
 
-  handleOpenFile = (e) => {
-    const { filePath, fileName } = e.detail;
-    const exists = this.openFiles.some((f) => f.path === filePath);
-    if (!exists) {
-      this.openFiles = [...this.openFiles, { path: filePath, name: fileName }];
-    }
-    this.activePath = filePath;
+  handleSplit = (e) => {
+    const newId = `pane-${++paneSeq}`;
+    const idx = this.panes.findIndex((p) => p.id === e.detail.paneId);
+    const next = [...this.panes];
+    next.splice(idx + 1, 0, { id: newId });
+    this.panes = next;
+    this.activePaneId = newId;
   };
 
-  handleSelectTab(path) {
-    this.activePath = path;
-  }
-
-  handleCloseFile(path) {
-    const closingIndex = this.openFiles.findIndex((f) => f.path === path);
-    this.openFiles = this.openFiles.filter((f) => f.path !== path);
-    window.dispatchEvent(
-      new CustomEvent("workbench:close-file", { detail: { filePath: path } }),
-    );
-
-    if (this.activePath !== path) return;
-    this.activePath =
-      this.openFiles.length === 0
-        ? ""
-        : this.openFiles[Math.min(closingIndex, this.openFiles.length - 1)]
-            .path;
-  }
+  handleClosePane = (e) => {
+    if (this.panes.length <= 1) return; // luôn giữ tối thiểu 1 pane
+    this.panes = this.panes.filter((p) => p.id !== e.detail.paneId);
+    if (this.activePaneId === e.detail.paneId)
+      this.activePaneId = this.panes[0].id;
+  };
 
   render() {
-    const emptyTagName = registry.getEmptyEditorView(this.activeModuleId);
-    return editorGroupTemplate(this, emptyTagName);
+    return editorGroupTemplate(this);
   }
 }
 

@@ -58,3 +58,12 @@
   background: var(--editor-group-bg, var(--bg-primary, #1e1e1e));
   color: var(--editor-group-tab-active-text, var(--text-primary, #cccccc));
 }
+
+.panes-row { display: flex; flex: 1; min-height: 0; min-width: 0; }
+workbench-editor-pane { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+workbench-editor-pane[showdivider] { border-left: 1px solid var(--editor-group-border, #1e1e1e); }
+.pane-root { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+.pane-active { outline: 1px solid var(--accent, #007acc) inset; }
+.pane-toolbar { display: flex; justify-content: flex-end; gap: 4px; padding: 2px 4px; background: var(--editor-group-bg, #252526); flex-shrink: 0; }
+.pane-btn { background: none; border: none; color: #969696; cursor: pointer; font-size: 13px; padding: 2px 6px; }
+.pane-btn:hover { color: #fff; }
