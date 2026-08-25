@@ -1,7 +1,11 @@
-import { html } from "lit";
+import { html, unsafeCSS } from "lit";
+
+const cssMods = import.meta.glob("./*.css", { eager: true, query: "?inline", import: "default" });
+const stylesHtml = Object.values(cssMods).map(s => html`<style>${unsafeCSS(s)}</style>`);
 
 export function addLinkTemplate(host) {
   return html`
+    ${stylesHtml}
     <div class="sk-add-link">
       <div class="sk-section-title">Thêm nền tảng tìm kiếm</div>
       <div class="sk-add-link-row">

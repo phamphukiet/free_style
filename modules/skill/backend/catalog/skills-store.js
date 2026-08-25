@@ -36,6 +36,7 @@ function upsert(skill) {
     agentIds: [],
     rating: null,
     downloads: null,
+    pinned: false,
     ...data[id],
     ...skill,
     id,
@@ -61,21 +62,6 @@ function remove(id) {
 
 function listByAgent(agentId) {
   return list().filter((s) => (s.agentIds || []).includes(agentId));
-}
-function upsert(skill) {
-  const data = readAll();
-  const id = skill.id || skill.sourceUrl;
-  data[id] = {
-    agentIds: [],
-    rating: null,
-    downloads: null,
-    pinned: false,
-    ...data[id],
-    ...skill,
-    id,
-  };
-  writeAll(data);
-  return data[id];
 }
 
 function togglePin(id) {

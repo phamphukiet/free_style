@@ -1,10 +1,12 @@
 import { LitElement, unsafeCSS } from "lit";
 import { skSidebarTemplate } from "./sidebar.template.js";
 import styles from "./sidebar.css?inline";
-import sectionStyles from "./partial/section/section.css?inline";
+import { getSidebarHandlers } from "./sidebar-handlers.js";
+
+const partialStyles = import.meta.glob("./partial/**/*.css", { eager: true, query: "?inline", import: "default" });
 
 class SkSidebarElement extends LitElement {
-  static styles = [unsafeCSS(styles), unsafeCSS(sectionStyles)];
+  static styles = [unsafeCSS(styles), ...Object.values(partialStyles).map(s => unsafeCSS(s))];
   static properties = {
     query: { state: true },
     sortBy: { state: true },
@@ -28,6 +30,9 @@ class SkSidebarElement extends LitElement {
     this.pinnedSkills = [];
     this.projectSkills = [];
     this.collapsedSections = {};
+
+    Object.assign(this, getSidebarHandlers(this));
+
     this.search();
     this.loadPinned();
     this.loadProject();
@@ -46,23 +51,6 @@ class SkSidebarElement extends LitElement {
     window.removeEventListener("workbench:folder-opened", this.loadProject);
     super.disconnectedCallback();
   }
-
-  loadPlatforms = async () => {
-    this.platforms = await window.api.skill.platformsList();
-  };
-
-  loadAll = () => {
-    this.loadPinned();
-    this.loadProject();
-  };
-
-  loadPinned = async () => {
-    this.pinnedSkills = await window.api.skill.listPinned();
-  };
-
-  loadProject = async () => {
-    this.projectSkills = (await window.api.skill.listProject?.()) || [];
-  };
 
   // Nguồn dữ liệu DUY NHẤT cho template — thêm nhóm mới chỉ cần thêm 1 object ở đây.
   get sections() {
@@ -99,42 +87,6 @@ class SkSidebarElement extends LitElement {
         })),
       },
     ];
-  }
-
-  toggleSection(id) {
-    this.collapsedSections = {
-      ...this.collapsedSections,
-      [id]: !this.collapsedSections[id],
-    };
-  }
-
-  async search() {
-    this.results = await window.api.skill.search(
-      this.query,
-      this.sortBy,
-      this.platformId || null,
-    );
-  }
-
-  handleQueryInput(e) {
-    this.query = e.target.value;
-    clearTimeout(this._t);
-    this._t = setTimeout(() => this.search(), 300);
-  }
-
-  handleSortChange(sortBy) {
-    this.sortBy = sortBy;
-    this.search();
-  }
-
-  handlePlatformChange(platformId) {
-    this.platformId = platformId;
-    this.search();
-  }
-
-  handleSelect(id) {
-    this.selectedId = id;
-    window.dispatchEvent(new CustomEvent("skills:select", { detail: { id } }));
   }
 
   render() {

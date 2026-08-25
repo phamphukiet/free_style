@@ -1,12 +1,16 @@
-import { html } from "lit";
+import { html, unsafeCSS } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { unsafeSVG } from "lit/directives/unsafe-svg.js";
 import chevronIcon from "lucide-static/icons/chevron-right.svg?raw";
+
+const cssMods = import.meta.glob("./*.css", { eager: true, query: "?inline", import: "default" });
+const stylesHtml = Object.values(cssMods).map(s => html`<style>${unsafeCSS(s)}</style>`);
 
 // section: { id, title, items: [{id, label, meta?}], emptyText }
 export function sectionTemplate(host, section) {
   const collapsed = host.collapsedSections[section.id];
   return html`
+    ${stylesHtml}
     <div class="sk-section">
       <div
         class="sk-section-header"

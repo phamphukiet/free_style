@@ -3,15 +3,14 @@
 // platforms-store / skills-store / search / install — file này chỉ forward.
 
 const { ipcMain } = require("electron");
-const platformsStore = require("./platforms-store");
-const skillsStore = require("./skills-store");
-const { testConnection } = require("./connector");
-const { searchAll } = require("./search");
-const { installSkill, uninstallSkill, listInstalled } = require("./install");
-const { syncPinnedSkills } = require("./auto-install");
-const { addFromLink } = require("./add-link");
-const { listProjectSkills } = require("./project-skills");
-const { addPlatform } = require("./add-platform");
+const platformsStore = require("./platform/platforms-store");
+const skillsStore = require("./catalog/skills-store");
+const { testConnection } = require("./platform/connector");
+const { searchAll } = require("./catalog/search");
+const { installSkill, uninstallSkill, listInstalled } = require("./install/install");
+const { syncPinnedSkills } = require("./install/auto-install");
+const { listProjectSkills } = require("./install/project-skills");
+const { addPlatform } = require("./platform/add-platform");
 
 function registerSkillIpc() {
   // Platforms
@@ -65,7 +64,6 @@ function registerSkillIpc() {
         return { success: false, message: error.message };
       }
     });
-    ipcMain.handle("skill:list-project", () => listProjectSkills());
 }
 
 module.exports = { registerSkillIpc };

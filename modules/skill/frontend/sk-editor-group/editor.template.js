@@ -1,6 +1,8 @@
 import { html } from "lit";
-import { skillTabsTemplate } from "./partial/tabs/tabs.template.js";
-import { skDashboardTemplate } from "./partial/dashboard/dashboard.template.js";
+
+const partialTemplates = import.meta.glob("./partial/**/*.template.js", { eager: true });
+const skillTabsTemplate = partialTemplates["./partial/tabs/tabs.template.js"]?.skillTabsTemplate || (() => html``);
+const skDashboardTemplate = partialTemplates["./partial/dashboard/dashboard.template.js"]?.skDashboardTemplate || (() => html``);
 
 function installFormTemplate(host) {
   if (!host.showInstallForm) return html``;

@@ -1,8 +1,12 @@
-import { html } from "lit";
+import { html, unsafeCSS } from "lit";
 import { addLinkTemplate } from "../add-link/add-link.template.js";
+
+const cssMods = import.meta.glob("./*.css", { eager: true, query: "?inline", import: "default" });
+const stylesHtml = Object.values(cssMods).map(s => html`<style>${unsafeCSS(s)}</style>`);
 
 export function skDashboardTemplate(host) {
   return html`
+    ${stylesHtml}
     <div class="sk-dashboard">
       <div class="sk-dashboard-title">Skills</div>
       ${addLinkTemplate(host)}

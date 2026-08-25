@@ -1,5 +1,7 @@
 import { html } from "lit";
-import { sectionTemplate } from "./partial/section/section.template.js";
+
+const partialTemplates = import.meta.glob("./partial/**/*.template.js", { eager: true });
+const sectionTemplate = partialTemplates["./partial/section/section.template.js"]?.sectionTemplate || (() => html``);
 
 function searchToolbar(host) {
   return html`
