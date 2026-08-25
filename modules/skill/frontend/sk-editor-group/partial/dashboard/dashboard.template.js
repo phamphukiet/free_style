@@ -1,9 +1,11 @@
 import { html } from "lit";
+import { addLinkTemplate } from "../add-link/add-link.template.js";
 
 export function skDashboardTemplate(host) {
   return html`
     <div class="sk-dashboard">
       <div class="sk-dashboard-title">Skills</div>
+      ${addLinkTemplate(host)}
 
       ${host.pinnedSkills.length === 0
         ? html`<div class="sk-empty-detail">

@@ -1,68 +1,44 @@
 import { html } from "lit";
-import { classMap } from "lit/directives/class-map.js";
+import { sectionTemplate } from "./partial/section/section.template.js";
 
-function pinnedSection(host) {
-  if (!host.pinnedSkills.length) return html``;
+function searchToolbar(host) {
   return html`
-    <div class="sk-pinned-section">
-      <div class="sk-section-title">Đã ghim</div>
-      ${host.pinnedSkills.map(
-        (s) => html`
-          <div
-            class=${classMap({
-              "sk-item": true,
-              "sk-item-compact": true,
-              active: host.selectedId === s.id,
-            })}
-            @click=${() => host.handleSelect(s.id)}
-          >
-            <span class="sk-item-name">★ ${s.name}</span>
-          </div>
-        `,
-      )}
-    </div>
-  `;
-}
-
-export function skSidebarTemplate(host) {
-  return html`
-    ${pinnedSection(host)}
     <div class="sk-search-row">
       <input
         class="sk-search-input"
-        placeholder="Tìm skill..."
+        placeholder="Tìm skill (VD: frontend)..."
         .value=${host.query}
         @input=${(e) => host.handleQueryInput(e)}
       />
+    </div>
+    <div class="sk-search-row">
+      <select
+        class="sk-sort-select"
+        .value=${host.platformId}
+        @change=${(e) => host.handlePlatformChange(e.target.value)}
+      >
+        <option value="">Tất cả nền tảng</option>
+        ${host.platforms.map(
+          (p) => html`<option value=${p.id}>${p.name}</option>`,
+        )}
+      </select>
       <select
         class="sk-sort-select"
         .value=${host.sortBy}
         @change=${(e) => host.handleSortChange(e.target.value)}
       >
-        <option value="rating">Đánh giá</option>
-        <option value="downloads">Lượt tải</option>
+        <option value="rating">Đánh giá cao nhất</option>
+        <option value="downloads">Dùng nhiều nhất</option>
       </select>
     </div>
-    <div class="sk-list">
-      ${host.results.map(
-        (s) => html`
-          <div
-            class=${classMap({
-              "sk-item": true,
-              active: host.selectedId === s.id,
-            })}
-            @click=${() => host.handleSelect(s.id)}
-          >
-            <span class="sk-item-name">${s.name}</span>
-            <span class="sk-item-meta"
-              >★ ${s.rating ?? "—"} · ⬇ ${s.downloads ?? "—"}</span
-            >
-          </div>
-        `,
-      )}
-      ${host.results.length === 0
-        ? html`<div class="sk-empty">Không tìm thấy skill</div>`
-        : ""}
-    </div>
+  `;
+}
+
+export function skSidebarTemplate(host) {
+  const [projectSection, pinnedSection, resultsSection] = host.sections;
+  return html`
+    ${sectionTemplate(host, projectSection)}
+    ${sectionTemplate(host, pinnedSection)} ${searchToolbar(host)}
+    ${sectionTemplate(host, resultsSection)}
   `;
 }

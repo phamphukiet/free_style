@@ -24,18 +24,21 @@ function sortResults(items, sortBy) {
   return [...items].sort((a, b) => (b[key] ?? -1) - (a[key] ?? -1));
 }
 
-async function searchAll(query, sortBy = "rating") {
+async function searchAll(query, sortBy = "rating", platformId = null) {
   const local = query
     ? skillsStore.list().filter((s) => matchLocal(s, query))
     : skillsStore.list();
 
   if (!query) return sortResults(local, sortBy);
 
-  const platforms = platformsStore.list();
+  let platforms = platformsStore.list();
+  if (platformId) platforms = platforms.filter((p) => p.id === platformId);
+
   const remoteLists = await Promise.all(
     platforms.map((p) => searchOnPlatform(p, query)),
   );
-  const merged = dedupe([...local, ...remoteLists.flat()]);
+  const includeLocal = !platformId;
+  const merged = dedupe([...(includeLocal ? local : []), ...remoteLists.flat()]);
   return sortResults(merged, sortBy);
 }
 

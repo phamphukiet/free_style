@@ -2,6 +2,7 @@ import { LitElement, unsafeCSS } from "lit";
 import { skEditorTemplate } from "./editor.template.js";
 import styles from "./editor.css?inline";
 import { loadAgentsOptional } from "./partial/agents-optional.js";
+import { submitAddLink } from "./partial/add-link/add-link-handler.js";
 
 class SkEditorGroupElement extends LitElement {
   static styles = unsafeCSS(styles);
@@ -15,6 +16,9 @@ class SkEditorGroupElement extends LitElement {
     showInstallForm: { state: true },
     answers: { state: true },
     pinnedSkills: { state: true },
+    addLinkUrl: { state: true },
+    addLinkStatus: { state: true },
+    addLinkLoading: { state: true },
   };
 
   constructor() {
@@ -28,6 +32,13 @@ class SkEditorGroupElement extends LitElement {
     this.showInstallForm = false;
     this.answers = {};
     this.pinnedSkills = [];
+    this.addLinkUrl = "";
+    this.addLinkStatus = "";
+    this.addLinkLoading = false;
+  }
+
+  handleAddLink() {
+    return submitAddLink(this);
   }
 
   connectedCallback() {

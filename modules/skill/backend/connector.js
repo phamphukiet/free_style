@@ -2,6 +2,7 @@
 // Trách nhiệm duy nhất: giao tiếp mạng với nền tảng skill — test kết nối
 // trước khi cho lưu vào dropdown, và tìm kiếm skill trên nền tảng đó.
 // Quy ước tối thiểu mọi nền tảng phải hỗ trợ: GET {endpoint}/search?q=...
+const { searchGithub } = require("./platforms/github");
 
 function withTimeout(promise, ms = 5000) {
   return Promise.race([
@@ -45,6 +46,14 @@ function normalize(raw, platformId) {
 }
 
 async function searchOnPlatform(platform, query) {
+  if (platform.type === "github") {
+    try {
+      return await searchGithub(query);
+    } catch (error) {
+      console.warn(`[skill] GitHub search lỗi:`, error.message);
+      return [];
+    }
+  }
   try {
     const res = await withTimeout(
       fetch(`${platform.endpoint}/search?q=${encodeURIComponent(query)}`),
@@ -55,7 +64,7 @@ async function searchOnPlatform(platform, query) {
     return items.map((raw) => normalize(raw, platform.id));
   } catch (error) {
     console.warn(`[skill] Nền tảng "${platform.name}" lỗi:`, error.message);
-    return []; // 1 nền tảng lỗi không được làm hỏng cả kết quả tìm kiếm
+    return [];
   }
 }
 
