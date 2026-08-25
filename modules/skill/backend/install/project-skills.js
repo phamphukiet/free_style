@@ -3,7 +3,7 @@
 // với metadata catalog (skills-store.js — có name) để sidebar hiển thị được tên.
 
 const { listInstalled } = require("./install");
-const skillsStore = require("./skills-store");
+const skillsStore = require("../catalog/skills-store");
 
 function listProjectSkills() {
   const manifest = listInstalled();

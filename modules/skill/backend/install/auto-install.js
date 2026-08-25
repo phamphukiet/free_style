@@ -1,5 +1,5 @@
 // Trách nhiệm duy nhất: cài tự động skill "pinned" nào chưa có trong project.
-const skillsStore = require("./skills-store");
+const skillsStore = require("../catalog/skills-store");
 const { installSkill, listInstalled } = require("./install");
 
 async function syncPinnedSkills() {

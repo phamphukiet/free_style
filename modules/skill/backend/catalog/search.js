@@ -2,9 +2,9 @@
 // Gộp kết quả: catalog đã lưu (local) + tìm trực tiếp trên các nền tảng đã kết nối.
 // Dedupe theo sourceUrl, sort mặc định theo rating.
 
-const platformsStore = require("./platforms-store");
+const platformsStore = require("../platform/platforms-store");
 const skillsStore = require("./skills-store");
-const { searchOnPlatform } = require("./connector");
+const { searchOnPlatform } = require("../platform/connector");
 
 function matchLocal(skill, query) {
   const q = query.toLowerCase();

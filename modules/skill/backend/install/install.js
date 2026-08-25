@@ -6,7 +6,7 @@
 
 const path = require("path");
 const fs = require("fs");
-const { readState } = require("../../../src/main/state");
+const { readState } = require("../../../../src/main/state");
 
 function getProjectPath() {
   const { lastFolder } = readState();
