@@ -1,8 +1,7 @@
 // search-handlers.js
-// Trách nhiệm duy nhất: logic tìm kiếm skill + quản lý dropdown platform,
-// bao gồm lựa chọn "+ Thêm nền tảng..." luôn nằm cuối dropdown.
-
-export const ADD_PLATFORM_VALUE = "__add_platform__";
+// Trách nhiệm duy nhất: tìm kiếm skill + thêm nền tảng mới (test kết nối
+// bằng search thật ở backend, xem connector.js). CRUD chọn/sửa/xoá platform
+// nằm ở platform-handlers.js.
 
 export const getSearchHandlers = (host) => ({
   loadPlatforms: async () => {
@@ -25,15 +24,6 @@ export const getSearchHandlers = (host) => ({
 
   handleSortChange: (sortBy) => {
     host.sortBy = sortBy;
-    host.search();
-  },
-
-  handlePlatformChange: (value) => {
-    if (value === ADD_PLATFORM_VALUE) {
-      host.addingPlatform = true;
-      return;
-    }
-    host.platformId = value;
     host.search();
   },
 

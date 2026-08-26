@@ -1,5 +1,6 @@
 import { html, unsafeCSS } from "lit";
 import { skSearchTemplate } from "../search/search.template.js";
+import { importLinkTemplate } from "../import-link/import-link.template.js";
 
 const cssMods = import.meta.glob("./*.css", {
   eager: true,
@@ -42,7 +43,8 @@ export function skDashboardTemplate(host) {
               )}
             </div>
           `}
-
+      <div class="sk-section-title">Nhập link skill</div>
+      ${importLinkTemplate(host)}
       <div class="sk-section-title">Tìm skill</div>
       ${skSearchTemplate(host)}
     </div>

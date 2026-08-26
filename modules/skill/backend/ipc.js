@@ -5,7 +5,6 @@
 const { ipcMain } = require("electron");
 const platformsStore = require("./platform/platforms-store");
 const skillsStore = require("./catalog/skills-store");
-const { testConnection } = require("./platform/connector");
 const { searchAll } = require("./catalog/search");
 const { installSkill, uninstallSkill, listInstalled } = require("./install/install");
 const { syncPinnedSkills } = require("./install/auto-install");
@@ -15,14 +14,6 @@ const { addPlatform } = require("./platform/add-platform");
 function registerSkillIpc() {
   // Platforms
   ipcMain.handle("skill:platforms-list", () => platformsStore.list());
-  ipcMain.handle("skill:platform-test", (e, endpoint) =>
-    testConnection(endpoint),
-  );
-  ipcMain.handle("skill:platform-save", async (e, platform) => {
-    const result = await testConnection(platform.endpoint);
-    if (!result.success) return { success: false, message: result.message };
-    return { success: true, platform: platformsStore.save(platform) };
-  });
   ipcMain.handle("skill:platform-delete", (e, id) => platformsStore.remove(id));
 
   // Catalog & search
@@ -57,13 +48,19 @@ function registerSkillIpc() {
   ipcMain.handle("skill:list-pinned", () => skillsStore.listPinned());
   
   ipcMain.handle("skill:list-project", () => listProjectSkills());
-    ipcMain.handle("skill:add-platform", async (e, input) => {
-      try {
-        return { success: true, platform: await addPlatform(input) };
+  ipcMain.handle("skill:add-platform", async (e, input) => {
+    try {
+      return { success: true, platform: await addPlatform(input) };
       } catch (error) {
         return { success: false, message: error.message };
       }
     });
+  ipcMain.handle("skill:platform-delete", (e, id) =>
+      platformsStore.remove(id),
+    );
+  ipcMain.handle("skill:platform-rename", (e, id, name) =>
+      platformsStore.save({ id, name }),
+    );
 }
 
 module.exports = { registerSkillIpc };

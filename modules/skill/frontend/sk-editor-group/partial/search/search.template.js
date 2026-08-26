@@ -2,7 +2,7 @@ import { html, unsafeCSS } from "lit";
 import { unsafeSVG } from "lit/directives/unsafe-svg.js";
 import downloadIcon from "lucide-static/icons/download.svg?raw";
 import externalLinkIcon from "lucide-static/icons/external-link.svg?raw";
-import { ADD_PLATFORM_VALUE } from "./search-handlers.js";
+import { platformDropdownTemplate } from "../platform/platform-dropdown.template.js";
 
 const cssMods = import.meta.glob("./*.css", {
   eager: true,
@@ -109,13 +109,13 @@ export function skSearchTemplate(host) {
       <div class="sk-search-row">
         <input
           class="sk-search-input"
-          placeholder="Tìm skill (VD: frontend)..."
+          placeholder="\"github\" hoặc \"npm\""
           .value=${host.query}
           @input=${(e) => host.handleQueryInput(e)}
         />
       </div>
       <div class="sk-search-row">
-        ${platformSelectTemplate(host)}
+        ${platformDropdownTemplate(host)}
         <select
           class="sk-sort-select"
           .value=${host.sortBy}
@@ -126,9 +126,11 @@ export function skSearchTemplate(host) {
         </select>
       </div>
       <div class="sk-result-list">
-        ${host.results.length === 0
-          ? html`<div class="sk-section-empty">Không tìm thấy skill</div>`
-          : host.results.map((item) => resultItemTemplate(host, item))}
+        ${
+          host.results.length === 0
+            ? html`<div class="sk-section-empty">Không tìm thấy skill</div>`
+            : host.results.map((item) => resultItemTemplate(host, item))
+        }
       </div>
     </div>
   `;

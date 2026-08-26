@@ -3,6 +3,8 @@ import { skEditorTemplate } from "./editor.template.js";
 import styles from "./editor.css?inline";
 import { getEditorHandlers } from "./editor-handlers.js";
 import { getSearchHandlers } from "./partial/search/search-handlers.js";
+import { getPlatformHandlers } from "./partial/platform/platform-handlers.js";
+import { getImportLinkHandlers } from "./partial/import-link/import-link-handlers.js";
 
 class SkEditorGroupElement extends LitElement {
   static styles = unsafeCSS(styles);
@@ -25,6 +27,11 @@ class SkEditorGroupElement extends LitElement {
     addLinkUrl: { state: true },
     addLinkStatus: { state: true },
     addLinkLoading: { state: true },
+    platformDropdownOpen: { state: true },
+    editingPlatformId: { state: true },
+    importLinkUrl: { state: true },
+    importLinkLoading: { state: true },
+    importLinkStatus: { state: true },
   };
 
   constructor() {
@@ -47,8 +54,22 @@ class SkEditorGroupElement extends LitElement {
     this.addLinkUrl = "";
     this.addLinkStatus = "";
     this.addLinkLoading = false;
-
-    Object.assign(this, getEditorHandlers(this), getSearchHandlers(this));
+    this.platformDropdownOpen = false;
+    this.importLinkUrl = "";
+    this.importLinkLoading = false;
+    this.importLinkStatus = "";
+    Object.assign(
+      this,
+      getEditorHandlers(this),
+      getSearchHandlers(this),
+      getImportLinkHandlers(this),
+    );
+    this.editingPlatformId = "";
+    this._closePlatformDropdown = () => {
+      this.platformDropdownOpen = false;
+      this.editingPlatformId = "";
+      window.removeEventListener("click", this._closePlatformDropdown);
+    };
   }
 
   connectedCallback() {
@@ -68,6 +89,7 @@ class SkEditorGroupElement extends LitElement {
   disconnectedCallback() {
     window.removeEventListener("skills:select", this.handleSelect);
     window.removeEventListener("skills:changed", this.loadPinned);
+    window.removeEventListener("click", this._closePlatformDropdown);
     super.disconnectedCallback();
   }
 
