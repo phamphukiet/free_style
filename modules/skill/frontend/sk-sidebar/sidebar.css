@@ -11,33 +11,6 @@
   box-sizing: border-box;
 }
 
-.sk-search-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-  padding: 8px;
-}
-.sk-search-input {
-  flex: 1 1 120px;
-  min-width: 0;
-  background: var(--bg-elevated, #3c3c3c);
-  border: 1px solid var(--border, #454545);
-  color: var(--text-primary, #ccc);
-  border-radius: 4px;
-  padding: 5px 8px;
-  font-size: 12px;
-}
-
-.sk-sort-select {
-  flex: 0 0 auto;
-  max-width: 100%;
-  background: var(--bg-elevated, #3c3c3c);
-  border: 1px solid var(--border, #454545);
-  color: var(--text-primary, #ccc);
-  border-radius: 4px;
-  font-size: 11px;
-}
-
 .sk-item {
   min-width: 0;
   padding: 8px 12px;

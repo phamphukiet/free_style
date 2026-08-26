@@ -4,7 +4,6 @@
 // nên mọi API cần expose ra cho renderer phải đi qua file này.
 
 const { contextBridge, ipcRenderer } = require("electron");
-// const channels = require("../../shared/ipc-channels");
 const channels = {
   WINDOW_MINIMIZE: "window:minimize",
   WINDOW_MAXIMIZE: "window:maximize",
@@ -160,6 +159,9 @@ function getExposedApi() {
       addFromLink: (url) => ipcRenderer.invoke("skill:add-from-link", url),
       listProject: () => ipcRenderer.invoke("skill:list-project"),
       addPlatform: (input) => ipcRenderer.invoke("skill:add-platform", input),
+    },
+    system: {
+      openExternal: (url) => ipcRenderer.invoke("system:open-external", url),
     },
   };
 }

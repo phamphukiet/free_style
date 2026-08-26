@@ -1,9 +1,4 @@
 export const getEditorHandlers = (host) => ({
-  handleAddLink: () => {
-    import("./partial/add-link/add-link-handler.js")
-      .then((m) => m.submitAddLink(host))
-      .catch(() => console.warn("add-link-handler missing"));
-  },
   loadPinned: async () => {
     host.pinnedSkills = await window.api.skill.listPinned();
   },

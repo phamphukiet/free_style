@@ -7,11 +7,13 @@ const { registerFsIpc } = require("./ipc/fs");
 const { registerTerminalIpc } = require("./ipc/terminal");
 const { registerCredentialsIpc } = require("./ipc/credentials/index.js");
 const { app } = require("electron");
+const { registerSystemIpc } = require("./ipc/open_link.js");
 
 function registerWindowIpcWrapper() {
   registerWindowIpc();
   registerFsIpc();
   registerTerminalIpc();
+  registerSystemIpc();
   registerCredentialsIpc();
   try {
     const { registerChatGptBackend } = require("../../modules/api/chatgpt/backend/index.js");

@@ -1,7 +1,4 @@
 export const getSidebarHandlers = (host) => ({
-  loadPlatforms: async () => {
-    host.platforms = await window.api.skill.platformsList();
-  },
   loadAll: () => {
     host.loadPinned();
     host.loadProject();
@@ -17,26 +14,6 @@ export const getSidebarHandlers = (host) => ({
       ...host.collapsedSections,
       [id]: !host.collapsedSections[id],
     };
-  },
-  search: async () => {
-    host.results = await window.api.skill.search(
-      host.query,
-      host.sortBy,
-      host.platformId || null,
-    );
-  },
-  handleQueryInput: (e) => {
-    host.query = e.target.value;
-    clearTimeout(host._t);
-    host._t = setTimeout(() => host.search(), 300);
-  },
-  handleSortChange: (sortBy) => {
-    host.sortBy = sortBy;
-    host.search();
-  },
-  handlePlatformChange: (platformId) => {
-    host.platformId = platformId;
-    host.search();
   },
   handleSelect: (id) => {
     host.selectedId = id;
