@@ -102,27 +102,15 @@ function dropdownTemplate(host) {
   return html`
     <div class="sk-platform-dropdown-wrap">
       <button
-        class="sk-icon-btn sk-platform-mini-btn"
-        title="Sửa tên"
+        class="sk-sort-select sk-platform-trigger"
         @click=${(e) => {
           e.stopPropagation();
-          host.handleRenamePlatformStart(p.id);
+          host.handleTogglePlatformDropdown();
         }}
       >
-        ${unsafeSVG(editIcon)}
+        <span>${current ? current.name : "Tất cả nền tảng"}</span>
+        ${unsafeSVG(chevronIcon)}
       </button>
-      ${p.id !== "github"
-        ? html`<button
-            class="sk-icon-btn sk-platform-mini-btn"
-            title="Xoá"
-            @click=${(e) => {
-              e.stopPropagation();
-              host.handleDeletePlatform(p.id);
-            }}
-          >
-            ${unsafeSVG(trashIcon)}
-          </button>`
-        : ""}
       ${host.platformDropdownOpen
         ? html`
             <div class="sk-platform-menu" @click=${(e) => e.stopPropagation()}>
