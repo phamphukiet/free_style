@@ -38,9 +38,8 @@ async function searchGithub(query) {
     platformId: "github",
     name: repo.name,
     sourceUrl: repo.html_url,
-    // Đoán vị trí SKILL.md chuẩn ở nhánh mặc định — install.js sẽ tự lỗi rõ
-    // ràng ("Tải nội dung skill lỗi") nếu repo không đặt file đúng chỗ này.
     contentUrl: `https://raw.githubusercontent.com/${repo.full_name}/${repo.default_branch}/SKILL.md`,
+    defaultBranch: repo.default_branch,
     version: null,
     rating: repo.stargazers_count,
     downloads: repo.forks_count,
@@ -48,4 +47,33 @@ async function searchGithub(query) {
   }));
 }
 
-module.exports = { GITHUB_PLATFORM, isGithubInput, searchGithub };
+async function resolveContentUrl(skill) {
+  const fullName = skill.id;
+  const branch = skill.defaultBranch || "main";
+  const guessed = `https://raw.githubusercontent.com/${fullName}/${branch}/SKILL.md`;
+
+  const head = await fetch(guessed, { method: "HEAD" });
+  if (head.ok) return guessed;
+
+  const searchUrl = `https://api.github.com/search/code?q=filename:SKILL.md+repo:${fullName}`;
+  const res = await fetch(searchUrl, {
+    headers: { Accept: "application/vnd.github+json" },
+  });
+  if (res.status === 403) {
+    throw new Error("GitHub giới hạn tốc độ tìm kiếm, thử lại sau ít phút.");
+  }
+  if (!res.ok) return null;
+
+  const data = await res.json();
+  const path = data.items?.[0]?.path;
+  return path
+    ? `https://raw.githubusercontent.com/${fullName}/${branch}/${path}`
+    : null;
+}
+
+module.exports = {
+  GITHUB_PLATFORM,
+  isGithubInput,
+  searchGithub,
+  resolveContentUrl,
+};

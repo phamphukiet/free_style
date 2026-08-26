@@ -3,8 +3,8 @@ import { skEditorTemplate } from "./editor.template.js";
 import styles from "./editor.css?inline";
 import { getEditorHandlers } from "./editor-handlers.js";
 import { getSearchHandlers } from "./partial/search/search-handlers.js";
-import { getPlatformHandlers } from "./partial/platform/platform-handlers.js";
 import { getImportLinkHandlers } from "./partial/import-link/import-link-handlers.js";
+import { getPlatformHandlers } from "./partial/platform/platform-handlers.js";
 
 class SkEditorGroupElement extends LitElement {
   static styles = unsafeCSS(styles);
@@ -63,6 +63,7 @@ class SkEditorGroupElement extends LitElement {
       getEditorHandlers(this),
       getSearchHandlers(this),
       getImportLinkHandlers(this),
+      getPlatformHandlers(this)
     );
     this.editingPlatformId = "";
     this._closePlatformDropdown = () => {

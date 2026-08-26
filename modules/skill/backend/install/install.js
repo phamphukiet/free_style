@@ -14,6 +14,12 @@ function getProjectPath() {
   return lastFolder;
 }
 
+// Windows cấm ':' (và vài ký tự khác) trong tên file/folder — id kiểu
+// "npm:@scope/name" (npm.js) phải được làm sạch trước khi dùng làm tên thư mục.
+function safeDirName(id) {
+  return id.replace(/[:*?"<>|]/g, "_");
+}
+
 function skillsDir(projectPath) {
   return path.join(projectPath, ".skills");
 }
@@ -54,7 +60,7 @@ async function installSkill(skill, answers = {}) {
   const projectPath = getProjectPath();
   if (!projectPath) throw new Error("Chưa mở project nào để cài skill vào.");
 
-  const targetDir = path.join(skillsDir(projectPath), skill.id);
+  const targetDir = path.join(skillsDir(projectPath), safeDirName(skill.id));
   fs.mkdirSync(targetDir, { recursive: true });
 
   const rawContent = await fetchContent(skill);
@@ -75,7 +81,7 @@ async function installSkill(skill, answers = {}) {
 function uninstallSkill(skillId) {
   const projectPath = getProjectPath();
   if (!projectPath) return false;
-  fs.rmSync(path.join(skillsDir(projectPath), skillId), {
+  fs.rmSync(path.join(skillsDir(projectPath), safeDirName(skillId)), {
     recursive: true,
     force: true,
   });

@@ -16,4 +16,15 @@ async function searchOnPlatform(platform, query) {
   }
 }
 
-module.exports = { searchOnPlatform };
+async function resolveContentUrl(skill) {
+  const adapter = skill.platformId && getAdapter(skill.platformId);
+  if (!adapter?.resolveContent) return { supported: false };
+  try {
+    const url = await adapter.resolveContent(skill);
+    return { supported: true, url };
+  } catch (error) {
+    return { supported: true, url: null, error: error.message };
+  }
+}
+
+module.exports = { searchOnPlatform, resolveContentUrl };

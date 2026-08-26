@@ -11,6 +11,7 @@ const REGISTRY = {
     definition: github.GITHUB_PLATFORM,
     isInput: github.isGithubInput,
     search: github.searchGithub,
+    resolveContent: github.resolveContentUrl,
   },
   [npm.NPM_PLATFORM.id]: {
     definition: npm.NPM_PLATFORM,
