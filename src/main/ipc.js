@@ -62,6 +62,14 @@ function registerWindowIpcWrapper() {
     } catch (e) {
       console.error("Failed to load skill backend", e);
     }
+        try {
+          const {
+            registerRuleBackend,
+          } = require("../../modules/rule/backend/index.js");
+          registerRuleBackend();
+        } catch (e) {
+          console.error("Failed to load rule backend", e);
+        }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };

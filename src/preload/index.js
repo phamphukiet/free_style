@@ -166,6 +166,19 @@ function getExposedApi() {
     system: {
       openExternal: (url) => ipcRenderer.invoke("system:open-external", url),
     },
+    rule: {
+      list: () => ipcRenderer.invoke("rule:list"),
+      catalogGet: (id) => ipcRenderer.invoke("rule:catalog-get", id),
+      catalogUpsert: (rule) => ipcRenderer.invoke("rule:catalog-upsert", rule),
+      catalogDelete: (id) => ipcRenderer.invoke("rule:catalog-delete", id),
+      assignAgents: (id, agentIds) =>
+        ipcRenderer.invoke("rule:assign-agents", id, agentIds),
+      togglePin: (id) => ipcRenderer.invoke("rule:toggle-pin", id),
+      toggleEnabled: (id) => ipcRenderer.invoke("rule:toggle-enabled", id),
+      listPinned: () => ipcRenderer.invoke("rule:list-pinned"),
+      listProject: () => ipcRenderer.invoke("rule:list-project"),
+      syncPinned: () => ipcRenderer.invoke("rule:sync-pinned"),
+    },
   };
 }
 
