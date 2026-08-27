@@ -11,12 +11,13 @@ const REGISTRY = {
     definition: github.GITHUB_PLATFORM,
     isInput: github.isGithubInput,
     search: github.searchGithub,
-    resolveContent: github.resolveContentUrl,
+    downloadFiles: github.downloadFiles,
   },
   [npm.NPM_PLATFORM.id]: {
     definition: npm.NPM_PLATFORM,
     isInput: npm.isNpmInput,
     search: npm.searchNpm,
+    downloadFiles: npm.downloadFiles,
   },
 };
 

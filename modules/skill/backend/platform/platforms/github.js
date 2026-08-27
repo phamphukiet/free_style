@@ -3,6 +3,7 @@
 // cần endpoint tuỳ chỉnh vì API cố định. rating = số star (đúng ý "đánh giá
 // từ web"), downloads = số fork (GitHub không có "lượt tải" repo, dùng fork
 // làm proxy độ phổ biến — gần nghĩa nhất hiện có).
+const { downloadGithubFiles } = require("./github-download");
 
 const GITHUB_PLATFORM = {
   id: "github",
@@ -76,4 +77,5 @@ module.exports = {
   isGithubInput,
   searchGithub,
   resolveContentUrl,
+  downloadFiles: downloadGithubFiles
 };

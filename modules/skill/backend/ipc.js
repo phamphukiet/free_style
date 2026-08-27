@@ -10,7 +10,7 @@ const { installSkill, uninstallSkill, listInstalled } = require("./install/insta
 const { syncPinnedSkills } = require("./install/auto-install");
 const { listProjectSkills } = require("./install/project-skills");
 const { addPlatform } = require("./platform/add-platform");
-const { searchOnPlatform, resolveContentUrl } = require("./platform/connector");
+const { searchOnPlatform, resolveSkillSource,} = require("./platform/connector");
 
 function registerSkillIpc() {
   // Platforms
@@ -35,16 +35,9 @@ function registerSkillIpc() {
   // Install vào project
   ipcMain.handle("skill:install", async (e, skill, answers) => {
     try {
-      const resolution = await resolveContentUrl(skill);
-      if (resolution.supported && !resolution.url) {
-        throw new Error(
-          resolution.error || "Không tìm thấy file SKILL.md trong nguồn này.",
-        );
-      }
-      const finalSkill = resolution.supported
-        ? { ...skill, contentUrl: resolution.url }
-        : skill;
-      skillsStore.upsert(finalSkill);
+      const { files } = await resolveSkillSource(skill);
+      const finalSkill = files ? { ...skill, files } : skill;
+      skillsStore.upsert(skill); // catalog KHÔNG lưu nội dung file, tránh phình json
       return await installSkill(finalSkill, answers);
     } catch (error) {
       return { installed: false, message: error.message };

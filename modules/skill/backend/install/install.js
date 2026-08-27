@@ -65,13 +65,15 @@ async function installSkill(skill, answers = {}) {
 
   const rawContent = await fetchContent(skill);
   const finalContent = substitute(rawContent, answers);
-  fs.writeFileSync(path.join(targetDir, "SKILL.md"), finalContent, "utf-8");
+  const fileName = getOriginalFileName(skill);
+  fs.writeFileSync(path.join(targetDir, fileName), finalContent, "utf-8");
 
   const manifest = readManifest(projectPath);
   manifest[skill.id] = {
     version: skill.version,
     installedAt: Date.now(),
     answers,
+    fileName, // lưu lại để nơi khác biết file thật tên gì, không phải luôn là SKILL.md
   };
   writeManifest(projectPath, manifest);
 
@@ -91,10 +93,72 @@ function uninstallSkill(skillId) {
   return true;
 }
 
+function getOriginalFileName(skill) {
+  const url = skill.contentUrl || skill.sourceUrl;
+  if (!url) return "SKILL.md";
+  const clean = url.split("?")[0].split("#")[0].replace(/\/$/, "");
+  const last = clean.split("/").pop();
+  return last && last.includes(".") ? last : "SKILL.md";
+}
+
 function listInstalled() {
   const projectPath = getProjectPath();
   if (!projectPath) return {};
   return readManifest(projectPath);
 }
 
-module.exports = { installSkill, uninstallSkill, listInstalled };
+function sanitizeRelPath(relPath) {
+  const parts = relPath.split(/[\\/]/).filter((p) => p && p !== ".");
+  if (parts.some((p) => p === ".."))
+    throw new Error("Đường dẫn file không hợp lệ trong gói tải về.");
+  return parts.join("/");
+}
+
+function writeFiles(targetDir, files, answers) {
+  for (const f of files) {
+    const safeRel = sanitizeRelPath(f.relPath);
+    if (!safeRel) continue;
+    const destPath = path.join(targetDir, safeRel);
+    fs.mkdirSync(path.dirname(destPath), { recursive: true });
+    const isText = typeof f.content === "string";
+    fs.writeFileSync(
+      destPath,
+      isText ? substitute(f.content, answers) : f.content,
+    );
+  }
+}
+
+async function installSkill(skill, answers = {}) {
+  const projectPath = getProjectPath();
+  if (!projectPath) throw new Error("Chưa mở project nào để cài skill vào.");
+
+  const targetDir = path.join(skillsDir(projectPath), safeDirName(skill.id));
+  fs.rmSync(targetDir, { recursive: true, force: true }); // xoá bản cũ, tránh rác khi cài lại
+  fs.mkdirSync(targetDir, { recursive: true });
+
+  let fileCount;
+  if (skill.files?.length) {
+    writeFiles(targetDir, skill.files, answers);
+    fileCount = skill.files.length;
+  } else {
+    const rawContent = await fetchContent(skill);
+    fs.writeFileSync(
+      path.join(targetDir, getOriginalFileName(skill)),
+      substitute(rawContent, answers),
+      "utf-8",
+    );
+    fileCount = 1;
+  }
+
+  const manifest = readManifest(projectPath);
+  manifest[skill.id] = {
+    version: skill.version,
+    installedAt: Date.now(),
+    answers,
+    fileCount,
+  };
+  writeManifest(projectPath, manifest);
+  return { installed: true, path: targetDir, fileCount };
+}
+
+module.exports = { installSkill, uninstallSkill, listInstalled, getOriginalFileName };

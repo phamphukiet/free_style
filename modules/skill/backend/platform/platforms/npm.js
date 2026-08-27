@@ -1,6 +1,7 @@
 // npm.js
 // Adapter search cho npm Registry (API JSON thật) — KHÔNG nhầm với
 // npmjs.com (trang web, chặn bot 403). 2 domain khác nhau hoàn toàn.
+const { downloadNpmFiles } = require("./npm-download");
 
 const NPM_PLATFORM = {
   id: "npm",
@@ -45,4 +46,9 @@ async function searchNpm(query) {
   }));
 }
 
-module.exports = { NPM_PLATFORM, isNpmInput, searchNpm };
+module.exports = {
+  NPM_PLATFORM,
+  isNpmInput,
+  searchNpm,
+  downloadFiles: downloadNpmFiles,
+};
