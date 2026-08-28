@@ -3,7 +3,13 @@
 // (settings, rule...). Thêm module tool mới chỉ cần thêm 1 nhánh ở đây,
 // không phải sửa gemini-client.js hay send-handler.js.
 
-const { loadSettingsBridge } = require("./resolve");
+function loadSettingsBridge() {
+  try {
+    return require("../../../settings/backend/index.js").aiBridge;
+  } catch {
+    return null;
+  }
+}
 
 function loadRuleBridge() {
   try {

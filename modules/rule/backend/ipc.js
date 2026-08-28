@@ -15,17 +15,15 @@ const pendingIds = new Set();
 function registerRuleIpc() {
   ipcMain.handle("rule:list", () => rulesStore.list());
   ipcMain.handle("rule:catalog-get", (e, id) => rulesStore.get(id));
-ipcMain.handle("rule:catalog-upsert", (e, rule) => {
-  const saved = rulesStore.upsert(rule);
-  try {
-    const installed = listInstalled();
-    if (installed[saved.id]) {
+  ipcMain.handle("rule:catalog-upsert", (e, rule) => {
+    const saved = rulesStore.upsert(rule);
+    try {
       installRule(saved);
+    } catch {
+      /* chưa mở project, bỏ qua */
     }
-  } catch {
-  }
-  return saved;
-});
+    return saved;
+  });
   ipcMain.handle("rule:catalog-delete", (e, id) => {
     if (pendingIds.has(id)) return true; // đang xoá rồi, bỏ qua lệnh trùng
     pendingIds.add(id);

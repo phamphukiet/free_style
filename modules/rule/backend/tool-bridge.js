@@ -3,6 +3,7 @@
 // dùng chung logic CRUD với rules-store.js — không viết lại.
 
 const rulesStore = require("./catalog/rules-store");
+const { installRule, uninstallRule } = require("./install/install");
 
 function getToolSpec() {
   return {
@@ -44,7 +45,13 @@ function execute(action, args, agentId) {
         name: args.name || "Rule mới",
         content: args.content || "",
         agentIds: [agentId],
+        pinned: true,
       });
+      try {
+        installRule(saved);
+      } catch {
+        /* chưa mở project */
+      }
       return { id: saved.id, name: saved.name };
     }
 
@@ -55,12 +62,22 @@ function execute(action, args, agentId) {
         ...(args.name ? { name: args.name } : {}),
         ...(args.content !== undefined ? { content: args.content } : {}),
       });
+      try {
+        installRule(saved);
+      } catch {
+        /* chưa mở project */
+      }
       return { id: saved.id, name: saved.name };
     }
 
     case "delete":
       if (!args.id) throw new Error("Thiếu id để xoá rule");
       rulesStore.remove(args.id);
+      try {
+        uninstallRule(args.id);
+      } catch {
+        /* chưa mở project */
+      }
       return { deleted: args.id };
 
     default:

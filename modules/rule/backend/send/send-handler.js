@@ -2,11 +2,7 @@ const {
   getChatProvider,
   getToolCapableProvider,
 } = require("../providers-registry");
-const {
-  resolveKey,
-  resolveFromAgent,
-  buildSystemPrompt,
-} = require("./resolve");
+const { buildSystemPrompt } = require("./resolve");
 const { getToolSpecs, executeAiTool } = require("./ai-tools");
 const sessionStore = require("../session-store");
 

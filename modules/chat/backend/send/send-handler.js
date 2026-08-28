@@ -37,7 +37,7 @@ async function handleSend(
   }
 
   const toolSend =
-    getToolSpecs().length > 0
+    agentId && getToolSpecs().length > 0
       ? getToolCapableProvider(resolvedProviderId)
       : null;
   const sendMessage = getChatProvider(resolvedProviderId);

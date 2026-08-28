@@ -19,8 +19,5 @@ function buildSystemPrompt(agentId) {
 }
 
 module.exports = {
-  loadSettingsBridge,
-  resolveKey,
-  resolveFromAgent,
   buildSystemPrompt,
 };
