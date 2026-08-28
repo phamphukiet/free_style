@@ -10,8 +10,8 @@ const {
 } = require("../../../chat/backend/providers-registry");
 const { MAX_FILE_MB } = require("./limits");
 
-registerChatProvider("gemini", (apiKey, message, model) =>
-  chatCompletion(apiKey, message, model),
+registerChatProvider("gemini", (apiKey, message, model, systemPrompt) =>
+  chatCompletion(apiKey, message, model, systemPrompt),
 );
 registerToolCapableProvider("gemini", chatWithTools);
 

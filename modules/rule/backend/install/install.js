@@ -65,12 +65,14 @@ function uninstallRule(id) {
   if (!projectPath) return false;
   const manifest = readManifest(projectPath);
   const entry = manifest[id];
-  if (entry)
-    fs.rmSync(path.join(rulesDir(projectPath), entry.fileName), {
-      force: true,
-    });
-  delete manifest[id];
-  writeManifest(projectPath, manifest);
+  if (entry) {
+    const filePath = path.join(rulesDir(projectPath), entry.fileName);
+    if (fs.existsSync(filePath)) fs.rmSync(filePath, { force: true });
+  }
+  if (entry) {
+    delete manifest[id];
+    writeManifest(projectPath, manifest);
+  }
   return true;
 }
 

@@ -7,8 +7,8 @@ const {
   registerChatProvider,
 } = require("../../../chat/backend/providers-registry");
 
-registerChatProvider("chatgpt", (apiKey, message, model) =>
-  chatCompletion(apiKey, message, model || "gpt-4o-mini"),
+registerChatProvider("chatgpt", (apiKey, message, model, systemPrompt) =>
+  chatCompletion(apiKey, message, model || "gpt-4o-mini", systemPrompt),
 );
 const { MAX_FILE_MB } = require("./limits");
 
@@ -58,9 +58,5 @@ function registerChatGptBackend() {
   });
   ipcMain.handle("api:file-limit:chatgpt", () => MAX_FILE_MB);
 }
-
-registerChatProvider("chatgpt", (apiKey, message, model) =>
-  chatCompletion(apiKey, message, "gpt-4o-mini"),
-);
 
 module.exports = { registerChatGptBackend, MAX_FILE_MB };

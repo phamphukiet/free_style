@@ -2,17 +2,21 @@
 // Trách nhiệm duy nhất: gọi OpenAI Chat Completions API.
 // Dùng chung cho chatgpt và codex (khác nhau ở tên model).
 
-async function chatCompletion(apiKey, message, model) {
+async function chatCompletion(apiKey, message, model, systemPrompt = "") {
+  const messages = systemPrompt
+    ? [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: message },
+      ]
+    : [{ role: "user", content: message }];
+
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${apiKey}`,
     },
-    body: JSON.stringify({
-      model,
-      messages: [{ role: "user", content: message }],
-    }),
+    body: JSON.stringify({ model, messages }),
   });
 
   if (!response.ok) {

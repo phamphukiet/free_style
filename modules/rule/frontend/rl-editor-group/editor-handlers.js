@@ -39,12 +39,23 @@ export const getEditorHandlers = (host) => ({
     host.rule = null;
   },
   handleCreateNew: async () => {
-    const rule = await window.api.rule.catalogUpsert({
-      name: "Rule mới",
-      content: "",
-    });
-    host.loadDashboard();
-    host.handleSelect(rule.id);
+    if (host._creating) return;
+    host._creating = true;
+    try {
+      const rule = await window.api.rule.catalogUpsert({
+        name: "Rule mới",
+        content: "",
+      });
+      const result = await window.api.rule.install(rule);
+      if (!result?.installed) {
+        console.warn(result?.message || "Không thể tự thêm vào project.");
+      }
+      await host.handleSelect(rule.id);
+      await host.loadDashboard();
+      window.dispatchEvent(new CustomEvent("rules:changed"));
+    } finally {
+      host._creating = false;
+    }
   },
   handleNameInput: (e) => {
     host.editName = e.target.value;
@@ -71,28 +82,37 @@ export const getEditorHandlers = (host) => ({
     host.rule = await window.api.rule.toggleEnabled(host.rule.id);
   },
   handleSave: async () => {
-    if (!host.rule) return;
+    if (!host.rule || host.saving) return;
     host.saving = true;
-    host.rule = await window.api.rule.catalogUpsert({
-      id: host.rule.id,
-      name: host.editName.trim() || "Rule mới",
-      content: host.editContent,
-      agentIds: host.checkedAgentIds,
-    });
-    host.openTabs = host.openTabs.map((t) =>
-      t.id === host.rule.id ? { ...t, name: host.rule.name } : t,
-    );
-    host.saving = false;
-    host.saved = true;
-    window.dispatchEvent(new CustomEvent("rules:changed"));
-    setTimeout(() => (host.saved = false), 1500);
+    try {
+      host.rule = await window.api.rule.catalogUpsert({
+        id: host.rule.id,
+        name: host.editName.trim() || "Rule mới",
+        content: host.editContent,
+        agentIds: host.checkedAgentIds,
+      });
+      host.openTabs = host.openTabs.map((t) =>
+        t.id === host.rule.id ? { ...t, name: host.rule.name } : t,
+      );
+      host.saved = true;
+      window.dispatchEvent(new CustomEvent("rules:changed"));
+      setTimeout(() => (host.saved = false), 1500);
+    } finally {
+      host.saving = false;
+    }
   },
+
   handleDelete: async () => {
-    if (!host.rule) return;
-    if (!window.confirm("Xoá rule này? Không thể hoàn tác.")) return;
-    const id = host.rule.id;
-    await window.api.rule.catalogDelete(id);
-    host.handleCloseTab(id);
-    window.dispatchEvent(new CustomEvent("rules:changed"));
+    if (!host.rule || host._deleting) return;
+    host._deleting = true;
+    try {
+      if (!window.confirm("Xoá rule này? Không thể hoàn tác.")) return;
+      const id = host.rule.id;
+      await window.api.rule.catalogDelete(id);
+      host.handleCloseTab(id);
+      window.dispatchEvent(new CustomEvent("rules:changed"));
+    } finally {
+      host._deleting = false;
+    }
   },
 });

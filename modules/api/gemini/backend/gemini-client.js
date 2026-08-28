@@ -1,14 +1,17 @@
 // gemini-client.js
 // Trách nhiệm duy nhất: gọi Google Gemini API (generateContent + listModels).
 
-async function chatCompletion(apiKey, message, model) {
+async function chatCompletion(apiKey, message, model, systemPrompt = "") {
   const modelId = model || "gemini-1.5-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
+  const body = { contents: [{ parts: [{ text: message }] }] };
+  if (systemPrompt)
+    body.systemInstruction = { parts: [{ text: systemPrompt }] };
 
   const response = await fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ contents: [{ parts: [{ text: message }] }] }),
+    body: JSON.stringify(body),
   });
 
   if (!response.ok) {
@@ -78,40 +81,63 @@ function toGeminiTool(spec) {
 
 // Vòng lặp function-calling: model gọi tool → mình chạy executeToolCall →
 // gửi kết quả lại → model trả lời tự nhiên. Giới hạn 4 vòng tránh loop vô hạn.
-async function chatWithTools(apiKey, message, model, toolSpec, executeToolCall) {
+async function chatWithTools(
+  apiKey,
+  message,
+  model,
+  systemPrompt,
+  toolSpec,
+  executeToolCall,
+) {
   const modelId = model || "gemini-1.5-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
   const tools = [toGeminiTool(toolSpec)];
   const contents = [{ role: "user", parts: [{ text: message }] }];
+  const systemInstruction = systemPrompt
+    ? { parts: [{ text: systemPrompt }] }
+    : undefined;
 
   for (let step = 0; step < 4; step++) {
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ contents, tools }),
+      body: JSON.stringify({ contents, tools, systemInstruction }),
     });
     if (!response.ok) {
       const err = await response.json().catch(() => ({}));
-      throw new Error(err?.error?.message || `Lỗi API Gemini (${response.status})`);
+      throw new Error(
+        err?.error?.message || `Lỗi API Gemini (${response.status})`,
+      );
     }
     const data = await response.json();
     const parts = data.candidates?.[0]?.content?.parts || [];
     const call = parts.find((p) => p.functionCall);
 
-    if (!call) return parts.map((p) => p.text || "").join("") || "(không có phản hồi)";
+    if (!call)
+      return parts.map((p) => p.text || "").join("") || "(không có phản hồi)";
 
-    contents.push({ role: "model", parts: [{ functionCall: call.functionCall }] });
+    contents.push({
+      role: "model",
+      parts: [{ functionCall: call.functionCall }],
+    });
 
     let result;
     try {
-      result = await executeToolCall(call.functionCall.name, call.functionCall.args || {});
+      result = await executeToolCall(
+        call.functionCall.name,
+        call.functionCall.args || {},
+      );
     } catch (error) {
       result = { error: error.message };
     }
 
     contents.push({
       role: "function",
-      parts: [{ functionResponse: { name: call.functionCall.name, response: result } }],
+      parts: [
+        {
+          functionResponse: { name: call.functionCall.name, response: result },
+        },
+      ],
     });
   }
 

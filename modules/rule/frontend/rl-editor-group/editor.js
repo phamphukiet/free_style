@@ -38,13 +38,17 @@ class RlEditorGroupElement extends LitElement {
     this.editContent = "";
     this.saving = false;
     this.saved = false;
+    this._creating = false;
+    this._deleting = false;
     Object.assign(this, getEditorHandlers(this));
   }
 
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("rules:select", this.handleSelect);
-    window.addEventListener("rules:changed", this.loadDashboard);
+    window.addEventListener("rules:changed", () => {
+      this.loadDashboard();
+    });
     import("../partial/agents-optional.js")
       .then((m) =>
         m.loadAgentsOptional().then((agents) => (this.agents = agents)),

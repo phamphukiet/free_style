@@ -178,6 +178,8 @@ function getExposedApi() {
       listPinned: () => ipcRenderer.invoke("rule:list-pinned"),
       listProject: () => ipcRenderer.invoke("rule:list-project"),
       syncPinned: () => ipcRenderer.invoke("rule:sync-pinned"),
+      install: (rule) => ipcRenderer.invoke("rule:install", rule),
+      uninstall: (id) => ipcRenderer.invoke("rule:uninstall", id),
     },
   };
 }
