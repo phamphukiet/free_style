@@ -9,6 +9,7 @@ import "./parts/editor-group/editor-group.js";
 import "./parts/panel/panel.js";
 import "./parts/statusbar/statusbar.js";
 import "./parts/rightsidebar/rightsidebar.js";
+import "./parts/toast/toast.js";
 
 // Load modules
 import "@modules/api/frontend/index.js";

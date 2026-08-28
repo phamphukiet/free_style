@@ -22,6 +22,5 @@ module.exports = {
   loadSettingsBridge,
   resolveKey,
   resolveFromAgent,
-  executeSettingsTool,
   buildSystemPrompt,
 };

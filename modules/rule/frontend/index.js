@@ -3,6 +3,7 @@ import clipboardListIcon from "lucide-static/icons/clipboard-list.svg?raw";
 import "./rl-sidebar/sidebar.js";
 import "./rl-editor-group/editor.js";
 import "./auto-install-listener.js";
+import "./ai-notify-listener.js";
 
 registry.registerActivitybarItem({
   id: "rules",

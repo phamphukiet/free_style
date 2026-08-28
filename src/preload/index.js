@@ -180,6 +180,11 @@ function getExposedApi() {
       syncPinned: () => ipcRenderer.invoke("rule:sync-pinned"),
       install: (rule) => ipcRenderer.invoke("rule:install", rule),
       uninstall: (id) => ipcRenderer.invoke("rule:uninstall", id),
+      onAiChanged: (callback) => {
+        const listener = (event, info) => callback(info);
+        ipcRenderer.on("rule:ai-changed", listener);
+        return () => ipcRenderer.removeListener("rule:ai-changed", listener);
+      },
     },
   };
 }

@@ -6,9 +6,6 @@ const { readState, writeState } = require("../../../src/main/state");
 const sessionStore = require("./session-store");
 const { calcDirSize } = require("./project/dir-size");
 const { handleSend } = require("./send/send-handler");
-const { loadSettingsBridge } = require("./send/resolve");
-
-const settingsBridge = loadSettingsBridge();
 
 function registerChatBackend() {
   // Session IPC
@@ -24,7 +21,12 @@ function registerChatBackend() {
 
   // Send IPC
   ipcMain.handle("chat:send", async (event, payload) => {
-    return await handleSend(settingsBridge, payload);
+    const notify = (info) => {
+      try {
+        event.sender.send("rule:ai-changed", info);
+      } catch {}
+    };
+    return await handleSend(payload, notify);
   });
 
   // Selection IPC

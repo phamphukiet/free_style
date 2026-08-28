@@ -1,11 +1,19 @@
-// send-handler.js
-// Xử lý logic chat:send — resolve provider, gọi API, ghi session.
-
-const { getChatProvider, getToolCapableProvider } = require("../providers-registry");
-const { resolveKey, resolveFromAgent, executeSettingsTool } = require("./resolve");
+const {
+  getChatProvider,
+  getToolCapableProvider,
+} = require("../providers-registry");
+const {
+  resolveKey,
+  resolveFromAgent,
+  buildSystemPrompt,
+} = require("./resolve");
+const { getToolSpecs, executeAiTool } = require("./ai-tools");
 const sessionStore = require("../session-store");
 
-async function handleSend(settingsBridge, { message, providerId, keyId, model, agentId, sessionId }) {
+async function handleSend(
+  { message, providerId, keyId, model, agentId, sessionId },
+  notify,
+) {
   let resolvedProviderId = providerId;
   let resolvedKeyId = keyId;
   let resolvedModel = model;
@@ -28,10 +36,15 @@ async function handleSend(settingsBridge, { message, providerId, keyId, model, a
     return { content: `Chưa có API key hợp lệ cho "${resolvedProviderId}".` };
   }
 
-  const toolSend = settingsBridge ? getToolCapableProvider(resolvedProviderId) : null;
+  const toolSend =
+    getToolSpecs().length > 0
+      ? getToolCapableProvider(resolvedProviderId)
+      : null;
   const sendMessage = getChatProvider(resolvedProviderId);
   if (!toolSend && !sendMessage) {
-    return { content: `Provider "${resolvedProviderId}" chưa hỗ trợ chat thật.` };
+    return {
+      content: `Provider "${resolvedProviderId}" chưa hỗ trợ chat thật.`,
+    };
   }
 
   if (sessionId) {
@@ -39,19 +52,35 @@ async function handleSend(settingsBridge, { message, providerId, keyId, model, a
   }
 
   try {
-    let content, tokenUsed = 0;
+    let content,
+      tokenUsed = 0;
+    const systemPrompt = buildSystemPrompt(agentId);
+
     if (toolSend) {
-      const spec = settingsBridge.getToolSpec();
-      const execTool = (n, a) => executeSettingsTool(settingsBridge, n, a);
-      const raw = await toolSend(apiKey, message, resolvedModel, spec, execTool);
-      content = typeof raw === "object" ? raw.content ?? raw : raw;
+      const raw = await toolSend(apiKey, message, resolvedModel, {
+        systemPrompt,
+        toolSpecs: getToolSpecs(),
+        executeToolCall: (name, args) =>
+          executeAiTool(name, args, { agentId, notify }),
+      });
+      content = typeof raw === "object" ? (raw.content ?? raw) : raw;
       tokenUsed = raw?.usage?.totalTokens ?? 0;
     } else {
-      const raw = await sendMessage(apiKey, message, resolvedModel);
-      content = typeof raw === "object" ? raw.content ?? raw : raw;
+      const raw = await sendMessage(
+        apiKey,
+        message,
+        resolvedModel,
+        systemPrompt,
+      );
+      content = typeof raw === "object" ? (raw.content ?? raw) : raw;
       tokenUsed = raw?.usage?.totalTokens ?? 0;
     }
-    if (sessionId) sessionStore.appendMessage(sessionId, { role: "assistant", content }, tokenUsed);
+    if (sessionId)
+      sessionStore.appendMessage(
+        sessionId,
+        { role: "assistant", content },
+        tokenUsed,
+      );
     return { content, tokenUsed };
   } catch (error) {
     return { content: `Lỗi: ${error.message}` };

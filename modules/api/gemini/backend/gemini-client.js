@@ -71,27 +71,25 @@ function toGeminiSchema(schema) {
   return converted;
 }
 
-function toGeminiTool(spec) {
+function toGeminiTool(specs) {
   return {
-    functionDeclarations: [
-      { name: spec.name, description: spec.description, parameters: toGeminiSchema(spec.parameters) },
-    ],
+    functionDeclarations: specs.map((spec) => ({
+      name: spec.name,
+      description: spec.description,
+      parameters: toGeminiSchema(spec.parameters),
+    })),
   };
 }
 
-// Vòng lặp function-calling: model gọi tool → mình chạy executeToolCall →
-// gửi kết quả lại → model trả lời tự nhiên. Giới hạn 4 vòng tránh loop vô hạn.
 async function chatWithTools(
   apiKey,
   message,
   model,
-  systemPrompt,
-  toolSpec,
-  executeToolCall,
+  { systemPrompt, toolSpec, executeToolCall } = {},
 ) {
-  const modelId = model || "gemini-1.5-flash";
+  const modelId = model || "gemini-2.5-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
-  const tools = [toGeminiTool(toolSpec)];
+  const tools = [toGeminiTool(toolSpecs)];
   const contents = [{ role: "user", parts: [{ text: message }] }];
   const systemInstruction = systemPrompt
     ? { parts: [{ text: systemPrompt }] }

@@ -37,9 +37,25 @@ function executeSettingsTool(settingsBridge, name, args) {
   return settingsBridge.execute(args.action, args);
 }
 
+function loadRuleStore() {
+  try { return require("../../../rule/backend/catalog/rules-store.js"); }
+  catch { return null; }
+}
+
+function buildSystemPrompt(agentId) {
+  const store = loadRuleStore();
+  if (!store || !agentId) return "";
+  const rules = store
+    .list()
+    .filter((r) => r.enabled !== false && (r.agentIds || []).includes(agentId));
+  if (rules.length === 0) return "";
+  return rules.map((r) => `## Rule: ${r.name}\n${r.content}`).join("\n\n");
+}
+
 module.exports = {
   loadSettingsBridge,
   resolveKey,
   resolveFromAgent,
   executeSettingsTool,
+  buildSystemPrompt,
 };
