@@ -8,6 +8,9 @@ export async function restoreSelection(host) {
     const exists = host.keys.some((k) => k.providerId === saved.providerId && k.id === saved.keyId);
     if (exists) await host.handleSelectKey(`${saved.providerId}:${saved.keyId}`, saved.model);
   }
+  if (saved.sessionId && host.sessions.some((s) => s.id === saved.sessionId)) {
+    await host.handleSelectSession(saved.sessionId);
+  }
 }
 
 export function saveSelection(host) {
@@ -17,5 +20,6 @@ export function saveSelection(host) {
     providerId: providerId || null,
     keyId: keyId || null,
     model: host.selectedModel || null,
+    sessionId: host.sessionId || null,
   });
 }
