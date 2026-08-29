@@ -85,7 +85,7 @@ async function chatWithTools(
   apiKey,
   message,
   model,
-  { systemPrompt, toolSpecs, executeToolCall } = {},
+  { systemPrompt, toolSpec, executeToolCall } = {},
 ) {
   const modelId = model || "gemini-2.5-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
@@ -129,22 +129,11 @@ async function chatWithTools(
       result = { error: error.message };
     }
 
-    // Gemini yêu cầu role "tool" (không phải "function") và response phải là
-    // plain object — không được là array hay primitive.
-    const responseObj =
-      result !== null &&
-      typeof result === "object" &&
-      !Array.isArray(result)
-        ? result
-        : { result };
     contents.push({
-      role: "tool",
+      role: "function",
       parts: [
         {
-          functionResponse: {
-            name: call.functionCall.name,
-            response: responseObj,
-          },
+          functionResponse: { name: call.functionCall.name, response: result },
         },
       ],
     });
