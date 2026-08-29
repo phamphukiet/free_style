@@ -1,4 +1,4 @@
-# Tuân thủ
+# Tuân thủ mức 1 - cao nhất 
 - Function first: chạy được trước, tối ưu sau
 - Mỗi file ≤ 100 dòng; phình to thì tách thư mục riêng
 - modules khi bị xóa không ảnh hưởng đến code tổng thể
@@ -9,9 +9,7 @@
 - Không dùng `present_files` — code đưa trong chat, tự tạo/sửa file trên máy
 - `src/main/` = main process (Node thuần, không qua Vite); `src/preload/index.js` = cầu nối duy nhất renderer↔main; `src/renderer/` = UI; `modules/` và `shared/` ở gốc project dùng chung
 - Alias `@modules`, `@shared` thay cho `../../../`
-- Build bằng electron-vite (HMR cho cả main/preload/renderer)
 - `modules/` theo plugin pattern qua `registry.js` — không gọi trực tiếp nhau, chỉ đăng ký/lấy qua registry
-- Module trong `modules/` phải hoạt động độc lập, xóa module này không crash module khác
 - Module giao tiếp runtime qua CustomEvent
 - Bảo mật Electron bắt buộc: `contextIsolation: true`, `nodeIntegration: false`, `sandbox: true` — renderer không đụng Node/OS trực tiếp, mọi API qua preload
 - `frame: false` + tự vẽ titlebar + native menu (`Menu.setApplicationMenu`)
@@ -22,5 +20,6 @@
 - Icon dùng `lucide-static`, import SVG qua `?raw`, nhúng bằng `unsafeSVG` (không dùng `lucide` DOM API vì không xuyên Shadow DOM)
 - Layout kiểu VSCode: titlebar (cố định) → #workbench-body (activitybar → sidebar → #editor-panel-column) → statusbar (cố định); #editor-panel-column: editor-group (flex) + panel (cố định)
 - CSS layout tổng (quan hệ giữa các part) đặt ở `workbench.css`, ngoài Shadow DOM
+# Tuân thủ mức 3
 - Setting/module mới cần logic riêng: tạo `xxx-apply.js` trong `sources/<origin>/<module>/` của chính nó, tự đọc giá trị + tự đăng ký `window.api.settings.onChanged`; không đụng `apply-loader.js`, không đụng `frontend/index.js`
 - Phân quyền sửa file: Prime = kỹ sư viết tay, được sửa file khác nếu cần; Custom = chỉ được sửa `.css` và `.template.js`, không đụng `.js` logic thật, không đụng `src/main`, `src/preload`, file sửa phải nằm trong đúng thư mục của setting đó

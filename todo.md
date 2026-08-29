@@ -1,2 +1,7 @@
-thêm plafrom bị lỗi
-- khi nhập github thì gặp lỗi
+- phân cấp cho agent
+- mode cho chat
+- editor
+  - cho phép chọn file và folder agent được đọc giống claude
+  - hoàn tác giống antigaravity
+- terminal
+  - vòng lập tự check lỗi và vá lỗi nhưng có giới hạn
