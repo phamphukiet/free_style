@@ -4,10 +4,31 @@
 const { ipcMain } = require("electron");
 const store = require("./store");
 
+function loadOrgGuard() {
+  try {
+    return require("../org/backend/guard.js");
+  } catch {
+    return null;
+  }
+}
+
 function registerAgentIpc() {
   ipcMain.handle("agent:list", () => store.list());
   ipcMain.handle("agent:get", (event, id) => store.get(id));
-  ipcMain.handle("agent:save", (event, agent) => store.save(agent));
+
+  ipcMain.handle("agent:save", (event, agent, ctx) => {
+    const guard = loadOrgGuard();
+    if (guard && ctx?.actorRoleId) {
+      if (!guard.canManageRole(ctx.actorRoleId, ctx.targetRoleId)) {
+        throw new Error("Không có quyền quản lý role này theo org.json");
+      }
+      if (!agent.id && !guard.checkMaxCount(ctx.targetRoleId)) {
+        throw new Error("Đã đạt số lượng tối đa cho role này");
+      }
+    }
+    return store.save(agent);
+  });
+
   ipcMain.handle("agent:delete", (event, id) => store.remove(id));
 }
 
