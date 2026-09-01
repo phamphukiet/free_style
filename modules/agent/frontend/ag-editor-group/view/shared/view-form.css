@@ -1,0 +1,24 @@
+.ag-form { max-width: 420px; display: flex; flex-direction: column; gap: 6px; }
+.ag-form h2 { margin: 0 0 12px; }
+
+.ag-label { font-size: 12px; margin-top: 10px; color: var(--text-muted, #999); }
+.ag-input, .ag-select {
+  background: var(--bg-elevated, #3c3c3c);
+  color: var(--text-primary, #cccccc);
+  border: 1px solid var(--border, #454545);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 13px;
+}
+
+.ag-actions { margin-top: 16px; }
+.ag-save-btn {
+  background: var(--accent, #0e639c);
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.ag-save-btn:hover { background: var(--titlebar-hover, #1177bb); }

@@ -156,7 +156,6 @@ function getExposedApi() {
         ipcRenderer.invoke("skill:platform-test", endpoint),
       platformSave: (platform) =>
         ipcRenderer.invoke("skill:platform-save", platform),
-      platformDelete: (id) => ipcRenderer.invoke("skill:platform-delete", id),
       search: (query, sortBy, platformId) =>
         ipcRenderer.invoke("skill:search", query, sortBy, platformId),
       catalogGet: (id) => ipcRenderer.invoke("skill:catalog-get", id),
@@ -177,7 +176,6 @@ function getExposedApi() {
       addFromLink: (url) => ipcRenderer.invoke("skill:add-from-link", url),
       listProject: () => ipcRenderer.invoke("skill:list-project"),
       addPlatform: (input) => ipcRenderer.invoke("skill:add-platform", input),
-      platformDelete: (id) => ipcRenderer.invoke("skill:platform-delete", id),
       platformRename: (id, name) =>
         ipcRenderer.invoke("skill:platform-rename", id, name),
     },

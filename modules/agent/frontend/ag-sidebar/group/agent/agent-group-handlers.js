@@ -1,6 +1,4 @@
-// sidebar-handlers.js
-// Các handler phức tạp của AgSidebarElement — tách ra để sidebar.js < 100 dòng.
-
+// agent-group-handlers.js
 export function makeHandlers(host) {
   return {
     handleSelect(id) {
@@ -63,7 +61,10 @@ export function makeHandlers(host) {
 
     async handleDelete(id) {
       host.menuOpen = false;
-      if (id === "manager") { alert("Không thể xoá agent mặc định."); return; }
+      if (id === "manager") {
+        alert("Không thể xoá agent mặc định.");
+        return;
+      }
       if (!window.confirm("Xoá agent này?")) return;
       await window.api.agent.delete(id);
       if (host.activeId === id) {

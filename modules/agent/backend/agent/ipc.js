@@ -2,11 +2,11 @@
 // Trách nhiệm duy nhất: đăng ký IPC handler cho agent. Logic thật ở store.js.
 
 const { ipcMain } = require("electron");
-const store = require("./store");
+const store = require("../store.js");
 
 function loadOrgGuard() {
   try {
-    return require("./org/guard.js");
+    return require("../org/guard.js");
   } catch {
     return null;
   }
@@ -19,10 +19,17 @@ function registerAgentIpc() {
   ipcMain.handle("agent:save", (event, agent, ctx) => {
     const guard = loadOrgGuard();
     if (guard && ctx?.actorRoleId) {
-      if (!guard.canManageRole(ctx.actorRoleId, ctx.targetRoleId)) {
+      if (
+        typeof guard.canManageRole !== "function" ||
+        !guard.canManageRole(ctx.actorRoleId, ctx.targetRoleId)
+      ) {
         throw new Error("Không có quyền quản lý role này theo org.json");
       }
-      if (!agent.id && !guard.checkMaxCount(ctx.targetRoleId)) {
+      if (
+        !agent.id &&
+        (typeof guard.checkMaxCount !== "function" ||
+        !guard.checkMaxCount(ctx.targetRoleId))
+      ) {
         throw new Error("Đã đạt số lượng tối đa cho role này");
       }
     }

@@ -76,7 +76,7 @@ function createRow(host) {
   `;
 }
 
-export function orgSectionTemplate(host) {
+export function orgGroupTemplate(host) {
   return html`
     <div class="ag-sidebar-header org-header">
       <span class="ag-sidebar-title" @click=${() => host.toggleOrgSection()}

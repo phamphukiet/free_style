@@ -1,19 +1,16 @@
 // role-handlers.js
-import { fetchModels } from "../editor-keys.js";
+import { fetchModels } from "../../shared/editor-keys.js";
 import { loadRoleDetail } from "./role-loader.js";
 
 export function makeRoleHandlers(host) {
   return {
     async handleRoleParentChange(parentId) {
-      await window.api.org.updateRoleParent(
-        host.roleState.roleId,
-        parentId || null,
-      );
+      await window.api.org.updateRoleParent(host.contextId, parentId || null);
       window.dispatchEvent(new CustomEvent("org:changed"));
     },
 
     async handleDeleteRole() {
-      const role = host.roleState.role;
+      const role = host.role;
       if (!role || role.id === "manager") return;
       if (!window.confirm("Xoá vai trò này? Không thể hoàn tác.")) return;
       await window.api.org.removeRole(role.id);
@@ -24,26 +21,20 @@ export function makeRoleHandlers(host) {
     },
 
     startAddInstance() {
-      host.roleState = {
-        ...host.roleState,
-        addingInstance: true,
-        newInstanceName: host.roleState.role?.name || "",
-        newInstanceKeyRef: "",
-        newInstanceModels: [],
-        newInstanceModel: "",
-      };
+      host.addingInstance = true;
+      host.newInstanceName = host.role?.name || "";
+      host.newInstanceKeyRef = "";
+      host.newInstanceModels = [];
+      host.newInstanceModel = "";
     },
     cancelAddInstance() {
-      host.roleState = { ...host.roleState, addingInstance: false };
+      host.addingInstance = false;
     },
 
     async handleNewInstanceKey(ref) {
-      host.roleState = {
-        ...host.roleState,
-        newInstanceKeyRef: ref,
-        newInstanceModel: "",
-        newInstanceModels: [],
-      };
+      host.newInstanceKeyRef = ref;
+      host.newInstanceModel = "";
+      host.newInstanceModels = [];
       if (!ref) return;
       const token = ++host._requestToken;
       const result = await fetchModels(
@@ -53,12 +44,12 @@ export function makeRoleHandlers(host) {
         () => host._requestToken,
       );
       if (result === null) return;
-      host.roleState = { ...host.roleState, newInstanceModels: result };
+      host.newInstanceModels = result;
     },
 
     async handleConfirmAddInstance() {
       const { newInstanceName, newInstanceKeyRef, newInstanceModel, role } =
-        host.roleState;
+        host;
       const [providerId, keyId] = (newInstanceKeyRef || "").split(":");
       const agent = await window.api.agent.save(
         {
@@ -72,7 +63,7 @@ export function makeRoleHandlers(host) {
       await window.api.org.addInstance(role.id, agent.id);
       window.dispatchEvent(new CustomEvent("agents:changed"));
       window.dispatchEvent(new CustomEvent("org:changed"));
-      host.roleState = { ...host.roleState, addingInstance: false };
+      host.addingInstance = false;
       await loadRoleDetail(host);
     },
 

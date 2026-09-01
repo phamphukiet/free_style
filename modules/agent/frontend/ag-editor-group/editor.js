@@ -1,180 +1,49 @@
 import { LitElement, unsafeCSS } from "lit";
-import { agEditorTemplate } from "./editor.template.js";
+import { editorTemplate } from "./editor.template.js";
 import styles from "./editor.css?inline";
-import { getSelectedAgent } from "../ag-sidebar/partial/agent-selection.js";
-import { loadKeys, fetchModels } from "./partial/editor-keys.js";
-import { loadCurrentProjectBytes } from "./partial/project-size.js";
-import { getFileLimitMB } from "./partial/file-limit.js";
-import roleStyles from "./partial/org/role.css?inline";
-import { loadRoleDetail } from "./partial/org/role-loader.js";
-import { makeRoleHandlers } from "./partial/org/role-handlers.js";
+import "./view/index.js";
+import { getEditorView } from "./view/view-registry.js";
+import { getSelectedAgent } from "../ag-sidebar/group/agent/agent-selection.js";
 
 class AgEditorGroupElement extends LitElement {
-  static styles = [unsafeCSS(styles), unsafeCSS(roleStyles)];
+  static styles = unsafeCSS(styles);
   static properties = {
-    agentId: { state: true },
-    editName: { state: true },
-    keys: { state: true },
-    selectedKeyRef: { state: true },
-    models: { state: true },
-    selectedModel: { state: true },
-    saved: { state: true },
-    projectLimitMB: { state: true },
-    currentBytes: { state: true },
-    fileLimitMB: { state: true },
-    roleState: { state: true },
+    mode: { state: true }, // "agent" | "org" | ""
+    contextId: { state: true }, // agentId hoặc roleId tuỳ mode
   };
 
   constructor() {
     super();
-    this.agentId = "";
-    this.editName = "";
-    this.keys = [];
-    this.selectedKeyRef = "";
-    this.models = [];
-    this.selectedModel = "";
-    this.saved = false;
-    this._requestToken = 0;
-    this.projectLimitMB = "";
-    this.currentBytes = 0;
-    this.fileLimitMB = 100;
-    this.roleState = {
-      roleId: "",
-      role: null,
-      orgRoles: [],
-      instances: [],
-      allAgents: [],
-      addingInstance: false,
-      newInstanceName: "",
-      newInstanceKeyRef: "",
-      newInstanceModels: [],
-      newInstanceModel: "",
-    };
-    this._roleH = makeRoleHandlers(this);
+    this.mode = "";
+    this.contextId = "";
   }
 
   connectedCallback() {
     super.connectedCallback();
     window.addEventListener("agents:select", this.handleAgentSelect);
-    window.addEventListener("workbench:folder-opened", this.handleFolderOpened);
-    loadKeys().then((keys) => {
-      this.keys = keys;
-      const current = getSelectedAgent();
-      if (current) this.handleAgentSelect({ detail: { agentId: current } });
-    });
-    loadCurrentProjectBytes().then((b) => (this.currentBytes = b));
     window.addEventListener("org:select-role", this.handleRoleSelect);
-    window.addEventListener("org:changed", this.handleOrgChanged);
+    const current = getSelectedAgent();
+    if (current) this.handleAgentSelect({ detail: { agentId: current } });
   }
 
   disconnectedCallback() {
     window.removeEventListener("agents:select", this.handleAgentSelect);
-    window.removeEventListener(
-      "workbench:folder-opened",
-      this.handleFolderOpened,
-    );
-    super.disconnectedCallback();
     window.removeEventListener("org:select-role", this.handleRoleSelect);
-    window.removeEventListener("org:changed", this.handleOrgChanged);
+    super.disconnectedCallback();
   }
 
-  handleFolderOpened = async () => {
-    this.currentBytes = await loadCurrentProjectBytes();
+  handleAgentSelect = (e) => {
+    this.mode = e.detail.agentId ? "agent" : "";
+    this.contextId = e.detail.agentId || "";
   };
 
-  handleAgentSelect = async (e) => {
-    const token = ++this._requestToken;
-    this.roleState = { ...this.roleState, roleId: "", role: null };
-    this.agentId = e.detail.agentId;
-    if (!this.agentId) return;
-
-    const agent = await window.api.agent.get(this.agentId);
-    if (token !== this._requestToken) return;
-
-    this.editName = agent?.name || "";
-    this.selectedKeyRef =
-      agent?.providerId && agent?.keyId
-        ? `${agent.providerId}:${agent.keyId}`
-        : "";
-    this.selectedModel = agent?.model || "";
-    this.projectLimitMB = agent?.projectLimit
-      ? Math.round(agent.projectLimit / 1048576)
-      : "";
-    this.models = [];
-    if (this.selectedKeyRef) await this._loadModels(token);
-    await this._syncFileLimit();
+  handleRoleSelect = (e) => {
+    this.mode = e.detail.roleId ? "org" : "";
+    this.contextId = e.detail.roleId || "";
   };
-
-  async handleKeyChange(ref) {
-    const token = ++this._requestToken;
-    this.selectedKeyRef = ref;
-    this.selectedModel = "";
-    this.models = [];
-    if (ref) await this._loadModels(token);
-    await this._syncFileLimit();
-  }
-
-  async _loadModels(token = this._requestToken) {
-    const result = await fetchModels(
-      this.keys,
-      this.selectedKeyRef,
-      token,
-      () => this._requestToken,
-    );
-    if (result === null) return; // cancelled
-    this.models = result;
-    if (!this.selectedModel && result.length > 0)
-      this.selectedModel = result[0].id;
-    await this.updateComplete;
-    const sel = this.shadowRoot?.querySelector(".ag-model-select");
-    if (sel) sel.value = this.selectedModel;
-  }
-
-  handleNameInput(e) {
-    this.editName = e.target.value;
-  }
-
-  handleProjectLimitInput(e) {
-    this.projectLimitMB = e.target.value;
-  }
-
-  handleRoleSelect = async (e) => {
-    this.agentId = "";
-    const roleId = e.detail.roleId;
-    if (!roleId) {
-      this.roleState = { ...this.roleState, roleId: "", role: null };
-      return;
-    }
-    this.roleState = { ...this.roleState, roleId };
-    await loadRoleDetail(this);
-  };
-
-  handleOrgChanged = async () => {
-    if (!this.roleState.roleId) return;
-    await loadRoleDetail(this);
-  };
-
-  async handleSave() {
-    const [providerId, keyId] = this.selectedKeyRef.split(":");
-    await window.api.agent.save({
-      id: this.agentId,
-      name: this.editName.trim() || "Agent",
-      providerId: providerId || "",
-      keyId: keyId || "",
-      model: this.selectedModel || "",
-    });
-    this.saved = true;
-    window.dispatchEvent(new CustomEvent("agents:changed"));
-    setTimeout(() => (this.saved = false), 1500);
-  }
 
   render() {
-    return agEditorTemplate(this);
-  }
-
-  async _syncFileLimit() {
-    const [providerId] = this.selectedKeyRef.split(":");
-    this.fileLimitMB = await getFileLimitMB(providerId);
+    return editorTemplate(getEditorView(this.mode), this.contextId);
   }
 }
 
