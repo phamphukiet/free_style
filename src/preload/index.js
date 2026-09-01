@@ -138,6 +138,12 @@ function getExposedApi() {
       selectPreset: (presetId) =>
         ipcRenderer.invoke("org:select-preset", presetId),
       update: (data) => ipcRenderer.invoke("org:update", data),
+      addRole: (name, parentId) =>
+        ipcRenderer.invoke("org:add-role", name, parentId),
+      renameRole: (id, name) => ipcRenderer.invoke("org:rename-role", id, name),
+      removeRole: (id) => ipcRenderer.invoke("org:remove-role", id),
+      updateRoleParent: (id, parentId) =>
+        ipcRenderer.invoke("org:update-role-parent", id, parentId),
       addInstance: (roleId, agentId) =>
         ipcRenderer.invoke("org:add-instance", roleId, agentId),
       removeInstance: (id) => ipcRenderer.invoke("org:remove-instance", id),

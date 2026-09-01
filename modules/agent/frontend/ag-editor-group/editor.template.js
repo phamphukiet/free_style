@@ -1,4 +1,5 @@
 import { html } from "lit";
+import { roleTemplate } from "./partial/org/role.template.js";
 
 const DEFAULT_PROJECT_LIMIT_MB = 100;
 
@@ -26,9 +27,11 @@ function projectBarTemplate(host) {
 }
 
 export function agEditorTemplate(host) {
+  if (host.roleState.roleId) return roleTemplate(host);
+
   if (!host.agentId) {
     return html`<div class="ag-empty">
-      Chọn hoặc tạo agent ở sidebar bên trái
+      Chọn hoặc tạo agent, hoặc chọn vai trò trong mục Org ở sidebar bên trái
     </div>`;
   }
 

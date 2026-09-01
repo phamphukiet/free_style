@@ -3,6 +3,7 @@ import { unsafeSVG } from "lit/directives/unsafe-svg.js";
 import { classMap } from "lit/directives/class-map.js";
 import botIcon from "lucide-static/icons/bot.svg?raw";
 import plusIcon from "lucide-static/icons/plus.svg?raw";
+import { orgSectionTemplate } from "./partial/org/org-section.template.js";
 
 function contextMenuTemplate(host) {
   if (!host.menuOpen) return html``;
@@ -67,17 +68,21 @@ export function agSidebarTemplate(host) {
   return html`
     <div class="ag-sidebar-header">
       <span class="ag-sidebar-title">Agents</span>
-      <button class="icon-btn" title="New Agent" @click=${() => host.startCreate()}>
+      <button
+        class="icon-btn"
+        title="New Agent"
+        @click=${() => host.startCreate()}
+      >
         ${unsafeSVG(plusIcon)}
       </button>
     </div>
     <div class="ag-sidebar-list">
-      ${createRow}
-      ${host.agents.map((a) => agItemTemplate(host, a))}
+      ${createRow} ${host.agents.map((a) => agItemTemplate(host, a))}
       ${host.agents.length === 0 && !host.creating
         ? html`<div class="ag-sidebar-empty">Chưa có agent nào</div>`
         : ""}
     </div>
-    ${contextMenuTemplate(host)}
+    ${contextMenuTemplate(host)} 
+    ${orgSectionTemplate(host)}
   `;
 }

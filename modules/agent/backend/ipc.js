@@ -6,7 +6,7 @@ const store = require("./store");
 
 function loadOrgGuard() {
   try {
-    return require("../org/backend/guard.js");
+    return require("./org/guard.js");
   } catch {
     return null;
   }

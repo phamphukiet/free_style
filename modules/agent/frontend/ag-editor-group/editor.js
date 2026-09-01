@@ -5,9 +5,12 @@ import { getSelectedAgent } from "../ag-sidebar/partial/agent-selection.js";
 import { loadKeys, fetchModels } from "./partial/editor-keys.js";
 import { loadCurrentProjectBytes } from "./partial/project-size.js";
 import { getFileLimitMB } from "./partial/file-limit.js";
+import roleStyles from "./partial/org/role.css?inline";
+import { loadRoleDetail } from "./partial/org/role-loader.js";
+import { makeRoleHandlers } from "./partial/org/role-handlers.js";
 
 class AgEditorGroupElement extends LitElement {
-  static styles = unsafeCSS(styles);
+  static styles = [unsafeCSS(styles), unsafeCSS(roleStyles)];
   static properties = {
     agentId: { state: true },
     editName: { state: true },
@@ -19,6 +22,7 @@ class AgEditorGroupElement extends LitElement {
     projectLimitMB: { state: true },
     currentBytes: { state: true },
     fileLimitMB: { state: true },
+    roleState: { state: true },
   };
 
   constructor() {
@@ -34,6 +38,19 @@ class AgEditorGroupElement extends LitElement {
     this.projectLimitMB = "";
     this.currentBytes = 0;
     this.fileLimitMB = 100;
+    this.roleState = {
+      roleId: "",
+      role: null,
+      orgRoles: [],
+      instances: [],
+      allAgents: [],
+      addingInstance: false,
+      newInstanceName: "",
+      newInstanceKeyRef: "",
+      newInstanceModels: [],
+      newInstanceModel: "",
+    };
+    this._roleH = makeRoleHandlers(this);
   }
 
   connectedCallback() {
@@ -46,6 +63,8 @@ class AgEditorGroupElement extends LitElement {
       if (current) this.handleAgentSelect({ detail: { agentId: current } });
     });
     loadCurrentProjectBytes().then((b) => (this.currentBytes = b));
+    window.addEventListener("org:select-role", this.handleRoleSelect);
+    window.addEventListener("org:changed", this.handleOrgChanged);
   }
 
   disconnectedCallback() {
@@ -55,6 +74,8 @@ class AgEditorGroupElement extends LitElement {
       this.handleFolderOpened,
     );
     super.disconnectedCallback();
+    window.removeEventListener("org:select-role", this.handleRoleSelect);
+    window.removeEventListener("org:changed", this.handleOrgChanged);
   }
 
   handleFolderOpened = async () => {
@@ -63,6 +84,7 @@ class AgEditorGroupElement extends LitElement {
 
   handleAgentSelect = async (e) => {
     const token = ++this._requestToken;
+    this.roleState = { ...this.roleState, roleId: "", role: null };
     this.agentId = e.detail.agentId;
     if (!this.agentId) return;
 
@@ -115,6 +137,22 @@ class AgEditorGroupElement extends LitElement {
   handleProjectLimitInput(e) {
     this.projectLimitMB = e.target.value;
   }
+
+  handleRoleSelect = async (e) => {
+    this.agentId = "";
+    const roleId = e.detail.roleId;
+    if (!roleId) {
+      this.roleState = { ...this.roleState, roleId: "", role: null };
+      return;
+    }
+    this.roleState = { ...this.roleState, roleId };
+    await loadRoleDetail(this);
+  };
+
+  handleOrgChanged = async () => {
+    if (!this.roleState.roleId) return;
+    await loadRoleDetail(this);
+  };
 
   async handleSave() {
     const [providerId, keyId] = this.selectedKeyRef.split(":");
