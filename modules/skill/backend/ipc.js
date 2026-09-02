@@ -57,9 +57,6 @@ function registerSkillIpc() {
         return { success: false, message: error.message };
       }
     });
-  ipcMain.handle("skill:platform-delete", (e, id) =>
-      platformsStore.remove(id),
-    );
   ipcMain.handle("skill:platform-rename", (e, id, name) =>
       platformsStore.save({ id, name }),
     );
