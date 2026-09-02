@@ -22,6 +22,10 @@ class AgEditorGroupElement extends LitElement {
     super.connectedCallback();
     window.addEventListener("agents:select", this.handleAgentSelect);
     window.addEventListener("org:select-role", this.handleRoleSelect);
+    window.addEventListener(
+      "org:preset-remap-pending",
+      this.handleRemapPending,
+    );
     const current = getSelectedAgent();
     if (current) this.handleAgentSelect({ detail: { agentId: current } });
   }
@@ -29,6 +33,10 @@ class AgEditorGroupElement extends LitElement {
   disconnectedCallback() {
     window.removeEventListener("agents:select", this.handleAgentSelect);
     window.removeEventListener("org:select-role", this.handleRoleSelect);
+    window.removeEventListener(
+      "org:preset-remap-pending",
+      this.handleRemapPending,
+    );
     super.disconnectedCallback();
   }
 
@@ -40,6 +48,11 @@ class AgEditorGroupElement extends LitElement {
   handleRoleSelect = (e) => {
     this.mode = e.detail.roleId ? "org" : "";
     this.contextId = e.detail.roleId || "";
+  };
+
+  handleRemapPending = (e) => {
+    this.mode = "remap";
+    this.contextId = e.detail.presetId;
   };
 
   render() {

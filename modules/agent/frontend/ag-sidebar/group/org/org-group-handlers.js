@@ -1,4 +1,5 @@
-// org-handlers.js
+import { setRemapPending } from "./partial/remap-state.js";
+
 export function makeOrgHandlers(host) {
   return {
     async loadOrg() {
@@ -12,7 +13,13 @@ export function makeOrgHandlers(host) {
     },
 
     async handleSelectPreset(presetId) {
-      host.org = await window.api.org.selectPreset(presetId);
+      const diff = await window.api.org.previewPresetChange(presetId);
+      const hasInstances = Object.keys(diff.instancesByOldRole).length > 0;
+      if (!hasInstances) {
+        host.org = await window.api.org.selectPreset(presetId);
+        return;
+      }
+      setRemapPending({ presetId, ...diff });
     },
 
     startCreateRole() {

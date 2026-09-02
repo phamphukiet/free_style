@@ -2,7 +2,7 @@
 // Trách nhiệm duy nhất: đăng ký IPC handler cho agent. Logic thật ở store.js.
 
 const { ipcMain } = require("electron");
-const store = require("../store.js");
+const store = require("./store.js");
 
 function loadOrgGuard() {
   try {

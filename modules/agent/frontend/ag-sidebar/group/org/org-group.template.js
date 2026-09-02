@@ -2,6 +2,7 @@ import { html } from "lit";
 import { classMap } from "lit/directives/class-map.js";
 import { unsafeSVG } from "lit/directives/unsafe-svg.js";
 import plusIcon from "lucide-static/icons/plus.svg?raw";
+import { presetSwitchTemplate } from "./preset-switch.template.js";
 
 function childrenOf(roles, parentId) {
   return roles.filter((r) => r.parentId === parentId);
@@ -82,7 +83,7 @@ export function orgGroupTemplate(host) {
       <span class="ag-sidebar-title" @click=${() => host.toggleOrgSection()}
         >Org</span
       >
-      ${host.org
+      ${host.org && host.org.presetId !== "solo"
         ? html`<button
             class="icon-btn"
             title="Thêm vai trò"
@@ -96,21 +97,8 @@ export function orgGroupTemplate(host) {
       ? html`
           <div class="ag-sidebar-list org-list">
             ${!host.org
-              ? html`
-                  <div class="org-empty-hint">Chưa chọn mô hình tổ chức</div>
-                  <div class="org-preset-list">
-                    ${host.presets.map(
-                      (p) =>
-                        html`<button
-                          class="org-preset-btn"
-                          @click=${() => host.handleSelectPreset(p.id)}
-                        >
-                          ${p.name}
-                        </button>`,
-                    )}
-                  </div>
-                `
-              : html`${createRow(host)}${roleTree(host, host.org.roles, null)}`}
+              ? html`<div class="org-empty-hint">Chưa mở project</div>`
+              : html`${presetSwitchTemplate(host)}${createRow(host)}${roleTree(host, host.org.roles, null)}`}
           </div>
         `
       : ""}

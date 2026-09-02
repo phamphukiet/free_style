@@ -1,19 +1,18 @@
 const { ipcMain } = require("electron");
-const { listPresets } = require("./presets");
-const {
-  readOrg,
-  selectPreset,
-  writeOrg,
-  addRole,
-  renameRole,
-  removeRole,
-  updateRoleParent,
-} = require("./store");
+const { listPresets } = require("./presets/presets");
+const { readOrg, selectPreset, writeOrg } = require("./store");
+const { addRole, renameRole, removeRole, updateRoleParent } = require("./roles");
 const {
   addInstance,
   removeInstance,
   listInstancesByRole,
 } = require("./instances");
+
+const {
+  previewPresetChange,
+  autoArrangeMapping,
+  applyPresetChange,
+} = require("./presets/preset-change");
 
 function registerOrgIpc() {
   ipcMain.handle("org:list-presets", () => listPresets());
@@ -36,6 +35,16 @@ function registerOrgIpc() {
   ipcMain.handle("org:remove-instance", (e, id) => removeInstance(id));
   ipcMain.handle("org:list-instances", (e, roleId) =>
     listInstancesByRole(roleId),
+  );
+
+  ipcMain.handle("org:preview-preset-change", (e, presetId, mapping) =>
+    previewPresetChange(presetId, mapping),
+  );
+  ipcMain.handle("org:auto-arrange-mapping", (e, presetId) =>
+    autoArrangeMapping(presetId),
+  );
+  ipcMain.handle("org:apply-preset-change", (e, presetId, mapping) =>
+    applyPresetChange(presetId, mapping),
   );
 }
 

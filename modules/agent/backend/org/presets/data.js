@@ -1,7 +1,5 @@
-// presets.js
-// Trách nhiệm duy nhất: định nghĩa sẵn danh sách preset mô hình tổ chức (org).
-// store.js dùng getPreset(id) khi selectPreset(); ipc.js dùng listPresets()
-// để hiển thị lựa chọn khi project chưa có org.json.
+// data.js
+// Dữ liệu preset thô — tách khỏi index.js để logic không phình theo số preset.
 
 const ROOT_ROLE_ID = "manager";
 
@@ -9,6 +7,7 @@ const PRESETS = [
   {
     id: "solo",
     name: "Một mình (Solo)",
+    hidden: true, // luôn tồn tại ngầm khi org chưa được chọn; không cho chọn tay
     roles: [
       {
         id: ROOT_ROLE_ID,
@@ -74,20 +73,46 @@ const PRESETS = [
       },
     ],
   },
+  {
+    id: "kanban",
+    name: "Kanban (Luồng liên tục)",
+    roles: [
+      {
+        id: "manager",
+        name: "Manager",
+        parentId: null,
+        maxCount: 1,
+        canManage: ["worker"],
+      },
+      {
+        id: "worker",
+        name: "Worker",
+        parentId: "manager",
+        maxCount: null,
+        canManage: [],
+      },
+    ],
+  },
+  {
+    id: "pod",
+    name: "Pod (Đội nhỏ đa năng)",
+    roles: [
+      {
+        id: "manager",
+        name: "Manager",
+        parentId: null,
+        maxCount: 1,
+        canManage: ["member"],
+      },
+      {
+        id: "member",
+        name: "Member",
+        parentId: "manager",
+        maxCount: 4,
+        canManage: [],
+      },
+    ],
+  },
 ];
 
-function listPresets() {
-  return PRESETS.map(({ id, name }) => ({ id, name }));
-}
-
-function getPreset(id) {
-  const preset = PRESETS.find((p) => p.id === id);
-  if (!preset) return null;
-  return {
-    id: preset.id,
-    name: preset.name,
-    roles: preset.roles.map((r) => ({ ...r })),
-  };
-}
-
-module.exports = { listPresets, getPreset, ROOT_ROLE_ID };
+module.exports = { PRESETS, ROOT_ROLE_ID };
