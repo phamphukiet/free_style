@@ -1,5 +1,5 @@
 const { ipcMain } = require("electron");
-const { listPresets } = require("./presets/presets");
+const { listPresets } = require("./presets/index");
 const { readOrg, selectPreset, writeOrg } = require("./store");
 const { addRole, renameRole, removeRole, updateRoleParent } = require("./roles");
 const {
@@ -7,7 +7,7 @@ const {
   removeInstance,
   listInstancesByRole,
 } = require("./instances");
-
+const { getLastUsedPreset } = require("./last-used");
 const {
   previewPresetChange,
   autoArrangeMapping,
@@ -46,6 +46,10 @@ function registerOrgIpc() {
   ipcMain.handle("org:apply-preset-change", (e, presetId, mapping) =>
     applyPresetChange(presetId, mapping),
   );
+  ipcMain.handle("org:save-as-preset", (e, name) =>
+    require("./store").saveCurrentAsPreset(name),
+  );
+  ipcMain.handle("org:get-last-used-preset", () => getLastUsedPreset());
 }
 
 module.exports = { registerOrgIpc };

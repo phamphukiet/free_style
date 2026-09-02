@@ -8,6 +8,7 @@ export function makeOrgHandlers(host) {
     },
     async loadPresets() {
       host.presets = await window.api.org.listPresets();
+      host.lastUsedPresetId = await window.api.org.getLastUsedPreset();
     },
     toggleOrgSection() {
       host.orgCollapsed = !host.orgCollapsed;
@@ -25,6 +26,18 @@ export function makeOrgHandlers(host) {
 
     startSavePreset() {
       host.orgSavingPreset = true;
+    },
+    async handleSavePresetConfirm(e) {
+      const name = e.target.value.trim();
+      host.orgSavingPreset = false;
+      await window.api.org.saveAsPreset(name);
+      host.presets = await window.api.org.listPresets();
+      host.lastUsedPresetId = await window.api.org.getLastUsedPreset();
+    },
+
+    startCreateRole() {
+      host.orgCreating = true;
+      host.orgNewParentId = "manager";
     },
     async handleSavePresetConfirm(e) {
       const name = e.target.value.trim();

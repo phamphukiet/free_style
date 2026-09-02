@@ -2,7 +2,7 @@
 const path = require("path");
 const fs = require("fs");
 const { readState } = require("../../../../src/main/state");
-const { getPreset } = require("./presets/presets");
+const { getPreset } = require("./presets/index");
 
 const ROOT_ROLE_ID = "manager";
 
@@ -42,6 +42,7 @@ function writeOrg(data) {
 function selectPreset(presetId) {
   const preset = getPreset(presetId);
   if (!preset) throw new Error(`Preset "${presetId}" không tồn tại.`);
+  setLastUsedPreset(preset.id);
   return writeOrg({
     presetId: preset.id,
     roles: preset.roles.map((r) => ({ ...r })),
@@ -49,9 +50,29 @@ function selectPreset(presetId) {
   });
 }
 
+function saveCurrentAsPreset(name) {
+  const org = readOrg();
+  if (!org) throw new Error("Chưa mở project.");
+  const customStore = require("./presets/custom-store");
+  const finalName =
+    (name && name.trim()) || `Org tuỳ chỉnh ${customStore.list().length + 1}`;
+  const roles = org.roles.map(
+    ({ id, name, parentId, maxCount, canManage }) => ({
+      id,
+      name,
+      parentId,
+      maxCount,
+      canManage,
+    }),
+  );
+  const preset = customStore.save(finalName, roles);
+  setLastUsedPreset(preset.id);
+  return preset;
+}
 module.exports = {
   readOrg,
   writeOrg,
   selectPreset,
+  saveCurrentAsPreset,
   getProjectPath,
 };

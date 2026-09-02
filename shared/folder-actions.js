@@ -10,5 +10,11 @@ export async function openFolder() {
 }
 
 export async function loadLastFolder() {
-  return window.api.state.loadLastFolder();
+  const result = await window.api.state.loadLastFolder();
+  if (result) {
+    window.dispatchEvent(
+      new CustomEvent("workbench:folder-opened", { detail: result }),
+    );
+  }
+  return result;
 }

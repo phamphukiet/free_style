@@ -47,7 +47,7 @@ function applyPresetChange(presetId, mapping = {}) {
       return null; // không map -> bàn giao (gỡ khỏi org)
     })
     .filter(Boolean);
-
+  setLastUsedPreset(preset.id);
   return writeOrg({
     presetId: preset.id,
     roles: preset.roles.map((r) => ({ ...r })),

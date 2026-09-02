@@ -18,6 +18,7 @@ class OrgGroupElement extends LitElement {
     orgMenuX: { state: true },
     orgMenuY: { state: true },
     orgMenuTargetId: { state: true },
+    lastUsedPresetId: { state: true },
   };
 
   constructor() {

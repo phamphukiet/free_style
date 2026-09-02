@@ -17,3 +17,4 @@
   border: 1px solid var(--border, #454545);
   font-size: 11px; border-radius: 3px;
 }
+.org-badge { margin-left: auto; font-size: 10px; color: var(--accent, #4ec9b0); }
