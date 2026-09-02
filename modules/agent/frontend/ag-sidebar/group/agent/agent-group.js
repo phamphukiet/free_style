@@ -1,7 +1,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { agentGroupTemplate } from "./agent-group.template.js";
 import ownStyles from "./agent-group.css?inline";
-import sharedStyles from "../group-item.css?inline";
+import sharedStyles from "../index/group-item.css?inline";
 import * as agentSelection from "./agent-selection.js";
 import { makeHandlers } from "./agent-group-handlers.js";
 

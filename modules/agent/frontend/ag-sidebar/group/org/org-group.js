@@ -1,7 +1,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { orgGroupTemplate } from "./org-group.template.js";
 import ownStyles from "./org-group.css?inline";
-import sharedStyles from "../group-item.css?inline";
+import sharedStyles from "../index/group-item.css?inline";
 import { makeOrgHandlers } from "./org-group-handlers.js";
 
 class OrgGroupElement extends LitElement {

@@ -1,7 +1,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { remapViewTemplate } from "./remap-view.template.js";
 import ownStyles from "./remap-view.css?inline";
-import sharedStyles from "../shared/view-form.css?inline";
+import sharedStyles from "../index/shared/view-form.css?inline";
 import {
   getRemapPending,
   clearRemapPending,

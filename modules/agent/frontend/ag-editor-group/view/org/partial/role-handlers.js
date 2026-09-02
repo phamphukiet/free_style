@@ -1,5 +1,5 @@
 // role-handlers.js
-import { fetchModels } from "../../shared/editor-keys.js";
+import { fetchModels } from "../../index/shared/editor-keys.js";
 import { loadRoleDetail } from "./role-loader.js";
 
 export function makeRoleHandlers(host) {

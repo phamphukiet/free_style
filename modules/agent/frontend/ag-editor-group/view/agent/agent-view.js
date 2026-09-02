@@ -1,10 +1,14 @@
 import { LitElement, unsafeCSS } from "lit";
 import { agentViewTemplate } from "./agent-view.template.js";
 import ownStyles from "./agent-view.css?inline";
-import sharedStyles from "../shared/view-form.css?inline";
-import { loadKeys, fetchModels } from "../shared/editor-keys.js";
-import { getFileLimitMB } from "../shared/file-limit.js";
+import sharedStyles from "../index/shared/view-form.css?inline";
+import { loadKeys } from "../index/shared/editor-keys.js";
 import { loadCurrentProjectBytes } from "./partial/project-size.js";
+import {
+  handleKeyChange,
+  loadModels,
+  syncFileLimit,
+} from "./partial/agent-model-loader.js";
 
 class AgentViewElement extends LitElement {
   static styles = [unsafeCSS(sharedStyles), unsafeCSS(ownStyles)];
@@ -75,38 +79,12 @@ class AgentViewElement extends LitElement {
         : "";
     this.selectedModel = agent?.model || "";
     this.models = [];
-    if (this.selectedKeyRef) await this._loadModels(token);
-    await this._syncFileLimit();
+    if (this.selectedKeyRef) await loadModels(this, token);
+    await syncFileLimit(this);
   }
 
-  async handleKeyChange(ref) {
-    const token = ++this._requestToken;
-    this.selectedKeyRef = ref;
-    this.selectedModel = "";
-    this.models = [];
-    if (ref) await this._loadModels(token);
-    await this._syncFileLimit();
-  }
-
-  async _loadModels(token = this._requestToken) {
-    const result = await fetchModels(
-      this.keys,
-      this.selectedKeyRef,
-      token,
-      () => this._requestToken,
-    );
-    if (result === null) return; // cancelled
-    this.models = result;
-    if (!this.selectedModel && result.length > 0)
-      this.selectedModel = result[0].id;
-    await this.updateComplete;
-    const sel = this.shadowRoot?.querySelector(".ag-model-select");
-    if (sel) sel.value = this.selectedModel;
-  }
-
-  async _syncFileLimit() {
-    const [providerId] = this.selectedKeyRef.split(":");
-    this.fileLimitMB = await getFileLimitMB(providerId);
+  handleKeyChange(ref) {
+    return handleKeyChange(this, ref);
   }
 
   handleNameInput(e) {

@@ -1,8 +1,8 @@
 import { LitElement, unsafeCSS } from "lit";
 import { orgViewTemplate } from "./org-view.template.js";
 import ownStyles from "./org-view.css?inline";
-import sharedStyles from "../shared/view-form.css?inline";
-import { loadKeys } from "../shared/editor-keys.js";
+import sharedStyles from "../index/shared/view-form.css?inline";
+import { loadKeys } from "../index/shared/editor-keys.js";
 import { loadRoleDetail } from "./partial/role-loader.js";
 import { makeRoleHandlers } from "./partial/role-handlers.js";
 

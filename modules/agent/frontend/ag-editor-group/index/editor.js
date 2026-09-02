@@ -1,9 +1,9 @@
 import { LitElement, unsafeCSS } from "lit";
 import { editorTemplate } from "./editor.template.js";
 import styles from "./editor.css?inline";
-import "./view/index.js";
-import { getEditorView } from "./view/view-registry.js";
-import { getSelectedAgent } from "../ag-sidebar/group/agent/agent-selection.js";
+import "../view/index/index.js";
+import { getEditorView } from "../view/index/view-registry.js";
+import { getSelectedAgent } from "../../ag-sidebar/group/agent/agent-selection.js";
 
 class AgEditorGroupElement extends LitElement {
   static styles = unsafeCSS(styles);
