@@ -1,41 +1,21 @@
 // store.js
+const { app } = require("electron");
 const path = require("path");
 const fs = require("fs");
-const { readState } = require("../../../../src/main/state");
 const { getPreset } = require("./presets/index");
 
-const ROOT_ROLE_ID = "manager";
-
-function getProjectPath() {
-  const { lastFolder } = readState();
-  if (!lastFolder || !fs.existsSync(lastFolder)) return null;
-  return lastFolder;
-}
-function orgFilePath(p) {
-  return path.join(p, ".org", "org.json");
-}
+const ORG_FILE = path.join(app.getPath("userData"), "org.json");
 
 function readOrg() {
-  const p = getProjectPath();
-  if (!p) return null;
   try {
-    return JSON.parse(fs.readFileSync(orgFilePath(p), "utf-8"));
+    return JSON.parse(fs.readFileSync(ORG_FILE, "utf-8"));
   } catch {
-    return initSolo();
+    return null; // chưa chọn preset nào — UI tự hiện danh sách mặc định (data.js)
   }
 }
 
-function initSolo() {
-  const solo = getPreset("solo");
-  return writeOrg({ presetId: solo.id, roles: solo.roles, instances: [] });
-}
-
 function writeOrg(data) {
-  const p = getProjectPath();
-  if (!p) throw new Error("Chưa mở project.");
-  const filePath = orgFilePath(p);
-  fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), "utf-8");
+  fs.writeFileSync(ORG_FILE, JSON.stringify(data, null, 2), "utf-8");
   return data;
 }
 
@@ -74,5 +54,4 @@ module.exports = {
   writeOrg,
   selectPreset,
   saveCurrentAsPreset,
-  getProjectPath,
 };

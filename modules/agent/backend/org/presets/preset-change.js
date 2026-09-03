@@ -5,8 +5,6 @@
 
 const { readOrg, writeOrg } = require("../store");
 const { getPreset } = require("./index");
-const { readOrg, writeOrg } = require("../store");
-const { getPreset } = require("./index");
 const { setLastUsedPreset } = require("../last-used");
 
 function instancesByRole(instances, roleId) {

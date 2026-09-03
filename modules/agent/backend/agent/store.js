@@ -6,8 +6,6 @@ const { app } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
-const { getPreset } = require("./presets/index");
-const { setLastUsedPreset } = require("./last-used");
 
 const AGENTS_FILE = path.join(app.getPath("userData"), "agents.json");
 const MANAGER_ID = "manager";

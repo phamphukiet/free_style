@@ -42,20 +42,13 @@ class OrgGroupElement extends LitElement {
     this.loadOrg();
     this.loadPresets();
     window.addEventListener("org:changed", this.loadOrg);
-    window.addEventListener("workbench:folder-opened", this._onFolderOpened);
   }
 
   disconnectedCallback() {
     window.removeEventListener("org:changed", this.loadOrg);
-    window.removeEventListener("workbench:folder-opened", this._onFolderOpened);
     window.removeEventListener("click", this.handleOrgOutsideClick);
     super.disconnectedCallback();
   }
-
-  _onFolderOpened = () => {
-    this.loadOrg();
-    this.loadPresets();
-  };
 
   render() {
     return orgGroupTemplate(this);
