@@ -19,9 +19,8 @@ function orgRow(host, org) {
       @click=${() => host.handleSelectOrg(org.id)}
     >
       <span class="ag-item-name">${org.name}</span>
-      ${isActive
-        ? html`<span class="org-badge">Đang dùng</span>`
-        : html`<button
+      ${!isActive
+        ? html`<button
             class="icon-btn"
             title="Kích hoạt org này"
             @click=${(e) => {
@@ -30,7 +29,8 @@ function orgRow(host, org) {
             }}
           >
             ${unsafeSVG(playIcon)}
-          </button>`}
+          </button>`
+        : ""}
       <button
         class="icon-btn"
         title="Xoá"

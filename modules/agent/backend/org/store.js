@@ -1,32 +1,34 @@
-// store.js
+// Sau
 const ordsStore = require("./orgs-store");
-const { getPreset, ROOT_ROLE_ID } = require("./presets/index");
-const { getActiveOrgId, setActiveOrgId } = require("./last-used");
+const { listPresets, getPreset, ROOT_ROLE_ID } = require("./presets/index");
+const { getActiveOrgId } = require("./last-used");
 
-// Org "solo" tự sinh lúc chưa có org nào — luôn ẩn khỏi UI, chỉ dùng làm fallback.
-function ensureDefaultOrg() {
+// userData dùng chung mọi project (giống theme). Chỉ seed 1 LẦN DUY NHẤT khi
+// chưa có org nào — tạo sẵn các preset công khai (sprint/dawin/kanban/pod)
+// làm org thật trong userData, không tự active org nào.
+function ensurePresetsSeeded() {
   if (ordsStore.list().length > 0) return;
-  const solo = getPreset("solo");
-  const created = ordsStore.save({
-    name: solo.name,
-    roles: solo.roles,
-    instances: [],
-    hidden: true,
+  listPresets().forEach(({ id }) => {
+    const preset = getPreset(id);
+    ordsStore.save({ name: preset.name, roles: preset.roles, instances: [] });
   });
-  setActiveOrgId(created.id);
 }
 
 function listOrgs() {
-  ensureDefaultOrg();
-  return ordsStore
-    .list()
-    .filter((o) => !o.hidden)
-    .map(({ id, name }) => ({ id, name }));
+  ensurePresetsSeeded();
+  return ordsStore.list().map(({ id, name }) => ({ id, name }));
 }
 
 function getOrg(id) {
-  ensureDefaultOrg();
+  ensurePresetsSeeded();
   return id ? ordsStore.get(id) : null;
+}
+
+// Không có org active là trạng thái hợp lệ. Chỉ fallback về org đầu tiên
+// (nếu có) để guard.js vẫn check được quyền — không set lại state, không
+// tự kích hoạt gì cả.
+function resolveActiveOrgId() {
+  return getActiveOrgId() || ordsStore.list()[0]?.id || null;
 }
 
 // Org đang hoạt động thật sự dùng để check quyền (guard) — có fallback nếu chưa từng activate.

@@ -8,7 +8,6 @@ class OrgGroupElement extends LitElement {
   static styles = [unsafeCSS(sharedStyles), unsafeCSS(ownStyles)];
   static properties = {
     orgs: { state: true },
-    orgPresets: { state: true },
     activeOrgId: { state: true },
     selectedOrgId: { state: true },
     orgCollapsed: { state: true },
@@ -20,7 +19,6 @@ class OrgGroupElement extends LitElement {
   constructor() {
     super();
     this.orgs = [];
-    this.orgPresets = [];
     this.activeOrgId = "";
     this.selectedOrgId = "";
     this.orgCollapsed = false;
@@ -32,7 +30,7 @@ class OrgGroupElement extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    window.api.org.listPresets().then((p) => (this.orgPresets = p));
+    // window.api.org.listPresets().then((p) => (this.orgPresets = p));
     this.loadOrgs();
     window.addEventListener("org:changed", this.loadOrgs);
     window.addEventListener("agents:changed", this.loadOrgs);

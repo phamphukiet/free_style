@@ -4,16 +4,6 @@ export function createOrgRow(host) {
   if (!host.orgCreatingOrg) return html``;
   return html`
     <div class="ag-item org-create-row">
-      <select
-        class="org-parent-select"
-        .value=${host.newOrgPresetId}
-        @change=${(e) => (host.newOrgPresetId = e.target.value)}
-      >
-        <option value="">-- Trống --</option>
-        ${host.orgPresets.map(
-          (p) => html`<option value=${p.id}>${p.name}</option>`,
-        )}
-      </select>
       <input
         class="rename-input create-input"
         placeholder="Tên org"

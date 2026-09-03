@@ -92,10 +92,10 @@ export function orgRolesViewTemplate(host) {
 
       <div class="ag-actions orgroles-footer">
         <button class="ag-save-btn" @click=${() => host.handleSaveAsNew()}>
-          Lưu thành org mới
+          Lưu
         </button>
         <button class="ag-danger-btn" @click=${() => host.handleDeleteOrg()}>
-          Xoá org này
+          Xoá
         </button>
       </div>
     </div>
