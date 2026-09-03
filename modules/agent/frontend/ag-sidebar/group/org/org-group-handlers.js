@@ -35,18 +35,6 @@ export function makeOrgHandlers(host) {
       host.lastUsedPresetId = await window.api.org.getLastUsedPreset();
     },
 
-    startCreateRole() {
-      host.orgCreating = true;
-      host.orgNewParentId = "manager";
-    },
-    async handleSavePresetConfirm(e) {
-      const name = e.target.value.trim();
-      host.orgSavingPreset = false;
-      await window.api.org.saveAsPreset(name);
-      host.presets = await window.api.org.listPresets();
-      host.lastUsedPresetId = await window.api.org.getLastUsedPreset();
-    },
-
     ...makeOrgRoleHandlers(host),
   };
 }

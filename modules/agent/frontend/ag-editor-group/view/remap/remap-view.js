@@ -5,7 +5,7 @@ import sharedStyles from "../index/shared/view-form.css?inline";
 import {
   getRemapPending,
   clearRemapPending,
-} from "../../../ag-sidebar/group/org/partial/remap-state.js";
+} from "../../../ag-sidebar/group/org/partial/remap/remap-state.js";
 
 class RemapViewElement extends LitElement {
   static styles = [unsafeCSS(sharedStyles), unsafeCSS(ownStyles)];

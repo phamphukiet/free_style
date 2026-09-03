@@ -3,31 +3,7 @@ import { unsafeSVG } from "lit/directives/unsafe-svg.js";
 import { classMap } from "lit/directives/class-map.js";
 import botIcon from "lucide-static/icons/bot.svg?raw";
 import plusIcon from "lucide-static/icons/plus.svg?raw";
-
-function contextMenuTemplate(host) {
-  if (!host.menuOpen) return html``;
-  return html`
-    <div
-      class="ag-context-menu"
-      style="left:${host.menuX}px;top:${host.menuY}px"
-    >
-      <button
-        class="menu-item"
-        @click=${() => host.handleRenameStart(host.menuTargetId)}
-      >
-        Rename
-      </button>
-      ${host.menuTargetId !== "manager"
-        ? html`<button
-            class="menu-item"
-            @click=${() => host.handleDelete(host.menuTargetId)}
-          >
-            Delete
-          </button>`
-        : ""}
-    </div>
-  `;
-}
+import { contextMenuTemplate } from "./partial/context-menu.template.js";
 
 function agItemTemplate(host, a) {
   const nameBlock =

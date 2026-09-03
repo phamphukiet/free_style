@@ -12,8 +12,11 @@ function loadSettingsBridge() {
 }
 
 function loadAgentStore() {
-  try { return require("../../../agent/backend/store.js"); }
-  catch { return null; }
+  try {
+    return require("../../../agent/backend/agent/store.js");
+  } catch {
+    return null;
+  }
 }
 
 function resolveKey(providerId, keyId) {
