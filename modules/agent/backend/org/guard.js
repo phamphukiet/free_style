@@ -1,8 +1,8 @@
-// guard.js — chỉ được gọi khi agent:save có ctx.actorRoleId, org không tự khoá nếu không có ctx.
-const { readOrg } = require("./store");
+// guard.js — luôn xét theo org đang ACTIVE thật (có fallback), không dùng "org cuối" mập mờ.
+const { getOrg, resolveActiveOrgId } = require("./store");
 
 function canManageRole(actorRoleId, targetRoleId) {
-  const org = readOrg();
+  const org = getOrg(resolveActiveOrgId());
   if (!org) return false;
   if (actorRoleId === targetRoleId) return true;
   const actor = org.roles.find((r) => r.id === actorRoleId);
@@ -10,7 +10,7 @@ function canManageRole(actorRoleId, targetRoleId) {
 }
 
 function checkMaxCount(targetRoleId) {
-  const org = readOrg();
+  const org = getOrg(resolveActiveOrgId());
   if (!org) return true;
   const role = org.roles.find((r) => r.id === targetRoleId);
   if (!role || role.maxCount == null) return true;

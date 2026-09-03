@@ -1,22 +1,14 @@
 // roles.js
-// Trách nhiệm duy nhất: CRUD vai trò trong org hiện tại. Tách khỏi store.js
-// vì store.js đã chạm giới hạn 100 dòng. Vai trò gốc "manager" và org preset
-// "solo" (mặc định ẩn) không thể sửa/xoá/thêm.
+// CRUD vai trò trong 1 org cụ thể (theo orgId). Vai trò gốc "manager" không sửa/xoá.
 
 const crypto = require("crypto");
-const { readOrg, writeOrg } = require("./store");
+const { getOrg, writeOrgData } = require("./store");
 
 const ROOT_ROLE_ID = "manager";
 
-function assertNotSolo(org) {
-  if (org.presetId === "solo")
-    throw new Error("Không thể sửa tổ chức Solo mặc định.");
-}
-
-function addRole(name, parentId) {
-  const org = readOrg();
-  if (!org) throw new Error("Chưa chọn mô hình tổ chức.");
-  assertNotSolo(org);
+function addRole(orgId, name, parentId) {
+  const org = getOrg(orgId);
+  if (!org) throw new Error("Org không tồn tại.");
   org.roles.push({
     id: crypto.randomUUID(),
     name: name || "Vai trò mới",
@@ -24,36 +16,46 @@ function addRole(name, parentId) {
     maxCount: null,
     canManage: [],
   });
-  return writeOrg(org);
+  return writeOrgData(org);
 }
 
-function renameRole(id, name) {
+function renameRole(orgId, id, name) {
   if (id === ROOT_ROLE_ID)
     throw new Error("Không thể đổi tên vai trò Manager.");
-  const org = readOrg();
-  if (!org) throw new Error("Chưa chọn mô hình tổ chức.");
+  const org = getOrg(orgId);
+  if (!org) throw new Error("Org không tồn tại.");
   const role = org.roles.find((r) => r.id === id);
   if (!role) throw new Error("Vai trò không tồn tại.");
   role.name = name;
-  return writeOrg(org);
+  return writeOrgData(org);
 }
 
-function removeRole(id) {
+function removeRole(orgId, id) {
   if (id === ROOT_ROLE_ID) throw new Error("Không thể xoá vai trò Manager.");
-  const org = readOrg();
+  const org = getOrg(orgId);
   if (!org) return null;
-  org.roles = org.roles.filter((r) => r.id !== id); // chỉ xoá role này, không cascade
-  return writeOrg(org);
+  org.roles = org.roles.filter((r) => r.id !== id);
+  org.instances = org.instances.filter((i) => i.roleId !== id);
+  return writeOrgData(org);
 }
 
-function updateRoleParent(id, parentId) {
+function updateRoleParent(orgId, id, parentId) {
   if (id === ROOT_ROLE_ID) throw new Error("Không thể chuyển vai trò Manager.");
-  const org = readOrg();
-  if (!org) throw new Error("Chưa chọn mô hình tổ chức.");
+  const org = getOrg(orgId);
+  if (!org) throw new Error("Org không tồn tại.");
   const role = org.roles.find((r) => r.id === id);
   if (!role) throw new Error("Vai trò không tồn tại.");
   role.parentId = parentId === undefined ? ROOT_ROLE_ID : parentId;
-  return writeOrg(org);
+  return writeOrgData(org);
+}
+
+function updateRoleMaxCount(orgId, id, maxCount) {
+  const org = getOrg(orgId);
+  if (!org) throw new Error("Org không tồn tại.");
+  const role = org.roles.find((r) => r.id === id);
+  if (!role) throw new Error("Vai trò không tồn tại.");
+  role.maxCount = maxCount;
+  return writeOrgData(org);
 }
 
 module.exports = {
@@ -61,5 +63,6 @@ module.exports = {
   renameRole,
   removeRole,
   updateRoleParent,
+  updateRoleMaxCount,
   ROOT_ROLE_ID,
 };

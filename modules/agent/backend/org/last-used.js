@@ -1,10 +1,11 @@
+// last-used.js
 const { readState, writeState } = require("../../../../src/main/state");
 
-function getLastUsedPreset() {
-  return readState().lastUsedPresetId || null;
+function getActiveOrgId() {
+  return readState().activeOrgId || null;
 }
-function setLastUsedPreset(presetId) {
-  if (getLastUsedPreset() === presetId) return;
-  writeState({ lastUsedPresetId: presetId });
+function setActiveOrgId(orgId) {
+  if (getActiveOrgId() === orgId) return;
+  writeState({ activeOrgId: orgId });
 }
-module.exports = { getLastUsedPreset, setLastUsedPreset };
+module.exports = { getActiveOrgId, setActiveOrgId };

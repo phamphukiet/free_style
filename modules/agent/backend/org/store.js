@@ -1,42 +1,82 @@
 // store.js
-const { app } = require("electron");
-const path = require("path");
-const fs = require("fs");
-const { getPreset } = require("./presets/index");
+const ordsStore = require("./orgs-store");
+const { getPreset, ROOT_ROLE_ID } = require("./presets/index");
+const { getActiveOrgId, setActiveOrgId } = require("./last-used");
 
-const ORG_FILE = path.join(app.getPath("userData"), "org.json");
-
-function readOrg() {
-  try {
-    return JSON.parse(fs.readFileSync(ORG_FILE, "utf-8"));
-  } catch {
-    return null; // chưa chọn preset nào — UI tự hiện danh sách mặc định (data.js)
-  }
+// Org "solo" tự sinh lúc chưa có org nào — luôn ẩn khỏi UI, chỉ dùng làm fallback.
+function ensureDefaultOrg() {
+  if (ordsStore.list().length > 0) return;
+  const solo = getPreset("solo");
+  const created = ordsStore.save({
+    name: solo.name,
+    roles: solo.roles,
+    instances: [],
+    hidden: true,
+  });
+  setActiveOrgId(created.id);
 }
 
-function writeOrg(data) {
-  fs.writeFileSync(ORG_FILE, JSON.stringify(data, null, 2), "utf-8");
-  return data;
+function listOrgs() {
+  ensureDefaultOrg();
+  return ordsStore
+    .list()
+    .filter((o) => !o.hidden)
+    .map(({ id, name }) => ({ id, name }));
 }
 
-function selectPreset(presetId) {
-  const preset = getPreset(presetId);
-  if (!preset) throw new Error(`Preset "${presetId}" không tồn tại.`);
-  setLastUsedPreset(preset.id);
-  return writeOrg({
-    presetId: preset.id,
+function getOrg(id) {
+  ensureDefaultOrg();
+  return id ? ordsStore.get(id) : null;
+}
+
+// Org đang hoạt động thật sự dùng để check quyền (guard) — có fallback nếu chưa từng activate.
+function resolveActiveOrgId() {
+  ensureDefaultOrg();
+  return (
+    getActiveOrgId() ||
+    ordsStore.list().find((o) => !o.hidden)?.id ||
+    ordsStore.list()[0]?.id
+  );
+}
+
+function createOrgFromPreset(presetId, name) {
+  const preset = getPreset(presetId) || {
+    name: "Org mới",
+    roles: [
+      {
+        id: ROOT_ROLE_ID,
+        name: "Manager",
+        parentId: null,
+        maxCount: 1,
+        canManage: [],
+      },
+    ],
+  };
+  return ordsStore.save({
+    name: name?.trim() || preset.name,
     roles: preset.roles.map((r) => ({ ...r })),
     instances: [],
   });
 }
 
-function saveCurrentAsPreset(name) {
-  const org = readOrg();
-  if (!org) throw new Error("Chưa mở project.");
-  const customStore = require("./presets/custom-store");
-  const finalName =
-    (name && name.trim()) || `Org tuỳ chỉnh ${customStore.list().length + 1}`;
-  const roles = org.roles.map(
+function renameOrg(id, name) {
+  const org = ordsStore.get(id);
+  if (!org) throw new Error("Org không tồn tại.");
+  org.name = name;
+  return ordsStore.save(org);
+}
+
+function deleteOrg(id) {
+  if (getActiveOrgId() === id) setActiveOrgId(null);
+  return ordsStore.remove(id);
+}
+
+// Lưu snapshot của org được TRUYỀN VÀO (orgId) — không phải org đang active toàn cục,
+// để đúng ý "lưu theo cái tôi đang mở trong editor", tránh lệch với org cuối cùng activate.
+function saveOrgAsNew(orgId, name) {
+  const source = ordsStore.get(orgId);
+  if (!source) throw new Error("Org không tồn tại.");
+  const roles = source.roles.map(
     ({ id, name, parentId, maxCount, canManage }) => ({
       id,
       name,
@@ -45,13 +85,25 @@ function saveCurrentAsPreset(name) {
       canManage,
     }),
   );
-  const preset = customStore.save(finalName, roles);
-  setLastUsedPreset(preset.id);
-  return preset;
+  const instances = source.instances.map(({ id, roleId, agentId }) => ({
+    id,
+    roleId,
+    agentId,
+  }));
+  return ordsStore.save({
+    name: name?.trim() || `${source.name} (copy)`,
+    roles,
+    instances,
+  });
 }
+
 module.exports = {
-  readOrg,
-  writeOrg,
-  selectPreset,
-  saveCurrentAsPreset,
+  listOrgs,
+  getOrg,
+  resolveActiveOrgId,
+  createOrgFromPreset,
+  renameOrg,
+  deleteOrg,
+  saveOrgAsNew,
+  writeOrgData: ordsStore.save,
 };

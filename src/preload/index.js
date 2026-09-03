@@ -133,31 +133,34 @@ function getExposedApi() {
       delete: (id) => ipcRenderer.invoke("agent:delete", id),
     },
     org: {
-      getLastUsedPreset: () => ipcRenderer.invoke("org:get-last-used-preset"),
       listPresets: () => ipcRenderer.invoke("org:list-presets"),
-      get: () => ipcRenderer.invoke("org:get"),
-      selectPreset: (presetId) =>
-        ipcRenderer.invoke("org:select-preset", presetId),
-      previewPresetChange: (presetId) =>
-        ipcRenderer.invoke("org:preview-preset-change", presetId),
-      autoArrangeMapping: (oldRoles, newRoles) =>
-        ipcRenderer.invoke("org:auto-arrange-mapping", oldRoles, newRoles),
-      applyPresetChange: (presetId, mapping) =>
-        ipcRenderer.invoke("org:apply-preset-change", presetId, mapping),
-      update: (data) => ipcRenderer.invoke("org:update", data),
-      addRole: (name, parentId) =>
-        ipcRenderer.invoke("org:add-role", name, parentId),
-      renameRole: (id, name) => ipcRenderer.invoke("org:rename-role", id, name),
-      removeRole: (id) => ipcRenderer.invoke("org:remove-role", id),
-      updateRoleParent: (id, parentId) =>
-        ipcRenderer.invoke("org:update-role-parent", id, parentId),
-      addInstance: (roleId, agentId) =>
-        ipcRenderer.invoke("org:add-instance", roleId, agentId),
-      removeInstance: (id) => ipcRenderer.invoke("org:remove-instance", id),
-      listInstances: (roleId) =>
-        ipcRenderer.invoke("org:list-instances", roleId),
-      saveAsPreset: (name) => ipcRenderer.invoke("org:save-as-preset", name),
-      getLastUsedPreset: () => ipcRenderer.invoke("org:get-last-used-preset"),
+      list: () => ipcRenderer.invoke("org:list"),
+      get: (id) => ipcRenderer.invoke("org:get", id),
+      getActiveId: () => ipcRenderer.invoke("org:get-active-id"),
+      create: (presetId, name) =>
+        ipcRenderer.invoke("org:create", presetId, name),
+      rename: (id, name) => ipcRenderer.invoke("org:rename", id, name),
+      delete: (id) => ipcRenderer.invoke("org:delete", id),
+      previewActivate: (id) => ipcRenderer.invoke("org:preview-activate", id),
+      confirmActivate: (id) => ipcRenderer.invoke("org:confirm-activate", id),
+      saveAsNew: (orgId, name) =>
+        ipcRenderer.invoke("org:save-as-new", orgId, name),
+      addRole: (orgId, name, parentId) =>
+        ipcRenderer.invoke("org:add-role", orgId, name, parentId),
+      renameRole: (orgId, id, name) =>
+        ipcRenderer.invoke("org:rename-role", orgId, id, name),
+      removeRole: (orgId, id) =>
+        ipcRenderer.invoke("org:remove-role", orgId, id),
+      updateRoleParent: (orgId, id, parentId) =>
+        ipcRenderer.invoke("org:update-role-parent", orgId, id, parentId),
+      updateRoleMaxCount: (orgId, id, maxCount) =>
+        ipcRenderer.invoke("org:update-role-maxcount", orgId, id, maxCount),
+      addInstance: (orgId, roleId, agentId) =>
+        ipcRenderer.invoke("org:add-instance", orgId, roleId, agentId),
+      removeInstance: (orgId, id) =>
+        ipcRenderer.invoke("org:remove-instance", orgId, id),
+      listInstances: (orgId, roleId) =>
+        ipcRenderer.invoke("org:list-instances", orgId, roleId),
     },
     skill: {
       platformsList: () => ipcRenderer.invoke("skill:platforms-list"),

@@ -7,46 +7,40 @@ import { makeOrgHandlers } from "./org-group-handlers.js";
 class OrgGroupElement extends LitElement {
   static styles = [unsafeCSS(sharedStyles), unsafeCSS(ownStyles)];
   static properties = {
-    org: { state: true },
-    presets: { state: true },
+    orgs: { state: true },
+    orgPresets: { state: true },
+    activeOrgId: { state: true },
+    selectedOrgId: { state: true },
     orgCollapsed: { state: true },
-    orgCreating: { state: true },
-    orgNewParentId: { state: true },
-    selectedRoleId: { state: true },
-    orgEditingId: { state: true },
-    orgMenuOpen: { state: true },
-    orgMenuX: { state: true },
-    orgMenuY: { state: true },
-    orgMenuTargetId: { state: true },
-    lastUsedPresetId: { state: true },
+    orgCreatingOrg: { state: true },
+    newOrgName: { state: true },
+    newOrgPresetId: { state: true },
   };
 
   constructor() {
     super();
-    this.org = null;
-    this.presets = [];
+    this.orgs = [];
+    this.orgPresets = [];
+    this.activeOrgId = "";
+    this.selectedOrgId = "";
     this.orgCollapsed = false;
-    this.orgCreating = false;
-    this.orgNewParentId = "manager";
-    this.selectedRoleId = "";
-    this.orgEditingId = "";
-    this.orgMenuOpen = false;
-    this.orgMenuX = 0;
-    this.orgMenuY = 0;
-    this.orgMenuTargetId = "";
+    this.orgCreatingOrg = false;
+    this.newOrgName = "";
+    this.newOrgPresetId = "";
     Object.assign(this, makeOrgHandlers(this));
   }
 
   connectedCallback() {
     super.connectedCallback();
-    this.loadOrg();
-    this.loadPresets();
-    window.addEventListener("org:changed", this.loadOrg);
+    window.api.org.listPresets().then((p) => (this.orgPresets = p));
+    this.loadOrgs();
+    window.addEventListener("org:changed", this.loadOrgs);
+    window.addEventListener("agents:changed", this.loadOrgs);
   }
 
   disconnectedCallback() {
-    window.removeEventListener("org:changed", this.loadOrg);
-    window.removeEventListener("click", this.handleOrgOutsideClick);
+    window.removeEventListener("org:changed", this.loadOrgs);
+    window.removeEventListener("agents:changed", this.loadOrgs);
     super.disconnectedCallback();
   }
 
