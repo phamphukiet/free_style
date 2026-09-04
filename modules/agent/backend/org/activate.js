@@ -16,20 +16,34 @@ function neededCount(role) {
   return role.maxCount == null ? 1 : role.maxCount;
 }
 
+function expectedSlotNames(role) {
+  const need = neededCount(role);
+  if (need <= 1) return [role.name];
+  return Array.from({ length: need }, (_, i) => `${role.name} ${i + 1}`);
+}
+
 function previewActivate(orgId) {
   const org = getOrg(orgId);
   if (!org) throw new Error("Org không tồn tại.");
+
+  const agentStore = loadAgentStore();
+  const localNames = new Set(
+    agentStore ? agentStore.list().map((a) => a.name) : [],
+  );
+
   const missingRoles = org.roles
     .map((role) => {
-      const current = org.instances.filter((i) => i.roleId === role.id).length;
+      const slots = expectedSlotNames(role);
+      const current = slots.filter((name) => localNames.has(name)).length;
       return {
         roleId: role.id,
         roleName: role.name,
         current,
-        need: neededCount(role),
+        need: slots.length,
       };
     })
     .filter((r) => r.current < r.need);
+
   return {
     org: { id: org.id, name: org.name },
     isCurrentlyActive: resolveActiveOrgId() === orgId,
@@ -42,24 +56,14 @@ function confirmActivate(orgId) {
   if (!org) throw new Error("Org không tồn tại.");
   const agentStore = loadAgentStore();
   if (agentStore) {
+    const localNames = new Set(agentStore.list().map((a) => a.name));
     org.roles.forEach((role) => {
-      const current = org.instances.filter((i) => i.roleId === role.id);
-      const need = neededCount(role);
-      for (let i = current.length; i < need; i++) {
-        const agent = agentStore.save({
-          name: need > 1 ? `${role.name} ${i + 1}` : role.name,
-          providerId: "",
-          keyId: "",
-          model: "",
-        });
-        org.instances.push({
-          id: `${role.id}-${agent.id}`,
-          roleId: role.id,
-          agentId: agent.id,
-        });
-      }
+      expectedSlotNames(role).forEach((name) => {
+        if (localNames.has(name)) return;
+        agentStore.save({ name, providerId: "", keyId: "", model: "" });
+        localNames.add(name);
+      });
     });
-    writeOrgData(org);
   }
   setActiveOrgId(orgId);
   return getOrg(orgId);

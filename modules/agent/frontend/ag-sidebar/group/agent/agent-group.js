@@ -36,10 +36,15 @@ class AgentGroupElement extends LitElement {
     super.connectedCallback();
     this.reload();
     window.addEventListener("agents:changed", this.reload);
+    window.addEventListener("workbench:folder-opened", this.handleFolderOpened);
   }
 
   disconnectedCallback() {
     window.removeEventListener("agents:changed", this.reload);
+    window.removeEventListener(
+      "workbench:folder-opened",
+      this.handleFolderOpened,
+    );
     window.removeEventListener("click", this._handleOutsideClick);
     super.disconnectedCallback();
   }
@@ -48,6 +53,12 @@ class AgentGroupElement extends LitElement {
     this.agents = await window.api.agent.list();
   };
 
+  handleFolderOpened = async () => {
+    this.activeId = "";
+    this._agentSelection.setSelectedAgent("");
+    await this.reload();
+  };
+  
   _handleOutsideClick = () => {
     this.menuOpen = false;
     window.removeEventListener("click", this._handleOutsideClick);

@@ -2,18 +2,25 @@
 // Trách nhiệm duy nhất: đọc/ghi file agents.json trong userData — CRUD thuần,
 // không đụng IPC. Model 1 agent: { id, name, providerId, keyId, model }.
 
-const { app } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
-
-const AGENTS_FILE = path.join(app.getPath("userData"), "agents.json");
+const { readState } = require("../../../../src/main/state");
 const MANAGER_ID = "manager";
+const AGENTS_FILENAME = "agent.json";
+
+function getAgentsFile() {
+  const { lastFolder } = readState();
+  if (!lastFolder) return null;
+  return path.join(lastFolder, AGENTS_FILENAME);
+}
 
 function readAll() {
+  const file = getAgentsFile();
+  if (!file) return ensureManager({}); // chưa mở project — vẫn có Manager mặc định, không ghi file
   let data;
   try {
-    data = JSON.parse(fs.readFileSync(AGENTS_FILE, "utf-8"));
+    data = JSON.parse(fs.readFileSync(file, "utf-8"));
   } catch {
     data = {};
   }
@@ -21,7 +28,10 @@ function readAll() {
 }
 
 function writeAll(data) {
-  fs.writeFileSync(AGENTS_FILE, JSON.stringify(data, null, 2), "utf-8");
+  const file = getAgentsFile();
+  if (!file) return;
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, JSON.stringify(data, null, 2), "utf-8");
 }
 
 function list() {
@@ -35,7 +45,10 @@ function get(id) {
 function save(agent) {
   const data = readAll();
   const id = agent.id || crypto.randomUUID();
-  data[id] = { ...data[id], ...agent, id };
+  // Manager luôn giữ tên "Manager" — chặn đổi tên ngay tại nguồn dữ liệu,
+  // không phụ thuộc UI có gửi tên khác lên hay không.
+  const name = id === MANAGER_ID ? "Manager" : agent.name || data[id]?.name;
+  data[id] = { ...data[id], ...agent, id, name };
   writeAll(data);
   return data[id];
 }

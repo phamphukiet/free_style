@@ -6,14 +6,16 @@ import sharedStyles from "../index/shared/view-form.css?inline";
 class ActivatePreviewViewElement extends LitElement {
   static styles = [unsafeCSS(sharedStyles), unsafeCSS(ownStyles)];
   static properties = {
-    contextId: { type: String }, // orgId
+    contextId: { type: String },
     preview: { state: true },
+    error: { state: true },
   };
 
   constructor() {
     super();
     this.contextId = "";
     this.preview = null;
+    this.error = "";
     this._loadedFor = "";
   }
 
@@ -26,7 +28,13 @@ class ActivatePreviewViewElement extends LitElement {
 
   async load() {
     if (!this.contextId) return;
-    this.preview = await window.api.org.previewActivate(this.contextId);
+    this.preview = null;
+    this.error = "";
+    try {
+      this.preview = await window.api.org.previewActivate(this.contextId);
+    } catch (e) {
+      this.error = e?.message || "Không tải được thông tin org.";
+    }
   }
 
   async handleConfirm() {
