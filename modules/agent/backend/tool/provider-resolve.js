@@ -7,41 +7,13 @@ const {
   decrypt,
 } = require("../../../../src/main/ipc/credentials/storage");
 
-const PROVIDER_ALIASES = {
-  chatgpt: ["chatgpt", "openai", "gpt"],
-  gemini: ["gemini", "google"],
-  codex: ["codex"],
-  antigravity: ["antigravity", "local"],
-};
-
-const modelListers = {};
-function registerModelLister(id, listModels) {
-  modelListers[id] = listModels;
-}
-
-function getModelLister(id) {
-  return modelListers[id];
-}
-const providerAliases = {};
-function registerProviderAliases(id, aliases) {
-  providerAliases[id] = aliases;
-}
-function resolveProviderIdByHint(hint) {
-  if (!hint) return null;
-  const h = hint.toLowerCase();
-  const match = Object.entries(providerAliases).find(
-    ([id, aliases]) => h.includes(id) || aliases.some((a) => h.includes(a)),
-  );
-  return match ? match[0] : null;
-}
+const {
+  resolveProviderIdByHint,
+  getModelLister,
+} = require("../../../chat/backend/providers-registry");
 
 function resolveProviderId(hint) {
-  if (!hint) return null;
-  const h = hint.toLowerCase();
-  for (const [id, aliases] of Object.entries(PROVIDER_ALIASES)) {
-    if (aliases.some((a) => h.includes(a))) return id;
-  }
-  return null;
+  return resolveProviderIdByHint(hint);
 }
 
 function listAvailable() {
@@ -65,9 +37,6 @@ function resolveKeyForProvider(providerId, keyHint) {
 }
 
 function loadListModels(providerId) {
-  const {
-    getModelLister,
-  } = require("../../../chat/backend/providers-registry");
   return getModelLister(providerId) || null;
 }
 
@@ -82,12 +51,8 @@ async function resolveModel(providerId, apiKey, modelHint) {
 }
 
 module.exports = {
-  registerChatProvider,
-  getChatProvider,
-  registerToolCapableProvider,
-  getToolCapableProvider,
-  registerModelLister,
-  getModelLister,
-  registerProviderAliases,
-  resolveProviderIdByHint,
+  resolveProviderId,
+  listAvailable,
+  resolveKeyForProvider,
+  resolveModel,
 };
