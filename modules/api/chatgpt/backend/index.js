@@ -5,12 +5,16 @@ const {
 } = require("./chatgpt-client");
 const {
   registerChatProvider,
+  registerModelLister,
+  registerProviderAliases,
 } = require("../../../chat/backend/providers-registry");
 
 registerChatProvider("chatgpt", (apiKey, message, model, systemPrompt) =>
   chatCompletion(apiKey, message, model || "gpt-4o-mini", systemPrompt),
 );
+registerModelLister("chatgpt", listModels);
 const { MAX_FILE_MB } = require("./limits");
+registerProviderAliases("chatgpt", ["openai", "gpt"]);
 
 function registerChatGptBackend() {
   ipcMain.handle("api:create-key:chatgpt", async (event) => {

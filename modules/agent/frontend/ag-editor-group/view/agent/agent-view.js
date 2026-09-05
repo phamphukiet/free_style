@@ -78,7 +78,7 @@ class AgentViewElement extends LitElement {
         ? `${agent.providerId}:${agent.keyId}`
         : "";
     this.selectedModel = agent?.model || "";
-    this.models = [];
+    this.models = this.selectedModel ? [{ id: this.selectedModel }] : [];
     if (this.selectedKeyRef) await loadModels(this, token);
     await syncFileLimit(this);
   }
