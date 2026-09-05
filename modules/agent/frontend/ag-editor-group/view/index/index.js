@@ -3,3 +3,5 @@
 // Bớt view: xóa dòng import tương ứng. Thêm view: thêm 1 dòng.
 
 import "../agent/index.js";
+import "../org-roles/index.js";
+import "../activate-preview/index.js";

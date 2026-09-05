@@ -7,6 +7,12 @@ function registerAgentBackend() {
   } catch (e) {
     console.error("Failed to load agent-core backend", e);
   }
+  
+  try {
+    require("./org/ipc").registerOrgIpc();
+  } catch (e) {
+    console.error("Failed to load org backend", e);
+  }
 }
 
 module.exports = { registerAgentBackend };

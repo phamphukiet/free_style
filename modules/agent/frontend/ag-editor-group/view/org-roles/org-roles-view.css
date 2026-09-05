@@ -1,0 +1,28 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 24px;
+  overflow-y: auto;
+}
+.orgroles-header h2 { margin: 0 0 12px; cursor: text; }
+.orgroles-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.orgroles-row {
+  display: flex; align-items: center; gap: 8px;
+  padding: 6px 10px; background: var(--bg-secondary, #252526);
+  border: 1px solid var(--border, #333); border-radius: 4px; font-size: 13px;
+}
+.orgroles-name { flex: 1; cursor: text; }
+.orgroles-name-input { flex: 1; }
+.orgroles-parent-select { width: 140px; flex-shrink: 0; }
+.orgroles-count-input { width: 60px; flex-shrink: 0; }
+.orgroles-instance-count { color: var(--text-muted, #888); font-size: 11px; white-space: nowrap; }
+.orgroles-add-row { display: flex; gap: 8px; margin-bottom: 20px; }
+.orgroles-add-row .ag-input { flex: 1; }
+.orgroles-footer { display: flex; gap: 10px; }
+.ag-danger-btn {
+  background: transparent; border: 1px solid #a1260d; color: #e5534b;
+  padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 12px;
+}
+.ag-danger-btn:hover { background: rgba(161, 38, 13, 0.15); }

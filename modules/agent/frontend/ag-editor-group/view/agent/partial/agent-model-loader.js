@@ -12,7 +12,7 @@ export async function loadModels(host, token) {
     token,
     () => host._requestToken,
   );
-  if (result === null) return;
+  if (result === null) return; // cancelled
   host.models = result;
   if (host.selectedModel && !result.some((m) => m.id === host.selectedModel)) {
     host.selectedModel = result[0]?.id || "";
