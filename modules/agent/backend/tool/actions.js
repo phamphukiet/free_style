@@ -14,6 +14,17 @@ const {
   decrypt,
 } = require("../../../../src/main/ipc/credentials/storage");
 
+function resolveAgent(idOrName) {
+  if (!idOrName) return null;
+  const all = store.list();
+  const h = idOrName.toLowerCase();
+  return (
+    all.find((a) => a.id === idOrName) ||
+    all.find((a) => a.name.toLowerCase() === h) ||
+    all.find((a) => a.name.toLowerCase().includes(h))
+  );
+}
+
 async function buildAgentFields({ providerHint, keyHint, modelHint }) {
   const providerId = resolveProviderId(providerHint);
   if (!providerId)
@@ -40,7 +51,7 @@ async function create(args) {
 }
 
 async function update(args) {
-  const existing = store.get(args.id);
+  const existing = resolveAgent(args.id);
   if (!existing) throw new Error("Agent không tồn tại.");
   const patch = { id: args.id, name: args.name || existing.name };
   if (args.providerHint || args.keyHint || args.modelHint) {
@@ -58,7 +69,7 @@ async function update(args) {
 }
 
 function remove(args) {
-  const existing = store.get(args.id);
+  const existing = resolveAgent(args.id);
   if (!existing) throw new Error("Agent không tồn tại.");
   if (!args.confirmed) {
     return {
@@ -73,7 +84,7 @@ function remove(args) {
 }
 
 async function test(args) {
-  const agent = store.get(args.id);
+  const agent = resolveAgent(args.id);
   if (!agent) throw new Error("Agent không tồn tại.");
   if (!agent.providerId || !agent.keyId)
     throw new Error(`Agent "${agent.name}" chưa gán provider/key.`);

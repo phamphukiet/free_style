@@ -14,7 +14,8 @@ function getToolSpec() {
         },
         id: {
           type: "string",
-          description: "id agent, cần cho update/delete/test.",
+          description:
+            "Tên hoặc id agent, cần cho update/delete/test. Ưu tiên dùng tên do người dùng cung cấp, không cần hỏi ID kỹ thuật.",
         },
         name: { type: "string", description: "Tên agent, cần cho create." },
         providerHint: { type: "string", description: "VD 'openai', 'gemini'." },

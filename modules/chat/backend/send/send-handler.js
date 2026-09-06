@@ -9,6 +9,7 @@ const {
 } = require("./resolve");
 const { getToolSpecs, executeAiTool } = require("./ai-tools");
 const sessionStore = require("../session-store");
+const { buildHistoryPrompt } = require("./history");
 
 async function handleSend(
   { message, providerId, keyId, model, agentId, sessionId },
@@ -17,6 +18,7 @@ async function handleSend(
   let resolvedProviderId = providerId;
   let resolvedKeyId = keyId;
   let resolvedModel = model;
+  let history = [];
 
   if (agentId) {
     const agent = resolveFromAgent(agentId);
@@ -46,15 +48,20 @@ async function handleSend(
       content: `Provider "${resolvedProviderId}" chưa hỗ trợ chat thật.`,
     };
   }
-
   if (sessionId) {
+    history = sessionStore.get(sessionId)?.messages || []; // lấy lịch sử TRƯỚC khi append
     sessionStore.appendMessage(sessionId, { role: "user", content: message });
   }
 
   try {
     let content,
       tokenUsed = 0;
-    const systemPrompt = buildSystemPrompt(agentId);
+    const systemPrompt = [
+      buildSystemPrompt(agentId),
+      buildHistoryPrompt(history),
+    ]
+      .filter(Boolean)
+      .join("\n\n");
 
     if (toolSend) {
       const raw = await toolSend(apiKey, message, resolvedModel, {
