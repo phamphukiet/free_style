@@ -10,24 +10,7 @@ const {
   resolveProviderIdByHint,
   getModelLister,
 } = require("../../../chat/backend/providers-registry");
- const modelListers = {};
 
- function registerModelLister(id, listModels) {
-   modelListers[id] = listModels;
- }
-const providerAliases = {};
-
- function getModelLister(id) {
-   return modelListers[id];
- }
-function resolveProviderIdByHint(hint) {
-  if (!hint) return null;
-  const h = hint.toLowerCase();
-  const match = Object.entries(providerAliases).find(
-    ([id, aliases]) => h.includes(id) || aliases.some((a) => h.includes(a)),
-  );
-  return match ? match[0] : null;
-}
 function resolveProviderId(hint) {
   return resolveProviderIdByHint(hint);
 }
@@ -71,6 +54,4 @@ module.exports = {
   resolveKeyForProvider,
   resolveModel,
   listAvailable,
-  registerProviderAliases,
-  resolveProviderIdByHint,
 };

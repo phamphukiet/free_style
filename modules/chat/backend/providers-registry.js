@@ -32,6 +32,21 @@ function getModelLister(id) {
   return modelListers[id];
 }
 
+const providerAliases = {};
+
+function registerProviderAliases(id, aliases) {
+  providerAliases[id] = aliases;
+}
+
+function resolveProviderIdByHint(hint) {
+  if (!hint) return null;
+  const h = hint.toLowerCase();
+  const match = Object.entries(providerAliases).find(
+    ([id, aliases]) => h.includes(id) || aliases.some((a) => h.includes(a)),
+  );
+  return match ? match[0] : null;
+}
+
 module.exports = {
   registerChatProvider,
   getChatProvider,
@@ -39,4 +54,6 @@ module.exports = {
   getToolCapableProvider,
   registerModelLister,
   getModelLister,
+  registerProviderAliases,
+  resolveProviderIdByHint,
 };

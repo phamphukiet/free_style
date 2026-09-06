@@ -18,8 +18,6 @@ function registerWindowIpcWrapper() {
   try {
     const { registerChatGptBackend } = require("../../modules/api/chatgpt/backend/index.js");
     const { registerGeminiBackend } = require("../../modules/api/gemini/backend/index.js");
-    const { registerCodexBackend } = require("../../modules/api/codex/backend/index.js");
-    const { registerAntigravityBackend } = require("../../modules/api/antigravity/backend/index.js");
     registerChatGptBackend();
     registerGeminiBackend();
     registerCodexBackend();
@@ -74,7 +72,6 @@ function registerWindowIpcWrapper() {
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };
 
-// Đảm bảo pty process bị kill khi toàn bộ window đóng.
 app.on("before-quit", () => {
   require("../../modules/terminal/backend/terminal").killShell();
 });

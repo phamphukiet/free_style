@@ -85,7 +85,7 @@ async function chatWithTools(
   apiKey,
   message,
   model,
-  { systemPrompt, toolSpec, executeToolCall } = {},
+  { systemPrompt, toolSpecs, executeToolCall } = {},
 ) {
   const modelId = model || "gemini-2.5-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;

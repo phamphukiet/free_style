@@ -1,2 +1,5 @@
 setup: npm install -g npm-check-updates
 run: npm run dev
+
+api gpt: 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
+api gemini: AQ.Ab8RN6LHWHUlzAfAYWlavNcg1suD0FPzemmhRgfcXlq_BVLPlg
