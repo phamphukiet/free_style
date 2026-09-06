@@ -7,6 +7,8 @@ const {
 const {
   registerChatProvider,
   registerToolCapableProvider,
+  registerModelLister,
+  registerProviderAliases,
 } = require("../../../chat/backend/providers-registry");
 const { MAX_FILE_MB } = require("./limits");
 
@@ -14,6 +16,8 @@ registerChatProvider("gemini", (apiKey, message, model, systemPrompt) =>
   chatCompletion(apiKey, message, model, systemPrompt),
 );
 registerToolCapableProvider("gemini", chatWithTools);
+registerModelLister("gemini", listModels);
+registerProviderAliases("gemini", ["google"]);
 
 function registerGeminiBackend() {
   ipcMain.handle("api:create-key:gemini", async (event) => {

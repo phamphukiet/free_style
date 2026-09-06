@@ -12,6 +12,13 @@ function loadRuleBridge() {
     return null;
   }
 }
+function loadAgentBridge() {
+  try {
+    return require("../../../agent/backend/tool/index.js");
+  } catch {
+    return null;
+  }
+}
 
 function getToolSpecs() {
   const specs = [];
@@ -19,6 +26,8 @@ function getToolSpecs() {
   if (settingsBridge) specs.push(settingsBridge.getToolSpec());
   const ruleBridge = loadRuleBridge();
   if (ruleBridge) specs.push(ruleBridge.getToolSpec());
+  const agentBridge = loadAgentBridge();
+  if (agentBridge) specs.push(agentBridge.getToolSpec());
   return specs;
 }
 
@@ -38,7 +47,15 @@ async function executeAiTool(name, args, { agentId, notify } = {}) {
     }
     return result;
   }
-
+  if (name === "agent") {
+    const bridge = loadAgentBridge();
+    if (!bridge) throw new Error("Agent module không khả dụng");
+    const result = await bridge.execute(args.action, args);
+    if (notify && ["create", "update", "delete"].includes(args.action)) {
+      notify({ type: "agent", action: args.action, ...result });
+    }
+    return result;
+  }
   throw new Error(`Tool "${name}" không tồn tại`);
 }
 

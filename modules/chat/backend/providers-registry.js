@@ -22,4 +22,21 @@ function getToolCapableProvider(id) {
   return toolProviders[id];
 }
 
-module.exports = { registerChatProvider, getChatProvider, registerToolCapableProvider, getToolCapableProvider };
+const modelListers = {};
+
+function registerModelLister(id, listModels) {
+  modelListers[id] = listModels;
+}
+
+function getModelLister(id) {
+  return modelListers[id];
+}
+
+module.exports = {
+  registerChatProvider,
+  getChatProvider,
+  registerToolCapableProvider,
+  getToolCapableProvider,
+  registerModelLister,
+  getModelLister,
+};
