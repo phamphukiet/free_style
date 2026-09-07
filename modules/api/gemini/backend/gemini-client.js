@@ -116,7 +116,7 @@ async function chatWithTools(
 
     contents.push({
       role: "model",
-      parts: [{ functionCall: call.functionCall }],
+      parts: [call],
     });
 
     let result;

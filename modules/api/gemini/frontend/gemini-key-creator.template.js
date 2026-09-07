@@ -27,14 +27,14 @@ export function geminiKeyCreatorTemplate(host) {
 
         <div style="display: flex; flex-direction: column; gap: 8px;">
           <label style="font-size: 14px; font-weight: 500;"
-            >API Key (AIza...)</label
+            >API Key</label
           >
           <input
             type="password"
             .value=${host.keyValue}
             @input=${host.handleKeyInput}
             ?disabled=${host.isValidating}
-            placeholder="AIza..."
+            placeholder="AQ.Ab..."
             style="padding: 8px 12px; border-radius: 4px; border: 1px solid var(--bg-modifier-hover); background: var(--bg-primary); color: var(--text-normal);"
           />
         </div>

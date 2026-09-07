@@ -53,7 +53,7 @@ async function create(args) {
 async function update(args) {
   const existing = resolveAgent(args.id);
   if (!existing) throw new Error("Agent không tồn tại.");
-  const patch = { id: args.id, name: args.name || existing.name };
+  const patch = { id: existing.id, name: args.name || existing.name };
   if (args.providerHint || args.keyHint || args.modelHint) {
     Object.assign(
       patch,
@@ -77,7 +77,7 @@ function remove(args) {
       message: `Xác nhận xoá agent "${existing.name}"? Nếu người dùng đồng ý, gọi lại với confirmed=true.`,
     };
   }
-  const ok = store.remove(args.id);
+  const ok = store.remove(existing.id);
   return ok
     ? { message: `Đã xoá agent "${existing.name}".` }
     : { message: `Không thể xoá agent "${existing.name}" (agent mặc định).` };

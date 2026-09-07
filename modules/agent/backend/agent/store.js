@@ -54,8 +54,9 @@ function save(agent) {
 }
 
 function remove(id) {
-  if (id === MANAGER_ID) return false; // không cho xoá agent mặc định
+  if (id === MANAGER_ID) return false;
   const data = readAll();
+  if (!data[id]) return false;
   delete data[id];
   writeAll(data);
   return true;
