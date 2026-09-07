@@ -129,14 +129,17 @@ async function chatWithTools(
       result = { error: error.message };
     }
 
-    contents.push({
-      role: "function",
-      parts: [
-        {
-          functionResponse: { name: call.functionCall.name, response: result },
-        },
-      ],
-    });
+        contents.push({
+          role: "user",
+          parts: [
+            {
+              functionResponse: {
+                name: call.functionCall.name,
+                response: result,
+              },
+            },
+          ],
+        });
   }
 
   return "Đã vượt quá số lần gọi lệnh cho phép.";

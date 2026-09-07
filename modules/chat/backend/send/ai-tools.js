@@ -20,6 +20,14 @@ function loadAgentBridge() {
   }
 }
 
+function loadFilesBridge() {
+  try {
+    return require("../../../files/backend/tool/index.js");
+  } catch {
+    return null;
+  }
+}
+
 function getToolSpecs() {
   const specs = [];
   const settingsBridge = loadSettingsBridge();
@@ -28,6 +36,8 @@ function getToolSpecs() {
   if (ruleBridge) specs.push(ruleBridge.getToolSpec());
   const agentBridge = loadAgentBridge();
   if (agentBridge) specs.push(agentBridge.getToolSpec());
+  const filesBridge = loadFilesBridge();
+  if (filesBridge) specs.push(filesBridge.getToolSpec());
   return specs;
 }
 
@@ -47,16 +57,21 @@ async function executeAiTool(name, args, { agentId, notify } = {}) {
     }
     return result;
   }
-  if (name === "agent") {
-    const bridge = loadAgentBridge();
-    if (!bridge) throw new Error("Agent module không khả dụng");
-    const result = await bridge.execute(args.action, args);
-    if (notify && ["create", "update", "delete"].includes(args.action)) {
-      notify({ type: "agent", action: args.action, ...result });
+    if (name === "agent") {
+      const bridge = loadAgentBridge();
+      if (!bridge) throw new Error("Agent module không khả dụng");
+      const result = await bridge.execute(args.action, args);
+      if (notify && ["create", "update", "delete"].includes(args.action)) {
+        notify({ type: "agent", action: args.action, ...result });
+      }
+      return result;
     }
-    return result;
-  }
-  throw new Error(`Tool "${name}" không tồn tại`);
+    if (name === "files") {
+      const bridge = loadFilesBridge();
+      if (!bridge) throw new Error("Files module không khả dụng");
+      return bridge.execute(args.action, args);
+    }
+    throw new Error(`Tool "${name}" không tồn tại`);
 }
 
 module.exports = { getToolSpecs, executeAiTool };
