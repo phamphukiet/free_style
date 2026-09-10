@@ -4,16 +4,11 @@ const { loadCredentialsSync, saveCredentialsSync } = require("./storage");
 function registerDeleteHandler() {
   ipcMain.handle("credentials:delete", (event, serviceId, keyId) => {
     try {
+      if (!keyId) return false;
       const data = loadCredentialsSync();
-      if (!data[serviceId]) return false;
+      if (!data[serviceId]?.keys) return false;
 
-      if (!keyId) delete data[serviceId];
-      else if (data[serviceId].keys) {
-        data[serviceId].keys = data[serviceId].keys.filter(
-          (k) => k.id !== keyId,
-        );
-      }
-
+      data[serviceId].keys = data[serviceId].keys.filter((k) => k.id !== keyId);
       saveCredentialsSync(data);
       return true;
     } catch (error) {

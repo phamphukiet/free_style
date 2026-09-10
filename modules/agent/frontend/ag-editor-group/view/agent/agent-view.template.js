@@ -23,6 +23,28 @@ function projectBarTemplate(host) {
   `;
 }
 
+function assignedListTemplate(host) {
+  return html`
+    <label class="ag-label">Rules đã gán</label>
+    <div class="ag-assigned-list">
+      ${host.assignedRules.length === 0
+        ? html`<span class="ag-assigned-empty">Chưa gán rule nào</span>`
+        : host.assignedRules.map(
+            (r) => html`<span class="ag-assigned-tag">${r.name}</span>`,
+          )}
+    </div>
+
+    <label class="ag-label">Skills đã gán</label>
+    <div class="ag-assigned-list">
+      ${host.assignedSkills.length === 0
+        ? html`<span class="ag-assigned-empty">Chưa gán skill nào</span>`
+        : host.assignedSkills.map(
+            (s) => html`<span class="ag-assigned-tag">${s.name}</span>`,
+          )}
+    </div>
+  `;
+}
+
 export function agentViewTemplate(host) {
   return html`
     <div class="ag-form">
@@ -62,7 +84,7 @@ export function agentViewTemplate(host) {
         </option>
         ${host.models.map((m) => html`<option value=${m.id}>${m.id}</option>`)}
       </select>
-
+      ${assignedListTemplate(host)}
       <label class="ag-label">Dung lượng project đang mở</label>
       ${projectBarTemplate(host)}
 

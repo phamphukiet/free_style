@@ -28,6 +28,14 @@ function loadFilesBridge() {
   }
 }
 
+function loadSkillBridge() {
+  try {
+    return require("../../../skill/backend/tool-bridge.js");
+  } catch {
+    return null;
+  }
+}
+
 function getToolSpecs() {
   const specs = [];
   const settingsBridge = loadSettingsBridge();
@@ -38,6 +46,8 @@ function getToolSpecs() {
   if (agentBridge) specs.push(agentBridge.getToolSpec());
   const filesBridge = loadFilesBridge();
   if (filesBridge) specs.push(filesBridge.getToolSpec());
+  const skillBridge = loadSkillBridge();
+  if (skillBridge) specs.push(skillBridge.getToolSpec());
   return specs;
 }
 
@@ -63,6 +73,15 @@ async function executeAiTool(name, args, { agentId, notify } = {}) {
       const result = await bridge.execute(args.action, args);
       if (notify && ["create", "update", "delete"].includes(args.action)) {
         notify({ type: "agent", action: args.action, ...result });
+      }
+      return result;
+    }
+    if (name === "skill") {
+      const bridge = loadSkillBridge();
+      if (!bridge) throw new Error("Skill module không khả dụng");
+      const result = await bridge.execute(args.action, args, agentId);
+      if (notify && ["create", "update", "delete"].includes(args.action)) {
+        notify({ type: "skill", action: args.action, ...result });
       }
       return result;
     }

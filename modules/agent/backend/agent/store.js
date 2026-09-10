@@ -7,12 +7,13 @@ const fs = require("fs");
 const crypto = require("crypto");
 const { readState } = require("../../../../src/main/state");
 const MANAGER_ID = "manager";
+const AGENTS_DIR = ".vibe";
 const AGENTS_FILENAME = "agent.json";
 
 function getAgentsFile() {
   const { lastFolder } = readState();
   if (!lastFolder) return null;
-  return path.join(lastFolder, AGENTS_FILENAME);
+  return path.join(lastFolder, AGENTS_DIR, AGENTS_FILENAME);
 }
 
 function readAll() {
@@ -30,8 +31,13 @@ function readAll() {
 function writeAll(data) {
   const file = getAgentsFile();
   if (!file) return;
-  fs.mkdirSync(path.dirname(file), { recursive: true });
-  fs.writeFileSync(file, JSON.stringify(data, null, 2), "utf-8");
+  try {
+    fs.mkdirSync(path.dirname(file), { recursive: true });
+    fs.writeFileSync(file, JSON.stringify(data, null, 2), "utf-8");
+  } catch (err) {
+    console.error("[agent/store] writeAll lỗi:", err);
+    throw err;
+  }
 }
 
 function list() {
@@ -45,8 +51,6 @@ function get(id) {
 function save(agent) {
   const data = readAll();
   const id = agent.id || crypto.randomUUID();
-  // Manager luôn giữ tên "Manager" — chặn đổi tên ngay tại nguồn dữ liệu,
-  // không phụ thuộc UI có gửi tên khác lên hay không.
   const name = id === MANAGER_ID ? "Manager" : agent.name || data[id]?.name;
   data[id] = { ...data[id], ...agent, id, name };
   writeAll(data);

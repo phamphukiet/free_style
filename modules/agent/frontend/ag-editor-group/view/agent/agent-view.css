@@ -10,3 +10,20 @@
 .ag-project-bar-track { flex: 1; height: 6px; background: var(--border, #303030); border-radius: 3px; overflow: hidden; }
 .ag-project-bar-fill { height: 100%; border-radius: 3px; transition: width 0.3s ease, background 0.3s ease; }
 .ag-project-bar-label { font-size: 11px; color: var(--text-muted, #858585); white-space: nowrap; }
+.ag-assigned-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+.ag-assigned-tag {
+  background: var(--bg-elevated, #3c3c3c);
+  border: 1px solid var(--border, #454545);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+}
+.ag-assigned-empty {
+  font-size: 12px;
+  color: var(--text-muted, #858585);
+}

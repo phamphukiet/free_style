@@ -32,12 +32,14 @@ function getToolSpec() {
 function execute(action, args, agentId) {
   switch (action) {
     case "list":
-      return rulesStore
-        .list()
-        .filter(
-          (r) => r.enabled !== false && (r.agentIds || []).includes(agentId),
-        )
-        .map((r) => ({ id: r.id, name: r.name, content: r.content }));
+      return {
+        rules: rulesStore
+          .list()
+          .filter(
+            (r) => r.enabled !== false && (r.agentIds || []).includes(agentId),
+          )
+          .map((r) => ({ id: r.id, name: r.name, content: r.content })),
+      };
 
     case "create": {
       const saved = rulesStore.upsert({

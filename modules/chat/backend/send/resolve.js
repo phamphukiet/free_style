@@ -45,14 +45,31 @@ function loadRuleStore() {
   catch { return null; }
 }
 
+function loadSkillPromptBuilder() {
+  try {
+    return require("../../../skill/backend/agent-prompt.js").buildSkillPrompt;
+  } catch {
+    return null;
+  }
+}
+
 function buildSystemPrompt(agentId) {
   const store = loadRuleStore();
-  if (!store || !agentId) return "";
-  const rules = store
-    .list()
-    .filter((r) => r.enabled !== false && (r.agentIds || []).includes(agentId));
-  if (rules.length === 0) return "";
-  return rules.map((r) => `## Rule: ${r.name}\n${r.content}`).join("\n\n");
+  const rulePrompt =
+    store && agentId
+      ? store
+          .list()
+          .filter(
+            (r) => r.enabled !== false && (r.agentIds || []).includes(agentId),
+          )
+          .map((r) => `## Rule: ${r.name}\n${r.content}`)
+          .join("\n\n")
+      : "";
+
+  const buildSkillPrompt = loadSkillPromptBuilder();
+  const skillPrompt = buildSkillPrompt ? buildSkillPrompt(agentId) : "";
+
+  return [rulePrompt, skillPrompt].filter(Boolean).join("\n\n");
 }
 
 module.exports = {

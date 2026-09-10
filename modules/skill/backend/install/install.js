@@ -21,7 +21,7 @@ function safeDirName(id) {
 }
 
 function skillsDir(projectPath) {
-  return path.join(projectPath, ".skills");
+  return path.join(projectPath, ".vibe", "skills");
 }
 
 function manifestPath(projectPath) {

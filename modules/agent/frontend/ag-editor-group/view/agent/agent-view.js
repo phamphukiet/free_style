@@ -9,6 +9,7 @@ import {
   loadModels,
   syncFileLimit,
 } from "./partial/agent-model-loader.js";
+import { loadAssignedRulesAndSkills } from "./partial/skill-rule-loader.js";
 
 class AgentViewElement extends LitElement {
   static styles = [unsafeCSS(sharedStyles), unsafeCSS(ownStyles)];
@@ -22,6 +23,8 @@ class AgentViewElement extends LitElement {
     saved: { state: true },
     currentBytes: { state: true },
     fileLimitMB: { state: true },
+    rules: { state: true },
+    skills: { state: true },
   };
 
   constructor() {
@@ -37,6 +40,8 @@ class AgentViewElement extends LitElement {
     this.fileLimitMB = 100;
     this._requestToken = 0;
     this._loadedFor = "";
+    this.assignedRules = [];
+    this.assignedSkills = [];
   }
 
   connectedCallback() {
@@ -70,8 +75,10 @@ class AgentViewElement extends LitElement {
     if (!this.contextId) return;
     await this._keysReady;
     const agent = await window.api.agent.get(this.contextId);
+    const { rules, skills } = await loadAssignedRulesAndSkills(this.contextId);
     if (token !== this._requestToken) return;
-
+    this.assignedRules = rules;
+    this.assignedSkills = skills;
     this.editName = agent?.name || "";
     this.selectedKeyRef =
       agent?.providerId && agent?.keyId

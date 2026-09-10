@@ -14,7 +14,7 @@ function getProjectPath() {
 }
 
 function rulesDir(projectPath) {
-  return path.join(projectPath, ".rules");
+  return path.join(projectPath, ".vibe", "rules");
 }
 
 function manifestPath(projectPath) {
