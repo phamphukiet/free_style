@@ -95,7 +95,7 @@ async function chatWithTools(
     ? { parts: [{ text: systemPrompt }] }
     : undefined;
 
-  for (let step = 0; step < 8; step++) {
+  for (let step = 0; step < 4; step++) {
     const response = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
