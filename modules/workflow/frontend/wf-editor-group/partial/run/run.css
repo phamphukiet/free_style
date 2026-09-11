@@ -1,0 +1,30 @@
+.wf-run-panel {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border, #303030);
+}
+.wf-run-status {
+  font-size: 13px;
+  color: var(--text-muted, #999);
+  margin: 8px 0;
+}
+.wf-run-results {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+.wf-run-result-item {
+  background: var(--bg-secondary, #252526);
+  border: 1px solid var(--border, #333);
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+}
+.wf-run-result-item pre {
+  margin: 4px 0 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-size: 11px;
+  color: var(--text-muted, #999);
+}

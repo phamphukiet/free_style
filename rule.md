@@ -5,7 +5,6 @@
 - modules khi bị xóa không ảnh hưởng đến code tổng thể
 - ưu tiên bảo trì cao, nếu sửa tham số hay tính năng mà phải sửa code quá 2 file thì là thất bại
 # Tuân thủ mức 2
-- Thứ tự thiết kế: giao diện → tương tác/cấu trúc → file → hàm
 - Sửa code: chỉ show đoạn thay đổi, không show lại cả file
 - Không dùng `present_files` — code đưa trong chat, tự tạo/sửa file trên máy
 - `src/main/` = main process (Node thuần, không qua Vite); `src/preload/index.js` = cầu nối duy nhất renderer↔main; `src/renderer/` = UI; `modules/` và `shared/` ở gốc project dùng chung

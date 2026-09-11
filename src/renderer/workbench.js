@@ -21,6 +21,7 @@ import "@modules/settings/frontend/index.js";
 import "@modules/agent/frontend/index.js";
 import "@modules/skill/frontend/index.js";
 import "@modules/rule/frontend/index.js";
+import "@modules/workflow/frontend/index.js";
 
 import { loadLastFolder } from "@shared/folder-actions.js";
 loadLastFolder();

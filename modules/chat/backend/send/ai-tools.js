@@ -36,6 +36,14 @@ function loadSkillBridge() {
   }
 }
 
+function loadWorkflowBridge() {
+  try {
+    return require("../../../workflow/backend/tool-bridge.js");
+  } catch {
+    return null;
+  }
+}
+
 function getToolSpecs() {
   const specs = [];
   const settingsBridge = loadSettingsBridge();
@@ -48,6 +56,8 @@ function getToolSpecs() {
   if (filesBridge) specs.push(filesBridge.getToolSpec());
   const skillBridge = loadSkillBridge();
   if (skillBridge) specs.push(skillBridge.getToolSpec());
+  const workflowBridge = loadWorkflowBridge();
+  if (workflowBridge) specs.push(workflowBridge.getToolSpec());
   return specs;
 }
 
@@ -85,11 +95,17 @@ async function executeAiTool(name, args, { agentId, notify } = {}) {
       }
       return result;
     }
+    if (name === "workflow") {
+      const bridge = loadWorkflowBridge();
+      if (!bridge) throw new Error("Workflow module không khả dụng");
+      return bridge.execute(args.action, args, agentId);
+    }
     if (name === "files") {
       const bridge = loadFilesBridge();
       if (!bridge) throw new Error("Files module không khả dụng");
       return bridge.execute(args.action, args);
     }
+
     throw new Error(`Tool "${name}" không tồn tại`);
 }
 

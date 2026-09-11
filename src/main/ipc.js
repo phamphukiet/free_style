@@ -16,8 +16,12 @@ function registerWindowIpcWrapper() {
   registerSystemIpc();
   registerCredentialsIpc();
   try {
-    const { registerChatGptBackend } = require("../../modules/api/chatgpt/backend/index.js");
-    const { registerGeminiBackend } = require("../../modules/api/gemini/backend/index.js");
+    const {
+      registerChatGptBackend,
+    } = require("../../modules/api/chatgpt/backend/index.js");
+    const {
+      registerGeminiBackend,
+    } = require("../../modules/api/gemini/backend/index.js");
     registerChatGptBackend();
     registerGeminiBackend();
     registerCodexBackend();
@@ -43,31 +47,40 @@ function registerWindowIpcWrapper() {
     console.error("Failed to load settings backend", e);
   }
 
-    try {
-      const {
-        registerAgentBackend,
-      } = require("../../modules/agent/backend/index.js");
-      registerAgentBackend();
-    } catch (e) {
-      console.error("Failed to load agent backend", e);
-    }
+  try {
+    const {
+      registerAgentBackend,
+    } = require("../../modules/agent/backend/index.js");
+    registerAgentBackend();
+  } catch (e) {
+    console.error("Failed to load agent backend", e);
+  }
 
-    try {
-      const {
-        registerSkillBackend,
-      } = require("../../modules/skill/backend/index.js");
-      registerSkillBackend();
-    } catch (e) {
-      console.error("Failed to load skill backend", e);
-    }
-        try {
-          const {
-            registerRuleBackend,
-          } = require("../../modules/rule/backend/index.js");
-          registerRuleBackend();
-        } catch (e) {
-          console.error("Failed to load rule backend", e);
-        }
+  try {
+    const {
+      registerSkillBackend,
+    } = require("../../modules/skill/backend/index.js");
+    registerSkillBackend();
+  } catch (e) {
+    console.error("Failed to load skill backend", e);
+  }
+  try {
+    const {
+      registerRuleBackend,
+    } = require("../../modules/rule/backend/index.js");
+    registerRuleBackend();
+  } catch (e) {
+    console.error("Failed to load rule backend", e);
+  }
+
+  try {
+    const {
+      registerWorkflowBackend,
+    } = require("../../modules/workflow/backend/index.js");
+    registerWorkflowBackend();
+  } catch (e) {
+    console.error("Failed to load workflow backend", e);
+  }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };

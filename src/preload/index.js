@@ -61,7 +61,6 @@ function getExposedApi() {
       writeFile: (filePath, content) =>
         ipcRenderer.invoke("fs:write-file", filePath, content),
     },
-
     terminal: {
       // shellType: 'powershell' | 'cmd'. Backend sẽ tự map ra path thật.
       create: (shellType, cwd) =>
@@ -78,7 +77,6 @@ function getExposedApi() {
           ipcRenderer.removeListener(channels.TERMINAL_DATA, listener);
       },
     },
-
     credentials: {
       list: (serviceId) => ipcRenderer.invoke("credentials:list", serviceId),
       save: (serviceId, keyData) =>
@@ -183,6 +181,23 @@ function getExposedApi() {
         ipcRenderer.on("rule:ai-changed", listener);
         return () => ipcRenderer.removeListener("rule:ai-changed", listener);
       },
+    },
+    workflow: {
+      list: () => ipcRenderer.invoke("workflow:list"),
+      catalogGet: (id) => ipcRenderer.invoke("workflow:catalog-get", id),
+      catalogUpsert: (wf) => ipcRenderer.invoke("workflow:catalog-upsert", wf),
+      catalogDelete: (id) => ipcRenderer.invoke("workflow:catalog-delete", id),
+      togglePin: (id) => ipcRenderer.invoke("workflow:toggle-pin", id),
+      listPinned: () => ipcRenderer.invoke("workflow:list-pinned"),
+      listProject: () => ipcRenderer.invoke("workflow:list-project"),
+      syncPinned: () => ipcRenderer.invoke("workflow:sync-pinned"),
+      install: (wf) => ipcRenderer.invoke("workflow:install", wf),
+      uninstall: (id) => ipcRenderer.invoke("workflow:uninstall", id),
+      runCreate: (workflowId, sessionId) =>
+        ipcRenderer.invoke("workflow:run-create", workflowId, sessionId),
+      runNext: (runId, agentId) =>
+        ipcRenderer.invoke("workflow:run-next", runId, agentId),
+      runGet: (runId) => ipcRenderer.invoke("workflow:run-get", runId),
     },
   };
 }
