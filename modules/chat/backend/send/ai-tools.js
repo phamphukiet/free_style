@@ -36,9 +36,9 @@ function loadSkillBridge() {
   }
 }
 
-function loadWorkflowBridge() {
+function loadKanbanBridge() {
   try {
-    return require("../../../workflow/backend/tool-bridge.js");
+    return require("../../../kanban/backend/tool-bridge.js");
   } catch {
     return null;
   }
@@ -56,8 +56,8 @@ function getToolSpecs() {
   if (filesBridge) specs.push(filesBridge.getToolSpec());
   const skillBridge = loadSkillBridge();
   if (skillBridge) specs.push(skillBridge.getToolSpec());
-  const workflowBridge = loadWorkflowBridge();
-  if (workflowBridge) specs.push(workflowBridge.getToolSpec());
+  const kanbanBridge = loadKanbanBridge();
+  if (kanbanBridge) specs.push(kanbanBridge.getToolSpec());
   return specs;
 }
 
@@ -95,9 +95,9 @@ async function executeAiTool(name, args, { agentId, notify } = {}) {
       }
       return result;
     }
-    if (name === "workflow") {
-      const bridge = loadWorkflowBridge();
-      if (!bridge) throw new Error("Workflow module không khả dụng");
+    if (name === "kanban") {
+      const bridge = loadKanbanBridge();
+      if (!bridge) throw new Error("Kanban module không khả dụng");
       return bridge.execute(args.action, args, agentId);
     }
     if (name === "files") {

@@ -1,0 +1,30 @@
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 8px 0;
+  font-family: -apple-system, sans-serif;
+  font-size: 12px;
+  color: var(--text-primary, #ccc);
+  overflow-y: auto;
+}
+.kb-side-title {
+  padding: 4px 12px 8px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted, #888);
+}
+.kb-side-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 12px;
+}
+.kb-side-row.pending .kb-side-count {
+  background: #e3b341;
+  color: #1e1e1e;
+  border-radius: 10px;
+  padding: 0 6px;
+}
+.kb-side-count { color: var(--text-muted, #888); font-size: 11px; }

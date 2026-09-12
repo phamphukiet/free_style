@@ -26,14 +26,6 @@ const channels = {
   CREDENTIALS_DELETE: "credentials:delete",
 };
 
-/**
- * Trả về object API sẽ được expose ra renderer dưới tên window.api.
- * Tách thành hàm riêng để sau này dễ thêm nhóm API mới (fs.*, terminal.*...)
- * mà không phải sửa trực tiếp lệnh gọi contextBridge bên dưới.
- *
- * Hiện tại để RỖNG — đúng tinh thần "make it work first":
- * chỉ xác nhận cầu nối hoạt động, chưa cần chức năng thật.
- */
 function getExposedApi() {
   return {
     window: {
@@ -182,22 +174,20 @@ function getExposedApi() {
         return () => ipcRenderer.removeListener("rule:ai-changed", listener);
       },
     },
-    workflow: {
-      list: () => ipcRenderer.invoke("workflow:list"),
-      catalogGet: (id) => ipcRenderer.invoke("workflow:catalog-get", id),
-      catalogUpsert: (wf) => ipcRenderer.invoke("workflow:catalog-upsert", wf),
-      catalogDelete: (id) => ipcRenderer.invoke("workflow:catalog-delete", id),
-      togglePin: (id) => ipcRenderer.invoke("workflow:toggle-pin", id),
-      listPinned: () => ipcRenderer.invoke("workflow:list-pinned"),
-      listProject: () => ipcRenderer.invoke("workflow:list-project"),
-      syncPinned: () => ipcRenderer.invoke("workflow:sync-pinned"),
-      install: (wf) => ipcRenderer.invoke("workflow:install", wf),
-      uninstall: (id) => ipcRenderer.invoke("workflow:uninstall", id),
-      runCreate: (workflowId, sessionId) =>
-        ipcRenderer.invoke("workflow:run-create", workflowId, sessionId),
-      runNext: (runId, agentId) =>
-        ipcRenderer.invoke("workflow:run-next", runId, agentId),
-      runGet: (runId) => ipcRenderer.invoke("workflow:run-get", runId),
+    kanban: {
+      listTasks: () => ipcRenderer.invoke("kanban:list-tasks"),
+      getTask: (id) => ipcRenderer.invoke("kanban:get-task", id),
+      createTask: (data) => ipcRenderer.invoke("kanban:create-task", data),
+      moveTask: (taskId, toColumnId) =>
+        ipcRenderer.invoke("kanban:move-task", taskId, toColumnId),
+      approveTask: (taskId) =>
+        ipcRenderer.invoke("kanban:approve-task", taskId),
+      rejectTask: (taskId, reason) =>
+        ipcRenderer.invoke("kanban:reject-task", taskId, reason),
+      chatList: (taskId) => ipcRenderer.invoke("kanban:chat-list", taskId),
+      chatSend: (taskId, content) =>
+        ipcRenderer.invoke("kanban:chat-send", taskId, content),
+      listAgents: () => ipcRenderer.invoke("kanban:list-agents"),
     },
   };
 }

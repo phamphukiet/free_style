@@ -75,11 +75,11 @@ function registerWindowIpcWrapper() {
 
   try {
     const {
-      registerWorkflowBackend,
-    } = require("../../modules/workflow/backend/index.js");
-    registerWorkflowBackend();
+      registerKanbanBackend,
+    } = require("../../modules/kanban/backend/index.js");
+    registerKanbanBackend();
   } catch (e) {
-    console.error("Failed to load workflow backend", e);
+    console.error("Failed to load kanban backend", e);
   }
 }
 
