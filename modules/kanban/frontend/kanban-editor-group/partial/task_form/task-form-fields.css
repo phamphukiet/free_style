@@ -1,0 +1,13 @@
+.tf-label { font-size: 12px; margin-top: 10px; display: block; color: var(--text-muted, #999); }
+.tf-input, .tf-select, .tf-textarea {
+  width: 100%;
+  background: var(--bg-elevated, #3c3c3c);
+  color: var(--text-primary, #ccc);
+  border: 1px solid var(--border, #454545);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 13px;
+  font-family: inherit;
+  margin-top: 4px;
+}
+.tf-textarea { resize: vertical; }

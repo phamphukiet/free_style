@@ -14,12 +14,12 @@ class KanbanSidebarElement extends LitElement {
   connectedCallback() {
     super.connectedCallback();
     this.reload();
-    window.addEventListener("kanban:changed", this.reload);
+    this._unsubChanged = window.api.kanban.onChanged(this.reload);
     window.addEventListener("workbench:folder-opened", this.reload);
   }
 
   disconnectedCallback() {
-    window.removeEventListener("kanban:changed", this.reload);
+    this._unsubChanged?.();
     window.removeEventListener("workbench:folder-opened", this.reload);
     super.disconnectedCallback();
   }

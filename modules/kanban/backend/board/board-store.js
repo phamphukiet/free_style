@@ -5,7 +5,8 @@
 const path = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
-const { readState } = require("../../../src/main/state");
+const { readState } = require("../../../../src/main/state");
+const { broadcastKanbanChanged } = require("./notify");
 
 const MAX_DONE_KEPT = 20;
 
@@ -39,6 +40,7 @@ function writeBoard(board) {
   const file = boardFile(projectPath);
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, JSON.stringify(board, null, 2), "utf-8");
+  broadcastKanbanChanged();
   return board;
 }
 
@@ -63,6 +65,8 @@ function createTask({ title, description = "", agentId = "" }) {
     columnId: "ALL",
     order: now,
     result: null,
+    running: false,
+    sessionId: "",
     history: [{ at: now, from: null, to: "ALL", actor: "user" }],
     createdAt: now,
     updatedAt: now,

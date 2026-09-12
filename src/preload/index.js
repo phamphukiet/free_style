@@ -184,10 +184,16 @@ function getExposedApi() {
         ipcRenderer.invoke("kanban:approve-task", taskId),
       rejectTask: (taskId, reason) =>
         ipcRenderer.invoke("kanban:reject-task", taskId, reason),
-      chatList: (taskId) => ipcRenderer.invoke("kanban:chat-list", taskId),
-      chatSend: (taskId, content) =>
-        ipcRenderer.invoke("kanban:chat-send", taskId, content),
       listAgents: () => ipcRenderer.invoke("kanban:list-agents"),
+      updateTask: (taskId, patch) =>
+        ipcRenderer.invoke("kanban:update-task", taskId, patch),
+      deleteTask: (taskId) => ipcRenderer.invoke("kanban:delete-task", taskId),
+      runTask: (taskId) => ipcRenderer.invoke("kanban:run-task", taskId),
+      onChanged: (callback) => {
+        const listener = () => callback();
+        ipcRenderer.on("kanban:changed", listener);
+        return () => ipcRenderer.removeListener("kanban:changed", listener);
+      },
     },
   };
 }

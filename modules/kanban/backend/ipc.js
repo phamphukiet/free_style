@@ -2,12 +2,13 @@
 // IPC cho UI — có approve/reject (chỉ dành cho user thật), khác tool-bridge.js (agent).
 
 const { ipcMain } = require("electron");
-const boardStore = require("./board-store");
-const { moveTask } = require("./move-task");
-const { approveTask } = require("./approve-task");
-const { rejectTask } = require("./reject-task");
-const { getMessages, appendMessage } = require("./chat-store");
-const { replyAsAgent } = require("./agent-reply");
+const boardStore = require("./board/board-store");
+const { updateTask } = require("./board/update-task");
+const { moveTask } = require("./board/move-task");
+const { approveTask } = require("./board/approve-task");
+const { rejectTask } = require("./board/reject-task");
+const { replyAsAgent } = require("./chat/agent-reply");
+const { runTask } = require("./chat/run-task");
 const agentStore = require("../../agent/backend/agent/store");
 
 function registerKanbanIpc() {
@@ -16,7 +17,12 @@ function registerKanbanIpc() {
   ipcMain.handle("kanban:create-task", (e, data) =>
     boardStore.createTask(data),
   );
-
+  ipcMain.handle("kanban:update-task", (e, taskId, patch) =>
+    updateTask(taskId, patch),
+  );
+  ipcMain.handle("kanban:delete-task", (e, taskId) =>
+    boardStore.removeTask(taskId),
+  );
   ipcMain.handle("kanban:move-task", (e, taskId, toColumnId) =>
     moveTask({ taskId, toColumnId, actor: "user" }),
   );
@@ -24,24 +30,14 @@ function registerKanbanIpc() {
   ipcMain.handle("kanban:reject-task", (e, taskId, reason) =>
     rejectTask(taskId, reason),
   );
-
-  ipcMain.handle("kanban:chat-list", (e, taskId) => getMessages(taskId));
-  ipcMain.handle("kanban:chat-send", async (e, taskId, content) => {
-    appendMessage(taskId, { role: "user", content });
-    const task = boardStore.getTask(taskId);
-    if (task?.agentId) {
+  ipcMain.handle("kanban:run-task", (event, taskId) => {
+    const notify = (info) => {
       try {
-        await replyAsAgent(task);
-      } catch (error) {
-        appendMessage(taskId, {
-          role: "assistant",
-          content: `Lỗi: ${error.message}`,
-        });
-      }
-    }
-    return getMessages(taskId);
+        event.sender.send("rule:ai-changed", info);
+      } catch {}
+    };
+    return runTask(taskId, notify);
   });
-
   ipcMain.handle("kanban:list-agents", () => agentStore.list());
 }
 

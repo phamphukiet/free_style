@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { cardTemplate } from "./card.template.js";
+import { cardTemplate } from "./card/card.template.js";
 
 export function columnTemplate(host, col, tasks, totalCount) {
   return html`

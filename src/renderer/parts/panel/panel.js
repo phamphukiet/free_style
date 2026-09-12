@@ -9,6 +9,7 @@ import { panelTemplate } from "./panel.template.js";
 import styles from "./panel.css?inline";
 import { registry } from "@modules/registry.js";
 
+// thành
 class PanelElement extends LitElement {
   static styles = unsafeCSS(styles);
 
@@ -23,12 +24,14 @@ class PanelElement extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
-    // Nội dung con (VD module-terminal-panel) tự dispatch sự kiện này khi cần đóng.
     this.addEventListener("panel:close", this.handleClose);
+    this._resizeObserver = new ResizeObserver(() => this.notifyResize());
+    this._resizeObserver.observe(this);
   }
 
   disconnectedCallback() {
     this.removeEventListener("panel:close", this.handleClose);
+    this._resizeObserver?.disconnect();
     super.disconnectedCallback();
   }
 
@@ -36,6 +39,14 @@ class PanelElement extends LitElement {
     this.visible = false;
     this.style.display = "none";
   };
+
+  notifyResize() {
+    window.dispatchEvent(new CustomEvent("workbench:panel-resize"));
+  }
+
+  updated(changed) {
+    if (changed.has("visible")) this.notifyResize();
+  }
 
   render() {
     return panelTemplate(registry.getPanelView());

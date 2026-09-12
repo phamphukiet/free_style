@@ -38,7 +38,7 @@ function loadSkillBridge() {
 
 function loadKanbanBridge() {
   try {
-    return require("../../../kanban/backend/tool-bridge.js");
+    return require("../../../kanban/backend/tool/tool-bridge.js");
   } catch {
     return null;
   }

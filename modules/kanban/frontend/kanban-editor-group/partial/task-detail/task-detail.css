@@ -1,0 +1,33 @@
+:host {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.5);
+  font-family: -apple-system, sans-serif;
+}
+.td-panel {
+  background: var(--bg-secondary, #252526);
+  border: 1px solid var(--border, #333);
+  border-radius: 8px;
+  width: 420px;
+  max-width: 90vw;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-primary, #ccc);
+  padding: 16px;
+}
+.td-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+.td-close-btn { background: none; border: none; color: inherit; cursor: pointer; font-size: 18px; }
+.td-body { flex: 1; }
+.td-actions { display: flex; gap: 8px; margin-top: 16px; }
+.td-save-btn {
+  flex: 1; background: var(--accent, #0e639c); border: none; color: #fff;
+  border-radius: 4px; padding: 8px 0; cursor: pointer; font-size: 13px;
+}
+.td-delete-btn {
+  background: #a1260d; border: none; color: #fff;
+  border-radius: 4px; padding: 8px 14px; cursor: pointer; font-size: 13px;
+}

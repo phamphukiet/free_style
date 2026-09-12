@@ -2,39 +2,37 @@ import { html } from "lit";
 import { COLUMNS } from "../columns.js";
 import { columnTemplate } from "./partial/column.template.js";
 import { ALLModalTemplate } from "./partial/ALL-modal.template.js";
-import "../task-detail/task-detail.js";
+import { agentColor } from "./partial/agent-color.js";
+import "./partial/task-detail/task-detail.js";
 
 const VISIBLE_LIMIT = 3;
 
 export function kanbanEditorTemplate(host) {
+  const byAgent = (t) =>
+    !host.filterAgentId || t.agentId === host.filterAgentId;
   const tasksOf = (colId) =>
     host.tasks
-      .filter((t) => t.columnId === colId)
+      .filter((t) => t.columnId === colId && byAgent(t))
       .sort((a, b) => b.order - a.order);
 
   return html`
-    <div class="kb-new-task-row">
-      <input
-        class="kb-new-task-input"
-        placeholder="Task mới..."
-        .value=${host.newTaskTitle}
-        @input=${(e) => (host.newTaskTitle = e.target.value)}
-        @keydown=${(e) => e.key === "Enter" && host.handleCreateTask()}
-      />
+    <div class="kb-toolbar-row">
+      <button class="kb-new-task-btn" @click=${() => host.handleOpenCreate()}>
+        + Task mới
+      </button>
       <select
-        class="kb-new-task-input"
-        style="flex:0 0 140px;"
-        .value=${host.newTaskAgentId}
-        @change=${(e) => (host.newTaskAgentId = e.target.value)}
+        class="kb-new-task-input kb-filter-select"
+        .value=${host.filterAgentId}
+        @change=${(e) => host.handleFilterChange(e.target.value)}
       >
-        <option value="">-- Agent --</option>
+        <option value="">Tất cả agent</option>
         ${host.agents.map(
-          (a) => html`<option value=${a.id}>${a.name}</option>`,
+          (a) =>
+            html`<option value=${a.id} style="color:${agentColor(a.id)}">
+              ${a.name}
+            </option>`,
         )}
       </select>
-      <button class="kb-new-task-btn" @click=${() => host.handleCreateTask()}>
-        + Thêm
-      </button>
     </div>
 
     <div class="kb-board">
@@ -46,6 +44,13 @@ export function kanbanEditorTemplate(host) {
     </div>
 
     ${host.showALLModal ? ALLModalTemplate(host, tasksOf("ALL")) : ""}
+    ${host.showCreateModal
+      ? html`<kanban-create-task-modal
+          .agents=${host.agents}
+          @submit=${(e) => host.handleCreateSubmit(e.detail)}
+          @cancel=${() => host.handleCloseCreate()}
+        ></kanban-create-task-modal>`
+      : ""}
     ${host.selectedTaskId
       ? html`<kanban-task-detail
           .taskId=${host.selectedTaskId}

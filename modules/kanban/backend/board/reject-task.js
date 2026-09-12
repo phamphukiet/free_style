@@ -3,8 +3,9 @@
 // tự động post lý do vào chat + trigger agent trả lời ngay (không đợi user gõ tiếp).
 
 const { getTask, saveTask } = require("./board-store");
-const { appendMessage } = require("./chat-store");
-const { replyAsAgent } = require("./agent-reply");
+const { runAgentOnSession, appendComment } = require("../chat/task-session");
+const { appendMessage } = require("../chat/chat-store");
+const { replyAsAgent } = require("../chat/agent-reply");
 
 async function rejectTask(taskId, reason) {
   const task = getTask(taskId);
@@ -13,7 +14,7 @@ async function rejectTask(taskId, reason) {
     throw new Error("Chỉ reject được task đang ở cột Kết quả.");
   }
 
-  const toColumnId = task.agentId ? "agent_working" : "doing";
+  const toColumnId = "doing";
   const from = task.columnId;
   task.columnId = toColumnId;
   task.history = [
@@ -22,21 +23,21 @@ async function rejectTask(taskId, reason) {
   ];
   saveTask(task);
 
-  appendMessage(taskId, {
-    role: "user",
-    content: `Kết quả bị từ chối. Lý do: ${reason || "(không nêu rõ)"}`,
-  });
+  appendComment(
+    taskId,
+    `Kết quả bị từ chối. Lý do: ${reason || "(không nêu rõ)"}`,
+  );
 
   let agentReplied = false;
   if (task.agentId) {
     try {
-      await replyAsAgent(task);
+      await runAgentOnSession(
+        taskId,
+        `Kết quả trước đó bị từ chối. Lý do: ${reason || "(không nêu rõ)"}. Hãy sửa lại theo góp ý.`,
+      );
       agentReplied = true;
     } catch (error) {
-      appendMessage(taskId, {
-        role: "assistant",
-        content: `Lỗi khi agent phản hồi tự động: ${error.message}`,
-      });
+      appendComment(taskId, `Lỗi khi agent phản hồi tự động: ${error.message}`);
     }
   }
 
