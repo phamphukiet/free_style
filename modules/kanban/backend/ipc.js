@@ -7,7 +7,6 @@ const { updateTask } = require("./board/update-task");
 const { moveTask } = require("./board/move-task");
 const { approveTask } = require("./board/approve-task");
 const { rejectTask } = require("./board/reject-task");
-const { replyAsAgent } = require("./chat/agent-reply");
 const { runTask } = require("./chat/run-task");
 const agentStore = require("../../agent/backend/agent/store");
 
@@ -27,9 +26,14 @@ function registerKanbanIpc() {
     moveTask({ taskId, toColumnId, actor: "user" }),
   );
   ipcMain.handle("kanban:approve-task", (e, taskId) => approveTask(taskId));
-  ipcMain.handle("kanban:reject-task", (e, taskId, reason) =>
-    rejectTask(taskId, reason),
-  );
+    ipcMain.handle("kanban:reject-task", async (e, taskId) => {
+      try {
+        return await rejectTask(taskId);
+      } catch (err) {
+        console.error("[ipc] kanban:reject-task lỗi", err.stack || err);
+        throw err;
+      }
+    });
   ipcMain.handle("kanban:run-task", (event, taskId) => {
     const notify = (info) => {
       try {

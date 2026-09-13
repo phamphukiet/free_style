@@ -9,6 +9,7 @@ const { readState } = require("../../../../src/main/state");
 const MANAGER_ID = "manager";
 const AGENTS_DIR = ".vibe";
 const AGENTS_FILENAME = "agent.json";
+let memoryFallback = null;
 
 function getAgentsFile() {
   const { lastFolder } = readState();
@@ -18,7 +19,10 @@ function getAgentsFile() {
 
 function readAll() {
   const file = getAgentsFile();
-  if (!file) return ensureManager({}); // chưa mở project — vẫn có Manager mặc định, không ghi file
+  if (!file) {
+    if (!memoryFallback) memoryFallback = ensureManager({});
+    return memoryFallback;
+  }
   let data;
   try {
     data = JSON.parse(fs.readFileSync(file, "utf-8"));
@@ -30,10 +34,14 @@ function readAll() {
 
 function writeAll(data) {
   const file = getAgentsFile();
-  if (!file) return;
+  if (!file) {
+    memoryFallback = data;
+    return;
+  }
   try {
     fs.mkdirSync(path.dirname(file), { recursive: true });
     fs.writeFileSync(file, JSON.stringify(data, null, 2), "utf-8");
+    memoryFallback = null;
   } catch (err) {
     console.error("[agent/store] writeAll lỗi:", err);
     throw err;

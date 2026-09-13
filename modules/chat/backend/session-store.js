@@ -1,70 +1,101 @@
 // session-store.js
-// CRUD sessions lưu trong userData/chat-sessions.json.
-// Mỗi session: { id, agentId, title, messages[], tokenUsed, createdAt, updatedAt }
+// CRUD sessions, mỗi session = 1 file tại <project>/.vibe/session/<id>.json.
+// Thuộc về module chat; kanban chỉ gọi qua đây, không tự lưu trữ riêng.
+// Chưa mở project -> giữ tạm trong RAM, giống pattern agent/store.js.
 
-const { app } = require("electron");
 const path = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
+// const { readState } = require("../../src/main/state");
+const { readState } = require("../../../src/main/state");
+let memoryStore = {};
 
-const FILE = path.join(app.getPath("userData"), "chat-sessions.json");
-
-function readAll() {
-  try {
-    return JSON.parse(fs.readFileSync(FILE, "utf-8"));
-  } catch {
-    return {};
-  }
+function getSessionDir() {
+  const { lastFolder } = readState();
+  if (!lastFolder || !fs.existsSync(lastFolder)) return null;
+  return path.join(lastFolder, ".vibe", "session");
 }
 
-function writeAll(data) {
-  fs.writeFileSync(FILE, JSON.stringify(data, null, 2), "utf-8");
+function getSessionFile(id) {
+  const dir = getSessionDir();
+  return dir ? path.join(dir, `${id}.json`) : null;
 }
 
 function list() {
-  const data = readAll();
-  return Object.values(data).sort((a, b) => b.updatedAt - a.updatedAt);
+  const dir = getSessionDir();
+  if (!dir)
+    return Object.values(memoryStore).sort((a, b) => b.updatedAt - a.updatedAt);
+  if (!fs.existsSync(dir)) return [];
+  return fs
+    .readdirSync(dir)
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => {
+      try {
+        return JSON.parse(fs.readFileSync(path.join(dir, f), "utf-8"));
+      } catch {
+        return null;
+      }
+    })
+    .filter(Boolean)
+    .sort((a, b) => b.updatedAt - a.updatedAt);
 }
 
 function get(id) {
-  return readAll()[id] || null;
+  const file = getSessionFile(id);
+  if (!file) return memoryStore[id] || null;
+  try {
+    return JSON.parse(fs.readFileSync(file, "utf-8"));
+  } catch {
+    return null;
+  }
+}
+
+function writeOne(session) {
+  const file = getSessionFile(session.id);
+  if (!file) {
+    memoryStore[session.id] = session;
+    return;
+  }
+  fs.mkdirSync(path.dirname(file), { recursive: true });
+  fs.writeFileSync(file, JSON.stringify(session, null, 2), "utf-8");
+  delete memoryStore[session.id];
 }
 
 function save(session) {
-  const data = readAll();
   const id = session.id || crypto.randomUUID();
   const now = Date.now();
-  data[id] = {
+  const existing = get(id);
+  const next = {
     tokenUsed: 0,
     messages: [],
-    ...data[id],
+    ...existing,
     ...session,
     id,
     updatedAt: now,
-    createdAt: data[id]?.createdAt || now,
+    createdAt: existing?.createdAt || now,
   };
-  writeAll(data);
-  return data[id];
+  writeOne(next);
+  return next;
 }
 
 function remove(id) {
-  const data = readAll();
-  delete data[id];
-  writeAll(data);
+  const file = getSessionFile(id);
+  if (file && fs.existsSync(file)) fs.unlinkSync(file);
+  delete memoryStore[id];
   return true;
 }
 
 function appendMessage(id, msg, tokenDelta = 0) {
-  const data = readAll();
-  if (!data[id]) return null;
-  data[id].messages = [...(data[id].messages || []), msg];
-  data[id].tokenUsed = (data[id].tokenUsed || 0) + tokenDelta;
-  data[id].updatedAt = Date.now();
-  if (!data[id].title && msg.role === "user") {
-    data[id].title = msg.content.slice(0, 40);
+  const session = get(id);
+  if (!session) return null;
+  session.messages = [...(session.messages || []), msg];
+  session.tokenUsed = (session.tokenUsed || 0) + tokenDelta;
+  session.updatedAt = Date.now();
+  if (!session.title && msg.role === "user") {
+    session.title = msg.content.slice(0, 40);
   }
-  writeAll(data);
-  return data[id];
+  writeOne(session);
+  return session;
 }
 
 module.exports = { list, get, save, remove, appendMessage };

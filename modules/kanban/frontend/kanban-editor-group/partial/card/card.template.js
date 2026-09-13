@@ -51,8 +51,7 @@ export function cardTemplate(host, task) {
                 class="kb-btn reject"
                 @click=${(e) => {
                   e.stopPropagation();
-                  const reason = window.prompt("Lý do từ chối?") || "";
-                  host.handleReject(task.id, reason);
+                  host.handleReject(task.id);
                 }}
               >
                 Từ chối

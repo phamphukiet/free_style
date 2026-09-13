@@ -182,8 +182,7 @@ function getExposedApi() {
         ipcRenderer.invoke("kanban:move-task", taskId, toColumnId),
       approveTask: (taskId) =>
         ipcRenderer.invoke("kanban:approve-task", taskId),
-      rejectTask: (taskId, reason) =>
-        ipcRenderer.invoke("kanban:reject-task", taskId, reason),
+      rejectTask: (taskId) => ipcRenderer.invoke("kanban:reject-task", taskId),
       listAgents: () => ipcRenderer.invoke("kanban:list-agents"),
       updateTask: (taskId, patch) =>
         ipcRenderer.invoke("kanban:update-task", taskId, patch),

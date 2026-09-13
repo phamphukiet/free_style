@@ -69,6 +69,9 @@ class ChatPanelElement extends LitElement {
     );
     window.addEventListener("agents:changed", this._onAgentsChanged);
     window.addEventListener("workbench:folder-opened", this._onFolderOpened);
+    this._unsubKanban = window.api.kanban?.onChanged?.(() =>
+      sessionHandler.loadSessions(this),
+    );
   }
 
   disconnectedCallback() {
@@ -78,8 +81,10 @@ class ChatPanelElement extends LitElement {
     );
     window.removeEventListener("agents:changed", this._onAgentsChanged);
     window.removeEventListener("workbench:folder-opened", this._onFolderOpened);
+    this._unsubKanban?.();
     super.disconnectedCallback();
   }
+  
   _onCredChanged = () => keyLoader.loadKeys(this);
   _onAgentsChanged = () => agentLoader.loadAgents(this);
   _onFolderOpened = (e) => {

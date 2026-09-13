@@ -39,18 +39,21 @@ export const getEditorHandlers = (host) => ({
       toast(error.message);
     }
   },
-  handleReject: async (taskId, reason) => {
+  handleReject: async (taskId) => {
     try {
-      await window.api.kanban.rejectTask(taskId, reason);
+      await window.api.kanban.rejectTask(taskId);
       await host.reload();
+      toast("Đã chuyển về ON WORK — mở Chat để tiếp tục trao đổi.");
     } catch (error) {
       toast(error.message);
     }
   },
   handleRun: async (taskId) => {
+    console.log("[handleRun] click", { taskId });
     try {
       await window.api.kanban.runTask(taskId);
     } catch (error) {
+      console.error("[handleRun] lỗi", error);
       toast(error.message);
     }
   },

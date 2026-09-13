@@ -24,8 +24,6 @@ function registerWindowIpcWrapper() {
     } = require("../../modules/api/gemini/backend/index.js");
     registerChatGptBackend();
     registerGeminiBackend();
-    registerCodexBackend();
-    registerAntigravityBackend();
   } catch (e) {
     console.error("Failed to load api backends", e);
   }
@@ -73,14 +71,13 @@ function registerWindowIpcWrapper() {
     console.error("Failed to load rule backend", e);
   }
 
-  try {
-    const {
-      registerKanbanBackend,
-    } = require("../../modules/kanban/backend/index.js");
-    registerKanbanBackend();
-  } catch (e) {
-    console.error("Failed to load kanban backend", e);
-  }
+    try {
+      const {
+        registerKanbanBackend,
+      } = require("../../modules/kanban/backend/index.js");
+      registerKanbanBackend();
+    } catch (e) {
+    console.error("Failed to load kanban backend", e.stack || e);    }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };
