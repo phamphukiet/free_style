@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { taskFormFieldsTemplate } from "../kanban-editor-group/partial/task-form-fields.template.js";
+import { taskFormFieldsTemplate } from "../task_form/task-form-fields.template.js";
 
 export function taskDetailTemplate(host) {
   return html`

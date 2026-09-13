@@ -1,7 +1,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { createTaskModalTemplate } from "./create-task-modal.template.js";
 import ownStyles from "./create-task-modal.css?inline";
-import formStyles from "../kanban-editor-group/partial/task-form-fields.css?inline";
+import formStyles from "../task_form/task-form-fields.css?inline";
 
 const MANAGER_ID = "manager";
 

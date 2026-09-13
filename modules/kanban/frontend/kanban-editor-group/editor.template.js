@@ -1,7 +1,7 @@
 import { html } from "lit";
 import { COLUMNS } from "../columns.js";
 import { columnTemplate } from "./partial/column.template.js";
-import { ALLModalTemplate } from "./partial/ALL-modal.template.js";
+import { ALLModalTemplate } from "./partial/all-modal.template.js";
 import { agentColor } from "./partial/agent-color.js";
 import "./partial/task-detail/task-detail.js";
 

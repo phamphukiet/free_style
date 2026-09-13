@@ -1,5 +1,5 @@
 import { html } from "lit";
-import { agentColor } from "./agent-color.js";
+import { agentColor } from "../agent-color.js";
 
 export function taskFormFieldsTemplate(host) {
   return html`

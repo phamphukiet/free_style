@@ -1,7 +1,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { taskDetailTemplate } from "./task-detail.template.js";
 import styles from "./task-detail.css?inline";
-import formStyles from "../kanban-editor-group/partial/task-form-fields.css?inline";
+import formStyles from "../task_form/task-form-fields.css?inline";
 
 class KanbanTaskDetailElement extends LitElement {
   static styles = [unsafeCSS(styles), unsafeCSS(formStyles)];
