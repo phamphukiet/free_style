@@ -11,6 +11,22 @@ const { getToolSpecs, executeAiTool } = require("./ai-tools");
 const sessionStore = require("../session-store");
 const { buildHistoryPrompt } = require("./history");
 
+function loadTodoPrompt() {
+  try {
+    return require("../../../dedupe_level/todo/backend/prompt.js")
+      .renderTodoPrompt;
+  } catch {
+    return null;
+  }
+}
+function loadDedupe() {
+  try {
+    return require("../../../dedupe_level/dedupe/index.js");
+  } catch {
+    return null;
+  }
+}
+
 async function handleSend(
   { message, providerId, keyId, model, agentId, sessionId },
   notify,
@@ -56,9 +72,11 @@ async function handleSend(
   try {
     let content,
       tokenUsed = 0;
+    const renderTodoPrompt = loadTodoPrompt();
     const systemPrompt = [
       buildSystemPrompt(agentId),
       buildHistoryPrompt(history),
+      renderTodoPrompt ? renderTodoPrompt(sessionId) : "",
     ]
       .filter(Boolean)
       .join("\n\n");
@@ -68,10 +86,8 @@ async function handleSend(
         systemPrompt,
         toolSpecs: getToolSpecs(),
         executeToolCall: (name, args) =>
-          executeAiTool(name, args, { agentId, notify }),
+          executeAiTool(name, args, { agentId, notify, sessionId }),
       });
-      content = typeof raw === "object" ? (raw.content ?? raw) : raw;
-      tokenUsed = raw?.usage?.totalTokens ?? 0;
     } else {
       const raw = await sendMessage(
         apiKey,
