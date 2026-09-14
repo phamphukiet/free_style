@@ -34,14 +34,19 @@ function registerKanbanIpc() {
         throw err;
       }
     });
-  ipcMain.handle("kanban:run-task", (event, taskId) => {
-    const notify = (info) => {
-      try {
-        event.sender.send("rule:ai-changed", info);
-      } catch {}
-    };
-    return runTask(taskId, notify);
-  });
+    ipcMain.handle("kanban:run-task", (event, taskId) => {
+      console.log(
+        "[ipc] kanban:run-task gọi lúc",
+        Date.now(),
+        new Error().stack,
+      );
+      const notify = (info) => {
+        try {
+          event.sender.send("rule:ai-changed", info);
+        } catch {}
+      };
+      return runTask(taskId, notify);
+    });
   ipcMain.handle("kanban:list-agents", () => agentStore.list());
 }
 

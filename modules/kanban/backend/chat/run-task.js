@@ -25,11 +25,11 @@ function summarize(text) {
 }
 
 async function runTask(taskId, notify) {
+  console.log("[run-task] bắt đầu", taskId, Date.now());
   const task = getTask(taskId);
   if (!task) throw new Error("Task không tồn tại.");
   if (!task.agentId) throw new Error("Task chưa gán agent.");
   if (task.running) throw new Error("Task đang chạy, vui lòng đợi.");
-
   if (task.columnId !== "agent_working") {
     const moved = moveTask({
       taskId,
@@ -38,7 +38,6 @@ async function runTask(taskId, notify) {
     });
     if (moved.blocked) throw new Error(moved.message);
   }
-
   const sessionStore = require("../../../chat/backend/session-store");
   const { ensureSession } = require("./task-session");
   const session = ensureSession(taskId);

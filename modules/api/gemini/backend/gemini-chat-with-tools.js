@@ -43,12 +43,15 @@ async function chatWithTools(
     const data = await response.json();
     const parts = data.candidates?.[0]?.content?.parts || [];
     const call = parts.find((p) => p.functionCall);
-
+      console.log(
+        `[gemini-tools][${callId}] bắt đầu lượt mới`,
+        new Error().stack,
+      );
     if (!call)
       return parts.map((p) => p.text || "").join("") || "(không có phản hồi)";
 
     console.log(
-      `[gemini-tools] step ${step}: gọi "${call.functionCall.name}"`,
+      `[gemini-tools][${callId}] step ${step}: gọi "${call.functionCall.name}"`,
       call.functionCall.args,
     );
     contents.push({ role: "model", parts: [call] });
