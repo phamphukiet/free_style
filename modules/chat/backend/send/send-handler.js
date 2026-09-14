@@ -10,18 +10,11 @@ const {
 const { getToolSpecs, executeAiTool } = require("./ai-tools");
 const sessionStore = require("../session-store");
 const { buildHistoryPrompt } = require("./history");
+const { buildToolExecutor } = require("./tool-executor");
 
 function loadTodoPrompt() {
   try {
-    return require("../../../dedupe_level/todo/backend/prompt.js")
-      .renderTodoPrompt;
-  } catch {
-    return null;
-  }
-}
-function loadDedupe() {
-  try {
-    return require("../../../dedupe_level/dedupe/index.js");
+    return require("../../../dedupe_level/todo/prompt.js").renderTodoPrompt;
   } catch {
     return null;
   }
@@ -85,9 +78,9 @@ async function handleSend(
       const raw = await toolSend(apiKey, message, resolvedModel, {
         systemPrompt,
         toolSpecs: getToolSpecs(),
-        executeToolCall: (name, args) =>
-          executeAiTool(name, args, { agentId, notify, sessionId }),
+        executeToolCall: buildToolExecutor({ agentId, notify, sessionId }),
       });
+      content = typeof raw === "object" ? (raw.content ?? raw) : raw;
     } else {
       const raw = await sendMessage(
         apiKey,

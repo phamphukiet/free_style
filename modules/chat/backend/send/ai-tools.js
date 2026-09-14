@@ -46,7 +46,7 @@ function loadKanbanBridge() {
 
 function loadTodoBridge() {
   try {
-    return require("../../../dedupe_level/todo/backend/tool/index.js");
+    return require("../../../dedupe_level/todo/tool/index.js");
   } catch {
     return null;
   }
@@ -71,7 +71,7 @@ function getToolSpecs() {
   return specs;
 }
 
-async function executeAiTool(name, args, { agentId, notify } = {}) {
+async function executeAiTool(name, args, { agentId, notify, sessionId } = {}) {
   if (name === "settings") {
     const bridge = loadSettingsBridge();
     if (!bridge) throw new Error("Settings module không khả dụng");
