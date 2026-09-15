@@ -1,13 +1,28 @@
 const { toGeminiTool } = require("./gemini-tool-schema");
-
+const { fetchWithRetry } = require("./retry");
 const MAX_STEPS = 4;
 
-const LOOP_GUIDE = "";
-  // "Quy tắc dùng tool: sau mỗi kết quả, tự đánh giá ngay trong lượt đó. " +
-  // 'Nếu đã đủ để hoàn thành yêu cầu, trả lời text bắt đầu bằng "HOÀN THÀNH:" và dừng, ' +
-  // "không gọi thêm tool. Nếu cần hỏi người dùng để làm rõ, trả lời text bắt đầu bằng " +
-  // '"CẦN HỎI:" và dừng. Chỉ gọi tool tiếp khi chắc chắn còn việc rõ ràng phải làm. ' +
-  // "Không đọc lại file/folder đã đọc trong cùng lượt này.";
+const LOOP_GUIDE =
+  "Chỉ gọi tool khi thực sự cần thiết để hoàn thành đúng yêu cầu hiện tại của người dùng. " +
+  "Không tự ý gọi tool ngoài phạm vi được hỏi (VD: không gọi kanban nếu người dùng không nhắc tới kanban/task board). " +
+  "Không gọi lại tool với cùng tham số đã dùng trong lượt này.";
+
+async function runOneCall(call, executeToolCall, step) {
+  const { name, args = {} } = call.functionCall;
+  try {
+    const result = await executeToolCall(name, args);
+    console.log(
+      `[gemini-tools] step ${step + 1}: tool "${name}" trả kết quả OK${result?._cacheNote ? " (từ cache)" : result?._dedupeNote ? " (dedupe trùng)" : ""}`,
+    );
+    return { functionResponse: { name, response: result } };
+  } catch (error) {
+    console.log(
+      `[gemini-tools] step ${step + 1}: tool "${name}" lỗi`,
+      error.message,
+    );
+    return { functionResponse: { name, response: { error: error.message } } };
+  }
+}
 
 async function chatWithTools(
   apiKey,
@@ -24,68 +39,49 @@ async function chatWithTools(
     ? { parts: [{ text: fullPrompt }] }
     : undefined;
 
-  for (let step = 0; step < MAX_STEPS; step++) {
-    const isLastStep = step === MAX_STEPS - 1;
-    const body = { contents, systemInstruction };
-    if (!isLastStep) body.tools = tools; // bước cuối: ép trả lời text, không cho gọi tool nữa
-
-    console.log(
-      `[gemini-tools] step ${step + 1}/${MAX_STEPS} → gửi request${isLastStep ? " (bước cuối, ép trả text)" : ""}`,
-    );
-
-    const response = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body),
-    });
-    if (!response.ok) {
-      const err = await response.json().catch(() => ({}));
-      console.log(
-        `[gemini-tools] step ${step + 1}: lỗi HTTP ${response.status}`,
-      );
-      throw new Error(
-        err?.error?.message || `Lỗi API Gemini (${response.status})`,
-      );
-    }
-    const data = await response.json();
-    const parts = data.candidates?.[0]?.content?.parts || [];
-    const call = parts.find((p) => p.functionCall);
-    if (!call) {
-      const text =
-        parts.map((p) => p.text || "").join("") || "(không có phản hồi)";
-      console.log(
-        `[gemini-tools] step ${step + 1}: model trả TEXT (dừng loop) → "${text.slice(0, 80)}${text.length > 80 ? "..." : ""}"`,
-      );
-      return text;
-    }
-    console.log(
-      `[gemini-tools] step ${step + 1}: model gọi tool "${call.functionCall.name}" args=${JSON.stringify(call.functionCall.args || {})}`,
-    );
-    contents.push({ role: "model", parts: [call] });
-
-    let result;
-    try {
-      result = await executeToolCall(
-        call.functionCall.name,
-        call.functionCall.args || {},
-      );
-      console.log(
-        `[gemini-tools] step ${step + 1}: tool trả kết quả OK${result?._cacheNote ? " (từ cache)" : result?._dedupeNote ? " (dedupe trùng)" : ""}`,
-      );
-    } catch (error) {
-      result = { error: error.message };
-      console.log(`[gemini-tools] step ${step + 1}: lỗi`, error.message);
-    }
-
-    contents.push({
-      role: "user",
-      parts: [
+    for (let step = 0; step < MAX_STEPS; step++) {
+      const body = { contents, systemInstruction, tools };
+      console.log(`[gemini-tools] step ${step + 1}/${MAX_STEPS} → gửi request`);
+    
+      const response = await fetchWithRetry(
+        url,
         {
-          functionResponse: { name: call.functionCall.name, response: result },
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
         },
-      ],
-    });
-  }
+        `step ${step + 1}`,
+      );
+      if (!response.ok) {
+        const err = await response.json().catch(() => ({}));
+        console.log(
+          `[gemini-tools] step ${step + 1}: lỗi HTTP ${response.status}`,
+        );
+        throw new Error(
+          err?.error?.message || `Lỗi API Gemini (${response.status})`,
+        );
+      }
+      const data = await response.json();
+      const parts = data.candidates?.[0]?.content?.parts || [];
+      const calls = parts.filter((p) => p.functionCall);
+      if (calls.length === 0) {
+        const text =
+          parts.map((p) => p.text || "").join("") || "(không có phản hồi)";
+        console.log(
+          `[gemini-tools] step ${step + 1}: model trả TEXT (dừng loop) → "${text.slice(0, 80)}${text.length > 80 ? "..." : ""}"`,
+        );
+        return text;
+      }
+      console.log(
+        `[gemini-tools] step ${step + 1}: model gọi ${calls.length} tool: ${calls.map((c) => c.functionCall.name).join(", ")}`,
+      );
+      contents.push({ role: "model", parts: calls });
+
+      const responseParts = await Promise.all(
+        calls.map((call) => runOneCall(call, executeToolCall, step)),
+      );
+      contents.push({ role: "user", parts: responseParts });
+    }
 
   console.log(
     `[gemini-tools] hết ${MAX_STEPS} step, chưa có text trả lời cuối`,
