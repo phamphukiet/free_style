@@ -13,6 +13,8 @@ function safeRequire(path) {
 }
 
 module.exports = {
-  dedupe: safeRequire("./dedupe/index.js"),
-  todo: safeRequire("./todo/tool/index.js"),
+  level01Dedupe: safeRequire("./level_01_dedupe/index.js"),
+  level02Cache: safeRequire("./level_02_cache/index.js"),
+  level03Todo: safeRequire("./level_03_todo/tool/index.js"),
+  level04Continuation: safeRequire("./level_04_continuation/index.js"),
 };

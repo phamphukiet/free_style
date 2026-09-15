@@ -1,13 +1,18 @@
-// tool-executor.js
-// Trách nhiệm duy nhất: build executeToolCall cho toolSend, tự bọc dedupe
-
 const { executeAiTool } = require("./ai-tools");
-const { dedupe } = require("../../../dedupe_level/index.js");
+const {
+  level01Dedupe,
+  level02Cache,
+} = require("../../../dedupe_level/index.js");
 
 function buildToolExecutor({ agentId, notify, sessionId }) {
   const rawExecute = (name, args) =>
     executeAiTool(name, args, { agentId, notify, sessionId });
-  return dedupe ? dedupe.wrapToolExecutor(rawExecute) : rawExecute;
+
+  const cached = level02Cache
+    ? level02Cache.wrapToolExecutor(rawExecute, sessionId)
+    : rawExecute;
+
+  return level01Dedupe ? level01Dedupe.wrapToolExecutor(cached) : cached;
 }
 
 module.exports = { buildToolExecutor };

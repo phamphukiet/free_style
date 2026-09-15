@@ -46,7 +46,7 @@ function loadKanbanBridge() {
 
 function loadTodoBridge() {
   try {
-    return require("../../../dedupe_level/todo/tool/index.js");
+    return require("../../../dedupe_level/level_03_todo/tool/index.js");
   } catch {
     return null;
   }

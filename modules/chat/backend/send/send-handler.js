@@ -14,7 +14,16 @@ const { buildToolExecutor } = require("./tool-executor");
 
 function loadTodoPrompt() {
   try {
-    return require("../../../dedupe_level/todo/prompt.js").renderTodoPrompt;
+    return require("../../../dedupe_level/level_03_todo/prompt.js")
+      .renderTodoPrompt;
+  } catch {
+    return null;
+  }
+}
+
+function loadContinuation() {
+  try {
+    return require("../../../dedupe_level/level_04_continuation/index.js");
   } catch {
     return null;
   }
@@ -75,11 +84,31 @@ async function handleSend(
       .join("\n\n");
 
     if (toolSend) {
-      const raw = await toolSend(apiKey, message, resolvedModel, {
+      const continuation = loadContinuation();
+      const buildOpts = () => ({
         systemPrompt,
         toolSpecs: getToolSpecs(),
         executeToolCall: buildToolExecutor({ agentId, notify, sessionId }),
       });
+
+      const result = continuation
+        ? await continuation.runWithContinuation(
+            toolSend,
+            apiKey,
+            resolvedModel,
+            buildOpts,
+            message,
+          )
+        : {
+            content: await toolSend(
+              apiKey,
+              message,
+              resolvedModel,
+              buildOpts(),
+            ),
+          };
+
+      const raw = result.content;
       content = typeof raw === "object" ? (raw.content ?? raw) : raw;
     } else {
       const raw = await sendMessage(
