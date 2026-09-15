@@ -36,21 +36,21 @@ function loadSkillBridge() {
   }
 }
 
-function loadKanbanBridge() {
-  try {
-    return require("../../../kanban/backend/tool/tool-bridge.js");
-  } catch {
-    return null;
-  }
-}
+// function loadKanbanBridge() {
+//   try {
+//     return require("../../../kanban/backend/tool/tool-bridge.js");
+//   } catch {
+//     return null;
+//   }
+// }
 
-function loadTodoBridge() {
-  try {
-    return require("../../../dedupe_level/level_03_todo/tool/index.js");
-  } catch {
-    return null;
-  }
-}
+// function loadTodoBridge() {
+//   try {
+//     return require("../../../dedupe_level/level_03_todo/tool/index.js");
+//   } catch {
+//     return null;
+//   }
+// }
 
 function getToolSpecs() {
   const specs = [];
@@ -64,10 +64,10 @@ function getToolSpecs() {
   if (filesBridge) specs.push(filesBridge.getToolSpec());
   const skillBridge = loadSkillBridge();
   if (skillBridge) specs.push(skillBridge.getToolSpec());
-  const kanbanBridge = loadKanbanBridge();
-  if (kanbanBridge) specs.push(kanbanBridge.getToolSpec());
-  const todoBridge = loadTodoBridge();
-  if (todoBridge) specs.push(todoBridge.getToolSpec());
+  // const kanbanBridge = loadKanbanBridge();
+  // if (kanbanBridge) specs.push(kanbanBridge.getToolSpec());
+  // const todoBridge = loadTodoBridge();
+  // if (todoBridge) specs.push(todoBridge.getToolSpec());
   return specs;
 }
 
@@ -105,21 +105,21 @@ async function executeAiTool(name, args, { agentId, notify, sessionId } = {}) {
     }
     return result;
   }
-  if (name === "kanban") {
-    const bridge = loadKanbanBridge();
-    if (!bridge) throw new Error("Kanban module không khả dụng");
-    return bridge.execute(args.action, args, agentId);
-  }
+  // if (name === "kanban") {
+  //   const bridge = loadKanbanBridge();
+  //   if (!bridge) throw new Error("Kanban module không khả dụng");
+  //   return bridge.execute(args.action, args, agentId);
+  // }
   if (name === "files") {
     const bridge = loadFilesBridge();
     if (!bridge) throw new Error("Files module không khả dụng");
     return bridge.execute(args.action, args);
   }
-  if (name === "todo") {
-    const bridge = loadTodoBridge();
-    if (!bridge) throw new Error("Todo module không khả dụng");
-    return bridge.execute(args.action, args, sessionId);
-  }
+  // if (name === "todo") {
+  //   const bridge = loadTodoBridge();
+  //   if (!bridge) throw new Error("Todo module không khả dụng");
+  //   return bridge.execute(args.action, args, sessionId);
+  // }
 
   throw new Error(`Tool "${name}" không tồn tại`);
 }

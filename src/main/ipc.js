@@ -71,13 +71,13 @@ function registerWindowIpcWrapper() {
     console.error("Failed to load rule backend", e);
   }
 
-    try {
-      const {
-        registerKanbanBackend,
-      } = require("../../modules/kanban/backend/index.js");
-      registerKanbanBackend();
-    } catch (e) {
-    console.error("Failed to load kanban backend", e.stack || e);    }
+    // try {
+    //   const {
+    //     registerKanbanBackend,
+    //   } = require("../../modules/kanban/backend/index.js");
+    //   registerKanbanBackend();
+    // } catch (e) {
+    // console.error("Failed to load kanban backend", e.stack || e);    }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };

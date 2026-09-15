@@ -2,7 +2,7 @@
 // Trách nhiệm duy nhất: gọi Google Gemini API (generateContent + listModels).
 
 async function chatCompletion(apiKey, message, model, systemPrompt = "") {
-  const modelId = model || "gemini-1.5-flash";
+  const modelId = model || "gemini-2.5-flash";
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
   const body = { contents: [{ parts: [{ text: message }] }] };
   if (systemPrompt)
