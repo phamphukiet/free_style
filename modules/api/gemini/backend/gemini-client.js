@@ -1,9 +1,8 @@
-// gemini-client.js
-// Trách nhiệm duy nhất: gọi Google Gemini API (generateContent + listModels).
+const { generateContentUrl } = require("./const");
+const { listModelsUrl } = require("./const");
 
 async function chatCompletion(apiKey, message, model, systemPrompt = "") {
-  const modelId = model || "gemini-2.5-flash";
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent?key=${apiKey}`;
+  const url = generateContentUrl(model, apiKey);
   const body = { contents: [{ parts: [{ text: message }] }] };
   if (systemPrompt)
     body.systemInstruction = { parts: [{ text: systemPrompt }] };
@@ -35,7 +34,7 @@ function extractVersion(id) {
 }
 
 async function listModels(apiKey) {
-  const url = `https://generativelanguage.googleapis.com/v1beta/models?key=${apiKey}`;
+  const url = listModelsUrl(apiKey);
   const response = await fetch(url);
 
   if (!response.ok) {

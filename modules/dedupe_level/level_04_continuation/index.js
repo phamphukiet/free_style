@@ -1,2 +1,3 @@
 const { runWithContinuation } = require("./resume");
-module.exports = { runWithContinuation };
+const { buildContinuationGuide } = require("./prompt");
+module.exports = { runWithContinuation, buildContinuationGuide };

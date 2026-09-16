@@ -85,8 +85,13 @@ async function handleSend(
 
     if (toolSend) {
       const continuation = loadContinuation();
+      const fullSystemPrompt = continuation
+        ? [systemPrompt, continuation.buildContinuationGuide()]
+            .filter(Boolean)
+            .join("\n\n")
+        : systemPrompt;
       const buildOpts = () => ({
-        systemPrompt,
+        systemPrompt: fullSystemPrompt,
         toolSpecs: getToolSpecs(),
         executeToolCall: buildToolExecutor({ agentId, notify, sessionId }),
       });
