@@ -1,7 +1,4 @@
 // workbench.js
-// Điểm ghép nối DUY NHẤT — import side-effect để đăng ký toàn bộ custom element.
-// Lit tự lo lifecycle qua connectedCallback, không cần gọi tay hàm init().
-
 import "./parts/titlebar/titlebar.js";
 import "./parts/activitybar/activitybar.js";
 import "./parts/sidebar/sidebar.js";
@@ -10,18 +7,18 @@ import "./parts/panel/panel.js";
 import "./parts/statusbar/statusbar.js";
 import "./parts/rightsidebar/rightsidebar.js";
 import "./parts/toast/toast.js";
-
-// Load modules
-import "@modules/api/frontend/index.js";
-import "@modules/editor/frontend/index.js";
-import "@modules/providers/frontend/index.js";
-import "@modules/chat/frontend/index.js";
-import "@modules/terminal/frontend/index.js";
-import "@modules/settings/frontend/index.js";
-import "@modules/agent/frontend/index.js";
-import "@modules/skill/frontend/index.js";
-import "@modules/rule/frontend/index.js";
-// import "@modules/kanban/frontend/index.js";
-
 import { loadLastFolder } from "@shared/folder-actions.js";
-loadLastFolder();
+
+const moduleEntries = import.meta.glob("@modules/*/frontend/index.js");
+
+async function bootModules() {
+  const activeIds = (await window.api.modules.active()) || [];
+  await Promise.all(
+    activeIds.map((id) =>
+      moduleEntries[`/modules/${id}/frontend/index.js`]?.(),
+    ),
+  );
+  loadLastFolder();
+}
+
+bootModules();

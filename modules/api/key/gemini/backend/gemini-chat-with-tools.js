@@ -1,5 +1,5 @@
 const { toGeminiTool } = require("./gemini-tool-schema");
-const { fetchWithRetry } = require("./retry");
+const { fetchWithRetry } = require("../../../backend/retry");
 const { DEFAULT_MODEL, generateContentUrl, MAX_STEPS } = require("./const");
 
 async function runOneCall(call, executeToolCall, step) {

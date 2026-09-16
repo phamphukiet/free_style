@@ -16,6 +16,7 @@ const channels = {
   FS_RENAME: "fs:rename",
   FS_DELETE: "fs:delete",
   FS_COPY: "fs:copy",
+  MODULES_ACTIVE: "modules:active",
   TERMINAL_CREATE: "terminal:create",
   TERMINAL_WRITE: "terminal:write",
   TERMINAL_RESIZE: "terminal:resize",
@@ -193,6 +194,9 @@ function getExposedApi() {
         ipcRenderer.on("kanban:changed", listener);
         return () => ipcRenderer.removeListener("kanban:changed", listener);
       },
+    },
+    modules: {
+      active: () => ipcRenderer.invoke(channels.MODULES_ACTIVE),
     },
   };
 }

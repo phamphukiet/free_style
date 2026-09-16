@@ -2,12 +2,8 @@
 // Trách nhiệm duy nhất: đăng ký tất cả các IPC handlers.
 // Đã được tách nhỏ thành các file trong thư mục ipc/ để đảm bảo rule < 100 dòng.
 
-const { registerWindowIpc } = require("./ipc/window");
-const { registerFsIpc } = require("./ipc/fs");
-const { registerTerminalIpc } = require("./ipc/terminal");
-const { registerCredentialsIpc } = require("./ipc/credentials/index.js");
-const { app } = require("electron");
-const { registerSystemIpc } = require("./ipc/open_link.js");
+const activeModules = require("../../modules/active-modules.js");
+const { registerModulesIpc } = require("./ipc/modules-flags.js");
 
 function registerWindowIpcWrapper() {
   registerWindowIpc();
@@ -15,69 +11,15 @@ function registerWindowIpcWrapper() {
   registerTerminalIpc();
   registerSystemIpc();
   registerCredentialsIpc();
-  try {
-    const {
-      registerChatGptBackend,
-    } = require("../../modules/api/chatgpt/backend/index.js");
-    const {
-      registerGeminiBackend,
-    } = require("../../modules/api/gemini/backend/index.js");
-    registerChatGptBackend();
-    registerGeminiBackend();
-  } catch (e) {
-    console.error("Failed to load api backends", e);
-  }
-  try {
-    const {
-      registerChatBackend,
-    } = require("../../modules/chat/backend/index.js");
-    registerChatBackend();
-  } catch (e) {
-    console.error("Failed to load chat backend", e);
-  }
+  registerModulesIpc();
 
-  try {
-    const {
-      registerSettingsBackend,
-    } = require("../../modules/settings/backend/index.js");
-    registerSettingsBackend();
-  } catch (e) {
-    console.error("Failed to load settings backend", e);
+  for (const id of activeModules) {
+    try {
+      require(`../../modules/${id}/backend/index.js`).register?.();
+    } catch (e) {
+      console.error(`Failed to load "${id}" backend`, e);
+    }
   }
-
-  try {
-    const {
-      registerAgentBackend,
-    } = require("../../modules/agent/backend/index.js");
-    registerAgentBackend();
-  } catch (e) {
-    console.error("Failed to load agent backend", e);
-  }
-
-  try {
-    const {
-      registerSkillBackend,
-    } = require("../../modules/skill/backend/index.js");
-    registerSkillBackend();
-  } catch (e) {
-    console.error("Failed to load skill backend", e);
-  }
-  try {
-    const {
-      registerRuleBackend,
-    } = require("../../modules/rule/backend/index.js");
-    registerRuleBackend();
-  } catch (e) {
-    console.error("Failed to load rule backend", e);
-  }
-
-    // try {
-    //   const {
-    //     registerKanbanBackend,
-    //   } = require("../../modules/kanban/backend/index.js");
-    //   registerKanbanBackend();
-    // } catch (e) {
-    // console.error("Failed to load kanban backend", e.stack || e);    }
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };

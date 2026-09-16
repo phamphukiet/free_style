@@ -1,7 +1,3 @@
-// registry.js
-// Nơi đăng ký các thành phần giao diện (UI parts) từ các module.
-// Giúp nới lỏng sự phụ thuộc (loose coupling) giữa các thành phần.
-
 class Registry {
   constructor() {
     this.activitybarItems = []; // { id, icon, title }
