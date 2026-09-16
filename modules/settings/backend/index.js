@@ -5,9 +5,9 @@ const { registerSettingsIpc } = require("./ipc");
 const aiBridge = require("./ai-bridge");
 const { loadRootAiExtensions } = require("./loader");
 
-function registerSettingsBackend() {
+function register() {
   registerSettingsIpc();
   loadRootAiExtensions();
 }
 
-module.exports = { registerSettingsBackend, aiBridge };
+module.exports = { register, aiBridge };

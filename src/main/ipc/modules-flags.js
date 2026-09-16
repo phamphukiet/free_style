@@ -7,7 +7,10 @@ const channels = require("../../../shared/ipc-channels");
 const activeModules = require("../../../modules/active-modules.js");
 
 function registerModulesIpc() {
-  ipcMain.handle(channels.MODULES_ACTIVE, () => activeModules);
+  ipcMain.handle(channels.MODULES_ACTIVE, () => {
+    console.log("[main/modules-flags] renderer gọi modules:active →", activeModules);
+    return activeModules;
+  });
 }
 
 module.exports = { registerModulesIpc };

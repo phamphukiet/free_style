@@ -1,3 +1,3 @@
 import "./api-editor-group/manager/api-key-manager.js";
-import "../chatgpt/frontend/index.js";
-import "../gemini/frontend/index.js";
+import "../key/chatgpt/frontend/index.js";
+import "../key/gemini/frontend/index.js";

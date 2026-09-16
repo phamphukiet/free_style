@@ -1,7 +1,7 @@
 // index.js
 // Điểm export duy nhất — src/main/ipc.js chỉ cần gọi registerAgentBackend().
 
-function registerAgentBackend() {
+function register() {
   try {
     require("./agent/ipc").registerAgentIpc();
   } catch (e) {
@@ -9,4 +9,4 @@ function registerAgentBackend() {
   }
 }
 
-module.exports = { registerAgentBackend };
+module.exports = { register };

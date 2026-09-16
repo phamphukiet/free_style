@@ -1,8 +1,8 @@
 // index.js
 const { registerSkillIpc } = require("./ipc");
 
-function registerSkillBackend() {
+function register() {
   registerSkillIpc();
 }
 
-module.exports = { registerSkillBackend };
+module.exports = { register };

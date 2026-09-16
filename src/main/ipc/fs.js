@@ -51,10 +51,6 @@ function registerFsIpc() {
   ipcMain.handle(channels.FS_COPY, (event, sourcePath, destPath) => {
     fs.cpSync(sourcePath, destPath, { recursive: true });
   });
-
-  const { readTextFile, writeTextFile } = require("../../../modules/editor/backend/editor");
-  ipcMain.handle("fs:read-file", (event, filePath) => readTextFile(filePath));
-  ipcMain.handle("fs:write-file", (event, filePath, content) => writeTextFile(filePath, content));
 }
 
 module.exports = { registerFsIpc };

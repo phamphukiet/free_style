@@ -1,21 +1,28 @@
-// ipc.js
-// Trách nhiệm duy nhất: đăng ký tất cả các IPC handlers.
-// Đã được tách nhỏ thành các file trong thư mục ipc/ để đảm bảo rule < 100 dòng.
-
+const { app } = require("electron");
 const activeModules = require("../../modules/active-modules.js");
 const { registerModulesIpc } = require("./ipc/modules-flags.js");
+const { registerWindowIpc } = require("./ipc/window.js");
+const { registerFsIpc } = require("./ipc/fs.js");
+const { registerSystemIpc } = require("./ipc/open_link.js");
+const { registerCredentialsIpc } = require("./ipc/credentials/index.js");
 
 function registerWindowIpcWrapper() {
   registerWindowIpc();
   registerFsIpc();
-  registerTerminalIpc();
   registerSystemIpc();
   registerCredentialsIpc();
   registerModulesIpc();
+  console.log("[main/ipc] activeModules:", activeModules);
 
   for (const id of activeModules) {
     try {
-      require(`../../modules/${id}/backend/index.js`).register?.();
+      const mod = require(`../../modules/${id}/backend/index.js`);
+      if (typeof mod.register !== "function") {
+        console.warn(`[main/ipc] Module "${id}" không export "register"`);
+      } else {
+        mod.register();
+        console.log(`[main/ipc] Module "${id}" backend register() OK`);
+      }
     } catch (e) {
       console.error(`Failed to load "${id}" backend`, e);
     }

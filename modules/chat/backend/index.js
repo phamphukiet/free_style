@@ -7,7 +7,7 @@ const sessionStore = require("./session-store");
 const { calcDirSize } = require("./project/dir-size");
 const { handleSend } = require("./send/send-handler");
 
-function registerChatBackend() {
+function register() {
   // Session IPC
   ipcMain.handle("chat:session-list", () => sessionStore.list());
   ipcMain.handle("chat:session-get", (_, id) => sessionStore.get(id));
@@ -40,4 +40,4 @@ function registerChatBackend() {
   });
 }
 
-module.exports = { registerChatBackend };
+module.exports = { register };

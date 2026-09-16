@@ -1,8 +1,8 @@
 // index.js
 const { registerKanbanIpc } = require("./ipc");
 
-function registerKanbanBackend() {
+function register() {
   registerKanbanIpc();
 }
 
-module.exports = { registerKanbanBackend };
+module.exports = { register };

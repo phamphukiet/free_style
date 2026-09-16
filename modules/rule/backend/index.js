@@ -1,8 +1,8 @@
 // index.js
 const { registerRuleIpc } = require("./ipc");
 
-function registerRuleBackend() {
+function register() {
   registerRuleIpc();
 }
 
-module.exports = { registerRuleBackend };
+module.exports = { register };
