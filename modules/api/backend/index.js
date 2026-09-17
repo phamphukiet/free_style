@@ -13,10 +13,14 @@ function register() {
 
     if (!fs.existsSync(backend)) continue;
 
-    const module = require(backend);
-
-    if (typeof module.register === "function") {
-      module.register();
+    try {
+      const module = require(backend);
+      if (typeof module.register === "function") {
+        module.register();
+        console.log(`[api/backend] Provider "${name}" register() OK`);
+      }
+    } catch (e) {
+      console.error(`[api/backend] Provider "${name}" register() LỖI:`, e);
     }
   }
 }

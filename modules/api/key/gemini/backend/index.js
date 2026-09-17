@@ -3,13 +3,9 @@
 // modules/api/backend/provider-factory.js. Gemini không cần validate riêng
 // (dùng mặc định: gọi thử listModels).
 
-const { registerProvider } = require("../../../backend/provider-factory.js");
-const {
-  chatCompletion,
-  listModels,
-  chatWithTools,
-} = require("./gemini-client.js");
-const { MAX_FILE_MB } = require("./const/index.js");
+const { chatCompletion, listModels } = require("./gemini-client.js");
+const { chatWithTools } = require("./gemini-tools.js");
+const { MAX_FILE_MB } = require("./const.js");
 
 function register() {
   registerProvider({
