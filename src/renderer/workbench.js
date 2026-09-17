@@ -30,26 +30,27 @@ async function bootModules() {
     return;
   }
 
-  for (const id of activeIds) {
-    const key = Object.keys(moduleEntries).find(
-      (k) =>
-        k.endsWith(`/modules/${id}/frontend/index.js`) ||
-        k.endsWith(`${id}/frontend/index.js`),
-    );
-    if (!key) {
-      console.warn(
-        `[workbench] Không tìm thấy frontend/index.js cho module "${id}"`,
+  await Promise.all(
+    activeIds.map(async (id) => {
+      const key = Object.keys(moduleEntries).find(
+        (k) =>
+          k.endsWith(`/modules/${id}/frontend/index.js`) ||
+          k.endsWith(`${id}/frontend/index.js`),
       );
-      continue;
-    }
-    try {
-      console.log(`[workbench] Đang load module "${id}" qua key: ${key}`);
-      await moduleEntries[key]();
-      console.log(`[workbench] Load module "${id}" THÀNH CÔNG`);
-    } catch (e) {
-      console.error(`[workbench] Module "${id}" load LỖI:`, e);
-    }
-  }
+      if (!key) {
+        console.warn(
+          `[workbench] Không tìm thấy frontend/index.js cho module "${id}"`,
+        );
+        return;
+      }
+      try {
+        await moduleEntries[key]();
+        console.log(`[workbench] Load module "${id}" THÀNH CÔNG`);
+      } catch (e) {
+        console.error(`[workbench] Module "${id}" load LỖI:`, e);
+      }
+    }),
+  );
 
   refreshRegisteredViews();
   loadLastFolder();

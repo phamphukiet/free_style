@@ -11,8 +11,10 @@ const { getToolSpecs, executeAiTool } = require("./ai-tools");
 const sessionStore = require("../session-store");
 const { buildHistoryPrompt } = require("./history");
 const { buildToolExecutor } = require("./tool-executor");
+const activeModules = require("../../../active-modules.js");
 
 function loadTodoPrompt() {
+  if (!activeModules.includes("dedupe_level")) return null;
   try {
     return require("../../../dedupe_level/level_03_todo/prompt.js")
       .renderTodoPrompt;
@@ -20,8 +22,8 @@ function loadTodoPrompt() {
     return null;
   }
 }
-
 function loadContinuation() {
+  if (!activeModules.includes("dedupe_level")) return null;
   try {
     return require("../../../dedupe_level/level_04_continuation/index.js");
   } catch {

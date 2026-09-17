@@ -1,8 +1,15 @@
 const { executeAiTool } = require("./ai-tools");
-const {
-  level01Dedupe,
-  level02Cache,
-} = require("../../../dedupe_level/index.js");
+const activeModules = require("../../../active-modules.js");
+
+function loadDedupeLevels() {
+  if (!activeModules.includes("dedupe_level")) return {};
+  try {
+    return require("../../../dedupe_level/index.js");
+  } catch {
+    return {};
+  }
+}
+const { level01Dedupe, level02Cache } = loadDedupeLevels();
 
 function buildToolExecutor({ agentId, notify, sessionId }) {
   const rawExecute = (name, args) =>

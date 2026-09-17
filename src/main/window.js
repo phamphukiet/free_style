@@ -50,7 +50,9 @@ function createWindow() {
   } else {
     win.loadFile(path.join(__dirname, "../renderer/workbench.html"));
   }
-  win.webContents.openDevTools({ mode: "detach" });
+  if (process.env["ELECTRON_RENDERER_URL"]) {
+    win.webContents.openDevTools({ mode: "detach" });
+  }
 
   win.on("closed", () => {
     require("../../modules/terminal/backend/terminal").killShell();

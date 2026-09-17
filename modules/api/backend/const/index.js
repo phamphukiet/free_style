@@ -1,5 +1,0 @@
-const RETRYABLE_STATUS = new Set([503, 429]);
-const MAX_RETRIES = 3;
-const BASE_DELAY_MS = 1000;
-
-module.exports = { RETRYABLE_STATUS, MAX_RETRIES, BASE_DELAY_MS };

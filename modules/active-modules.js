@@ -5,7 +5,9 @@
 // đều đọc từ đây — không sửa ở nơi khác khi bật/tắt.
 
 module.exports = [
+  "files",
   "api",
+  "site",
   "chat",
   "editor",
   "providers",
@@ -14,6 +16,6 @@ module.exports = [
   "agent",
   "skill",
   "rule",
-  "files",
   // "kanban",
+  // "dedupe_level",
 ];

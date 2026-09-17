@@ -12,7 +12,6 @@ function registerWindowIpcWrapper() {
   registerSystemIpc();
   registerCredentialsIpc();
   registerModulesIpc();
-  console.log("[main/ipc] activeModules:", activeModules);
 
   for (const id of activeModules) {
     try {

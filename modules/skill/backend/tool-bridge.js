@@ -77,7 +77,7 @@ async function suggest(args) {
   };
 }
 
-async function execute(action, args = {}, agentId) {
+async function run(action, args = {}, agentId) {
   switch (action) {
     case "list":
       return list(args);
@@ -90,4 +90,7 @@ async function execute(action, args = {}, agentId) {
   }
 }
 
-module.exports = { getToolSpec, execute };
+module.exports = {
+  getToolSpec,
+  execute: (args = {}, ctx = {}) => run(args.action, args, ctx.agentId),
+};
