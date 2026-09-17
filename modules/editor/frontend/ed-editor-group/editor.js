@@ -2,6 +2,7 @@ import { LitElement } from "lit";
 import { editorTemplate } from "./editor.template.js";
 import { mountEditor } from "../mount.js";
 import { readFile, writeFile } from "../bridge.js";
+import { registry } from "@modules/registry.js";
 import * as monaco from "monaco-editor";
 
 const LANGS = {

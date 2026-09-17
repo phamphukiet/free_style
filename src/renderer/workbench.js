@@ -12,6 +12,14 @@ import { loadLastFolder } from "@shared/folder-actions.js";
 const moduleEntries = import.meta.glob("@modules/*/frontend/index.js");
 console.log("[workbench] moduleEntries keys:", Object.keys(moduleEntries));
 
+function refreshRegisteredViews() {
+  document
+    .querySelectorAll(
+      "workbench-sidebar, workbench-editor-pane, workbench-panel, workbench-rightsidebar",
+    )
+    .forEach((el) => el.requestUpdate?.());
+}
+
 async function bootModules() {
   let activeIds = [];
   try {
@@ -22,30 +30,28 @@ async function bootModules() {
     return;
   }
 
-  const results = await Promise.allSettled(
-    activeIds.map(async (id) => {
-      // Không phụ thuộc key tuyệt đối — tìm entry có path chứa đúng module id,
-      // tránh vỡ toàn bộ khi Vite resolve alias glob ra key khác dự kiến.
-      const key = Object.keys(moduleEntries).find((k) =>
+  for (const id of activeIds) {
+    const key = Object.keys(moduleEntries).find(
+      (k) =>
         k.endsWith(`/modules/${id}/frontend/index.js`) ||
         k.endsWith(`${id}/frontend/index.js`),
+    );
+    if (!key) {
+      console.warn(
+        `[workbench] Không tìm thấy frontend/index.js cho module "${id}"`,
       );
-      if (!key) {
-        console.warn(`[workbench] Không tìm thấy frontend/index.js cho module "${id}"`);
-        return;
-      }
+      continue;
+    }
+    try {
       console.log(`[workbench] Đang load module "${id}" qua key: ${key}`);
       await moduleEntries[key]();
       console.log(`[workbench] Load module "${id}" THÀNH CÔNG`);
-    }),
-  );
-
-  results.forEach((r, i) => {
-    if (r.status === "rejected") {
-      console.error(`[workbench] Module "${activeIds[i]}" load LỖI:`, r.reason);
+    } catch (e) {
+      console.error(`[workbench] Module "${id}" load LỖI:`, e);
     }
-  });
+  }
 
+  refreshRegisteredViews();
   loadLastFolder();
 }
 

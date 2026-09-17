@@ -10,6 +10,7 @@ class Registry {
     this.listeners = {}; // { eventName: [callbacks] }
     this.rightSidebarView = null; // tagName duy nhất, khác sidebarViews (đa view theo id)
     this.panelView = null;
+    this.configConsumers = {}; // { [id]: callback }
   }
 
   // --- Events ---
@@ -108,7 +109,13 @@ class Registry {
   getPanelView() {
     return this.panelView;
   }
+  registerConfigConsumer(id, callback) {
+    this.configConsumers[id] = callback;
+  }
+
+  getConfigConsumers() {
+    return Object.values(this.configConsumers);
+  }
 }
 
-// Singleton pattern
 export const registry = new Registry();
