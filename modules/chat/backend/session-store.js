@@ -97,5 +97,12 @@ function appendMessage(id, msg, tokenDelta = 0) {
   writeOne(session);
   return session;
 }
+function setLastTool(id, toolName) {
+  const session = get(id);
+  if (!session || !toolName) return null;
+  session.lastToolUsed = toolName;
+  writeOne(session);
+  return session;
+}
 
-module.exports = { list, get, save, remove, appendMessage };
+module.exports = { list, get, save, remove, appendMessage, setLastTool };

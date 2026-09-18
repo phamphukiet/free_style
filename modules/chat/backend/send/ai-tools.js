@@ -8,11 +8,15 @@ function loadBridge(id) {
   }
 }
 
-function getToolSpecs() {
-  return activeModules
+function getToolSpecs(priorityNames = []) {
+  const specs = activeModules
     .map(loadBridge)
     .filter(Boolean)
     .map((b) => b.getToolSpec());
+  if (priorityNames.length === 0) return specs;
+  return [...specs].sort(
+    (a, b) => priorityNames.includes(b.name) - priorityNames.includes(a.name),
+  );
 }
 
 async function executeAiTool(name, args, ctx = {}) {

@@ -1,7 +1,7 @@
 // index.js
 // Nạp toàn bộ provider con trong modules/api/. Thêm provider mới (VD "claude"):
 // thêm 1 dòng require ở đây — KHÔNG đụng ipc.js, KHÔNG đụng provider-factory.js.
-
+const { registerMention } = require("../../../shared/mention-registry.js");
 const fs = require("fs");
 const path = require("path");
 
@@ -22,6 +22,7 @@ function register() {
     } catch (e) {
       console.error(`[api/backend] Provider "${name}" register() LỖI:`, e);
     }
+    registerMention("api", { hint: "quản lý API (tạo/sửa/xoá/test)" });
   }
 }
 

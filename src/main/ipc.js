@@ -20,7 +20,7 @@ function registerWindowIpcWrapper() {
         console.warn(`[main/ipc] Module "${id}" không export "register"`);
       } else {
         mod.register();
-        console.log(`[main/ipc] Module "${id}" backend register() OK`);
+        // console.log(`[main/ipc] Module "${id}" backend register() OK`);
       }
     } catch (e) {
       console.error(`Failed to load "${id}" backend`, e);

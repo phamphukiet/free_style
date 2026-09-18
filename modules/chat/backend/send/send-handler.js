@@ -12,6 +12,7 @@ const sessionStore = require("../session-store");
 const { buildHistoryPrompt } = require("./history");
 const { buildToolExecutor } = require("./tool-executor");
 const activeModules = require("../../../active-modules.js");
+const { extractMentions } = require("../../../../shared/mention-registry.js");
 
 function loadTodoPrompt() {
   if (!activeModules.includes("dedupe_level")) return null;
@@ -73,14 +74,29 @@ async function handleSend(
     sessionStore.appendMessage(sessionId, { role: "user", content: message });
   }
 
+  const mentioned = extractMentions(message);
+  const lastToolUsed = sessionId
+    ? sessionStore.get(sessionId)?.lastToolUsed
+    : null;
+  const priorityNames = mentioned.length
+    ? mentioned.map((m) => m.toolName)
+    : lastToolUsed
+      ? [lastToolUsed]
+      : [];
+
   try {
     let content,
       tokenUsed = 0;
     const renderTodoPrompt = loadTodoPrompt();
+    const mentioned = extractMentions(message);
+    const mentionHint = mentioned.length
+      ? `## Ưu tiên tool theo @mention: ${mentioned.map((m) => m.toolName).join(", ")}. Hãy ưu tiên dùng tool này nếu phù hợp với yêu cầu, trừ khi không liên quan.`
+      : "";
     const systemPrompt = [
       buildSystemPrompt(agentId),
       buildHistoryPrompt(history),
       renderTodoPrompt ? renderTodoPrompt(sessionId) : "",
+      mentionHint,
     ]
       .filter(Boolean)
       .join("\n\n");
@@ -92,10 +108,16 @@ async function handleSend(
             .filter(Boolean)
             .join("\n\n")
         : systemPrompt;
+      const calledTools = [];
+      const rawExecutor = buildToolExecutor({ agentId, notify, sessionId });
+      const executeToolCall = async (name, args) => {
+        calledTools.push(name);
+        return rawExecutor(name, args);
+      };
       const buildOpts = () => ({
         systemPrompt: fullSystemPrompt,
-        toolSpecs: getToolSpecs(),
-        executeToolCall: buildToolExecutor({ agentId, notify, sessionId }),
+        toolSpecs: getToolSpecs(priorityNames),
+        executeToolCall,
       });
 
       const result = continuation
@@ -117,6 +139,9 @@ async function handleSend(
 
       const raw = result.content;
       content = typeof raw === "object" ? (raw.content ?? raw) : raw;
+      if (sessionId && mentioned.length === 0 && calledTools.length > 0) {
++        sessionStore.setLastTool(sessionId, calledTools[calledTools.length - 1]);
++      }
     } else {
       const raw = await sendMessage(
         apiKey,

@@ -6,6 +6,7 @@
 const { chatCompletion, listModels } = require("./gemini-client.js");
 const { chatWithTools } = require("./gemini-tools.js");
 const { MAX_FILE_MB } = require("./const.js");
+const { registerProvider } = require("../../../backend/provider-factory.js");
 
 function register() {
   registerProvider({
