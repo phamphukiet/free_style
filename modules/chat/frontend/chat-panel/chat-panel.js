@@ -92,16 +92,6 @@ class ChatPanelElement extends LitElement {
     this.refreshProjectSize();
   };
 
-  // async init() {
-  //   await Promise.all([agentLoader.loadAgents(this), keyLoader.loadKeys(this), sessionHandler.loadSessions(this)]);
-  //   await this.restoreSelection();
-  //   const folder = await window.api.state?.loadLastFolder?.();
-  //   if (folder) {
-  //     this._projectFolder = folder;
-  //     this.refreshProjectSize();
-  //   }
-  // }
-
   async init() {
     await Promise.all([
       agentLoader.loadAgents(this),

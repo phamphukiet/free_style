@@ -1,4 +1,4 @@
-const activeModules = require("../../../active-modules.js");
+const activeModules = require("../../../../active-modules.js");
 
 function loadBridge(id) {
   try {

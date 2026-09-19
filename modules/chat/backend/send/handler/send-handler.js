@@ -1,36 +1,20 @@
 const {
   getChatProvider,
   getToolCapableProvider,
-} = require("../providers-registry");
+} = require("../../providers-registry.js");
 const {
   resolveKey,
   resolveFromAgent,
   buildSystemPrompt,
 } = require("./resolve");
-const { getToolSpecs, executeAiTool } = require("./ai-tools");
-const sessionStore = require("../session-store");
-const { buildHistoryPrompt } = require("./history");
-const { buildToolExecutor } = require("./tool-executor");
-const activeModules = require("../../../active-modules.js");
-const { extractMentions } = require("../../../../shared/mention-registry.js");
-
-function loadTodoPrompt() {
-  if (!activeModules.includes("dedupe_level")) return null;
-  try {
-    return require("../../../dedupe_level/level_03_todo/prompt.js")
-      .renderTodoPrompt;
-  } catch {
-    return null;
-  }
-}
-function loadContinuation() {
-  if (!activeModules.includes("dedupe_level")) return null;
-  try {
-    return require("../../../dedupe_level/level_04_continuation/index.js");
-  } catch {
-    return null;
-  }
-}
+const { getToolSpecs, executeAiTool } = require("../tool/ai-tools.js");
+const sessionStore = require("../../session-store.js");
+const { buildHistoryPrompt } = require("../history/history.js");
+const { buildToolExecutor } = require("../tool/tool-executor.js");
+const { resolvePriority, commitPriority } = require("../priority/index.js");
+const {
+  getSendWrappers,
+} = require("../../../../../shared/chat-pipeline-registry.js");
 
 async function handleSend(
   { message, providerId, keyId, model, agentId, sessionId },
@@ -58,6 +42,10 @@ async function handleSend(
   if (!apiKey) {
     return { content: `Chưa có API key hợp lệ cho "${resolvedProviderId}".` };
   }
+  const { priorityNames, matchedStrategy } = resolvePriority(
+    message,
+    sessionId,
+  );
 
   const toolSend =
     getToolSpecs().length > 0
@@ -74,40 +62,22 @@ async function handleSend(
     sessionStore.appendMessage(sessionId, { role: "user", content: message });
   }
 
-  const mentioned = extractMentions(message);
-  const lastToolUsed = sessionId
-    ? sessionStore.get(sessionId)?.lastToolUsed
-    : null;
-  const priorityNames = mentioned.length
-    ? mentioned.map((m) => m.toolName)
-    : lastToolUsed
-      ? [lastToolUsed]
-      : [];
-
   try {
     let content,
       tokenUsed = 0;
-    const renderTodoPrompt = loadTodoPrompt();
-    const mentioned = extractMentions(message);
-    const mentionHint = mentioned.length
-      ? `## Ưu tiên tool theo @mention: ${mentioned.map((m) => m.toolName).join(", ")}. Hãy ưu tiên dùng tool này nếu phù hợp với yêu cầu, trừ khi không liên quan.`
+    const { priorityNames } = resolvePriority(message, sessionId);
+    const priorityHint = priorityNames.length
+      ? `## Ưu tiên tool: ${priorityNames.join(", ")}. Dùng tool này nếu phù hợp yêu cầu.`
       : "";
     const systemPrompt = [
-      buildSystemPrompt(agentId),
+      buildSystemPrompt({ agentId, sessionId, message }),
       buildHistoryPrompt(history),
-      renderTodoPrompt ? renderTodoPrompt(sessionId) : "",
-      mentionHint,
+      priorityHint,
     ]
       .filter(Boolean)
       .join("\n\n");
 
     if (toolSend) {
-      const continuation = loadContinuation();
-      const fullSystemPrompt = continuation
-        ? [systemPrompt, continuation.buildContinuationGuide()]
-            .filter(Boolean)
-            .join("\n\n")
-        : systemPrompt;
       const calledTools = [];
       const rawExecutor = buildToolExecutor({ agentId, notify, sessionId });
       const executeToolCall = async (name, args) => {
@@ -115,33 +85,17 @@ async function handleSend(
         return rawExecutor(name, args);
       };
       const buildOpts = () => ({
-        systemPrompt: fullSystemPrompt,
+        systemPrompt,
         toolSpecs: getToolSpecs(priorityNames),
         executeToolCall,
       });
 
-      const result = continuation
-        ? await continuation.runWithContinuation(
-            toolSend,
-            apiKey,
-            resolvedModel,
-            buildOpts,
-            message,
-          )
-        : {
-            content: await toolSend(
-              apiKey,
-              message,
-              resolvedModel,
-              buildOpts(),
-            ),
-          };
-
-      const raw = result.content;
+      const baseSend = () =>
+        toolSend(apiKey, message, resolvedModel, buildOpts());
+      const send = getSendWrappers().reduce((fn, w) => w.wrap(fn), baseSend);
+      const raw = await send();
       content = typeof raw === "object" ? (raw.content ?? raw) : raw;
-      if (sessionId && mentioned.length === 0 && calledTools.length > 0) {
-+        sessionStore.setLastTool(sessionId, calledTools[calledTools.length - 1]);
-+      }
+      commitPriority(matchedStrategy, { sessionId, calledTools });
     } else {
       const raw = await sendMessage(
         apiKey,
