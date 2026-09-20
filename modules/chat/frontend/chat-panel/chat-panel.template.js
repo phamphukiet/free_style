@@ -19,7 +19,9 @@ export function chatPanelTemplate(host) {
     <div class="chat-messages">
       ${host.messages.length === 0
         ? html`<div class="chat-empty">
-            ${host.sessionId ? "Chưa có tin nhắn nào" : "Tạo hoặc chọn session để bắt đầu"}
+            ${host.sessionId
+              ? "Chưa có tin nhắn nào"
+              : "Tạo hoặc chọn session để bắt đầu"}
           </div>`
         : host.messages.map(
             (m) => html`<div class="chat-message ${m.role}">${m.content}</div>`,
@@ -35,7 +37,7 @@ export function chatPanelTemplate(host) {
         .value=${host.inputValue}
         @input=${(e) => (host.inputValue = e.target.value)}
         @keydown=${(e) => {
-          if (e.key === "Enter" && !e.shiftKey) {
+          if (e.key === "Enter" && !e.shiftKey && !e.isComposing) {
             e.preventDefault();
             host.handleSend();
           }

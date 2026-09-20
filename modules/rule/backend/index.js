@@ -21,6 +21,9 @@ function register() {
     hint: "quản lý rule (tạo/sửa/xoá/gán)",
   });
   registerPromptContributor("rule", buildRulePrompt, 10);
+  registerToolBridge("rule", require("./api/tool-bridge.js"), {
+    notify: "rule:ai-changed",
+  });
 }
 
 module.exports = { register };

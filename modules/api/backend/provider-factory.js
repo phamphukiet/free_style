@@ -5,12 +5,11 @@
 
 const { ipcMain } = require("electron");
 const {
-  registerChatProvider,
-  registerToolCapableProvider,
-  registerModelLister,
-  registerProviderAliases,
-} = require("../../chat/backend/providers-registry.js");
+  registerCapability,
+} = require("../../../shared/capability-registry.js");
 const { CHANNEL } = require("./const.js");
+
+registerCapability({ id, kind: "provider", aliases, client });
 
 function registerProvider(config) {
   const { id, client, maxFileMB = 100, aliases = [], validate } = config;

@@ -33,8 +33,6 @@ class ChatPanelElement extends LitElement {
     messages: { state: true },
     tokenUsed: { state: true },
     tokenLimit: { state: true },
-    projectBytes: { state: true },
-    projectLimit: { state: true },
     inputValue: { state: true },
     sending: { state: true },
   };
@@ -52,11 +50,8 @@ class ChatPanelElement extends LitElement {
     this.messages = [];
     this.tokenUsed = 0;
     this.tokenLimit = 0;
-    this.projectBytes = 0;
-    this.projectLimit = 0;
     this.inputValue = "";
     this.sending = false;
-    this._projectFolder = "";
   }
 
   connectedCallback() {
@@ -68,29 +63,25 @@ class ChatPanelElement extends LitElement {
       this._onCredChanged,
     );
     window.addEventListener("agents:changed", this._onAgentsChanged);
-    window.addEventListener("workbench:folder-opened", this._onFolderOpened);
-    this._unsubKanban = window.api.kanban?.onChanged?.(() =>
-      sessionHandler.loadSessions(this),
-    );
+    window.addEventListener("chat:sessions-changed", this._onSessionsChanged);
   }
 
   disconnectedCallback() {
+    window.removeEventListener(
+      "chat:sessions-changed",
+      this._onSessionsChanged,
+    );
     window.removeEventListener(
       "workbench:credentials-changed",
       this._onCredChanged,
     );
     window.removeEventListener("agents:changed", this._onAgentsChanged);
-    window.removeEventListener("workbench:folder-opened", this._onFolderOpened);
-    this._unsubKanban?.();
     super.disconnectedCallback();
   }
-  
+
   _onCredChanged = () => keyLoader.loadKeys(this);
   _onAgentsChanged = () => agentLoader.loadAgents(this);
-  _onFolderOpened = (e) => {
-    this._projectFolder = e?.detail?.folderPath || this._projectFolder;
-    this.refreshProjectSize();
-  };
+  _onSessionsChanged = () => sessionHandler.loadSessions(this);
 
   async init() {
     await Promise.all([
@@ -121,12 +112,6 @@ class ChatPanelElement extends LitElement {
   }
   handleSend() {
     handleSend(this);
-  }
-
-  async refreshProjectSize() {
-    if (!this._projectFolder) return;
-    this.projectBytes =
-      (await window.api.chat.projectSize(this._projectFolder)) || 0;
   }
 
   _scrollToBottom() {

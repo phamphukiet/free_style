@@ -6,14 +6,10 @@ const {
   loadCredentialsSync,
   decrypt,
 } = require("../../../../src/main/ipc/credentials/storage");
-const {
-  resolveProviderIdByHint,
-  getModelLister,
-} = require("../../../chat/backend/providers-registry");
-
-function resolveProviderId(hint) {
-  return resolveProviderIdByHint(hint);
-}
+const { findProviderByHint, getCapability } = require("../../../../shared/capability-registry");
+const resolveProviderId = (hint) => findProviderByHint(hint)?.id || null;
+const loadListModels = (id) => getCapability("provider", id)?.client.listModels || null;
+const sendMessage = getCapability("provider", agent.providerId)?.client.chatCompletion;
 
 function listAvailable() {
   const data = loadCredentialsSync();
@@ -33,10 +29,6 @@ function resolveKeyForProvider(providerId, keyHint) {
   }
   const value = decrypt(entry);
   return value ? { keyId: entry.id, value } : null;
-}
-
-function loadListModels(providerId) {
-  return getModelLister(providerId) || null;
 }
 
 async function resolveModel(providerId, apiKey, modelHint) {

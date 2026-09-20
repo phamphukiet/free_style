@@ -19,7 +19,6 @@ export function syncAgentLimits(host) {
   if (!host.selectedAgentId) return;
   const agent = host.agents.find((a) => a.id === host.selectedAgentId);
   host.tokenLimit = agent?.tokenLimit || 0;
-  host.projectLimit = agent?.projectLimit || 0;
 }
 
 export async function handleSelectAgent(host, id) {

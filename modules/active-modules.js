@@ -15,7 +15,7 @@ module.exports = [
   "settings",
   "agent",
   "skill",
-  "rule",
+  // "rule",
   // "kanban",
   // "dedupe_level",
 ];
