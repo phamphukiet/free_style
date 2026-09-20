@@ -2,7 +2,7 @@ const activeModules = require("../../../../active-modules.js");
 
 function loadBridge(id) {
   try {
-    return require(`../../../${id}/backend/tool-bridge.js`);
+    return require(`../../../../${id}/backend/tool-bridge.js`);
   } catch {
     return null;
   }

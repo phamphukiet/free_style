@@ -1,6 +1,6 @@
 export async function loadAssignedRulesAndSkills(agentId) {
   if (!agentId) return { rules: [], skills: [] };
-
+  
   const [allRules, skills] = await Promise.all([
     window.api.rule?.list ? window.api.rule.list() : Promise.resolve([]),
     window.api.skill?.listByAgent

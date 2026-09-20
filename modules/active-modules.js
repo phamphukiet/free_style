@@ -7,7 +7,7 @@
 module.exports = [
   "files",
   "api",
-  "site",
+  // "site",
   "chat",
   "editor",
   "providers",

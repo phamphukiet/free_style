@@ -30,6 +30,8 @@ function getToolSpec() {
 }
 
 function execute(action, args, agentId) {
+  const { action } = args;
+  const agentId = ctx.agentId;
   switch (action) {
     case "list":
       return {

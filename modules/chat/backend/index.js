@@ -5,8 +5,7 @@ const { ipcMain } = require("electron");
 const { readState, writeState } = require("../../../src/main/state");
 const sessionStore = require("./session-store");
 const { calcDirSize } = require("./project/dir-size");
-const { handleSend } = require("./send/send-handler");
-
+const { handleSend } = require("./send/handler/send-handler");
 function register() {
   // Session IPC
   ipcMain.handle("chat:session-list", () => sessionStore.list());
