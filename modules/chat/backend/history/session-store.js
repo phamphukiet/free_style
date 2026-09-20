@@ -6,7 +6,7 @@
 const path = require("path");
 const fs = require("fs");
 const crypto = require("crypto");
-const { readState } = require("../../../src/main/state");
+const { readState } = require("../../../../src/main/state");
 let memoryStore = {};
 
 function getSessionDir() {

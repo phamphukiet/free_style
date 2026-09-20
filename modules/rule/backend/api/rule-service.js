@@ -4,8 +4,8 @@
 // Mặc định mọi thao tác chỉ đụng local; global chỉ khi truyền { global: true }.
 
 const crypto = require("crypto");
-const globalStore = require("./store/global-store");
-const local = require("./store/local-store");
+const globalStore = require("../store/global-store");
+const local = require("../store/local-store");
 
 const isGlobal = (id) => !!id && !!globalStore.get(id);
 const listGlobal = () => globalStore.list();

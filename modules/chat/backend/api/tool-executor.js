@@ -2,7 +2,7 @@ const { executeAiTool } = require("./ai-tools.js");
 
 const {
   getExecutorMiddlewares,
-} = require("../../../../../shared/chat-pipeline-registry.js");
+} = require("../../../../shared/chat-pipeline-registry.js");
 
 function buildToolExecutor({ agentId, notify, sessionId }) {
   const rawExecute = (name, args) =>

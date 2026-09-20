@@ -5,9 +5,9 @@ const {
   installRule,
   uninstallRule,
   listInstalled,
-} = require("./install/install");
-const { syncPinnedRules } = require("./install/auto-install");
-const { listProjectRules } = require("./install/project-rules");
+} = require("../install/install");
+const { syncPinnedRules } = require("../install/auto-install");
+const { listProjectRules } = require("../install/project-rules");
 
 // Khoá theo id: IPC trùng cho cùng 1 rule trong lúc đang xử lý sẽ bị bỏ qua,
 // không phụ thuộc việc phía frontend có gọi trùng hay không.

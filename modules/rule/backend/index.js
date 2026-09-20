@@ -1,7 +1,9 @@
 // index.js
-const { registerRuleIpc } = require("./ipc");
+const { registerRuleIpc } = require("./api/ipc.js");
 const { registerMention } = require("../../../shared/mention-registry.js");
-const { registerPromptContributor } = require("../../../shared/chat-pipeline-registry.js");
+const {
+  registerPromptContributor,
+} = require("../../../shared/chat-pipeline-registry.js");
 const rulesStore = require("./catalog/rules-store");
 
 function buildRulePrompt({ agentId }) {
