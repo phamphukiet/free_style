@@ -1,5 +1,5 @@
 // selector.js — lọc capability theo config / requires / health, rồi sắp xếp.
-const config = require("../../config");
+const config = require("../config");
 const {
   getCapability,
   listCapabilities,
