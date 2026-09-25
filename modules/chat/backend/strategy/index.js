@@ -1,7 +1,9 @@
 // index.js
 const { ipcMain } = require("electron");
-const { registerCapability } = require("../../../shared/capability-registry");
-const { readState, writeState } = require("../../../src/main/state");
+const {
+  registerCapability,
+} = require("../../../../shared/capability-registry");
+const { readState, writeState } = require("../../../../src/main/state");
 const sessionStore = require("./session/store");
 const { registerSessionIpc } = require("./session/ipc");
 const { handleSend } = require("./send/handle-send");

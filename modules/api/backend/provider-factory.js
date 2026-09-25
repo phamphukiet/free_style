@@ -9,8 +9,6 @@ const {
 } = require("../../../shared/capability-registry.js");
 const { CHANNEL } = require("./const.js");
 
-registerCapability({ id, kind: "provider", aliases, client });
-
 function registerProvider(config) {
   const { id, client, maxFileMB = 100, aliases = [], validate } = config;
 
@@ -31,11 +29,7 @@ function registerProvider(config) {
 
   ipcMain.handle(CHANNEL.fileLimit(id), () => maxFileMB);
 
-  registerChatProvider(id, client.chatCompletion);
-  if (client.chatWithTools)
-    registerToolCapableProvider(id, client.chatWithTools);
-  if (client.listModels) registerModelLister(id, client.listModels);
-  registerProviderAliases(id, [id, ...aliases]);
+  registerCapability({ id, kind: "provider", client, aliases });
 }
 
 module.exports = { registerProvider };

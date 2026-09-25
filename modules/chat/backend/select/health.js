@@ -1,5 +1,5 @@
 // health.js — circuit breaker theo phiên: lỗi liên tiếp >= maxFailures thì bị bỏ qua tạm thời.
-const { maxFailures, cooldownMs } = require("../../config");
+const { maxFailures, cooldownMs } = require("../config");
 
 const failures = new Map(); // "sessionId|kind:id" -> { count, at }
 

@@ -5,7 +5,7 @@ const {
   listCapabilities,
   hasCapability,
 } = require("../../../../shared/capability-registry");
-const { getStrategy } = require("../strategy");
+const { run: runDefaultStrategy } = require("../strategy/default");
 const { isTripped } = require("./health");
 
 const isEnabled = (cap) =>
@@ -27,7 +27,7 @@ function pickProvider(providerId) {
 
 // Tool: thứ tự do strategy quyết định.
 function selectTools(ctx) {
-  return getStrategy(config.strategy)(ctx, candidates("tool", ctx.sessionId));
+  return runDefaultStrategy(ctx, candidates("tool", ctx.sessionId));
 }
 
 // Prompt / wrapper: thứ tự cố định theo `order`.
