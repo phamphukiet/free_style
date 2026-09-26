@@ -9,7 +9,6 @@ const {
 const { findProviderByHint, getCapability } = require("../../../../shared/capability-registry");
 const resolveProviderId = (hint) => findProviderByHint(hint)?.id || null;
 const loadListModels = (id) => getCapability("provider", id)?.client.listModels || null;
-const sendMessage = getCapability("provider", agent.providerId)?.client.chatCompletion;
 
 function listAvailable() {
   const data = loadCredentialsSync();
