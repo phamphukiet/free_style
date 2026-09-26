@@ -1,7 +1,4 @@
-// policy.js
-// Nguồn chân lý DUY NHẤT: tool+action nào được phép cache (đọc thuần, không side-effect).
-// Thêm tool mới có action đọc: thêm 1 dòng ở đây, không sửa wrap-executor.js.
-
+// policy.js — action nào cacheable trong CÙNG 1 lượt gọi AI (đọc thuần, không side-effect).
 const CACHEABLE = new Set([
   "files:tree",
   "files:read",

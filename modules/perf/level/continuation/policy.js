@@ -1,7 +1,4 @@
 // policy.js
-// Nguồn chân lý DUY NHẤT: 1 phản hồi text có thật sự "xong" hay bị ép dừng
-// giữa chừng do hết step budget (xem LOOP_GUIDE trong gemini-chat-with-tools.js).
-
 const DONE_PREFIX = "HOÀN THÀNH:";
 const ASK_PREFIX = "CẦN HỎI:";
 

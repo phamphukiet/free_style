@@ -1,5 +1,4 @@
-// spec.js — tool schema cho AI function-calling (JSON Schema chữ thường).
-
+// spec.js — tool schema cho AI function-calling.
 function getToolSpec() {
   return {
     name: "todo",

@@ -1,18 +1,15 @@
 // invalidate.js
-// Trách nhiệm duy nhất: theo dõi "dirty" (tree + từng path bị ghi/xoá/di chuyển)
-// và quyết định 1 cache entry còn dùng được hay không.
+// Theo dõi "dirty" (tree + từng path bị ghi/xoá/di chuyển) qua perf-store riêng —
+// KHÔNG đụng session của chat (khác bản gốc dedupe_level).
 
-const sessionStore = require("../../chat/backend/session-store");
+const store = require("../../backend/store");
 
 function readDirty(sessionId) {
-  const session = sessionStore.get(sessionId);
-  return session?.toolDirty || { tree: false, paths: [] };
+  return store.get(sessionId).dirty || { tree: false, paths: [] };
 }
 
 function writeDirty(sessionId, dirty) {
-  const session = sessionStore.get(sessionId);
-  if (!session) return;
-  sessionStore.save({ ...session, toolDirty: dirty });
+  store.patch(sessionId, { dirty });
 }
 
 function markTreeDirty(sessionId) {
@@ -37,7 +34,6 @@ function clearPathDirty(sessionId, relPath) {
   });
 }
 
-// Cache entry (files:tree / files:read) còn hợp lệ không.
 function isValid(sessionId, toolName, action, args) {
   const dirty = readDirty(sessionId);
   if (toolName === "files" && action === "tree") return !dirty.tree;

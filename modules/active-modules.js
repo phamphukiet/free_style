@@ -17,5 +17,5 @@ module.exports = [
   "skill",
   // "rule",
   // "kanban",
-  // "dedupe_level",
+  "perf",
 ];

@@ -1,5 +1,7 @@
-const { getToolSpec } = require("./spec.js");
-const actions = require("./actions.js");
+// index.js — điểm export duy nhất cho AI tool "todo".
+const { getToolSpec } = require("./spec");
+const actions = require("./actions");
+const { renderTodoPrompt } = require("./prompt");
 
 function execute(action, args = {}, sessionId) {
   switch (action) {
@@ -12,4 +14,4 @@ function execute(action, args = {}, sessionId) {
   }
 }
 
-module.exports = { getToolSpec, execute };
+module.exports = { getToolSpec, execute, renderTodoPrompt };

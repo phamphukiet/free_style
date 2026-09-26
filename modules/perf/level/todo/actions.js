@@ -1,5 +1,5 @@
 // actions.js
-const { getList, saveList } = require("../store");
+const { getList, saveList } = require("./store");
 
 function list(sessionId) {
   return { items: getList(sessionId) };

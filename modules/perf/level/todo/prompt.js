@@ -1,7 +1,4 @@
-// prompt.js
-// Render todo hiện tại thành text ngắn, nhúng vào systemPrompt mỗi bước —
-// để agent "nhớ" tiến độ mà không cần tự gọi lại action=list (giảm loop thừa).
-
+// prompt.js — render todo hiện tại thành text ngắn, nhúng vào systemPrompt mỗi bước.
 const { getList } = require("./store");
 
 const ICON = { pending: "[ ]", in_progress: "[~]", done: "[x]" };
