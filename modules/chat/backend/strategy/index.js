@@ -4,9 +4,9 @@ const {
   registerCapability,
 } = require("../../../../shared/capability-registry");
 const { readState, writeState } = require("../../../../src/main/state");
-const sessionStore = require("./session/store");
-const { registerSessionIpc } = require("./session/ipc");
-const { handleSend } = require("./send/handle-send");
+const sessionStore = require("../session/store");
+const { registerSessionIpc } = require("../session/ipc");
+const { handleSend } = require("../send/handle-send");
 
 function register() {
   // Module khác (kanban, dedupe_level...) lấy session qua registry, không require chéo.
