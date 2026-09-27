@@ -4,7 +4,7 @@ const { verifyFolderHasFiles } = require("./helpers/fs-assert");
 
 const TEST_CASE = {
   messages: [
-    "lập trình folder login",
+    "lập trình folder login, định dạng html",
     "thêm file style.css vào folder login",
     "thêm file index.js vào folder login",
   ],

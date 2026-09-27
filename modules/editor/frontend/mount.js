@@ -1,3 +1,4 @@
+import "./monaco-env.js";
 import * as monaco from "monaco-editor";
 
 function mountEditor(container) {

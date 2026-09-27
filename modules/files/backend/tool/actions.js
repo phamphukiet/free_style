@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 const { readState } = require("../../../../src/main/state");
 
-const SKIP = new Set(["node_modules", ".git", ".venv", "dist", "out"]);
+const SKIP = new Set(["node_modules", ".git", ".venv", "dist", "out", ".vibe"]);
 const MAX_READ_BYTES = 200 * 1024; // 200KB, tránh tràn context AI
 
 function getProjectRoot() {

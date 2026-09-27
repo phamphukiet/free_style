@@ -18,14 +18,16 @@ export function chatPanelTemplate(host) {
     <!-- ===== MESSAGES ===== -->
     <div class="chat-messages">
       ${host.messages.length === 0
-        ? html`<div class="chat-empty">
-            ${host.sessionId
-              ? "Chưa có tin nhắn nào"
-              : "Tạo hoặc chọn session để bắt đầu"}
-          </div>`
+        ? html`<div class="chat-empty">...</div>`
         : host.messages.map(
             (m) => html`<div class="chat-message ${m.role}">${m.content}</div>`,
           )}
+      ${host.sending
+        ? html`<div class="chat-message assistant chat-typing">
+            <span class="chat-dot"></span><span class="chat-dot"></span
+            ><span class="chat-dot"></span>
+          </div>`
+        : ""}
     </div>
 
     <!-- ===== INPUT ===== -->

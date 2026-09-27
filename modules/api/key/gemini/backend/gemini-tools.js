@@ -61,31 +61,31 @@ async function chatWithTools(apiKey, message, model, opts = {}) {
     const data = await callGemini(apiKey, model, body);
     const parts = data.candidates?.[0]?.content?.parts || [];
 
-    logStep(step, data, parts); // LOG
-    const call = parts.find((p) => p.functionCall);
+        logStep(step, data, parts);
+        const calls = parts.filter((p) => p.functionCall);
 
-    if (!call) return extractText(data);
+        if (calls.length === 0) return extractText(data);
 
-    contents.push({ role: "model", parts });
-    const result = await executeToolCall(
-      call.functionCall.name,
-      call.functionCall.args || {},
-    );
-    console.log(
-      `[gemini] step ${step} tool ${call.functionCall.name} -> ${clip(result)}`,
-    ); // LOG
+        contents.push({ role: "model", parts });
 
-    contents.push({
-      role: "function",
-      parts: [
-        {
-          functionResponse: {
-            name: call.functionCall.name,
-            response: { result },
-          },
-        },
-      ],
-    });
+        const responseParts = [];
+        for (const call of calls) {
+          const result = await executeToolCall(
+            call.functionCall.name,
+            call.functionCall.args || {},
+          );
+          console.log(
+            `[gemini] step ${step} tool ${call.functionCall.name} -> ${clip(result)}`,
+          );
+          responseParts.push({
+            functionResponse: {
+              name: call.functionCall.name,
+              response: { result },
+            },
+          });
+        }
+
+        contents.push({ role: "function", parts: responseParts });
   }
   return "(đã vượt quá số bước gọi tool cho phép)";
 }
