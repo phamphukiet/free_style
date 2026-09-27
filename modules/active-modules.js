@@ -17,5 +17,5 @@ module.exports = [
   "skill",
   // "rule",
   // "kanban",
-  "perf",
+  // "perf",
 ];

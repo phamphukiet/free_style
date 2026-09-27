@@ -1,12 +1,6 @@
-// TEST CASE #1: gõ "hello" vào ô chat + bấm "Gửi" ở right sidebar.
-//
-// CÁCH CHẠY (không qua npm run dev, không cần renderer):
-//   npx electron test/hello.test.js
-// hoặc bấm Run/Debug trong editor nếu đã có .vscode/launch.json (xem test/README.md)
 require("./helpers/electron-bootstrap").ensureElectronMain(__filename);
 const { runChatSendTest } = require("./helpers/chat-send-runner");
 
-// ====================== SỬA TEST CASE Ở ĐÂY ======================
 const TEST_CASE = {
   message: "hello", // nội dung gõ vào ô input chat
   agentId: "manager", // vd "manager" — null nếu không chọn agent
@@ -15,7 +9,6 @@ const TEST_CASE = {
   model: null, // null => dùng model mặc định
   sessionId: null, // null => tự tạo session mới
 };
-// ===================================================================
 
 runChatSendTest(TEST_CASE)
   .then((r) => require("electron").app.exit(r.ok ? 0 : 1))
