@@ -4,11 +4,7 @@ const {
 } = require("../../../../shared/chat-pipeline-registry");
 
 function register() {
-  registerExecutorMiddleware(
-    "cache-cross-turn",
-    (fn, ctx) => wrap(fn, ctx.sessionId),
-    20,
-  );
+  registerExecutorMiddleware("dedupe-turn", (fn) => wrap(fn), 10);
 }
 
 module.exports = { wrap, register };
