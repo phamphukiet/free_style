@@ -37,7 +37,7 @@ async function handleSend(payload, notify) {
     saveTurn(ctx, reply);
     return { ok: true, ...reply };
   } catch (error) {
-    return fail("SEND_FAILED", error.message);
+    return fail(error.code || "SEND_FAILED", error.message);
   }
 }
 

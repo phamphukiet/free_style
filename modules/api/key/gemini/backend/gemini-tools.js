@@ -4,7 +4,14 @@
 // dạng Gemini cần (type viết HOA) qua toGeminiSchema().
 
 const { callGemini, extractText } = require("./gemini-client.js");
-const { MAX_STEPS } = require("./const.js");
+// Thay dòng import MAX_STEPS bằng:
+const { partialOnQuota } = require("./quota.js");
+const {
+  runCalls,
+  toResponseParts,
+  createProgressTracker,
+  stalledResult,
+} = require("./tool-steps.js");
 
 // --- log chẩn đoán (xoá khối này + các dòng "// LOG" là gỡ sạch) ---
 const clip = (v, n = 300) => {
@@ -53,41 +60,35 @@ async function chatWithTools(apiKey, message, model, opts = {}) {
   const tools = toolSpecs.length
     ? [{ functionDeclarations: toDeclarations(toolSpecs) }]
     : undefined;
+  const tracker = createProgressTracker();
+  let executed = 0;
 
-  for (let step = 0; step < MAX_STEPS; step++) {
+  for (let step = 0; ; step++) {
     const body = { contents, tools };
     if (systemPrompt)
       body.systemInstruction = { parts: [{ text: systemPrompt }] };
-    const data = await callGemini(apiKey, model, body);
+
+    let data;
+    try {
+      data = await callGemini(apiKey, model, body);
+    } catch (error) {
+      const partial = partialOnQuota(error, executed);
+      if (partial) return partial;
+      throw error;
+    }
+
     const parts = data.candidates?.[0]?.content?.parts || [];
+    logStep(step, data, parts);
+    const calls = parts.filter((p) => p.functionCall);
+    if (calls.length === 0) return extractText(data);
 
-        logStep(step, data, parts);
-        const calls = parts.filter((p) => p.functionCall);
-
-        if (calls.length === 0) return extractText(data);
-
-        contents.push({ role: "model", parts });
-
-        const responseParts = [];
-        for (const call of calls) {
-          const result = await executeToolCall(
-            call.functionCall.name,
-            call.functionCall.args || {},
-          );
-          console.log(
-            `[gemini] step ${step} tool ${call.functionCall.name} -> ${clip(result)}`,
-          );
-          responseParts.push({
-            functionResponse: {
-              name: call.functionCall.name,
-              response: { result },
-            },
-          });
-        }
-
-        contents.push({ role: "function", parts: responseParts });
+    contents.push({ role: "model", parts });
+    const done = await runCalls(calls, executeToolCall);
+    done.forEach((c) => console.log(`[gemini] step ${step} tool ${c.name} -> ${clip(c.result)}`));
+    executed += done.length;
+    if (tracker.isStalled(done)) return stalledResult(executed);
+    contents.push({ role: "function", parts: toResponseParts(done) });
   }
-  return "(đã vượt quá số bước gọi tool cho phép)";
 }
 
 module.exports = { chatWithTools };

@@ -1,6 +1,5 @@
 const DEFAULT_MODEL = "gemini-2.5-flash";
 const API_BASE = "https://generativelanguage.googleapis.com/v1beta";
-const MAX_STEPS = 4;
 const MAX_FILE_MB = 300;
 
 function generateContentUrl(model, apiKey) {
@@ -14,7 +13,6 @@ function listModelsUrl(apiKey) {
 module.exports = {
   DEFAULT_MODEL,
   API_BASE,
-  MAX_STEPS,
   MAX_FILE_MB,
   generateContentUrl,
   listModelsUrl,
