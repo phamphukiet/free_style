@@ -4,14 +4,13 @@
 // dạng Gemini cần (type viết HOA) qua toGeminiSchema().
 
 const { callGemini, extractText } = require("./gemini-client.js");
-// Thay dòng import MAX_STEPS bằng:
-const { partialOnQuota } = require("./quota.js");
+const { partialOnQuota } = require("../../../backend/quota.js");
 const {
   runCalls,
   toResponseParts,
   createProgressTracker,
   stalledResult,
-} = require("./tool-steps.js");
+} = require("../../../backend/tool-steps.js");
 
 // --- log chẩn đoán (xoá khối này + các dòng "// LOG" là gỡ sạch) ---
 const clip = (v, n = 300) => {

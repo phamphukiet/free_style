@@ -1,7 +1,20 @@
-:host {
+/* :host {
   display: flex;
   flex-direction: column;
   height: 100%;
+  font-family: -apple-system, 'Segoe UI', sans-serif;
+  font-size: 12px;
+  color: var(--chat-panel-text, var(--text-primary, #cccccc));
+} */
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0; /* nhận đúng phần cao còn lại của cha */
+  height: 100%;
+  min-width: 0;
+  min-height: 0; /* cho phép co lại, không nở theo nội dung */
+  overflow: hidden; /* input luôn nằm trong khung nhìn */
   font-family: -apple-system, 'Segoe UI', sans-serif;
   font-size: 12px;
   color: var(--chat-panel-text, var(--text-primary, #cccccc));

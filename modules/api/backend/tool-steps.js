@@ -21,15 +21,15 @@ const signature = ({ name, args, result }) =>
 async function runCalls(calls, executeToolCall) {
   const done = [];
   for (const { functionCall } of calls) {
-    const { name, args = {} } = functionCall;
-    done.push({ name, args, result: await executeToolCall(name, args) });
+    const { id, name, args = {} } = functionCall;
+    done.push({ id, name, args, result: await executeToolCall(name, args) });
   }
   return done;
 }
 
 const toResponseParts = (done) =>
-  done.map(({ name, result }) => ({
-    functionResponse: { name, response: { result } },
+  done.map(({ id, name, result }) => ({
+    functionResponse: { id, name, response: { result } },
   }));
 
 function createProgressTracker() {

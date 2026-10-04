@@ -3,7 +3,7 @@
 // Chat CÓ tool nằm ở gemini-tools.js, không lặp code gọi API ở đây.
 
 const { generateContentUrl, listModelsUrl } = require("./const.js");
-const { toQuotaError } = require("./quota.js");
+const { toQuotaError } = require("../../../backend/quota.js");
 
 async function callGemini(apiKey, model, body) {
   const res = await fetch(generateContentUrl(model, apiKey), {

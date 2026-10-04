@@ -3,6 +3,7 @@ import { html } from "lit";
 import { headerTemplate } from "./partial/template/header.template.js";
 import { sessionTemplate } from "./partial/template/session.template.js";
 import { metricsTemplate } from "./partial/template/metrics.template.js";
+import { messagesTemplate } from "./partial/template/messages.template.js";
 
 export function chatPanelTemplate(host) {
   return html`
@@ -16,19 +17,7 @@ export function chatPanelTemplate(host) {
     ${metricsTemplate(host)}
 
     <!-- ===== MESSAGES ===== -->
-    <div class="chat-messages">
-      ${host.messages.length === 0
-        ? html`<div class="chat-empty">...</div>`
-        : host.messages.map(
-            (m) => html`<div class="chat-message ${m.role}">${m.content}</div>`,
-          )}
-      ${host.sending
-        ? html`<div class="chat-message assistant chat-typing">
-            <span class="chat-dot"></span><span class="chat-dot"></span
-            ><span class="chat-dot"></span>
-          </div>`
-        : ""}
-    </div>
+    ${messagesTemplate(host)}
 
     <!-- ===== INPUT ===== -->
     <div class="chat-input-row">
