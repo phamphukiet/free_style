@@ -10,6 +10,7 @@ module.exports = [
   // "site",
   "chat",
   "editor",
+  "runner",
   "providers",
   "terminal",
   "settings",

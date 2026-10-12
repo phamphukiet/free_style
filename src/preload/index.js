@@ -70,6 +70,15 @@ function getExposedApi() {
           ipcRenderer.removeListener(channels.TERMINAL_DATA, listener);
       },
     },
+    runner: {
+      resolve: (filePath) => ipcRenderer.invoke("runner:resolve", filePath),
+      install: (languageId) => ipcRenderer.invoke("runner:install", languageId),
+      onProgress: (callback) => {
+        const listener = (event, info) => callback(info);
+        ipcRenderer.on("runner:progress", listener);
+        return () => ipcRenderer.removeListener("runner:progress", listener);
+      },
+    },
     credentials: {
       list: (serviceId) => ipcRenderer.invoke("credentials:list", serviceId),
       save: (serviceId, keyData) =>

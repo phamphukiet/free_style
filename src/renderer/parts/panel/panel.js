@@ -9,10 +9,8 @@ import { panelTemplate } from "./panel.template.js";
 import styles from "./panel.css?inline";
 import { registry } from "@modules/registry.js";
 
-// thành
 class PanelElement extends LitElement {
   static styles = unsafeCSS(styles);
-
   static properties = {
     visible: { type: Boolean },
   };
@@ -27,14 +25,21 @@ class PanelElement extends LitElement {
     this.addEventListener("panel:close", this.handleClose);
     this._resizeObserver = new ResizeObserver(() => this.notifyResize());
     this._resizeObserver.observe(this);
+    window.addEventListener("workbench:panel-show", this.handleShow);
   }
 
   disconnectedCallback() {
     this.removeEventListener("panel:close", this.handleClose);
     this._resizeObserver?.disconnect();
     super.disconnectedCallback();
+    window.removeEventListener("workbench:panel-show", this.handleShow);
   }
 
+  handleShow = () => {
+    this.visible = true;
+    this.style.display = "";
+  };
+  
   handleClose = () => {
     this.visible = false;
     this.style.display = "none";

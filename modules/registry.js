@@ -4,6 +4,7 @@ class Registry {
     this.bottomActivitybarItems = []; // icon ghim cuối thanh (VD: Settings)
     this.sidebarViews = {}; // { [id]: tagName }
     this.emptyEditorViews = {}; // { [id]: tagName }
+    this.editorActions = [];
     this.providerEditorViews = {}; // { [id]: tagName }
     this.providerCreatorViews = {}; // { [id]: tagName }
     this.providers = []; // { id, name, abbr, group, color, textColor, desc, tags }
@@ -104,6 +105,14 @@ class Registry {
   // --- Panel ---
   registerPanelView(tagName) {
     this.panelView = tagName;
+  }
+  
+  registerEditorAction(action) {
+    this.editorActions.push(action);
+  }
+
+  getEditorActions() {
+    return this.editorActions;
   }
 
   getPanelView() {

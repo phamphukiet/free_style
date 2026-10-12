@@ -85,6 +85,14 @@ class EditorPaneElement extends LitElement {
       }),
     );
   }
+  
+  handleAction(action) {
+    window.dispatchEvent(
+      new CustomEvent(action.event, {
+        detail: { filePath: this.activePath, paneId: this.paneId },
+      }),
+    );
+  }
 
   handleClose() {
     this.dispatchEvent(

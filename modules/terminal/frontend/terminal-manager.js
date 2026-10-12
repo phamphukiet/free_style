@@ -11,6 +11,13 @@ const DEFAULT_FONT = {
   tabStopWidth: 4,
 };
 
+const psq = (s) =>
+  `'${s.replace(/['\u2018\u2019\u201A\u201B]/g, (m) => m + m)}'`; // PowerShell coi cả nháy cong là nháy đơn
+const FORMAT = {
+  powershell: (exe, args) => `& ${[exe, ...args].map(psq).join(" ")}`,
+  cmd: (exe, args) => [exe, ...args].map((s) => `"${s}"`).join(" "),
+};
+
 // Base 16-màu mặc định theo "terminal.colorTheme" (001-style, do part terminal
 // tự sở hữu). Đây chỉ là NỀN — nếu setting "syntax.palette" (002) có đóng góp
 // layer qua terminal-theme.js registry, layer đó luôn được áp SAU CÙNG nên thắng.
@@ -74,6 +81,8 @@ export class TerminalManager {
       this._applyTerminalThemeLayer(),
     );
     this._applyTerminalThemeLayer();
+    this._onExecute = (e) => this.execute(e.detail);
+    window.addEventListener("terminal:execute", this._onExecute);
     this.spawnShell();
   }
 
@@ -180,6 +189,12 @@ export class TerminalManager {
     this.term.writeln("\r\n\x1b[90m[Process exited]\x1b[0m");
   }
 
+  execute({ exe, args = [] }) {
+    const format = FORMAT[this.shellType] || FORMAT.powershell;
+    window.api.terminal.write(`${format(exe, args)}\r`);
+    this.term.focus();
+  }
+
   dispose() {
     this._unsubData?.();
     this._unsubSettings?.();
@@ -187,5 +202,6 @@ export class TerminalManager {
     this._resizeObserver?.disconnect();
     this.term.dispose();
     window.api.terminal.kill();
+    window.removeEventListener("terminal:execute", this._onExecute);
   }
 }

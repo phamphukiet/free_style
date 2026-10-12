@@ -1,8 +1,23 @@
 import { html, unsafeStatic } from "lit/static-html.js";
+import { registry } from "@modules/registry.js";
 
 function toolbar(host) {
+  const actions = registry
+    .getEditorActions()
+    .map(
+      (a) => html`
+        <button
+          class="pane-btn"
+          title=${a.title}
+          @click=${() => host.handleAction(a)}
+        >
+          ${a.glyph}
+        </button>
+      `,
+    );
   return html`
     <div class="pane-toolbar">
+      ${actions}
       <button
         class="pane-btn"
         title="Chia đôi màn hình"
