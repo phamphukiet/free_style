@@ -5,6 +5,7 @@ const { registerWindowIpc } = require("./ipc/window.js");
 const { registerFsIpc } = require("./ipc/fs.js");
 const { registerSystemIpc } = require("./ipc/open_link.js");
 const { registerCredentialsIpc } = require("./ipc/credentials/index.js");
+const { registerStorageIpc } = require("../../shared/storage/ipc/index.js");
 
 function registerWindowIpcWrapper() {
   registerWindowIpc();
@@ -12,6 +13,7 @@ function registerWindowIpcWrapper() {
   registerSystemIpc();
   registerCredentialsIpc();
   registerModulesIpc();
+  registerStorageIpc();
 
   for (const id of activeModules) {
     try {

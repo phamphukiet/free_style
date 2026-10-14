@@ -26,9 +26,26 @@ const channels = {
   CREDENTIALS_LOAD: "credentials:load",
   CREDENTIALS_DELETE: "credentials:delete",
 };
+const invokeStorage = (channel) => (payload) =>
+  ipcRenderer.invoke(channel, payload);
 
 function getExposedApi() {
   return {
+    storage: {
+      get: invokeStorage("storage:get"),
+      inspect: invokeStorage("storage:inspect"),
+      set: invokeStorage("storage:set"),
+      delete: invokeStorage("storage:delete"),
+      move: invokeStorage("storage:move"),
+      keys: invokeStorage("storage:keys"),
+      entries: invokeStorage("storage:entries"),
+      watch: invokeStorage("storage:watch"),
+      onChanged: (callback) => {
+        const listener = (event, detail) => callback(detail);
+        ipcRenderer.on("storage:changed", listener);
+        return () => ipcRenderer.removeListener("storage:changed", listener);
+      },
+    },
     window: {
       minimize: () => ipcRenderer.send(channels.WINDOW_MINIMIZE),
       maximize: () => ipcRenderer.send(channels.WINDOW_MAXIMIZE),
