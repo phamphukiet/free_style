@@ -46,6 +46,15 @@ function findProviderByHint(hint) {
   );
 }
 
+// Lấy API của 1 service theo hợp đồng bên dùng tự khai báo:
+// needs = các method bên dùng cần. Thiếu service hoặc thiếu method -> fallback.
+/** @param {{ id: string, needs?: string[], fallback?: any }} args */
+function getService({ id, needs = [], fallback = null }) {
+  const api = getCapability("service", id)?.api;
+  const ready = api && needs.every((name) => typeof api[name] === "function");
+  return ready ? api : fallback;
+}
+
 module.exports = {
   registerCapability,
   registerToolBridge,
@@ -53,4 +62,5 @@ module.exports = {
   hasCapability,
   listCapabilities,
   findProviderByHint,
+  getService
 };

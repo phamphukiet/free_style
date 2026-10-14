@@ -7,8 +7,9 @@ const {
   decrypt,
 } = require("../../../../src/main/ipc/credentials/storage");
 const { findProviderByHint, getCapability } = require("../../../../shared/capability-registry");
-const resolveProviderId = (hint) => findProviderByHint(hint)?.id || null;
-const loadListModels = (id) => getCapability("provider", id)?.client.listModels || null;
+const resolveProviderId = ({ hint }) => findProviderByHint(hint)?.id || null;
+const loadListModels = ({ providerId }) =>
+  getCapability("provider", providerId)?.client?.listModels || null;
 
 function listAvailable() {
   const data = loadCredentialsSync();
@@ -18,7 +19,7 @@ function listAvailable() {
   }));
 }
 
-function resolveKeyForProvider(providerId, keyHint) {
+function resolveKeyForProvider({ providerId, keyHint }) {
   const entries = loadCredentialsSync()[providerId]?.keys || [];
   if (entries.length === 0) return null;
   let entry = entries[0];
@@ -30,8 +31,8 @@ function resolveKeyForProvider(providerId, keyHint) {
   return value ? { keyId: entry.id, value } : null;
 }
 
-async function resolveModel(providerId, apiKey, modelHint) {
-  const listModels = loadListModels(providerId);
+async function resolveModel({ providerId, apiKey, modelHint }) {
+  const listModels = loadListModels({ providerId });
   if (!listModels) return modelHint || "";
   const models = await listModels(apiKey);
   if (!modelHint) return models[0]?.id || "";

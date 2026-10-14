@@ -3,7 +3,7 @@
 const { getToolSpec } = require("./spec.js");
 const actions = require("./actions.js");
 
-async function execute(action, args = {}) {
+async function execute({ action, args = {} }) {
   switch (action) {
     case "list":
       return actions.list();

@@ -1,91 +1,62 @@
 // store.js
-// Trách nhiệm duy nhất: đọc/ghi file agents.json trong userData — CRUD thuần,
-// không đụng IPC. Model 1 agent: { id, name, providerId, keyId, model }.
+// CRUD agent trên shared/storage (namespace "agent"). Model: { id, name, providerId, keyId, model }.
+// Tầng workspace (<project>/.vibe/agent.json) ghi đè tầng global (~/.vibe/agent.json).
+// Nhận registry qua createAgentStore để test không cần Electron. Không đụng IPC.
 
-const path = require("path");
-const fs = require("fs");
 const crypto = require("crypto");
-const { readState } = require("../../../../src/main/state");
+const { registry: defaultRegistry } = require("../../../../shared/storage");
+
 const MANAGER_ID = "manager";
-const AGENTS_DIR = ".vibe";
-const AGENTS_FILENAME = "agent.json";
-let memoryFallback = null;
+const DEFAULT_MANAGER = Object.freeze({
+  id: MANAGER_ID,
+  name: "Manager",
+  providerId: "",
+  keyId: "",
+  model: "",
+});
 
-function getAgentsFile() {
-  const { lastFolder } = readState();
-  if (!lastFolder) return null;
-  return path.join(lastFolder, AGENTS_DIR, AGENTS_FILENAME);
-}
+/** @param {{ registry: { open: Function } }} deps */
+function createAgentStore({ registry }) {
+  let storage = null;
+  const db = () => (storage ??= registry.open({ namespace: "agent" }));
 
-function readAll() {
-  const file = getAgentsFile();
-  if (!file) {
-    if (!memoryFallback) memoryFallback = ensureManager({});
-    return memoryFallback;
+  // Manager luôn tồn tại ở dạng ảo: chỉ ghi xuống đĩa khi người dùng thật sự lưu.
+  function current({ id }) {
+    const saved = db().get({ key: id, fallback: null });
+    if (saved) return saved;
+    return id === MANAGER_ID ? { ...DEFAULT_MANAGER } : null;
   }
-  let data;
-  try {
-    data = JSON.parse(fs.readFileSync(file, "utf-8"));
-  } catch {
-    data = {};
+
+  function list() {
+    return Object.values({
+      [MANAGER_ID]: { ...DEFAULT_MANAGER },
+      ...db().entries(),
+    });
   }
-  return ensureManager(data);
-}
 
-function writeAll(data) {
-  const file = getAgentsFile();
-  if (!file) {
-    memoryFallback = data;
-    return;
+  const get = ({ id }) => current({ id });
+
+  /** @param {{ agent: object }} args */
+  function save({ agent }) {
+    const id = agent.id || crypto.randomUUID();
+    const prev = current({ id });
+    const name = id === MANAGER_ID ? "Manager" : agent.name || prev?.name;
+    const next = { ...prev, ...agent, id, name };
+    db().set({ key: id, value: next });
+    return next;
   }
-  try {
-    fs.mkdirSync(path.dirname(file), { recursive: true });
-    fs.writeFileSync(file, JSON.stringify(data, null, 2), "utf-8");
-    memoryFallback = null;
-  } catch (err) {
-    console.error("[agent/store] writeAll lỗi:", err);
-    throw err;
+
+  function remove({ id }) {
+    if (id === MANAGER_ID || !db().has({ key: id })) return false;
+    db().delete({ key: id }); // không truyền scope: xóa ở mọi tầng
+    return true;
   }
+
+  return { list, get, save, remove };
 }
 
-function list() {
-  return Object.values(readAll());
-}
-
-function get(id) {
-  return readAll()[id] || null;
-}
-
-function save(agent) {
-  const data = readAll();
-  const id = agent.id || crypto.randomUUID();
-  const name = id === MANAGER_ID ? "Manager" : agent.name || data[id]?.name;
-  data[id] = { ...data[id], ...agent, id, name };
-  writeAll(data);
-  return data[id];
-}
-
-function remove(id) {
-  if (id === MANAGER_ID) return false;
-  const data = readAll();
-  if (!data[id]) return false;
-  delete data[id];
-  writeAll(data);
-  return true;
-}
-
-function ensureManager(data) {
-  if (!data[MANAGER_ID]) {
-    data[MANAGER_ID] = {
-      id: MANAGER_ID,
-      name: "Manager",
-      providerId: "",
-      keyId: "",
-      model: "",
-    };
-    writeAll(data);
-  }
-  return data;
-}
-
-module.exports = { list, get, save, remove, MANAGER_ID };
+module.exports = {
+  ...createAgentStore({ registry: defaultRegistry }),
+  createAgentStore,
+  MANAGER_ID,
+};

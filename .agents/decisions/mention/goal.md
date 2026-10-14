@@ -1,1 +1,0 @@
-trong chat, khi gõ @ sẽ hiển thị các mention

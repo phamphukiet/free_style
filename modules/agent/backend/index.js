@@ -5,6 +5,7 @@ const {
   registerCapability,
 } = require("../../../shared/capability-registry.js");
 const { getToolSpec, execute } = require("./tool/index.js");
+const { agentService } = require("./agent/service.js");
 
 function register() {
   try {
@@ -13,16 +14,12 @@ function register() {
     console.error("Failed to load agent-core backend", e);
   }
   registerMention("agent", { hint: "quản lý agent AI (tạo/sửa/xoá/test)" });
-  registerCapability({
-    id: "agents",
-    kind: "service",
-    api: require("./agent/store.js"),
-  });
+  registerCapability({ id: "agents", kind: "service", api: agentService });
   registerCapability({
     id: "agent",
     kind: "tool",
     spec: getToolSpec(),
-    execute: (args) => execute(args.action, args),
+    execute: (args) => execute({ action: args.action, args }),
   });
 }
 

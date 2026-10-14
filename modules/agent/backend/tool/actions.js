@@ -26,24 +26,28 @@ function resolveAgent(idOrName) {
 }
 
 async function buildAgentFields({ providerHint, keyHint, modelHint }) {
-  const providerId = resolveProviderId(providerHint);
+  const providerId = resolveProviderId({ hint: providerHint });
   if (!providerId)
     throw new Error(
       `Không xác định được provider từ "${providerHint}". Khả dụng: ${listAvailable()
         .map((p) => p.providerId)
         .join(", ")}`,
     );
-  const key = resolveKeyForProvider(providerId, keyHint);
+  const key = resolveKeyForProvider({ providerId, keyHint });
   if (!key)
     throw new Error(`Provider "${providerId}" chưa có API key nào được lưu.`);
-  const model = await resolveModel(providerId, key.value, modelHint);
+  const model = await resolveModel({
+    providerId,
+    apiKey: key.value,
+    modelHint,
+  });
   return { providerId, keyId: key.keyId, model };
 }
 
 async function create(args) {
   if (!args.name) throw new Error("Thiếu tên agent.");
   const fields = await buildAgentFields(args);
-  const agent = store.save({ name: args.name, ...fields });
+  const agent = store.save({ agent: { name: args.name, ...fields } });
   return {
     message: `Đã tạo agent "${agent.name}" (${fields.providerId} · ${fields.model}).`,
     agent,
@@ -64,7 +68,7 @@ async function update(args) {
       }),
     );
   }
-  const agent = store.save(patch);
+  const agent = store.save({ agent: patch });
   return { message: `Đã cập nhật agent "${agent.name}".`, agent };
 }
 
@@ -77,7 +81,7 @@ function remove(args) {
       message: `Xác nhận xoá agent "${existing.name}"? Nếu người dùng đồng ý, gọi lại với confirmed=true.`,
     };
   }
-  const ok = store.remove(existing.id);
+  const ok = store.remove({ id: existing.id });
   return ok
     ? { message: `Đã xoá agent "${existing.name}".` }
     : { message: `Không thể xoá agent "${existing.name}" (agent mặc định).` };

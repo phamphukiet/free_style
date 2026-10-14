@@ -5,11 +5,16 @@ const {
   decrypt,
 } = require("../../../../src/main/ipc/credentials/storage");
 const sessionStore = require("../session/store");
+const { getService } = require("../../../../shared/capability-registry");
 
-// Agent là dịch vụ tuỳ chọn: module agent bị xoá -> null, không crash.
+// Hợp đồng chat cần từ service "agents": get({ id }) -> { providerId, keyId, model } | null.
+// Thiếu service (module agent bị xóa) hoặc sai hợp đồng -> bỏ qua agent, chat vẫn chạy.
+const NO_AGENTS = Object.freeze({ get: () => null });
+
 function agentConfig(agentId) {
-  const service = getCapability("service", "agents");
-  return agentId && service ? service.api.get(agentId) : null;
+  if (!agentId) return null;
+  const agents = getService({ id: "agents", needs: ["get"], fallback: NO_AGENTS });
+  return agents.get({ id: agentId });
 }
 
 function resolveKey(providerId, keyId) {

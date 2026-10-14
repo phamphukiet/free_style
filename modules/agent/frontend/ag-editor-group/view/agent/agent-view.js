@@ -23,8 +23,8 @@ class AgentViewElement extends LitElement {
     saved: { state: true },
     currentBytes: { state: true },
     fileLimitMB: { state: true },
-    rules: { state: true },
-    skills: { state: true },
+    assignedRules: { state: true },
+    assignedSkills: { state: true },
   };
 
   constructor() {
@@ -75,7 +75,9 @@ class AgentViewElement extends LitElement {
     if (!this.contextId) return;
     await this._keysReady;
     const agent = await window.api.agent.get(this.contextId);
-    const { rules, skills } = await loadAssignedRulesAndSkills(this.contextId);
+    const { rules, skills } = await loadAssignedRulesAndSkills({
+      agentId: this.contextId,
+    });
     if (token !== this._requestToken) return;
     this.assignedRules = rules;
     this.assignedSkills = skills;

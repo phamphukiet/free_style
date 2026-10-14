@@ -1,24 +1,27 @@
 // state.js
-// Đọc/ghi file trạng thái app (JSON) trong thư mục userData —
-// đúng cách VSCode lưu global state, không phải localStorage renderer.
+// Trạng thái app (lastFolder, chatSelection...) — wrapper mỏng trên shared/storage,
+// namespace "state" ở tầng global (~/.vibe/state.json). Registry theo dõi key
+// lastFolder của namespace này để gắn tầng workspace cho mọi store.
+// Giữ nguyên API readState/writeState để fs.js, chat... không phải sửa.
 
-const { app } = require("electron");
-const path = require("path");
-const fs = require("fs");
+const { registry } = require("../../shared/storage");
 
-const STATE_FILE = path.join(app.getPath("userData"), "state.json");
+const LEGACY = { file: "state.json", from: "userData" };
+
+let state = null;
+const db = () =>
+  (state ??= registry.open({
+    namespace: "state",
+    scopes: ["global"],
+    legacy: LEGACY, // nhập userData/state.json 1 lần, không mất project đang mở
+  }));
 
 function readState() {
-  try {
-    return JSON.parse(fs.readFileSync(STATE_FILE, "utf-8"));
-  } catch {
-    return {};
-  }
+  return db().entries();
 }
 
 function writeState(partial) {
-  const next = { ...readState(), ...partial };
-  fs.writeFileSync(STATE_FILE, JSON.stringify(next, null, 2), "utf-8");
+  db().setMany({ entries: partial }); // giá trị null/undefined = xóa key
 }
 
 module.exports = { readState, writeState };

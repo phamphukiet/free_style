@@ -2,8 +2,8 @@
 - Function first: chạy được trước, tối ưu sau
 - Mỗi file ≤ 100 dòng; phình to thì tách thư mục riêng
 - Complexity Indicator giữ mức Low: cyclomatic complexity mỗi hàm ≤ 10, nesting depth ≤ 3; vượt phải tách hàm/refactor, không viết thêm tính năng đè lên
-- modules khi bị xóa không ảnh hưởng đến code tổng thể
-- Cấu trúc code ưu tiên bảo trì cao, nếu crud tính năng/modules/folder mà phải edit quá 1 file là thất bại
+- modules/hàm bị xóa hoặc thay đổi không ảnh hưởng đến code tổng thể
+- Cấu trúc clean stucture
 - object hóa signature với hàm >= 3 tham số hoặc tham số dễ thay đổi trong quá trình code
 # Tuân thủ mức 2
 - Sửa code: chỉ show đoạn thay đổi, không show lại cả file
