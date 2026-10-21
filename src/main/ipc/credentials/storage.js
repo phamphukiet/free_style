@@ -1,27 +1,28 @@
-const { safeStorage, app } = require("electron");
-const fs = require("fs");
-const path = require("path");
+const { safeStorage } = require("electron");
+const { registry } = require("../../../../shared/storage");
 
-function getCredentialsPath() {
-  const userDataPath = app.getPath("userData");
-  return path.join(userDataPath, "credentials.json");
-}
+// Key API chỉ nằm ở tầng global (~/.vibe/credentials.json, mode 0o600),
+// không cho vào workspace để khỏi bị commit theo project.
+let storage = null;
+const db = () =>
+  (storage ??= registry.open({
+    namespace: "credentials",
+    scopes: ["global"],
+    legacy: { file: "credentials.json", from: "userData" },
+  }));
 
 function loadCredentialsSync() {
-  const credPath = getCredentialsPath();
-  if (!fs.existsSync(credPath)) return {};
-  try {
-    return JSON.parse(fs.readFileSync(credPath, "utf-8"));
-  } catch (error) {
-    console.error("Failed to read credentials file:", error);
-    return {};
-  }
+  return db().entries();
 }
 
 function saveCredentialsSync(data) {
-  const credPath = getCredentialsPath();
-  fs.writeFileSync(credPath, JSON.stringify(data, null, 2), "utf-8");
-  console.log("[Credentials] Saved to:", credPath);
+  const removed = Object.fromEntries(
+    db()
+      .keys()
+      .filter((k) => !(k in data))
+      .map((k) => [k, null]),
+  );
+  db().setMany({ entries: { ...data, ...removed } });
 }
 
 function encrypt(text) {

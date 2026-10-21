@@ -25,8 +25,10 @@ app.whenReady().then(() => {
   buildAppMenu();
   registerWindowIpc();
   initApp();
-  console.log(app.getPath("userData"));
-  // macOS: bấm icon dock khi không có cửa sổ nào → mở lại cửa sổ.
+  console.log(
+    "[storage] global dir:",
+    require("../../shared/storage").registry.getGlobalDir(),
+  );
   app.on("activate", () => {
     if (BrowserWindow.getAllWindows().length === 0) {
       initApp();
