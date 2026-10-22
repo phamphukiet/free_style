@@ -47,3 +47,6 @@
 .st-create-form { margin-top: 16px; display: flex; flex-direction: column; gap: 8px; max-width: 320px; }
 .st-form-actions { display: flex; gap: 8px; }
 .st-empty { padding: 30px; text-align: center; color: var(--text-muted, #888); }
+.st-item-desc { font-size: 11px; color: var(--text-muted, #888); }
+.st-modified .st-item-label::after { content: " ●"; color: var(--accent, #007acc); font-size: 10px; }
+.st-textarea { font-family: monospace; resize: vertical; }

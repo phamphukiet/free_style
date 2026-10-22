@@ -29,6 +29,12 @@ const channels = {
 const invokeStorage = (channel) => (payload) =>
   ipcRenderer.invoke(channel, payload);
 
+const invokeSetting = async (channel, ...args) => {
+  const result = await ipcRenderer.invoke(channel, ...args);
+  if (!result?.ok) throw new Error(result?.error || "Lỗi settings");
+  return result.data;
+};
+
 function getExposedApi() {
   return {
     storage: {
@@ -127,20 +133,31 @@ function getExposedApi() {
         ipcRenderer.invoke("chat:project-size", folderPath),
     },
     settings: {
-      list: () => ipcRenderer.invoke("settings:list"),
-      listGroups: () => ipcRenderer.invoke("settings:list-groups"),
-      getAll: () => ipcRenderer.invoke("settings:get-all"),
-      get: (id) => ipcRenderer.invoke("settings:get", id),
-      set: (id, value) => ipcRenderer.invoke("settings:set", id, value),
-      addPreset: (id, preset) =>
-        ipcRenderer.invoke("settings:add-preset", id, preset),
-      create: (def) => ipcRenderer.invoke("settings:create", def),
-      update: (id, patch) => ipcRenderer.invoke("settings:update", id, patch),
-      delete: (id) => ipcRenderer.invoke("settings:delete", id),
+      list: () => invokeSetting("settings:list"),
+      listGroups: () => invokeSetting("settings:list-groups"),
+      getAll: () => invokeSetting("settings:get-all"),
+      get: (id) => invokeSetting("settings:get", id),
+      inspect: (id) => invokeSetting("settings:inspect", id),
+      set: (payload) => invokeSetting("settings:set", payload), // { id, value, scope? }
+      reset: (payload) => invokeSetting("settings:reset", payload), // { id, scope? }
+      addPreset: (payload) => invokeSetting("settings:add-preset", payload), // { id, option }
+      removePreset: (payload) =>
+        invokeSetting("settings:remove-preset", payload),
+      getEffects: () => invokeSetting("settings:get-effects"),
+      errors: () => invokeSetting("settings:errors"),
+      importVscode: (opts) => invokeSetting("settings:import-vscode", opts),
+      linkFile: (opts) => invokeSetting("settings:link-file", opts),
+      unlinkFile: () => invokeSetting("settings:unlink-file"),
+      linkStatus: () => invokeSetting("settings:link-status"),
       onChanged: (callback) => {
         const listener = (event, detail) => callback(detail);
         ipcRenderer.on("settings:changed", listener);
         return () => ipcRenderer.removeListener("settings:changed", listener);
+      },
+      onEffects: (callback) => {
+        const listener = (event, batch) => callback(batch);
+        ipcRenderer.on("settings:effects", listener);
+        return () => ipcRenderer.removeListener("settings:effects", listener);
       },
     },
     agent: {

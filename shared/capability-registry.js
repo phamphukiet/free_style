@@ -1,7 +1,7 @@
 // capability-registry.js
 // Registry TỔNG QUÁT: module tự đăng ký "khả năng"; nơi dùng (chat...) chỉ hỏi registry,
 // không require đường dẫn nội bộ của module khác.
-// kind: provider | tool | prompt | exec-wrapper | send-wrapper | service
+// kind: provider | tool | prompt | exec-wrapper | send-wrapper | service | setting-transform
 // requires: mảng "kind:id" — thiếu 1 cái thì capability bị bỏ qua.
 
 const store = new Map(); // "kind:id" -> capability

@@ -5,6 +5,9 @@ export function dashboardTemplate(host) {
 
   return html`
     <div class="st-dashboard-title">Settings</div>
+    <button class="st-mini-btn" @click=${() => host.handleImportVscode()}>
+      Nhập từ VS Code
+    </button>
     ${groups.length === 0
       ? html`<div class="st-empty">Chưa có setting nào được đăng ký</div>`
       : html`
