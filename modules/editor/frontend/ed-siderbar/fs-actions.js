@@ -54,7 +54,7 @@ export async function deletePath(targetPath) {
   return window.api.fs.delete(targetPath);
 }
 
-const normalize = (p) => (p ? p.replace(/\\/g, "/").toLowerCase() : "");
+export const normalize = (p) => (p ? p.replace(/\\/g, "/").toLowerCase() : "");
 
 export async function movePath(sourcePath, targetFolderPath, isDirectory) {
   const srcNorm = normalize(sourcePath);

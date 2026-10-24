@@ -67,7 +67,10 @@ export function paneTemplate(host, emptyTagName) {
             )}
           </div>
           <div class="editor-container">
-            <module-editor .path=${host.activePath}></module-editor>
+            <module-editor
+              .path=${host.activePath}
+              .paneId=${host.paneId}
+            ></module-editor>
           </div>
         `;
 

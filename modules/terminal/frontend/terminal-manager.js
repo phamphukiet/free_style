@@ -1,9 +1,5 @@
 import { Terminal } from "xterm";
 import { FitAddon } from "@xterm/addon-fit";
-import {
-  getTerminalTheme,
-  onTerminalThemeChange,
-} from "@shared/terminal-theme.js";
 
 const DEFAULT_FONT = {
   fontSize: 13,

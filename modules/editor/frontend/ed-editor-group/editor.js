@@ -1,6 +1,11 @@
 import { LitElement } from "lit";
 import { editorTemplate } from "./editor.template.js";
-import { mountEditor } from "../mount.js";
+import {
+  mountEditor,
+  acquireModel,
+  releaseModel,
+  applyModelOptions,
+} from "../mount.js";
 import { readFile, writeFile } from "../bridge.js";
 import { registry } from "@modules/registry.js";
 import * as monaco from "monaco-editor";
@@ -23,59 +28,48 @@ function detectLang(path) {
 }
 
 class EditorElement extends LitElement {
-  static properties = { path: { type: String } };
+  static properties = { path: { type: String }, paneId: { type: String } };
 
   constructor() {
     super();
     this.path = "";
+    this.paneId = "";
     this.instance = null;
-    this.models = new Map();
-    this._options = {}; // option hiện hành từ effect "monaco.options"  }
-  }
-  createRenderRoot() {
-    return this;
+    this.held = new Set();
+    this._options = {};
   }
 
-  async firstUpdated() {
-    const mountPoint = this.querySelector("#editor-mount");
-    this.instance = mountEditor(mountPoint);
+  firstUpdated() {
+    this.instance = mountEditor(this.querySelector("#editor-mount"));
     window.addEventListener("workbench:close-file", this.handleFileClosed);
     this._unbind = bindEditor({ host: this });
-
-    registry.registerConfigConsumer("editor-save-trigger", () => {
-      this.models.forEach(({ model, path: p }, path) => {
-        const entry = this.models.get(path);
-        if (entry.dirty) {
-          writeFile(path, model.getValue());
-          entry.dirty = false;
-        }
-      });
-    });
   }
 
   disconnectedCallback() {
     window.removeEventListener("workbench:close-file", this.handleFileClosed);
     this._unbind?.();
+    this.held.forEach((path) => releaseModel({ path, host: this }));
+    this.held.clear();
+    this.instance?.dispose();
     super.disconnectedCallback();
   }
+
+  handleFileClosed = (e) => {
+    const { filePath, paneId } = e.detail;
+    if (paneId !== this.paneId || !this.held.delete(filePath)) return;
+    releaseModel({ path: filePath, host: this });
+  };
 
   applyOptions(options) {
     this._options = options;
     this.instance?.updateOptions(options);
-    this.models.forEach(({ model }) =>
-      model.updateOptions(modelOptions(options)),
-    );
+    applyModelOptions(modelOptions(options));
   }
 
   async getOrCreateModel(path) {
-    if (this.models.has(path)) return this.models.get(path).model;
-    const content = await readFile(path);
-    const model = monaco.editor.createModel(content, detectLang(path));
-model.updateOptions(modelOptions(this._options));    const entry = { model, saveTimeout: null };
-    model.onDidChangeContent(() => {
-      entry.dirty = true; // chỉ đánh dấu, không tự ghi nữa
-    });
-    this.models.set(path, entry);
+    const model = await acquireModel({ path, host: this });
+    this.held.add(path);
+    model.updateOptions(modelOptions(this._options));
     return model;
   }
 

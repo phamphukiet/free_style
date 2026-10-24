@@ -67,8 +67,10 @@ class EditorPaneElement extends LitElement {
     const idx = this.openFiles.findIndex((f) => f.path === path);
     this.openFiles = this.openFiles.filter((f) => f.path !== path);
     window.dispatchEvent(
-      new CustomEvent("workbench:close-file", { detail: { filePath: path } }),
-    );
+  new CustomEvent("workbench:close-file", {
+    detail: { filePath: path, paneId: this.paneId },
+  }),
+);
     if (this.activePath !== path) return;
     this.activePath =
       this.openFiles.length === 0

@@ -2,18 +2,12 @@ import { LitElement, unsafeCSS } from "lit";
 import { sidebarTemplate } from "./sidebar.template.js";
 import { openFolder, loadLastFolder } from "@shared/folder-actions.js";
 import {
-  createFile,
-  createFolder,
-  getParentPath,
-  copyPath,
-  movePath,
-} from "@shared/fs-actions.js";
-import { getClipboard, clearClipboard } from "@shared/clipboard.js";
+  createFile, createFolder, getParentPath, copyPath, movePath, normalize,
+} from "./fs-actions.js";
+import { getClipboard, clearClipboard } from "./clipboard.js";
 import styles from "./sidebar.css?inline";
 import "./tree_item/tree-item.js";
 import "./context_menu/context-menu.js";
-
-const normalize = (p) => (p ? p.replace(/\\/g, "/").toLowerCase() : "");
 
 class ModuleSidebarElement extends LitElement {
   static styles = unsafeCSS(styles);

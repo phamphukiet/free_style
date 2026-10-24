@@ -2,22 +2,11 @@ import { LitElement, unsafeCSS } from "lit";
 import { treeItemTemplate } from "./tree-item.template.js";
 import styles from "./tree-item.css?inline";
 import {
-  createFile,
-  createFolder,
-  renamePath,
-  deletePath,
-  getParentPath,
-  movePath,
-  copyPath,
-} from "@shared/fs-actions.js";
+  createFile, createFolder, renamePath, deletePath,
+  getParentPath, movePath, copyPath, normalize,
+} from "../fs-actions.js";
+import { setClipboard, getClipboard, clearClipboard } from "../clipboard.js";
 
-import {
-  setClipboard,
-  getClipboard,
-  clearClipboard,
-} from "@shared/clipboard.js";
-
-const normalize = (p) => (p ? p.replace(/\\/g, "/").toLowerCase() : "");
 
 class TreeItemElement extends LitElement {
   static styles = unsafeCSS(styles);
