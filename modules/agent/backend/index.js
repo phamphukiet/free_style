@@ -1,9 +1,9 @@
 // index.js
 // Điểm export duy nhất — src/main/ipc.js chỉ cần gọi registerAgentBackend().
-const { registerMention } = require("../../../shared/mention-registry.js");
+const { registerMention } = require("../../../shared/core/mention-registry.js");
 const {
   registerCapability,
-} = require("../../../shared/capability-registry.js");
+} = require("../../../shared/core/capability-registry.js");
 const { getToolSpec, execute } = require("./tool/index.js");
 const { agentService } = require("./agent/service.js");
 

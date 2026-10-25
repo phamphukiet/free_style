@@ -2,7 +2,7 @@
 const { ipcMain } = require("electron");
 const {
   registerCapability,
-} = require("../../../../shared/capability-registry");
+} = require("../../../../shared/core/capability-registry");
 const { readState, writeState } = require("../../../../src/main/state");
 const sessionStore = require("../session/store");
 const { registerSessionIpc } = require("../session/ipc");

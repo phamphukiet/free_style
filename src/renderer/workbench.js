@@ -7,7 +7,7 @@ import "./parts/panel/panel.js";
 import "./parts/statusbar/statusbar.js";
 import "./parts/rightsidebar/rightsidebar.js";
 import "./parts/toast/toast.js";
-import { loadLastFolder } from "@shared/folder-actions.js";
+import { loadLastFolder } from "@shared/renderer/folder-actions.js";
 
 const moduleEntries = import.meta.glob("@modules/*/frontend/index.js");
 console.log("[workbench] moduleEntries keys:", Object.keys(moduleEntries));

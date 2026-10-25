@@ -5,27 +5,10 @@ import {
   acquireModel,
   releaseModel,
   applyModelOptions,
-} from "../mount.js";
-import { readFile, writeFile } from "../bridge.js";
-import { registry } from "@modules/registry.js";
-import * as monaco from "monaco-editor";
-import { bindEditor } from "../effects.js";
+} from "../renderer/mount.js";
+import { bindEditor } from "../renderer/effects.js";
 const modelOptions = ({ tabSize, insertSpaces }) => ({ tabSize, insertSpaces });
 
-const LANGS = {
-  js: "javascript",
-  ts: "typescript",
-  json: "json",
-  html: "html",
-  css: "css",
-  py: "python",
-  md: "markdown",
-};
-
-function detectLang(path) {
-  const ext = path.split(".").pop().toLowerCase();
-  return LANGS[ext] || "plaintext";
-}
 
 class EditorElement extends LitElement {
   static properties = { path: { type: String }, paneId: { type: String } };
@@ -39,10 +22,13 @@ class EditorElement extends LitElement {
     this._options = {};
   }
 
-  firstUpdated() {
-    this.instance = mountEditor(this.querySelector("#editor-mount"));
+  async firstUpdated() {
+    const instance = await mountEditor(this.querySelector("#editor-mount"));
+    if (!this.isConnected) return instance.dispose(); // bị gỡ trong lúc Monaco đang tải
+    this.instance = instance;
     window.addEventListener("workbench:close-file", this.handleFileClosed);
     this._unbind = bindEditor({ host: this });
+    this.showPath();
   }
 
   disconnectedCallback() {
@@ -73,8 +59,12 @@ class EditorElement extends LitElement {
     return model;
   }
 
-  async updated(changedProperties) {
-    if (!changedProperties.has("path") || !this.path || !this.instance) return;
+  updated(changed) {
+    if (changed.has("path")) this.showPath();
+  }
+
+  async showPath() {
+    if (!this.path || !this.instance) return;
     const targetPath = this.path;
     const model = await this.getOrCreateModel(targetPath);
     if (this.path !== targetPath) return;

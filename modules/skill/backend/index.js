@@ -1,6 +1,6 @@
 // index.js
 const { registerSkillIpc } = require("./ipc");
-const { registerMention } = require("../../../shared/mention-registry.js");
+const { registerMention } = require("../../../shared/core/mention-registry.js");
 
 function register() {
   registerSkillIpc();

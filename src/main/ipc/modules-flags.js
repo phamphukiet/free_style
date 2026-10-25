@@ -3,7 +3,7 @@
 // sang renderer, để workbench.js biết import frontend module nào.
 
 const { ipcMain } = require("electron");
-const channels = require("../../../shared/ipc-channels");
+const channels = require("../../../shared/core/ipc-channels");
 const activeModules = require("../../../modules/active-modules.js");
 
 function registerModulesIpc() {

@@ -4,7 +4,7 @@
 const { registerSettingsIpc } = require("./ipc");
 const aiBridge = require("./ai-bridge");
 const { loadRootAiExtensions } = require("./loader");
-const { registerMention } = require("../../../shared/mention-registry.js");
+const { registerMention } = require("../../../shared/core/mention-registry.js");
 
 function register() {
   registerSettingsIpc();

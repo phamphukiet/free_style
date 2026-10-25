@@ -1,8 +1,13 @@
 import { LitElement, unsafeCSS } from "lit";
 import { sidebarTemplate } from "./sidebar.template.js";
-import { openFolder, loadLastFolder } from "@shared/folder-actions.js";
+import { openFolder, loadLastFolder } from "@shared/renderer/folder-actions.js";
 import {
-  createFile, createFolder, getParentPath, copyPath, movePath, normalize,
+  createFile,
+  createFolder,
+  getParentPath,
+  copyPath,
+  movePath,
+  normalize,
 } from "./fs-actions.js";
 import { getClipboard, clearClipboard } from "./clipboard.js";
 import styles from "./sidebar.css?inline";

@@ -1,0 +1,21 @@
+// Tên kênh IPC dùng chung cho main. Preload sandbox không require được file này,
+// nên bảng trong preload/index.js phải giữ giống hệt.
+module.exports = {
+  WINDOW_MINIMIZE: "window:minimize",
+  WINDOW_MAXIMIZE: "window:maximize",
+  WINDOW_CLOSE: "window:close",
+  DIALOG_OPEN_FOLDER: "dialog:open-folder",
+  STATE_LOAD_LAST_FOLDER: "state:load-last-folder",
+  FS_READ_DIRECTORY: "fs:read-directory",
+  FS_CREATE_FILE: "fs:create-file",
+  FS_CREATE_FOLDER: "fs:create-folder",
+  FS_RENAME: "fs:rename",
+  FS_DELETE: "fs:delete",
+  FS_COPY: "fs:copy",
+  MODULES_ACTIVE: "modules:active",
+  TERMINAL_CREATE: "terminal:create",
+  TERMINAL_WRITE: "terminal:write",
+  TERMINAL_RESIZE: "terminal:resize",
+  TERMINAL_KILL: "terminal:kill",
+  TERMINAL_DATA: "terminal:data",
+};

@@ -3,7 +3,7 @@
 
 const {
   registerCapability,
-} = require("../../../../shared/capability-registry.js");
+} = require("../../../../shared/core/capability-registry.js");
 const { themeVars, themeMonacoBase } = require("./appearance/transforms/theme");
 const {
   syntaxMonaco,

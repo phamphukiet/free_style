@@ -1,4 +1,4 @@
-const TARGET = "monaco.options";
+const { TARGET } = require("./target");
 
 module.exports = [
   {

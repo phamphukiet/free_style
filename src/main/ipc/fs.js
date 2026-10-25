@@ -1,6 +1,6 @@
 const { ipcMain, BrowserWindow, dialog } = require("electron");
 const fs = require("fs");
-const channels = require("../../../shared/ipc-channels");
+const channels = require("../../../shared/core/ipc-channels");
 const { readState, writeState } = require("../state");
 
 function readFolderEntries(folderPath) {

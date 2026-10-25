@@ -1,16 +1,11 @@
 // index.js
-const { ipcMain } = require("electron");
-const { readTextFile, writeTextFile } = require("./editor");
-const { registerMention } = require("../../../shared/mention-registry.js");
+// Trách nhiệm duy nhất: gọi các hàm đăng ký. Logic nằm ở file/ và mention.js.
+const { registerFileIpc } = require("./file/ipc");
+const { registerEditorMention } = require("./file/mention");
 
 function register() {
-  ipcMain.handle("fs:read-file", (event, filePath) => readTextFile(filePath));
-  ipcMain.handle("fs:write-file", (event, filePath, content) =>
-    writeTextFile(filePath, content),
-  );
-  registerMention("editor", {
-    hint: "quản lý trình soạn thảo (tạo/sửa/xoá/run)",
-  });
+  registerFileIpc();
+  registerEditorMention();
 }
 
 module.exports = { register };

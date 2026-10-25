@@ -6,7 +6,10 @@ const {
   loadCredentialsSync,
   decrypt,
 } = require("../../../../src/main/ipc/credentials/storage");
-const { findProviderByHint, getCapability } = require("../../../../shared/capability-registry");
+const {
+  findProviderByHint,
+  getCapability,
+} = require("../../../../shared/core/capability-registry");
 const resolveProviderId = ({ hint }) => findProviderByHint(hint)?.id || null;
 const loadListModels = ({ providerId }) =>
   getCapability("provider", providerId)?.client?.listModels || null;

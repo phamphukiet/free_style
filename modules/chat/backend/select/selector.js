@@ -4,7 +4,7 @@ const {
   getCapability,
   listCapabilities,
   hasCapability,
-} = require("../../../../shared/capability-registry");
+} = require("../../../../shared/core/capability-registry");
 const { run: runDefaultStrategy } = require("../strategy/default");
 const { isTripped } = require("./health");
 

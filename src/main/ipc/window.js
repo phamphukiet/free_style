@@ -1,5 +1,5 @@
 const { ipcMain, BrowserWindow, dialog } = require("electron");
-const channels = require("../../../shared/ipc-channels");
+const channels = require("../../../shared/core/ipc-channels");
 
 function registerWindowIpc() {
   ipcMain.on(channels.WINDOW_MINIMIZE, (event) => {

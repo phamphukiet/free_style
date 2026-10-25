@@ -1,4 +1,4 @@
-const TARGET = "monaco.options";
+const { TARGET } = require("./target");
 const toggle = [
   { value: "on", label: "On" },
   { value: "off", label: "Off" },

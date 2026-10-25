@@ -6,7 +6,7 @@
 const { ipcMain } = require("electron");
 const {
   registerCapability,
-} = require("../../../shared/capability-registry.js");
+} = require("../../../shared/core/capability-registry.js");
 const { CHANNEL } = require("./const.js");
 
 function registerProvider(config) {

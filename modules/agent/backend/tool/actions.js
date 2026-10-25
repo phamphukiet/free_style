@@ -8,7 +8,9 @@ const {
   resolveModel,
   listAvailable,
 } = require("./provider-resolve.js");
-const { getCapability } = require("../../../../shared/capability-registry");
+const {
+  getCapability,
+} = require("../../../../shared/core/capability-registry");
 const {
   loadCredentialsSync,
   decrypt,
@@ -99,7 +101,7 @@ async function test(args) {
   if (!apiKey) throw new Error(`Không lấy được API key cho "${agent.name}".`);
   const provider = getCapability("provider", agent.providerId);
   if (!provider?.client?.chatCompletion)
-     throw new Error(`Provider "${agent.providerId}" chưa hỗ trợ test.`);
+    throw new Error(`Provider "${agent.providerId}" chưa hỗ trợ test.`);
   const reply = await provider.client.chatCompletion(
     apiKey,
     args.message || "Xin chào, đây là tin nhắn test.",

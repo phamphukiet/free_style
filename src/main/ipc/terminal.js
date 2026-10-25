@@ -1,5 +1,5 @@
 const { ipcMain } = require("electron");
-const channels = require("../../../shared/ipc-channels");
+const channels = require("../../../shared/core/ipc-channels");
 const terminal = require("../../../modules/terminal/backend/terminal");
 
 function registerTerminalIpc() {

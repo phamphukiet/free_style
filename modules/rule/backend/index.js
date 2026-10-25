@@ -1,6 +1,6 @@
 // index.js
 const { registerRuleIpc } = require("./api/ipc.js");
-const { registerMention } = require("../../../shared/mention-registry.js");
+const { registerMention } = require("../../../shared/core/mention-registry.js");
 const {
   registerPromptContributor,
 } = require("../../../shared/chat-pipeline-registry.js");

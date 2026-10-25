@@ -3,7 +3,7 @@ const assert = require("assert");
 const {
   registerCapability,
   getService,
-} = require("../../shared/capability-registry");
+} = require("../../shared/core/capability-registry");
 const {
   createAgentService,
 } = require("../../modules/agent/backend/agent/service");

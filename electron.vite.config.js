@@ -36,4 +36,5 @@ export default defineConfig({
       format: "es", // Monaco worker dùng ESM
     },
   },
+  optimizeDeps: { include: ["monaco-editor"] },
 });

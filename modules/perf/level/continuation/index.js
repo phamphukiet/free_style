@@ -3,7 +3,7 @@ const { runWithContinuation } = require("./resume");
 const { buildContinuationGuide } = require("./prompt");
 const {
   registerCapability,
-} = require("../../../../shared/capability-registry");
+} = require("../../../../shared/core/capability-registry");
 const {
   registerPromptContributor,
 } = require("../../../../shared/chat-pipeline-registry");

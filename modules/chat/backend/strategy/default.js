@@ -1,5 +1,7 @@
 // default.js — @mention trước, rồi tool dùng gần nhất, rồi theo `order`.
-const { extractMentions } = require("../../../../shared/mention-registry.js");
+const {
+  extractMentions,
+} = require("../../../../shared/core/mention-registry.js");
 
 const name = "default";
 

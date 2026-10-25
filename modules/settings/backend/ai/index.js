@@ -8,8 +8,8 @@ const { registry: storage } = require("../../../shared/storage");
 const {
   registerCapability,
   getCapability,
-} = require("../../../shared/capability-registry.js");
-const { registerMention } = require("../../../shared/mention-registry.js");
+} = require("../../../shared/core/capability-registry.js");
+const { registerMention } = require("../../../shared/core/mention-registry.js");
 const activeModules = require("../../active-modules.js");
 const { createRegistry } = require("./core/registry");
 const { createEngine } = require("./core/engine");

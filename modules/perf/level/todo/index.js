@@ -3,7 +3,7 @@ const actions = require("./actions");
 const { renderTodoPrompt } = require("./prompt");
 const {
   registerToolBridge,
-} = require("../../../../shared/capability-registry");
+} = require("../../../../shared/core/capability-registry");
 const {
   registerPromptContributor,
 } = require("../../../../shared/chat-pipeline-registry");

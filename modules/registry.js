@@ -33,6 +33,7 @@ class Registry {
         ? this.bottomActivitybarItems
         : this.activitybarItems;
     target.push(item);
+    target.sort((a, b) => (a.order ?? 100) - (b.order ?? 100));
     this.emit("activitybar:changed", {
       top: this.activitybarItems,
       bottom: this.bottomActivitybarItems,
@@ -106,7 +107,7 @@ class Registry {
   registerPanelView(tagName) {
     this.panelView = tagName;
   }
-  
+
   registerEditorAction(action) {
     this.editorActions.push(action);
   }

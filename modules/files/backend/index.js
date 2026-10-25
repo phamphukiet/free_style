@@ -1,7 +1,7 @@
-const { registerMention } = require("../../../shared/mention-registry.js");
+const { registerMention } = require("../../../shared/core/mention-registry.js");
 const {
   registerCapability,
-} = require("../../../shared/capability-registry.js");
+} = require("../../../shared/core/capability-registry.js");
 const { getToolSpec, execute } = require("./tool-bridge.js");
 
 function register() {
