@@ -14,6 +14,9 @@ function registerTerminalIpc() {
         // webContents có thể bị destroy giữa lúc check và lúc send
       }
     });
+    terminal.onExit(() => {
+      if (!sender.isDestroyed()) sender.send(channels.TERMINAL_EXIT);
+    });
     return result;
   });
 

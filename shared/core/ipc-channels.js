@@ -18,4 +18,5 @@ module.exports = {
   TERMINAL_RESIZE: "terminal:resize",
   TERMINAL_KILL: "terminal:kill",
   TERMINAL_DATA: "terminal:data",
+  TERMINAL_EXIT: "terminal:exit",
 };

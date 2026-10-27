@@ -21,7 +21,9 @@ class EditorElement extends LitElement {
     this.held = new Set();
     this._options = {};
   }
-
+  createRenderRoot() {
+    return this;
+  }
   async firstUpdated() {
     const instance = await mountEditor(this.querySelector("#editor-mount"));
     if (!this.isConnected) return instance.dispose(); // bị gỡ trong lúc Monaco đang tải

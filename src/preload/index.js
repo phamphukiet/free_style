@@ -22,6 +22,7 @@ const channels = {
   TERMINAL_RESIZE: "terminal:resize",
   TERMINAL_KILL: "terminal:kill",
   TERMINAL_DATA: "terminal:data",
+  TERMINAL_EXIT: "terminal:exit",
   CREDENTIALS_SAVE: "credentials:save",
   CREDENTIALS_LOAD: "credentials:load",
   CREDENTIALS_DELETE: "credentials:delete",
@@ -91,6 +92,12 @@ function getExposedApi() {
         ipcRenderer.on(channels.TERMINAL_DATA, listener);
         return () =>
           ipcRenderer.removeListener(channels.TERMINAL_DATA, listener);
+      },
+      onExit: (callback) => {
+        const listener = () => callback();
+        ipcRenderer.on(channels.TERMINAL_EXIT, listener);
+        return () =>
+          ipcRenderer.removeListener(channels.TERMINAL_EXIT, listener);
       },
     },
     runner: {

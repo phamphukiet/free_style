@@ -56,4 +56,22 @@ function killShell() {
   ptyProcess = null;
 }
 
+function onExit(callback) {
+  const current = ptyProcess;
+  current?.onExit((event) => {
+    if (ptyProcess !== current) return;
+    ptyProcess = null;
+    callback(event);
+  });
+}
+
+module.exports = {
+  spawnShell,
+  onData,
+  onExit,
+  writeShell,
+  resizeShell,
+  killShell,
+};
+
 module.exports = { spawnShell, onData, writeShell, resizeShell, killShell };

@@ -54,10 +54,6 @@ function createWindow() {
     win.webContents.openDevTools({ mode: "detach" });
   }
 
-  win.on("closed", () => {
-    require("../../modules/terminal/backend/terminal").killShell();
-  });
-
   return win;
 }
 

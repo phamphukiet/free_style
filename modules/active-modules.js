@@ -12,7 +12,7 @@ module.exports = [
   "editor",
   "runner",
   "providers",
-  // "terminal",
+  "terminal",
   "settings",
   "agent",
   "skill",

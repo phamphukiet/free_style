@@ -1,4 +1,3 @@
-const { app } = require("electron");
 const activeModules = require("../../modules/active-modules.js");
 const { registerModulesIpc } = require("./ipc/modules-flags.js");
 const { registerWindowIpc } = require("./ipc/window.js");
@@ -31,7 +30,3 @@ function registerWindowIpcWrapper() {
 }
 
 module.exports = { registerWindowIpc: registerWindowIpcWrapper };
-
-app.on("before-quit", () => {
-  require("../../modules/terminal/backend/terminal").killShell();
-});

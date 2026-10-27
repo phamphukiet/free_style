@@ -51,4 +51,3 @@
   background: var(--panel-bg, var(--bg-primary, #1e1e1e));
 }
 .terminal-area .xterm { height: 100%; }
-.terminal-area .xterm-viewport { background: #1e1e1e !important; }
