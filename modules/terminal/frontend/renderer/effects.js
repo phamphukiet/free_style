@@ -2,20 +2,16 @@
 // Thêm setting terminal mới chỉ cần sửa backend/setting/, không đụng file này.
 
 import { registerEffectHandler } from "@shared/setting/effect.js";
-import {
-  getTerminalTheme,
-  onTerminalThemeChange,
-} from "@shared/setting/terminal-theme.js";
 import { PALETTES } from "./palettes.js";
 
 const hosts = new Set();
 const options = {};
 let baseId = "dark";
+const DEFAULT_ID = "dark";
 
-// Thứ tự ưu tiên: palette gốc (terminal.colorTheme) < layer của setting khác.
 function resolveOptions() {
-  const base = PALETTES[baseId] ?? PALETTES.dark;
-  return { ...options, theme: { ...base, ...getTerminalTheme() } };
+  const base = PALETTES[baseId] ?? PALETTES[DEFAULT_ID] ?? {};
+  return { ...options, theme: { ...base } };
 }
 
 const pushAll = () =>
@@ -42,5 +38,3 @@ registerEffectHandler({
     pushAll();
   },
 });
-
-onTerminalThemeChange(pushAll);

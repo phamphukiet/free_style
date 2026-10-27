@@ -8,7 +8,7 @@ import { LitElement, unsafeCSS } from "lit";
 import { tmPanelTemplate } from "./panel.template.js";
 import panelStyles from "./panel.css?inline";
 import xtermStyles from "xterm/css/xterm.css?inline";
-import { TerminalManager } from "../terminal-manager.js";
+import { TerminalManager } from "../manager/terminal-manager.js";
 
 class TmPanelElement extends LitElement {
   static styles = [unsafeCSS(xtermStyles), unsafeCSS(panelStyles)];

@@ -1,0 +1,9 @@
+{
+    "label": "Light",
+    "colors": {
+        "background": "#ffffff",
+        "foreground": "#333333",
+        "cursor": "#000000",
+        "selectionBackground": "#add6ff"
+    }
+}

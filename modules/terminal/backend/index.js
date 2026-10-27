@@ -1,7 +1,7 @@
-const { registerTerminalIpc } = require("../../../src/main/ipc/terminal.js");
-const { registerMention } = require("../../../shared/core/mention-registry.js");
 const { app } = require("electron");
-const { killShell } = require("./terminal");
+const { registerMention } = require("../../../shared/core/mention-registry.js");
+const { registerTerminalIpc } = require("./ipc");
+const { killShell } = require("./pty/pty-manager");
 
 function register() {
   registerTerminalIpc();
@@ -9,3 +9,5 @@ function register() {
   app.on("before-quit", killShell);
   app.on("browser-window-created", (_e, win) => win.on("closed", killShell));
 }
+
+module.exports = { register };

@@ -4,9 +4,9 @@
 
 import { Terminal } from "xterm";
 import { FitAddon } from "@xterm/addon-fit";
-import { PALETTES, DEFAULT_OPTIONS } from "./renderer/palettes.js";
-import { FORMAT } from "./renderer/shell-format.js";
-import { bindTerminal } from "./renderer/effects.js";
+import { PALETTES, DEFAULT_OPTIONS } from "../renderer/palettes.js";
+import { FORMAT } from "../renderer/shell-format.js";
+import { bindTerminal } from "../renderer/effects.js";
 
 const EXIT_MSG = "\r\n\x1b[90m[Process exited]\x1b[0m";
 

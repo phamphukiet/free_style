@@ -1,0 +1,9 @@
+{
+    "label": "Dark",
+    "colors": {
+        "background": "#1e1e1e",
+        "foreground": "#cccccc",
+        "cursor": "#ffffff",
+        "selectionBackground": "#264f78"
+    }
+}
