@@ -21,7 +21,3 @@
 - Icon dùng `lucide-static`, import SVG qua `?raw`, nhúng bằng `unsafeSVG` (không dùng `lucide` DOM API vì không xuyên Shadow DOM)
 - Layout kiểu VSCode: titlebar (cố định) → #workbench-body (activitybar → sidebar → #editor-panel-column) → statusbar (cố định); #editor-panel-column: editor-group (flex) + panel (cố định)
 - CSS layout tổng (quan hệ giữa các part) đặt ở `workbench.css`, ngoài Shadow DOM
-# Tuân thủ mức 3
-- Phân quyền sửa file: Prime = kỹ sư viết tay, được sửa file khác nếu cần; Custom = chỉ được sửa `.css` và `.template.js`, không đụng `.js` logic thật, không đụng `src/main`, `src/preload`, file sửa phải nằm trong đúng thư mục của setting đó
-- Setting mới: khai báo ở `modules/<tên>/backend/setting/manifest.js` (id, type, default, effects). Frontend chỉ có handler theo target ở `modules/<tên>/frontend/effects.js` (hoặc `@shared/setting/effect.js`), không đọc id setting; không đụng `frontend/index.js`
-- Phân quyền sửa: Prime = kỹ sư viết manifest; Extension/Custom = chỉ dữ liệu (`manifest.json`), target nằm trong `manifest/targets.js`, không có code

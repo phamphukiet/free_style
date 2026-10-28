@@ -73,12 +73,12 @@ function register() {
   registerMention("settings", {
     hint: "quản lý cài đặt (xem/đổi/đặt lại/thêm mẫu)",
   });
-  console.log(
-    "[settings] defs:",
-    engine.list().length,
-    "errors:",
-    engine.errors(),
-  );
+  // console.log(
+  //   "[settings] defs:",
+  //   engine.list().length,
+  //   "errors:",
+  //   engine.errors(),
+  // );
 }
 
 // Tương thích chỗ gọi cũ (chat dùng aiBridge.getToolSpec/execute(action, args)).
