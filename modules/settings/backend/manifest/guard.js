@@ -2,7 +2,6 @@
 // Chặn manifest lỗi: manifest sai → KHÔNG kích hoạt, trả lỗi cho UI/toast.
 
 const { OWNER_PATTERN, EXPR_PATTERN } = require("./spec");
-const { isAllowedTarget } = require("./targets");
 const { validateDefinition, validateOption } = require("../core/validate");
 
 const isText = (v) => typeof v === "string" && v.trim() !== "";
@@ -16,19 +15,16 @@ function findBadExpression(node) {
   return Object.values(node).map(findBadExpression).find(Boolean) || null;
 }
 
-function effectError({ effect, trusted }) {
-  if (!trusted && !isAllowedTarget({ target: effect.target })) {
-    return `target "${effect.target}" không nằm trong whitelist`;
-  }
+function effectError({ effect }) {
   const bad = findBadExpression(effect.payload);
   return bad ? `biểu thức "${bad}" không hợp lệ` : null;
 }
 
-function definitionError({ def, owner, trusted }) {
+function definitionError({ def, owner }) {
   const error = validateDefinition({ def, owner });
   if (error) return error;
   const found = (def.effects || [])
-    .map((effect) => effectError({ effect, trusted }))
+    .map((effect) => effectError({ effect }))
     .find(Boolean);
   return found ? `${def.id}: ${found}` : null;
 }
@@ -48,12 +44,12 @@ function shapeError(manifest) {
   return badPresets ? "presets phải là mảng" : null;
 }
 
-function checkManifest({ manifest, trusted }) {
+function checkManifest({ manifest }) {
   const first = (items, fn) => items.map(fn).find(Boolean);
   const error =
     shapeError(manifest) ||
     first(manifest.settings, (def) =>
-      definitionError({ def, owner: manifest.owner, trusted }),
+      definitionError({ def, owner: manifest.owner }),
     ) ||
     first(manifest.presets || [], (preset) => presetError({ preset }));
   return error ? { ok: false, error } : { ok: true };

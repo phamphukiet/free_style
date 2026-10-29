@@ -8,6 +8,7 @@ const same = (a, b) => JSON.stringify(a) === JSON.stringify(b);
 function createEvents({ store, effective }) {
   const listeners = new Set();
   const known = new Map();
+  const reloadListeners = new Set();
   let pending = new Set();
 
   function refresh(id) {
@@ -46,6 +47,12 @@ function createEvents({ store, effective }) {
       listeners.add(listener);
       return { dispose: () => listeners.delete(listener) };
     },
+    onDidReload: ({ listener }) => {
+      reloadListeners.add(listener);
+      return { dispose: () => reloadListeners.delete(listener) };
+    },
+    reloaded: () =>
+      reloadListeners.forEach((listener) => notify({ listener, ids: [] })),
   };
 }
 

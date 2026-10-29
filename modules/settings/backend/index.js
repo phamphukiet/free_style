@@ -5,10 +5,8 @@
 const path = require("path");
 const { app } = require("electron");
 const { registry: storage } = require("../../../shared/storage");
-const {
-  registerCapability,
-  getCapability,
-} = require("../../../shared/core/capability-registry.js");
+const { loadFeatures } = require("./features");
+const capabilities = require("../../../shared/core/capability-registry.js");
 const { registerMention } = require("../../../shared/core/mention-registry.js");
 const activeModules = require("../../active-modules.js");
 const { createRegistry } = require("./core/registry");
@@ -25,13 +23,12 @@ const { createSettingsTool } = require("./ai/tool");
 let tool = null;
 
 function buildEngine() {
-  const listSources = createSources({
+  const sources = createSources({
     activeModules,
     modulesDir: path.join(__dirname, "..", ".."),
-    extensionsDir: path.join(storage.getGlobalDir(), "extensions"),
   });
-  return createEngine({
-    registry: createRegistry({ listSources }),
+  const engine = createEngine({
+    registry: createRegistry({ listSources: sources.list }),
     valuesStore: storage.open({ namespace: "settings" }),
     presetsStore: storage.open({
       namespace: "settings-presets",
@@ -40,11 +37,16 @@ function buildEngine() {
     getTransform: ({ name }) =>
       getCapability({ kind: "setting-transform", id: name })?.fn,
   });
+  return { engine, sources };
 }
 
 function register() {
-  const engine = buildEngine();
+  const { engine, sources } = buildEngine();
   require("./setting").register(); // transform của chính module settings
+  const features = loadFeatures({
+    ctx: { engine, sources, storage, capabilities },
+  });
+  app.on("before-quit", features.dispose);
   migrateLegacy({
     file: path.join(app.getPath("userData"), "settings-store.json"),
     set: engine.set,
@@ -56,7 +58,10 @@ function register() {
   });
   const connectors = createConnectors({ engine, store: linkStore });
 
-  registerSettingsIpc({ commands: createCommands({ engine, connectors }) });
+  registerSettingsIpc({
+    commands: createCommands({ engine, connectors }),
+    routes: features.routes,
+  });
   bindBroadcast({ engine });
   tool = createSettingsTool({ engine });
   registerCapability({

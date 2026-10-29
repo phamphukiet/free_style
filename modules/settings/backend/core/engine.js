@@ -114,6 +114,15 @@ function createEngine({ registry, valuesStore, presetsStore, getTransform }) {
       .flatMap((d) => effectsFor({ id: d.id, snap }));
   }
 
+  function reload() {
+    registry.invalidate();
+    registry
+      .all()
+      .filter((def) => !def.builtin)
+      .forEach((def) => events.touch({ id: def.id }));
+    events.reloaded();
+  }
+
   return {
     getDefinition,
     list,
@@ -126,6 +135,9 @@ function createEngine({ registry, valuesStore, presetsStore, getTransform }) {
     allEffects,
     errors: registry.errors,
     onDidChange: events.onDidChange,
+    reload,
+    programs: () => registry.programs(),
+    onDidReload: events.onDidReload,
   };
 }
 

@@ -15,7 +15,7 @@ const withDefaults = ({ def, manifest, source }) => ({
   options: def.options?.map((option) => ({ ...option })),
   owner: manifest.owner,
   origin: source.id,
-  builtin: source.trusted,
+  builtin: source.builtin,
 });
 
 const fail = ({ state, from, error }) => state.errors.push({ from, error });
@@ -28,9 +28,9 @@ function addDefinition({ state, def, manifest, source }) {
 }
 
 function acceptManifest({ state, entry, source }) {
-  const { from, manifest, error } = entry;
+  const { from, manifest, error, entryFile } = entry;
   if (error) return fail({ state, from, error });
-  const verdict = checkManifest({ manifest, trusted: source.trusted });
+  const verdict = checkManifest({ manifest });
   if (!verdict.ok) return fail({ state, from, error: verdict.error });
   if (state.owners.has(manifest.owner)) {
     return fail({
@@ -40,6 +40,13 @@ function acceptManifest({ state, entry, source }) {
     });
   }
   state.owners.set(manifest.owner, source.id);
+  if (entryFile) {
+    state.programs.push({
+      owner: manifest.owner,
+      file: entryFile,
+      origin: source.id,
+    });
+  }
   manifest.settings.forEach((def) =>
     addDefinition({ state, def, manifest, source }),
   );
@@ -84,6 +91,7 @@ function createRegistry({ listSources }) {
       owners: new Map(),
       presets: [],
       errors: [],
+      programs: [],
     };
     listSources().forEach((source) => loadSource({ state, source }));
     state.presets.forEach((preset) => applyPreset({ state, preset }));
@@ -96,9 +104,8 @@ function createRegistry({ listSources }) {
     all: () => [...load().defs.values()],
     get: ({ id }) => load().defs.get(id) || null,
     errors: () => load().errors,
-    invalidate: () => {
-      cache = null;
-    },
+    invalidate: () => {cache = null;},
+    programs: () => [...load().programs],
   };
 }
 

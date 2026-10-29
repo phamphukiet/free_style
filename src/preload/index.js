@@ -166,6 +166,10 @@ function getExposedApi() {
         ipcRenderer.on("settings:effects", listener);
         return () => ipcRenderer.removeListener("settings:effects", listener);
       },
+      call: (channel, payload) =>
+        channel.startsWith("settings:")
+          ? invokeSetting(channel, payload)
+          : Promise.reject(new Error("Kênh không hợp lệ")),
     },
     agent: {
       list: () => ipcRenderer.invoke("agent:list"),

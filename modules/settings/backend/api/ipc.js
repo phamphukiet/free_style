@@ -36,8 +36,8 @@ function createHandler({ commands, route }) {
 }
 
 /** @param {{ commands: object }} deps */
-function registerSettingsIpc({ commands }) {
-  Object.entries(ROUTES).forEach(([channel, route]) =>
+function registerSettingsIpc({ commands, routes = {} }) {
+  Object.entries({ ...ROUTES, ...routes }).forEach(([channel, route]) =>
     ipcMain.handle(channel, createHandler({ commands, route })),
   );
 }
