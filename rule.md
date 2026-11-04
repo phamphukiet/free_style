@@ -1,5 +1,5 @@
 # Tuân thủ mức 1 - cao nhất 
-- Function first: chạy được trước, tối ưu sau
+- Ưu tiên tính bảo trì code, việc crud uc cấp thấp không được bảo trì quá 2 file
 - Mỗi file ≤ 100 dòng; phình to thì tách thư mục riêng
 - Complexity Indicator giữ mức Low: cyclomatic complexity mỗi hàm ≤ 10, nesting depth ≤ 3; vượt phải tách hàm/refactor, không viết thêm tính năng đè lên
 - modules/hàm bị xóa hoặc thay đổi không ảnh hưởng đến code tổng thể
