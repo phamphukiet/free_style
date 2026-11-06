@@ -1,16 +1,17 @@
-// index.js
-// Gom các source theo thứ tự tin cậy giảm dần. Thêm source = thêm 1 dòng.
-// Giao diện source: { id, trusted, list(): [{ from, manifest } | { from, error }] }.
+// Module (trusted) luôn đứng trước → extension không chiếm được owner/id của module.
+// Source ngoài (extension...) lấy từ capability "setting-source" — settings không biết ai cung cấp.
 
+const {
+  listCapabilities,
+} = require("../../../../shared/core/capability-registry.js");
 const { createModulesSource } = require("./modules");
-const { createExtensionsSource } = require("./extensions-dir");
 
-function createSources({ activeModules, modulesDir, extensionsDir }) {
-  const sources = [
-    createModulesSource({ activeModules, modulesDir }),
-    createExtensionsSource({ extensionsDir }),
+function createSources({ activeModules, modulesDir }) {
+  const modules = createModulesSource({ activeModules, modulesDir });
+  return () => [
+    modules,
+    ...listCapabilities({ kind: "setting-source" }).map(({ source }) => source),
   ];
-  return () => sources;
 }
 
 module.exports = { createSources };

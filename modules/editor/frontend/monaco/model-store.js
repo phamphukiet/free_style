@@ -1,5 +1,8 @@
-import { readFile, writeFile } from "../renderer/bridge.js";
-import { loadMonaco } from "./loader.js";
+import {
+  readFile,
+  writeFile,
+} from "../renderer/bridge.js";
+import { loadMonaco } from "@shared/renderer/monaco/loader.js";
 import { detectLang } from "./lang.js";
 
 const entries = new Map(); // path -> { model, dirty, hosts:Set }

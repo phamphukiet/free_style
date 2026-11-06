@@ -7,16 +7,12 @@
 module.exports = [
   "files",
   "api",
-  // "site",
   "chat",
   "editor",
   "runner",
   "providers",
   "terminal",
+  // "extension",
   "settings",
   "agent",
-  "skill",
-  // "rule",
-  // "kanban",
-  // "perf",
 ];

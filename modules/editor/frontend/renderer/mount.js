@@ -1,6 +1,5 @@
 import "../monaco/save.js"; // side-effect: đăng ký config consumer
-export { mountEditor } from "../monaco/create.js";
-export {
+export { mountEditor } from "@shared/renderer/monaco/create.js";export {
   acquireModel,
   releaseModel,
   applyModelOptions,

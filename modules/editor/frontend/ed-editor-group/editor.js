@@ -6,7 +6,7 @@ import {
   releaseModel,
   applyModelOptions,
 } from "../renderer/mount.js";
-import { bindEditor } from "../renderer/effects.js";
+import { bindEditor } from "@shared/renderer/monaco/options.js";
 const modelOptions = ({ tabSize, insertSpaces }) => ({ tabSize, insertSpaces });
 
 

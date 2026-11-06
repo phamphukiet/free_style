@@ -12,12 +12,16 @@ class Registry {
     this.rightSidebarView = null; // tagName duy nhất, khác sidebarViews (đa view theo id)
     this.panelView = null;
     this.configConsumers = {}; // { [id]: callback }
+    this.settingsPages = {}; // { ["page:<id>"]: { id, label, tag, order } }
   }
 
   // --- Events ---
   on(event, callback) {
     if (!this.listeners[event]) this.listeners[event] = [];
     this.listeners[event].push(callback);
+    return () => {
+      this.listeners[event] = this.listeners[event].filter((cb) => cb !== callback);
+    };
   }
 
   emit(event, data) {
@@ -119,6 +123,7 @@ class Registry {
   getPanelView() {
     return this.panelView;
   }
+
   registerConfigConsumer(id, callback) {
     this.configConsumers[id] = callback;
   }

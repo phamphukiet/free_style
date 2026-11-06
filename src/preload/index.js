@@ -36,6 +36,12 @@ const invokeSetting = async (channel, ...args) => {
   return result.data;
 };
 
+const invokeExt = (name) => async (payload) => {
+  const result = await ipcRenderer.invoke(`extension:${name}`, payload);
+  if (!result?.ok) throw new Error(result?.error || "Lỗi extension");
+  return result.data;
+};
+
 function getExposedApi() {
   return {
     storage: {
@@ -225,24 +231,19 @@ function getExposedApi() {
         return () => ipcRenderer.removeListener("rule:ai-changed", listener);
       },
     },
-    kanban: {
-      listTasks: () => ipcRenderer.invoke("kanban:list-tasks"),
-      getTask: (id) => ipcRenderer.invoke("kanban:get-task", id),
-      createTask: (data) => ipcRenderer.invoke("kanban:create-task", data),
-      moveTask: (taskId, toColumnId) =>
-        ipcRenderer.invoke("kanban:move-task", taskId, toColumnId),
-      approveTask: (taskId) =>
-        ipcRenderer.invoke("kanban:approve-task", taskId),
-      rejectTask: (taskId) => ipcRenderer.invoke("kanban:reject-task", taskId),
-      listAgents: () => ipcRenderer.invoke("kanban:list-agents"),
-      updateTask: (taskId, patch) =>
-        ipcRenderer.invoke("kanban:update-task", taskId, patch),
-      deleteTask: (taskId) => ipcRenderer.invoke("kanban:delete-task", taskId),
-      runTask: (taskId) => ipcRenderer.invoke("kanban:run-task", taskId),
+    extension: {
+      list: invokeExt("list"),
+      languages: invokeExt("languages"),
+      read: invokeExt("read"), // { id }
+      create: invokeExt("create"), // { code }
+      template: invokeExt("template"), // { language? } → { code }
+      save: invokeExt("save"), // { id, code }
+      setEnabled: invokeExt("setEnabled"), // { id, enabled }
+      remove: invokeExt("remove"), // { id }
       onChanged: (callback) => {
         const listener = () => callback();
-        ipcRenderer.on("kanban:changed", listener);
-        return () => ipcRenderer.removeListener("kanban:changed", listener);
+        ipcRenderer.on("extension:changed", listener);
+        return () => ipcRenderer.removeListener("extension:changed", listener);
       },
     },
     modules: {

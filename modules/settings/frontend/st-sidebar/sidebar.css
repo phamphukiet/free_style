@@ -13,3 +13,4 @@
 .st-group-item.active { background: var(--st-sidebar-active, var(--bg-elevated, #37373d)); }
 .st-group-name { font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
 .st-sidebar-empty { padding: 20px; text-align: center; color: var(--text-muted, #858585); }
+.st-page-divider { height: 1px; margin: 6px 12px; background: var(--border, #454545); }

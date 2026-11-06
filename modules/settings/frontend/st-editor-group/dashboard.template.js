@@ -1,11 +1,13 @@
 import { html } from "lit";
+import { registry } from "@modules/registry.js";
 
 export function dashboardTemplate(host) {
   const groups = [...new Set(host.allItems.map((s) => s.group))];
+  const pages = registry.getSettingsPages();
 
   return html`
     <div class="st-dashboard-title">Settings</div>
-    
+
     ${groups.length === 0
       ? html`<div class="st-empty">Chưa có setting nào được đăng ký</div>`
       : html`
@@ -26,5 +28,19 @@ export function dashboardTemplate(host) {
             })}
           </div>
         `}
+    ${pages.length === 0
+      ? ""
+      : html`<div class="st-group-grid" style="margin-top:14px">
+          ${pages.map(
+            (page) => html`
+              <div
+                class="st-group-card"
+                @click=${() => host.handleSelectGroup(page.id)}
+              >
+                <div class="st-group-card-title">${page.label}</div>
+              </div>
+            `,
+          )}
+        </div>`}
   `;
 }

@@ -8,6 +8,7 @@ const { registry: storage } = require("../../../shared/storage");
 const {
   registerCapability,
   getCapability,
+  listCapabilities,
 } = require("../../../shared/core/capability-registry.js");
 const { registerMention } = require("../../../shared/core/mention-registry.js");
 const activeModules = require("../../active-modules.js");
@@ -28,7 +29,6 @@ function buildEngine() {
   const listSources = createSources({
     activeModules,
     modulesDir: path.join(__dirname, "..", ".."),
-    extensionsDir: path.join(storage.getGlobalDir(), "extensions"),
   });
   return createEngine({
     registry: createRegistry({ listSources }),
@@ -42,8 +42,15 @@ function buildEngine() {
   });
 }
 
+function followSources({ engine }) {
+  listCapabilities({ kind: "setting-source" }).forEach(({ source }) =>
+    source.onDidChange?.({ listener: () => engine.reload() }),
+  );
+}
+
 function register() {
   const engine = buildEngine();
+  followSources({ engine });
   require("./setting").register(); // transform của chính module settings
   migrateLegacy({
     file: path.join(app.getPath("userData"), "settings-store.json"),

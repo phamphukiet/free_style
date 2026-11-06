@@ -114,8 +114,15 @@ function createEngine({ registry, valuesStore, presetsStore, getTransform }) {
       .flatMap((d) => effectsFor({ id: d.id, snap }));
   }
 
+  // Source đổi: bỏ cache registry, rồi báo mọi id để events so giá trị hiệu lực cũ/mới.
+  function reload() {
+    registry.invalidate();
+    registry.all().forEach(({ id }) => events.touch({ id }));
+  }
+
   return {
     getDefinition,
+    reload,
     list,
     inspect,
     set,

@@ -1,15 +1,20 @@
 import { LitElement, unsafeCSS } from "lit";
 import { stSidebarTemplate } from "./sidebar.template.js";
 import styles from "./sidebar.css?inline";
+import { registry } from "@modules/registry.js";
 
 class StSidebarElement extends LitElement {
   static styles = unsafeCSS(styles);
-  static properties = { groups: { state: true }, activeGroup: { state: true } };
-
+  static properties = {
+    groups: { state: true },
+    activeGroup: { state: true },
+    pages: { state: true },
+  };
   constructor() {
     super();
     this.groups = [];
     this.activeGroup = "";
+    this.pages = registry.getSettingsPages();
   }
 
   connectedCallback() {
@@ -17,11 +22,16 @@ class StSidebarElement extends LitElement {
     this.loadGroups();
     window.addEventListener("workbench:settings-changed", this.loadGroups);
     window.addEventListener("settings:select-group", this.syncActive);
+    this._offPages = registry.on("settings-pages:changed", (pages) => (this.pages = pages));
+    // Ext thêm/đổi setting → nhóm mới (VD "Extension") phải hiện ngay.
+    this._offSettings = window.api.settings.onChanged(this.loadGroups);
   }
 
   disconnectedCallback() {
     window.removeEventListener("workbench:settings-changed", this.loadGroups);
     window.removeEventListener("settings:select-group", this.syncActive);
+    this._offPages();
+    this._offSettings();
     super.disconnectedCallback();
   }
 

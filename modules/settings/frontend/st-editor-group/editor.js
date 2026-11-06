@@ -1,6 +1,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { stEditorTemplate } from "./editor.template.js";
 import styles from "./editor.css?inline";
+import { registry } from "@modules/registry.js";
 
 const toast = (message) =>
   window.dispatchEvent(
@@ -39,6 +40,21 @@ class StEditorGroupElement extends LitElement {
     window.removeEventListener("settings:select-group", this.handleGroupSelect);
     this._off?.();
     super.disconnectedCallback();
+  }
+
+  get pageTag() {
+    return registry.getSettingsPage(this.activeGroup)?.tag ?? null;
+  }
+
+  updated(changed) {
+    if (changed.has("activeGroup")) this.syncPage();
+  }
+
+  // Page là LIGHT child (qua <slot>): Monaco cần style của document, Shadow DOM sẽ chặn.
+  syncPage() {
+    const tag = this.pageTag;
+    if (this.firstElementChild?.localName === tag) return;
+    this.replaceChildren(...(tag ? [document.createElement(tag)] : []));
   }
 
   handleGroupSelect = (e) => {
