@@ -33,8 +33,9 @@ function validateValue({ def, value }) {
 }
 
 function validateOption({ option }) {
-  if (!option || !isText(option.value) || !isText(option.label)) {
-    return "option cần value và label dạng chuỗi";
+  const validValue = option && (isText(option.value) || isNum(option.value));
+  if (!validValue || !isText(option.label)) {
+    return "option cần value (chuỗi hoặc số) và label dạng chuỗi";
   }
   if (option.data === undefined) return null;
   const isObject = typeof option.data === "object" && option.data !== null;
