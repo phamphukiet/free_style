@@ -1,9 +1,9 @@
 import { html } from "lit";
-import { registry } from "@modules/registry.js";
+import { listPages } from "../pages.js";
 
 export function dashboardTemplate(host) {
   const groups = [...new Set(host.allItems.map((s) => s.group))];
-  const pages = registry.getSettingsPages();
+  const pages = listPages();
 
   return html`
     <div class="st-dashboard-title">Settings</div>

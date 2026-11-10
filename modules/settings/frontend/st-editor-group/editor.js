@@ -1,7 +1,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { stEditorTemplate } from "./editor.template.js";
 import styles from "./editor.css?inline";
-import { registry } from "@modules/registry.js";
+import { getPage } from "../pages.js";
 
 const toast = (message) =>
   window.dispatchEvent(
@@ -43,7 +43,7 @@ class StEditorGroupElement extends LitElement {
   }
 
   get pageTag() {
-    return registry.getSettingsPage(this.activeGroup)?.tag ?? null;
+    return getPage({ id: this.activeGroup })?.tag ?? null;
   }
 
   updated(changed) {
