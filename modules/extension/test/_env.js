@@ -31,7 +31,7 @@ const {
   createSettingValues,
 } = require("../backend/adapters/settings/setting-values");
 const presenter = require("../backend/interface/presenter");
-
+const { resolveGlobalDir } = require("../../../shared/storage/location/home");
 const MODULES_DIR = path.join(__dirname, "..", "..");
 const log = (error) => console.error("  (log)", error.message);
 
@@ -58,9 +58,19 @@ function createFakeSettings() {
   };
 }
 
-function createWorld() {
-  const home = fs.mkdtempSync(path.join(os.tmpdir(), "vibe-ext-test-"));
+function createWorld({ real = false } = {}) {
+  const home = real
+    ? resolveGlobalDir() // ~/.vibe thật (hoặc VIBE_HOME)
+    : fs.mkdtempSync(path.join(os.tmpdir(), "vibe-ext-test-"));
   const registry = createRegistry({ globalDir: home, followState: false });
+   const extStore = registry.open({
+     namespace: "extensions",
+     scopes: ["global"],
+   });
+   const settingsStore = registry.open({
+     namespace: "settings",
+     scopes: ["global"],
+   });
   const fake = createFakeSettings();
   const settingSource = createSettingSource();
   const commandsSent = [];
@@ -73,14 +83,11 @@ function createWorld() {
   });
   const values = createSettingValues({
     getService: () => fake.api,
-    openStore: () =>
-      registry.open({ namespace: "settings", scopes: ["global"] }),
+    openStore: () => settingsStore,
   });
   const runner = createWorkerRunner({ getRuntime, commandBus });
   const usecases = createUsecases({
-    repo: createExtensionRepo({
-      store: registry.open({ namespace: "extensions", scopes: ["global"] }),
-    }),
+    repo: createExtensionRepo({ store: extStore }),
     codeStore: createCodeStore({ rootDir: path.join(home, "extensions") }),
     runner,
     settings: {
@@ -109,9 +116,13 @@ function createWorld() {
     changes: () => changes,
     view: (id) =>
       presenter.extension(usecases.list().find((row) => row.id === id)),
+    home,
+    settingsStore,
+    flush: () => Promise.all([extStore.flush(), settingsStore.flush()]),
     async cleanup({ keep }) {
       await runner.stopAll();
       registry.closeAll();
+      if (real) return; // thư mục thật: KHÔNG BAO GIỜ xoá
       if (keep) return console.log(`\n📁 Thư mục tạm: ${home}`);
       fs.rmSync(home, { recursive: true, force: true });
     },
