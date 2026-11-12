@@ -10,5 +10,7 @@
  *   Trả { key: giá trị hiệu lực }, thiếu service thì dùng default.
  * @property {(args: { extId: string }) => void} removeAll   xóa mọi giá trị đã lưu của ext
  * @property {(args: { listener: (e: { ids: string[] }) => void }) => { dispose: () => void }} onChange
+ * @property {(args: { key: string, fallback: any }) => any} readOwn
+ *   Đọc setting extension.<key> của chính module, thiếu thì trả fallback.
  */
 module.exports = {};

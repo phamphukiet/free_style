@@ -33,7 +33,12 @@ function createUsecases({
     settings,
     catalog,
   });
-  const handleCrash = createHandleCrash({ repo, lifecycle, broadcast });
+  const handleCrash = createHandleCrash({
+    repo,
+    lifecycle,
+    settings,
+    broadcast,
+  });
   const save = createSaveCode({
     repo,
     codeStore,
@@ -69,7 +74,7 @@ function createUsecases({
       lifecycle,
       handleCrash,
     }),
-    onCodeChanged: createOnCodeChanged({ repo, saveCode: save }),
+    onCodeChanged: createOnCodeChanged({ repo, saveCode: save, settings }),
     sync: createSyncExtensions({ repo, codeStore, lifecycle, broadcast }),
   };
 }

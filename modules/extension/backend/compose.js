@@ -44,7 +44,11 @@ function buildAdapters() {
       ...createCodeStore({ rootDir }),
       ...createCodeWatcher({ rootDir, entries }),
     },
-    runner: createWorkerRunner({ getRuntime, commandBus }),
+    runner: createWorkerRunner({
+      getRuntime,
+      commandBus,
+      readOwn: values.readOwn,
+    }),
     settings: { ...values, publish: source.publish, retract: source.retract },
     settingSource: source.source,
   };

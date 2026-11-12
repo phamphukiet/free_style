@@ -9,15 +9,23 @@ const READY_TIMEOUT_MS = 3000;
 const MEMORY_LIMIT_MB = 64;
 
 /** @param {{ getRuntime: Function, commandBus: object }} deps */
-function createWorkerRunner({ getRuntime, commandBus }) {
+function createWorkerRunner({
+  getRuntime,
+  commandBus,
+  readOwn = ({ fallback }) => fallback, // test không cần truyền
+}) {
   const running = new Map(); // id -> Worker
   const crashListeners = new Set();
+  const memoryMb = () =>
+    readOwn({ key: "memoryMb", fallback: MEMORY_LIMIT_MB });
+  const loadTimeout = () =>
+    readOwn({ key: "loadTimeoutMs", fallback: READY_TIMEOUT_MS });
 
   function spawn({ language, data }) {
     const { workerFile } = getRuntime({ language });
     return new Worker(workerFile, {
       workerData: data,
-      resourceLimits: { maxOldGenerationSizeMb: MEMORY_LIMIT_MB },
+      resourceLimits: { maxOldGenerationSizeMb: memoryMb() },
     });
   }
 

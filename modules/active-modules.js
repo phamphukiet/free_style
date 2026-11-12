@@ -12,7 +12,7 @@ module.exports = [
   "runner",
   "providers",
   "terminal",
-  // "extension",
+  "extension",
   "settings",
   "agent",
 ];

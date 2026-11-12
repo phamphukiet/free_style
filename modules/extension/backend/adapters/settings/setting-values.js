@@ -21,6 +21,12 @@ function createSettingValues({ getService, openStore }) {
       );
     },
 
+    // Setting của chính module extension (extension.<key>); thiếu service → fallback.
+    readOwn({ key, fallback }) {
+      const api = service();
+      return api ? api.get({ id: `extension.${key}`, fallback }) : fallback;
+    },
+    
     onChange: ({ listener }) => service()?.onDidChange({ listener }) ?? NOOP,
 
     removeAll({ extId }) {
