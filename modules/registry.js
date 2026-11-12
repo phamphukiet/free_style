@@ -20,7 +20,9 @@ class Registry {
     if (!this.listeners[event]) this.listeners[event] = [];
     this.listeners[event].push(callback);
     return () => {
-      this.listeners[event] = this.listeners[event].filter((cb) => cb !== callback);
+      this.listeners[event] = this.listeners[event].filter(
+        (cb) => cb !== callback,
+      );
     };
   }
 
@@ -130,6 +132,26 @@ class Registry {
 
   getConfigConsumers() {
     return Object.values(this.configConsumers);
+  }
+
+  getConfigConsumer(id) {
+    return this.configConsumers[id];
+  }
+
+  // --- Settings pages ---
+  registerSettingsPage(page) {
+    this.settingsPages[`page:${page.id}`] = page;
+    this.emit("settings-pages:changed", this.getSettingsPages());
+  }
+
+  getSettingsPages() {
+    return Object.values(this.settingsPages).sort(
+      (a, b) => (a.order ?? 100) - (b.order ?? 100),
+    );
+  }
+
+  getSettingsPage(id) {
+    return this.settingsPages[`page:${id}`] ?? null;
   }
 }
 

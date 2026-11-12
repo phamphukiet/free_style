@@ -1,0 +1,54 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+  padding: 24px;
+  overflow-y: auto;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+  color: var(--st-text, var(--text-primary, #cccccc));
+  background: var(--st-bg, var(--bg-primary, #1e1e1e));
+}
+
+.ext-title { font-size: 20px; font-weight: 600; margin: 0 0 20px; }
+.ext-toolbar { display: flex; gap: 8px; margin-bottom: 16px; }
+
+.ext-input {
+  flex: 1;
+  max-width: 280px;
+  background: var(--bg-primary, #1e1e1e);
+  color: inherit;
+  border: 1px solid var(--border, #454545);
+  border-radius: 4px;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+.ext-btn {
+  background: var(--bg-elevated, #333333);
+  color: inherit;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.ext-btn:hover { background: var(--bg-hover, #3a3d41); }
+.ext-run { background: var(--accent, #0e639c); color: #ffffff; }
+.ext-danger { color: #d9534f; }
+
+.ext-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border, #303030);
+}
+.ext-info { flex: 1; min-width: 0; }
+.ext-name { font-size: 13px; }
+.ext-id { font-size: 11px; font-family: monospace; color: var(--text-muted, #888888); }
+.ext-error { font-size: 11px; color: #d9534f; margin-top: 2px; }
+
+.ext-status { font-size: 11px; margin-left: 8px; color: var(--text-muted, #888888); }
+.ext-status.running { color: #4ec9b0; }
+.ext-status.error { color: #d9534f; }
+
+.ext-empty { padding: 30px; text-align: center; color: var(--text-muted, #888888); }
