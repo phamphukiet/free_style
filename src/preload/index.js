@@ -234,12 +234,14 @@ function getExposedApi() {
     extension: {
       list: invokeExt("list"),
       languages: invokeExt("languages"),
+      root: invokeExt("root"),
       read: invokeExt("read"), // { id }
       create: invokeExt("create"), // { code }
       template: invokeExt("template"), // { language? } → { code }
       save: invokeExt("save"), // { id, code }
       setEnabled: invokeExt("setEnabled"), // { id, enabled }
       remove: invokeExt("remove"), // { id }
+      setValue: invokeExt("setValue"), // { id, key, value }
       onChanged: (callback) => {
         const listener = () => callback();
         ipcRenderer.on("extension:changed", listener);

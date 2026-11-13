@@ -1,6 +1,6 @@
 import { registry } from "@modules/registry.js";
 import "./ext-page/ext-page.js";
-import "./run-action.js";
+import "./render/run-action.js";
 
 registry.registerSettingsPage({
   id: "extension-code",

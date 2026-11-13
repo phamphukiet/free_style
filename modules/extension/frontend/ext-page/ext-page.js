@@ -1,28 +1,24 @@
 // ext-page.js
-// Trang settings "Extension (lập trình)": danh sách ext user viết + Lập trình / Run / Code mẫu.
+// Trang settings "Extension (lập trình)": tạo ext, vào chế độ code, danh sách ext, code mẫu.
 
 import { LitElement, unsafeCSS } from "lit";
 import { extPageTemplate } from "./ext-page.template.js";
 import styles from "./ext-page.css?inline";
 import "../ext-sample/ext-sample.js";
+import "../ext-item/ext-item.js";
 import {
-  listExtensions,
   listLanguages,
   createExtension,
-  removeExtension,
   onExtensionsChanged,
-} from "../ext-bridge.js";
-import {
-  openInEditor,
-  startExtension,
-  stopExtension,
-  attempt,
-} from "../ext-actions.js";
+} from "../render/ext-bridge.js";
+import { openInEditor, attempt } from "../render/ext-actions.js";
+import { enterMode } from "../render/ext-mode.js";
 
 class ExtPageElement extends LitElement {
   static styles = unsafeCSS(styles);
   static properties = {
     items: { state: true },
+    // fields: { state: true },
     sample: { state: true },
     showSample: { state: true },
   };
@@ -30,6 +26,7 @@ class ExtPageElement extends LitElement {
   constructor() {
     super();
     this.items = [];
+    // this.fields = [];
     this.sample = "";
     this.showSample = false;
   }
@@ -38,17 +35,20 @@ class ExtPageElement extends LitElement {
     super.connectedCallback();
     this.reload();
     this.loadSample();
-    this._off = onExtensionsChanged(this.reload);
+    this._offExt = onExtensionsChanged(this.reload);
   }
 
   disconnectedCallback() {
-    this._off?.();
+    this._offExt?.();
+    this._offSet?.();
     super.disconnectedCallback();
   }
 
   reload = () =>
     attempt(async () => {
-      this.items = await listExtensions();
+      [this.items, this.fields] = await Promise.all([
+        listExtensions(),
+      ]);
     });
 
   // Mẫu auto save do backend cung cấp (runtime js), chỉ để hiển thị.
@@ -63,26 +63,19 @@ class ExtPageElement extends LitElement {
     this.showSample = !this.showSample;
   }
 
+  handleEnterMode() {
+    return attempt(enterMode);
+  }
+
+  // Tạo xong: vào chế độ code và mở luôn file của ext mới.
   handleCreate() {
     const input = this.shadowRoot.getElementById("ext-name");
     return attempt(async () => {
-      await createExtension({ name: input.value });
+      const created = await createExtension({ name: input.value });
       input.value = "";
+      await enterMode();
+      openInEditor({ file: created.file });
     });
-  }
-
-  handleCode(item) {
-    openInEditor({ file: item.file });
-  }
-
-  handleRun(item) {
-    const task = item.status === "running" ? stopExtension : startExtension;
-    return attempt(() => task(item));
-  }
-
-  handleRemove(item) {
-    if (!window.confirm(`Xoá "${item.name}"?`)) return;
-    return attempt(() => removeExtension({ id: item.id }));
   }
 
   render() {

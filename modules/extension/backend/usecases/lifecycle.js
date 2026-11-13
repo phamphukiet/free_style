@@ -57,7 +57,6 @@ function createLifecycle({ repo, codeStore, runner, settings, catalog }) {
   async function activate({ id }) {
     const record = repo.get({ id });
     const { code, manifest } = await inspect({ id, record });
-    settings.publish({ id, manifest });
     await launch({ id, record, code, manifest });
   }
 
@@ -73,7 +72,6 @@ function createLifecycle({ repo, codeStore, runner, settings, catalog }) {
   async function deactivate({ id }) {
     started.delete(id);
     await runner.stop({ id });
-    settings.retract({ id });
   }
 
   // Event đổi setting phát cả khi mới publish: chỉ chạy lại khi giá trị thật sự khác.

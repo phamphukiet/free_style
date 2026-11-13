@@ -2,10 +2,9 @@ import { registry } from "@modules/registry.js";
 import filesIcon from "lucide-static/icons/files.svg?raw";
 import "./ed-siderbar/sidebar.js";
 import "./ed-editor-group/editor.js";
-import "./renderer/mount.js"; // if needed
-// import "./bridge.js"; // if needed
+import "./renderer/mount.js";
+import "./ed-mode-banner/mode-banner-mount.js";
 
-// Register Activitybar Item
 registry.registerActivitybarItem({
   id: "explorer",
   icon: filesIcon,
@@ -13,5 +12,4 @@ registry.registerActivitybarItem({
   order: 10,
 });
 
-// Register Sidebar View
 registry.registerSidebarView("explorer", "module-sidebar");

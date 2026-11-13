@@ -1,36 +1,35 @@
 // setting-values.js
-// Đọc giá trị hiệu lực, theo dõi thay đổi, xóa giá trị của ext. Phần read/onChange/removeAll của port.
-// Service "settings" chưa có (module settings tắt/chưa load) → dùng default, không ném lỗi.
+// Giá trị setting của ext lưu ở shared/storage (namespace "extension-values", key <extId>.<key>).
+// Không đi qua engine của Settings nên không có nhóm nào hiện trong Settings.
 
 const keyOf = ({ extId, id }) => id.slice(extId.length + 1);
-const NOOP = { dispose() {} };
 
-/** @param {{ getService: Function, openStore: () => object }} deps */
-function createSettingValues({ getService, openStore }) {
-  const service = () =>
-    getService({ id: "settings", needs: ["get", "onDidChange"] });
-
+/** @param {{ getService: Function, store: object }} deps */
+function createSettingValues({ getService, store }) {
   return {
-    read({ extId, definitions }) {
-      const api = service();
-      return Object.fromEntries(
+    read: ({ extId, definitions }) =>
+      Object.fromEntries(
         definitions.map((def) => [
           keyOf({ extId, id: def.id }),
-          api ? api.get({ id: def.id, fallback: def.default }) : def.default,
+          store.get({ key: def.id, fallback: def.default }),
         ]),
-      );
+      ),
+
+    write: ({ id, value }) => {
+      store.set({ key: id, value });
     },
 
     // Setting của chính module extension (extension.<key>); thiếu service → fallback.
-    readOwn({ key, fallback }) {
-      const api = service();
-      return api ? api.get({ id: `extension.${key}`, fallback }) : fallback;
-    },
-    
-    onChange: ({ listener }) => service()?.onDidChange({ listener }) ?? NOOP,
+    readOwn: ({ key, fallback }) =>
+      getService({ id: "settings", needs: ["get"] })?.get({
+        id: `extension.${key}`,
+        fallback,
+      }) ?? fallback,
+
+    onChange: ({ listener }) =>
+      store.onDidChange({ listener: ({ key }) => listener({ ids: [key] }) }),
 
     removeAll({ extId }) {
-      const store = openStore();
       store
         .keys()
         .filter((key) => key.startsWith(`${extId}.`))

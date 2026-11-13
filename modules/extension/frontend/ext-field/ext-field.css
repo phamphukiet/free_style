@@ -1,0 +1,13 @@
+.field-row { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+.field-info { flex: 1; min-width: 0; }
+.field-label { font-size: 12px; }
+.field-desc { font-size: 11px; color: var(--text-muted, #888888); }
+
+.field-input {
+  background: var(--bg-primary, #1e1e1e);
+  color: inherit;
+  border: 1px solid var(--border, #454545);
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 12px;
+}

@@ -10,10 +10,12 @@ function registerExtensionIpc({ usecases, presenter }) {
     commands: {
       list: () => usecases.list().map(presenter.extension),
       languages: () => usecases.languages(),
+      root: () => usecases.root(),
       commands: () => usecases.commands().map(presenter.command),
       create: (payload) => usecases.create(payload),
       save: (payload) => usecases.save(payload),
       setEnabled: (payload) => usecases.setEnabled(payload),
+      setValue: (payload) => usecases.setValue(payload),
       remove: (payload) => usecases.remove(payload),
     },
   });

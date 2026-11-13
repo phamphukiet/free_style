@@ -4,7 +4,7 @@
 import { LitElement, unsafeCSS } from "lit";
 import { extSampleTemplate } from "./ext-sample.template.js";
 import styles from "./ext-sample.css?inline";
-import { toast } from "../ext-actions.js";
+import { toast } from "../render/ext-actions.js";
 
 class ExtSampleElement extends LitElement {
   static styles = unsafeCSS(styles);

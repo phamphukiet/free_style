@@ -14,7 +14,6 @@ const { getRuntime, listRuntimes } = require("./adapters/runtimes");
 const { createWorkerRunner } = require("./adapters/worker/worker-runner");
 const { scanCommands } = require("./adapters/commands/scan-commands");
 const { createCommandBus } = require("./adapters/commands/command-bus");
-const { createSettingSource } = require("./adapters/settings/setting-source");
 const { createSettingValues } = require("./adapters/settings/setting-values");
 const { createBroadcastChanged } = require("./interface/broadcast");
 
@@ -28,10 +27,9 @@ function buildAdapters() {
     scan: () => scanCommands({ activeModules, modulesDir }),
     send: broadcast,
   });
-  const source = createSettingSource();
   const values = createSettingValues({
     getService,
-    openStore: () => registry.open({ namespace: "settings" }),
+    store: registry.open({ namespace: "extension-values", scopes: ["global"] }),
   });
   const entries = listRuntimes().map(({ entry }) => entry);
 
@@ -49,8 +47,7 @@ function buildAdapters() {
       commandBus,
       readOwn: values.readOwn,
     }),
-    settings: { ...values, publish: source.publish, retract: source.retract },
-    settingSource: source.source,
+    settings: values,
   };
 }
 

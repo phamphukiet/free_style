@@ -33,6 +33,7 @@ function createCodeStore({ rootDir }) {
   }
 
   return {
+    rootDir,
     languages: () => listRuntimes().map(({ id, label }) => ({ id, label })),
     sampleOf: ({ language }) => getRuntime({ language }).sample(),
     fileOf,

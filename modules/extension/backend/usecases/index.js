@@ -14,6 +14,7 @@ const { createOnSettingChanged } = require("./on-setting-changed");
 const { createHandleCrash } = require("./handle-crash");
 const { createSyncExtensions } = require("./sync-extensions");
 const { createCatalog } = require("../domain/catalog");
+const { createSetValue } = require("./set-value");
 
 /** @param {{ repo, codeStore, runner, settings, commandBus, broadcast: Function, reserved: Set<string> }} ports */
 function createUsecases({
@@ -50,8 +51,10 @@ function createUsecases({
   return {
     handleCrash,
     save,
-    list: createListExtensions({ repo, codeStore, runner, catalog }),
+    list: createListExtensions({ repo, codeStore, runner, catalog, settings }),
+    setValue: createSetValue({ catalog, settings, broadcast }),
     languages: createListLanguages({ codeStore }),
+    root: () => codeStore.rootDir,
     commands: createListCommands({ commandBus }),
     create: createCreateExtension({
       repo,

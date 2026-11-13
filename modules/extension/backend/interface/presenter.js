@@ -2,8 +2,14 @@
 // Dữ liệu thô của usecase → view-model cho UI.
 
 const { statusOf } = require("../domain/extension");
+const fieldsOf = ({ id, info, values }) =>
+  (info?.manifest?.settings ?? []).map((def) => {
+    const key = def.id.slice(id.length + 1);
+    const { label, type, options, description } = def;
+    return { key, label, type, options, description, value: values[key] };
+  });
 
-function extension({ id, record, info, running, file }) {
+function extension({ id, record, info, values, running, file }) {
   const error = record.lastError?.message ?? info?.error ?? null;
   return {
     id,
@@ -13,6 +19,7 @@ function extension({ id, record, info, running, file }) {
     status: statusOf({ error, running }),
     error,
     file,
+    fields: fieldsOf({ id, info, values }),
   };
 }
 

@@ -9,7 +9,6 @@ const {
 const { compose } = require("./compose");
 const { registerExtensionIpc } = require("./interface/ipc");
 const presenter = require("./interface/presenter");
-
 const log = (error) => console.error("[extension]", error.message);
 
 // Chạy sau khi mọi module register() xong, lúc đó service "settings" mới sẵn sàng.
@@ -28,11 +27,6 @@ async function boot({ adapters, usecases }) {
 
 function register() {
   const { adapters, usecases } = compose();
-  registerCapability({
-    id: "extension",
-    kind: "setting-source",
-    source: adapters.settingSource,
-  });
   registerExtensionIpc({ usecases, presenter });
   app.on("before-quit", () => adapters.runner.stopAll());
   setImmediate(() => boot({ adapters, usecases }).catch(log));

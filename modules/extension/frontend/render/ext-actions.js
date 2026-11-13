@@ -34,5 +34,3 @@ export async function startExtension({ id }) {
   saveEditors();
   await setEnabled({ id, enabled: true });
 }
-
-export const stopExtension = ({ id }) => setEnabled({ id, enabled: false });
