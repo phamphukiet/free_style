@@ -11,6 +11,5 @@ export const removeExtension = ({ id }) => api().remove({ id });
 export const onExtensionsChanged = (listener) => api().onChanged(listener);
 
 // Setting do ext khai báo: lọc theo origin ở frontend, không đụng backend settings.
-export const listExtSettings = async () =>
-  (await settings().list()).filter((item) => item.origin === "extension");
+export const listExtensions = () => api().list();
 export const setExtValue = ({ id, key, value }) => api().setValue({ id, key, value });

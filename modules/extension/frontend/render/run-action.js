@@ -4,7 +4,7 @@
 // Chỉ khi không có nút ▶ nào (module runner bị đóng băng) mới tự đăng ký một nút.
 
 import { registry } from "@modules/registry.js";
-// import { listExtensions } from "./ext-bridge.js";
+import { listExtensions } from "./ext-bridge.js";
 import { startExtension, attempt, toast } from "./ext-actions.js";
 import { isActive, MODE_EVENT } from "./ext-mode.js";
 

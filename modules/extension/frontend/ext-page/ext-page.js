@@ -8,6 +8,7 @@ import "../ext-sample/ext-sample.js";
 import "../ext-item/ext-item.js";
 import {
   listLanguages,
+  listExtensions,
   createExtension,
   onExtensionsChanged,
 } from "../render/ext-bridge.js";
@@ -18,7 +19,6 @@ class ExtPageElement extends LitElement {
   static styles = unsafeCSS(styles);
   static properties = {
     items: { state: true },
-    // fields: { state: true },
     sample: { state: true },
     showSample: { state: true },
   };
@@ -26,7 +26,6 @@ class ExtPageElement extends LitElement {
   constructor() {
     super();
     this.items = [];
-    // this.fields = [];
     this.sample = "";
     this.showSample = false;
   }
@@ -46,9 +45,7 @@ class ExtPageElement extends LitElement {
 
   reload = () =>
     attempt(async () => {
-      [this.items, this.fields] = await Promise.all([
-        listExtensions(),
-      ]);
+      this.items = await listExtensions();
     });
 
   // Mẫu auto save do backend cung cấp (runtime js), chỉ để hiển thị.
