@@ -22,6 +22,7 @@ class ActivitybarElement extends LitElement {
 
   connectedCallback() {
     super.connectedCallback();
+    window.addEventListener("workbench:sidebar-tab", this.handleSidebarTab);
     registry.on("activitybar:changed", ({ top, bottom }) => {
       this.items = [...top];
       this.bottomItems = [...bottom];
@@ -31,6 +32,15 @@ class ActivitybarElement extends LitElement {
       }
     });
   }
+
+  disconnectedCallback() {
+    window.removeEventListener("workbench:sidebar-tab", this.handleSidebarTab);
+    super.disconnectedCallback();
+  }
+
+  handleSidebarTab = (e) => {
+    this.activeId = e.detail.tabId;
+  };
 
   handleIconClick(id) {
     this.activeId = id;

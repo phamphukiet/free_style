@@ -5,8 +5,11 @@
 const path = require("path");
 const { app } = require("electron");
 const { registry: storage } = require("../../../shared/storage");
-const { loadFeatures } = require("./features");
-const capabilities = require("../../../shared/core/capability-registry.js");
+const {
+  registerCapability,
+  getCapability,
+  listCapabilities,
+} = require("../../../shared/core/capability-registry.js");
 const { registerMention } = require("../../../shared/core/mention-registry.js");
 const activeModules = require("../../active-modules.js");
 const { createRegistry } = require("./core/registry");
@@ -40,8 +43,14 @@ function buildEngine() {
   return { engine, sources };
 }
 
+function followSources({ engine }) {
+  listCapabilities({ kind: "setting-source" }).forEach(({ source }) =>
+    source.onDidChange?.({ listener: () => engine.reload() }),
+  );
+}
+
 function register() {
-  const { engine, sources } = buildEngine();
+  const engine = buildEngine();
   require("./setting").register(); // transform của chính module settings
   const features = loadFeatures({
     ctx: { engine, sources, storage, capabilities },

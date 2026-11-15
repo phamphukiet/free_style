@@ -1,0 +1,23 @@
+# Tuân thủ mức 1 - cao nhất 
+- Ưu tiên tính bảo trì code, việc crud uc cấp thấp không được bảo trì quá 2 file
+- Mỗi file ≤ 100 dòng; phình to thì tách thư mục riêng
+- Complexity Indicator giữ mức Low: cyclomatic complexity mỗi hàm ≤ 10, nesting depth ≤ 3; vượt phải tách hàm/refactor, không viết thêm tính năng đè lên
+- modules/hàm bị xóa hoặc thay đổi không ảnh hưởng đến code tổng thể
+- Cấu trúc clean stucture
+- object hóa signature với hàm >= 3 tham số hoặc tham số dễ thay đổi trong quá trình code
+# Tuân thủ mức 2
+- Sửa code: chỉ show đoạn thay đổi, không show lại cả file
+- Không dùng `present_files` — code đưa trong chat, tự tạo/sửa file trên máy
+- `src/main/` = main process (Node thuần, không qua Vite); `src/preload/index.js` = cầu nối duy nhất renderer↔main; `src/renderer/` = UI; `modules/` và `shared/` ở gốc project dùng chung
+- Alias `@modules`, `@shared` thay cho `../../../`
+- `modules/` theo plugin pattern qua `registry.js` — không gọi trực tiếp nhau, chỉ đăng ký/lấy qua registry
+- Module giao tiếp runtime qua CustomEvent
+- Bảo mật Electron bắt buộc: `contextIsolation: true`, `nodeIntegration: false`, `sandbox: true` — renderer không đụng Node/OS trực tiếp, mọi API qua preload
+- `frame: false` + tự vẽ titlebar + native menu (`Menu.setApplicationMenu`)
+- Mỗi UI part là Web Component Lit, đăng ký `workbench-<tên>`, gồm 3 file: `.css` (scoped, import `?inline`), `.template.js` (chỉ trả Lit template, nhận `host`), `.js` (class LitElement, properties + logic)
+- Không tách HTML riêng — nằm trong `.template.js`
+- `workbench.html` chỉ chứa thẻ custom element rỗng; `workbench.js` chỉ import side-effect, không gọi tay `init()`
+- Đổi nội dung part khác: set lại Lit properties qua registry, không import trực tiếp file part khác
+- Icon dùng `lucide-static`, import SVG qua `?raw`, nhúng bằng `unsafeSVG` (không dùng `lucide` DOM API vì không xuyên Shadow DOM)
+- Layout kiểu VSCode: titlebar (cố định) → #workbench-body (activitybar → sidebar → #editor-panel-column) → statusbar (cố định); #editor-panel-column: editor-group (flex) + panel (cố định)
+- CSS layout tổng (quan hệ giữa các part) đặt ở `workbench.css`, ngoài Shadow DOM

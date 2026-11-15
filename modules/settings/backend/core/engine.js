@@ -125,6 +125,7 @@ function createEngine({ registry, valuesStore, presetsStore, getTransform }) {
 
   return {
     getDefinition,
+    reload,
     list,
     inspect,
     set,

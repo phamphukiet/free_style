@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  border-bottom: 1px solid var(--border, #303030);
+}
+
+.item-head { display: flex; align-items: center; gap: 8px; padding: 10px 0; }
+.item-info { flex: 1; min-width: 0; cursor: pointer; }
+.item-name { font-size: 13px; }
+.item-id { font-size: 11px; font-family: monospace; color: var(--text-muted, #888888); }
+.item-body { padding: 0 0 10px 12px; }
+
+.item-btn {
+  background: var(--bg-elevated, #333333);
+  color: #d9534f;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.item-btn:hover { background: var(--bg-hover, #3a3d41); }
+
+.item-switch {
+  appearance: none;
+  position: relative;
+  width: 32px;
+  height: 18px;
+  border-radius: 9px;
+  background: var(--bg-elevated, #555555);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.item-switch::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: left 0.15s;
+}
+.item-switch:checked { background: var(--accent, #0e639c); }
+.item-switch:checked::after { left: 16px; }

@@ -12,12 +12,18 @@ class Registry {
     this.rightSidebarView = null; // tagName duy nhất, khác sidebarViews (đa view theo id)
     this.panelView = null;
     this.configConsumers = {}; // { [id]: callback }
+    this.settingsPages = {}; // { ["page:<id>"]: { id, label, tag, order } }
   }
 
   // --- Events ---
   on(event, callback) {
     if (!this.listeners[event]) this.listeners[event] = [];
     this.listeners[event].push(callback);
+    return () => {
+      this.listeners[event] = this.listeners[event].filter(
+        (cb) => cb !== callback,
+      );
+    };
   }
 
   emit(event, data) {
@@ -119,12 +125,33 @@ class Registry {
   getPanelView() {
     return this.panelView;
   }
+
   registerConfigConsumer(id, callback) {
     this.configConsumers[id] = callback;
   }
 
   getConfigConsumers() {
     return Object.values(this.configConsumers);
+  }
+
+  getConfigConsumer(id) {
+    return this.configConsumers[id];
+  }
+
+  // --- Settings pages ---
+  registerSettingsPage(page) {
+    this.settingsPages[`page:${page.id}`] = page;
+    this.emit("settings-pages:changed", this.getSettingsPages());
+  }
+
+  getSettingsPages() {
+    return Object.values(this.settingsPages).sort(
+      (a, b) => (a.order ?? 100) - (b.order ?? 100),
+    );
+  }
+
+  getSettingsPage(id) {
+    return this.settingsPages[`page:${id}`] ?? null;
   }
 }
 

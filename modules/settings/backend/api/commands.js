@@ -51,7 +51,6 @@ function createCommands({ engine, connectors }) {
     removePreset: (payload) => engine.removePreset(payload),
     getEffects: () => engine.allEffects(),
     errors: () => engine.errors(),
-    importVscode: (opts) => connectors.importVscode(opts),
     linkFile: (opts) => connectors.linkFile(opts),
     unlinkFile: () => connectors.unlinkFile(),
     linkStatus: () => connectors.linkStatus(),

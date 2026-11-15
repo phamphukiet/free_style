@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 28px;
+  padding: 0 8px 0 12px;
+  background: var(--accent, #007acc);
+  color: #ffffff;
+  font-size: 12px;
+}
+
+.banner-label {
+  flex: 1;
+}
+
+.banner-exit {
+  background: rgba(255, 255, 255, 0.2);
+  color: inherit;
+  border: none;
+  border-radius: 3px;
+  padding: 2px 8px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.banner-exit:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
