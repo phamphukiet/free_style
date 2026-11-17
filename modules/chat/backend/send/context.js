@@ -43,6 +43,7 @@ function buildContext(payload) {
     model: agent?.model || payload.model,
     lastTool: session?.lastToolUsed || null,
     calledTools: [],
+    windowId: payload.windowId ?? null,
   };
 }
 

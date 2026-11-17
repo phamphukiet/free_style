@@ -9,9 +9,9 @@ const { registerSessionIpc } = require("../session/ipc");
 const { handleSend } = require("../send/handle-send");
 
 function register() {
-  // Module khác (kanban, dedupe_level...) lấy session qua registry, không require chéo.
   registerCapability({ id: "session", kind: "service", api: sessionStore });
   registerSessionIpc();
+  require("../tool").register();
 
   ipcMain.handle("chat:send", (event, payload) => {
     const notify = (channel, info) => {
@@ -21,7 +21,7 @@ function register() {
         /* window đã đóng */
       }
     };
-    return handleSend(payload, notify);
+    return handleSend({ ...payload, windowId: event.sender.id }, notify);
   });
 
   ipcMain.handle("chat:save-selection", (_, selection) => {

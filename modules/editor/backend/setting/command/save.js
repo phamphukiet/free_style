@@ -5,6 +5,8 @@
 module.exports = {
   saveAll: {
     label: "Lưu tất cả file đã sửa",
-    runIn: "renderer", // model Monaco nằm ở renderer
+    runIn: "renderer",
+    risk: "write",
+    aiAccess: "write",
   },
 };

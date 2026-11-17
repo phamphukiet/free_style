@@ -10,12 +10,17 @@ function getProjectRoot() {
   return lastFolder;
 }
 
-// Chặn path traversal ra ngoài project root (VD "../../etc/passwd").
+const PROTECTED_TOP = new Set([".vibe", ".git"]);
+
 function resolveSafePath(root, relPath) {
   const target = path.resolve(root, relPath || ".");
   const normRoot = path.resolve(root);
   if (target !== normRoot && !target.startsWith(normRoot + path.sep)) {
     throw new Error("Đường dẫn không hợp lệ (ngoài phạm vi project).");
+  }
+  const top = path.relative(normRoot, target).split(path.sep)[0].toLowerCase();
+  if (PROTECTED_TOP.has(top)) {
+    throw new Error(`"${top}" là vùng được bảo vệ, AI không được truy cập.`);
   }
   return target;
 }

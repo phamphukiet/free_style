@@ -251,6 +251,15 @@ function getExposedApi() {
     modules: {
       active: () => ipcRenderer.invoke(channels.MODULES_ACTIVE),
     },
+    command: {
+      announce: (ids) => ipcRenderer.invoke("command:announce", ids),
+      respond: (payload) => ipcRenderer.invoke("command:respond", payload),
+      onRequest: (callback) => {
+        const listener = (event, request) => callback(request);
+        ipcRenderer.on("command:request", listener);
+        return () => ipcRenderer.removeListener("command:request", listener);
+      },
+    },
   };
 }
 

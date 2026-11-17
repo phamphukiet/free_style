@@ -5,6 +5,8 @@ function toolContext(cap, ctx, notify) {
   return {
     agentId: ctx.agentId,
     sessionId: ctx.sessionId,
+    windowId: ctx.windowId,
+    calledTools: ctx.calledTools,
     notify: (info) => cap.notify && notify(cap.notify, info),
   };
 }
