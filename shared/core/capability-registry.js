@@ -58,4 +58,6 @@ module.exports = {
   getCapability,
   listCapabilities,
   getService,
+  hasCapability,
+  findProviderByHint,
 };

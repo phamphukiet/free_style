@@ -3,7 +3,7 @@ import { html, unsafeStatic } from "lit/static-html.js";
 import keyIcon from "lucide-static/icons/key.svg?raw";
 import trashIcon from "lucide-static/icons/trash-2.svg?raw";
 import editIcon from "lucide-static/icons/pencil.svg?raw";
-import { registry } from "../../../../registry.js";
+import { registry } from "@modules/registry.js";
 
 export function apiKeyManagerTemplate(host) {
   if (host.editingKey) {

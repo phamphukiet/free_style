@@ -10,6 +10,10 @@ const { compose } = require("./compose");
 const { registerExtensionIpc } = require("./interface/ipc");
 const presenter = require("./interface/presenter");
 const log = (error) => console.error("[extension]", error.message);
+const {
+  registerCapability,
+} = require("../../../shared/core/capability-registry.js");
+const { registerMention } = require("../../../shared/core/mention-registry.js");
 
 // Chạy sau khi mọi module register() xong, lúc đó service "settings" mới sẵn sàng.
 async function boot({ adapters, usecases }) {
@@ -31,5 +35,11 @@ function register() {
   app.on("before-quit", () => adapters.runner.stopAll());
   setImmediate(() => boot({ adapters, usecases }).catch(log));
 }
+
+registerCapability({ id: "extension", kind: "service", api: commands });
+registerMention("extension", {
+  hint: "quản lý extension (xem/tạo/sửa/bật tắt/xoá/chỉnh thông số)",
+  tool: "app",
+});
 
 module.exports = { register };

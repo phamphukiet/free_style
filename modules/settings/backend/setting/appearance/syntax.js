@@ -9,9 +9,7 @@ module.exports = {
   type: "select",
   default: "classic",
   order: 20,
-  aiHint:
-    "data = {base:'dark'|'light', comment, string, number, keyword, identifier, type, delimiter, regexp}: " +
-    "hex 6 ký tự. Tuỳ chọn thêm background, foreground, cursor để đổi cả màu Terminal.",
+  aiHint: "Chỉ chọn một trong các options có sẵn (xem bằng describe).",
   options: [
     {
       value: "classic",

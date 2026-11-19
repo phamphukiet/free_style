@@ -1,6 +1,6 @@
 import { LitElement } from "lit";
 import { apiKeyManagerTemplate } from "./api-key-manager.template.js";
-import { registry } from "../../../../registry.js";
+import { registry } from "@modules/registry.js";
 import "../edit_key/api-key-editor.js";
 
 class ApiKeyManagerElement extends LitElement {

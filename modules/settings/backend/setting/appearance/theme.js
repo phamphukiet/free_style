@@ -9,9 +9,7 @@ module.exports = {
   type: "select",
   default: "dark",
   order: 10,
-  aiHint:
-    "data = {bg, bgElevated, text, textMuted, accent, border}: hex 6 ký tự, KHÔNG có '#'. " +
-    "Chọn màu theo mô tả (VD 'chống ánh sáng xanh' → tông ấm vàng/cam/nâu, tránh xanh dương).",
+  aiHint: "Chỉ chọn một trong các options có sẵn (xem bằng describe).",
   options: [
     { value: "dark", label: "Dark", data: require("./palettes/theme/dark") },
     { value: "light", label: "Light", data: require("./palettes/theme/light") },

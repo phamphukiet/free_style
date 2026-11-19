@@ -1,7 +1,7 @@
 import { registry } from "@modules/registry.js";
 import { writeFile } from "../renderer/bridge.js";
 import { forEachEntry } from "./model-store.js";
-import { registerCommandHandler } from "@shared/command/renderer/client.js";
+import { registerCommandHandler } from "@shared/renderer/client.js";
 
 async function saveAllModels() {
   const jobs = [];
