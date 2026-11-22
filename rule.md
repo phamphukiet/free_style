@@ -1,11 +1,10 @@
-# Tuân thủ mức 1 - cao nhất 
-- Ưu tiên tính bảo trì code, việc crud uc cấp thấp không được bảo trì quá 2 file
+# Chế độ code
+## Tuân thủ mức 1 - cao nhất 
+- Hint của chế độ: "code"
 - Mỗi file ≤ 100 dòng; phình to thì tách thư mục riêng
 - Complexity Indicator giữ mức Low: cyclomatic complexity mỗi hàm ≤ 10, nesting depth ≤ 3; vượt phải tách hàm/refactor, không viết thêm tính năng đè lên
 - modules/hàm bị xóa hoặc thay đổi không ảnh hưởng đến code tổng thể
-- Cấu trúc clean stucture
-- object hóa signature với hàm >= 3 tham số hoặc tham số dễ thay đổi trong quá trình code
-# Tuân thủ mức 2
+## Tuân thủ mức 2
 - Sửa code: chỉ show đoạn thay đổi, không show lại cả file
 - Không dùng `present_files` — code đưa trong chat, tự tạo/sửa file trên máy
 - `src/main/` = main process (Node thuần, không qua Vite); `src/preload/index.js` = cầu nối duy nhất renderer↔main; `src/renderer/` = UI; `modules/` và `shared/` ở gốc project dùng chung
@@ -21,3 +20,14 @@
 - Icon dùng `lucide-static`, import SVG qua `?raw`, nhúng bằng `unsafeSVG` (không dùng `lucide` DOM API vì không xuyên Shadow DOM)
 - Layout kiểu VSCode: titlebar (cố định) → #workbench-body (activitybar → sidebar → #editor-panel-column) → statusbar (cố định); #editor-panel-column: editor-group (flex) + panel (cố định)
 - CSS layout tổng (quan hệ giữa các part) đặt ở `workbench.css`, ngoài Shadow DOM
+
+# Chế độ thảo luận
+## Tuân thủ mức 1
+- Không code
+- Thảo luận hướng đi, cách giải quyết vấn đề
+- Trả lời cô dọng nhất, trọng ý hơn trọng tiểu tiết
+- Hint của chế độ: "plan", "thảo luận"
+# Tuân thủ mức 2
+- Ưu tiên tính bảo trì code, việc crud uc cấp thấp không được bảo trì quá 2 file
+- Cấu trúc clean stucture
+- object hóa signature với hàm >= 3 tham số hoặc tham số dễ thay đổi trong quá trình code
