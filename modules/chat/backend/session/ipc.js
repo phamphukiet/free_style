@@ -1,7 +1,12 @@
 const { ipcMain } = require("electron");
 const store = require("./store");
 
-const toMeta = ({ id, title, updatedAt }) => ({ id, title, updatedAt });
+const toMeta = ({ id, title, updatedAt, mode = "files" }) => ({
+  id,
+  title,
+  updatedAt,
+  mode,
+});
 const toView = ({ toolCache, toolDirty, ...view }) => view;
 
 function registerSessionIpc() {

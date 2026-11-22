@@ -4,6 +4,7 @@
 - Mỗi file ≤ 100 dòng; phình to thì tách thư mục riêng
 - Complexity Indicator giữ mức Low: cyclomatic complexity mỗi hàm ≤ 10, nesting depth ≤ 3; vượt phải tách hàm/refactor, không viết thêm tính năng đè lên
 - modules/hàm bị xóa hoặc thay đổi không ảnh hưởng đến code tổng thể
+- Ưu tiên dùng những gì sẵn có
 ## Tuân thủ mức 2
 - Sửa code: chỉ show đoạn thay đổi, không show lại cả file
 - Không dùng `present_files` — code đưa trong chat, tự tạo/sửa file trên máy
@@ -31,3 +32,4 @@
 - Ưu tiên tính bảo trì code, việc crud uc cấp thấp không được bảo trì quá 2 file
 - Cấu trúc clean stucture
 - object hóa signature với hàm >= 3 tham số hoặc tham số dễ thay đổi trong quá trình code
+- Ưu tiên dùng những gì sẵn có

@@ -10,7 +10,7 @@ export function sessionTemplate(host) {
         @change=${(e) => host.handleSelectSession(e.target.value)}
       >
         <option value="">-- Chọn session --</option>
-        ${host.sessions.map(
+        ${host.visibleSessions.map(
           (s) =>
             html`<option value=${s.id}>
               ${s.title || "Session " + s.id.slice(0, 6)}
@@ -21,13 +21,17 @@ export function sessionTemplate(host) {
         class="chat-icon-btn"
         title="Session mới"
         @click=${() => host.handleNewSession()}
-      >+</button>
+      >
+        +
+      </button>
       ${host.sessionId
         ? html`<button
             class="chat-icon-btn chat-del-btn"
             title="Xóa session"
             @click=${() => host.handleDeleteSession(host.sessionId)}
-          >×</button>`
+          >
+            ×
+          </button>`
         : ""}
     </div>
   `;

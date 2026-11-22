@@ -55,4 +55,4 @@ function tree({ maxDepth = 5 } = {}) {
   };
 }
 
-module.exports = { tree };
+module.exports = { tree, SKIP };

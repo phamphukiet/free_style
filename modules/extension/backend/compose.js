@@ -12,21 +12,16 @@ const { createCodeStore } = require("./adapters/files/code-store");
 const { createCodeWatcher } = require("./adapters/files/code-watcher");
 const { getRuntime, listRuntimes } = require("./adapters/runtimes");
 const { createWorkerRunner } = require("./adapters/worker/worker-runner");
-const { scanCommands } = require("./adapters/commands/scan-commands");
-const { createCommandBus } = require("./adapters/commands/command-bus");
 const { createSettingValues } = require("./adapters/settings/setting-values");
 const { createBroadcastChanged } = require("./interface/broadcast");
+const { getBus } = require("../../../shared/command");
 
 // owner của settings module (appearance, syntax) không trùng tên module nên khai báo thêm
 const RESERVED_OWNERS = ["appearance", "syntax"];
 
 function buildAdapters() {
   const rootDir = path.join(registry.getGlobalDir(), "extensions");
-  const modulesDir = path.join(__dirname, "..", "..");
-  const commandBus = createCommandBus({
-    scan: () => scanCommands({ activeModules, modulesDir }),
-    send: broadcast,
-  });
+  const commandBus = getBus();
   const values = createSettingValues({
     getService,
     store: registry.open({ namespace: "extension-values", scopes: ["global"] }),

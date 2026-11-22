@@ -11,6 +11,7 @@ import * as keyLoader from "./partial/keys/key-loader.js";
 import * as sessionHandler from "./partial/session/session-handler.js";
 import * as selectionHandler from "./partial/session/selection-handler.js";
 import { handleSend } from "./partial/send/send-handler.js";
+import * as modeHandler from "./partial/mode/mode-handler.js";
 
 class ChatPanelElement extends LitElement {
   static styles = [
@@ -35,6 +36,9 @@ class ChatPanelElement extends LitElement {
     tokenLimit: { state: true },
     inputValue: { state: true },
     sending: { state: true },
+    mode: { state: true },
+    modeMap: { state: true },
+    tabId: { state: true },
   };
 
   constructor() {
@@ -52,6 +56,9 @@ class ChatPanelElement extends LitElement {
     this.tokenLimit = 0;
     this.inputValue = "";
     this.sending = false;
+    this.mode = "";
+    this.modeMap = {};
+    this.tabId = "explorer"; // mặc định của activitybar
   }
 
   connectedCallback() {
@@ -62,6 +69,7 @@ class ChatPanelElement extends LitElement {
       "workbench:credentials-changed",
       this._onCredChanged,
     );
+    window.addEventListener("workbench:sidebar-tab", this._onTab);
     window.addEventListener("agents:changed", this._onAgentsChanged);
     window.addEventListener("chat:sessions-changed", this._onSessionsChanged);
   }
@@ -75,6 +83,7 @@ class ChatPanelElement extends LitElement {
       "workbench:credentials-changed",
       this._onCredChanged,
     );
+    window.removeEventListener("workbench:sidebar-tab", this._onTab);
     window.removeEventListener("agents:changed", this._onAgentsChanged);
     super.disconnectedCallback();
   }
@@ -82,6 +91,12 @@ class ChatPanelElement extends LitElement {
   _onCredChanged = () => keyLoader.loadKeys(this);
   _onAgentsChanged = () => agentLoader.loadAgents(this);
   _onSessionsChanged = () => sessionHandler.loadSessions(this);
+  _onTab = (e) => modeHandler.handleTabChange(this, e.detail.tabId);
+
+  get visibleSessions() {
+    if (!this.mode) return this.sessions;
+    return this.sessions.filter((s) => s.mode === this.mode);
+  }
 
   async init() {
     await Promise.all([
@@ -90,6 +105,7 @@ class ChatPanelElement extends LitElement {
       sessionHandler.loadSessions(this),
     ]);
     await this.restoreSelection();
+    await modeHandler.loadModeMap(this);
   }
 
   handleSelectAgent(id) {

@@ -11,6 +11,7 @@ export async function handleNewSession(host) {
     title: "Cuộc trò chuyện mới",
     messages: [],
     tokenUsed: 0,
+    mode: host.mode || undefined,
   });
   host.sessions = await window.api.chat.sessionList();
   await handleSelectSession(host, s.id);

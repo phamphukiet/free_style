@@ -10,6 +10,24 @@ const { compose } = require("./compose");
 const { registerExtensionIpc } = require("./interface/ipc");
 const presenter = require("./interface/presenter");
 const log = (error) => console.error("[extension]", error.message);
+const { registerExtensionEntity } = require("./entity");
+
+function exposeToChat({ usecases }) {
+  const list = () => usecases.list().map(presenter.extension);
+  const api = {
+    list,
+    remove: usecases.remove,
+    setEnabled: usecases.setEnabled,
+  };
+  registerCapability({ id: "extension", kind: "service", api });
+  registerCapability({
+    id: "extension",
+    kind: "mode",
+    tab: "settings",
+    order: 20,
+  });
+  registerExtensionEntity({ list });
+}
 
 // Chạy sau khi mọi module register() xong, lúc đó service "settings" mới sẵn sàng.
 async function boot({ adapters, usecases }) {
@@ -28,6 +46,7 @@ async function boot({ adapters, usecases }) {
 function register() {
   const { adapters, usecases } = compose();
   registerExtensionIpc({ usecases, presenter });
+  exposeToChat({ usecases });
   app.on("before-quit", () => adapters.runner.stopAll());
   setImmediate(() => boot({ adapters, usecases }).catch(log));
 }

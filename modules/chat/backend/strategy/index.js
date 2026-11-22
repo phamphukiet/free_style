@@ -7,6 +7,7 @@ const { readState, writeState } = require("../../../../src/main/state");
 const sessionStore = require("../session/store");
 const { registerSessionIpc } = require("../session/ipc");
 const { handleSend } = require("../send/handle-send");
+const { modeMap } = require("../tool/modes");
 
 function register() {
   // Module khác (kanban, dedupe_level...) lấy session qua registry, không require chéo.
@@ -32,6 +33,7 @@ function register() {
     "chat:load-selection",
     () => readState().chatSelection || null,
   );
+  ipcMain.handle("chat:modes", () => modeMap());
 }
 
 module.exports = { register };

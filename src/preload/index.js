@@ -144,6 +144,7 @@ function getExposedApi() {
       sessionDelete: (id) => ipcRenderer.invoke("chat:session-delete", id),
       projectSize: (folderPath) =>
         ipcRenderer.invoke("chat:project-size", folderPath),
+      modes: () => ipcRenderer.invoke("chat:modes"),
     },
     settings: {
       list: () => invokeSetting("settings:list"),

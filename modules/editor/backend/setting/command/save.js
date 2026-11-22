@@ -6,5 +6,6 @@ module.exports = {
   saveAll: {
     label: "Lưu tất cả file đã sửa",
     runIn: "renderer",
+    aliases: ["lưu tất cả"],
   },
 };

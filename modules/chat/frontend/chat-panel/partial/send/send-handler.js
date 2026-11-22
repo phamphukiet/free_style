@@ -16,6 +16,7 @@ function callSend(host, message, sessionId) {
     providerId: providerId || null,
     keyId: keyId || null,
     model: host.selectedModel || null,
+    mode: host.mode || null,
   });
 }
 
