@@ -66,6 +66,7 @@ function register() {
   registerSettingsIpc({ commands: createCommands({ engine, connectors }) });
   bindBroadcast({ engine });
   tool = createSettingsTool({ engine });
+  registerCapability({ id: "settings", kind: "mode", tab: "settings" });
   registerCapability({
     id: "settings",
     kind: "service",

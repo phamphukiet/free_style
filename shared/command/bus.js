@@ -1,24 +1,27 @@
-// command-bus.js
-// Cài đặt port command-bus: chỉ chạy lệnh module đã công bố, kiểm tra args.
+// bus.js
+// Cài đặt port bus: chỉ chạy lệnh module đã công bố, kiểm tra args.
 // runIn "main": gọi def.run(args). runIn "renderer" (mặc định): phát event cho renderer.
 
 const COMMAND_CHANNEL = "extension:command";
+const { argsError } = require("./args.js");
+
+// Dạng lệnh mà chat (matcher, handle-command) đọc: module, name, label, aliases, runIn, danger, args.
+function describe({ moduleId, name, def }) {
+  return {
+    module: moduleId,
+    name,
+    label: def.label,
+    aliases: def.aliases ?? [],
+    runIn: def.runIn ?? "renderer",
+    danger: Boolean(def.danger),
+    args: def.args,
+  };
+}
 
 function lookup({ table, moduleId, name }) {
   if (!Object.hasOwn(table, moduleId)) return null;
   const defs = table[moduleId];
   return Object.hasOwn(defs, name) ? defs[name] : null;
-}
-
-// schema: { tênArg: "string" | "number" | "boolean" }. Không khai báo = lệnh không nhận args.
-function argsError({ schema = {}, args }) {
-  if (args === null || typeof args !== "object") return "args phải là object";
-  const extra = Object.keys(args).find((key) => !Object.hasOwn(schema, key));
-  if (extra) return `không có tham số "${extra}"`;
-  const bad = Object.entries(schema).find(
-    ([key, type]) => typeof args[key] !== type,
-  );
-  return bad ? `tham số "${bad[0]}" phải là ${bad[1]}` : null;
 }
 
 /** @param {{ scan: () => object, send: (arg: { channel: string, payload: object }) => void }} deps */

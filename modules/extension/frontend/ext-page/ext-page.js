@@ -1,5 +1,5 @@
 // ext-page.js
-// Trang settings "Extension (lập trình)": tạo ext, vào chế độ code, danh sách ext, code mẫu.
+// Trang settings "Extension": tạo ext, vào chế độ code, danh sách ext, code mẫu.
 
 import { LitElement, unsafeCSS } from "lit";
 import { extPageTemplate } from "./ext-page.template.js";

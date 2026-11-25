@@ -2,7 +2,7 @@ import { html } from "lit";
 
 export function extPageTemplate(host) {
   return html`
-    <h2 class="ext-title">Extension (lập trình)</h2>
+    <h2 class="ext-title">Extension</h2>
     <div class="ext-toolbar">
       <input
         id="ext-name"

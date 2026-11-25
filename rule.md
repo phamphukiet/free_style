@@ -7,6 +7,7 @@
 - Ưu tiên dùng những gì sẵn có
 ## Tuân thủ mức 2
 - Sửa code: chỉ show đoạn thay đổi, không show lại cả file
+- Nếu thành phần X được đề cập không có trong context, chỉ trả lời "chưa có X trong context"
 - Không dùng `present_files` — code đưa trong chat, tự tạo/sửa file trên máy
 - `src/main/` = main process (Node thuần, không qua Vite); `src/preload/index.js` = cầu nối duy nhất renderer↔main; `src/renderer/` = UI; `modules/` và `shared/` ở gốc project dùng chung
 - Alias `@modules`, `@shared` thay cho `../../../`
@@ -21,15 +22,16 @@
 - Icon dùng `lucide-static`, import SVG qua `?raw`, nhúng bằng `unsafeSVG` (không dùng `lucide` DOM API vì không xuyên Shadow DOM)
 - Layout kiểu VSCode: titlebar (cố định) → #workbench-body (activitybar → sidebar → #editor-panel-column) → statusbar (cố định); #editor-panel-column: editor-group (flex) + panel (cố định)
 - CSS layout tổng (quan hệ giữa các part) đặt ở `workbench.css`, ngoài Shadow DOM
+- Log báo lỗi trình bầy theo format "[Error - 'tên modules' - 'tên file']: e". Không if, không case
 
 # Chế độ thảo luận
 ## Tuân thủ mức 1
 - Không code
 - Thảo luận hướng đi, cách giải quyết vấn đề
 - Trả lời cô dọng nhất, trọng ý hơn trọng tiểu tiết
-- Hint của chế độ: "plan", "thảo luận"
+- Hint của chế độ: "đánh giá", "đề xuất", "thảo luận", "thiết kế"
 # Tuân thủ mức 2
-- Ưu tiên tính bảo trì code, việc crud uc cấp thấp không được bảo trì quá 2 file
+- Ưu tiên tính bảo trì và tái sử dụng của code, việc crud uc cấp thấp không được bảo trì quá 2 file
+- Ưu tiên dùng những gì sẵn có
 - Cấu trúc clean stucture
 - object hóa signature với hàm >= 3 tham số hoặc tham số dễ thay đổi trong quá trình code
-- Ưu tiên dùng những gì sẵn có

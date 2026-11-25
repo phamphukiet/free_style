@@ -18,6 +18,8 @@ const FILLER = new Set([
   "nhe",
   "thu",
   "muc",
+  "sang",
+  "thanh",
 ]);
 const MAX_EXTRA_WORDS = 3; // lệnh không tham số: thừa quá nhiều chữ = có lẽ là câu khác
 

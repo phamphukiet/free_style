@@ -1,7 +1,7 @@
 // default.js — @mention trước, rồi tool dùng gần nhất, rồi theo `order`.
-const {
-  extractMentions,
-} = require("../../../../shared/core/mention-registry.js");
+// const {
+//   extractMentions,
+// } = require("../../../../shared/core/mention-registry.js");
 
 const name = "default";
 
@@ -11,8 +11,9 @@ function rank(cap, mentioned, lastTool) {
 }
 
 function run(ctx, candidates) {
-  const mentions = extractMentions(ctx.message || "");
-  const mentioned = new Set(mentions.map((m) => m.toolName));
+  // const mentions = extractMentions(ctx.message || "");
+  // const mentioned = new Set(mentions.map((m) => m.toolName));
+  const mentioned = new Set();
   const rk = (cap) => rank(cap, mentioned, ctx.lastTool);
   return [...candidates].sort((a, b) => rk(a) - rk(b) || a.order - b.order);
 }

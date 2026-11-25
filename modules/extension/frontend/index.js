@@ -4,7 +4,7 @@ import "./render/run-action.js";
 
 registry.registerSettingsPage({
   id: "extension-code",
-  label: "Extension (lập trình)",
+  label: "Extension",
   tag: "module-ext-page",
   order: 50,
 });

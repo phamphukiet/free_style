@@ -71,6 +71,7 @@ async function chatWithTools(apiKey, message, model, opts = {}) {
     try {
       data = await callGemini(apiKey, model, body);
     } catch (error) {
+      console.error(`[Error - 'api' - 'gemini-tools.js']:`, error.message);
       const partial = partialOnQuota(error, executed);
       if (partial) return partial;
       throw error;
@@ -83,10 +84,12 @@ async function chatWithTools(apiKey, message, model, opts = {}) {
 
     contents.push({ role: "model", parts });
     const done = await runCalls(calls, executeToolCall);
-    done.forEach((c) => console.log(`[gemini] step ${step} tool ${c.name} -> ${clip(c.result)}`));
+    done.forEach((c) =>
+      console.log(`[gemini] step ${step} tool ${c.name} -> ${clip(c.result)}`),
+    );
     executed += done.length;
     if (tracker.isStalled(done)) return stalledResult(executed);
-    contents.push({ role: "function", parts: toResponseParts(done) });
+    contents.push({ role: "user", parts: toResponseParts(done) });
   }
 }
 

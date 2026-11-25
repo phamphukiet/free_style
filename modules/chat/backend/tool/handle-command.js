@@ -10,15 +10,15 @@ const { resolveEntities } = require("./resolve-entity");
 const { askUser } = require("./confirm");
 const { modulesOfMode } = require("./modes");
 const reply = require("./reply-format");
-
+const { listQuickCommands } = require("./settings-quick");
 const PASS = Object.freeze({ handled: false });
 const say = (content) => ({ handled: true, content });
 
 function commandsOf({ mode }) {
   const modules = modulesOfMode(mode);
-  return getBus()
-    .list()
-    .filter((command) => modules.includes(command.module));
+  return [...getBus().list(), ...listQuickCommands()].filter((command) =>
+    modules.includes(command.module),
+  );
 }
 
 async function execute({ command, args, targets }) {
@@ -28,13 +28,10 @@ async function execute({ command, args, targets }) {
       return say(reply.cancelled());
     }
   }
-  const { module: moduleName, name } = command;
-  const result = await getBus().run({
-    module: moduleName,
-    name,
-    args,
-    confirmed: true,
-  });
+    const { module: moduleName, name } = command;
+    const result = command.run
+      ? await command.run(args)
+      : await getBus().run({ module: moduleName, name, args, confirmed: true });
   const sent = command.runIn === "renderer";
   return say(reply.done({ command, items: result?.items, sent }));
 }
@@ -55,6 +52,7 @@ async function handleCommand({ text, mode }) {
     if (resolved.missing) return PASS;
     return await execute({ command: found.command, ...resolved });
   } catch (error) {
+    console.error(`[chat - error] handleCommand:`, error.stack);
     return say(reply.failed(error));
   }
 }

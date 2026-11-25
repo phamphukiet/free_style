@@ -2,13 +2,13 @@
 // AI tool "settings". Spec TĨNH (không nhét giá trị hiện tại như ai-bridge cũ).
 // Quyền theo def.aiAccess: none = ẩn hoàn toàn, read = chỉ đọc, write = đọc + ghi.
 // AI chỉ ghi tầng global.
+const { createLister } = require("./list");
 
 const SPEC = Object.freeze({
   name: "settings",
   description:
-    "Đọc và đổi cấu hình app. list: xem toàn bộ (id, nhãn, giá trị). describe: xem options/gợi ý của 1 setting. " +
-    "get/set/reset: thao tác theo id. addPreset: thêm mẫu cho setting dạng select (cần id, presetId, label, data — " +
-    "đọc gợi ý data bằng describe), sau đó set value = presetId để áp dụng.",
+    "Đọc và đổi cấu hình app. list: tìm setting theo query (1 từ khóa ngắn: tên, nhóm hoặc giá trị, VD 'theme', 'monokai'); không có query chỉ trả tên nhóm. describe: xem options/gợi ý của 1 setting. " +
+    "get/set/reset: thao tác theo id. addPreset: ...(giữ nguyên phần còn lại)",
   parameters: {
     type: "object",
     properties: {
@@ -17,6 +17,7 @@ const SPEC = Object.freeze({
         enum: ["list", "describe", "get", "set", "reset", "addPreset"],
       },
       id: { type: "string", description: "id setting." },
+      query: { type: "string", description: "Từ khóa ngắn (action=list)." },
       value: { description: "Giá trị mới (action=set)." },
       presetId: {
         type: "string",
@@ -29,7 +30,7 @@ const SPEC = Object.freeze({
   },
 });
 
-function createSettingsTool({ engine }) {
+function createSettingsTool({ engine, simplify }) {
   function access({ id, write }) {
     const def = engine.getDefinition({ id });
     const allowed =
@@ -55,24 +56,13 @@ function createSettingsTool({ engine }) {
     };
   }
 
-  function list() {
-    const items = engine.list().filter(({ def }) => def.aiAccess !== "none");
-    return {
-      items: items.map(({ def, value }) => ({
-        id: def.id,
-        label: def.label,
-        group: def.group,
-        type: def.type,
-        value,
-      })),
-    };
-  }
+    const list = createLister({ engine, simplify });
 
   function execute(args = {}) {
     const { action, id } = args;
     switch (action) {
       case "list":
-        return list();
+        return list({ query: args.query });
       case "describe":
         return describe({ id });
       case "get":

@@ -12,16 +12,17 @@ const isEnabled = (cap) =>
   !config.disabled.includes(cap.id) &&
   !config.disabled.includes(`${cap.kind}:${cap.id}`);
 
-const isReady = (cap) => isEnabled(cap) && cap.requires.every(hasCapability);
+const isReady = (cap) =>
+  isEnabled(cap) && (cap.requires ?? []).every(hasCapability);
 
 function candidates(kind, sessionId) {
-  return listCapabilities(kind).filter(
+  return listCapabilities({ kind }).filter(
     (cap) => isReady(cap) && !isTripped(sessionId, cap),
   );
 }
 
 function pickProvider(providerId) {
-  const cap = getCapability("provider", providerId);
+  const cap = getCapability({ kind: "provider", id: providerId });
   return cap && isReady(cap) ? cap : null;
 }
 
