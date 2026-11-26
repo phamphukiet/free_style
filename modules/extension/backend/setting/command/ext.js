@@ -4,7 +4,7 @@
 const {
   getService,
 } = require("../../../../../shared/core/capability-registry.js");
-
+const { eachTarget } = require("../../../../../shared/command/each.js");
 const TARGETS = {
   targets: { type: "string", many: true, entity: "extension" },
 };
@@ -18,19 +18,6 @@ function service() {
   return api;
 }
 
-async function eachTarget({ targets, task }) {
-  const items = [];
-  for (const key of targets) {
-    items.push(
-      await task(key).then(
-        () => ({ key, ok: true }),
-        (error) => ({ key, ok: false, error: error.message }),
-      ),
-    );
-  }
-  return { items };
-}
-
 const toggle =
   (enabled) =>
   ({ targets }) =>
@@ -41,8 +28,8 @@ const toggle =
 
 module.exports = {
   remove: {
-    label: "Gỡ extension",
-    aliases: ["xoá"],
+    label: "Remove extension",
+    aliases: ["remove"],
     runIn: "main",
     danger: true,
     args: TARGETS,
@@ -50,22 +37,22 @@ module.exports = {
       eachTarget({ targets, task: (id) => service().remove({ id }) }),
   },
   enable: {
-    label: "Bật extension",
-    aliases: ["bật"],
+    label: "Enable extension",
+    aliases: ["enable"],
     runIn: "main",
     args: TARGETS,
     run: toggle(true),
   },
   disable: {
-    label: "Tắt extension",
-    aliases: ["tắt"],
+    label: "Disable extension",
+    aliases: ["disable"],
     runIn: "main",
     args: TARGETS,
     run: toggle(false),
   },
   list: {
-    label: "Liệt kê extension",
-    aliases: ["danh sách ext"],
+    label: "List extensions",
+    aliases: ["list"],
     runIn: "main",
     run: () => ({
       items: service()

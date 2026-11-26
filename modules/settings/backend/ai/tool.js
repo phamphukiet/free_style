@@ -2,7 +2,8 @@
 // AI tool "settings". Spec TĨNH (không nhét giá trị hiện tại như ai-bridge cũ).
 // Quyền theo def.aiAccess: none = ẩn hoàn toàn, read = chỉ đọc, write = đọc + ghi.
 // AI chỉ ghi tầng global.
-const { createLister } = require("./list");
+const { createLister } = require("../../../../shared/command/list.js");
+const { createItems } = require("./items");
 
 const SPEC = Object.freeze({
   name: "settings",
@@ -56,7 +57,7 @@ function createSettingsTool({ engine, simplify }) {
     };
   }
 
-    const list = createLister({ engine, simplify });
+    const list = createLister({ ...createItems({ engine }), simplify });
 
   function execute(args = {}) {
     const { action, id } = args;

@@ -4,14 +4,14 @@
 // Chạy (ở thư mục gốc project):  node modules/settings/test/1.list.test.js
 
 // ===== THỬ CÁC CASE KHÁC: chỉ cần sửa các hằng số này =====
-const PROMPT = "đổi cỡ chữ thành 14"; // thử: "chuyển theme sang monokai" · "xyz"
+const PROMPT = "chuyển theme sang đen"; // thử: "chuyển theme sang monokai" · "xyz"
 const API_KEY = "";
 const MODEL = "gemini-3.5-flash"; // model cho agent đơn giản hóa
 // =========================================================
 
 const { createWorld } = require("./_env");
 const { createSettingsTool } = require("../backend/ai/tool");
-const { createSimplifier } = require("../backend/ai/simplify");
+const { createSimplifier } = require("../../../shared/command/simplify.js");
 const {
   chatCompletion,
 } = require("../../api/key/gemini/backend/gemini-client");
@@ -33,12 +33,12 @@ async function main() {
     step("1. Dữ liệu thật đang có");
     say(`tổng số setting: ${world.engine.list().length}`);
 
-    step(`2. list KHÔNG agent: query = "${PROMPT}"`);
+    step(`2. list: query = "${PROMPT}"`);
     const plain = await world.tool.execute({ action: "list", query: PROMPT });
     json(plain);
     say(`độ dài gửi cho model: ${size(plain)} ký tự`);
 
-    step("3. list CÓ agent đơn giản hóa");
+    step("3. list agent:");
         const apiKey = API_KEY || process.env.GEMINI_API_KEY;
         if (!apiKey) return say("chưa có API_KEY → bỏ qua bước này");
     const record = {};

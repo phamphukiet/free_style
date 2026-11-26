@@ -6,7 +6,7 @@
 - modules/hàm bị xóa hoặc thay đổi không ảnh hưởng đến code tổng thể
 - Ưu tiên dùng những gì sẵn có
 ## Tuân thủ mức 2
-- Sửa code: chỉ show đoạn thay đổi, không show lại cả file
+- Sửa code: chỉ show đoạn thay đổi, không show lại cả file. Không trình bầy phong cách git
 - Nếu thành phần X được đề cập không có trong context, chỉ trả lời "chưa có X trong context"
 - Không dùng `present_files` — code đưa trong chat, tự tạo/sửa file trên máy
 - `src/main/` = main process (Node thuần, không qua Vite); `src/preload/index.js` = cầu nối duy nhất renderer↔main; `src/renderer/` = UI; `modules/` và `shared/` ở gốc project dùng chung
@@ -35,3 +35,4 @@
 - Ưu tiên dùng những gì sẵn có
 - Cấu trúc clean stucture
 - object hóa signature với hàm >= 3 tham số hoặc tham số dễ thay đổi trong quá trình code
+- Thiết kế tính năng mới phải có kèm file test

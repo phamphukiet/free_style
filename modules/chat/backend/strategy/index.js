@@ -8,13 +8,11 @@ const sessionStore = require("../session/store");
 const { registerSessionIpc } = require("../session/ipc");
 const { handleSend } = require("../send/handle-send");
 const { modeMap } = require("../tool/modes");
-const { registerQuickCommands } = require("../tool/settings-quick");
 
 function register() {
   // Module khác (kanban, dedupe_level...) lấy session qua registry, không require chéo.
   registerCapability({ id: "session", kind: "service", api: sessionStore });
   registerSessionIpc();
-  registerQuickCommands();
 
   ipcMain.handle("chat:send", (event, payload) => {
     const notify = (channel, info) => {

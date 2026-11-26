@@ -42,7 +42,13 @@ function match({ text, commands }) {
   const top = Math.max(...hits.map((e) => e.hit.len));
   const best = hits.filter((e) => e.hit.len === top);
   if (best.length > 1) {
-    return { kind: "ambiguous", options: best.map((e) => e.command) };
+    return {
+      kind: "ambiguous",
+      candidates: best.map((e) => ({
+        command: e.command,
+        rest: without({ tokens, ...e.hit }),
+      })),
+    };
   }
   const { command, hit } = best[0];
   return { kind: "hit", command, rest: without({ tokens, ...hit }) };
