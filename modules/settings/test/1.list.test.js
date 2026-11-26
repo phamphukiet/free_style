@@ -4,7 +4,7 @@
 // Chạy (ở thư mục gốc project):  node modules/settings/test/1.list.test.js
 
 const PROMPT = "chuyển theme sang đen";
-const { API_KEY } = require("../../../secrets.local.js");
+const { API_KEY_TEST } = require("../../../secrets.local.js");
 const MODEL = "gemini-3.5-flash";
 // =========================================================
 
@@ -38,7 +38,7 @@ async function main() {
     say(`độ dài gửi cho model: ${size(plain)} ký tự`);
 
     step("3. list agent:");
-        const apiKey = API_KEY || process.env.GEMINI_API_KEY;
+        const apiKey = API_KEY_TEST;
         if (!apiKey) return say("chưa có API_KEY → bỏ qua bước này");
     const record = {};
     const simplify = createSimplifier({ ask: makeAsk({ apiKey, record }) });

@@ -22,7 +22,7 @@
 - Icon dùng `lucide-static`, import SVG qua `?raw`, nhúng bằng `unsafeSVG` (không dùng `lucide` DOM API vì không xuyên Shadow DOM)
 - Layout kiểu VSCode: titlebar (cố định) → #workbench-body (activitybar → sidebar → #editor-panel-column) → statusbar (cố định); #editor-panel-column: editor-group (flex) + panel (cố định)
 - CSS layout tổng (quan hệ giữa các part) đặt ở `workbench.css`, ngoài Shadow DOM
-- Log báo lỗi trình bầy theo format "[Error - 'tên modules' - 'tên file']: e". Không if, không case
+- Log trình bầy theo format "['công việc' - 'tên modules' - 'tên file']: 'ý'". Không if, không case, chỉ tiếng Anh
 
 # Chế độ thảo luận
 ## Tuân thủ mức 1
