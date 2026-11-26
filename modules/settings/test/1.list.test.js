@@ -3,10 +3,9 @@
 // So sánh list KHÔNG agent và list CÓ agent đơn giản hóa.
 // Chạy (ở thư mục gốc project):  node modules/settings/test/1.list.test.js
 
-// ===== THỬ CÁC CASE KHÁC: chỉ cần sửa các hằng số này =====
-const PROMPT = "chuyển theme sang đen"; // thử: "chuyển theme sang monokai" · "xyz"
-const API_KEY = "";
-const MODEL = "gemini-3.5-flash"; // model cho agent đơn giản hóa
+const PROMPT = "chuyển theme sang đen";
+const { API_KEY } = require("../../../secrets.local.js");
+const MODEL = "gemini-3.5-flash";
 // =========================================================
 
 const { createWorld } = require("./_env");
