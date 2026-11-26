@@ -9,7 +9,8 @@ const {
 const { compose } = require("./compose");
 const { registerExtensionIpc } = require("./interface/ipc");
 const presenter = require("./interface/presenter");
-const log = (error) => console.error("[extension]", error.message);
+const { createLog } = require("../../../shared/log");
+const log = createLog({ filename: __filename });
 const { registerExtensionEntity } = require("./entity");
 
 function exposeToChat({ usecases }) {
@@ -32,10 +33,20 @@ function exposeToChat({ usecases }) {
 // Chạy sau khi mọi module register() xong, lúc đó service "settings" mới sẵn sàng.
 async function boot({ adapters, usecases }) {
   adapters.runner.onCrash({
-    listener: (crash) => usecases.handleCrash(crash).catch(log),
+    listener: (crash) =>
+      log.say({
+        task: "Crash",
+        message: `${crash.id}: ${crash.message}`,
+        run: () => usecases.handleCrash(crash),
+      }),
   });
   adapters.settings.onChange({
-    listener: (event) => usecases.onSettingChanged(event).catch(log),
+    listener: (event) =>
+      log.say({
+        task: "SettingChanged",
+        message: event.ids.join(", "),
+        run: () => usecases.onSettingChanged(event),
+      }),
   });
   adapters.codeStore.watch({
     listener: (event) => usecases.onCodeChanged(event),
@@ -48,7 +59,8 @@ function register() {
   registerExtensionIpc({ usecases, presenter });
   exposeToChat({ usecases });
   app.on("before-quit", () => adapters.runner.stopAll());
-  setImmediate(() => boot({ adapters, usecases }).catch(log));
-}
+  setImmediate(() =>
+    log.say({ task: "Boot", run: () => boot({ adapters, usecases }) }),
+  );}
 
 module.exports = { register };

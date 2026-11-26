@@ -4,18 +4,20 @@
 
 const fs = require("fs");
 const path = require("path");
+const { createLog } = require("../log");
+const log = createLog({ filename: __filename, topic: "command" });
 
 const isDefs = (value) =>
   value !== null && typeof value === "object" && !Array.isArray(value);
 
 function readFile({ file }) {
-  try {
-    const defs = require(file);
-    return isDefs(defs) ? defs : {};
-  } catch (error) {
-    console.warn("[extension:commands]", file, error.message);
-    return {};
-  }
+  const defs = log.say({
+    task: "Scan",
+    message: file,
+    run: () => require(file),
+    fallback: {},
+  });
+  return isDefs(defs) ? defs : {};
 }
 
 function readModule({ id, modulesDir }) {

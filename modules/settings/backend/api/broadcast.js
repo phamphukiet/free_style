@@ -3,6 +3,8 @@
 // và "settings:effects" (batch effect đã resolve cho shared/setting/effect.js).
 
 const { BrowserWindow } = require("electron");
+const { createLog } = require("../../../../shared/log");
+const log = createLog({ filename: __filename });
 
 function send({ channel, payload }) {
   BrowserWindow.getAllWindows().forEach((win) => {
@@ -13,6 +15,7 @@ function send({ channel, payload }) {
 function bindBroadcast({ engine }) {
   return engine.onDidChange({
     listener: ({ ids }) => {
+      log.say({ task: "Broadcast", message: ids.join(", ") });
       ids.forEach((id) => {
         const value = engine.inspect({ id }).value;
         send({ channel: "settings:changed", payload: { id, value } });

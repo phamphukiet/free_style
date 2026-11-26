@@ -25,7 +25,7 @@ const { createSettingsService } = require("./api/service");
 const { createSettingsTool } = require("./ai/tool");
 const { createItems } = require("./ai/items");
 const { registerSettingEntity } = require("./setting/entity");
-
+const { withLog } = require("./ai/logged");
 let tool = null;
 
 function buildEngine() {
@@ -76,12 +76,12 @@ function register() {
     kind: "service",
     api: createSettingsService({ engine }),
   });
-  registerCapability({
-    id: "settings",
-    kind: "tool",
-    spec: tool.spec,
-    execute: tool.execute,
-  });
+    registerCapability({
+      id: "settings",
+      kind: "tool",
+      spec: tool.spec,
+      execute: withLog({ execute: tool.execute }),
+    });
   registerMention("settings", {
     hint: "quản lý cài đặt (xem/đổi/đặt lại/thêm mẫu)",
   });

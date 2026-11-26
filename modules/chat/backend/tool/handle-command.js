@@ -10,6 +10,8 @@ const { resolveEntities } = require("./resolve-entity");
 const { askUser } = require("./confirm");
 const { modulesOfMode } = require("./modes");
 const reply = require("./reply-format");
+const { createLog } = require("../../../../shared/log");
+const log = createLog({ filename: __filename, topic: "command" });
 
 const PASS = Object.freeze({ handled: false });
 const say = (content) => ({ handled: true, content });
@@ -29,6 +31,10 @@ async function execute({ command, args, targets }) {
     }
   }
   const { module: moduleName, name } = command;
+    log.say({
+      task: "Run",
+      message: `${moduleName}.${name} ${JSON.stringify(args)}`,
+    });
   const result = command.run
     ? await command.run(args)
     : await getBus().run({ module: moduleName, name, args, confirmed: true });
@@ -41,6 +47,10 @@ async function execute({ command, args, targets }) {
 async function tryResolve({ command, rest }) {
   const schema = toSchema(command.args);
   const filled = fill({ rest, schema });
+    log.say({
+      task: "Fill",
+      message: `${command.module}.${command.name} ${JSON.stringify(filled)}`,
+    });
   if (filled.error) return { command };
   const resolved = await resolveEntities({ schema, values: filled.values });
   return { command, ...resolved };
@@ -67,11 +77,12 @@ async function handleCommand({ text, mode }) {
   if (!mode) return PASS;
   try {
     const found = match({ text, commands: commandsOf({ mode }) });
+        log.say({ task: "Match", message: `${found.kind} "${text}"` });
     if (found.kind === "none") return PASS;
     if (found.kind === "ambiguous") return await handleAmbiguous(found);
     return await handleHit(found);
   } catch (error) {
-    console.error(`[chat - error] handleCommand:`, error.stack);
+    log.say({ task: "Error", message: error.stack });
     return say(reply.failed(error));
   }
 }

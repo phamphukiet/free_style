@@ -4,6 +4,8 @@
 // `via` gọi hàm biến đổi đã đăng ký để mở rộng dữ liệu gọn (seed màu → đủ biến CSS).
 
 const FORBIDDEN = new Set(["__proto__", "constructor", "prototype"]);
+const { createLog } = require("../../../../shared/log");
+const log = createLog({ filename: __filename });
 
 function lookup({ expr, ctx }) {
   let cur = ctx;
@@ -37,12 +39,9 @@ function evaluate({ node, ctx }) {
 
 function applyVia({ via, raw, getTransform }) {
   const fn = getTransform({ name: via });
-  if (!fn) return console.warn(`[settings] transform "${via}" chưa đăng ký`);
-  try {
-    return fn(raw);
-  } catch (error) {
-    return console.warn(`[settings] transform "${via}" lỗi:`, error.message);
-  }
+  if (!fn)
+    return log.say({ task: "Transform", message: `${via} is not registered` });
+  return log.say({ task: "Transform", message: via, run: () => fn(raw) });
 }
 
 function buildOne({ def, effect, ctx, getTransform }) {
