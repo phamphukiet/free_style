@@ -19,7 +19,10 @@ function exposeToChat({ usecases }) {
     list,
     remove: usecases.remove,
     setEnabled: usecases.setEnabled,
+    create: usecases.create,
+    save: usecases.save,
   };
+
   registerCapability({ id: "extension", kind: "service", api });
   registerCapability({
     id: "extension",
@@ -61,6 +64,7 @@ function register() {
   app.on("before-quit", () => adapters.runner.stopAll());
   setImmediate(() =>
     log.say({ task: "Boot", run: () => boot({ adapters, usecases }) }),
-  );}
+  );
+}
 
 module.exports = { register };

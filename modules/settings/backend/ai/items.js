@@ -28,7 +28,7 @@ function toRow({ def, value }) {
 
 const toItem = (entry) => ({
   key: entry.def.id,
-  label: entry.def.label,
+  label: `${entry.def.group} · ${entry.def.label}`,
   group: entry.def.group,
   names: namesOf(entry.def),
   row: toRow(entry),

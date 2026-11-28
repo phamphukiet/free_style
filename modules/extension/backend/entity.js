@@ -5,9 +5,6 @@ const {
   registerCapability,
 } = require("../../../shared/core/capability-registry.js");
 const { findKeys } = require("../../../shared/command/list.js");
-const {
-  simplify: defaultSimplify,
-} = require("../../../shared/command/simplify.js");
 
 const toItem = (ext) => ({
   key: ext.id,
@@ -15,12 +12,11 @@ const toItem = (ext) => ({
   names: [ext.id, ext.name],
 });
 
-/** @param {{ list: () => object[], simplify?: Function }} args */
-function registerExtensionEntity({ list, simplify = defaultSimplify }) {
+function registerExtensionEntity({ list }) {
   registerCapability({
     id: "extension",
     kind: "entity",
-    find: ({ text }) => findKeys({ items: list().map(toItem), text, simplify }),
+    find: ({ text }) => findKeys({ items: list().map(toItem), text }),
   });
 }
 

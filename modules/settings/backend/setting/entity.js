@@ -6,16 +6,12 @@ const {
   registerCapability,
 } = require("../../../../shared/core/capability-registry.js");
 const { findKeys } = require("../../../../shared/command/list.js");
-const {
-  simplify: defaultSimplify,
-} = require("../../../../shared/command/simplify.js");
 
-/** @param {{ getItems: () => object[], simplify?: Function }} args */
-function registerSettingEntity({ getItems, simplify = defaultSimplify }) {
+function registerSettingEntity({ getItems }) {
   registerCapability({
     id: "setting",
     kind: "entity",
-    find: ({ text }) => findKeys({ items: getItems(), text, simplify }),
+    find: ({ text }) => findKeys({ items: getItems(), text }),
   });
 }
 

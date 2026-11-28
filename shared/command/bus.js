@@ -15,6 +15,7 @@ function describe({ moduleId, name, def }) {
     runIn: def.runIn ?? "renderer",
     danger: Boolean(def.danger),
     args: def.args,
+    guide: def.guide,
   };
 }
 

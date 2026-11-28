@@ -3,7 +3,7 @@ const sessionStore = require("../session/store");
 const { pickProvider } = require("../select/selector");
 const { buildContext, resolveKey } = require("./context");
 const { runChat } = require("./run");
-const { handleCommand } = require("../tool/handle-command");
+const { runFilt } = require("../tool/filt");
 
 const fail = (code, message) => ({ ok: false, error: { code, message } });
 
@@ -23,14 +23,12 @@ function saveTurn(ctx, reply) {
 
 async function handleSend(payload, notify) {
   const ctx = buildContext(payload);
-  const routed = await handleCommand({
-    text: payload.message,
-    mode: payload.mode,
-  });
+  const routed = await runFilt({ text: payload.message, mode: payload.mode });
   if (routed.handled) {
-    const reply = { content: routed.content, tokenUsed: 0 };
-    saveTurn(ctx, reply);
-    return { ok: true, ...reply, notice: "" };
+    const reply = await runChat(ctx, provider, apiKey, notify);
+    const final = { ...reply, notice: reply.notice || routed.notice };
+    saveTurn(ctx, final);
+    return { ok: true, ...final };
   }
   const provider = pickProvider(ctx.providerId);
   if (!provider) {

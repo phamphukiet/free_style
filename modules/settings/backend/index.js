@@ -11,7 +11,6 @@ const {
   listCapabilities,
 } = require("../../../shared/core/capability-registry.js");
 const { registerMention } = require("../../../shared/core/mention-registry.js");
-const { simplify } = require("../../../shared/command/simplify.js");
 const activeModules = require("../../active-modules.js");
 const { createRegistry } = require("./core/registry");
 const { createEngine } = require("./core/engine");
@@ -68,7 +67,7 @@ function register() {
 
   registerSettingsIpc({ commands: createCommands({ engine, connectors }) });
   bindBroadcast({ engine });
-  tool = createSettingsTool({ engine, simplify });
+  tool = createSettingsTool({ engine});
   registerSettingEntity({ getItems: createItems({ engine }).getItems });
   registerCapability({ id: "settings", kind: "mode", tab: "settings" });
   registerCapability({

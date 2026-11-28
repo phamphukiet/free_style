@@ -4,6 +4,7 @@ const fold = (text) =>
     .toLowerCase()
     .replace(/đ/g, "d")
     .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "");
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[-_]+/g, " ");
 
 module.exports = { fold };

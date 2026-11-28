@@ -42,6 +42,7 @@ function buildContext(payload) {
     keyId: agent?.keyId || payload.keyId,
     model: agent?.model || payload.model,
     lastTool: session?.lastToolUsed || null,
+    mode: payload.mode || null,
     calledTools: [],
   };
 }
